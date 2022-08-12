@@ -1,1 +1,58 @@
-site_name: Porting over HPC documentation to new TUP
+site_name: TACC HPC Documentation
+site_description: TACC HPC Documentation
+site_author: Susan Lindsey
+
+theme:
+    name: mkdocs
+#    custom_dir: frontera_theme/
+#    static_templates:
+#        - sitemap.html
+#   include_sidebar: false
+
+
+#extra_css:
+# - css/extra.css
+# - css/cms.bootstrap.4.3.1.css
+
+markdown_extensions:
+ - toc:
+ - tables:
+
+nav:
+  - HPC : 
+    - Frontera: hpcugs/frontera/frontera.md
+    - Ranch: hpcugs/ranch/ranchsrc.md
+    - Maverick2: index.md
+#      - Notices : index.md
+#      - Introduction: intro.md
+#     - Quickstart: quickstart.md
+#     - Account Administration: admin.md
+#     - Frontera User Portal: portal.md
+#     - Citizenship on Frontera: citizenship.md
+#     - Managing Files: files.md
+#     - Launching Applications: launching.md
+#     - Running Jobs: running.md
+#     - Sample Job Scripts: scripts.md
+#     - Job Management: jobmanagement.md
+#     - Building Software: building.md
+#     - Programming and Performance: programming.md
+#     - Visualization on Frontera: vis.md
+#     - System Architecture: system.md
+#     - Cloud Services: cloud.md
+#     - Containers: containers.md
+#     - Help Desk: help.md
+#     - References: refs.md
+
+  - Software : softwareindex.md
+  - Tutorials : tutorialsindex.md
+
+plugins:
+    - search
+#    - with-pdf:
+#        copyright: TACC
+#        cover_subtitle: Frontera User Guide
+#        toc_title: Frontera User Guide
+#        output_path: docs/user-guide.pdf
+
+
+
