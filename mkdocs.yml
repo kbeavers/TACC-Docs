@@ -3,7 +3,7 @@ site_description: TACC HPC Documentation
 site_author: Susan Lindsey
 
 theme:
-    name: mkdocs
+    name: readthedocs
 #    custom_dir: frontera_theme/
 #    static_templates:
 #        - sitemap.html
@@ -23,28 +23,12 @@ nav:
     - Frontera: hpcugs/frontera/frontera.md
     - Ranch: hpcugs/ranch/ranchsrc.md
     - Maverick2: index.md
-#      - Notices : index.md
-#      - Introduction: intro.md
-#     - Quickstart: quickstart.md
-#     - Account Administration: admin.md
-#     - Frontera User Portal: portal.md
-#     - Citizenship on Frontera: citizenship.md
-#     - Managing Files: files.md
-#     - Launching Applications: launching.md
-#     - Running Jobs: running.md
-#     - Sample Job Scripts: scripts.md
-#     - Job Management: jobmanagement.md
-#     - Building Software: building.md
-#     - Programming and Performance: programming.md
-#     - Visualization on Frontera: vis.md
-#     - System Architecture: system.md
-#     - Cloud Services: cloud.md
-#     - Containers: containers.md
-#     - Help Desk: help.md
-#     - References: refs.md
-
-  - Software : softwareindex.md
-  - Tutorials : tutorialsindex.md
+  - Software :
+    - Tensorflow: softwareugs/tensorflow.md
+    - VASP: softwareugs/vasp.md
+  - Tutorials : 
+    - Managing I/O at TACC: tutorials/managingio.md
+    - Remote Desktop Access: tutorials/remotedesktopaccess.md
 
 plugins:
     - search
