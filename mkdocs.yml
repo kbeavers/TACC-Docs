@@ -4,6 +4,9 @@ site_author: Susan Lindsey
 
 theme:
     name: readthedocs
+    features:
+        - navigation.instant
+        - navigation.tracking
 #    custom_dir: frontera_theme/
 #    static_templates:
 #        - sitemap.html
@@ -24,6 +27,7 @@ nav:
     - Ranch: hpcugs/ranch/ranchsrc.md
     - Maverick2: index.md
   - Software :
+    - Gaussian: softwareugs/gaussian.md
     - Tensorflow: softwareugs/tensorflow.md
     - VASP: softwareugs/vasp.md
   - Tutorials : 

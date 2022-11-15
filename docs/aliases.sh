@@ -9,6 +9,8 @@ styleyellow="<span\ style=\"background-color:yellow\">"
 stylenowrap="<span\ style=\"white-space:\ nowrap;\">"
 endspan="<\/span>"
 
+imagedir="..\/..\/img\/"
+
 # HPC UGs as of 11/15/2022
 # Corral, Frontera, Lonestar6, Longhorn, Maverick2, Ranch, Stampede2
 
@@ -41,6 +43,7 @@ sed	\
 	-e "s/NOWRAP/$stylenowrap/g" \
 	-e "s/ESPAN/$endspan/g" \
 	\
+	-e "s/IMAGEDIR/$imagedir/g" \
 	-e "s/CORRALUG/$corralug/g" \
 	-e "s/FRONTERAUG/$fronteraug/g" \
 	-e "s/LONESTAR6UG/$lonestar6ug/g" \
