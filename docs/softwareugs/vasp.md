@@ -1,15 +1,12 @@
-<!--- / Hang Liu, Susan Lindsey	
-/ http://portal.tacc.utexas.edu/software/vasp  --->
-# <p><span style="font-size:225%; font-weight:bold;">VASP at TACC</span><br>
+<!--- / Hang Liu, Susan Lindsey	http://portal.tacc.utexas.edu/software/vasp  --->
+
+# VASP at TACC
 <span style="font-size:90%"><i>Last update: April 27, 2022</i></span></p>
 
 
-<table cellspacing="3" cellpadding="3">
-<tr>
-<td><img alt="VASP logo" src="../img/VASP-logo.png" style="width: 75px; height: 41px;"></td>
-<td><b>V</b>ienna <b>A</b>b initio <b>S</b>imulation <b>P</b>ackage (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.</td></tr></table>
-
-![VASP logo](../img/VASP-logo.png)  
+<!-- <img alt="VASP logo" src="IMAGEDIR/img/VASP-logo.png" style="width: 75px; height: 41px;">-->
+<img alt="VASP logo" src="../../img/VASP-logo.png" style="width: 75px; height: 41px;">
+<b>V</b>ienna <b>A</b>b initio <b>S</b>imulation <b>P</b>ackage (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
 
 ## TACC and VASP Licenses
 
