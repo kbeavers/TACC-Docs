@@ -1,6 +1,7 @@
 name: TACC Docs Build
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - '*'
