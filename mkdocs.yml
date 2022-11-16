@@ -1,28 +1,16 @@
 site_name: TACC HPC Documentation
 site_description: TACC HPC Documentation
 site_author: Susan Lindsey
+site_url: https://readthedocs.tacc.utexas.edu
 
 theme:
     name: readthedocs
-    features:
-        - navigation.instant
-        - navigation.tracking
-#    custom_dir: frontera_theme/
-#    static_templates:
-#        - sitemap.html
-#   include_sidebar: false
-
-
-#extra_css:
-# - css/extra.css
-# - css/cms.bootstrap.4.3.1.css
 
 markdown_extensions:
- - toc:
- - tables:
+ - tables
 
 nav:
-  - HPC : 
+  - HPC :
     - Frontera: hpcugs/frontera/frontera.md
     - Ranch: hpcugs/ranch/ranchsrc.md
     - Maverick2: index.md
@@ -30,17 +18,9 @@ nav:
     - Gaussian: softwareugs/gaussian.md
     - Tensorflow: softwareugs/tensorflow.md
     - VASP: softwareugs/vasp.md
-  - Tutorials : 
+  - Tutorials :
     - Managing I/O at TACC: tutorials/managingio.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
 
 plugins:
     - search
-#    - with-pdf:
-#        copyright: TACC
-#        cover_subtitle: Frontera User Guide
-#        toc_title: Frontera User Guide
-#        output_path: docs/user-guide.pdf
-
-
-
