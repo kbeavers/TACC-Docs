@@ -8,8 +8,15 @@ theme:
 
 markdown_extensions:
  - tables
+ - toc 
+#  - anchorlink: True
+ - admonition
+ - attr_list
+ - abbr
+
 
 nav:
+  - Fiddling : testingextensions.md
   - HPC :
     - Frontera: hpcugs/frontera/frontera.md
     - Ranch: hpcugs/ranch/ranchsrc.md
