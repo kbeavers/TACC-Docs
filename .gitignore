@@ -1,0 +1,5 @@
+# Ignore site
+site/
+
+# Temporary files
+.DS_Store
