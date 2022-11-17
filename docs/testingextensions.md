@@ -1,35 +1,31 @@
+November 17, 12:03pm
+
 ## `abbr` 
 
-The HTML specification is maintained by the W3C.
+The HTML specification is maintained by the W3C.  Login in to TUP
 
 *[HTML]: Hyper Text Markup Language
 *[W3C]:  World Wide Web Consortium
 
 ## `attr_list`
 
-<div class="admonition danger highlight blink">
-<p class="admonition-title">Don't try this at home</p>
-<p>...</p>
-</div>
-
-
 | set on td    | set on em   |
 |--------------|-------------|
 | *a* { .foo } | *b*{ .foo } |
 
-## `admonition`
+
+## `admonition` extension
 
 rST suggests the following “types”: attention, caution, danger, error, hint, important, note, tip, and warning; however, you’re free to use whatever you want.
-
 
 !!! attention "pay attention"
 	attention box
 
 !!! caution
-    You should note that the title will be automatically capitalized.
+    Caution box the title will be automatically capitalized.
 
 !!! danger highlight blink "Don't try this at home"
-	This should blink
+	danger box. This should blink
 
 !!! error
 	Admonition type: error
@@ -38,7 +34,7 @@ rST suggests the following “types”: attention, caution, danger, error, hint,
 	Admonition type: hint
 
 !!! important
-	Admonition type: hint
+	Admonition type: important
 
 !!! note
 	Admonition type: note
@@ -47,5 +43,6 @@ rST suggests the following “types”: attention, caution, danger, error, hint,
 	Admonition type: tip
 
 !!! warning
-	warning box
+	Admonition type: warning
+
 
