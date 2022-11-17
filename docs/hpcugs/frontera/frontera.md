@@ -1,8 +1,8 @@
-# <p class="userguidetitle">Frontera User Guide</p>
-<span style="font-size:90%;"><i>Last update: March 22, 2022</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>
+# Frontera User Guide
+
+<span style="font-size:90%;"><i>Last update: November 17, 2022 13:07</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>
 
 ## Status Updates and Notices
-
 
 
 * **All users: refer to updated [Remote Desktop Access](vis#remote-desktop-access) instructions.** (07/21/2021)
