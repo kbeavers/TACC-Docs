@@ -6,21 +6,13 @@ site_url: https://readthedocs.tacc.utexas.edu
 theme:
     name: readthedocs
 
-markdown_extensions:
- - tables
- - toc 
-#  - anchorlink: True
- - admonition
- - attr_list
- - abbr
-
 
 nav:
   - Fiddling : testingextensions.md
   - HPC :
     - Frontera: hpcugs/frontera/frontera.md
     - Ranch: hpcugs/ranch/ranchsrc.md
-    - Maverick2: index.md
+    - Maverick2: hpcugs/2mav/index.md
   - Software :
     - Gaussian: softwareugs/gaussian.md
     - Tensorflow: softwareugs/tensorflow.md
@@ -29,5 +21,17 @@ nav:
     - Managing I/O at TACC: tutorials/managingio.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
 
+markdown_extensions:
+ - tables
+ - admonition
+ - attr_list
+ - abbr
+
 plugins:
-    - search
+  - search
+  - macros # allows {% include ... %} (and macros)
+  - with-pdf:
+      copyright: TACC
+      cover_subtitle: TACC User Guide
+      toc_title: TACC User Guide
+      output_path: docs/user-guide.pdf
