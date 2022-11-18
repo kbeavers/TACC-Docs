@@ -4,4 +4,4 @@ Frontera provides seamless, integrated support for the use of Singularity contai
 
 Frontera supports application containers from any specification-compliant science community (e.g. Biocontainers, with over 3,000 containers and counting, and the Nvidia GPU Cloud Library), opening this important resource for a wide range of new applications and new science communities. To make the experience seamless, our implementation injects mount points and environment variables into the container to match the HPC system environment – the `$SCRATCH`, `$WORK`, and `$HOME` filesystems all are identical to what users see natively on any Frontera node. 
 
-See the [Containers@TACC](../docs/containers-at-tacc.pdf) documentation for detailed information.
+<!-- See the [Containers@TACC](../docs/containers-at-tacc.pdf) documentation for detailed information. -->

@@ -1,8 +1,17 @@
-November 17, 12:03pm
+November 18, 16:39pm
 
 # Let's test some nested headings - here's h1
 
 ## H2 is here
+
+
+<span style="font-style:italic; color:green;background:yellow">I'm within a span</span>
+
+
+how do I highlight? styles - do I need to run this through a script?
+
+markdown macros?
+
 
 ### H3 is h3re
 

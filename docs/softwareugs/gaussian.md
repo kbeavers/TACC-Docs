@@ -11,7 +11,7 @@ TACC's Gaussian license allows academic users who have signed a Usage Agreement 
 
 * UT Austin Students, Staff, and Faculty
 
-	TACC must maintain a physical copy of a [Confidentiality Agreement](PDFDIR/UT_Gaussian_Agreement.jpg) for all UT Austin users.  It is easiest to print, sign, and send back this [Confidentiality Agreement](PDFDIR/UT_Gaussian_Agreement.jpg) by campus mail to "TACC - Gaussian" at mail code R8700.  Submit a consulting ticket notifying TACC staff that you have mailed the agreement so that we can expect it and easily follow up with you.
+	<!-- TACC must maintain a physical copy of a [Confidentiality Agreement](PDFDIR/UT_Gaussian_Agreement.jpg) for all UT Austin users.  It is easiest to print, sign, and send back this [Confidentiality Agreement](PDFDIR/UT_Gaussian_Agreement.jpg) by campus mail to "TACC - Gaussian" at mail code R8700.  Submit a consulting ticket notifying TACC staff that you have mailed the agreement so that we can expect it and easily follow up with you. -->
 
 
 * Other Academic Users
