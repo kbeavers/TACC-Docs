@@ -8,4 +8,8 @@
 [CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"
 
 
+[TACCIDEV]: http://portal.tacc.utexas.edu/software/idev "idev User Guide"
+[TACCMFA]: http://portal.tacc.utexas.edu/software/idef "idev User Guide"
+[TACCVISPORTAL]: http://portal.tacc.utexas.edu/software/idef "idev User Guide"
+[TACCTENSORFLOW]: http://portal.tacc.utexas.edu/software/tensorflow "Tensorflow at TACC"
 

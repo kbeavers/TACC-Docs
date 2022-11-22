@@ -1,57 +1,54 @@
-## Citizenship
+## Conduct
 
-**You share MACHINENAME with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good citizenship to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
+**You share MACHINENAME with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
 
-TACC staff has developed the following guidelines to good citizenship on MACHINENAME. Please familiarize yourself especially with the first two mandates:
+TACC staff has developed the following guidelines to good conduct on MACHINENAME. Please familiarize yourself especially with the first two mandates:
 
-* [Do Not Run Jobs on the Login Nodes](#citizenship-loginnodes)
-* [Do Not Stress the File Systems](#citizenship-filesystems)
+* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+* [Do Not Stress the File Systems](#conduct-filesystems)
 
 
-The next two sections discuss best practices on [limiting and minimizing I/O activity](#citizenship-io) and [file transfers](#citizenship-filesystems). And finally, we provide [job submission tips](#citizenship-jobs) when constructing job scripts to help minimize wait times in the queues.  
+The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
 
-izenship-loginnodes
-:markdown
-	## [Do Not Run Jobs on the Login Nodes](#citizenship-loginnodes)
+### [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
 
-	MACHINENAME's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
+MACHINENAME's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
 
-	Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
+Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
 
-	The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
+The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
 
-	A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
 
-	<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended if your jobs are impacting other users.</p> 
+<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended if your jobs are impacting other users.</p> 
 
-	* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
 
-		DO THIS: Start an interactive session on a compute node and run Matlab.
+	DO THIS: Start an interactive session on a compute node and run Matlab.
 
-		<pre class="cmd-line">
-		login1$ <b>idev</b>
-		nid00181$ <b>matlab</b></pre>
+	<pre class="cmd-line">
+	login1$ <b>idev</b>
+	nid00181$ <b>matlab</b></pre>
 
-		DO NOT DO THIS: Run Matlab or other software packages on a login node
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
 
-		<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
 
-	* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "NOWRAP`make -j 16`ESPAN" (which compiles on 16 cores) may impact other users.
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "NOWRAP`make -j 16`ESPAN" (which compiles on 16 cores) may impact other users.
 
-		DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 
-		<pre class="cmd-line">
-		login1$ <b>make <i>mytarget</i></b>
-		login1$ <b>sbatch <i>myjobscript</i></b></pre>
+	<pre class="cmd-line">
+	login1$ <b>make <i>mytarget</i></b>
+	login1$ <b>sbatch <i>myjobscript</i></b></pre>
 
-		DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
+	DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
 
-		<pre class="cmd-line">
-		<s>login1$ <b>make -j 12</b>
-		login1$ <b>./myprogram</b></s></pre>
+	<pre class="cmd-line">
+	<s>login1$ <b>make -j 12</b>
+	login1$ <b>./myprogram</b></s></pre>
 
-	* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
-
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 
 
 ### Do Not Stress the Shared File Systems
@@ -60,7 +57,6 @@ TACC resources, with a few exceptions, mount three file systems: `/home`, `/work
 
 #### File System Usage Recommendations
 
-le(border="1" cellpadding="3")
 %tr
 	%th File System
 	%th Best Storage Practices
@@ -125,7 +121,6 @@ In order to not stress both internal and external networks:
 * **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](http://portal.tacc.utexas.edu/user-guides/ranch).
 
 * When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
-
 
 ### Job Submission Tips
 
