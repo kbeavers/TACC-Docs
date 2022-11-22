@@ -1,28 +1,29 @@
 <!--- / Hang Liu, Susan Lindsey	http://portal.tacc.utexas.edu/software/vasp  --->
 
 # VASP at TACC
-<span style="font-size:90%"><i>Last update: November 18th, 15:45 2022 testing</i></span></p>
+<span style="font-size:90%"><i>Last update: November 22, 2022</i></span></p>
 
 
 <!-- <img alt="VASP logo" src="IMAGEDIR/img/VASP-logo.png" style="width: 75px; height: 41px;">-->
-<img alt="VASP logo" src="../../img/VASP-logo.png" style="width: 75px; height: 41px;">
+<img alt="VASP logo" src="../../imgs/VASP-logo.png" style="width: 75px; height: 41px;">
 <b>V</b>ienna <b>A</b>b initio <b>S</b>imulation <b>P</b>ackage (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
 
 ## TACC and VASP Licenses
 
 VASP requires an individual license. TACC's HPC support license allows us to install only the compiled VASP executables and grant the access to licensed users who have accounts on our systems. We are not allowed to share source code.  
 
-If you have your own license and want to use your own compilation, you may [install it in your own account](/user-guides/stampede2#building-basics-thirdparty). If you wish to use TACC's installed version, then TACC will have to verify your license. [Submit a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) and include the following information: your **full** name, affiliated institution, and your TACC user name along with the license number or a scanned PDF of the license. TACC will notify you once the license is confirmed. 
+If you have your own license and want to use your own compilation, you may [install it in your own account][S2BUILDING]. If you wish to use TACC's installed version, then TACC will have to verify your license. [Submit a support ticket][CREATETICKET] and include the following information: your **full** name, affiliated institution, and your TACC user name along with the license number or a scanned PDF of the license. TACC will notify you once the license is confirmed. 
 
 ### Installations
 
-The latest stable release of VASP is installed on [Stampede2](/user-guides/stampede2), [Lonestar6](/user-guides/lonestar6) and [Frontera](https://frontera-portal.tacc.utexas.edu/user-guide/) systems. Note that you will be unable to load any VASP module until your license is confirmed.
+The latest stable release of VASP is installed on [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG] and [Frontera][FRONTERAUG] systems. Note that you will be unable to load any VASP module until your license is confirmed.
 
 Use the "[`module`](https://lmod.readthedocs.io/en/latest/)" commands to explore other VASP installations, for example: 
 
-<pre class="cmd-line">
+<pre class="job-script">
 login1$ <b>module spider vasp</b>
 login1$ <b>module spider vasp/6.3.0</b></pre>
+
 
 Then, either interactively or via a batch script, load the appropriate module: 
 
@@ -52,6 +53,7 @@ The script below submits a VASP job to Lonestar6's normal queue ( Milan compute 
 module load vasp/5.4.4.pl2
 ibrun vasp_std > vasp_test.out</pre>
 
+
 ### Sample Job Script: VASP on Frontera
 
 The script below submits a VASP job to [Frontera's normal queue](https://frontera-portal.tacc.utexas.edu/user-guide/running/#table-5-frontera-production-queues) (CLX compute nodes), requesting 4 nodes and 224 tasks for a maximum of 4 hours. Refer to Frontera's [Running Jobs](https://frontera-portal.tacc.utexas.edu/user-guide#running) section for more Slurm options.
@@ -70,12 +72,11 @@ The script below submits a VASP job to [Frontera's normal queue](https://fronter
 module load vasp/5.4.4.pl2
 ibrun vasp_std > vasp_test.out</pre>
 
-
 ### Sample Job Script: VASP on Stampede2
 
-The script below requests 4 nodes and 256 tasks, for a maximum of four hours in Stampede2's `normal` queue (KNL compute nodes). See the [Stampede2 User Guide: Common `sbatch` Options](/user-guides/stampede2#running-sbatch) for more about job options.  
+The script below requests 4 nodes and 256 tasks, for a maximum of four hours in Stampede2's `normal` queue (KNL compute nodes). See the [Stampede2 User Guide: Common `sbatch` Options][S2BATCH] for more about job options.  
 
-<pre class="job-script">
+<pre class="job-cript">
 #!/bin/bash 
 #SBATCH -J vasp          
 #SBATCH -o vasp.%j.out     
@@ -96,4 +97,4 @@ ibrun vasp_std > vasp_test.out</pre>
 * [The VASP Manual](https://www.vasp.at/wiki/index.php/The_VASP_Manual)
 * [TACC Software page](https://www.tacc.utexas.edu/systems/software)
 
-
+{% include 'aliases.md' %}
