@@ -1,36 +1,27 @@
-#running
-	:markdown
-		# [Running Jobs on the Maverick2 Compute Nodes](#running)
+## Running Jobs on the Maverick2 Compute Nodes
 
-/taccinfo blurb
-= File.read "../../include/maverick2-jobaccounting.html"
+o blurb
+ead "../../include/maverick2-jobaccounting.html"
 
-#running-slurm
-	:markdown
-		## [Slurm Job Scheduler](#running-slurm)
+### Slurm Job Scheduler
 
-		Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
+Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
 
-		The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
 
-		* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
-		* [Common `sbatch` options](/user-guides/stampede2#table6)
-		* [Launching Applications](/user-guides/stampede2#launching-applications)
+* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
+* [Common `sbatch` options](/user-guides/stampede2#table6)
+* [Launching Applications](/user-guides/stampede2#launching-applications)
 
-#queues
-#running-queues
-	:markdown
-		## [Slurm Partitions (Queues)](#running-queues)
+### Slurm Partitions (Queues)
 
-		**Queues and limits are subject to change without notice.** 
+**Queues and limits are subject to change without notice.** 
 
-		Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on available queues.
+Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on available queues.
 
-		See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
 
-#table6
-	:markdown
-		[Table 6. Maverick2 Production Queues](#table6)
+[Table 6. Maverick2 Production Queues](#table6)
 
 %table(border="1" cellpadding="3")
 	%tr(align="center")
@@ -62,7 +53,5 @@
 		%td 1 SU
 
 
-#running-sbatch-jobscripts
-	:markdown
-		<!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) STYLEREDComing Soon.ESPAN -->
+<!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) STYLEREDComing Soon.ESPAN -->
 

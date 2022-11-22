@@ -1,18 +1,12 @@
-#overview
-	:markdown
-		# [System Overview](#overview)
+## [System Overview](#overview)
 
-		Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
+Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
 
-#overview-computenodes
-	:markdown
-		## [GTX Compute Nodes](#overview-computenodes)
+### [GTX Compute Nodes](#overview-computenodes)
 
-		Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
+Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
 
-#table1
-	:markdown
-		[Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+[Table 1. Maverick2 GTX Compute Node Specifications](#table1)
 
 	%table(border="1" cellpadding="3")
 		%tr 
@@ -51,16 +45,12 @@
 		%tr 
 			%td(align="right") GPUs:
 			%td 4 x NVidia 1080-TI GPUs
- 
-#overview-computenodes
-	:markdown
-		## [V100 Compute Nodes](#overview-computenodes)
 
-		Maverick2 has 4 V100 compute nodes.
+### [V100 Compute Nodes](#overview-computenodes)
 
-#table2
-	:markdown
-		[Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+Maverick2 has 4 V100 compute nodes.
+
+[Table 2. Maverick2 V100 Compute Node Specifications](#table2)
 
 	%table(border="1" cellpadding="3")
 		%tr 
@@ -99,16 +89,12 @@
 		%tr 
 			%td(align="right") GPUs:
 			%td 2 NVidia  V100 adapters
- 
-#overview-v100
-	:markdown
-		## [P100 Compute Nodes](#overview-v100)
 
-		Maverick2 has 3 P100 nodes.
+### [P100 Compute Nodes](#overview-v100)
 
-#table3
-	:markdown
-		[Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+Maverick2 has 3 P100 nodes.
+
+[Table 3. Maverick2 P100 Compute Node Specifications](#table3)
 
 	%table(border="1" cellpadding="3")
 		%tr 
@@ -147,40 +133,34 @@
 		%tr 
 			%td(align="right") GPUs:
 			%td 2 NVidia P100 adapters
-	
-	#overview-loginnodes
-		:markdown
-			## [Login Nodes](#overview-loginnodes)
 
-			Maverick2 hosts a single login node:
+rview-loginnodes
+:markdown
+	## [Login Nodes](#overview-loginnodes)
 
-			* Dual Socket
-			* Intel Xeon CPU E5-2660 v3 (Haswell) @ 2.60GHz: 10 cores/socket (20 cores/node)
-			* 128 GB DDR4-2133 (8 x 16GB dual rank x4 DIMMS)
-			* Hyperthreading Disabled
+	Maverick2 hosts a single login node:
 
-#overview-network
-	:markdown
-		## [Network](#overview-network)
+	* Dual Socket
+	* Intel Xeon CPU E5-2660 v3 (Haswell) @ 2.60GHz: 10 cores/socket (20 cores/node)
+	* 128 GB DDR4-2133 (8 x 16GB dual rank x4 DIMMS)
+	* Hyperthreading Disabled
 
-		* Mellanox FDR Infiniband MT27500 Family ConnectX-3 Adapter
-		* up to 10/40/56Gbps bandwidth and a sub-microsecond low latency
-		* Fat Tree Interconnect
-		* Intel Ethernet Controller I350 IEEE 802.3 1Gbps Adapter
+### [Network](#overview-network)
 
-#overview-filesystems
-	:markdown
-		## [File Systems](#overview-filesystems)
+* Mellanox FDR Infiniband MT27500 Family ConnectX-3 Adapter
+* up to 10/40/56Gbps bandwidth and a sub-microsecond low latency
+* Fat Tree Interconnect
+* Intel Ethernet Controller I350 IEEE 802.3 1Gbps Adapter
 
-		Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
+### [File Systems](#overview-filesystems)
 
-		<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
+Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
+
+<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
 
 
-#figure2
-	:markdown
-		<figure>
-		<img alt="" src="/documents/10157/1181317/Maverick2+cooling+system/fbef2f24-4252-4d5f-857e-73c138ff6a0e?t=1592320888902" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-		<figcaption><font size=-2>Figure 2. Maverick2 Immersion Cooling System</font></figcaption>
-		</figure>
+<figure>
+<img alt="" src="/documents/10157/1181317/Maverick2+cooling+system/fbef2f24-4252-4d5f-857e-73c138ff6a0e?t=1592320888902" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
+<figcaption><font size=-2>Figure 2. Maverick2 Immersion Cooling System</font></figcaption>
+</figure>
 
