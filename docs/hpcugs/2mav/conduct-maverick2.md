@@ -1,4 +1,4 @@
-## Conduct
+## Conduct on Maverick2
 
 **You share MACHINENAME with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
 
@@ -10,7 +10,7 @@ TACC staff has developed the following guidelines to good conduct on MACHINENAME
 
 The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
 
-### [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+### Do Not Run Jobs on the Login Nodes
 
 MACHINENAME's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
 
@@ -50,29 +50,17 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 * **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 
-
 ### Do Not Stress the Shared File Systems
 
 TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
 
 #### File System Usage Recommendations
 
-%tr
-	%th File System
-	%th Best Storage Practices
-	%th Best Activities
-%tr
-	%td <code>$HOME</code>
-	%td cron jobs<br>small scripts<br>environment settings 
-	%td compiling, editing
-%tr 
-	%td <code>$WORK</code>
-	%td software installations<br> original datasets that can't be reproduced<br> job scripts and templates
-	%td staging datasets
-%tr 
-	%td <code>$SCRATCH</code>
-	%td temporary datasets<br>I/O files<br>job files
-	%td all job I/O activity
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | temporary datasets<br>I/O files<br>job files | all job I/O activity
 
 #### Stockyard (`$HOME`)
 
@@ -110,7 +98,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
-<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](/tutorials/managingio) for additional information.</pre>
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](TAAMANAGINGIO) for additional information.</p>
 
 ### Limit File Transfers
 
@@ -118,7 +106,7 @@ In order to not stress both internal and external networks:
 
 * **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
 
-* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](http://portal.tacc.utexas.edu/user-guides/ranch).
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](RANCHUG).
 
 * When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
 
@@ -128,5 +116,5 @@ In order to not stress both internal and external networks:
 
 * **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; NOWRAP`hello world`ESPAN codes; one-liners like NOWRAP`ibrun hostname`ESPAN; or an `ldd` on your executable.
 
-* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](/software/remora) tool to monitor your application's needs. 
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](TACCREMORA) tool to monitor your application's needs. 
 

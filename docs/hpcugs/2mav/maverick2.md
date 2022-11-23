@@ -197,7 +197,7 @@ To report a connection problem, execute the `ssh` command with the <span style="
 
 
 
-## Conduct
+## Conduct on Maverick2
 
 **You share Maverick2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
 
@@ -209,7 +209,7 @@ TACC staff has developed the following guidelines to good conduct on Maverick2. 
 
 The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
 
-### [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+### Do Not Run Jobs on the Login Nodes
 
 Maverick2's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
 
@@ -249,29 +249,17 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 * **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 
-
 ### Do Not Stress the Shared File Systems
 
 TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
 
 #### File System Usage Recommendations
 
-%tr
-	%th File System
-	%th Best Storage Practices
-	%th Best Activities
-%tr
-	%td <code>$HOME</code>
-	%td cron jobs<br>small scripts<br>environment settings 
-	%td compiling, editing
-%tr 
-	%td <code>$WORK</code>
-	%td software installations<br> original datasets that can't be reproduced<br> job scripts and templates
-	%td staging datasets
-%tr 
-	%td <code>$SCRATCH</code>
-	%td temporary datasets<br>I/O files<br>job files
-	%td all job I/O activity
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | temporary datasets<br>I/O files<br>job files | all job I/O activity
 
 #### Stockyard (`$HOME`)
 
@@ -309,7 +297,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
-<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](/tutorials/managingio) for additional information.</pre>
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](TAAMANAGINGIO) for additional information.</p>
 
 ### Limit File Transfers
 
@@ -317,7 +305,7 @@ In order to not stress both internal and external networks:
 
 * **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
 
-* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](http://portal.tacc.utexas.edu/user-guides/ranch).
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](RANCHUG).
 
 * When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
 
@@ -327,7 +315,7 @@ In order to not stress both internal and external networks:
 
 * **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
 
-* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](/software/remora) tool to monitor your application's needs. 
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](TACCREMORA) tool to monitor your application's needs. 
 
 ## Managing Your Files
 
@@ -435,10 +423,9 @@ Before transferring large files to Maverick2, or creating new large files, be su
 Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
 
 Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
-## Running Jobs on the Maverick2 Compute Nodes
+## Running Jobs on the Compute Nodes
 
-o blurb
-ead "../../include/maverick2-jobaccounting.html"
+{% include 'include/jobaccounting.md' var Maverick2:Maverick2 %}
 
 ### Slurm Job Scheduler
 
@@ -460,34 +447,2969 @@ See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) 
 
 [Table 6. Maverick2 Production Queues](#table6)
 
-%table(border="1" cellpadding="3")
-	%tr(align="center")
-		%th(align="center") Queue Name<br>(available nodes)
-		%th(align="center") Max Nodes per Job<br /> (assoc'd cores) 
-		%th(align="center") Max Duration 
-		%th(align="center") Max Jobs in Queue 
-		%th(align="center") Charge Rate<br /> (per node-hour) 
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- |
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
 
-	%tr(align="center")
-		%td <code>gtx</code><br>(24 nodes)
-		%td 4 nodes<br /> (64 cores)
-		%td 24 hours
-		%td 4
-		%td 1 SU
+
+<!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) <span style="color:red">Coming Soon.</span> -->
+
+# Remote Desktop Access
+
+Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
+
+*  allocates a set of Maverick2 visualization nodes 
+*  starts a vncserver process on the first allocated node 
+*  sets up a tunnel through the login node to the vncserver access port 
+
+Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
+
+Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+
+Follow the steps below to start an interactive session.
+
+1. Start a Remote Desktop 
+
+	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
+
+	You may modify or overwrite script defaults with `sbatch` command-line options:
+
+	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
+	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
+	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
+	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+
+	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
+
+	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+
+	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+
+	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
+
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+
+1. Create an SSH Tunnel to Maverick2 
+
+	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
+
+	<pre class="cmd-line">
+	localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+	where:
+
+	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
+	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
+	*  "`-N`" puts the `ssh` command into the background after connecting 
+	*  "`-L`" forwards the port 
+
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
+
+1. Connecting vncviewer 
+
+	Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Maverick2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
+
+	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
+
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+
+	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
+
+
+
+## [Software on Maverick2](#software)
+
+As of July 21, 2021, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
+
+<pre class="cmd-line">
+login1$ <b>module avail</b>
+
+-------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
+   boost/1.66                     phdf5/1.10.4   (D)
+   fftw3/3.3.6                    pnetcdf/1.8.1
+   parallel-netcdf/4.3.3.1        python2/2.7.16 (L,D)
+   parallel-netcdf/4.6.2   (D)    python3/3.7.0  (D)
+   phdf5/1.8.16
+
+------------------------ /opt/apps/intel18/modulefiles -------------------------
+   hdf5/1.8.16        mkl-dnn/0.18.1    netcdf/4.3.3.1        python3/3.7.0
+   hdf5/1.10.4 (D)    nco/4.6.9         netcdf/4.6.2   (D)    udunits/2.2.25
+   impi/18.0.2 (L)    ncview/2.1.7      python2/2.7.16
+
+---------------------------- /opt/apps/modulefiles -----------------------------
+   TACC          (L)      gcc/7.1.0                 matlab/2020b           (D)
+   autotools/1.2 (L)      gcc/7.3.0        (D)      mcr/9.5
+   cmake/3.8.2            git/2.24.1       (L)      mcr/9.6
+   cmake/3.10.2           hwloc/1.11.2              mcr/9.9                (D)
+   cmake/3.16.1  (L,D)    idev/1.5.5                ncl_ncarg/6.3.0
+   cuda/8.0      (g)      intel/16.0.3              nvhpc/21.3.0
+   cuda/9.0      (g)      intel/17.0.4              ooops/1.3
+   cuda/9.2      (g,D)    intel/18.0.2     (L,D)    sanitytool/2.0
+   cuda/10.0     (g)      launcher_gpu/1.0          settarg
+   cuda/10.1     (g)      lmod                      swr/18.3.3
+   cuda/11.0     (g)      mathematica/12.0          tacc-singularity/3.7.2
+   gcc/5.4.0              matlab/2018b              tacc_tips/0.5
+   gcc/6.3.0              matlab/2019a              xalt/2.9.6             (L)
+
+   Where:
+   D:  Default Module
+   L:  Module is loaded
+   g:  built for GPU</pre>
+
+<p>At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
+
+Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
+
+You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
+
+### [Deep Learning Packages](#software-ml)
+
+See: [Tensorflow at TACC](/software/tensorflow)
+
+
+
+<img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
+<p class="image-caption">Figure 4. Person and Horse</p>
+
+## References
+
+* [`idev` documentation][TACCIDEV]
+* [Tensorflow at TACC][TACCTENSORFLOW]
+* [TACC Visualization Portal][TACCVISPORTAL]
+* [Multi-Factor Authentication at TACC][TACCMFA]
+
+{% include 'aliases.md' %}
+
+
+
+<style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
+
+# Maverick2 User Guide
+<i>Last update: August 24, 2022</i> 
+
+## Notices
+
+* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
+* All users: read [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio). TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
+* Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
+* Maverick2 does not support any Visualization applications. 
+* Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.
+
+
+## Introduction
+
+Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
+
+<img alt="" src="../../../imgs/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
+<p class="image-caption">Figure 1. Edward Blein - Trail of Horses</p>
+
+## System Overview
+
+Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
+
+### GTX Compute Nodes
+
+Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
+
+[Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Super Micro X10DRG-Q Motherboard
+		%tr 
+			%td(align="right") Processor:
+			%td Intel(R) Xeon(R) CPU E5-2620 v4
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 8
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 16
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 32
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 128 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 512KiB / 2MiB / 20 MiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 150.0 GB (~60 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 4 x NVidia 1080-TI GPUs
+
+### V100 Compute Nodes
+
+Maverick2 has 4 V100 compute nodes.
+
+[Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia  V100 adapters
+
+### P100 Compute Nodes
+
+Maverick2 has 3 P100 nodes.
+
+[Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia P100 adapters
+
+### Login Nodes
+
+Maverick2 hosts a single login node:
+
+* Dual Socket
+* Intel Xeon CPU E5-2660 v3 (Haswell) @ 2.60GHz: 10 cores/socket (20 cores/node)
+* 128 GB DDR4-2133 (8 x 16GB dual rank x4 DIMMS)
+* Hyperthreading Disabled
+
+### Network
+
+* Mellanox FDR Infiniband MT27500 Family ConnectX-3 Adapter
+* up to 10/40/56Gbps bandwidth and a sub-microsecond low latency
+* Fat Tree Interconnect
+* Intel Ethernet Controller I350 IEEE 802.3 1Gbps Adapter
+
+### File Systems
+
+Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
+
+<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
+
+
+<img alt="" src="../../../imgs/2mav/cooling-system.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />  
+<p class="image-caption">Figure 2. Maverick2 Immersion Cooling System</p>
+
+## Accessing the System
+
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
+
+### Secure Shell (SSH)
+
+The "`ssh`" command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+
+<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
+
+To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
+
+
+
+## Conduct on Maverick2
+
+**You share Maverick2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
+
+TACC staff has developed the following guidelines to good conduct on Maverick2. Please familiarize yourself especially with the first two mandates:
+
+* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+* [Do Not Stress the File Systems](#conduct-filesystems)
+
+
+The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
+
+### Do Not Run Jobs on the Login Nodes
+
+Maverick2's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
+
+Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
+
+The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
+
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
+
+<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended if your jobs are impacting other users.</p> 
+
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+
+	DO THIS: Start an interactive session on a compute node and run Matlab.
+
+	<pre class="cmd-line">
+	login1$ <b>idev</b>
+	nid00181$ <b>matlab</b></pre>
+
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
+
+	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
+
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	<pre class="cmd-line">
+	login1$ <b>make <i>mytarget</i></b>
+	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+
+	DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
+
+	<pre class="cmd-line">
+	<s>login1$ <b>make -j 12</b>
+	login1$ <b>./myprogram</b></s></pre>
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+
+### Do Not Stress the Shared File Systems
+
+TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
+
+#### File System Usage Recommendations
+
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | temporary datasets<br>I/O files<br>job files | all job I/O activity
+
+#### Stockyard (`$HOME`)
+
+#### Stockyard (`$WORK`)
+
+<!-- The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. -->
+
+<!-- TACC staff now recommends that you run your jobs out of your resource's `$SCRATCH` file system instead of the global `$WORK` file system. To run your jobs out `$SCRATCH` -->
+
+<!-- * Copy or move all job input files to `$SCRATCH` -->
+<!-- * Make sure your job script directs all output to `$SCRATCH`  -->
+
+<!-- Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table 1.](#table1). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.  -->
+
+<!-- * **Run I/O intensive jobs in `$SCRATCH` rather than `$WORK`.** If you stress `$WORK`, you affect every user on every TACC system. Significant I/O might include reading/writing 100+ GBs to checkpoint/restart files, running with 4096+ MPI tasks all reading/writing individual files, but is not limited to just those two cases. **If you stress `$WORK`, you affect every user on every TACC system.** -->
+
+<!-- <p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> -->
+
+A few other file system tips:
+
+* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
+
+* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
+
+* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
+
+
+### Limit Input/Output (I/O) Activity
+
+In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
+
+* **Limit I/O intensive sessions** (lots of reads and writes to disk, rapidly opening or closing many files)
+
+* **Avoid opening and closing files repeatedly** in tight loops. Every open/close operation on the file system requires interaction with the MetaData Service (MDS). The MDS acts as a gatekeeper for access to files on Lustre's parallel file system. Overloading the MDS will affect other users on the system. If possible, open files once at the beginning of your program/workflow, then close them at the end.
+
+* **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
+
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](TAAMANAGINGIO) for additional information.</p>
+
+### Limit File Transfers
+
+In order to not stress both internal and external networks:
+
+* **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
+
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](RANCHUG).
+
+* When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
+
+### Job Submission Tips
+
+* **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
+
+* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
+
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](TACCREMORA) tool to monitor your application's needs. 
+
+## Managing Your Files
+
+Maverick2 mounts two Lustre file systems that are shared across all nodes: the home and work file systems. Maverick2's startup mechanisms define corresponding account-level environment variables, `$HOME` and `$WORK`, that store the paths to directories that you own on each of these file systems. Maverick2's home file system is mounted only on Maverick2, but the work file system mounted on Maverick2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). This is the same work file system that is currently available on Stampede2, Frontera, Lonestar6, and several other TACC resources.
+
+[Table 4. Maverick2 File Systems](#table4)
+
+%table(border=1 cellpadding="3")
+	%tr
+		%th File System
+		%th Quota
+		%th Key Features
+	%tr
+		%td <code>$HOME</code>
+		%td 10GB, 200,000 files
+		%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+	%tr
+		%td <code>$WORK</code>
+		%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
+		%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+	%tr
+		%td <code>$SCRATCH</code>
+		%td <b>N/A</b>
+		%td <b>Maverick2 does not mount a scratch file system.</b>
 	
-	%tr(align="center")
-		%td <code>v100</code><br>(4 nodes)
-		%td 4 nodes<br>(192 cores)
-		%td 24 hours
-		%td 4
-		%td 1 SU
+The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
 
-	%tr(align="center")
-		%td <code>p100</code><br>(3 nodes)
-		%td 3 nodes<br /> (144 cores)
-		%td 24 hours
-		%td 4
-		%td 1 SU
+### Navigating the Shared File Systems
+
+Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
+
+<figure><img alt="Stockyard Work File System" src="/documents/10157/1181317/Stockyard+2022/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453" style="width: 800px; height: 173px;"/><figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+
+Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+
+[Table 5. Built-in Account Level Aliases](#table5)
+
+copy from Frontera
+
+
+
+### Transferring Files Using `scp` and `rsync`
+
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+
+The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:</b>  # note colon after net address</pre>
+
+You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in "`.txt`" from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2</b></pre>
+
+To delay wildcard expansion until reaching Maverick2, use a backslash ("`\`") as an escape character before the wildcard. For example, to pull all files ending in "`.txt`" from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
+
+<pre class="cmd-line">localhost$ <b>scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .</b></pre>
+
+You can of course use shell or environment variables in your calls to `scp`. For example:
+
+<pre class="cmd-line">
+localhost$ <b>destdir="/work/01234/bjones/maverick2/data"</b>
+localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir</b></pre>
+
+You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash ("`\`") as an escape character before the "`$`"; this ensures that expansion occurs after establishing the connection to Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
+
+Avoid using `scp` for recursive ("`-r`") transfers of directories that contain nested directories of many small files:
+
+<pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
+
+Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
+
+<pre class="cmd-line">
+localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
+localhost$ <b>scp     ./mydata.tar bjones@maverick2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
+
+The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
+
+<pre class="cmd-line">
+localhost$ <b>rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>
+localhost$ <b>rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data</b></pre>
+
+The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update ("`-r`") with verbose ("`-v`") feedback; the synchronization preserves time stamps ("`-t`") as well as symbolic links and other meta-data ("`-a`"). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+
+See [Good Conduct](#conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
+
+
+### Sharing Files with Collaborators
+
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+
+### Notes on Small Files Under Lustre
+
+The Stockyard/`$WORK` file system is a Lustre file system which is optimized for large scale reads and writes. As some workloads, such as image classification, leverage using multiple small files, we advise users not work directly on `$WORK` with these workloads. Users should have their jobs copy these files to `/tmp` on the compute node, compute against the `/tmp` data, store their results on the `$WORK` file system, and clean up `/tmp`. We are currently working on solutions to expand the 60 GB `/tmp` capacity. 
+
+### Striping Large Files
+
+Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 20 stripes, for example, is distributed across 20 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
+
+Before transferring large files to Maverick2, or creating new large files, be sure to set an appropriate default stripe count on the receiving directory. To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
+
+<pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
+
+Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+## Running Jobs on the Compute Nodes
+
+{% include 'include/jobaccounting.md' %}
+
+### Slurm Job Scheduler
+
+Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
+
+The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+
+* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
+* [Common `sbatch` options](/user-guides/stampede2#table6)
+* [Launching Applications](/user-guides/stampede2#launching-applications)
+
+### Slurm Partitions (Queues)
+
+**Queues and limits are subject to change without notice.** 
+
+Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
+
+See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+
+[Table 6. Maverick2 Production Queues](#table6)
+
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- |
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
+
+
+<!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) <span style="color:red">Coming Soon.</span> -->
+
+# Remote Desktop Access
+
+Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
+
+*  allocates a set of Maverick2 visualization nodes 
+*  starts a vncserver process on the first allocated node 
+*  sets up a tunnel through the login node to the vncserver access port 
+
+Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
+
+Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+
+Follow the steps below to start an interactive session.
+
+1. Start a Remote Desktop 
+
+	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
+
+	You may modify or overwrite script defaults with `sbatch` command-line options:
+
+	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
+	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
+	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
+	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+
+	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
+
+	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+
+	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+
+	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
+
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+
+1. Create an SSH Tunnel to Maverick2 
+
+	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
+
+	<pre class="cmd-line">
+	localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+	where:
+
+	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
+	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
+	*  "`-N`" puts the `ssh` command into the background after connecting 
+	*  "`-L`" forwards the port 
+
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
+
+1. Connecting vncviewer 
+
+	Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Maverick2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
+
+	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
+
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+
+	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
+
+
+
+## [Software on Maverick2](#software)
+
+As of July 21, 2021, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
+
+<pre class="cmd-line">
+login1$ <b>module avail</b>
+
+-------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
+   boost/1.66                     phdf5/1.10.4   (D)
+   fftw3/3.3.6                    pnetcdf/1.8.1
+   parallel-netcdf/4.3.3.1        python2/2.7.16 (L,D)
+   parallel-netcdf/4.6.2   (D)    python3/3.7.0  (D)
+   phdf5/1.8.16
+
+------------------------ /opt/apps/intel18/modulefiles -------------------------
+   hdf5/1.8.16        mkl-dnn/0.18.1    netcdf/4.3.3.1        python3/3.7.0
+   hdf5/1.10.4 (D)    nco/4.6.9         netcdf/4.6.2   (D)    udunits/2.2.25
+   impi/18.0.2 (L)    ncview/2.1.7      python2/2.7.16
+
+---------------------------- /opt/apps/modulefiles -----------------------------
+   TACC          (L)      gcc/7.1.0                 matlab/2020b           (D)
+   autotools/1.2 (L)      gcc/7.3.0        (D)      mcr/9.5
+   cmake/3.8.2            git/2.24.1       (L)      mcr/9.6
+   cmake/3.10.2           hwloc/1.11.2              mcr/9.9                (D)
+   cmake/3.16.1  (L,D)    idev/1.5.5                ncl_ncarg/6.3.0
+   cuda/8.0      (g)      intel/16.0.3              nvhpc/21.3.0
+   cuda/9.0      (g)      intel/17.0.4              ooops/1.3
+   cuda/9.2      (g,D)    intel/18.0.2     (L,D)    sanitytool/2.0
+   cuda/10.0     (g)      launcher_gpu/1.0          settarg
+   cuda/10.1     (g)      lmod                      swr/18.3.3
+   cuda/11.0     (g)      mathematica/12.0          tacc-singularity/3.7.2
+   gcc/5.4.0              matlab/2018b              tacc_tips/0.5
+   gcc/6.3.0              matlab/2019a              xalt/2.9.6             (L)
+
+   Where:
+   D:  Default Module
+   L:  Module is loaded
+   g:  built for GPU</pre>
+
+<p>At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
+
+Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
+
+You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
+
+### [Deep Learning Packages](#software-ml)
+
+See: [Tensorflow at TACC](/software/tensorflow)
+
+
+
+<img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
+<p class="image-caption">Figure 4. Person and Horse</p>
+
+## References
+
+* [`idev` documentation][TACCIDEV]
+* [Tensorflow at TACC][TACCTENSORFLOW]
+* [TACC Visualization Portal][TACCVISPORTAL]
+* [Multi-Factor Authentication at TACC][TACCMFA]
+
+{% include 'aliases.md' %}
+
+
+
+<style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
+
+# Maverick2 User Guide
+<i>Last update: August 24, 2022</i> 
+
+## Notices
+
+* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
+* All users: read [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio). TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
+* Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
+* Maverick2 does not support any Visualization applications. 
+* Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.
+
+
+## Introduction
+
+Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
+
+<img alt="" src="../../../imgs/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
+<p class="image-caption">Figure 1. Edward Blein - Trail of Horses</p>
+
+## System Overview
+
+Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
+
+### GTX Compute Nodes
+
+Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
+
+[Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Super Micro X10DRG-Q Motherboard
+		%tr 
+			%td(align="right") Processor:
+			%td Intel(R) Xeon(R) CPU E5-2620 v4
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 8
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 16
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 32
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 128 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 512KiB / 2MiB / 20 MiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 150.0 GB (~60 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 4 x NVidia 1080-TI GPUs
+
+### V100 Compute Nodes
+
+Maverick2 has 4 V100 compute nodes.
+
+[Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia  V100 adapters
+
+### P100 Compute Nodes
+
+Maverick2 has 3 P100 nodes.
+
+[Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia P100 adapters
+
+### Login Nodes
+
+Maverick2 hosts a single login node:
+
+* Dual Socket
+* Intel Xeon CPU E5-2660 v3 (Haswell) @ 2.60GHz: 10 cores/socket (20 cores/node)
+* 128 GB DDR4-2133 (8 x 16GB dual rank x4 DIMMS)
+* Hyperthreading Disabled
+
+### Network
+
+* Mellanox FDR Infiniband MT27500 Family ConnectX-3 Adapter
+* up to 10/40/56Gbps bandwidth and a sub-microsecond low latency
+* Fat Tree Interconnect
+* Intel Ethernet Controller I350 IEEE 802.3 1Gbps Adapter
+
+### File Systems
+
+Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
+
+<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
+
+
+<img alt="" src="../../../imgs/2mav/cooling-system.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />  
+<p class="image-caption">Figure 2. Maverick2 Immersion Cooling System</p>
+
+## Accessing the System
+
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
+
+### Secure Shell (SSH)
+
+The "`ssh`" command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+
+<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
+
+To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
+
+
+
+## Conduct on Maverick2
+
+**You share Maverick2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
+
+TACC staff has developed the following guidelines to good conduct on Maverick2. Please familiarize yourself especially with the first two mandates:
+
+* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+* [Do Not Stress the File Systems](#conduct-filesystems)
+
+
+The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
+
+### Do Not Run Jobs on the Login Nodes
+
+Maverick2's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
+
+Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
+
+The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
+
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
+
+<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended if your jobs are impacting other users.</p> 
+
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+
+	DO THIS: Start an interactive session on a compute node and run Matlab.
+
+	<pre class="cmd-line">
+	login1$ <b>idev</b>
+	nid00181$ <b>matlab</b></pre>
+
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
+
+	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
+
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	<pre class="cmd-line">
+	login1$ <b>make <i>mytarget</i></b>
+	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+
+	DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
+
+	<pre class="cmd-line">
+	<s>login1$ <b>make -j 12</b>
+	login1$ <b>./myprogram</b></s></pre>
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+
+### Do Not Stress the Shared File Systems
+
+TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
+
+#### File System Usage Recommendations
+
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | temporary datasets<br>I/O files<br>job files | all job I/O activity
+
+#### Stockyard (`$HOME`)
+
+#### Stockyard (`$WORK`)
+
+<!-- The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. -->
+
+<!-- TACC staff now recommends that you run your jobs out of your resource's `$SCRATCH` file system instead of the global `$WORK` file system. To run your jobs out `$SCRATCH` -->
+
+<!-- * Copy or move all job input files to `$SCRATCH` -->
+<!-- * Make sure your job script directs all output to `$SCRATCH`  -->
+
+<!-- Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table 1.](#table1). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.  -->
+
+<!-- * **Run I/O intensive jobs in `$SCRATCH` rather than `$WORK`.** If you stress `$WORK`, you affect every user on every TACC system. Significant I/O might include reading/writing 100+ GBs to checkpoint/restart files, running with 4096+ MPI tasks all reading/writing individual files, but is not limited to just those two cases. **If you stress `$WORK`, you affect every user on every TACC system.** -->
+
+<!-- <p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> -->
+
+A few other file system tips:
+
+* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
+
+* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
+
+* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
+
+
+### Limit Input/Output (I/O) Activity
+
+In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
+
+* **Limit I/O intensive sessions** (lots of reads and writes to disk, rapidly opening or closing many files)
+
+* **Avoid opening and closing files repeatedly** in tight loops. Every open/close operation on the file system requires interaction with the MetaData Service (MDS). The MDS acts as a gatekeeper for access to files on Lustre's parallel file system. Overloading the MDS will affect other users on the system. If possible, open files once at the beginning of your program/workflow, then close them at the end.
+
+* **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
+
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](TAAMANAGINGIO) for additional information.</p>
+
+### Limit File Transfers
+
+In order to not stress both internal and external networks:
+
+* **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
+
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](RANCHUG).
+
+* When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
+
+### Job Submission Tips
+
+* **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
+
+* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
+
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](TACCREMORA) tool to monitor your application's needs. 
+
+## Managing Your Files
+
+Maverick2 mounts two Lustre file systems that are shared across all nodes: the home and work file systems. Maverick2's startup mechanisms define corresponding account-level environment variables, `$HOME` and `$WORK`, that store the paths to directories that you own on each of these file systems. Maverick2's home file system is mounted only on Maverick2, but the work file system mounted on Maverick2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). This is the same work file system that is currently available on Stampede2, Frontera, Lonestar6, and several other TACC resources.
+
+[Table 4. Maverick2 File Systems](#table4)
+
+%table(border=1 cellpadding="3")
+	%tr
+		%th File System
+		%th Quota
+		%th Key Features
+	%tr
+		%td <code>$HOME</code>
+		%td 10GB, 200,000 files
+		%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+	%tr
+		%td <code>$WORK</code>
+		%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
+		%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+	%tr
+		%td <code>$SCRATCH</code>
+		%td <b>N/A</b>
+		%td <b>Maverick2 does not mount a scratch file system.</b>
+	
+The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
+
+### Navigating the Shared File Systems
+
+Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
+
+<figure><img alt="Stockyard Work File System" src="/documents/10157/1181317/Stockyard+2022/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453" style="width: 800px; height: 173px;"/><figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+
+Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+
+[Table 5. Built-in Account Level Aliases](#table5)
+
+copy from Frontera
+
+
+
+### Transferring Files Using `scp` and `rsync`
+
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+
+The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:</b>  # note colon after net address</pre>
+
+You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in "`.txt`" from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2</b></pre>
+
+To delay wildcard expansion until reaching Maverick2, use a backslash ("`\`") as an escape character before the wildcard. For example, to pull all files ending in "`.txt`" from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
+
+<pre class="cmd-line">localhost$ <b>scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .</b></pre>
+
+You can of course use shell or environment variables in your calls to `scp`. For example:
+
+<pre class="cmd-line">
+localhost$ <b>destdir="/work/01234/bjones/maverick2/data"</b>
+localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir</b></pre>
+
+You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash ("`\`") as an escape character before the "`$`"; this ensures that expansion occurs after establishing the connection to Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
+
+Avoid using `scp` for recursive ("`-r`") transfers of directories that contain nested directories of many small files:
+
+<pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
+
+Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
+
+<pre class="cmd-line">
+localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
+localhost$ <b>scp     ./mydata.tar bjones@maverick2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
+
+The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
+
+<pre class="cmd-line">
+localhost$ <b>rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>
+localhost$ <b>rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data</b></pre>
+
+The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update ("`-r`") with verbose ("`-v`") feedback; the synchronization preserves time stamps ("`-t`") as well as symbolic links and other meta-data ("`-a`"). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+
+See [Good Conduct](#conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
+
+
+### Sharing Files with Collaborators
+
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+
+### Notes on Small Files Under Lustre
+
+The Stockyard/`$WORK` file system is a Lustre file system which is optimized for large scale reads and writes. As some workloads, such as image classification, leverage using multiple small files, we advise users not work directly on `$WORK` with these workloads. Users should have their jobs copy these files to `/tmp` on the compute node, compute against the `/tmp` data, store their results on the `$WORK` file system, and clean up `/tmp`. We are currently working on solutions to expand the 60 GB `/tmp` capacity. 
+
+### Striping Large Files
+
+Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 20 stripes, for example, is distributed across 20 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
+
+Before transferring large files to Maverick2, or creating new large files, be sure to set an appropriate default stripe count on the receiving directory. To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
+
+<pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
+
+Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+## Running Jobs on the Compute Nodes
+
+{% include 'include/jobaccounting.md' %}
+
+### Slurm Job Scheduler
+
+Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
+
+The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+
+* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
+* [Common `sbatch` options](/user-guides/stampede2#table6)
+* [Launching Applications](/user-guides/stampede2#launching-applications)
+
+### Slurm Partitions (Queues)
+
+**Queues and limits are subject to change without notice.** 
+
+Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
+
+See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+
+[Table 6. Maverick2 Production Queues](#table6)
+
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- |
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
+
+
+<!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) <span style="color:red">Coming Soon.</span> -->
+
+# Remote Desktop Access
+
+Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
+
+*  allocates a set of Maverick2 visualization nodes 
+*  starts a vncserver process on the first allocated node 
+*  sets up a tunnel through the login node to the vncserver access port 
+
+Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
+
+Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+
+Follow the steps below to start an interactive session.
+
+1. Start a Remote Desktop 
+
+	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
+
+	You may modify or overwrite script defaults with `sbatch` command-line options:
+
+	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
+	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
+	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
+	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+
+	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
+
+	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+
+	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+
+	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
+
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+
+1. Create an SSH Tunnel to Maverick2 
+
+	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
+
+	<pre class="cmd-line">
+	localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+	where:
+
+	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
+	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
+	*  "`-N`" puts the `ssh` command into the background after connecting 
+	*  "`-L`" forwards the port 
+
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
+
+1. Connecting vncviewer 
+
+	Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Maverick2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
+
+	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
+
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+
+	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
+
+
+
+## [Software on Maverick2](#software)
+
+As of July 21, 2021, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
+
+<pre class="cmd-line">
+login1$ <b>module avail</b>
+
+-------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
+   boost/1.66                     phdf5/1.10.4   (D)
+   fftw3/3.3.6                    pnetcdf/1.8.1
+   parallel-netcdf/4.3.3.1        python2/2.7.16 (L,D)
+   parallel-netcdf/4.6.2   (D)    python3/3.7.0  (D)
+   phdf5/1.8.16
+
+------------------------ /opt/apps/intel18/modulefiles -------------------------
+   hdf5/1.8.16        mkl-dnn/0.18.1    netcdf/4.3.3.1        python3/3.7.0
+   hdf5/1.10.4 (D)    nco/4.6.9         netcdf/4.6.2   (D)    udunits/2.2.25
+   impi/18.0.2 (L)    ncview/2.1.7      python2/2.7.16
+
+---------------------------- /opt/apps/modulefiles -----------------------------
+   TACC          (L)      gcc/7.1.0                 matlab/2020b           (D)
+   autotools/1.2 (L)      gcc/7.3.0        (D)      mcr/9.5
+   cmake/3.8.2            git/2.24.1       (L)      mcr/9.6
+   cmake/3.10.2           hwloc/1.11.2              mcr/9.9                (D)
+   cmake/3.16.1  (L,D)    idev/1.5.5                ncl_ncarg/6.3.0
+   cuda/8.0      (g)      intel/16.0.3              nvhpc/21.3.0
+   cuda/9.0      (g)      intel/17.0.4              ooops/1.3
+   cuda/9.2      (g,D)    intel/18.0.2     (L,D)    sanitytool/2.0
+   cuda/10.0     (g)      launcher_gpu/1.0          settarg
+   cuda/10.1     (g)      lmod                      swr/18.3.3
+   cuda/11.0     (g)      mathematica/12.0          tacc-singularity/3.7.2
+   gcc/5.4.0              matlab/2018b              tacc_tips/0.5
+   gcc/6.3.0              matlab/2019a              xalt/2.9.6             (L)
+
+   Where:
+   D:  Default Module
+   L:  Module is loaded
+   g:  built for GPU</pre>
+
+<p>At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
+
+Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
+
+You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
+
+### [Deep Learning Packages](#software-ml)
+
+See: [Tensorflow at TACC](/software/tensorflow)
+
+
+
+<img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
+<p class="image-caption">Figure 4. Person and Horse</p>
+
+## References
+
+* [`idev` documentation][TACCIDEV]
+* [Tensorflow at TACC][TACCTENSORFLOW]
+* [TACC Visualization Portal][TACCVISPORTAL]
+* [Multi-Factor Authentication at TACC][TACCMFA]
+
+{% include 'aliases.md' %}
+
+
+
+<style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
+
+# Maverick2 User Guide
+<i>Last update: August 24, 2022</i> 
+
+## Notices
+
+* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
+* All users: read [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio). TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
+* Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
+* Maverick2 does not support any Visualization applications. 
+* Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.
+
+
+## Introduction
+
+Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
+
+<img alt="" src="../../../imgs/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
+<p class="image-caption">Figure 1. Edward Blein - Trail of Horses</p>
+
+## System Overview
+
+Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
+
+### GTX Compute Nodes
+
+Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
+
+[Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Super Micro X10DRG-Q Motherboard
+		%tr 
+			%td(align="right") Processor:
+			%td Intel(R) Xeon(R) CPU E5-2620 v4
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 8
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 16
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 32
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 128 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 512KiB / 2MiB / 20 MiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 150.0 GB (~60 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 4 x NVidia 1080-TI GPUs
+
+### V100 Compute Nodes
+
+Maverick2 has 4 V100 compute nodes.
+
+[Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia  V100 adapters
+
+### P100 Compute Nodes
+
+Maverick2 has 3 P100 nodes.
+
+[Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia P100 adapters
+
+### Login Nodes
+
+Maverick2 hosts a single login node:
+
+* Dual Socket
+* Intel Xeon CPU E5-2660 v3 (Haswell) @ 2.60GHz: 10 cores/socket (20 cores/node)
+* 128 GB DDR4-2133 (8 x 16GB dual rank x4 DIMMS)
+* Hyperthreading Disabled
+
+### Network
+
+* Mellanox FDR Infiniband MT27500 Family ConnectX-3 Adapter
+* up to 10/40/56Gbps bandwidth and a sub-microsecond low latency
+* Fat Tree Interconnect
+* Intel Ethernet Controller I350 IEEE 802.3 1Gbps Adapter
+
+### File Systems
+
+Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
+
+<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
+
+
+<img alt="" src="../../../imgs/2mav/cooling-system.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />  
+<p class="image-caption">Figure 2. Maverick2 Immersion Cooling System</p>
+
+## Accessing the System
+
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
+
+### Secure Shell (SSH)
+
+The "`ssh`" command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+
+<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
+
+To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
+
+
+
+## Conduct on Maverick2
+
+**You share Maverick2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
+
+TACC staff has developed the following guidelines to good conduct on Maverick2. Please familiarize yourself especially with the first two mandates:
+
+* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+* [Do Not Stress the File Systems](#conduct-filesystems)
+
+
+The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
+
+### Do Not Run Jobs on the Login Nodes
+
+Maverick2's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
+
+Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
+
+The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
+
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
+
+<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended if your jobs are impacting other users.</p> 
+
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+
+	DO THIS: Start an interactive session on a compute node and run Matlab.
+
+	<pre class="cmd-line">
+	login1$ <b>idev</b>
+	nid00181$ <b>matlab</b></pre>
+
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
+
+	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
+
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	<pre class="cmd-line">
+	login1$ <b>make <i>mytarget</i></b>
+	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+
+	DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
+
+	<pre class="cmd-line">
+	<s>login1$ <b>make -j 12</b>
+	login1$ <b>./myprogram</b></s></pre>
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+
+### Do Not Stress the Shared File Systems
+
+TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
+
+#### File System Usage Recommendations
+
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | temporary datasets<br>I/O files<br>job files | all job I/O activity
+
+#### Stockyard (`$HOME`)
+
+#### Stockyard (`$WORK`)
+
+<!-- The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. -->
+
+<!-- TACC staff now recommends that you run your jobs out of your resource's `$SCRATCH` file system instead of the global `$WORK` file system. To run your jobs out `$SCRATCH` -->
+
+<!-- * Copy or move all job input files to `$SCRATCH` -->
+<!-- * Make sure your job script directs all output to `$SCRATCH`  -->
+
+<!-- Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table 1.](#table1). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.  -->
+
+<!-- * **Run I/O intensive jobs in `$SCRATCH` rather than `$WORK`.** If you stress `$WORK`, you affect every user on every TACC system. Significant I/O might include reading/writing 100+ GBs to checkpoint/restart files, running with 4096+ MPI tasks all reading/writing individual files, but is not limited to just those two cases. **If you stress `$WORK`, you affect every user on every TACC system.** -->
+
+<!-- <p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> -->
+
+A few other file system tips:
+
+* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
+
+* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
+
+* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
+
+
+### Limit Input/Output (I/O) Activity
+
+In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
+
+* **Limit I/O intensive sessions** (lots of reads and writes to disk, rapidly opening or closing many files)
+
+* **Avoid opening and closing files repeatedly** in tight loops. Every open/close operation on the file system requires interaction with the MetaData Service (MDS). The MDS acts as a gatekeeper for access to files on Lustre's parallel file system. Overloading the MDS will affect other users on the system. If possible, open files once at the beginning of your program/workflow, then close them at the end.
+
+* **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
+
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](TAAMANAGINGIO) for additional information.</p>
+
+### Limit File Transfers
+
+In order to not stress both internal and external networks:
+
+* **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
+
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](RANCHUG).
+
+* When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
+
+### Job Submission Tips
+
+* **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
+
+* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
+
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](TACCREMORA) tool to monitor your application's needs. 
+
+## Managing Your Files
+
+Maverick2 mounts two Lustre file systems that are shared across all nodes: the home and work file systems. Maverick2's startup mechanisms define corresponding account-level environment variables, `$HOME` and `$WORK`, that store the paths to directories that you own on each of these file systems. Maverick2's home file system is mounted only on Maverick2, but the work file system mounted on Maverick2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). This is the same work file system that is currently available on Stampede2, Frontera, Lonestar6, and several other TACC resources.
+
+[Table 4. Maverick2 File Systems](#table4)
+
+%table(border=1 cellpadding="3")
+	%tr
+		%th File System
+		%th Quota
+		%th Key Features
+	%tr
+		%td <code>$HOME</code>
+		%td 10GB, 200,000 files
+		%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+	%tr
+		%td <code>$WORK</code>
+		%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
+		%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+	%tr
+		%td <code>$SCRATCH</code>
+		%td <b>N/A</b>
+		%td <b>Maverick2 does not mount a scratch file system.</b>
+	
+The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
+
+### Navigating the Shared File Systems
+
+Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
+
+<figure><img alt="Stockyard Work File System" src="/documents/10157/1181317/Stockyard+2022/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453" style="width: 800px; height: 173px;"/><figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+
+Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+
+[Table 5. Built-in Account Level Aliases](#table5)
+
+copy from Frontera
+
+
+
+### Transferring Files Using `scp` and `rsync`
+
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+
+The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:</b>  # note colon after net address</pre>
+
+You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in "`.txt`" from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2</b></pre>
+
+To delay wildcard expansion until reaching Maverick2, use a backslash ("`\`") as an escape character before the wildcard. For example, to pull all files ending in "`.txt`" from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
+
+<pre class="cmd-line">localhost$ <b>scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .</b></pre>
+
+You can of course use shell or environment variables in your calls to `scp`. For example:
+
+<pre class="cmd-line">
+localhost$ <b>destdir="/work/01234/bjones/maverick2/data"</b>
+localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir</b></pre>
+
+You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash ("`\`") as an escape character before the "`$`"; this ensures that expansion occurs after establishing the connection to Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
+
+Avoid using `scp` for recursive ("`-r`") transfers of directories that contain nested directories of many small files:
+
+<pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
+
+Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
+
+<pre class="cmd-line">
+localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
+localhost$ <b>scp     ./mydata.tar bjones@maverick2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
+
+The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
+
+<pre class="cmd-line">
+localhost$ <b>rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>
+localhost$ <b>rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data</b></pre>
+
+The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update ("`-r`") with verbose ("`-v`") feedback; the synchronization preserves time stamps ("`-t`") as well as symbolic links and other meta-data ("`-a`"). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+
+See [Good Conduct](#conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
+
+
+### Sharing Files with Collaborators
+
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+
+### Notes on Small Files Under Lustre
+
+The Stockyard/`$WORK` file system is a Lustre file system which is optimized for large scale reads and writes. As some workloads, such as image classification, leverage using multiple small files, we advise users not work directly on `$WORK` with these workloads. Users should have their jobs copy these files to `/tmp` on the compute node, compute against the `/tmp` data, store their results on the `$WORK` file system, and clean up `/tmp`. We are currently working on solutions to expand the 60 GB `/tmp` capacity. 
+
+### Striping Large Files
+
+Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 20 stripes, for example, is distributed across 20 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
+
+Before transferring large files to Maverick2, or creating new large files, be sure to set an appropriate default stripe count on the receiving directory. To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
+
+<pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
+
+Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+## Running Jobs on the Compute Nodes
+
+{% var Maverick2='Maverick2' %}
+{% include 'include/jobaccounting.md' %}
+
+### Slurm Job Scheduler
+
+Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
+
+The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+
+* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
+* [Common `sbatch` options](/user-guides/stampede2#table6)
+* [Launching Applications](/user-guides/stampede2#launching-applications)
+
+### Slurm Partitions (Queues)
+
+**Queues and limits are subject to change without notice.** 
+
+Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
+
+See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+
+[Table 6. Maverick2 Production Queues](#table6)
+
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- |
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
+
+
+<!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) <span style="color:red">Coming Soon.</span> -->
+
+# Remote Desktop Access
+
+Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
+
+*  allocates a set of Maverick2 visualization nodes 
+*  starts a vncserver process on the first allocated node 
+*  sets up a tunnel through the login node to the vncserver access port 
+
+Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
+
+Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+
+Follow the steps below to start an interactive session.
+
+1. Start a Remote Desktop 
+
+	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
+
+	You may modify or overwrite script defaults with `sbatch` command-line options:
+
+	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
+	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
+	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
+	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+
+	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
+
+	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+
+	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+
+	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
+
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+
+1. Create an SSH Tunnel to Maverick2 
+
+	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
+
+	<pre class="cmd-line">
+	localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+	where:
+
+	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
+	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
+	*  "`-N`" puts the `ssh` command into the background after connecting 
+	*  "`-L`" forwards the port 
+
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
+
+1. Connecting vncviewer 
+
+	Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Maverick2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
+
+	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
+
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+
+	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
+
+
+
+## [Software on Maverick2](#software)
+
+As of July 21, 2021, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
+
+<pre class="cmd-line">
+login1$ <b>module avail</b>
+
+-------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
+   boost/1.66                     phdf5/1.10.4   (D)
+   fftw3/3.3.6                    pnetcdf/1.8.1
+   parallel-netcdf/4.3.3.1        python2/2.7.16 (L,D)
+   parallel-netcdf/4.6.2   (D)    python3/3.7.0  (D)
+   phdf5/1.8.16
+
+------------------------ /opt/apps/intel18/modulefiles -------------------------
+   hdf5/1.8.16        mkl-dnn/0.18.1    netcdf/4.3.3.1        python3/3.7.0
+   hdf5/1.10.4 (D)    nco/4.6.9         netcdf/4.6.2   (D)    udunits/2.2.25
+   impi/18.0.2 (L)    ncview/2.1.7      python2/2.7.16
+
+---------------------------- /opt/apps/modulefiles -----------------------------
+   TACC          (L)      gcc/7.1.0                 matlab/2020b           (D)
+   autotools/1.2 (L)      gcc/7.3.0        (D)      mcr/9.5
+   cmake/3.8.2            git/2.24.1       (L)      mcr/9.6
+   cmake/3.10.2           hwloc/1.11.2              mcr/9.9                (D)
+   cmake/3.16.1  (L,D)    idev/1.5.5                ncl_ncarg/6.3.0
+   cuda/8.0      (g)      intel/16.0.3              nvhpc/21.3.0
+   cuda/9.0      (g)      intel/17.0.4              ooops/1.3
+   cuda/9.2      (g,D)    intel/18.0.2     (L,D)    sanitytool/2.0
+   cuda/10.0     (g)      launcher_gpu/1.0          settarg
+   cuda/10.1     (g)      lmod                      swr/18.3.3
+   cuda/11.0     (g)      mathematica/12.0          tacc-singularity/3.7.2
+   gcc/5.4.0              matlab/2018b              tacc_tips/0.5
+   gcc/6.3.0              matlab/2019a              xalt/2.9.6             (L)
+
+   Where:
+   D:  Default Module
+   L:  Module is loaded
+   g:  built for GPU</pre>
+
+<p>At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
+
+Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
+
+You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
+
+### [Deep Learning Packages](#software-ml)
+
+See: [Tensorflow at TACC](/software/tensorflow)
+
+
+
+<img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
+<p class="image-caption">Figure 4. Person and Horse</p>
+
+## References
+
+* [`idev` documentation][TACCIDEV]
+* [Tensorflow at TACC][TACCTENSORFLOW]
+* [TACC Visualization Portal][TACCVISPORTAL]
+* [Multi-Factor Authentication at TACC][TACCMFA]
+
+{% include 'aliases.md' %}
+
+
+
+<style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
+
+# Maverick2 User Guide
+<i>Last update: August 24, 2022</i> 
+
+## Notices
+
+* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
+* All users: read [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio). TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
+* Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
+* Maverick2 does not support any Visualization applications. 
+* Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.
+
+
+## Introduction
+
+Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
+
+<img alt="" src="../../../imgs/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
+<p class="image-caption">Figure 1. Edward Blein - Trail of Horses</p>
+
+## System Overview
+
+Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
+
+### GTX Compute Nodes
+
+Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
+
+[Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Super Micro X10DRG-Q Motherboard
+		%tr 
+			%td(align="right") Processor:
+			%td Intel(R) Xeon(R) CPU E5-2620 v4
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 8
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 16
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 32
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 128 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 512KiB / 2MiB / 20 MiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 150.0 GB (~60 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 4 x NVidia 1080-TI GPUs
+
+### V100 Compute Nodes
+
+Maverick2 has 4 V100 compute nodes.
+
+[Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia  V100 adapters
+
+### P100 Compute Nodes
+
+Maverick2 has 3 P100 nodes.
+
+[Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia P100 adapters
+
+### Login Nodes
+
+Maverick2 hosts a single login node:
+
+* Dual Socket
+* Intel Xeon CPU E5-2660 v3 (Haswell) @ 2.60GHz: 10 cores/socket (20 cores/node)
+* 128 GB DDR4-2133 (8 x 16GB dual rank x4 DIMMS)
+* Hyperthreading Disabled
+
+### Network
+
+* Mellanox FDR Infiniband MT27500 Family ConnectX-3 Adapter
+* up to 10/40/56Gbps bandwidth and a sub-microsecond low latency
+* Fat Tree Interconnect
+* Intel Ethernet Controller I350 IEEE 802.3 1Gbps Adapter
+
+### File Systems
+
+Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
+
+<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
+
+
+<img alt="" src="../../../imgs/2mav/cooling-system.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />  
+<p class="image-caption">Figure 2. Maverick2 Immersion Cooling System</p>
+
+## Accessing the System
+
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
+
+### Secure Shell (SSH)
+
+The "`ssh`" command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+
+<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
+
+To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
+
+
+
+## Conduct on Maverick2
+
+**You share Maverick2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
+
+TACC staff has developed the following guidelines to good conduct on Maverick2. Please familiarize yourself especially with the first two mandates:
+
+* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+* [Do Not Stress the File Systems](#conduct-filesystems)
+
+
+The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
+
+### Do Not Run Jobs on the Login Nodes
+
+Maverick2's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
+
+Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
+
+The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
+
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
+
+<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended if your jobs are impacting other users.</p> 
+
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+
+	DO THIS: Start an interactive session on a compute node and run Matlab.
+
+	<pre class="cmd-line">
+	login1$ <b>idev</b>
+	nid00181$ <b>matlab</b></pre>
+
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
+
+	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
+
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	<pre class="cmd-line">
+	login1$ <b>make <i>mytarget</i></b>
+	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+
+	DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
+
+	<pre class="cmd-line">
+	<s>login1$ <b>make -j 12</b>
+	login1$ <b>./myprogram</b></s></pre>
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+
+### Do Not Stress the Shared File Systems
+
+TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
+
+#### File System Usage Recommendations
+
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | temporary datasets<br>I/O files<br>job files | all job I/O activity
+
+#### Stockyard (`$HOME`)
+
+#### Stockyard (`$WORK`)
+
+<!-- The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. -->
+
+<!-- TACC staff now recommends that you run your jobs out of your resource's `$SCRATCH` file system instead of the global `$WORK` file system. To run your jobs out `$SCRATCH` -->
+
+<!-- * Copy or move all job input files to `$SCRATCH` -->
+<!-- * Make sure your job script directs all output to `$SCRATCH`  -->
+
+<!-- Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table 1.](#table1). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.  -->
+
+<!-- * **Run I/O intensive jobs in `$SCRATCH` rather than `$WORK`.** If you stress `$WORK`, you affect every user on every TACC system. Significant I/O might include reading/writing 100+ GBs to checkpoint/restart files, running with 4096+ MPI tasks all reading/writing individual files, but is not limited to just those two cases. **If you stress `$WORK`, you affect every user on every TACC system.** -->
+
+<!-- <p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> -->
+
+A few other file system tips:
+
+* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
+
+* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
+
+* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
+
+
+### Limit Input/Output (I/O) Activity
+
+In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
+
+* **Limit I/O intensive sessions** (lots of reads and writes to disk, rapidly opening or closing many files)
+
+* **Avoid opening and closing files repeatedly** in tight loops. Every open/close operation on the file system requires interaction with the MetaData Service (MDS). The MDS acts as a gatekeeper for access to files on Lustre's parallel file system. Overloading the MDS will affect other users on the system. If possible, open files once at the beginning of your program/workflow, then close them at the end.
+
+* **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
+
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](TAAMANAGINGIO) for additional information.</p>
+
+### Limit File Transfers
+
+In order to not stress both internal and external networks:
+
+* **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
+
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](RANCHUG).
+
+* When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
+
+### Job Submission Tips
+
+* **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
+
+* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
+
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](TACCREMORA) tool to monitor your application's needs. 
+
+## Managing Your Files
+
+Maverick2 mounts two Lustre file systems that are shared across all nodes: the home and work file systems. Maverick2's startup mechanisms define corresponding account-level environment variables, `$HOME` and `$WORK`, that store the paths to directories that you own on each of these file systems. Maverick2's home file system is mounted only on Maverick2, but the work file system mounted on Maverick2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). This is the same work file system that is currently available on Stampede2, Frontera, Lonestar6, and several other TACC resources.
+
+[Table 4. Maverick2 File Systems](#table4)
+
+%table(border=1 cellpadding="3")
+	%tr
+		%th File System
+		%th Quota
+		%th Key Features
+	%tr
+		%td <code>$HOME</code>
+		%td 10GB, 200,000 files
+		%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+	%tr
+		%td <code>$WORK</code>
+		%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
+		%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+	%tr
+		%td <code>$SCRATCH</code>
+		%td <b>N/A</b>
+		%td <b>Maverick2 does not mount a scratch file system.</b>
+	
+The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
+
+### Navigating the Shared File Systems
+
+Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
+
+<figure><img alt="Stockyard Work File System" src="/documents/10157/1181317/Stockyard+2022/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453" style="width: 800px; height: 173px;"/><figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+
+Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+
+[Table 5. Built-in Account Level Aliases](#table5)
+
+copy from Frontera
+
+
+
+### Transferring Files Using `scp` and `rsync`
+
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+
+The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:</b>  # note colon after net address</pre>
+
+You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in "`.txt`" from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2</b></pre>
+
+To delay wildcard expansion until reaching Maverick2, use a backslash ("`\`") as an escape character before the wildcard. For example, to pull all files ending in "`.txt`" from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
+
+<pre class="cmd-line">localhost$ <b>scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .</b></pre>
+
+You can of course use shell or environment variables in your calls to `scp`. For example:
+
+<pre class="cmd-line">
+localhost$ <b>destdir="/work/01234/bjones/maverick2/data"</b>
+localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir</b></pre>
+
+You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash ("`\`") as an escape character before the "`$`"; this ensures that expansion occurs after establishing the connection to Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
+
+Avoid using `scp` for recursive ("`-r`") transfers of directories that contain nested directories of many small files:
+
+<pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
+
+Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
+
+<pre class="cmd-line">
+localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
+localhost$ <b>scp     ./mydata.tar bjones@maverick2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
+
+The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
+
+<pre class="cmd-line">
+localhost$ <b>rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>
+localhost$ <b>rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data</b></pre>
+
+The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update ("`-r`") with verbose ("`-v`") feedback; the synchronization preserves time stamps ("`-t`") as well as symbolic links and other meta-data ("`-a`"). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+
+See [Good Conduct](#conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
+
+
+### Sharing Files with Collaborators
+
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+
+### Notes on Small Files Under Lustre
+
+The Stockyard/`$WORK` file system is a Lustre file system which is optimized for large scale reads and writes. As some workloads, such as image classification, leverage using multiple small files, we advise users not work directly on `$WORK` with these workloads. Users should have their jobs copy these files to `/tmp` on the compute node, compute against the `/tmp` data, store their results on the `$WORK` file system, and clean up `/tmp`. We are currently working on solutions to expand the 60 GB `/tmp` capacity. 
+
+### Striping Large Files
+
+Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 20 stripes, for example, is distributed across 20 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
+
+Before transferring large files to Maverick2, or creating new large files, be sure to set an appropriate default stripe count on the receiving directory. To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
+
+<pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
+
+Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+## Running Jobs on the Compute Nodes
+
+{% var Maverick2 = 'Maverick2' %}
+{% include 'include/jobaccounting.md' %}
+
+### Slurm Job Scheduler
+
+Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
+
+The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+
+* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
+* [Common `sbatch` options](/user-guides/stampede2#table6)
+* [Launching Applications](/user-guides/stampede2#launching-applications)
+
+### Slurm Partitions (Queues)
+
+**Queues and limits are subject to change without notice.** 
+
+Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
+
+See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+
+[Table 6. Maverick2 Production Queues](#table6)
+
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- |
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
+
+
+<!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) <span style="color:red">Coming Soon.</span> -->
+
+# Remote Desktop Access
+
+Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
+
+*  allocates a set of Maverick2 visualization nodes 
+*  starts a vncserver process on the first allocated node 
+*  sets up a tunnel through the login node to the vncserver access port 
+
+Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
+
+Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+
+Follow the steps below to start an interactive session.
+
+1. Start a Remote Desktop 
+
+	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
+
+	You may modify or overwrite script defaults with `sbatch` command-line options:
+
+	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
+	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
+	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
+	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+
+	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
+
+	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
+
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+
+	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+
+	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
+
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+
+1. Create an SSH Tunnel to Maverick2 
+
+	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
+
+	<pre class="cmd-line">
+	localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+	where:
+
+	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
+	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
+	*  "`-N`" puts the `ssh` command into the background after connecting 
+	*  "`-L`" forwards the port 
+
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
+
+1. Connecting vncviewer 
+
+	Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Maverick2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
+
+	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
+
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+
+	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
+
+
+
+## [Software on Maverick2](#software)
+
+As of July 21, 2021, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
+
+<pre class="cmd-line">
+login1$ <b>module avail</b>
+
+-------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
+   boost/1.66                     phdf5/1.10.4   (D)
+   fftw3/3.3.6                    pnetcdf/1.8.1
+   parallel-netcdf/4.3.3.1        python2/2.7.16 (L,D)
+   parallel-netcdf/4.6.2   (D)    python3/3.7.0  (D)
+   phdf5/1.8.16
+
+------------------------ /opt/apps/intel18/modulefiles -------------------------
+   hdf5/1.8.16        mkl-dnn/0.18.1    netcdf/4.3.3.1        python3/3.7.0
+   hdf5/1.10.4 (D)    nco/4.6.9         netcdf/4.6.2   (D)    udunits/2.2.25
+   impi/18.0.2 (L)    ncview/2.1.7      python2/2.7.16
+
+---------------------------- /opt/apps/modulefiles -----------------------------
+   TACC          (L)      gcc/7.1.0                 matlab/2020b           (D)
+   autotools/1.2 (L)      gcc/7.3.0        (D)      mcr/9.5
+   cmake/3.8.2            git/2.24.1       (L)      mcr/9.6
+   cmake/3.10.2           hwloc/1.11.2              mcr/9.9                (D)
+   cmake/3.16.1  (L,D)    idev/1.5.5                ncl_ncarg/6.3.0
+   cuda/8.0      (g)      intel/16.0.3              nvhpc/21.3.0
+   cuda/9.0      (g)      intel/17.0.4              ooops/1.3
+   cuda/9.2      (g,D)    intel/18.0.2     (L,D)    sanitytool/2.0
+   cuda/10.0     (g)      launcher_gpu/1.0          settarg
+   cuda/10.1     (g)      lmod                      swr/18.3.3
+   cuda/11.0     (g)      mathematica/12.0          tacc-singularity/3.7.2
+   gcc/5.4.0              matlab/2018b              tacc_tips/0.5
+   gcc/6.3.0              matlab/2019a              xalt/2.9.6             (L)
+
+   Where:
+   D:  Default Module
+   L:  Module is loaded
+   g:  built for GPU</pre>
+
+<p>At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
+
+Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
+
+You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
+
+### [Deep Learning Packages](#software-ml)
+
+See: [Tensorflow at TACC](/software/tensorflow)
+
+
+
+<img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
+<p class="image-caption">Figure 4. Person and Horse</p>
+
+## References
+
+* [`idev` documentation][TACCIDEV]
+* [Tensorflow at TACC][TACCTENSORFLOW]
+* [TACC Visualization Portal][TACCVISPORTAL]
+* [Multi-Factor Authentication at TACC][TACCMFA]
+
+{% include 'aliases.md' %}
+
+
+
+<style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
+
+# Maverick2 User Guide
+<i>Last update: August 24, 2022</i> 
+
+## Notices
+
+* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
+* All users: read [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio). TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
+* Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
+* Maverick2 does not support any Visualization applications. 
+* Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.
+
+
+## Introduction
+
+Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
+
+<img alt="" src="../../../imgs/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
+<p class="image-caption">Figure 1. Edward Blein - Trail of Horses</p>
+
+## System Overview
+
+Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
+
+### GTX Compute Nodes
+
+Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
+
+[Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Super Micro X10DRG-Q Motherboard
+		%tr 
+			%td(align="right") Processor:
+			%td Intel(R) Xeon(R) CPU E5-2620 v4
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 8
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 16
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 32
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 128 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 512KiB / 2MiB / 20 MiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 150.0 GB (~60 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 4 x NVidia 1080-TI GPUs
+
+### V100 Compute Nodes
+
+Maverick2 has 4 V100 compute nodes.
+
+[Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia  V100 adapters
+
+### P100 Compute Nodes
+
+Maverick2 has 3 P100 nodes.
+
+[Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+
+	%table(border="1" cellpadding="3")
+		%tr 
+			%td(align="right") Model:
+			%td Dell PowerEdge R740
+		%tr 
+			%td(align="right") Processor:
+			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
+		%tr 
+			%td(align="right") Total processors per node:
+			%td 2
+		%tr 
+			%td(align="right") Total cores per processor:
+			%td 24
+		%tr 
+			%td(align="right") Total cores per node:
+			%td 48
+		%tr 
+			%td(align="right") Hardware threads per core:
+			%td 2
+		%tr 
+			%td(align="right") Hardware threads per node:
+			%td 96
+		%tr 
+			%td(align="right") Clock rate:
+			%td 2.10GHz
+		%tr 
+			%td(align="right") RAM:
+			%td 192 GB
+		%tr 
+			%td(align="right") L1/L2/L3 Cache:
+			%td 1536KiB / 24576KiB / 33792KiB
+		%tr 
+			%td(align="right") Local storage:
+			%td 119.5 GB (~32 GB free)
+		%tr 
+			%td(align="right") GPUs:
+			%td 2 NVidia P100 adapters
+
+### Login Nodes
+
+Maverick2 hosts a single login node:
+
+* Dual Socket
+* Intel Xeon CPU E5-2660 v3 (Haswell) @ 2.60GHz: 10 cores/socket (20 cores/node)
+* 128 GB DDR4-2133 (8 x 16GB dual rank x4 DIMMS)
+* Hyperthreading Disabled
+
+### Network
+
+* Mellanox FDR Infiniband MT27500 Family ConnectX-3 Adapter
+* up to 10/40/56Gbps bandwidth and a sub-microsecond low latency
+* Fat Tree Interconnect
+* Intel Ethernet Controller I350 IEEE 802.3 1Gbps Adapter
+
+### File Systems
+
+Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
+
+<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
+
+
+<img alt="" src="../../../imgs/2mav/cooling-system.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />  
+<p class="image-caption">Figure 2. Maverick2 Immersion Cooling System</p>
+
+## Accessing the System
+
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
+
+### Secure Shell (SSH)
+
+The "`ssh`" command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+
+<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+
+Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
+
+To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
+
+
+
+## Conduct on Maverick2
+
+**You share Maverick2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
+
+TACC staff has developed the following guidelines to good conduct on Maverick2. Please familiarize yourself especially with the first two mandates:
+
+* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+* [Do Not Stress the File Systems](#conduct-filesystems)
+
+
+The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
+
+### Do Not Run Jobs on the Login Nodes
+
+Maverick2's login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
+
+Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
+
+The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
+
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
+
+<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended if your jobs are impacting other users.</p> 
+
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+
+	DO THIS: Start an interactive session on a compute node and run Matlab.
+
+	<pre class="cmd-line">
+	login1$ <b>idev</b>
+	nid00181$ <b>matlab</b></pre>
+
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
+
+	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
+
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	<pre class="cmd-line">
+	login1$ <b>make <i>mytarget</i></b>
+	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+
+	DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
+
+	<pre class="cmd-line">
+	<s>login1$ <b>make -j 12</b>
+	login1$ <b>./myprogram</b></s></pre>
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+
+### Do Not Stress the Shared File Systems
+
+TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
+
+#### File System Usage Recommendations
+
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | temporary datasets<br>I/O files<br>job files | all job I/O activity
+
+#### Stockyard (`$HOME`)
+
+#### Stockyard (`$WORK`)
+
+<!-- The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. -->
+
+<!-- TACC staff now recommends that you run your jobs out of your resource's `$SCRATCH` file system instead of the global `$WORK` file system. To run your jobs out `$SCRATCH` -->
+
+<!-- * Copy or move all job input files to `$SCRATCH` -->
+<!-- * Make sure your job script directs all output to `$SCRATCH`  -->
+
+<!-- Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table 1.](#table1). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.  -->
+
+<!-- * **Run I/O intensive jobs in `$SCRATCH` rather than `$WORK`.** If you stress `$WORK`, you affect every user on every TACC system. Significant I/O might include reading/writing 100+ GBs to checkpoint/restart files, running with 4096+ MPI tasks all reading/writing individual files, but is not limited to just those two cases. **If you stress `$WORK`, you affect every user on every TACC system.** -->
+
+<!-- <p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> -->
+
+A few other file system tips:
+
+* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
+
+* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
+
+* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
+
+
+### Limit Input/Output (I/O) Activity
+
+In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
+
+* **Limit I/O intensive sessions** (lots of reads and writes to disk, rapidly opening or closing many files)
+
+* **Avoid opening and closing files repeatedly** in tight loops. Every open/close operation on the file system requires interaction with the MetaData Service (MDS). The MDS acts as a gatekeeper for access to files on Lustre's parallel file system. Overloading the MDS will affect other users on the system. If possible, open files once at the beginning of your program/workflow, then close them at the end.
+
+* **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
+
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](TAAMANAGINGIO) for additional information.</p>
+
+### Limit File Transfers
+
+In order to not stress both internal and external networks:
+
+* **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
+
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](RANCHUG).
+
+* When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
+
+### Job Submission Tips
+
+* **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
+
+* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
+
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](TACCREMORA) tool to monitor your application's needs. 
+
+## Managing Your Files
+
+Maverick2 mounts two Lustre file systems that are shared across all nodes: the home and work file systems. Maverick2's startup mechanisms define corresponding account-level environment variables, `$HOME` and `$WORK`, that store the paths to directories that you own on each of these file systems. Maverick2's home file system is mounted only on Maverick2, but the work file system mounted on Maverick2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). This is the same work file system that is currently available on Stampede2, Frontera, Lonestar6, and several other TACC resources.
+
+[Table 4. Maverick2 File Systems](#table4)
+
+%table(border=1 cellpadding="3")
+	%tr
+		%th File System
+		%th Quota
+		%th Key Features
+	%tr
+		%td <code>$HOME</code>
+		%td 10GB, 200,000 files
+		%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+	%tr
+		%td <code>$WORK</code>
+		%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
+		%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+	%tr
+		%td <code>$SCRATCH</code>
+		%td <b>N/A</b>
+		%td <b>Maverick2 does not mount a scratch file system.</b>
+	
+The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
+
+### Navigating the Shared File Systems
+
+Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
+
+<figure><img alt="Stockyard Work File System" src="/documents/10157/1181317/Stockyard+2022/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453" style="width: 800px; height: 173px;"/><figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+
+Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+
+[Table 5. Built-in Account Level Aliases](#table5)
+
+copy from Frontera
+
+
+
+### Transferring Files Using `scp` and `rsync`
+
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+
+The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:</b>  # note colon after net address</pre>
+
+You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in "`.txt`" from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2</b></pre>
+
+To delay wildcard expansion until reaching Maverick2, use a backslash ("`\`") as an escape character before the wildcard. For example, to pull all files ending in "`.txt`" from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
+
+<pre class="cmd-line">localhost$ <b>scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .</b></pre>
+
+You can of course use shell or environment variables in your calls to `scp`. For example:
+
+<pre class="cmd-line">
+localhost$ <b>destdir="/work/01234/bjones/maverick2/data"</b>
+localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir</b></pre>
+
+You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash ("`\`") as an escape character before the "`$`"; this ensures that expansion occurs after establishing the connection to Maverick2:
+
+<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
+
+Avoid using `scp` for recursive ("`-r`") transfers of directories that contain nested directories of many small files:
+
+<pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
+
+Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
+
+<pre class="cmd-line">
+localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
+localhost$ <b>scp     ./mydata.tar bjones@maverick2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
+
+The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
+
+<pre class="cmd-line">
+localhost$ <b>rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>
+localhost$ <b>rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data</b></pre>
+
+The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update ("`-r`") with verbose ("`-v`") feedback; the synchronization preserves time stamps ("`-t`") as well as symbolic links and other meta-data ("`-a`"). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+
+See [Good Conduct](#conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
+
+
+### Sharing Files with Collaborators
+
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+
+### Notes on Small Files Under Lustre
+
+The Stockyard/`$WORK` file system is a Lustre file system which is optimized for large scale reads and writes. As some workloads, such as image classification, leverage using multiple small files, we advise users not work directly on `$WORK` with these workloads. Users should have their jobs copy these files to `/tmp` on the compute node, compute against the `/tmp` data, store their results on the `$WORK` file system, and clean up `/tmp`. We are currently working on solutions to expand the 60 GB `/tmp` capacity. 
+
+### Striping Large Files
+
+Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 20 stripes, for example, is distributed across 20 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
+
+Before transferring large files to Maverick2, or creating new large files, be sure to set an appropriate default stripe count on the receiving directory. To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
+
+<pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
+
+Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+## Running Jobs on the Compute Nodes
+
+{% Maverick2 = 'Maverick2' %}
+{% include 'include/jobaccounting.md' %}
+
+### Slurm Job Scheduler
+
+Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
+
+The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+
+* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
+* [Common `sbatch` options](/user-guides/stampede2#table6)
+* [Launching Applications](/user-guides/stampede2#launching-applications)
+
+### Slurm Partitions (Queues)
+
+**Queues and limits are subject to change without notice.** 
+
+Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
+
+See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+
+[Table 6. Maverick2 Production Queues](#table6)
+
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- |
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
 
 
 <!-- ## [Sample Maverick2 Job Scripts](#running-sbatch-jobscripts) <span style="color:red">Coming Soon.</span> -->

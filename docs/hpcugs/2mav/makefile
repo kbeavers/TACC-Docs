@@ -16,8 +16,7 @@ all:	maverick2
 maverick2:	$(MAVERICK2_OBJS)
 	cat $(MAVERICK2_OBJS) >> temp.md
 	 ./configurestrings.sh temp.md maverick2.md
-	/bin/rm temp.md
-	# /bin/cp -f maverick2.html ..
+	# /bin/rm temp.md
 
 clean:
 	/bin/rm -f $(OBJ) maverick2.md &2> /dev/null
