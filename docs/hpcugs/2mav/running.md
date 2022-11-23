@@ -2,6 +2,7 @@
 
 {% include 'include/jobaccounting.md' %}
 
+
 ### Slurm Job Scheduler
 
 Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  

@@ -1,4 +1,4 @@
-## [Software on Maverick2](#software)
+## Software on Maverick2
 
 As of July 21, 2021, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
 
@@ -37,14 +37,15 @@ login1$ <b>module avail</b>
    L:  Module is loaded
    g:  built for GPU</pre>
 
-<p>At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
+
+At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
 
 Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
 
 You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
 
-### [Deep Learning Packages](#software-ml)
+### Deep Learning Packages
 
-See: [Tensorflow at TACC](/software/tensorflow)
+See: [Tensorflow at TACC](TACCTENSORFLOW)
 
 
