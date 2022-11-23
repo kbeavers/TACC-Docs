@@ -1,21 +1,15 @@
-#system
-	:markdown
-		# [System Architecture](#system)
+## [System Architecture](#system)
 
-		All Lonestar6 nodes run Rocky 8.4 and are managed with batch services through native Slurm 20.11.8. Global storage areas are supported by an NFS file system (`$HOME`), a BeeGFS parallel file system (`$SCRATCH`), and a Lustre parallel file system (`$WORK`). Inter-node communication is supported by a Mellanox HDF Infiniband network. Also, the TACC Ranch tape archival system is available from Lonestar6.
+All Lonestar6 nodes run Rocky 8.4 and are managed with batch services through native Slurm 20.11.8. Global storage areas are supported by an NFS file system (`$HOME`), a BeeGFS parallel file system (`$SCRATCH`), and a Lustre parallel file system (`$WORK`). Inter-node communication is supported by a Mellanox HDF Infiniband network. Also, the TACC Ranch tape archival system is available from Lonestar6.
 
-		The system is composed of 560 compute nodes and 32 GPU nodes.  The compute nodes are housed in 4 dielectric liquid coolant cabinets and ten air-cooled racks.  The air cooled racks also contain the 32 GPU nodes.  Each node has two AMD EPYC 7763 64-core processors (Milan) and 256 GB of DDR4 memory. Twenty-four of the compute nodes are reserved for development and are accessible interactively for up to two hours. Each GPU node also contains two AMD EPYC 7763 64-core processes and three NVIDIA A100 GPUs each with 40 GB of high bandwidth memory (HBM2).
+The system is composed of 560 compute nodes and 32 GPU nodes.  The compute nodes are housed in 4 dielectric liquid coolant cabinets and ten air-cooled racks.  The air cooled racks also contain the 32 GPU nodes.  Each node has two AMD EPYC 7763 64-core processors (Milan) and 256 GB of DDR4 memory. Twenty-four of the compute nodes are reserved for development and are accessible interactively for up to two hours. Each GPU node also contains two AMD EPYC 7763 64-core processes and three NVIDIA A100 GPUs each with 40 GB of high bandwidth memory (HBM2).
 
 
-#system-compute
-	:markdown
-		## [Compute Nodes](#system-compute)
+### [Compute Nodes](#system-compute)
 
-		Lonestar6 hosts 560 compute nodes with 5 TFlops of peak performance per node and 256 GB of DRAM.
+Lonestar6 hosts 560 compute nodes with 5 TFlops of peak performance per node and 256 GB of DRAM.
 
-#table1
-	:markdown
-		[Table 1. Compute Node Specifications](#table1)
+[Table 1. Compute Node Specifications](#table1)
 
 %table(border="1" cellpadding="3" cellspacing="5")
 	%tr
@@ -43,21 +37,15 @@
 		%td(nowrap align="right") Local storage:&nbsp; 
 		%td 144GB /tmp partition on a 288GB SSD.
 
-#system-login
-	:markdown
-		## [Login Nodes](#system-login)
+### [Login Nodes](#system-login)
 
-		Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the same hardware and are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login nodes only for file management, compilation, and data movement. Any and all computing should be done within a batch job or an [interactive session](http://portal.tacc.utexas.edu/software/idev) on the compute nodes.
+Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the same hardware and are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login nodes only for file management, compilation, and data movement. Any and all computing should be done within a batch job or an [interactive session](http://portal.tacc.utexas.edu/software/idev) on the compute nodes.
 
-#system-vmsmall
-	:markdown
-		## [`vm-small` Queue Nodes](#system-vmsmall)
+### [`vm-small` Queue Nodes](#system-vmsmall)
 
-		Lonestar6 hosts 28 `vm-small` compute nodes running on 4 physical hosts.
-		
-#table15
-	:markdown
-		[Table 1.5. "`vm-small` Compute Node Specifications](#table15)
+Lonestar6 hosts 28 `vm-small` compute nodes running on 4 physical hosts.
+
+[Table 1.5. "`vm-small` Compute Node Specifications](#table15)
 
 %table(border="1" cellpadding="3" cellspacing="5")
 	%tr
@@ -87,15 +75,11 @@
 
 
 
-#system-gpu
-	:markdown
-		## [GPU Nodes](#system-gpu)
+### [GPU Nodes](#system-gpu)
 
-		Lonestar6 hosts **32** GPU nodes that are configured identically to the compute nodes with the addition of 3 NVIDIA A100 GPUs.  Each A100 gpu has a peak performance of 9.7 TFlops in double precision and 312 TFlops in FP16 precision using the Tensor Cores.
+Lonestar6 hosts **32** GPU nodes that are configured identically to the compute nodes with the addition of 3 NVIDIA A100 GPUs.  Each A100 gpu has a peak performance of 9.7 TFlops in double precision and 312 TFlops in FP16 precision using the Tensor Cores.
 
-#table2
-	:markdown
-		[Table 2. GPU Node Specifications](#table2)
+[Table 2. GPU Node Specifications](#table2)
 
 %table(border="1" cellpadding="3" cellspacing="5")
 	%tr
@@ -129,10 +113,8 @@
 		%td(nowrap align="right") Local storage: &nbsp; 
 		%td 144GB /tmp partition on a 288GB SSD.
 
-#system-network
-	:markdown
-		## [Network](#system-network)
+### [Network](#system-network)
 
-		The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) connectivity between the switches and the compute nodes. A fat tree topology employing sixteen core switches connects the compute nodes and the `$SCRATCH` file systems. There is an oversubscription of 24/16.
+The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) connectivity between the switches and the compute nodes. A fat tree topology employing sixteen core switches connects the compute nodes and the `$SCRATCH` file systems. There is an oversubscription of 24/16.
 
 
