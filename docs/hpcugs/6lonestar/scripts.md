@@ -49,7 +49,7 @@ date
 # Launch serial code...
 ./myprogram         # Do not use ibrun or any other MPI launcher</pre>
 
-### MPI Jobs</a><br>
+### MPI Jobs
 
 This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
@@ -99,7 +99,7 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre>
 
 
-### HTARROW id="img-jscript3">Hybrid (MPI + OpenMP) Job</a><br>
+### Hybrid (MPI + OpenMP) Job
 
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 

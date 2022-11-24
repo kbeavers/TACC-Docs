@@ -1,10 +1,10 @@
-## [Visualization and Virtual Network Computing (VNC) Sessions](#vis)
+## Visualization and Virtual Network Computing (VNC) Sessions
 
 Lonestar6 uses AMD's Milan processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing "`module load swr`".
 
 Lonestar6 currently has no separate visualization queue. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to Lonestar6's `development` queue for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket.
 
-### [Remote Desktop Access](#vis-remote)
+### Remote Desktop Access
 
 Remote desktop access to Lonestar6 is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Lonestar6 login node (see [Accessing the System](#access) and submit a special interactive batch job that:
 
@@ -80,11 +80,11 @@ Follow the steps below to start an interactive session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
-### [Running Applications on the Remote Desktop](#vis-apps)
+### Running Applications on the Remote Desktop
 
 From an interactive desktop, applications can be run from icons or from xterm command prompts. Two special cases arise: running parallel applications, and running applications that use OpenGL.
 
-### [Running Parallel Applications from the Desktop](#vis-parallelapps)
+### Running Parallel Applications from the Desktop
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
@@ -92,7 +92,7 @@ Parallel applications are run on the desktop using the same ibrun wrapper descri
 
 will run application on the associated nodes, as modified by the ibrun options.
 
-### [Running OpenGL/X Applications On The Desktop](#vis-opengl)
+### Running OpenGL/X Applications On The Desktop
 
 Lonestar6 uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Lonestar6 do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the TACC Vis portal.
 

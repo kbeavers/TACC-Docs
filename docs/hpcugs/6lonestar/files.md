@@ -2,7 +2,6 @@
 
 ### Table 3. Lonestar6 File Systems
 
-
  File System | Quota | Key Features
  --- | --- |
 <code>$HOME</code> | 10 GB | 200,000 files<br><b>Not intended for parallel or high-intensity file operations.</b><br>NFS file system<br>Backed up regularly.<br>Overall capacity 7 TB<br>Not purged.
@@ -34,24 +33,16 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 Note that resource-specific subdirectories of `$STOCKYARD` are simply convenient ways to manage your resource-specific files. You have access to any such subdirectory from any TACC resources. If you are logged into Lonestar6, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the resource-specific subdirectory `$STOCKYARD/ls6`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/ls6`</span>. These commands allow you to share files across TACC systems. In fact, several convenient account-level aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-[Table 4. Built-in Account Level Aliases](#table4)
+Table 4. Built-in Account Level Aliases
 
-%table(border=1 cellpadding=5)
-	%tr
-		%th Alias 
-		%th Command
-	%tr
-		%td <code>cd</code> or <code>cdh</code> 
-		%td <code>cd $HOME</code>
-	%tr
-		%td <code>cds</code> 
-		%td <code>cd $SCRATCH</code>
-	%tr
-		%td <code>cdy</code> or <code>cdg</code> 
-		%td <code>cd $STOCKYARD</code>
-	%tr
-		%td <code>cdw</code> 
-		%td <code>cd $WORK</code>
+### Table 3. Built-in Account Level Aliases
+
+Alias | Command
+---- | ----
+<code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
+<code>cdw</code> | <code>cd $WORK</code>
+<code>cds</code> | <code>cd $SCRATCH</code>
+<code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
 
 ### Transferring your Files
@@ -114,8 +105,5 @@ The options on the second transfer are typical and appropriate when synching a d
 
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
-%figure
-	<img alt="Lonestar6" src="/documents/10157/2038620/Lonestar6+-+3/16ebdc60-21ed-4fab-9c1f-e65c57e563cd?t=1634257841000" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-	%figcaption
-		Lonestar6
-		%br 
+<img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-3.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
+<p class="image-caption">Lonestar6</p>
