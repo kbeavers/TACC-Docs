@@ -1,4 +1,4 @@
-# <span style="font-size:225%; font-weight:bold;">Lonestar6 User Guide</span><br>
+# Lonestar6 User Guide
 <span style="font-size:90%;"><i>Last update: November 11, 2022</i></span></p>
 
 
@@ -31,5 +31,5 @@ Researchers at our partner institutions may submit allocation requests through t
 
 
 <img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-1.jpg" style="width: 800px; height: 670px; border-width: 1px; border-style: solid;" /> 
-<p class="image-caption">Dielectric liquid coolant cabinet</p>
+<p class="image-caption">Lonestar6: Dielectric liquid coolant cabinet</p>
 

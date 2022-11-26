@@ -27,7 +27,9 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 [Figure. Stockyard Global File System](#stockyard)
 
-<figure>FIGURE-STOCKYARD<figcaption>Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<img alt="Stockyard 2022" src="../../../imgs/stockyard-2022.jpg">
+<p class="image-caption">Stockyard 2022</p>
+Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.
 
 Your account-specific `$WORK` environment variable varies from system to system and is a subdirectory of `$STOCKYARD` (Figure 3). The subdirectory name corresponds to the associated TACC resource. The `$WORK` environment variable on Lonestar6 points to the `$STOCKYARD/ls6` subdirectory, a convenient location for files you use and jobs you run on Lonestar6. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Lonestar6 and Stampede2, for example, the `$STOCKYARD/ls6` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` directory is available from your Lonestar6 account. Your quota and reported usage on the Global Shared File System reflects **all files** that you own on Stockyard, regardless of their actual location on the file system.
 
@@ -106,4 +108,4 @@ The options on the second transfer are typical and appropriate when synching a d
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
 <img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-3.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<p class="image-caption">Lonestar6</p>
+<p class="image-caption">Lonestar6: Stockyard File System</p>

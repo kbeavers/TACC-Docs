@@ -39,7 +39,7 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
 
-<img alt="Lonestar6" src="../../imgs/6lonestar/lonestar6-2.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
+<img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-2.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
 <p class="image-caption">Lonestar6 IMAGE2</p>
 
 
@@ -153,8 +153,4 @@ $ <b>module help</b>         # show help text for the module system itself</pre>
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use NOWRAP`module save`ESPAN to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Lonestar6's default startup scripts for a safe way to do so.
-
-<img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-3.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<p class="image-caption">Lonestar6</p>
-
 

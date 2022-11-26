@@ -1,4 +1,4 @@
-# <span style="font-size:225%; font-weight:bold;">Lonestar6 User Guide</span><br>
+# Lonestar6 User Guide
 <span style="font-size:90%;"><i>Last update: November 11, 2022</i></span></p>
 
 
@@ -31,7 +31,7 @@ Researchers at our partner institutions may submit allocation requests through t
 
 
 <img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-1.jpg" style="width: 800px; height: 670px; border-width: 1px; border-style: solid;" /> 
-<p class="image-caption">Dielectric liquid coolant cabinet</p>
+<p class="image-caption">Lonestar6: Dielectric liquid coolant cabinet</p>
 
 ## System Architecture
 
@@ -46,29 +46,16 @@ Lonestar6 hosts 560 compute nodes with 5 TFlops of peak performance per node and
 
 Table 1. Compute Node Specifications
 
-%td(nowrap align="right") CPU: &nbsp;
-%td 2x AMD EPYC 7763 64-Core Processor ("Milan")
-	%tr
-%td(nowrap align="right") Total cores per node: &nbsp;
-%td 128 cores on two sockets (64 cores / socket )
-	%tr
-%td(nowrap align="right") Hardware threads per core: &nbsp;
-%td 1 per core 
-	%tr
-%td(nowrap align="right") Hardware threads per node: &nbsp;
-%td 128 x 1 = 128
-	%tr
-%td(nowrap align="right") Clock rate: &nbsp;
-%td 2.45 GHz (Boost up to 3.5 GHz)
-	%tr
-%td(nowrap align="right") RAM: &nbsp;
-%td 256 GB (3200 MT/s) DDR4
-	%tr
-%td(nowrap align="right") Cache: &nbsp;
-%td 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
-	%tr
-%td(nowrap align="right") Local storage:&nbsp; 
-%td 144GB /tmp partition on a 288GB SSD.
+header 1 | header 2
+---	| ---
+CPU: | 2x AMD EPYC 7763 64-Core Processor ("Milan")
+Total cores per node: &nbsp; | 128 cores on two sockets (64 cores / socket )
+Hardware threads per core: &nbsp; | 1 per core 
+Hardware threads per node: &nbsp; | 128 x 1 = 128
+Clock rate: &nbsp; | 2.45 GHz (Boost up to 3.5 GHz)
+RAM: &nbsp; | 256 GB (3200 MT/s) DDR4
+Cache: &nbsp; | 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
+Local storage:&nbsp; | 144GB /tmp partition on a 288GB SSD.
 
 ### Login Nodes
 
@@ -80,31 +67,16 @@ Lonestar6 hosts 28 `vm-small` compute nodes running on 4 physical hosts.
 
 [Table 1.5. "`vm-small` Compute Node Specifications](#table15)
 
-%table(border="1" cellpadding="3" cellspacing="5")
-	%tr
-		%td(nowrap align="right") CPU: &nbsp;
-		%td <b>1/4th</b> of an AMD EPYC 7763 64-Core Processor ("Milan")
-	%tr
-		%td(nowrap align="right") Total cores per VM: &nbsp;
-		%td 16 cores
-	%tr
-		%td(nowrap align="right") Hardware threads per core: &nbsp;
-		%td 1 per core 
-	%tr
-		%td(nowrap align="right") Hardware threads per VM: &nbsp;
-		%td 16 x 1 = 16
-	%tr
-		%td(nowrap align="right") Clock rate: &nbsp;
-		%td 2.45 GHz (Boost up to 3.5 GHz)
-	%tr
-		%td(nowrap align="right") RAM: &nbsp;
-		%td 32 GB (3200 <b>shared</b> MT/s) DDR4
-	%tr
-		%td(nowrap align="right") Cache: &nbsp;
-		%td <b>Shared caches with all other VMs.</b><br>32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>64 MB L3 total (2 core complexes)
-	%tr
-		%td(nowrap align="right") Local storage:&nbsp; 
-		%td 112G <code>/tmp</code> partition
+header 1 | header 2
+---	| ---
+CPU: &nbsp; | <b>1/4th</b> of an AMD EPYC 7763 64-Core Processor ("Milan")
+Total cores per VM: &nbsp; | 16 cores
+Hardware threads per core: &nbsp; | 1 per core 
+Hardware threads per VM: &nbsp; | 16 x 1 = 16
+Clock rate: &nbsp; | 2.45 GHz (Boost up to 3.5 GHz)
+RAM: &nbsp; | 32 GB (3200 <b>shared</b> MT/s) DDR4
+Cache: &nbsp; | <b>Shared caches with all other VMs.</b><br>32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>64 MB L3 total (2 core complexes)
+Local storage:&nbsp; | 112G <code>/tmp</code> partition
 
 
 
@@ -114,37 +86,18 @@ Lonestar6 hosts **32** GPU nodes that are configured identically to the compute 
 
 [Table 2. GPU Node Specifications](#table2)
 
-%table(border="1" cellpadding="3" cellspacing="5")
-	%tr
-		%td(nowrap align="right") GPU:&nbsp;
-		%td 3x NVIDIA A100 PCIE 40GB<br>(1 per socket )<br>gpu0:   socket 0<br>gpu1:   socket1<br>gpu2:   socket1
-	%tr
-		%td(nowrap align="right") GPU Memory:&nbsp;
-		%td 40 GB HBM2
-	%tr
-		%td(nowrap align="right") CPU: &nbsp;
-		%td 2x AMD EPYC 7763 64-Core Processor ("Milan")
-	%tr
-		%td(nowrap align="right") Total cores per node: &nbsp;
-		%td 128 cores on two sockets (64 cores / socket )
-	%tr
-		%td(nowrap align="right") Hardware threads per core: &nbsp;
-		%td 1 per core 
-	%tr
-		%td(nowrap align="right") Hardware threads per node: &nbsp;
-		%td 128 x 1 = 128
-	%tr
-		%td(nowrap align="right") Clock rate: &nbsp;
-		%td 2.45 GHz
-	%tr
-		%td(nowrap align="right") RAM: &nbsp;
-		%td 256 GB
-	%tr
-		%td(nowrap align="right") Cache: &nbsp;
-		%td 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
-	%tr
-		%td(nowrap align="right") Local storage: &nbsp; 
-		%td 144GB /tmp partition on a 288GB SSD.
+header 1 | header 2
+---	| ---
+GPU:&nbsp; | 3x NVIDIA A100 PCIE 40GB<br>(1 per socket )<br>gpu0:   socket 0<br>gpu1:   socket1<br>gpu2:   socket1
+GPU Memory:&nbsp; | 40 GB HBM2
+CPU: &nbsp; | 2x AMD EPYC 7763 64-Core Processor ("Milan")
+Total cores per node: &nbsp; | 128 cores on two sockets (64 cores / socket )
+Hardware threads per core: &nbsp; | 1 per core 
+Hardware threads per node: &nbsp; | 128 x 1 = 128
+Clock rate: &nbsp; | 2.45 GHz
+RAM: &nbsp; | 256 GB
+Cache: &nbsp; | 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
+Local storage: &nbsp; | 144GB /tmp partition on a 288GB SSD.
 
 ### Network
 
@@ -180,7 +133,9 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 [Figure. Stockyard Global File System](#stockyard)
 
-<figure><img alt="Stockyard Work File System" src="/documents/10157/1181317/Stockyard+2022/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453" style="width: 800px; height: 173px;"/><figcaption>Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<img alt="Stockyard 2022" src="../../../imgs/stockyard-2022.jpg">
+<p class="image-caption">Stockyard 2022</p>
+Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.
 
 Your account-specific `$WORK` environment variable varies from system to system and is a subdirectory of `$STOCKYARD` (Figure 3). The subdirectory name corresponds to the associated TACC resource. The `$WORK` environment variable on Lonestar6 points to the `$STOCKYARD/ls6` subdirectory, a convenient location for files you use and jobs you run on Lonestar6. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Lonestar6 and Stampede2, for example, the `$STOCKYARD/ls6` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` directory is available from your Lonestar6 account. Your quota and reported usage on the Global Shared File System reflects **all files** that you own on Stockyard, regardless of their actual location on the file system.
 
@@ -259,7 +214,7 @@ The options on the second transfer are typical and appropriate when synching a d
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
 <img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-3.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<p class="image-caption">Lonestar6</p>
+<p class="image-caption">Lonestar6: Stockyard File System</p>
 ## Access the System
 
 ### Secure Shell (SSH)
@@ -301,7 +256,7 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][http://portal.tacc.utexas.edu/]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
 
-<img alt="Lonestar6" src="../../imgs/6lonestar/lonestar6-2.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
+<img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-2.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
 <p class="image-caption">Lonestar6 IMAGE2</p>
 
 
@@ -415,10 +370,6 @@ $ <b>module help</b>         # show help text for the module system itself</pre>
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">`module save`</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Lonestar6's default startup scripts for a safe way to do so.
-
-<img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-3.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<p class="image-caption">Lonestar6</p>
-
 
 ## Building Software
 
