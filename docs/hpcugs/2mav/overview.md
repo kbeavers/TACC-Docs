@@ -8,43 +8,20 @@ Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, le
 
 [Table 1. Maverick2 GTX Compute Node Specifications](#table1)
 
-	%table(border="1" cellpadding="3")
-		%tr 
-			%td(align="right") Model:
-			%td Super Micro X10DRG-Q Motherboard
-		%tr 
-			%td(align="right") Processor:
-			%td Intel(R) Xeon(R) CPU E5-2620 v4
-		%tr 
-			%td(align="right") Total processors per node:
-			%td 2
-		%tr 
-			%td(align="right") Total cores per processor:
-			%td 8
-		%tr 
-			%td(align="right") Total cores per node:
-			%td 16
-		%tr 
-			%td(align="right") Hardware threads per core:
-			%td 2
-		%tr 
-			%td(align="right") Hardware threads per node:
-			%td 32
-		%tr 
-			%td(align="right") Clock rate:
-			%td 2.10GHz
-		%tr 
-			%td(align="right") RAM:
-			%td 128 GB
-		%tr 
-			%td(align="right") L1/L2/L3 Cache:
-			%td 512KiB / 2MiB / 20 MiB
-		%tr 
-			%td(align="right") Local storage:
-			%td 150.0 GB (~60 GB free)
-		%tr 
-			%td(align="right") GPUs:
-			%td 4 x NVidia 1080-TI GPUs
+Something | Something
+--- | ---
+Model: | Super Micro X10DRG-Q Motherboard
+Processor: | Intel(R) Xeon(R) CPU E5-2620 v4
+Total processors per node: | 2
+Total cores per processor: | 8
+Total cores per node: | 16
+Hardware threads per core: | 2
+Hardware threads per node: | 32
+Clock rate: | 2.10GHz
+RAM: | 128 GB
+L1/L2/L3 Cache: | 512KiB / 2MiB / 20 MiB
+Local storage: | 150.0 GB (~60 GB free)
+GPUs: | 4 x NVidia 1080-TI GPUs
 
 ### V100 Compute Nodes
 
@@ -52,43 +29,20 @@ Maverick2 has 4 V100 compute nodes.
 
 [Table 2. Maverick2 V100 Compute Node Specifications](#table2)
 
-	%table(border="1" cellpadding="3")
-		%tr 
-			%td(align="right") Model:
-			%td Dell PowerEdge R740
-		%tr 
-			%td(align="right") Processor:
-			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
-		%tr 
-			%td(align="right") Total processors per node:
-			%td 2
-		%tr 
-			%td(align="right") Total cores per processor:
-			%td 24
-		%tr 
-			%td(align="right") Total cores per node:
-			%td 48
-		%tr 
-			%td(align="right") Hardware threads per core:
-			%td 2
-		%tr 
-			%td(align="right") Hardware threads per node:
-			%td 96
-		%tr 
-			%td(align="right") Clock rate:
-			%td 2.10GHz
-		%tr 
-			%td(align="right") RAM:
-			%td 192 GB
-		%tr 
-			%td(align="right") L1/L2/L3 Cache:
-			%td 1536KiB / 24576KiB / 33792KiB
-		%tr 
-			%td(align="right") Local storage:
-			%td 119.5 GB (~32 GB free)
-		%tr 
-			%td(align="right") GPUs:
-			%td 2 NVidia  V100 adapters
+Something | Something
+--- | ---
+Model: | Dell PowerEdge R740
+Processor: | Xeon(R) Platinum 8160 CPU @ 2.10GHz
+Total processors per node: | 2
+Total cores per processor: | 24
+Total cores per node: | 48
+Hardware threads per core: | 2
+Hardware threads per node: | 96
+Clock rate: | 2.10GHz
+RAM: | 192 GB
+L1/L2/L3 Cache: | 1536KiB / 24576KiB / 33792KiB
+Local storage: | 119.5 GB (~32 GB free)
+GPUs: | 2 NVidia  V100 adapters
 
 ### P100 Compute Nodes
 
@@ -96,43 +50,20 @@ Maverick2 has 3 P100 nodes.
 
 [Table 3. Maverick2 P100 Compute Node Specifications](#table3)
 
-	%table(border="1" cellpadding="3")
-		%tr 
-			%td(align="right") Model:
-			%td Dell PowerEdge R740
-		%tr 
-			%td(align="right") Processor:
-			%td Xeon(R) Platinum 8160 CPU @ 2.10GHz
-		%tr 
-			%td(align="right") Total processors per node:
-			%td 2
-		%tr 
-			%td(align="right") Total cores per processor:
-			%td 24
-		%tr 
-			%td(align="right") Total cores per node:
-			%td 48
-		%tr 
-			%td(align="right") Hardware threads per core:
-			%td 2
-		%tr 
-			%td(align="right") Hardware threads per node:
-			%td 96
-		%tr 
-			%td(align="right") Clock rate:
-			%td 2.10GHz
-		%tr 
-			%td(align="right") RAM:
-			%td 192 GB
-		%tr 
-			%td(align="right") L1/L2/L3 Cache:
-			%td 1536KiB / 24576KiB / 33792KiB
-		%tr 
-			%td(align="right") Local storage:
-			%td 119.5 GB (~32 GB free)
-		%tr 
-			%td(align="right") GPUs:
-			%td 2 NVidia P100 adapters
+Something | Something
+--- | ---
+Model: | Dell PowerEdge R740
+Processor: | Xeon(R) Platinum 8160 CPU @ 2.10GHz
+Total processors per node: | 2
+Total cores per processor: | 24
+Total cores per node: | 48
+Hardware threads per core: | 2
+Hardware threads per node: | 96
+Clock rate: | 2.10GHz
+RAM: | 192 GB
+L1/L2/L3 Cache: | 1536KiB / 24576KiB / 33792KiB
+Local storage: | 119.5 GB (~32 GB free)
+GPUs: | 2 NVidia P100 adapters
 
 ### Login Nodes
 

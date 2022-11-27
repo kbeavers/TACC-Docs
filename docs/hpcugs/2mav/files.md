@@ -4,23 +4,11 @@ Maverick2 mounts two Lustre file systems that are shared across all nodes: the h
 
 [Table 4. Maverick2 File Systems](#table4)
 
-%table(border=1 cellpadding="3")
-	%tr
-		%th File System
-		%th Quota
-		%th Key Features
-	%tr
-		%td <code>$HOME</code>
-		%td 10GB, 200,000 files
-		%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
-	%tr
-		%td <code>$WORK</code>
-		%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
-		%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
-	%tr
-		%td <code>$SCRATCH</code>
-		%td <b>N/A</b>
-		%td <b>Maverick2 does not mount a scratch file system.</b>
+File System | Quota | Key Features
+--- 	    | ---   | ---|
+<code>$HOME</code> | 10GB, 200,000 files | <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+<code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.  | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+<code>$SCRATCH</code> | <b>N/A</b> | <b>Maverick2 does not mount a scratch file system.</b>
 	
 The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
 
@@ -34,7 +22,11 @@ Note that resource-specific NOWRAPsub-directoriesESPAN of `$STOCKYARD` are nothi
 
 [Table 5. Built-in Account Level Aliases](#table5)
 
-copy from Frontera
+Alias | Command
+---- | ----
+<code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
+<code>cdw</code> | <code>cd $WORK</code>
+<code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
 
 
