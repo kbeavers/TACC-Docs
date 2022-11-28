@@ -1,7 +1,5 @@
-#!/bin/sh
+#!/bin/sh 
 
-if [ "$1" = "t" ]
-then
 	echo "building Stampede2 user guide for TACC"
 	title="<h1\>Stampede2\ User\ Guide<\/h1\>"
 
@@ -31,49 +29,8 @@ then
 	knlmemorymodes="<p><img\ alt=\"KNL\ Memory\ Modes\"\ src=\"\/documents\/10157\/1334612\/KNL+Memory+Modes.png\/f19c64b8-6007-4a08-a6f3-80cabf9a2c20\"\ style=\"width:\ 800px;\ height:\ 171px;\"\ \/>"
 	knlclustermodes="<p><img\ alt=\"KNL\ Cluster\ Modes\"\ src=\"\/documents\/10157\/1334612\/KNL+Cluster+Modes.png\/142c5092-c736-48ea-a3cc-f3d9d3f43647\"\ style=\"width:\ 800px;\ height:\ 274px;\"\ \/>"
 
-
-elif [ "$1" = "x" ] 
-then
-	echo "building Stampede2 user guide for XSEDE"
-	title="<h1\>Stampede\ 2\ User\ Guide<\/h1\>"
-
-	# common variables
-	hostname="stampede2.tacc.xsede.org"
-	userportal="<a\ href=\"https:\/\/portal.xsede.org\">XSEDE\ User\ Portal<\/a>"
-	stampede1ug="http:\/\/portal.xsede.org\/tacc-stampede"
-	stampede2ug="http:\/\/portal.xsede.org\/tacc-stampede2"
-	ranchug="https:\/\/portal.xsede.org\/tacc-ranch"
-
-	#revision history arrows
-	revhistoryrightarrow="\"\/documents\/10308\/0\/small-right-arrow.png\/a9ed7d76-796c-4b08-b7bd-a59452bf0da1?t=1480702749000\""
-	revhistorydownarrow="\"\/documents\/10308\/0\/small-down-arrow.png\/3f6dbc1d-4bc5-4903-9f7f-ec9926d7d1eb?t=1480702747000\""
-
-	#XSEDE images
-	logincomputenodes="<img src=\"broken\">"
-	stockyard="<img src=\"broken\">"
-	knlmemorymodes="<img src=\"broken\">"
-	knlclustermodes="<img src=\"broken\">"
-
-
-	stampedepano="<img\ alt=\"Stampede2\"\ src=\"\/documents\/10308\/1748604\/S2_with_paintjob.jpg\/e47fab7e-972f-449e-9713-b589c6d633c3?t=1515525989000\"\ style=\"height:\ 445px;\ width:\ 600px;\ border-width:\ 1px;\ border-style:\ solid;\">"
-
-	logincomputenodes="<img\ src=\"\/documents\/10308\/1748604\/Login+to+compute+nodes.jpg\/ccd9bd1c-b4cf-4641-b4a3-1989086acb90?t=1515525988000\"\ style=\"height:\ 277px;\ width:\ 600px;\"\ \/>"
-
-	# stockyard="<img\ src=\"\/documents\/10308\/1748604\/work-small.png\/2133205c-8545-4890-bf8a-cf5fe5e32f5f?t=1515525990000\"\ style=\"height:\ 112px;\ width:\ 600px;\"\ \/>"
-	stockyard="<img\ src=\"\/documents\/10308\/0\/Stockyard+2022\/258b47cd-0511-4bc4-9377-e53a502f60c8?t=1647884902359\"\ style=\"width:\ 600px;\ height:\ 129px;\"\/>"
-
-
-	knlmemorymodes="<img\ alt=\"KNL\ Memory\ Modes\"\ src=\"\/documents\/10308\/1748604\/KNL+Memory+Modes.png\/e123ecf1-ded3-41fe-87c7-c1ffd72bac3f?t=1515529369778\"\ style=\"height:\ 128px;\ width:\ 600px;\ border-width:\ 1px;\ border-style:\ solid;\"\ \/>"
-		
-	knlclustermodes="<img\ alt=\"KNL\ Cluster\ Modes\"\ src=\"\/documents\/10308\/1748604\/KNL+Cluster+Modes.png\/b0edef5e-4a16-4b4a-bad9-fad96d4d9543?t=1515529355512\"\ style=\"height:\ 206px;\ width:\ 600px;\ border-width:\ 1px;\ border-style:\ solid;\"\ \/>"
-
-else
-	echo "invalid command line argument"
-	exit 1
-fi
-
-inputfile=$2
-outputfile=$3
+inputfile=$1
+outputfile=$2
 
 taccuserportal="http:\/\/portal.tacc.utexas.edu\/"
 xsedeuserportal="http:\/\/portal.xsede.org\/"

@@ -16,7 +16,7 @@
 
 Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
 
-<img alt="" src="../../../imgs/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
+<img alt="" src="IMGDIR/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
 <p class="image-caption">Figure 1. Edward Blein - Trail of Horses</p>
 
 ## System Overview
@@ -255,7 +255,7 @@ Maverick2 mounts two Lustre file systems that are shared across all nodes: the h
 [Table 4. Maverick2 File Systems](#table4)
 
 File System | Quota | Key Features
---- 	    | ---   | ---|
+--- 	    | ---   | ---
 <code>$HOME</code> | 10GB, 200,000 files | <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. NFS-mounted. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
 <code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.  | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
 <code>$SCRATCH</code> | <b>N/A</b> | <b>Maverick2 does not mount a scratch file system.</b>
@@ -266,7 +266,8 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
-<figure><img alt="Stockyard Work File System" src="/documents/10157/1181317/Stockyard+2022/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453" style="width: 800px; height: 173px;"/><figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+<img src="../../../imgs/stockyard-2022.jpg">
+**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
 
 Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 

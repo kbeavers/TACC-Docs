@@ -1,14 +1,14 @@
-# <p><span style="font-size:225%; font-weight:bold;">Ranch User Guide</span><br>
-<i>Last update: January 13, 2022</i></p>
+# <p>Ranch User Guide</span><br>
+<span style="font-size:90%;"><i>Last update: January 13, 2022</i></span></p>
 
-## [Notices](#notices)
+## Notices
 
 <p class="portlet-msg-alert">12/01/2020 While the deadline for data retrieval from the old Ranch archive has passed, the data on the old system has not been deleted. While users no longer have access to the data from old Ranch, TACC staff may be able to migrate data for users who provide a formal request.  These migrations will be attempted on a best effort basis, but may now be limited by the viability of the underlying hardware of the old Ranch archive.</p>
 
-If you would like to be placed on the list for ad-hoc migration as described above, then [submit a support ticket](SUBMITTICKET). These migrations are handled one-at-a-time in the order the requests are received. TACC staff will contact you prior to your migration for data validation and for any other information necessary before your migration is attempted.  You MUST respond to this contact, or your request cannot be attempted.  Due to the number and scale of these ad-hoc migration requests, we do not currently have a timeline for precisely when your migration may be attempted or completed, but we expect that all migrations from old Ranch will be concluded by Q1 2022.
+If you would like to be placed on the list for ad-hoc migration as described above, then [submit a support ticket](CREATETICKET). These migrations are handled one-at-a-time in the order the requests are received. TACC staff will contact you prior to your migration for data validation and for any other information necessary before your migration is attempted.  You MUST respond to this contact, or your request cannot be attempted.  Due to the number and scale of these ad-hoc migration requests, we do not currently have a timeline for precisely when your migration may be attempted or completed, but we expect that all migrations from old Ranch will be concluded by Q1 2022.
 
 
-## [Introduction](#intro)
+## Introduction
 
 TACC's High Performance Computing (HPC) systems are used primarily for scientific computing and while their disk systems are large, they are unable to store the long-term final data generated on these systems. The Ranch archive system fills this need for high capacity long-term storage, by providing a massive high performance file system and tape-based backing store designed, implemented, and supported specifically for archival purposes.
 
@@ -17,7 +17,7 @@ Ranch (**`HOSTNAME`**), is a Quantum StorNext-based system, with a DDN- provided
 Ranch is an allocated resource, meaning that Ranch is available only to users with an allocation on one of TACC's [computational resources](/user-guides) such as [Frontera](FRONTERAUSERGUIDE), [Stampede2](STAMPEDE2USERGUIDE), or [Lonestar6](LONESTAR6USERGUIDE). XSEDE PIs will be prompted automatically for the companion storage allocation as part of the proposal submission process and should include a justification of their storage need in their proposal. UT and UT system PIs should also make a request and justify the storage requested when applying for a Ranch shared "Project" (non-user) allocation. The default allocation on Ranch for users is 2TB. To request a [shared Ranch project space](#projects) for your team’s use, please submit a TACC user portal ticket.
 
 
-#### [Intended Use](#intro-use)
+#### Intended Use
 
 **Ranch is fundamentally implemented using long-term <u>tape</u> storage and as such is designed for archiving data that is in a state wherein the data will not likely change, and will not likely need to be accessed very often.** Obviously, Ranch is to be used only for work-related data. In addition, and most importantly, Ranch is not meant for active data and is never to be used as a replication solution for your "`/scratch`" directory. Ranch is also not suitable for system backups, due to the large number of small files that backups inevitably generate. 
 
@@ -25,14 +25,14 @@ Ranch is an allocated resource, meaning that Ranch is available only to users wi
 
 
 
-#### [System Configuration](#intro-configuration)
+#### System Configuration
 
 Ranch's primary disk storage system is a DDN SFA14K DCR (Declustered RAID) system which is managed by Quantum's StorNext file system. The raw capacity is approximately 30PB, of which 17PB is user-facing. File metadata is stored on a Quantum SSD-based appliance. The back-end tape library, to which files automatically migrate after they have been inactive (neither modified nor accessed) on disk for a period of time, is a Quantum Scalar i6000, with 24 LTO-8 tape drives.  Each tape has an uncompressed capacity of approximately 12.5TB.
 
 Previously, the Ranch system was based on Oracle's HSM software, with two SL8500 libraries, each with 20,000 tape slots. This Oracle system will remain as a legacy system while we migrate relevant data from Oracle HSM to the new Quantum environment.
 
 
-## [System Access](#access)
+## System Access
 
 Direct login via Secure Shell's `ssh` command to Ranch is allowed so you can create directories and manage files. The Ranch archive file systems cannot be mounted on any remote system.
 
@@ -40,15 +40,15 @@ Direct login via Secure Shell's `ssh` command to Ranch is allowed so you can cre
 
 
 
-#### [Ranch Environment Variables](#access-envvars)
+#### Ranch Environment Variables
 
 The preferred way of accessing Ranch, especially from scripts, is by using the TACC-defined environment variables `$ARCHIVER` and `$ARCHIVE`. These variables, defined on all TACC resources, define the hostname of the current TACC archival system, `$ARCHIVER`, and each account's personal archival space, `$ARCHIVE`. These environment variables help ensure that scripts will continue to work, even if the underlying system configuration changes in the future.
 
-#### [Accessing Files from Within Running Programs](#access-programs)
+#### Accessing Files from Within Running Programs
 
 Ranch access is not allowed from within running jobs on other TACC resources. Data must be first explicitly transferred from Ranch to your compute resource in order to be available for running jobs.
 
-## [Organizing Your Data](#organizing)
+## Organizing Your Data
 
 After over a decade of operation and servicing more than 60,000 user accounts, what has been revealed after running Ranch for so long, with so many users, is that limiting total file count, total file size, and possibly enforcing explicit data retention periods, are the keys to continued sustainable Ranch operation over the long-term.
 
@@ -65,7 +65,7 @@ Users should be using `tar` or `gtar` to achieve file sizes in this range before
 The new Quantum-based environment is designed to meet the demand of retrieving multi-TB to PB-sized data sets in hours or days, rather than in weeks, which is possible only when the data set is stored into files with an average file size set optimally as described above.
 
 
-#### [Ranch Quotas](#organizing-quotas) 
+#### Ranch Quotas
 
 <p class="portlet-msg-info">
 <b>File Count Quota:</b> Users are limited to 50,000 files in their `$HOME` directories.  
@@ -84,7 +84,7 @@ It is your responsibility to keep the file count below the 50,000 quota by using
 
 
 
-#### [Monitor your Disk Usage and File Counts](#organizing-quotas)
+#### Monitor your Disk Usage and File Counts
 
 Users can check their current and historical Ranch usage by looking at the contents of the "`HSM_usage`" file in their Ranch user directory. Note that this file contains quota, on-disk, and on-tape, usage information for the directory it is in and all those beneath it.
 
@@ -94,18 +94,18 @@ This file is updated nightly as a convenience to the user.  Each entry also show
 
 
 
-## [Ranch "Project" Storage](#projects)
+## Ranch "Project" Storage
 
-Ranch has implemented new "Project" storage which is a separate directory structure designed to support both shared and over-size data directories for users and/or projects for whom the fixed standard storage for each user of 2TB is inadequate, or in the case of shared storage, inappropriate.  [Submit a support ticket](SUBMITTICKET) to request Project storage on Ranch.  Note that each Project directory will also contain an `HSM_usage` file as described above.
+Ranch has implemented new "Project" storage which is a separate directory structure designed to support both shared and over-size data directories for users and/or projects for whom the fixed standard storage for each user of 2TB is inadequate, or in the case of shared storage, inappropriate.  [Submit a support ticket](CREATETICKET) to request Project storage on Ranch.  Note that each Project directory will also contain an `HSM_usage` file as described above.
 
-## [Transferring Data](#transferring)
+## Transferring Data
 
 To maximize the efficiency of data archiving and retrieval for users, data should be transferred using as large a file as is feasible.  See [Organizing your Data](#organizing) above.
 
 Ideally users should combine their data into large files in their source environment, TACC or otherwise, and transfer the data already in its final form into Ranch.  If that is not possible, usually due to very large files (+5TB) files, then some technique should be used to create smaller files that transfer gracefully.  This could be achieved merely by the judicious use of `tar` or `gtar` on the source system, a combination of `tar`/`gtar` and then `split` on the source system, or lastly, and least optimally, the transfer of the files, regardless of size, into Ranch, and then the immediate use of `tar` to create "tarfiles" sized as described above.
 
 
-#### [Manipulating Files within Ranch](#transferring-manipulating)
+#### Manipulating Files within Ranch
 
 Since Ranch is an archive system, any files which have not been accessed recently will be stored on tape. This is transparent to the user, as is, when necessary, the truncation of the file’s data to provide additional disk space. If a file has not yet been truncated, reading and manipulating the file will take place at speeds typical for the user-facing high performance disk array and file system wherein the file resides
 
@@ -114,11 +114,11 @@ However, for any file that is to be read or accessed that has been truncated, it
 Note that simply doing an "`ls -l`" to look at a file's attributes or an "`mv`" to rename the file will not provoke file retrieval from tape, as these are operations against the file’s metadata.
 
 
-#### [Data Transfer Methods](#transferring-methods)
+#### Data Transfer Methods
 
 TACC supports two transfer mechanisms: `scp` (recommended) and `rsync` (avoid if at all possible).
 
-###### [Secure Copy with `scp` Command](#transferring-methods-scp)
+###### Secure Copy with `scp` Command
 
 The simplest way to transfer files to and from Ranch is to use the Secure Shell "`scp`" command:
 
@@ -161,7 +161,7 @@ The following command-line examples also demonstrate how to transfer files to an
 
 
 
-###### [Remote Sync with `rsync` command](#transferring-methods-rsync) 
+###### Remote Sync with `rsync` command
 
 **Please read carefully**: The UNIX `rsync` command is a powerful command to both transfer data as well as keep identical copies of data in separate locations in sync.  However, it MUST be used very carefully in any archive environment.
 
@@ -174,13 +174,13 @@ Therefore, TACC Staff highly recommends to NOT use "`rsync`" for ANY kind of dat
 Using "`rsync`", **without synchronization**, continues to be a viable method of transferring data into and out of Ranch.
 
 
-#### [Large Data Usage and Transfers](#transferring-largedata)
+#### Large Data Usage and Transfers
 
 If you are moving a very large amount of data into Ranch and you encounter a quota limit error, then you are bumping into one of the limits on the amount of data you can have on Ranch's user-facing file systems. These quotas limit both file count as well as total file size.  However, it is expected that these limits should only affect a small number of users.  Again, the file "HSM_usage" at the top level of both users’ and Projects’ directories is updated nightly and should be consulted to see current usage with Ranch.  If you encounter a quota error, please submit a ticket to the TACC user portal, and we will see what remediation may be possible. 
 
 Again, use the "`du -sh .`" and "`find . -type f | wc`" commands to see how much data and how many files you currently have on the disk or directory at that moment.
 
-###### [Examples](#transferring-largedata-examples)
+###### Examples
 
 1. Archive a large directory with `tar`, send the `tar` data stream to Ranch, splitting it into optimally sized tarfiles upon its arrival on the Ranch node:
 
@@ -214,9 +214,7 @@ Again, use the "`du -sh .`" and "`find . -type f | wc`" commands to see how much
 1. If you like what you see, and `tar` returns no errors, you will have validated you have good data after having split it into manageable pieces.
 
 
-
-
-## [Citizenship on Ranch](#citizenship)
+## Citizenship on Ranch
 
 * Limit `scp`, `ssh`, `rsync` processes to no more than two processes.
 * Follow the guidelines for archiving data - file size, file count, transfer method
@@ -229,7 +227,8 @@ Again, use the "`du -sh .`" and "`find . -type f | wc`" commands to see how much
 / Read in Ranch's help module
 = File.read "../../include/ranch-help.html"
 
-## [References](#refs)
+## References
 
 * [Stampede2 User Guide](https://portal.tacc.utexas.edu/user-guides/stampede2)
 
+{% include 'aliases.md' %}

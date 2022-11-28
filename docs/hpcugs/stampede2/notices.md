@@ -1,0 +1,19 @@
+<style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
+
+# Stampede2 User Guide
+<span style="font-size:90%;"><i>Last update: September 16, 2022</i> see <a href="#history">revision history</a></span>   
+  
+## Notices
+
+
+* **The XSEDE project concluded formal operations as an NSF-funded project on August 31, 2022**.  Similar services are now operated through NSF's follow-on program, Advanced Cyberinfrastructure Coordination Ecosystem: Services &amp; Support, or ACCESS.  Find out more at the [ACCESS website](http://access-ci.org). (09/01/2022)
+* **Stampede2 has deployed 240 Intel "Ice Lake" (ICX) compute nodes, replacing 448 KNL compute nodes.**  Each ICX processor has 80 cores on 2 sockets (40 cores/socket). Hyperthreading is enabled: there are two hardware threads per core, for a total of 80 x 2 = 160 hardware threads per node. See [ICX Compute Node](#table2a) specifications, new [ICX job scripts](#job-scripts), and the new [`icx-normal` queue](#queues) for more information. (03/09/22)
+* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
+* All users: read [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio). TACC Staff have put forth new file system and job submission guidelines. (01/09/20)
+* **The Intel 18 compiler has replaced Intel 17 as the default compiler on Stampede2.** The Intel 17 compiler and software stack are still available to those who load the appropriate modules explicitly.  See [Intel 18 to Become New Default Compiler on Stampede2](https://portal.tacc.utexas.edu/user-guides/stampede2/intel) for more information.  (02/26/19)
+* **In order to balance queue wait times, the charge rate for all [KNL queues](#queues) has been adjusted to 0.8 SUs per node-hour.** The charge rate for the SKX queues remains at 1 SU.  (01/14/19)
+* **Stampede2's Knights Landing (KNL) compute nodes each have 68 cores**, and each core has 4 hardware threads. But it may not be a good idea to use all 272 hardware threads simultaneously, and it's certainly not the first thing you should try. In most cases it's best to specify no more than 64-68 MPI tasks or independent processes per node, and 1-2 threads/core. See [Best Known Practices...](#programming-knl-bestpractices) for more information.
+* **Stampede2's Skylake (SKX) compute nodes each have 48 cores** on two sockets (24 cores/socket). Hyperthreading is enabled: there are two hardware threads per core, for a total of 48 x 2 = 96 hardware threads per node. See [Table 2](#table2) for more information. Note that SKX nodes have their own [queues](#running-queues). 
+
+
+<figure>FIGURE-STAMPEDEPANO<figcaption>Figure 1. Stampede2 System</figcaption></figure>
