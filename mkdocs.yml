@@ -10,9 +10,13 @@ theme:
 nav:
   - Fiddling : testingextensions.md
   - HPC :
+    - Corral: hpcugs/corral/corral.md
     - Frontera: hpcugs/frontera/frontera.md
+    - Lonestar6: hpcugs/6lonestar/lonestar6.md
+    - Maverick2: hpcugs/2mav/maverick2.md
     - Ranch: hpcugs/ranch/ranchsrc.md
-    - Maverick2: hpcugs/2mav/index.md
+    - Stallion: hpcugs/stallion/stallionsrc.md
+    - Stampede2: hpcugs/stampede2/stampede2.md
   - Software :
     - Gaussian: softwareugs/gaussian.md
     - Tensorflow: softwareugs/tensorflow.md
@@ -30,8 +34,8 @@ markdown_extensions:
 plugins:
   - search
   - macros # allows {% include ... %} (and macros)
-  - with-pdf:
-      copyright: TACC
-      cover_subtitle: TACC User Guide
-      toc_title: TACC User Guide
-      output_path: docs/user-guide.pdf
+#  - with-pdf:
+#      copyright: TACC
+#      cover_subtitle: TACC User Guide
+#      toc_title: TACC User Guide
+#      output_path: docs/user-guide.pdf

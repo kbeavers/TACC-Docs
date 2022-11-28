@@ -32,7 +32,7 @@ The S3 interface is most suitable for programmatic interaction from within custo
 
 Please direct any further questions you may have regarding the cloud storage interface to Corral through the [TACC ticket system][CREATETICKET].
 
-<figure><img alt="Corral4 Data Storage" src="IMAGEDIR/corral/Corral4.jpg" style="width: 800px; height: 530px; border-width: 1px; border-style: solid;" /> 
+<figure><img alt="Corral4 Data Storage" src="../../../imgs/corral/Corral4.jpg" style="width: 800px; height: 530px; border-width: 1px; border-style: solid;" /> 
 <figcaption>Figure 1. Corral4 Data Storage</figcaption></figure>
 
 
@@ -132,7 +132,7 @@ Click on the "Open Connection" button in the top right corner of the Cyberduck w
 
 Once connected, you can navigate through your remote file hierarchy using familiar graphical navigation techniques. You may also drag-and-drop files into and out of the Cyberduck window to transfer files to and from Corral.
 
-<figure><img alt="Cyberduck-SSH" src="IMAGEDIR/corral/CorralCyberduck-1.jpg" style="width: 475px; height: 544px;" />
+<figure><img alt="Cyberduck-SSH" src="../../../imgs/corral/CorralCyberduck-1.jpg" style="width: 475px; height: 544px;" />
 <figcaption>Figure 2. Cyberduck connection setup screen</figcaption></figure>
 
 
@@ -180,7 +180,7 @@ login1$ <b>chmod o+r <i>filename</i></b></pre>
 
 There are various shortcuts one can use to apply specific permissions, and the user is encouraged to read the documentation for the `chmod` command by typing "`man chmod`" at the command-line prompt. The `chown` command may also be of interest in understanding permissions, and full documentation can be read using "`man chown`".
 
-<figure><img alt="Cyberduck-SSH" src="IMAGEDIR/corral/CorralCyberduck-2.jpg" style="width: 475px; height: 544px;" />
+<figure><img alt="Cyberduck-SSH" src="../../../imgs/corral/CorralCyberduck-2.jpg" style="width: 475px; height: 544px;" />
 <figcaption>Figure 3. Cyberduck interface for setting permissions</figcaption></figure>
 
 ## Snapshots and File Retrieval

@@ -15,12 +15,9 @@ SRC =   \
 
 stampede2:	$(SRC)
 	cat $(SRC) > temp.md
-	./configurestrings.sh temp.md stampede2.md
+	../configurestrings.sh temp.md stampede2.md
 	/bin/rm temp.md 
 
-clean:
-	/bin/rm -f stampede2.md &2> /dev/null
-
 outline: $(SRC)
-	grep -h "# " $(SRC) >> outline.md
+	grep -h "# " $(SRC) > outline.md
 

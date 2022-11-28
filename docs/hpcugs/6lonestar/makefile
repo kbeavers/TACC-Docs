@@ -13,11 +13,9 @@ LS6SRC	=	 	\
 
 lonestar6:	$(LS6SRC)
 	cat $(LS6SRC) > temp.md
-	./configurestrings.sh temp.md lonestar6.md
+	../configurestrings.sh temp.md lonestar6.md
 	/bin/rm temp.md 
 
-clean:
-	/bin/rm -f lonestar6.md &2> /dev/null
 
 outline: $(LS6SRC)
 	grep -h "# " $(LS6SRC) >> outline.haml
