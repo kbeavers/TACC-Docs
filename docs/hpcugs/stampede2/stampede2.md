@@ -16,7 +16,7 @@
 * **Stampede2's Skylake (SKX) compute nodes each have 48 cores** on two sockets (24 cores/socket). Hyperthreading is enabled: there are two hardware threads per core, for a total of 48 x 2 = 96 hardware threads per node. See [Table 2](#table2) for more information. Note that SKX nodes have their own [queues](#running-queues). 
 
 
-<figure>FIGURE-STAMPEDEPANO<figcaption>Figure 1. Stampede2 System</figcaption></figure>
+<figure><img alt="Stampede2" src="../../../imgs/stampede2/Stampede2.jpg"><figcaption>Figure 1. Stampede2 System</figcaption></figure>
 ## Introduction
 
 Stampede2, generously funded by the National Science Foundation (NSF) through [award  ACI-1540931](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540931), is one of the Texas Advanced Computing Center (TACC), University of Texas at Austin's flagship supercomputers. Stampede2 entered full production in the Fall 2017 as an 18-petaflop national resource that builds on the successes of the original Stampede system it replaces. The first phase of the Stampede2 rollout featured the second generation of processors based on Intel's Many Integrated Core (MIC) architecture. Stampede2's 4,200 Knights Landing (KNL) nodes represent a radical break with the first-generation Knights Corner (KNC) MIC coprocessor. Unlike the legacy KNC, a Stampede2 KNL is not a coprocessor: each 68-core KNL is a stand-alone, self-booting processor that is the sole processor in its node. Phase 2 added to Stampede2 a total of 1,736 Intel Xeon Skylake (SKX) nodes. The final phase of Stampede2 features the replacement of 448 KNL nodes with 224 Ice Lake nodes. 
@@ -32,32 +32,17 @@ Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Me
 
 [Table 1. Stampede2 KNL Compute Node Specifications](#table1)  
 
-		%table(border="1" cellpadding="3")
-			%tr
-				%td(align="right") Model:&nbsp;
-				%td Intel Xeon Phi 7250 ("Knights Landing")
-			%tr
-				%td(nowrap align="right") Total cores per KNL node:&nbsp; 
-				%td 68 cores on a single socket
-			%tr
-				%td(nowrap align="right") Hardware threads per core:&nbsp;
-				%td 4
-			%tr
-				%td(nowrap align="right") Hardware threads per node:&nbsp;
-				%td 68 x 4 = 272
-			%tr
-				%td(align="right") Clock rate:&nbsp;
-				%td 1.4GHz
-			%tr
-				%td(align="right") RAM:&nbsp;
-				%td 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
-			%tr
-				%td(align="right") Cache:&nbsp;
-				%td 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
-			%tr
-				%td(align="right") Local storage:&nbsp; 
-				%td All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
-	
+something | something
+--- | ---
+Model:&nbsp; | Intel Xeon Phi 7250 ("Knights Landing")
+Total cores per KNL node:&nbsp; | 68 cores on a single socket
+Hardware threads per core:&nbsp; | 4
+Hardware threads per node:&nbsp; | 68 x 4 = 272
+Clock rate:&nbsp; | 1.4GHz
+RAM:&nbsp; | 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
+Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
+Local storage:&nbsp; | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
+
 	
 ### SKX Compute Nodes
 
@@ -65,63 +50,33 @@ Stampede2 hosts 1,736 SKX compute nodes.
 
 [Table 2. Stampede2 SKX Compute Node Specifications](#table2)
 
-		%table(border="1" cellpadding="3")
-			%tr
-				%td(align="right") Model:&nbsp;
-				%td Intel Xeon Platinum 8160 ("Skylake")
-			%tr
-				%td(align="right") Total cores per SKX node:&nbsp;
-				%td 48 cores on two sockets (24 cores/socket)
-			%tr
-				%td(nowrap align="right") Hardware threads per core:&nbsp;
-				%td 2
-			%tr
-				%td(nowrap align="right") Hardware threads per node:&nbsp;
-				%td 48 x 2 = 96
-			%tr
-				%td(align="right") Clock rate:&nbsp;
-				%td 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
-			%tr
-				%td(align="right") RAM:&nbsp;
-				%td 192GB (2.67GHz) DDR4
-			%tr
-				%td(align="right") Cache:&nbsp;
-				%td 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
-			%tr
-				%td(align="right") Local storage:&nbsp;
-				%td 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
+Something | Something
+--- | ---
+Model:&nbsp; | Intel Xeon Platinum 8160 ("Skylake")
+Total cores per SKX node:&nbsp; | 48 cores on two sockets (24 cores/socket)
+Hardware threads per core:&nbsp; | 2
+Hardware threads per node:&nbsp; | 48 x 2 = 96
+Clock rate:&nbsp; | 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
+RAM:&nbsp; | 192GB (2.67GHz) DDR4
+Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
+Local storage:&nbsp; | 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
 
-			## [ICX Compute Nodes](#overview-icxcomputenodes)
+## ICX Compute Nodes
 
-			Stampede2 hosts 224 ICX compute nodes.
+Stampede2 hosts 224 ICX compute nodes.
 
-			[Table 2a. Stampede2 ICX Compute Node Specifications](#table2a)
+[Table 2a. Stampede2 ICX Compute Node Specifications](#table2a)
 
-		%table(border="1" cellpadding="3")
-			%tr
-				%td(align="right") Model:&nbsp;
-				%td Intel Xeon Platinum 8380 ("Ice Lake")
-			%tr
-				%td(align="right") Total cores per ICX node:&nbsp;
-				%td 80 cores on two sockets (40 cores/socket)
-			%tr
-				%td(nowrap align="right") Hardware threads per core:&nbsp;
-				%td 2
-			%tr
-				%td(nowrap align="right") Hardware threads per node:&nbsp;
-				%td 80 x 2 = 160
-			%tr
-				%td(align="right") Clock rate:&nbsp;
-				%td 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
-			%tr
-				%td(align="right") RAM:&nbsp;
-				%td 256GB (3.2 GHz) DDR4
-			%tr
-				%td(align="right") Cache:&nbsp;
-				%td 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
-			%tr
-				%td(align="right") Local storage:&nbsp;
-				%td 342 GB <code>/tmp</code> partition
+Something | Something
+--- | ---
+Model:&nbsp; | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores per ICX node:&nbsp; | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core:&nbsp; | 2
+Hardware threads per node:&nbsp; | 80 x 2 = 160
+Clock rate:&nbsp; | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
+RAM:&nbsp; | 256GB (3.2 GHz) DDR4
+Cache:&nbsp; | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage:&nbsp; | 342 GB <code>/tmp</code> partition
 
 ### Login Nodes
 
@@ -136,29 +91,17 @@ The interconnect is a 100Gb/sec Intel Omni-Path (OPA) network with a fat tree to
 Stampede2 mounts three shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME`, `$WORK`, and `$SCRATCH`](#files-filesystems). Each file system is available from all Stampede2 nodes; the [Stockyard-hosted work file system](https://www.tacc.utexas.edu/systems/stockyard) is available on most other TACC HPC systems as well.  See [Navigating the Shared File Systems](#files-filesystems) for detailed information as well as the [Good Conduct](#table-file-system-usage-recommendations) file system guidelines. 
 
 		
-[Table 3. Stampede2 File Systems](#table3)
+Table 3. Stampede2 File Systems
 
-		%table(border=1 cellpadding="3")
-			%tr
-				%th(nowrap) File System
-				%th Quota
-				%th Key Features
-			%tr
-				%td <code>$HOME</code>
-				%td 10GB, 200,000 files
-				%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
-			%tr
-				%td <code>$WORK</code>
-				%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
-				%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
-			%tr
-				%td <code>$SCRATCH</code>
-				%td no quota
-				%td Overall capacity ~30PB. Four MDSs, 66 OSTs.<br>Defaults: 1 stripe, 1MB stripe size.<br>Not backed up.<br><b>Files are <a href="#scratchpolicy">subject to purge</a> if access time* is more than 10 days old</b>.
-	
+Something | Something
+--- | ---
+<span style="white-space: nowrap;">File System</span> | Quota | Key Features
+<code>$HOME</code> | 10GB, 200,000 files | <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+<code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.  | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+<code>$SCRATCH</code> | no quota | Overall capacity ~30PB. Four MDSs, 66 OSTs.<br>Defaults: 1 stripe, 1MB stripe size.<br>Not backed up.<br><b>Files are <a href="#scratchpolicy">subject to purge</a> if access time* is more than 10 days old</b>.
 
-	/scratch policy
-	= File.read "../../include/scratchpolicy.html"
+/scratch policy
+= File.read "../../include/scratchpolicy.html"
 
 	
 ## Accessing the System
@@ -256,8 +199,7 @@ Be sure to request computing resources that are consistent with the type of appl
 	$ <b>module load launcher</b>
 	$ <b>module help launcher</b></pre>
 
-<figure>
-FIGURE-LOGINCOMPUTENODES
+<figure><img alt="" src="../../../imgs/login-compute-nodes.jpg">
 <figcaption>Figure 2. Login and compute nodes</figcaption></figure>
 
 ### Using Modules to Manage your Environment
@@ -342,12 +284,12 @@ See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensiv
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">"`module save`"</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede2's default startup scripts for a safe way to do so.
 
-# Managing Your Files
+## Managing Your Files
 
 Stampede2 mounts three file Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Stampede2's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH`, and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the [Stampede2 File Systems](#table3) table for the basic characteristics of these file systems, [File Operations: I/O Performance](#programming-fileio) for advice on performance issues, and [Good Conduct](#conduct-filesystems-tips) for tips on file system etiquette.
 
 
-## Navigating the Shared File Systems
+### Navigating the Shared File Systems
 
 Stampede2's `/home` and `/scratch` file systems are mounted only on Stampede2, but the work file system mounted on Stampede2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). Stockyard is the same work file system that is currently available on Frontera, Lonestar6, and several other TACC resources. 
 
@@ -359,31 +301,21 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.
 
-<figure>FIGURE-STOCKYARD<figcaption>**Figure 3.**<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure><img alt="Stockyard 2022" src="../../../imgs/stockyard-2022.jpg"><figcaption>Figure 3. Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
 
 Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/stampede2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
 [Table 4. Built-in Account Level Aliases](#table4)
 
-%tr
-	%th(colspan=2) Built-in Account Level Aliases
-%tr 
-	%th Alias
-	%th Command
-%tr
-	%td <code>cd</code> or <code>cdh</code>
-	%td <code>cd $HOME</code>
-%tr
-	%td <code>cdw</code>
-	%td <code>cd $WORK</code>
-%tr
-	%td <code>cds</code>
-	%td <code>cd $SCRATCH</code>
-%tr
-	%td <code>cdy</code> or <code>cdg</code>
-	%td <code>cd $STOCKYARD</code>
+Alias | Command
+---- | ----
+<code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
+<code>cdw</code> | <code>cd $WORK</code>
+<code>cds</code> | <code>cd $SCRATCH</code>
+<code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-## Striping Large Files
+
+### Striping Large Files
 
 Stampede2's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives (dozens of physical drives for `$HOME`, hundreds for `$WORK` and `$SCRATCH`).
 
@@ -404,9 +336,9 @@ You can check the stripe count of a file using the "`lfs getstripe`" command:
 <pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
 
 
-# Transferring Files
+## Transferring Files
 
-## Transfer Using `scp`
+### Transfer Using `scp`
 
 You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](STAMPEDE2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
 
@@ -442,7 +374,7 @@ Instead, use `tar` to create an archive of the directory, then transfer the dire
 localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
 localhost$ <b>scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
 
-## Transfer Using `rsync`
+### Transfer Using `rsync`
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
@@ -456,13 +388,13 @@ See [Striping Large Files](#files-striping) for additional important advice abou
 
 As detailed in the [Conduct](#conduct) section above, it is important to monitor your quotas on the `$HOME` and `$WORK` file systems, and limit the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
 
-## Transfer Using Grid Community Toolkit
+### Transfer Using Grid Community Toolkit
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.
 
 Stampede2 has two endpoints, one running Globus gridftp v5.4 software available for [ACCESS](http://access-ci.org) (formerly XSEDE) users, and the endpoint running Grid Community Toolkit with CILogon authentication available to all.  
 
-## Sharing Files with Collaborators
+### Sharing Files with Collaborators
 
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
@@ -633,102 +565,32 @@ For information on the performance implications of your choice of build flags, s
 If you use GNU compilers, see [GNU x86 Options](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html) for information regarding support for KNL, SKX and ICX. Note that GNU compilers do not support multi-architecture binaries.
 
 
-# [Running Jobs on the Stampede2 Compute Nodes](#running)
+## Running Jobs on the Stampede2 Compute Nodes
 
 /taccinfo blurb
 = File.read "../../include/stampede2-jobaccounting.html"
 
-## [Slurm Job Scheduler](#running-slurm)
+### Slurm Job Scheduler
 
 Stampede2's job scheduler is the [Slurm Workload Manager](http://schedmd.com). Slurm commands enable you to submit, manage, monitor, and control your jobs. 
 
-## [Slurm Partitions (Queues)](#running-queues)
+### Slurm Partitions (Queues)
 
 Currently available queues include those in [Stampede2 Production Queues](#table5). See [KNL Compute Nodes](#overview-phase1computenodes), [SKX Compute Nodes](#overview-skxcomputenodes), [Memory Modes](#programming-knl-memorymodes), and [Cluster Modes](#programming-knl-clustermodes) for more information on node types.
 
-[Table 5. Stampede2 Production Queues](#table5)
+Table 5. Stampede2 Production Queues
 
-%table(border="1" cellpadding="3")
-%tr(align="center")
-	%th(align="center") Queue Name 
-	%th(align="center") Node Type 
-	%th(align="center") Max Nodes per Job<br /> (assoc'd cores)* 
-	%th(align="center") Max Duration 
-	%th(align="center") Max Jobs in Queue* 
-	%th(align="center") Charge Rate<br /> (per node-hour) 
-
-
-%tr(align="center")
-	%td  <code>development</code> 
-	%td  KNL cache-quadrant 
-	%td  16 nodes<br /> (1,088 cores)* 
-	%td  2 hrs 
-	%td  1* 
-	%td  0.8 Service Unit (SU)
-
-%tr(align="center")
-	%td  <code>normal</code> 
-	%td  KNL cache-quadrant 
-	%td  256 nodes<br /> (17,408 cores)* 
-	%td  48 hrs 
-	%td  50* 
-	%td  0.8 SU
-
-%tr(align="center")
-	%td  <code>large</code>** 
-	%td  KNL cache-quadrant 
-	%td  2048 nodes<br /> (139,264 cores)* 
-	%td  48 hrs 
-	%td  5* 
-	%td  0.8 SU
-
-%tr(align="center")
-	%td  <code>long</code>
-	%td  KNL cache-quadrant 
-	%td  32 nodes<br>(2,176 cores)*
-	%td  120 hrs 
-	%td  2* 
-	%td  0.8 SU
-
-%tr(align="center")
-	%td  <code>flat-quadrant</code> 
-	%td  KNL flat-quadrant 
-	%td  32 nodes<br /> (2,176 cores)* 
-	%td  48 hrs 
-	%td  5* 
-	%td  0.8 SU
-
-%tr(align="center")
-	%td  <code>skx-dev</code>
-	%td  SKX 
-	%td  4 nodes<br>(192 cores)*
-	%td  2 hrs
-	%td  1*
-	%td  1 SU
-
-%tr(align="center")
-	%td  <code>skx-normal</code>
-	%td  SKX 
-	%td  128 nodes<br>(6,144 cores)*
-	%td  48 hrs
-	%td  20*
-	%td  1 SU
-
-%tr(align="center")
-	%td  <code>skx-large</code>**
-	%td  SKX 
-	%td  868 nodes<br>(41,664 cores)*
-	%td  48 hrs
-	%td  3*
-	%td  1 SU
-
-%tr(align="center")
-	%td <code>icx-normal</code>
-	%td ICX
-	%td 40 nodes<br>(3,200 cores)*
-	%td 48 hrs
-	%td 20*
-	%td 1.67 SU
+Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Duration | Max Jobs in Queue&#42; | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- | --- | ---
+<code>development</code> |  KNL cache-quadrant |  16 nodes<br /> (1,088 cores)&#42; |  2 hrs |  1&#42; |  0.8 Service Unit (SU)
+<code>normal</code> |  KNL cache-quadrant |  256 nodes<br /> (17,408 cores)* |  48 hrs |  50* |  0.8 SU
+<code>large</code>** |  KNL cache-quadrant |  2048 nodes<br /> (139,264 cores)* |  48 hrs |  5* |  0.8 SU
+<code>long</code> |  KNL cache-quadrant |  32 nodes<br>(2,176 cores)* |  120 hrs |  2* |  0.8 SU
+<code>flat-quadrant</code> |  KNL flat-quadrant |  32 nodes<br /> (2,176 cores)* |  48 hrs |  5* |  0.8 SU
+<code>skx-dev</code> |  SKX |  4 nodes<br>(192 cores)* |  2 hrs |  1* |  1 SU
+<code>skx-normal</code> |  SKX |  128 nodes<br>(6,144 cores)* |  48 hrs |  20* |  1 SU
+<code>skx-large</code>** |  SKX |  868 nodes<br>(41,664 cores)* |  48 hrs |  3* |  1 SU
+<code>icx-normal</code> | ICX | 40 nodes<br>(3,200 cores)* | 48 hrs | 20* | 1.67 SU
 
 &#42; Queue status as of March 7, 2022. **Queues and limits are subject to change without notice.** Execute "`qlimits`" on Stampede2 for real-time information regarding limits on available queues. See [Monitoring Jobs and Queues](#monitoring) for additional information.
 
@@ -736,7 +598,7 @@ Currently available queues include those in [Stampede2 Production Queues](#table
 
 &#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, submit a ticket through the [TACC User Portal](TACCUSERPORTAL).
 
-## [Submitting Batch Jobs with `sbatch`](#running-sbatch)
+### Submitting Batch Jobs with `sbatch`
 
 Use Slurm's "`sbatch`" command to [submit a batch job](#using-computenodes) to one of the Stampede2 queues:
 
@@ -746,7 +608,7 @@ Here "`myjobscript`" is the name of a text file containing `#SBATCH` directives 
 
 In your job script you (1) use `#SBATCH` directives to request computing resources (e.g. 10 nodes for 2 hrs); and then (2) use shell commands to specify what work you're going to do once your job begins. There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
 
-### [Job Scripts](#running-sbatch-jobscripts)
+#### Job Scripts
 
 <center>
 <table border="1" cellpadding="3" cellspacing="1">
@@ -1454,76 +1316,28 @@ The [Common `sbatch` Options table](#table6) below describes some of the most co
 
 [Table 6. Common <code>sbatch</code> Options](#table6)
 
-%table(border="1" cellpadding="3")
-%tr 
-	%th Option
-	%th Argument
-	%th Comments
-%tr 
-	%td <code>-p</code>
-	%td  <i>queue_name</i>
-	%td  Submits to queue (partition) designated by <i>queue_name</i>
-%tr 
-	%td <code>-J</code>
-	%td  <i>job_name</i>
-	%td  Job Name
-%tr
-	%td <code>-N</code>
-	%td <i>total_nodes</i>
-	%td Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
-%tr
-	%td <code>-n</code>
-	%td <i>total_tasks</i>
-	%td This is total MPI tasks in this job. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
-%tr 
-	<td nowrap><code>--ntasks-per-node</code><br>or<br><code>--tasks-per-node</code></td>
-	%td <i>tasks_per_node</i>
-	%td This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
-%tr 
-	%td <code>-t</code>
-	%td <i>hh:mm:ss</i>
-	%td Required. Wall clock time for job.
-%tr 
-	%td <code>--mail-user=</code>
-	%td <i>email_address</i>
-	%td Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
-%tr 
-	%td <code>--mail-type=</code>
-	%td <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code>
-	%td Specify when user notifications are to be sent (one option per line).
-%tr 
-	%td <code>-o</code>
-	%td <i>output_file</i>
-	%td Direct job standard output to <i>output_file</i> (without <code>-e</code> option error goes to this file)
-%tr 
-	%td <code>-e</code>
-	%td <i>error_file</i>
-	%td Direct job error output to <i>error_file</i>
-%tr
-	%td <code>-d=</code>
-	%td afterok:<i>jobid</i>
-	%td Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
-%tr 
-	%td <code>-A</code>
-	%td <i>projectnumber</i>
-	%td Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
-%tr
-	%td <code>-a</code><br>or<br><code>--array</code>
-	%td N/A
-	%td Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
-%tr 
-	%td <code>--mem</code>
-	%td N/A
-	%td Not available. If you attempt to use this option, the scheduler will not accept your job.
-%tr
-	%td <code>--export=</code>
-	%td N/A
-	%td Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
+Option | Argument | Comments
+--- | --- | ---
+<code>-p</code> |  <i>queue_name</i> |  Submits to queue (partition) designated by <i>queue_name</i>
+<code>-J</code> |  <i>job_name</i> |  Job Name
+<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
+<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
+<code>--ntasks-per-node</code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
+<code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
+<code>--mail-user=</code> | <i>email_address</i> | Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
+<code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code> | Specify when user notifications are to be sent (one option per line).
+<code>-o</code> | <i>output_file</i> | Direct job standard output to <i>output_file</i> (without <code>-e</code> option error goes to this file)
+<code>-e</code> | <i>error_file</i> | Direct job error output to <i>error_file</i>
+<code>-d=</code> | afterok:<i>jobid</i> | Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
+<code>-A</code> | <i>projectnumber</i> | Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
+<code>-a</code><br>or<br><code>--array</code> | N/A | Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
+<code>--mem</code> | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
+<code>--export=</code> | N/A | Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
 By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">"`slurm-%j.out`"</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">"`-o`"</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">"`-o`"</span> and <span style="white-space: nowrap;">"`-e`"</span>.
 
 
-## [Launching Applications](#running-launching)
+### Launching Applications
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section:
 
@@ -1535,7 +1349,7 @@ The primary purpose of your job script is to launch your research application. H
 * [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous)
 * [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous)
 
-### [Launching One Serial Application](#running-launching-serial)
+#### Launching One Serial Application
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
@@ -1545,7 +1359,7 @@ $WORK/apps/myprov/myprogram # explicit full path to executable
 ./myprogram                 # executable in current directory
 ./myprogram -m -k 6 input1  # executable with notional input options</pre>
 
-### [Launching One Multi-Threaded Application](#running-launching-multi)
+#### Launching One Multi-Threaded Application
 
 Launch a threaded application the same way. Be sure to specify the number of threads. **Note that the default OpenMP thread count is 1**.
 
@@ -1553,7 +1367,7 @@ Launch a threaded application the same way. Be sure to specify the number of thr
 export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
 ./myprogram</pre>
 
-### [Launching One MPI Application](#running-launching-mpi)
+#### Launching One MPI Application
 
 To launch an MPI application, use the TACC-specific MPI launcher "`ibrun`", which is a Stampede2-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -1570,7 +1384,7 @@ login1$ <b>idev -N 2 -n 80 </b>
 c123-456$ <b>ibrun ./myprogram</b>    # ibrun uses idev's arguments to properly allocate nodes and tasks
 </pre>
 
-### [Launching One Hybrid (MPI+Threads) Application](#running-launching-hybrid)
+#### Launching One Hybrid (MPI+Threads) Application
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
@@ -1580,11 +1394,11 @@ ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
 
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (KNL nodes have 68 cores, SKX nodes have 48 cores, ICX nodes have 80 cores).
 
-### [More Than One Serial Application in the Same Job](#running-launching-serialmorethanone)
+#### More Than One Serial Application in the Same Job
 
 TACC's "`launcher`" utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The `launcher` utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute "`module load launcher`" followed by "`module help launcher`" for more information.
 
-### [MPI Applications One at a Time](#running-launching-consecutivempi)
+#### MPI Applications One at a Time
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
@@ -1595,7 +1409,7 @@ module list
 ibrun ./myprogram input1	# runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes</pre>
 
-### [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous)
+#### More than One MPI Application Running Concurrently
 
 To run more than one MPI application simultaneously in the same job, you need to do several things:
 
@@ -1618,7 +1432,7 @@ The `task_affinity` script does two things:
 * **Don't confuse `task_affinity` with [`tacc_affinity`](#managing-memory)**; the keyword "`tacc_affinity`" is now a symbolic link to `mem_affinity`. The `mem_affinity` script and the symbolic link `tacc_affinity` manage MCDRAM in flat-quadrant mode on the KNL, but they do not pin MPI tasks.
 
 
-### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous)
+#### More than One OpenMP Application Running Concurrently
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, <span style="white-space: nowrap;">"`numactl -C`"</span> specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
@@ -1630,7 +1444,7 @@ numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Not
 wait</pre>
 
 
-## [Interactive Sessions with `idev` and `srun`](#running-idev)
+### Interactive Sessions with `idev` and `srun`
 
 TACC's own `idev` utility is the best way to begin an interactive session on one or more compute nodes. To launch a thirty-minute session on a single node in the development queue, simply execute:
 
@@ -1668,7 +1482,7 @@ You can also launch an interactive session with Slurm's `srun` command, though t
 <pre class="cmd-line">login1$ <b>srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l </b># same conditions as above</pre>
 
 
-## [Interactive Sessions using `ssh`](#running-ssh)
+### Interactive Sessions using `ssh`
 
 If you have a batch job or interactive session running on a compute node, you "own the node": you can connect via `ssh` to open a new interactive session on that node. This is an especially convenient way to monitor your applications' progress. One particularly helpful example: login to a compute node that you own, execute "`top`", then press the "1" key to see a display that allows you to monitor thread ("CPU") and memory use.
 
@@ -1684,7 +1498,7 @@ login1$ <b>squeue -u bjones</b>
 C448-004$</pre>
 
 
-## [SLURM Environment Variables](#running-slurmenvvars)
+### SLURM Environment Variables
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. "`%j`" described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">"`env | grep SLURM`"</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like "`%j`" only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
@@ -1800,7 +1614,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 <pre class="cmd-line">login1$ <b>sacct --starttime 2017-08-01</b>  # show jobs that started on or after this date</pre>
 
 
-### [Dependent Jobs using `sbatch`](#monitoring-dependent)
+### Dependent Jobs using `sbatch`
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the "`--dependency`" option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
@@ -1937,13 +1751,13 @@ After connecting to a VNC server on Stampede2, as described above, do the follow
 1. Select the "auto" configuration, then press "Connect".  In the Paraview Output Messages window, you'll see what appears to be an 'lmod' error, but can be ignored.  Then you'll see the parallel servers being spawned and the connection established.
 
 
-## [Programming and Performance](#programming)
+## Programming and Performance
 
-### [Programming and Performance: General](#programming-general)
+### Programming and Performance: General
 
 Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
-#### [Timing and Profiling](#programming-general-timingprofiling)
+#### Timing and Profiling
 
 **Measure performance and experiment with both compiler and runtime options.** This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
 
@@ -1959,7 +1773,7 @@ As your needs evolve you can add timing intrinsics to your source code to time s
 
 It can be helpful to compare results with different compiler and runtime options: e.g. with and without [vectorization](http://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-vec-qvec), [threading](#running-launching-multi), or [Lustre striping](#files-striping). You may also want to learn to use profiling tools like [Intel VTune Amplifier](http://software.intel.com/en-us/intel-vtune-amplifier-xe) <span style="white-space: nowrap;">("`module load vtune`")</span> or GNU [`gprof`](http://sourceware.org/binutils/docs/gprof/).
 
-#### [Data Locality](#programming-general-datalocality)
+#### Data Locality
 
 **Appreciate the high cost (performance penalty) of moving data from one node to another**, from disk to RAM, and even from RAM to cache. Write your code to keep data as close to the computation as possible: e.g. in RAM when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. A simple KNL-specific example illustrates the point: all things being equal, there's a good chance you'll see better performance when you keep your data in the KNL's [fast MCDRAM](#programming-knl-memorymodes) instead of the slower DDR4.
 
@@ -1993,19 +1807,19 @@ for (i=0;i&lt;m;i++){
 </table>
 
 
-#### [Vectorization](#programming-general-vectorization)
+#### Vectorization
 
 **Give the compiler a chance to produce efficient, [vectorized](http://software.intel.com/en-us/articles/vectorization-essential) code**. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on [Programming Guidelines for Vectorization](http://software.intel.com/en-us/node/522571) for a nice summary of the factors that affect the compiler's ability to vectorize loops.
 
 It's often worthwhile to generate [optimization and vectorization reports](http://software.intel.com/en-us/articles/getting-the-most-out-of-your-intel-compiler-with-the-new-optimization-reports) when using the Intel compiler. This will allow you to see exactly what the compiler did and did not do with each loop, together with reasons why.
 
-#### [Learning More](#programming-general-more)
+#### Learning More
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64).
 
-### [Programming and Performance: KNL](#programming-knl)
+### Programming and Performance: KNL
 
-#### [Architecture](#programming-knl-architecture)
+#### Architecture
 
 KNL cores are grouped in pairs; each pair of cores occupies a tile. Since there are 68 cores on each Stampede2 KNL node, each node has 34 active tiles. These 34 active tiles are connected by a two-dimensional mesh interconnect. Each KNL has 2 DDR memory controllers on opposite sides of the chip, each with 3 channels. There are 8 controllers for the fast, on-package MCDRAM, two in each quadrant.
 
@@ -2013,12 +1827,12 @@ Each core has its own local L1 cache (32KB, data, 32KB instruction) and two 512-
 
 Each core can run up to 4 hardware threads. The two cores on a tile share a 1MB L2 cache. Different [cluster modes](#programming-knl-clustermodes) specify the L2 cache coherence mechanism at the node level.
 
-#### [Memory Modes](#programming-knl-memorymodes)
+#### Memory Modes
 
 The processor's memory mode determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The output of commands like "`top`", "`free`", and <span style="white-space: nowrap;">"`ps -v`"</span> reflect the consequences of memory mode. Such commands will show the amount of RAM available to the operating system, not the hardware (DDR + MCDRAM) installed.
 
 
-<figure>FIGURE-KNLMEMORYMODES<figcaption>Figure 4. KNL Memory Modes</figcaption></figure>
+<figure><img alt="" src="../../../imgs/stampede2/KNL-Memory-Modes.png"><figcaption>Figure 4. KNL Memory Modes</figcaption></figure>
 
 * **Cache Mode**. In this mode, the fast MCDRAM is configured as an L3 cache. The operating system transparently uses the MCDRAM to move data from main memory. In this mode, the user has access to 96GB of RAM, all of it traditional DDR4. **Most Stampede2 KNL nodes are configured in cache mode.**
 
@@ -2026,7 +1840,7 @@ The processor's memory mode determines whether the fast MCDRAM operates as RAM, 
 
 * **Hybrid Mode (not available on Stampede2)**. In this mode, the MCDRAM is configured so that a portion acts as L3 cache and the rest as RAM (a second NUMA node supplementing DDR4).
 
-#### [Cluster Modes](#programming-knl-clustermodes)
+#### Cluster Modes
 
 The KNL's core-level L1 and tile-level L2 caches can reduce the time it takes for a core to access the data it needs. To share memory safely, however, there must be mechanisms in place to ensure cache coherency. Cache coherency means that all cores have a consistent view of the data: if data value x changes on a given core, there must be no risk of other cores using outdated values of x. This, of course, is essential on any multi-core chip, but it is especially difficult to achieve on manycore processors.
 
@@ -2040,12 +1854,12 @@ The KNL can do this in several ways, each of which is called a cluster mode. Eac
 
 * **Sub-NUMA 4 (variation: Sub-NUMA 2)**. This mode, abbreviated **SNC-4**, divides the chip into four NUMA nodes so that it acts like a four-socket processor. SNC-4 aims to optimize coherency-related on-chip communication by confining this communication to a single NUMA node when it is possible to do so. To achieve any performance benefit, this requires explicit manual memory management by the programmer/user (in particular, allocating memory within the NUMA node that will use that memory). Stampede2 does not have nodes in this cluster mode.
 
-<figure>FIGURE-KNLCLUSTERMODES<figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
+<figure><img alt="" src="../../../imgs/stampede2/KNL-Cluster-Modes.png"><figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
 
 TACC's early experience with the KNL suggests that there is little reason to deviate from Intel's recommended default memory and cluster modes. Cache-quadrant tends to be a good choice for almost all workflows; it offers a nice compromise between performance and ease of use for the applications we have tested. Flat-quadrant is the most promising alternative and sometimes offers moderately better performance, especially when memory requirements per node are less than 16GB. We have not yet observed significant performance differences across cluster modes, and our current recommendation is that configurations other than cache-quadrant and flat-quadrant are worth considering only for very specialized needs. For more information see [Managing Memory](#knl-programming-managingmemory) and [Best Known Practices...](#knl-programming-bestpractices).
 
 
-#### [Managing Memory](#programming-knl-managingmemory)
+#### Managing Memory
 
 By design, any application can run in any memory and cluster mode, and applications always have access to all available RAM. Moreover, regardless of memory and cluster modes, there are no code changes or other manual interventions required to run your application safely. However, there are times when explicit manual memory management is worth considering to improve performance. The Linux `numactl` (pronounced "NUMA Control") utility allows you to specify at runtime where your code should allocate memory.
 
@@ -2071,7 +1885,7 @@ It's safe to use `mem_affinity` even when it will have no effect (e.g. cache-qua
 
 On Stampede2 the keyword "`tacc_affinity`" was originally an older name for what is now the "`mem_affinity`" script. To ensure backward compatibility, `tacc_affinity` is now a symbolic link to `mem_affinity`. Note that `mem_affinity` and the symbolic link `tacc_affinity` do not pin MPI tasks.
 
-#### [Best Known Practices and Preliminary Observations (KNL)](#programming-knl-bestpractices)
+#### Best Known Practices and Preliminary Observations (KNL)
 
 **Hyperthreading. It is rarely a good idea to use all 272 hardware threads simultaneously**, and it's certainly not the first thing you should try. In most cases it's best to specify no more than <span style="white-space: nowrap;">64-68</span> MPI tasks or independent processes per node, and 1-2 threads/core. One exception is worth noting: when calling threaded MKL from a serial code, it's safe to set `OMP_NUM_THREADS` or `MKL_NUM_THREADS` to 272. This is because MKL will choose an appropriate thread count less than or equal to the value you specify. See [Controlling Threading in MKL](#mkl-threading) for more information. In any case remember that the default value of `OMP_NUM_THREADS` is 1.
 
@@ -2089,7 +1903,7 @@ On Stampede2 the keyword "`tacc_affinity`" was originally an older name for what
 
 
 
-### [Programming and Performance: SKX and ICX](#programming-skx)
+### Programming and Performance: SKX and ICX
 
 **Hyperthreading. It is rarely a good idea to use all the hardware threads simultaneously**, and it's certainly not the first thing you should try. In most cases it's best to specify no more than 48 MPI tasks or independent processes per SKX node (80 per ICX node), and 1-2 threads/core. One exception is worth noting: when calling threaded MKL from a serial code, it's safe to set `OMP_NUM_THREADS` or `MKL_NUM_THREADS` to 96 for SKX or 160 for ICX. This is because MKL will choose an appropriate thread count less than or equal to the value you specify. See [Controlling Threading in MKL](#mkl-threading) for more information.  In any case remember that the default value of `OMP_NUM_THREADS` is 1.
 
@@ -2111,11 +1925,7 @@ The <span style="white-space: nowrap;">"`qopt-zmm-usage`"</span> flag affects th
 
 **Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH2, setting the environment variable `PSM2_KASSIST_MODE` to the value "`none`" may or may not improve performance. For more information see the [MVAPICH2 User Guide](http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.3b-userguide.html#x1-890006.19). Do not use this environment variable with IMPI; doing so may degrade performance. <span style="color:red">The `ibrun` launcher will eventually control this environment variable automatically.</span>
 
-
-
-
-
-### [File Operations: I/O Performance](#programming-fileio)
+### File Operations: I/O Performance
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Navigating the Shared File Systems](#files-filesystems) for a brief overview of Stampede2's Lustre file systems and the concept of striping. See [TACC Training material](https://learn.tacc.utexas.edu/) for additional information on I/O performance.
 
@@ -2145,39 +1955,16 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 * [TACC Data Analysis Portal][TACCANALYSISPORTAL]
 
 {% include 'aliases.md' %}
-<script type="text/javascript">
-function showhide() {
-var div = document.getElementById("revisions");
-if (div.style.display == "block") 
-{
-document.getElementById("img-arrow").src = "/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000";
-div.style.display = "none";
-}
-else 
-{
-div.style.display = "block";
-document.getElementById("img-arrow").src = "/documents/10157/0/small-down-arrow.png/05df5954-1484-4c56-8e54-1c2c0eb501dc?t=1480439900000";
-}
-}
-</script>
+# Revision History
 
-#history
-	:markdown
-		# [Revision History](#history)
-
-		"Last Update" at the top of this document is the date of the most recent change to this document. This revision history is a list of non-trivial updates; it excludes routine items such as corrected typos and minor format changes.
+"Last Update" at the top of this document is the date of the most recent change to this document. This revision history is a list of non-trivial updates; it excludes routine items such as corrected typos and minor format changes.
  
-	<a href="javascript:showhide()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-arrow">Click to view</a>
-
-	#revisions(style="display:none")
-		:markdown
-
-			* 09/14/22 XSEDE project ends. Replace Globus with Grid Community Toolkit.
-			* 03/07/22 Intel Ice Lake nodes introduced.  New `icx-normal` queue.
-			* 04/24/18 Changes to Table 1 and Table 5 associated with new `long` queue.
-			* 04/03/18 Stampede1 decommissioned; removed/revised references to Stampede1 as appropriate.
-			* 03/26/18 Corrected and relocated material on `qopt-zmm-usage`.
-			* 02/23/18 New functionality associated with `task_affinity`, `tacc_affinity`, and `mem_affinity` (scripts related to MPI task pinning and KNL memory management).
-			* 11/30/17 Initial release supporting Phase 2 (SKX).
-			* 08/02/17 Removed references and links to Stampede2 Transition Guide (now deprecated).
-			* 06/12/17 Initial public release.
+* 09/14/22 XSEDE project ends. Replace Globus with Grid Community Toolkit.
+* 03/07/22 Intel Ice Lake nodes introduced.  New `icx-normal` queue.
+* 04/24/18 Changes to Table 1 and Table 5 associated with new `long` queue.
+* 04/03/18 Stampede1 decommissioned; removed/revised references to Stampede1 as appropriate.
+* 03/26/18 Corrected and relocated material on `qopt-zmm-usage`.
+* 02/23/18 New functionality associated with `task_affinity`, `tacc_affinity`, and `mem_affinity` (scripts related to MPI task pinning and KNL memory management).
+* 11/30/17 Initial release supporting Phase 2 (SKX).
+* 08/02/17 Removed references and links to Stampede2 Transition Guide (now deprecated).
+* 06/12/17 Initial public release.

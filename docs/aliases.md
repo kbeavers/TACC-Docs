@@ -10,16 +10,18 @@
 
 <!-- consulting -->
 [CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"
+[TACCUSERPORTAL]: http://portal.tacc.utexas.edu "TACC User Portal"
 
 <!-- software links -->
 [TACCIDEV]: http://portal.tacc.utexas.edu/software/idev "idev User Guide"
-[TACCVISPORTAL]: http://portal.tacc.utexas.edu/software/xxx "xxx User Guide"
 [TACCTENSORFLOW]: http://portal.tacc.utexas.edu/software/tensorflow "Tensorflow at TACC"
+[TACCIRODS]: http://portal.tacc.utexas.edu/software/irods "IRODS at TACC"
 
 <!-- tutorial links -->
+[TACCACLS]: http://portal.tacc.utexas.edu/tutorials/acls "Manage Permissions with Access Control Lists"
 [TACCMANAGINGIO]: http://portal.tacc.utexas.edu/tutorials/managingiow "Managing I/O at TACC"
-[TACCMFA]: http://portal.tacc.utexas.edu/tutorials/multi-factor-authentication "Multi-Factor Authentication at TACC"
-[TACCIRODS]: http://portal.tacc.utexas.edu/tutorials/xxx "IRODS at TACC"
+[TACCMFA]: http://portal.tacc.utexas.edu/tutorials/multifactor-authentication "Multi-Factor Authentication at TACC"
+[TACCANALYSISPORTAL]: http://portal.tacc.utexas.edu/tutorials/tap "TACC Analysis Portal User Guide"
 
 [CYBERDUCK]: https://cyberduck.io/download/ "Download Cyberduck"
 

@@ -29,17 +29,9 @@ logincomputenodes="<p><img\ src=\"\/documents\/10157\/1475729\/Login+to+compute+
 # stockyard="<img\ src=\"\/documents\/10157\/1475729\/work-small.png\/3614e8bb-6a9b-463d-bad8-5e6908197101?t=1512082334284\"\ style=\"width:\ 800px;\ height:\ 150px;\">"
 # stockyard="<img\ alt=\"Stockyard\ Work\ file\ system\"\ src=\"\/documents\/10157\/1181317\/Stockyard+filesystem+updated\/8c7e3389-573c-4e12-9636-bf0856f3a389?t=1555952835748\"\ style=\"width:\ 800px;\ height:\ 184px;\"\/>"
 stockyard="<img\ alt=\"Stockyard\ Work\ File\ System\"\ src=\"\/documents\/10157\/1181317\/Stockyard+2022\/41b0d037-2cb2-40c3-bda9-781933689898?t=1647883630453\"\ style=\"width:\ 800px;\ height:\ 173px;\"\/>"
-
 knlmemorymodes="<p><img\ alt=\"KNL\ Memory\ Modes\"\ src=\"\/documents\/10157\/1334612\/KNL+Memory+Modes.png\/f19c64b8-6007-4a08-a6f3-80cabf9a2c20\"\ style=\"width:\ 800px;\ height:\ 171px;\"\ \/>"
 knlclustermodes="<p><img\ alt=\"KNL\ Cluster\ Modes\"\ src=\"\/documents\/10157\/1334612\/KNL+Cluster+Modes.png\/142c5092-c736-48ea-a3cc-f3d9d3f43647\"\ style=\"width:\ 800px;\ height:\ 274px;\"\ \/>"
 
-
-
-inputfile=$2
-outputfile=$3
-
-taccuserportal="http:\/\/portal.tacc.utexas.edu\/"
-xsedeuserportal="http:\/\/portal.xsede.org\/"
 taccusernews="http:\/\/portal.tacc.utexas.edu\/user-news\/"
 xsedeusernews="http:\/\/portal.xsede.org\/news\/"
 taccinfopath="\/usr\/local\/etc\/taccinfo"
@@ -101,10 +93,12 @@ stylenowrap="<span\ style=\"white-space:\ nowrap;\">"
 endspan="<\/span>"
 
 imagedir="..\/..\/..\/imgs"
+figurestockyard=$imagedir+"\/stockyard-2022.jpg"
 
 sed	-e "s/USERGUIDETITLE/$title/" \
 	\
 	-e "s/IMAGEDIR/$imagedir/g" \
+	-e "s/FIGURE_STOCKARD/$figurestockyard/g" \
 	\
 	-e "s/GREEN/$stylegreen/g" \
 	-e "s/STYLERED/$stylered/g" \

@@ -192,9 +192,9 @@ This policy applies to both the main and "protected" areas of Corral4.
 
 ## References
 
-* [Manage Permissions with Access Control Lists](https://portal.tacc.utexas.edu/tutorials/acls)
+* [Manage Permissions with Access Control Lists][TACCACLS]
 * [Lonestar6 User Guide][LONESTAR6UG]  
-* [iRODS][TACCIRODS]  
+* [iRODS at TACC][TACCIRODS]  
 * [Cyberduck home page][CYBERDUCK]  
 * [UNIX man pages](https://www.freebsd.org/cgi/man.cgi)
 

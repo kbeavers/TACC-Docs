@@ -99,7 +99,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 <pre class="cmd-line">login1$ <b>sacct --starttime 2017-08-01</b>  # show jobs that started on or after this date</pre>
 
 
-### [Dependent Jobs using `sbatch`](#monitoring-dependent)
+### Dependent Jobs using `sbatch`
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the "`--dependency`" option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
