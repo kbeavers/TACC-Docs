@@ -1,12 +1,8 @@
-<span style="font-size:225%; font-weight:bold;">Remote Desktop Access via DCV and VNC Connections</span><br>
+# Remote Desktop Access via DCV and VNC Connections
 <i>Last update: December 05, 2019</i>
   
-#top
-	:markdown
 		<p>Establishing a remote desktop connection from one system to another allows the desktop on the remote computer (TACC resources) to be displayed on the local system (your desktop). For HPC purposes remote desktops are used for [visualization applications](/user-guides/stampede2#vis) and other [graphics-library enabled applications](/software/ddt).  
 
-#methods
-	:markdown
 		# [Remote Desktop Methods](#methods)
 	
 		TACC provides three methods of setting up a remote desktop:
@@ -22,13 +18,9 @@
 
 		1. **DCV connection**: **D**esktop **C**loud **V**isualization (DCV) traffic is encrypted using Transport Layer Security (TLS) through your web browser, obviating the need to create a separate SSH tunnel. A DCV connection is easier to set up than a VNC connection, however TACC is limited to the number of concurrent DCV licenses. Stampede2 and Frontera are currently the only TACC resources allowing DCV connections. The DCV job script writes connection information to a file, `dcvserver.out`. You can connect to a DCV session with any modern web browswer.
 
+		# [TACC Analysis Portal](#visportal)
 
-
-#visportal
-	:markdown
-		# [TACC Vis Portal](#visportal)
-
-		Connect to the TACC Vis Portal at <https://vis.tacc.utexas.edu>. Any user with an allocation on Frontera or Stampede2 may use the portal.  
+		Connect to the TACC Analysis Portal at <https://tap.tacc.utexas.edu>. Any user with an allocation on Frontera or Stampede2 may use the portal.  
 
 
 #figure0
