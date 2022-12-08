@@ -1,10 +1,34 @@
-November 18, 16:39pm
+Thu Dec  8 12:16:55 CST 2022
 
-# Let's test some nested headings - here's h1
+This is a page for fiddling and styling.
 
+
+This is class="cmd-line" 
+<pre class="cmd-line">login1$ <b>module load kitten</b></pre>
+
+
+This is "class="job-script"
+
+<pre class="job-script">
+#!/bin/bash
+#SBATCH -J myjob              # job name
+#SBATCH -e myjob.%j.err       # error file name
+#SBATCH -o myjob.%j.out       # output file name
+#SBATCH -N 2                  # request 2 nodes
+#SBATCH -n 96                 # request 2x48=96 MPI tasks
+#SBATCH -p skx-normal         # designate queue
+#SBATCH -t 24:00:00           # designate max run time
+#SBATCH -A myproject          # charge job to myproject
+module load gromacs/2022.1
+
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
+
+
+# [Let's test some nested h1 headings](#top)  { #top } 
 ## H2 is here
 
-I get 10 times more traffic from [Google] [1] than from
+
+Reference style links I get 10 times more traffic from [Google] [1] than from
 [Yahoo] [2] or [MSN] [3].
 
   [1]: http://google.com/        "Google"
@@ -32,13 +56,9 @@ This is [an example] [foo] reference-style link.
 
 
 
-how do I highlight? styles - do I need to run this through a script?
-
-markdown macros?
-
+how do I highlight? styles - do I need to run this through a script? - yup
 
 ### H3 is h3re
-
 
 #### h4 is here
 
@@ -57,14 +77,9 @@ The HTML specification is maintained by the W3C.  Login in to TUP
 *[HTML]: Hyper Text Markup Language
 *[W3C]:  World Wide Web Consortium
 
-## `attr_list`
-
-| set on td    | set on em   |
-|--------------|-------------|
-| *a* { .foo } | *b*{ .foo } |
-
-
 ## `admonition` extension
+
+I use "attention", "note", "warning" the most
 
 rST suggests the following “types”: attention, caution, danger, error, hint, important, note, tip, and warning; however, you’re free to use whatever you want.
 
@@ -73,9 +88,6 @@ rST suggests the following “types”: attention, caution, danger, error, hint,
 
 !!! caution
     Caution box the title will be automatically capitalized.
-
-!!! danger highlight blink "Don't try this at home"
-	danger box. This should blink
 
 !!! error
 	Admonition type: error
@@ -97,4 +109,11 @@ rST suggests the following “types”: attention, caution, danger, error, hint,
 
 
 [CREATETICKET]: http://example.com/  "Optional Title Here"
+
+## `attr_list`
+
+| set on td    | set on em   |
+|--------------|-------------|
+| *a* { .foo } | *b*{ .foo } |
+
 
