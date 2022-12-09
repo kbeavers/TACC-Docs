@@ -3,7 +3,7 @@
 inputfile=$1
 outputfile=$2
 
-echo "Configuring HPC user guides: $2"
+echo "Configuring Software user guides: $2"
 
 stylegreen="<span\ style=\"color:green;font-style:italic\">"
 stylered="<span\ style=\"color:red\">"

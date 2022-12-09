@@ -18,7 +18,7 @@ nav:
     - Stallion: hpcugs/stallion/stallionsrc.md
     - Stampede2: hpcugs/stampede2/stampede2.md
   - Software :
-    - GROMACS: softwareugs/gromacssrc.md
+    - GROMACS: softwareugs/gromacs.md
     - Gaussian: softwareugs/gaussian.md
     - Tensorflow: softwareugs/tensorflow.md
     - VASP: softwareugs/vasp.md
