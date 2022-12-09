@@ -1,23 +1,18 @@
-HAML=	/usr/local/bin/haml
+HAML=	/usr/local/bin/md
 
-SRC	=	scratchpolicy.haml mkl.haml taccinfo.haml citizenship.haml help.haml jobaccounting.haml
-OBJ =	$(SRC:%.haml=%.html)
+SRC	=	scratchpolicysrc.md mklsrc.md taccinfosrc.md conductsrc.md helpsrc.md jobaccountingsrc.md
 
 all:	includes 
 
-.SUFFIXES:	.haml .html
+.SUFFIXES:	.md .html
 
-includes:	$(OBJ)
+includes:	$(SRC)
 	./configurestrings.sh lonestar6
 	./configurestrings.sh stampede2
-	./configurestrings.sh longhorn
 	./configurestrings.sh maverick2
 	./configurestrings.sh ranch
 	./configurestrings.sh defaults
-	./configurestrings.sh lonestar5
 
-.haml.html :
-	$(HAML) $< $@
 
 clean:
 	/bin/rm -f $(OBJ) *.html &2> /dev/null
