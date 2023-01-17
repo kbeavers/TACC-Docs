@@ -17,13 +17,13 @@ nav:
 #   - Ranch: hpcugs/ranch/ranchsrc.md
 #   - Stallion: hpcugs/stallion/stallionsrc.md
 #   - Stampede2: hpcugs/stampede2/stampede2.md
-  - Software :
-    - GROMACS: softwareugs/gromacs.md
+#  - Software :
+#    - GROMACS: softwareugs/gromacs.md
 #    - Gaussian: softwareugs/gaussian.md
 #    - Tensorflow: softwareugs/tensorflow.md
 #    - VASP: softwareugs/vasp.md
-  - Tutorials :
-    - Managing I/O at TACC: tutorials/managingio.md
+#  - Tutorials :
+#    - Managing I/O at TACC: tutorials/managingio.md
 #    - Remote Desktop Access: tutorials/remotedesktopaccess.md
 
 markdown_extensions:
