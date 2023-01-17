@@ -4,7 +4,9 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 ## Local Development Setup
 
-Local development instructions assume the use of Docker. You may choose instead to locally develop directly via [MkDocs], but you will be responsible for installing dependencies.
+Local development instructions assume the use of Docker.
+
+_You may choose instead to locally develop directly via [MkDocs], in which case you should install Poetry and run `poetry install` before using `mkdocs` commands._
 
 [MkDocs]: https://www.mkdocs.org/
 
