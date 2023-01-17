@@ -10,17 +10,20 @@ File System | Quota | Key Features
 <code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.  | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
 <code>$SCRATCH</code> | <b>N/A</b> | <b>Maverick2 does not mount a scratch file system.</b>
 
-<p>The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
+The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.
 
 ### [Navigating the Shared File Systems](#files-navigating) { #files-navigating }
 
 Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
-<figure>FIGURE-STOCKYARD<figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure>
+<img src="IMAGEDIR/stockyard-2022.jpg">
+<figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.
+</figcaption></figure>
 
 Note that resource-specific NOWRAPsub-directoriesESPAN of `$STOCKYARD` are nothing more than convenient ways to manage your NOWRAPresource-specificESPAN files. You have access to any such NOWRAPsub-directoryESPAN from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to NOWRAP"`cd $WORK`"ESPAN) will take you to the NOWRAPresource-specificESPAN NOWRAPsub-directoryESPAN `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing NOWRAP"`cd $STOCKYARD/maverick2`"ESPAN. These commands allow you to share files across TACC systems. In fact, several convenient NOWRAPaccount-levelESPAN aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-[Table 5. Built-in Account Level Aliases](#table5)
+[Table 5. Built-in Account Level Aliases](#table5) { #table5 }
 
 Alias | Command
 <code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>

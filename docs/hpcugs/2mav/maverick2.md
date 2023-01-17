@@ -1,7 +1,7 @@
 <style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
 
 # Maverick2 User Guide
-<i>Last update: August 24, 2022</i> 
+<i>Last update: August 24, 2022</i> editing 01/17/2023
 
 ## [Notices](#notices) { #notices }
 
@@ -262,13 +262,16 @@ File System | Quota | Key Features
 <code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.  | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
 <code>$SCRATCH</code> | <b>N/A</b> | <b>Maverick2 does not mount a scratch file system.</b>
 
-<p>The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.</p>
+The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Figure 3](#figure3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources.
 
 ### [Navigating the Shared File Systems](#files-navigating) { #files-navigating }
 
 Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
-<figure>FIGURE-STOCKYARD<figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure>
+<img src="../../../imgs/stockyard-2022.jpg">
+<figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.
+</figcaption></figure>
 
 Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
@@ -349,12 +352,12 @@ Remember that it's not possible to change the striping on a file that already ex
 
 
 
-# [Running Jobs on the Maverick2 Compute Nodes](#running)
+## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
 
 /taccinfo blurb
 = File.read "../../include/maverick2-jobaccounting.html"
 
-## [Slurm Job Scheduler](#running-slurm)
+### [Slurm Job Scheduler](#running-slurm) { #running-slurm }
 
 Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
 
@@ -364,7 +367,7 @@ The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively. 
 * [Common `sbatch` options](/user-guides/stampede2#table6)
 * [Launching Applications](/user-guides/stampede2#launching-applications)
 
-## [Slurm Partitions (Queues)](#running-queues)
+### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
 **Queues and limits are subject to change without notice.** 
 
@@ -372,186 +375,150 @@ Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on
 
 See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
 
-[Table 6. Maverick2 Production Queues](#table6)
+[Table 6. Maverick2 Production Queues](#table6) { #table6 }
 
-%th(align="center") Queue Name<br>(available nodes)
-%th(align="center") Max Nodes per Job<br /> (assoc'd cores) 
-%th(align="center") Max Duration 
-%th(align="center") Max Jobs in Queue 
-%th(align="center") Charge Rate<br /> (per node-hour) 
-
-%td <code>gtx</code><br>(24 nodes)
-%td 4 nodes<br /> (64 cores)
-%td 24 hours
-%td 4
-%td 1 SU
-
-%td <code>v100</code><br>(4 nodes)
-%td 4 nodes<br>(192 cores)
-%td 24 hours
-%td 4
-%td 1 SU
-
-%td <code>p100</code><br>(3 nodes)
-%td 3 nodes<br /> (144 cores)
-%td 24 hours
-%td 4
-%td 1 SU
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max Duration  | Max Jobs in Queue  | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- | ---
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
 
 
-#remote-desktop-access
-	:markdown
-		# [Remote Desktop Access](#remote-desktop-access)
+## [Remote Desktop Access](#remote-desktop-access)
 
-		Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
+Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
 
-		*  allocates a set of Maverick2 visualization nodes 
-		*  starts a vncserver process on the first allocated node 
-		*  sets up a tunnel through the login node to the vncserver access port 
+*  allocates a set of Maverick2 visualization nodes 
+*  starts a vncserver process on the first allocated node 
+*  sets up a tunnel through the login node to the vncserver access port 
 
-		Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
+Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
 
-		Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
 
-		Follow the steps below to start an interactive session.
+Follow the steps below to start an interactive session.
 
-		1. Start a Remote Desktop 
+1. Start a Remote Desktop 
 
-			TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
+	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
 
-			<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
 
-			You may modify or overwrite script defaults with `sbatch` command-line options:
+	You may modify or overwrite script defaults with `sbatch` command-line options:
 
-			*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
-			*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
-			*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
-			*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
+	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
+	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
+	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
 
-			<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
+	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
 
-			All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
+	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-			<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
 
-			The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-			<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
+	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
 
-			The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
 
-		1. Create an SSH Tunnel to Maverick2 
+1. Create an SSH Tunnel to Maverick2 
 
-			TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
+	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
 
-			<pre class="cmd-line">
-			localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
+	<pre class="cmd-line">
+	localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
 
-			where:
+	where:
 
-			*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
-			*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
-			*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
-			*  "`-N`" puts the `ssh` command into the background after connecting 
-			*  "`-L`" forwards the port 
+	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
+	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
+	*  "`-N`" puts the `ssh` command into the background after connecting 
+	*  "`-L`" forwards the port 
 
-			On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
 
-		1. Connecting vncviewer 
+1. Connecting vncviewer 
 
-			Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Maverick2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
+	Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Maverick2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
 
-			We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
+	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
 
-			Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
 
-			The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
-#software
-	:markdown
-		# [Software on Maverick2](#software)
-
-		As of July 21, 2021, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
-
-		<pre class="cmd-line">
-		login1$ <b>module avail</b>
-
-		-------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
-		   boost/1.66                     phdf5/1.10.4   (D)
-		   fftw3/3.3.6                    pnetcdf/1.8.1
-		   parallel-netcdf/4.3.3.1        python2/2.7.16 (L,D)
-		   parallel-netcdf/4.6.2   (D)    python3/3.7.0  (D)
-		   phdf5/1.8.16
-
-		------------------------ /opt/apps/intel18/modulefiles -------------------------
-		   hdf5/1.8.16        mkl-dnn/0.18.1    netcdf/4.3.3.1        python3/3.7.0
-		   hdf5/1.10.4 (D)    nco/4.6.9         netcdf/4.6.2   (D)    udunits/2.2.25
-		   impi/18.0.2 (L)    ncview/2.1.7      python2/2.7.16
-
-		---------------------------- /opt/apps/modulefiles -----------------------------
-		   TACC          (L)      gcc/7.1.0                 matlab/2020b           (D)
-		   autotools/1.2 (L)      gcc/7.3.0        (D)      mcr/9.5
-		   cmake/3.8.2            git/2.24.1       (L)      mcr/9.6
-		   cmake/3.10.2           hwloc/1.11.2              mcr/9.9                (D)
-		   cmake/3.16.1  (L,D)    idev/1.5.5                ncl_ncarg/6.3.0
-		   cuda/8.0      (g)      intel/16.0.3              nvhpc/21.3.0
-		   cuda/9.0      (g)      intel/17.0.4              ooops/1.3
-		   cuda/9.2      (g,D)    intel/18.0.2     (L,D)    sanitytool/2.0
-		   cuda/10.0     (g)      launcher_gpu/1.0          settarg
-		   cuda/10.1     (g)      lmod                      swr/18.3.3
-		   cuda/11.0     (g)      mathematica/12.0          tacc-singularity/3.7.2
-		   gcc/5.4.0              matlab/2018b              tacc_tips/0.5
-		   gcc/6.3.0              matlab/2019a              xalt/2.9.6             (L)
-
-		   Where:
-		   D:  Default Module
-		   L:  Module is loaded
-		   g:  built for GPU</pre>
-
-		<p>At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
-
-		Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
-
-		You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
-
-#software-ml
-	:markdown
-		## [Deep Learning Packages](#software-ml)
-
-		See: [Tensorflow at TACC](/software/tensorflow)
+	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
 
-/	See the [Remote Desktop Access at TACC](/tutorials/remote-desktop-access) tutorial to set up a VNC or DCV connection.
-#building
-	:markdown
-/		## [Building Software](#building)
+## [Software on Maverick2](#software) { #software }
 
-/		Like Stampede2, MACHINENAME's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
+As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
 
-/		You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide](STAMPEDE2) for detailed information on [building software](STAMPEDE2#building).  
+<pre class="cmd-line">login1$ <b>module avail</b>
 
-#figure4
-	:markdown
-		<figure>
-		<img alt="A Maverick" src="/documents/10157/1181317/Maverick2+-+BW+Man+and+horses/b6d4c9de-3455-412b-928d-f3f1438206a3?t=1536705750260" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
-		<figcaption><font size=-2>Figure 4. Person and Horse</font>
-		</figcaption>
-		</figure>.
+-------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
+   boost/1.66                     phdf5/1.10.4   (D)
+   fftw3/3.3.6                    pnetcdf/1.8.1
+   parallel-netcdf/4.3.3.1        python2/2.7.16 (L,D)
+   parallel-netcdf/4.6.2   (D)    python3/3.7.0  (D)
+   phdf5/1.8.16
+
+------------------------ /opt/apps/intel18/modulefiles -------------------------
+   hdf5/1.8.16        mkl-dnn/0.18.1    netcdf/4.3.3.1        python3/3.7.0
+   hdf5/1.10.4 (D)    nco/4.6.9         netcdf/4.6.2   (D)    udunits/2.2.25
+   impi/18.0.2 (L)    ncview/2.1.7      python2/2.7.16
+
+---------------------------- /opt/apps/modulefiles -----------------------------
+   TACC          (L)      git/2.24.1       (L)      mcr/9.6
+   autotools/1.2 (L)      hwloc/1.11.2              mcr/9.9                (D)
+   cmake/3.8.2            idev/1.5.5                ncl_ncarg/6.3.0
+   cmake/3.10.2           intel/16.0.3              nvhpc/21.3.0
+   cmake/3.16.1  (L,D)    intel/17.0.4              ooops/1.3
+   cuda/10.0     (g)      intel/18.0.2     (L,D)    sanitytool/2.0
+   cuda/10.1     (g)      launcher_gpu/1.0          settarg
+   cuda/11.0     (g)      lmod                      swr/18.3.3
+   cuda/11.3     (g,D)    mathematica/12.0          tacc-singularity/3.7.2
+   gcc/5.4.0              matlab/2018b              tacc_tips/0.5
+   gcc/6.3.0              matlab/2019a              xalt/2.9.6             (L)
+   gcc/7.1.0              matlab/2020b     (D)
+   gcc/7.3.0     (D)      mcr/9.5
+
+  Where:
+   D:  Default Module
+   L:  Module is loaded
+   g:  built for GPU</pre>
+
+At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
+
+Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
+
+You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
+
+### [Deep Learning Packages](#software-ml) { #software-ml }
+
+See: [Tensorflow at TACC](TACCTENSORFLOW)
 
 
-#refs
-	:markdown
-		# [References](#refs)
+See the [Remote Desktop Access at TACC](/tutorials/remote-desktop-access) tutorial to set up a VNC or DCV connection.
 
-		* [`idev` documentation](http://portal.tacc.utexas.edu/software/idev)
-		* [Tensorflow at TACC](/software/tensorflow)
-		* [TACC Visualization Portal](https://vis.tacc.utexas.edu/)
-		* [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication)
+### [Building Software](#software-building) { #software-building }
 
-#fake
-	:markdown
+Like Stampede2, MACHINENAME's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-		<p>&nbsp;</p>
-#fake2
-	:markdown
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide](STAMPEDE2) for detailed information on [building software](STAMPEDE2#building).  
 
-		<p>&nbsp;</p>
+<figure>
+<img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
+<figcaption><font size=-2>Figure 4. Person and Horse</font>
+</figcaption>
+</figure>
+
+## [References](#refs) { #refs }
+
+* [`idev` documentation](TACCIDEV)
+* [Tensorflow at TACC](TACCTENSORFLOW)
+* [TACC Analysis Portal](TACCANALYSISPORTAL)
+* [Multi-Factor Authentication at TACC](TACCMFA)
+
+{% include 'aliases.md' %}

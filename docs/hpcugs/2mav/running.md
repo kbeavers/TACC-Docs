@@ -1,9 +1,9 @@
-# [Running Jobs on the Maverick2 Compute Nodes](#running)
+## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
 
 /taccinfo blurb
 = File.read "../../include/maverick2-jobaccounting.html"
 
-## [Slurm Job Scheduler](#running-slurm)
+### [Slurm Job Scheduler](#running-slurm) { #running-slurm }
 
 Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
 
@@ -13,7 +13,7 @@ The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively. 
 * [Common `sbatch` options](/user-guides/stampede2#table6)
 * [Launching Applications](/user-guides/stampede2#launching-applications)
 
-## [Slurm Partitions (Queues)](#running-queues)
+### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
 **Queues and limits are subject to change without notice.** 
 
@@ -21,30 +21,12 @@ Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on
 
 See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
 
-[Table 6. Maverick2 Production Queues](#table6)
+[Table 6. Maverick2 Production Queues](#table6) { #table6 }
 
-%th(align="center") Queue Name<br>(available nodes)
-%th(align="center") Max Nodes per Job<br /> (assoc'd cores) 
-%th(align="center") Max Duration 
-%th(align="center") Max Jobs in Queue 
-%th(align="center") Charge Rate<br /> (per node-hour) 
-
-%td <code>gtx</code><br>(24 nodes)
-%td 4 nodes<br /> (64 cores)
-%td 24 hours
-%td 4
-%td 1 SU
-
-%td <code>v100</code><br>(4 nodes)
-%td 4 nodes<br>(192 cores)
-%td 24 hours
-%td 4
-%td 1 SU
-
-%td <code>p100</code><br>(3 nodes)
-%td 3 nodes<br /> (144 cores)
-%td 24 hours
-%td 4
-%td 1 SU
+Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max Duration  | Max Jobs in Queue  | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- | ---
+<code>gtx</code><br>(24 nodes) | 4 nodes<br /> (64 cores) | 24 hours | 4 | 1 SU
+<code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
+<code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
 
 
