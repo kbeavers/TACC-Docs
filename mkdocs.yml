@@ -1,7 +1,7 @@
 site_name: TACC HPC Documentation
 site_description: TACC HPC Documentation
 site_author: Susan Lindsey
-site_url: https://readthedocs.tacc.utexas.edu
+site_url: https://docs.tacc.utexas.edu
 
 theme:
     name: readthedocs
