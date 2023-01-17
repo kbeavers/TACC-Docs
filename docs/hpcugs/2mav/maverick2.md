@@ -121,7 +121,7 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
-The "`ssh`" command (SSH protocol) is the standard way to connect to MACHINENAME. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+The "`ssh`" command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
 
@@ -354,8 +354,10 @@ Remember that it's not possible to change the striping on a file that already ex
 
 ## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
 
-/taccinfo blurb
-= File.read "../../include/maverick2-jobaccounting.html"
+<!-- /taccinfo blurb
+= File.read "../../include/maverick2-jobaccounting.html" -->
+
+{% include 'include/maverick2-jobaccounting.md' %}
 
 ### [Slurm Job Scheduler](#running-slurm) { #running-slurm }
 
@@ -371,7 +373,7 @@ The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the fo
 
 **Queues and limits are subject to change without notice.** 
 
-Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on available queues.
+Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
 
 See Stampede2's [Monitoring Jobs and Queues][STAMPEDE2UG#monitoring] section for additional information.
 
@@ -504,9 +506,9 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 
 ### [Building Software](#software-building) { #software-building }
 
-Like Stampede2, MACHINENAME's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
+Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2] for detailed information on [building software][STAMPEDE2#building].  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software][STAMPEDE2UG#building].  
 
 <figure>
 <img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />

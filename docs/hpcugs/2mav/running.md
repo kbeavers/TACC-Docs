@@ -1,7 +1,9 @@
 ## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
 
-/taccinfo blurb
-= File.read "../../include/maverick2-jobaccounting.html"
+<!-- /taccinfo blurb
+= File.read "../../include/maverick2-jobaccounting.html" -->
+
+{% include 'include/maverick2-jobaccounting.md' %}
 
 ### [Slurm Job Scheduler](#running-slurm) { #running-slurm }
 
@@ -17,7 +19,7 @@ The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the fo
 
 **Queues and limits are subject to change without notice.** 
 
-Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on available queues.
+Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
 
 See Stampede2's [Monitoring Jobs and Queues][STAMPEDE2UG#monitoring] section for additional information.
 
