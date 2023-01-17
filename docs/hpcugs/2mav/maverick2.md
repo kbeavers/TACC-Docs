@@ -6,7 +6,7 @@
 ## [Notices](#notices) { #notices }
 
 * **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
-* All users: read [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio). TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
+* All users: read [Managing I/O on TACC Resources][TACCMANAGINGIO]. TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
 * Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
 * Maverick2 does not support any Visualization applications. 
 * Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.
@@ -117,7 +117,7 @@ Maverick2 mounts two shared Lustre file systems on which each user has correspon
 
 ## [Accessing the System](#access) { #access }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
@@ -125,7 +125,7 @@ The "`ssh`" command (SSH protocol) is the standard way to connect to MACHINENAME
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
 
-Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal](TACCUSERPORTAL). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](TACCUSERPORTAL) home page and select "Password Reset" under the Home tab.
+Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal][TACCUSERPORTAL] home page and select "Password Reset" under the Home tab.
 
 To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
 
@@ -150,7 +150,7 @@ Think of the login nodes as a prep area, where users may edit and manage files, 
 
 The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
 
-A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by submitting a batch job.
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by submitting a batch job.
 
 !!! important
 	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.  Your account may be suspended if your jobs are impacting other users.
@@ -230,7 +230,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
 !!! important
-	If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](/tutorials/managingio) for additional information.
+	If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMANAGINGIO] for additional information.
 
 ### [Limit File Transfers](#conduct-filetransfers) { #conduct-filetransfers }
 
@@ -238,7 +238,7 @@ In order to not stress both internal and external networks:
 
 * **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
 
-* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](http://portal.tacc.utexas.edu/user-guides/ranch).
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch][RANCH].
 
 * When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
 
@@ -248,7 +248,7 @@ In order to not stress both internal and external networks:
 
 * **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
 
-* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](/software/remora) tool to monitor your application's needs. 
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora][TACCREMORA] tool to monitor your application's needs. 
 
 ## [Managing Your Files](#files) { #files }
 
@@ -275,7 +275,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-[Table 5. Built-in Account Level Aliases](#table5)
+#### [Table 5. Built-in Account Level Aliases](#table5) { #table5 }
 
 Alias | Command
 <code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
@@ -285,7 +285,7 @@ Alias | Command
 
 ### [Transferring Files Using `scp` and `rsync`](#transferring-scp) { #transferring-scp }
 
-You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients][STAMPEDE2UG#secure-shell-ssh] typically include `scp`-based file transfer capabilities.
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
 
@@ -361,11 +361,11 @@ Remember that it's not possible to change the striping on a file that already ex
 
 Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
 
-The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the following sections for detailed information:
 
-* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
-* [Common `sbatch` options](/user-guides/stampede2#table6)
-* [Launching Applications](/user-guides/stampede2#launching-applications)
+* [Submitting Jobs with `sbatch`][STAMPEDE2UG#running-sbatch]
+* [Common `sbatch` options][STAMPEDE2UG#table6]
+* [Launching Applications][STAMPEDE2UG#launching-applications]
 
 ### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
@@ -373,9 +373,9 @@ The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively. 
 
 Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on available queues.
 
-See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+See Stampede2's [Monitoring Jobs and Queues][STAMPEDE2UG#monitoring] section for additional information.
 
-[Table 6. Maverick2 Production Queues](#table6) { #table6 }
+#### [Table 6. Maverick2 Production Queues](#table6) { #table6 }
 
 Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max Duration  | Max Jobs in Queue  | Charge Rate<br /> (per node-hour) 
 --- | --- | --- | --- | ---
@@ -497,16 +497,16 @@ You are welcome to install packages in your own `$HOME` or `$WORK` directories. 
 
 ### [Deep Learning Packages](#software-ml) { #software-ml }
 
-See: [Tensorflow at TACC](TACCTENSORFLOW)
+See: [Tensorflow at TACC][TACCTENSORFLOW]
 
 
-See the [Remote Desktop Access at TACC](/tutorials/remote-desktop-access) tutorial to set up a VNC or DCV connection.
+See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set up a VNC or DCV connection.
 
 ### [Building Software](#software-building) { #software-building }
 
 Like Stampede2, MACHINENAME's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide](STAMPEDE2) for detailed information on [building software](STAMPEDE2#building).  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2] for detailed information on [building software][STAMPEDE2#building].  
 
 <figure>
 <img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
@@ -516,9 +516,9 @@ You're welcome to download third-party research software and install it in your 
 
 ## [References](#refs) { #refs }
 
-* [`idev` documentation](TACCIDEV)
-* [Tensorflow at TACC](TACCTENSORFLOW)
-* [TACC Analysis Portal](TACCANALYSISPORTAL)
-* [Multi-Factor Authentication at TACC](TACCMFA)
+* [`idev` documentation][TACCIDEV]
+* [Tensorflow at TACC][TACCTENSORFLOW]
+* [TACC Analysis Portal][TACCANALYSISPORTAL]
+* [Multi-Factor Authentication at TACC][TACCMFA]
 
 {% include 'aliases.md' %}

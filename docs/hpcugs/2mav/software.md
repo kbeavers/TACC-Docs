@@ -44,14 +44,14 @@ You are welcome to install packages in your own `$HOME` or `$WORK` directories. 
 
 ### [Deep Learning Packages](#software-ml) { #software-ml }
 
-See: [Tensorflow at TACC](TACCTENSORFLOW)
+See: [Tensorflow at TACC][TACCTENSORFLOW]
 
 
-See the [Remote Desktop Access at TACC](/tutorials/remote-desktop-access) tutorial to set up a VNC or DCV connection.
+See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set up a VNC or DCV connection.
 
 ### [Building Software](#software-building) { #software-building }
 
 Like Stampede2, MACHINENAME's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide](STAMPEDE2) for detailed information on [building software](STAMPEDE2#building).  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2] for detailed information on [building software][STAMPEDE2#building].  
 

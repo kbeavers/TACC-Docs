@@ -7,11 +7,11 @@
 
 Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
 
-The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively.  See the following sections for detailed information:
+The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the following sections for detailed information:
 
-* [Submitting Jobs with `sbatch`](/user-guides/stampede2#running-sbatch)
-* [Common `sbatch` options](/user-guides/stampede2#table6)
-* [Launching Applications](/user-guides/stampede2#launching-applications)
+* [Submitting Jobs with `sbatch`][STAMPEDE2UG#running-sbatch]
+* [Common `sbatch` options][STAMPEDE2UG#table6]
+* [Launching Applications][STAMPEDE2UG#launching-applications]
 
 ### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
@@ -19,9 +19,9 @@ The [Stampede2 User Guide](/user-guides/stampede2) discusses Slurm extensively. 
 
 Execute "`qlimits`" on MACHINENAME for real-time information regarding limits on available queues.
 
-See Stampede2's [Monitoring Jobs and Queues](/user-guides/stampede2#monitoring) section for additional information.
+See Stampede2's [Monitoring Jobs and Queues][STAMPEDE2UG#monitoring] section for additional information.
 
-[Table 6. Maverick2 Production Queues](#table6) { #table6 }
+#### [Table 6. Maverick2 Production Queues](#table6) { #table6 }
 
 Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max Duration  | Max Jobs in Queue  | Charge Rate<br /> (per node-hour) 
 --- | --- | --- | --- | ---

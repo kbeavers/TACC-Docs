@@ -23,7 +23,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 Note that resource-specific NOWRAPsub-directoriesESPAN of `$STOCKYARD` are nothing more than convenient ways to manage your NOWRAPresource-specificESPAN files. You have access to any such NOWRAPsub-directoryESPAN from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to NOWRAP"`cd $WORK`"ESPAN) will take you to the NOWRAPresource-specificESPAN NOWRAPsub-directoryESPAN `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing NOWRAP"`cd $STOCKYARD/maverick2`"ESPAN. These commands allow you to share files across TACC systems. In fact, several convenient NOWRAPaccount-levelESPAN aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-[Table 5. Built-in Account Level Aliases](#table5) { #table5 }
+#### [Table 5. Built-in Account Level Aliases](#table5) { #table5 }
 
 Alias | Command
 <code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
@@ -33,7 +33,7 @@ Alias | Command
 
 ### [Transferring Files Using `scp` and `rsync`](#transferring-scp) { #transferring-scp }
 
-You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients][STAMPEDE2UG#secure-shell-ssh] typically include `scp`-based file transfer capabilities.
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
 
