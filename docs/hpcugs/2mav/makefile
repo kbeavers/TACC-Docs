@@ -5,7 +5,7 @@ MAVERICK2_OBJS	=	\
 		conduct-maverick2.md \
 		files.md \
 		running.md \
-		scriptstable.md \
+		scripts.md \
 		vis.md \
 		software.md \
 		references.md
