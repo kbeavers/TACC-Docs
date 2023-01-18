@@ -285,7 +285,7 @@ Alias | Command
 
 ### [Transferring Files Using `scp` and `rsync`](#transferring-scp) { #transferring-scp }
 
-You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients][STAMPEDE2UG#secure-shell-ssh] typically include `scp`-based file transfer capabilities.
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](http://portal.tacc.utexas.edu/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
 
@@ -365,9 +365,9 @@ Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler
 
 The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the following sections for detailed information:
 
-* [Submitting Jobs with `sbatch`][STAMPEDE2UG#running-sbatch]
-* [Common `sbatch` options][STAMPEDE2UG#table6]
-* [Launching Applications][STAMPEDE2UG#launching-applications]
+* [Submitting Jobs with `sbatch`](http://portal.tacc.utexas.edu/user-guides/stampede2#running-sbatch)
+* [Common `sbatch` options](http://portal.tacc.utexas.edu/user-guides/stampede2#table6)
+* [Launching Applications](http://portal.tacc.utexas.edu/user-guides/stampede2#launching-applications)
 
 ### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
@@ -375,7 +375,7 @@ The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the fo
 
 Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
 
-See Stampede2's [Monitoring Jobs and Queues][STAMPEDE2UG#monitoring] section for additional information.
+See Stampede2's [Monitoring Jobs and Queues](http://portal.tacc.utexas.edu/user-guides/stampede2#monitoring) section for additional information.
 
 #### [Table 6. Maverick2 Production Queues](#table6) { #table6 }
 
@@ -508,7 +508,7 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 
 Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software][STAMPEDE2UG#building].  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](http://portal.tacc.utexas.edu/user-guides/stampede2#building).  
 
 <figure>
 <img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />

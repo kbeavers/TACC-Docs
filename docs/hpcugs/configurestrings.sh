@@ -13,11 +13,11 @@ stylenowrap="<span\ style=\"white-space:\ nowrap;\">"
 endspan="<\/span>"
 
 imagedir="..\/..\/..\/imgs"
-figurestockyard=$imagedir+"\/stockyard-2022.jpg"
+s2ug="http:\/\/portal.tacc.utexas.edu\/user-guides\/stampede2"
 
 sed	\
 	-e "s/IMAGEDIR/$imagedir/g" \
-	-e "s/FIGURE_STOCKARD/$figurestockyard/g" \
+	-e "s/S2UG/$s2ug/g" \
 	\
 	-e "s/GREEN/$stylegreen/g" \
 	-e "s/STYLERED/$stylered/g" \
