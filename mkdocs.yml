@@ -5,7 +5,11 @@ site_url: https://docs.tacc.utexas.edu
 
 theme:
     name: readthedocs
+    custom_dir: themes/readthedocs
 
+extra_css:
+    - css/core-styles.css
+    - css/tacc-docs.css
 
 nav:
   - Fiddling : testingextensions.md

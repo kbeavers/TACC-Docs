@@ -1,0 +1,7 @@
+/* Relative paths to local Core-Styles (until we have dynamic URLs or CDN) */
+/* SEE: https://github.com/TACC/Core-Styles */
+
+@import url("./core-styles/core-styles.base.css") layer(base);
+/* Not created yet: *//*
+@import url("./core-styles/core-styles.docs.css") layer(project);
+*/
