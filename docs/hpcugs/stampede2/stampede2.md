@@ -569,7 +569,7 @@ If you use GNU compilers, see [GNU x86 Options](https://gcc.gnu.org/onlinedocs/g
 
 #/taccinfo blurb
 #= File.read "../../include/stampede2-jobaccounting.html"
-{%include 'include/jobaccounting-stampede2.md' %}
+{%include 'include/stampede2-jobaccounting.md' %}
 
 ### Slurm Job Scheduler
 
