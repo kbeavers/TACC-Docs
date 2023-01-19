@@ -2,8 +2,20 @@ Thu Dec  8 12:16:55 CST 2022
 
 This is a page for fiddling and styling.
 
+# [Let's test some nested h1 headings](#top)  { #top } 
 
-This is class="cmd-line" 
+## Images
+
+I use image tags < figure > and < figcaption >.  See example here: <https://portal.tacc.utexas.edu/user-guides/stampede2#programming-knl-memorymodes>
+
+<figure><img src="../imgs/louis.jpg" width="50%">
+<figcaption>Louis</figcaption></figure>
+
+
+## Code examples
+This is class="cmd-line" , just courier-class.  I would prefer code not be in red.
+See example here:  <https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules>
+
 <pre class="cmd-line">login1$ <b>module load kitten</b></pre>
 
 
@@ -24,7 +36,6 @@ module load gromacs/2022.1
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
 
 
-# [Let's test some nested h1 headings](#top)  { #top } 
 ## H2 is here
 
 
@@ -68,20 +79,13 @@ how do I highlight? styles - do I need to run this through a script? - yup
 
 ###### h6 is here
 
-## another h2
-
-## `abbr` 
-
-The HTML specification is maintained by the W3C.  Login in to TUP
-
-*[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
-
 ## `admonition` extension
 
 I use "attention", "note", "warning" the most
 
-rST suggests the following “types”: attention, caution, danger, error, hint, important, note, tip, and warning; however, you’re free to use whatever you want.
+!!! important
+	Admonition type: important
+	See example: <https://portal.tacc.utexas.edu/user-guides/stampede2#files-striping>
 
 !!! attention "pay attention"
 	attention box
@@ -91,12 +95,6 @@ rST suggests the following “types”: attention, caution, danger, error, hint,
 
 !!! error
 	Admonition type: error
-
-!!! hint
-	Admonition type: hint
-
-!!! important
-	Admonition type: important
 
 !!! note
 	Admonition type: note

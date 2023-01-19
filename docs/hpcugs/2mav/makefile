@@ -12,8 +12,6 @@ MAVERICK2_OBJS	=	\
 		
 all:	maverick2
 
-.SUFFIXES:	.haml .html
-
 maverick2:	$(MAVERICK2_OBJS)
 	cat jobscripts.html > temp.md
 	cat $(MAVERICK2_OBJS) >> temp.md

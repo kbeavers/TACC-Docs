@@ -567,8 +567,9 @@ If you use GNU compilers, see [GNU x86 Options](https://gcc.gnu.org/onlinedocs/g
 
 ## Running Jobs on the Stampede2 Compute Nodes
 
-/taccinfo blurb
-= File.read "../../include/stampede2-jobaccounting.html"
+#/taccinfo blurb
+#= File.read "../../include/stampede2-jobaccounting.html"
+{%include 'include/jobaccounting-stampede2.md' %}
 
 ### Slurm Job Scheduler
 
@@ -613,7 +614,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 <center>
 <table border="1" cellpadding="3" cellspacing="1">
 <tr valign="top">
-<td><a href="javascript:showhideknlserial()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-knlserial">KNL Serial Job in Normal Queue</a><br>
+<td><a href="javascript:showhideknlserial()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlserial">KNL Serial Job in Normal Queue</a><br>
 #knlserial(style="display:none")
 	:markdown
 		<pre>
@@ -665,7 +666,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 		# ---------------------------------------------------
 		</pre></td>
 
-<td valign="top"><a href="javascript:showhideskxserial()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-skxserial">SKX Serial Job in Normal Queue</a><br>
+<td valign="top"><a href="javascript:showhideskxserial()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxserial">SKX Serial Job in Normal Queue</a><br>
 #skxserial(style="display:none")
 	:markdown
 		<pre>
@@ -720,7 +721,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 		<td valign="middle" align="center">N/A</td>
 
 <tr>
-<td valign="top"><a href="javascript:showhideknlmpi()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-knlmpi">KNL MPI Job in Normal Queue</a>
+<td valign="top"><a href="javascript:showhideknlmpi()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlmpi">KNL MPI Job in Normal Queue</a>
 #knlmpi(style="display:none")
 	:markdown
 		<pre>
@@ -773,7 +774,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 		# ---------------------------------------------------
 		</pre></td>
 
-<td valign="top"><a href="javascript:showhideskxmpi()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-skxmpi">SKX MPI Job in Normal Queue</a>
+<td valign="top"><a href="javascript:showhideskxmpi()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxmpi">SKX MPI Job in Normal Queue</a>
 #skxmpi(style="display:none")
 	:markdown
 		<pre>
@@ -829,7 +830,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 </td>
 
 
-<td valign="top"><a href="javascript:showhideicxmpi()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-skxmpi">ICX MPI Job in Normal Queue</a>
+<td valign="top"><a href="javascript:showhideicxmpi()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxmpi">ICX MPI Job in Normal Queue</a>
 #icxmpi(style="display:none")
 	:markdown
 		<pre>
@@ -900,7 +901,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 </td>
 
 </tr><tr valign="top">
-<td><a href="javascript:showhideknlopenmp()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-knlopenmp">KNL OpenMP Job in Normal Queue</a>
+<td><a href="javascript:showhideknlopenmp()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlopenmp">KNL OpenMP Job in Normal Queue</a>
 #knlopenmp(style="display:none")
 	:markdown
 		<pre>
@@ -959,7 +960,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 		# ---------------------------------------------------
 		</pre></td>
 
-<td valign="top"><a href="javascript:showhideskxopenmp()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-skxopenmp">SKX OpenMP Job in Normal Queue</a>
+<td valign="top"><a href="javascript:showhideskxopenmp()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxopenmp">SKX OpenMP Job in Normal Queue</a>
 #skxopenmp(style="display:none")
 	:markdown
 		<pre>
@@ -1019,7 +1020,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 		</pre></td>
 
 
-<td valign="top"><a href="javascript:showhideicxopenmp()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-icxopenmp">ICX OpenMP Job in Normal Queue</a>
+<td valign="top"><a href="javascript:showhideicxopenmp()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-icxopenmp">ICX OpenMP Job in Normal Queue</a>
 #icxopenmp(style="display:none")
 	:markdown
 		<pre>
@@ -1092,7 +1093,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 
 
 </tr><tr valign="top">
-<td><a href="javascript:showhideknlhybrid()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-knlhybrid">KNL Hybrid Job in Normal Queue</a>
+<td><a href="javascript:showhideknlhybrid()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlhybrid">KNL Hybrid Job in Normal Queue</a>
 #knlhybrid(style="display:none")
 	:markdown
 		<pre>
@@ -1158,7 +1159,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 		# ---------------------------------------------------
 		</pre></td>
 
-<td valign="top"><a href="javascript:showhideskxhybrid()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-skxhybrid">SKX Hybrid Job in Normal Queue</a>
+<td valign="top"><a href="javascript:showhideskxhybrid()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxhybrid">SKX Hybrid Job in Normal Queue</a>
 #skxhybrid(style="display:none")
 	:markdown
 		<pre>
@@ -1225,7 +1226,7 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 		</pre></td>
 
 
-<td valign="top"><a href="javascript:showhideicxhybrid()"><img src="/documents/10157/0/small-right-arrow.png/32a37818-3255-40f3-bb33-795fac19a3dd?t=1480440057000" id="img-icxhybrid">ICX Hybrid Job in Normal Queue</a>
+<td valign="top"><a href="javascript:showhideicxhybrid()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-icxhybrid">ICX Hybrid Job in Normal Queue</a>
 #icxhybrid(style="display:none")
 	:markdown
 		<pre>

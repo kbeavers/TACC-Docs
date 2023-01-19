@@ -1,7 +1,8 @@
 ## Running Jobs on the Stampede2 Compute Nodes
 
-/taccinfo blurb
-= File.read "../../include/stampede2-jobaccounting.html"
+#/taccinfo blurb
+#= File.read "../../include/stampede2-jobaccounting.html"
+{%include 'include/stampede2-jobaccounting.md' %}
 
 ### Slurm Job Scheduler
 

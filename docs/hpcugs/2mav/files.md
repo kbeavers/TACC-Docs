@@ -26,6 +26,7 @@ Note that resource-specific NOWRAPsub-directoriesESPAN of `$STOCKYARD` are nothi
 #### [Table 5. Built-in Account Level Aliases](#table5) { #table5 }
 
 Alias | Command
+--- | ---
 <code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
 <code>cdw</code> | <code>cd $WORK</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>

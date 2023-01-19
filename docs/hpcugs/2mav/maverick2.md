@@ -324,6 +324,7 @@ Note that resource-specific <span style="white-space: nowrap;">sub-directories</
 #### [Table 5. Built-in Account Level Aliases](#table5) { #table5 }
 
 Alias | Command
+--- | ---
 <code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
 <code>cdw</code> | <code>cd $WORK</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>

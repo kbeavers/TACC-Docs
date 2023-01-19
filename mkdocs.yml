@@ -11,7 +11,7 @@ nav:
   - Fiddling : testingextensions.md
   - HPC :
     - Maverick2: hpcugs/2mav/maverick2.md
-#   - Corral: hpcugs/corral/corral.md
+    - Corral: hpcugs/corral/corral.md
 #   - Frontera: hpcugs/frontera/frontera.md
 #   - Lonestar6: hpcugs/6lonestar/lonestar6.md
 #   - Ranch: hpcugs/ranch/ranchsrc.md
