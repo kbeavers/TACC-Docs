@@ -2,7 +2,7 @@
 
 This section provides an overview of how compute jobs are charged to allocations and describes the **S**imple **L**inux **U**tility for **R**esource **M**anagement (Slurm) batch environment, Lonestar6 queue structure, lists basic Slurm job control and monitoring commands along with options.
 
-{% include 'include/jobaccounting.md' %}
+{% include 'include/lonestar6-jobaccounting.md' %}
 
 ### Production Queues
 

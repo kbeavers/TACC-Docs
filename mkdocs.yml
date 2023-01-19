@@ -14,13 +14,13 @@ extra_css:
 nav:
   - Fiddling : testingextensions.md
   - HPC :
+    - Corral: hpcugs/corral/corral.md
     - Maverick2: hpcugs/2mav/maverick2.md
-#   - Corral: hpcugs/corral/corral.md
+    - Stampede2: hpcugs/stampede2/stampede2.md
 #   - Frontera: hpcugs/frontera/frontera.md
 #   - Lonestar6: hpcugs/6lonestar/lonestar6.md
 #   - Ranch: hpcugs/ranch/ranchsrc.md
 #   - Stallion: hpcugs/stallion/stallionsrc.md
-#   - Stampede2: hpcugs/stampede2/stampede2.md
 #  - Software :
 #    - GROMACS: softwareugs/gromacs.md
 #    - Gaussian: softwareugs/gaussian.md

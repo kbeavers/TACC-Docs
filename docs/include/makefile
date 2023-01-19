@@ -1,6 +1,6 @@
 HAML=	/usr/local/bin/md
 
-SRC	=	scratchpolicysrc.md mklsrc.md taccinfosrc.md conductsrc.md helpsrc.md jobaccountingsrc.md
+SRC	=	scratchpolicy.md mklsrc.md taccinfosrc.md conductsrc.md helpsrc.md jobaccountingsrc.md
 
 all:	includes 
 

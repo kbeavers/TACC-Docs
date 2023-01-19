@@ -1,10 +1,10 @@
-## Monitoring Jobs and Queues
+### [Monitoring Jobs and Queues](#monitoring) { #monitoring }
 
 Several commands are available to help you plan and track your job submissions as well as check the status of the Slurm queues.
 
 When interpreting queue and job status, remember that **Stampede2 doesn't operate on a first-come-first-served basis**. Instead, the sophisticated, tunable algorithms built into Slurm attempt to keep the system busy, while scheduling jobs in a way that is as fair as possible to everyone. At times this means leaving nodes idle ("draining the queue") to make room for a large job that would otherwise never run. It also means considering each user's "fair share", scheduling jobs so that those who haven't run jobs recently may have a slightly higher priority than those who have.
 
-### Monitoring Queue Status with `sinfo` and `qlimits`
+#### [Monitoring Queue Status with `sinfo` and `qlimits`](#monitoring-queue) { #monitoring-queue }
 
 To display resource limits for the Stampede2 queues, execute "**`qlimits`**". The result is real-time data; the corresponding information in this document's [table of Stampede2 queues](#running-queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
@@ -16,13 +16,13 @@ An excerpt from this command's output looks like this:
 
 <pre class="cmd-line">
 PARTITION          AVAIL    NODES(A/I/O/T)
-development&#42;       up       41/70/1/112
+development*       up       41/70/1/112
 normal             up       3685/8/3/3696</pre>
 
 The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled "`NODES(A/I/O/T)`" shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute "`man sinfo`" for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Stampede2 (e.g. `TIMELIMIT`, displayed using the "`%l`" option).
 
 
-### Monitoring Job Status with `squeue`
+#### [Monitoring Job Status with `squeue`](#monitoring-squeue) { #monitoring-squeue }
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
@@ -61,7 +61,7 @@ The "`--start`" option displays job start times, including very rough estimates 
 <pre class="cmd-line">login1$ <b>squeue --start -j 167635</b>     # display estimated start time for job 167635</pre>
 
 
-### Monitoring Job Status with `showq`
+#### [Monitoring Job Status with `showq`](#monitoring-showq) { #monitoring-showq }
 
 TACC's "`showq`" utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm "`squeue`" command:
 
@@ -78,7 +78,7 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each KNL node's 272 hardware threads (and each SKX node's 96 hardware threads) as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
 
-### Other Job Management Commands (`scancel`, `scontrol`, and `sacct`)
+#### [Other Job Management Commands (`scancel`, `scontrol`, and `sacct`)](#monitoring-other) { #monitoring-other }
 
 **It's not possible to add resources to a job (e.g. allow more time)** once you've submitted the job to the queue.
 
@@ -99,7 +99,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 <pre class="cmd-line">login1$ <b>sacct --starttime 2017-08-01</b>  # show jobs that started on or after this date</pre>
 
 
-### Dependent Jobs using `sbatch`
+#### [Dependent Jobs using `sbatch`](#monitoring-dependent) { #monitoring-dependent }
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the "`--dependency`" option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 

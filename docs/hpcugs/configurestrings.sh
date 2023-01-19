@@ -15,6 +15,9 @@ endspan="<\/span>"
 imagedir="..\/..\/..\/imgs"
 s2ug="http:\/\/portal.tacc.utexas.edu\/user-guides\/stampede2"
 
+downarrow="\"$imagedir\/small-down-arrow.png\""
+rightarrow="\"$imagedir\/small-right-arrow.png\""
+
 sed	\
 	-e "s/IMAGEDIR/$imagedir/g" \
 	-e "s/S2UG/$s2ug/g" \
@@ -25,6 +28,9 @@ sed	\
 	-e "s/YELLOW/$styleyellow/g" \
 	-e "s/NOWRAP/$stylenowrap/g" \
 	-e "s/ESPAN/$endspan/g" \
+	\
+	-e "s/DOWNARROW/$downarrow/g" \
+	-e "s/RIGHTARROW/$rightarrow/g" \
 	\
 	< $inputfile > $outputfile
 
