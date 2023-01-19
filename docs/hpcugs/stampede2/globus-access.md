@@ -1,16 +1,16 @@
-# Globus for ACCESS Users
+## Globus for ACCESS Users { # }
 
 ACCESS users may connect to Stampede2 and Ranch via Globus endpoints to manage and transfer files (called collections). 
 
 <p class="portlet-msg-info"><b>Tip</b> <b>Key Concept: <i>Collection</i></b> A collection is a named location containing data you can access with Globus. Collections can be hosted on many different kinds of systems, including campus storage, HPC clusters, laptops, Amazon S3 buckets, Google Drive, and scientific instruments.  When you use Globus, you don't need to know a physical location or details about storage. You only need a collection name. A collection allows authorized Globus users to browse and transfer files. Collections can also be used for sharing data with others and for enabling discovery by other Globus users. <a href="https://www.globus.org/globus-connect" target="_blank">Globus Connect</a> is used to host collections.</p>
 
-## Transfer a file
+### Transfer a file { # }
 
 This step-by-step guide will show ACCESS users how to log into Globus and use it to transfer files reliably and securely. See [Globus' Getting Started Guide](https://docs.globus.org/how-to/get-started/) for more detailed information. 
 
 In this step-by-step guide we'll demonstrate a *trivial* example of transferring a file from TACC's Stampede2 to TACC's Ranch archival tape system. 
 
-## 1. Do all the necessary authentications (globus, then ACCESS)
+### 1. Do all the necessary authentications (globus, then ACCESS) { # }
 
 Log in to <a href="https://www.globus.org/" target="_blank">www.globus.org</a> with your ACCESS (formerly XSEDE) credentials.  Click &quot;Login&quot; at the top right of the page. 
 
@@ -24,7 +24,7 @@ You'll be redirected to the ACCESS login page. Use your ACCESS credentials for t
 
 <img width="600px" src="./imgs/Globus-03.png">  
 
-## 2. The File Manager - Access your collections.
+### 2. The File Manager - Access your collections. { # }
 
 After you've signed up and logged in to Globus, you'll land at the Globus File Manager. 
 
@@ -50,7 +50,7 @@ Click in the Collection field at the top of the File Manager page
 
 <p class="portlet-msg-info"><b>Tip</b> <b>Key Concept: <i>Fire-And-Forget Data Transfer</i></b> After you request a file transfer, Globus takes over and does the work on your behalf. You can navigate away from the File Manager, close the browser window, and even logout. Globus will optimize the transfer for performance, monitor the transfer for completion and correctness, and recover from network errors and collection downtime. </p>
 
-## Initiate a File Transfer 
+### Initiate a File Transfer  { # }
 
 Click Transfer or Sync to... in the command panel on the right side of the page. A new collection panel will open, with a &quot;Transfer or Sync to&quot; field at the top of the panel. 
 
@@ -81,6 +81,6 @@ On the Activity page, click the arrow icon on the right to view details about th
 Click File Manager in the command menu on the left of the Activity page to return to the File Manager. The collections you were viewing before will reappear. Click the refresh icon (circular arrows) at the top of the collection panel to see the updated contents 
 
 
-## More Info
+### More Info { # }
 
 

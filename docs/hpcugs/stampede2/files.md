@@ -1,9 +1,9 @@
-# [Managing Your Files](#files)
+## [Managing Your Files](#files) { #files }
 
 Stampede2 mounts three file Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Stampede2's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH`, and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the [Stampede2 File Systems](#table3) table for the basic characteristics of these file systems, [File Operations: I/O Performance](#programming-fileio) for advice on performance issues, and [Good Conduct](#conduct-filesystems-tips) for tips on file system etiquette.
 
 
-## [Navigating the Shared File Systems](#files-filesystems)
+### [Navigating the Shared File Systems](#files-filesystems) { #files-filesystems }
 
 Stampede2's `/home` and `/scratch` file systems are mounted only on Stampede2, but the work file system mounted on Stampede2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). Stockyard is the same work file system that is currently available on Frontera, Lonestar6, and several other TACC resources. 
 
@@ -21,26 +21,14 @@ Note that resource-specific NOWRAPsub-directoriesESPAN of `$STOCKYARD` are nothi
 
 [Table 4. Built-in Account Level Aliases](#table4)
 
-		%table(border=1 cellpadding=3)
-			%tr
-				%th(colspan=2) Built-in Account Level Aliases
-			%tr 
-				%th Alias
-				%th Command
-			%tr
-				%td <code>cd</code> or <code>cdh</code>
-				%td <code>cd $HOME</code>
-			%tr
-				%td <code>cdw</code>
-				%td <code>cd $WORK</code>
-			%tr
-				%td <code>cds</code>
-				%td <code>cd $SCRATCH</code>
-			%tr
-				%td <code>cdy</code> or <code>cdg</code>
-				%td <code>cd $STOCKYARD</code>
+Alias | Command
+--- | ---
+<code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
+<code>cdw</code> | <code>cd $WORK</code>
+<code>cds</code> | <code>cd $SCRATCH</code>
+<code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-			## [Striping Large Files](#files-striping)
+## [Striping Large Files](#files-striping)
 
 Stampede2's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives (dozens of physical drives for `$HOME`, hundreds for `$WORK` and `$SCRATCH`).
 
@@ -61,9 +49,9 @@ You can check the stripe count of a file using the "`lfs getstripe`" command:
 <pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
 
 
-# [Transferring Files](#transferring)
+## [Transferring Files](#transferring) { #transferring }
 
-## [Transfer Using `scp`](#transferring-scp)
+### [Transfer Using `scp`](#transferring-scp) { #transferring-scp }
 
 You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](STAMPEDE2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
 
@@ -99,7 +87,7 @@ Instead, use `tar` to create an archive of the directory, then transfer the dire
 localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
 localhost$ <b>scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
 
-## [Transfer Using `rsync`](#transferring-rsync)
+### [Transfer Using `rsync`](#transferring-rsync) { #transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
@@ -113,13 +101,13 @@ See [Striping Large Files](#files-striping) for additional important advice abou
 
 As detailed in the [Conduct](#conduct) section above, it is important to monitor your quotas on the `$HOME` and `$WORK` file systems, and limit the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
 
-## [Transfer Using Grid Community Toolkit](#transferring-gct)
+### [Transfer Using Grid Community Toolkit](#transferring-gct) { #transferring-gct }
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.
 
 Stampede2 has two endpoints, one running Globus gridftp v5.4 software available for [ACCESS](http://access-ci.org) (formerly XSEDE) users, and the endpoint running Grid Community Toolkit with CILogon authentication available to all.  
 
-## [Sharing Files with Collaborators](#files-sharing)
+### [Sharing Files with Collaborators](#files-sharing) { #files-sharing }
 
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 

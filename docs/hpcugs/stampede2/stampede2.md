@@ -1,9 +1,9 @@
 <style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
 
-<span style="font-size:225%; font-weight:bold;">Stampede2 User Guide</span><br>
+# Stampede2 User Guide
 <i>Last update: September 16, 2022</i> <span style="font-size:90%;">see <a href="#history">revision history</a></span>   
   
-# [Notices](#notices)
+## [Notices](#notices) { #notices }
 
  
 * **The XSEDE project concluded formal operations as an NSF-funded project on August 31, 2022**.  Similar services are now operated through NSF's follow-on program, Advanced Cyberinfrastructure Coordination Ecosystem: Services &amp; Support, or ACCESS.  Find out more at the [ACCESS website](http://access-ci.org). (09/01/2022)
@@ -17,20 +17,20 @@
 
 
 <figure>FIGURE-STAMPEDEPANO<figcaption>Figure 1. Stampede2 System</figcaption></figure>
-# [Introduction](#intro)
+## [Introduction](#intro) { #intro }
 
 Stampede2, generously funded by the National Science Foundation (NSF) through [award  ACI-1540931](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540931), is one of the Texas Advanced Computing Center (TACC), University of Texas at Austin's flagship supercomputers. Stampede2 entered full production in the Fall 2017 as an 18-petaflop national resource that builds on the successes of the original Stampede system it replaces. The first phase of the Stampede2 rollout featured the second generation of processors based on Intel's Many Integrated Core (MIC) architecture. Stampede2's 4,200 Knights Landing (KNL) nodes represent a radical break with the first-generation Knights Corner (KNC) MIC coprocessor. Unlike the legacy KNC, a Stampede2 KNL is not a coprocessor: each 68-core KNL is a stand-alone, self-booting processor that is the sole processor in its node. Phase 2 added to Stampede2 a total of 1,736 Intel Xeon Skylake (SKX) nodes. The final phase of Stampede2 features the replacement of 448 KNL nodes with 224 Ice Lake nodes. 
 
 
-# [System Overview](#overview)
+## [System Overview](#overview) { #overview }
 
-## [KNL Compute Nodes](#overview-phase1computenodes)
+### [KNL Compute Nodes](#overview-phase1computenodes) { #overview-phase1computenodes }
 
 Stampede2 hosts 4,200 KNL compute nodes, including 504 KNL nodes that were formerly configured as a Stampede1 sub-system.  
 
 Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Memory (RAM). They also feature an additional 16GB of high bandwidth, on-package memory known as Multi-Channel Dynamic Random Access Memory (**MCDRAM**) that is up to four times faster than DDR4. The KNL's memory is configurable in two important ways: there are BIOS settings that determine at boot time the processor's **memory mode** and **cluster mode**. The processor's **memory mode** determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The **cluster mode** determines the mechanisms for achieving cache coherency, which in turn determines latency: roughly speaking, this mode specifies the degree to which some memory addresses are "closer" to some cores than to others. See "[Programming and Performance: KNL](#programming-knl)" below for a top-level description of these and other available memory and cluster modes.
 
-[Table 1. Stampede2 KNL Compute Node Specifications](#table1)  
+[Table 1. Stampede2 KNL Compute Node Specifications](#table1)   { # }
 
 		%table(border="1" cellpadding="3")
 			%tr
@@ -59,11 +59,11 @@ Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Me
 				%td All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
 	
 	
-## [SKX Compute Nodes](#overview-skxcomputenodes)
+### [SKX Compute Nodes](#overview-skxcomputenodes) { #overview-skxcomputenodes }
 
 Stampede2 hosts 1,736 SKX compute nodes.
 
-[Table 2. Stampede2 SKX Compute Node Specifications](#table2)
+[Table 2. Stampede2 SKX Compute Node Specifications](#table2) { # }
 
 		%table(border="1" cellpadding="3")
 			%tr
@@ -91,11 +91,11 @@ Stampede2 hosts 1,736 SKX compute nodes.
 				%td(align="right") Local storage:&nbsp;
 				%td 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
 
-## [ICX Compute Nodes](#overview-icxcomputenodes)
+### [ICX Compute Nodes](#overview-icxcomputenodes) { #overview-icxcomputenodes }
 
 Stampede2 hosts 224 ICX compute nodes.
 
-[Table 2a. Stampede2 ICX Compute Node Specifications](#table2a)
+[Table 2a. Stampede2 ICX Compute Node Specifications](#table2a) { # }
 
 		%table(border="1" cellpadding="3")
 			%tr
@@ -123,20 +123,20 @@ Stampede2 hosts 224 ICX compute nodes.
 				%td(align="right") Local storage:&nbsp;
 				%td 342 GB <code>/tmp</code> partition
 
-## [Login Nodes](#overview-loginnodes)
+### [Login Nodes](#overview-loginnodes) { #overview-loginnodes }
 
 The Stampede2 login nodes, upgraded at the start of Phase 2, are Intel Xeon Gold 6132 (SKX) nodes, each with 28 cores on two sockets (14 cores/socket). They replace the decommissioned Broadwell login nodes used during Phase 1.
 
-## [Network](#overview-network)
+### [Network](#overview-network) { #overview-network }
 
 The interconnect is a 100Gb/sec Intel Omni-Path (OPA) network with a fat tree topology employing six core switches. There is one leaf switch for each 28-node half rack, each with 20 leaf-to-core uplinks (28/20 oversubscription).
 
-## [File Systems Introduction](#overview-filesystems)
+### [File Systems Introduction](#overview-filesystems) { #overview-filesystems }
 
 Stampede2 mounts three shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME`, `$WORK`, and `$SCRATCH`](#files-filesystems). Each file system is available from all Stampede2 nodes; the [Stockyard-hosted work file system](https://www.tacc.utexas.edu/systems/stockyard) is available on most other TACC HPC systems as well.  See [Navigating the Shared File Systems](#files-filesystems) for detailed information as well as the [Good Conduct](#table-file-system-usage-recommendations) file system guidelines. 
 
 		
-[Table 3. Stampede2 File Systems](#table3)
+[Table 3. Stampede2 File Systems](#table3) { # }
 
 		%table(border=1 cellpadding="3")
 			%tr
@@ -160,11 +160,11 @@ Stampede2 mounts three shared Lustre file systems on which each user has corresp
 {% include 'include/scratchpolicy.md' %}
 
 
-# [Accessing the System](#access)
+## [Accessing the System](#access) { #access }
 
 Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
 
-## [Secure Shell (SSH)](#access-ssh)
+### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
 The "`ssh`" command (SSH protocol) is the standard way to connect to Stampede2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
@@ -190,13 +190,13 @@ To report a connection problem, execute the `ssh` command with the <span style="
 
 After logging in again the system will generate a properly configured key pair.
 
-# [Using Stampede2](#using)
+## [Using Stampede2](#conduct) { #conduct }
 
 Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research workflow, **you’ll need to master Linux basics** and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. This user guide does not address these topics, however. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the [TACC](https://portal.tacc.utexas.edu/training/course-materials) training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
-## [Configuring Your Account](#using-account)
+### [Configuring Your Account](#conduct-account) { #conduct-account }
 
-### [Linux Shell](#using-account-shell)
+#### [Linux Shell](#conduct-account-shell) { #conduct-account-shell }
 
 The default login shell for your user account is Bash.  To determine your current login shell, execute: 
 
@@ -210,9 +210,9 @@ Before editing your startup files, however, it's worth taking the time to unders
 
 For more information see the [Bash Users' Startup Files: Quick Start Guide](https://portal.tacc.utexas.edu/tutorials/bashquickstart) and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">"`/usr/local/startup_scripts/install_default_scripts`"</span>.
 
-### [Environment Variables](#using-account-envvars)
+#### [Environment Variables](#conduct-account-envvars) { #conduct-account-envvars }
 
-Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the [modules](#using-modules) that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
+Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the [modules](#conduct-modules) that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
 
 Execute the "`env`" command to see the environment variables that define the way your shell and child shells behave. 
 
@@ -222,7 +222,7 @@ Pipe the results of `env` into `grep` to focus on specific environment variables
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
-### [Account-Level Diagnostics](#using-account-diagnostics)
+#### [Account-Level Diagnostics](#conduct-account-diagnostics) { #conduct-account-diagnostics }
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
@@ -232,9 +232,9 @@ login1$ <b>sanitycheck</b></pre>
 
 Execute "`module help sanitytool`" for more information.
 
-## [Accessing the Compute Nodes](#using-computenodes)
+### [Accessing the Compute Nodes](#conduct-computenodes) { #conduct-computenodes }
 
-You connect to Stampede2 through one of four "front-end" login nodes. The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes ([Figure 2. Login and Compute Nodes](#figure2)). What you do on the login nodes affects other users directly because you are competing for the same memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](#using-conduct) for more information. 
+You connect to Stampede2 through one of four "front-end" login nodes. The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes ([Figure 2. Login and Compute Nodes](#figure2)). What you do on the login nodes affects other users directly because you are competing for the same memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](#conduct-conduct) for more information. 
 
 **You can use your command-line prompt, or the "`hostname`" command, to tell you whether you are on a login node or a compute node**. The default prompt, or any custom prompt containing "`\h`", displays the short form of the hostname (e.g. `c401-064`). The hostname for a Stampede2 login node begins with the string "`login`" (e.g. `login2.stampede2.tacc.utexas.edu`), while compute node hostnames begin with the character "`c`" (e.g. `c401-064.stampede2.tacc.utexas.edu`). Note that the default prompts on the compute nodes include the node type (`knl`, `skx` or `icx`) as well. The environment variable `TACC_NODE_TYPE`, defined only on the compute nodes, also displays the node type. The simplified prompts in the User Guide examples are shorter than Stampede2's actual default prompts.
 
@@ -259,7 +259,7 @@ $ <b>module help launcher</b></pre>
 FIGURE-LOGINCOMPUTENODES
 <figcaption>Figure 2. Login and compute nodes</figcaption></figure>
 
-## [Using Modules to Manage your Environment](#using-modules)
+### [Using Modules to Manage your Environment](#conduct-modules) { #conduct-modules }
 
 Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Stampede2 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
@@ -341,12 +341,12 @@ See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensiv
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">"`module save`"</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede2's default startup scripts for a safe way to do so.
 
-# [Managing Your Files](#files)
+## [Managing Your Files](#files) { #files }
 
 Stampede2 mounts three file Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Stampede2's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH`, and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the [Stampede2 File Systems](#table3) table for the basic characteristics of these file systems, [File Operations: I/O Performance](#programming-fileio) for advice on performance issues, and [Good Conduct](#conduct-filesystems-tips) for tips on file system etiquette.
 
 
-## [Navigating the Shared File Systems](#files-filesystems)
+### [Navigating the Shared File Systems](#files-filesystems) { #files-filesystems }
 
 Stampede2's `/home` and `/scratch` file systems are mounted only on Stampede2, but the work file system mounted on Stampede2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). Stockyard is the same work file system that is currently available on Frontera, Lonestar6, and several other TACC resources. 
 
@@ -404,9 +404,9 @@ You can check the stripe count of a file using the "`lfs getstripe`" command:
 <pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
 
 
-# [Transferring Files](#transferring)
+## [Transferring Files](#transferring) { #transferring }
 
-## [Transfer Using `scp`](#transferring-scp)
+### [Transfer Using `scp`](#transferring-scp) { #transferring-scp }
 
 You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](STAMPEDE2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
 
@@ -442,7 +442,7 @@ Instead, use `tar` to create an archive of the directory, then transfer the dire
 localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
 localhost$ <b>scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
 
-## [Transfer Using `rsync`](#transferring-rsync)
+### [Transfer Using `rsync`](#transferring-rsync) { #transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
@@ -456,25 +456,25 @@ See [Striping Large Files](#files-striping) for additional important advice abou
 
 As detailed in the [Conduct](#conduct) section above, it is important to monitor your quotas on the `$HOME` and `$WORK` file systems, and limit the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
 
-## [Transfer Using Grid Community Toolkit](#transferring-gct)
+### [Transfer Using Grid Community Toolkit](#transferring-gct) { #transferring-gct }
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.
 
 Stampede2 has two endpoints, one running Globus gridftp v5.4 software available for [ACCESS](http://access-ci.org) (formerly XSEDE) users, and the endpoint running Grid Community Toolkit with CILogon authentication available to all.  
 
-## [Sharing Files with Collaborators](#files-sharing)
+### [Sharing Files with Collaborators](#files-sharing) { #files-sharing }
 
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
-# [Building Software](#building)
+## [Building Software](#building) { #building }
 
 The phrase "building software" is a common way to describe the process of producing a machine-readable executable file from source files written in C, Fortran, or some other programming language. In its simplest form, building software involves a simple, one-line call or short shell script that invokes a compiler. More typically, the process leverages the power of [`makefiles`](http://www.gnu.org/software/make/manual/make.html), so you can change a line or two in the source code, then rebuild in a systematic way only the components affected by the change. Increasingly, however, the build process is a sophisticated multi-step automated workflow managed by a special framework like [autotools](http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) or [`cmake`](http://cmake.org), intended to achieve a repeatable, maintainable, portable mechanism for installing software across a wide range of target platforms.
 
-## [Basics of Building Software](#building-basics)
+### [Basics of Building Software](#building-basics) { #building-basics }
 
 This section of the user guide does nothing more than introduce the big ideas with simple one-line examples. You will undoubtedly want to explore these concepts more deeply using online resources. You will quickly outgrow the examples here. We recommend that you master the basics of makefiles as quickly as possible: even the simplest computational research project will benefit enormously from the power and flexibility of a makefile-based build process.
 
-### [Intel Compilers](#building-basics-intel)
+#### [Intel Compilers](#building-basics-intel) { #building-basics-intel }
 
 Intel is the recommended and default compiler suite on Stampede2. Each Intel module also gives you direct access to `mkl` without loading an `mkl` module; see [Intel MKL](#intel-math-kernel-library-mkl) for more information. Here are simple examples that use the Intel compiler to build an executable from source code:
 
@@ -491,7 +491,7 @@ Compiling a code that uses OpenMP would look like this:
 
 See the published Intel documentation, available both [online](http://software.intel.com/en-us/intel-software-technical-documentation) and in `${TACC_INTEL_DIR}/documentation`, for information on optimization flags and other Intel compiler options.
 
-### [GNU Compilers](#building-basics-gnu)
+#### [GNU Compilers](#building-basics-gnu) { #building-basics-gnu }
 
 The GNU foundation maintains a number of high quality compilers, including a compiler for C (`gcc`), C++ (`g++`), and Fortran (`gfortran`). The `gcc` compiler is the foundation underneath all three, and the term "gcc" often means the suite of these three GNU compilers.
 
@@ -508,7 +508,7 @@ $ <b>gcc -fopenmp mycode.c -o myexe</b>  # OpenMP; GNU flag is different than In
 
 Note that some compiler options are the same for both Intel and GNU (e.g. "`-o`"), while others are different (e.g. "`-qopenmp`" vs "`-fopenmp`"). Many options are available in one compiler suite but not the other. See the [online GNU documentation](http://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
 
-### [Compiling and Linking as Separate Steps](#building-basics-complink)
+#### [Compiling and Linking as Separate Steps](#building-basics-complink) { #building-basics-complink }
 
 Building an executable requires two separate steps: (1) compiling (generating a binary object file associated with each source file); and (2) linking (combining those object files into a single executable file that also specifies the libraries that executable needs). The examples in the previous section accomplish these two steps in a single call to the compiler. When building more sophisticated applications or libraries, however, it is often necessary or helpful to accomplish these two steps separately.
 
@@ -524,7 +524,7 @@ You can now link the object files to produce an executable file:
 
 The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task. Again, syntax for other compilers is similar.
 
-### [Include and Library Paths](#building-basics-inclib)
+#### [Include and Library Paths](#building-basics-inclib) { #building-basics-inclib }
 
 Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the "`-I`" option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the "`-L`" option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
 
@@ -538,7 +538,7 @@ The details of the linking process vary, and order sometimes matters. Much depen
 
 A separate section below addresses the [Intel Math Kernel Library](#intel-math-kernel-library-mkl) (MKL).
 
-### [Compiling and Linking MPI Programs](#building-basics-mpi)
+#### [Compiling and Linking MPI Programs](#building-basics-mpi) { #building-basics-mpi }
 
 Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Stampede2. After loading an `impi` or `mvapich2` module, compile and/or link using an mpi wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
@@ -553,7 +553,7 @@ These wrappers call the compiler with the options, include paths, and libraries 
 <pre class="cmd-line">$ <b>mpicc -show</b>  # Show compile line generated by call to mpicc; similarly for other wrappers</pre>
 
 
-### [Building Third-Party Software in Your Own Account](#building-basics-thirdparty)
+#### [Building Third-Party Software in Your Own Account](#building-basics-thirdparty) { #building-basics-thirdparty }
 
 You're welcome to download third-party research software and install it in your own account. In most cases you'll want to download the source code and build the software so it's compatible with the Stampede2 software environment. You can't use yum or any other installation process that requires elevated privileges, but this is almost never necessary. The key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. When using the famous [three-step autotools](http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) build process, the standard approach is to use the `PREFIX` environment variable to specify a non-default, user-owned installation directory at the time you execute `configure` or `make`:
 
@@ -586,14 +586,14 @@ If you wish to share a software package with collaborators, you may need to modi
 <!-- Intel MKL -->
 {% include 'include/stampede2-mkl.md' %}
 		
-## [Building for Performance on Stampede2](#building-performance)
+### [Building for Performance on Stampede2](#building-performance) { #building-performance }
 
-### [Compiler](#building-performance-compiler)
+#### [Compiler](#building-performance-compiler) { #building-performance-compiler }
 
 When building software on Stampede2, we recommend using the most recent Intel compiler and Intel MPI library available on Stampede2. The most recent versions may be newer than the defaults. Execute <span style="white-space: nowrap;">"`module spider intel`"</span> and <span style="white-space: nowrap;">"`module spider impi`"</span> to see what's installed. When loading these modules you may need to specify version numbers explicitly (e.g. <span style="white-space: nowrap;">"`module load intel/18.0.0`"</span> and <span style="white-space: nowrap;">"`module load impi/18.0.0`"</span>).
 
 
-### [Architecture-Specific Flags](#building-performance-architecture)
+#### [Architecture-Specific Flags](#building-performance-architecture) { #building-performance-architecture }
 
 To compile for KNL only, include "`-xMIC-AVX512`" as a build option. The "`-x`" switch allows you to specify a [target architecture](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-x-qx), while `MIC-AVX512` is the KNL-specific subset of Intel's Advanced Vector Extensions 512-bit [instruction set](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).  Besides all other appropriate compiler options, you should also consider specifying an [optimization level](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-o) using the "`-O`" flag:
 
@@ -633,15 +633,15 @@ For information on the performance implications of your choice of build flags, s
 If you use GNU compilers, see [GNU x86 Options](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html) for information regarding support for KNL, SKX and ICX. Note that GNU compilers do not support multi-architecture binaries.
 
 
-# [Running Jobs on the Stampede2 Compute Nodes](#running)
+## [Running Jobs on the Stampede2 Compute Nodes](#running) { #running }
 
-de 'include/stampede2-jobaccounting.html' %}
+{% include 'include/stampede2-jobaccounting.md' %}
 
-## [Slurm Job Scheduler](#running-slurm)
+### [Slurm Job Scheduler](#running-slurm) { #running-slurm }
 
 Stampede2's job scheduler is the [Slurm Workload Manager](http://schedmd.com). Slurm commands enable you to submit, manage, monitor, and control your jobs. 
 
-## [Slurm Partitions (Queues)](#running-queues)
+### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
 Currently available queues include those in [Stampede2 Production Queues](#table5). See [KNL Compute Nodes](#overview-phase1computenodes), [SKX Compute Nodes](#overview-skxcomputenodes), [Memory Modes](#programming-knl-memorymodes), and [Cluster Modes](#programming-knl-clustermodes) for more information on node types.
 
@@ -735,7 +735,7 @@ Currently available queues include those in [Stampede2 Production Queues](#table
 
 &#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, submit a ticket through the [TACC User Portal](TACCUSERPORTAL).
 
-## [Submitting Batch Jobs with `sbatch`](#running-sbatch)
+### [Submitting Batch Jobs with `sbatch`](#running-sbatch) { #running-sbatch }
 
 Use Slurm's "`sbatch`" command to [submit a batch job](#using-computenodes) to one of the Stampede2 queues:
 
@@ -745,706 +745,9 @@ Here "`myjobscript`" is the name of a text file containing `#SBATCH` directives 
 
 In your job script you (1) use `#SBATCH` directives to request computing resources (e.g. 10 nodes for 2 hrs); and then (2) use shell commands to specify what work you're going to do once your job begins. There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
 
-### [Job Scripts](#running-sbatch-jobscripts)
+#### [Job Scripts](#running-sbatch-jobscripts) { #running-sbatch-jobscripts }
 
-<center>
-<table border="1" cellpadding="3" cellspacing="1">
-<tr valign="top">
-<td><a href="javascript:showhideknlserial()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlserial">KNL Serial Job in Normal Queue</a><br>
-#knlserial(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 KNL nodes
-		#
-		#   *** Serial Job on Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch knl.serial.slurm" on a Stampede2 login node.
-		#
-		#   -- Serial codes run on a single node (upper case N = 1).
-		#        A serial code ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- For a good way to run multiple serial executables at the
-		#        same time, execute "module load launcher" followed
-		#        by "module help launcher".
-
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for serial)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Launch serial code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxserial()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxserial">SKX Serial Job in Normal Queue</a><br>
-#skxserial(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 SKX nodes
-		#
-		#   *** Serial Job on SKX Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch skx.serial.slurm" on a Stampede2 login node.
-		#
-		#   -- Serial codes run on a single node (upper case N = 1).
-		#        A serial code ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- For a good way to run multiple serial executables at the
-		#        same time, execute "module load launcher" followed
-		#        by "module help launcher".
-		
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for serial)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Launch serial code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-		<td valign="middle" align="center">N/A</td>
-
-<tr>
-<td valign="top"><a href="javascript:showhideknlmpi()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlmpi">KNL MPI Job in Normal Queue</a>
-#knlmpi(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 KNL nodes
-		#
-		#   *** MPI Job on Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch knl.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- Max recommended MPI tasks per KNL node: 64-68
-		#      (start small, increase gradually).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks per node to give each task more memory.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 4               # Total # of nodes 
-		#SBATCH -n 32              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxmpi()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxmpi">SKX MPI Job in Normal Queue</a>
-#skxmpi(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 SKX nodes
-		#
-		#   *** MPI Job on SKX Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch skx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- Max recommended MPI ranks per SKX node: 48
-		#      (start small, increase gradually).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks per node to give each task more memory.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 4               # Total # of nodes 
-		#SBATCH -n 32              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-		
-		module list
-		pwd
-		date
-		
-		# Launch MPI code... 
-		
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-		
-		# ---------------------------------------------------
-		</pre></td>
-
-</td>
-
-
-<td valign="top"><a href="javascript:showhideicxmpi()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxmpi">ICX MPI Job in Normal Queue</a>
-#icxmpi(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 ICX nodes
-		#
-		#   *** MPI Job on ICX Normal Queue ***
-		# 
-		# Last revised: 09 Mar 2022
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch icx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- Max recommended MPI ranks per ICX node: 80
-		#      (start small, increase gradually).
-		#
-		#   -- If you're running out of memory, try running
-		#      on more nodes using fewer tasks and/or threads 
-		#      per node to give each task access to more memory.
-		#
-		#   -- Don't worry about task layout.  By default, ibrun
-		#      will provide proper affinity and pinning.
-		#
-		#   -- You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p icx-normal      # Queue (partition) name
-		#SBATCH -N 4               # Total # of nodes 
-		#SBATCH -n 320             # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=myname@myschool.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		# Change directories to your $SCRATCH directory where your executable is
-
-		cd $SCRATCH
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		#---------------------------------------------------
-		</pre></td>
-
-</td>
-
-</tr><tr valign="top">
-<td><a href="javascript:showhideknlopenmp()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlopenmp">KNL OpenMP Job in Normal Queue</a>
-#knlopenmp(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 KNL nodes
-		#
-		#   *** OpenMP Job on Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch knl.openmp.slurm" on a Stampede2 login node.
-		#
-		#   -- OpenMP codes run on a single node (upper case N = 1).
-		#        OpenMP ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- Default value of OMP_NUM_THREADS is 1; be sure to change it!
-		#
-		#   -- Increase thread count gradually while looking for optimal setting.
-		#        If there is sufficient memory available, the optimal setting
-		#        is often 68 (1 thread per core) or 136 (2 threads per core).
-		
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=34
-
-		# Launch OpenMP code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxopenmp()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxopenmp">SKX OpenMP Job in Normal Queue</a>
-#skxopenmp(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 SKX nodes
-		#
-		#   *** OpenMP Job on SKX Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch skx.openmp.slurm" on a Stampede2 login node.
-		#
-		#   -- OpenMP codes run on a single node (upper case N = 1).
-		#        OpenMP ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- Default value of OMP_NUM_THREADS is 1; be sure to change it!
-		#
-		#   -- Increase thread count gradually while looking for optimal setting.
-		#        If there is sufficient memory available, the optimal setting
-		#        is often 48 (1 thread per core) but may be higher.
-		
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
-
-		# Launch OpenMP code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-
-<td valign="top"><a href="javascript:showhideicxopenmp()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-icxopenmp">ICX OpenMP Job in Normal Queue</a>
-#icxopenmp(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 ICX nodes
-		#
-		#   *** OpenMP Job on ICX Normal Queue ***
-		# 
-		# Last revised: 09 Mar 2022
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch icx.openmp.slurm" on a Stampede2 login node.
-		#
-		#   -- OpenMP codes run on a single node (upper case N = 1).
-		#        OpenMP ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- Default value of OMP_NUM_THREADS is 1; be sure to change it!
-		#
-		#   -- Increase thread count gradually while looking for optimal setting.
-		#        If there is sufficient memory available, the optimal setting
-		#        is often 80 (1 thread per core) but may be higher.
-		#
-		#   -- You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		#
-
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p icx-normal      # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=myname@myschool.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=80   # this is 1 thread/core; may want to start lower
-
-		# You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		# Change directories to your $SCRATCH directory where your executable is
-
-		cd $SCRATCH
-
-		# Launch OpenMP code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		#---------------------------------------------------
-		</pre></td>
-
-
-</tr><tr valign="top">
-<td><a href="javascript:showhideknlhybrid()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-knlhybrid">KNL Hybrid Job in Normal Queue</a>
-#knlhybrid(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Example Slurm job script
-		# for TACC Stampede2 KNL nodes
-		#
-		#   *** Hybrid Job on Normal Queue ***
-		# 
-		#       This sample script specifies:
-		#         10 nodes (capital N)
-		#         40 total MPI tasks (lower case n); this is 4 tasks/node
-		#         16 OpenMP threads per MPI task (64 threads per node)
-		#
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch knl.hybrid.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- In most cases it's best to specify no more 
-		#      than 64-68 MPI ranks or independent processes 
-		#      per node, and 1-2 threads/core. 
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks and/or threads per node to give each 
-		#      process access to more memory.
-		#
-		#   -- IMPI and MVAPICH2 both do sensible process pinning by default.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 10              # Total # of nodes 
-		#SBATCH -n 40              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=16
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxhybrid()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-skxhybrid">SKX Hybrid Job in Normal Queue</a>
-#skxhybrid(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Example Slurm job script
-		# for TACC Stampede2 SKX nodes
-		#
-		#   *** Hybrid Job on SKX Normal Queue ***
-		# 
-		#       This sample script specifies:
-		#         10 nodes (capital N)
-		#         40 total MPI tasks (lower case n); this is 4 tasks/node
-		#         12 OpenMP threads per MPI task (48 threads per node)
-		#
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch skx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- In most cases it's best to keep
-		#      ( MPI ranks per node ) x ( threads per rank )
-		#      to a number no more than 48 (total cores).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks and/or threads per node to give each 
-		#      process access to more memory.
-		#
-		#   -- IMPI and MVAPICH2 both do sensible process pinning by default.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 10              # Total # of nodes 
-		#SBATCH -n 40              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=12
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		# ---------------------------------------------------
-		</pre></td>
-
-
-<td valign="top"><a href="javascript:showhideicxhybrid()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-icxhybrid">ICX Hybrid Job in Normal Queue</a>
-#icxhybrid(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Example Slurm job script
-		# for TACC Stampede2 ICX nodes
-		#
-		#   *** Hybrid Job on ICX Normal Queue ***
-		# 
-		#       This sample script specifies:
-		#         10 nodes (capital N)
-		#         40 total MPI tasks (lower case n); this is 4 tasks/node
-		#         20 OpenMP threads per MPI task (80 threads per node)
-		#
-		# Last revised: 09 Mar 2022
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch icx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- In most cases it's best to keep
-		#      ( MPI ranks per node ) x ( threads per rank )
-		#      to a number no more than 48 (total cores).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks and/or threads per node to give each 
-		#      process access to more memory.
-		#
-		#   -- If you're running out of memory, try running
-		#      on more nodes using fewer tasks and/or threads 
-		#      per node to give each task access to more memory.
-		#
-		#   -- Don't worry about task layout.  By default, ibrun
-		#      will provide proper affinity and pinning.
-		#
-		#   -- You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		#
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p icx-normal      # Queue (partition) name
-		#SBATCH -N 10              # Total # of nodes 
-		#SBATCH -n 40              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=myname@myschool.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=20
-
-		# You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		# Change directories to your $SCRATCH directory where your executable is
-
-		cd $SCRATCH
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-		#---------------------------------------------------
-		</pre></td>
-
-</tr></table></center><p>&nbsp;</p>
-
+{% include 'hpcugs/stampede2/scriptstable.md' %}
 
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm <span style="white-space: nowrap;">"`--export`"</span> option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
@@ -1522,7 +825,7 @@ The [Common `sbatch` Options table](#table6) below describes some of the most co
 By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">"`slurm-%j.out`"</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">"`-o`"</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">"`-o`"</span> and <span style="white-space: nowrap;">"`-e`"</span>.
 
 
-## [Launching Applications](#running-launching)
+### [Launching Applications](#running-launching) { #running-launching }
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section:
 
@@ -1534,7 +837,7 @@ The primary purpose of your job script is to launch your research application. H
 * [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous)
 * [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous)
 
-### [Launching One Serial Application](#running-launching-serial)
+#### [Launching One Serial Application](#running-launching-serial) { #running-launching-serial }
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
@@ -1544,7 +847,7 @@ $WORK/apps/myprov/myprogram # explicit full path to executable
 ./myprogram                 # executable in current directory
 ./myprogram -m -k 6 input1  # executable with notional input options</pre>
 
-### [Launching One Multi-Threaded Application](#running-launching-multi)
+#### [Launching One Multi-Threaded Application](#running-launching-multi) { #running-launching-multi }
 
 Launch a threaded application the same way. Be sure to specify the number of threads. **Note that the default OpenMP thread count is 1**.
 
@@ -1552,7 +855,7 @@ Launch a threaded application the same way. Be sure to specify the number of thr
 export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
 ./myprogram</pre>
 
-### [Launching One MPI Application](#running-launching-mpi)
+#### [Launching One MPI Application](#running-launching-mpi) { #running-launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher "`ibrun`", which is a Stampede2-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -1569,7 +872,7 @@ login1$ <b>idev -N 2 -n 80 </b>
 c123-456$ <b>ibrun ./myprogram</b>    # ibrun uses idev's arguments to properly allocate nodes and tasks
 </pre>
 
-### [Launching One Hybrid (MPI+Threads) Application](#running-launching-hybrid)
+### [Launching One Hybrid (MPI+Threads) Application](#running-launching-hybrid) { #running-launching-hybrid }
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
@@ -1579,11 +882,11 @@ ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
 
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (KNL nodes have 68 cores, SKX nodes have 48 cores, ICX nodes have 80 cores).
 
-### [More Than One Serial Application in the Same Job](#running-launching-serialmorethanone)
+### [More Than One Serial Application in the Same Job](#running-launching-serialmorethanone) { #running-launching-serialmorethanone }
 
 TACC's "`launcher`" utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The `launcher` utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute "`module load launcher`" followed by "`module help launcher`" for more information.
 
-### [MPI Applications One at a Time](#running-launching-consecutivempi)
+#### [MPI Applications One at a Time](#running-launching-consecutivempi) { #running-launching-consecutivempi }
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
@@ -1594,7 +897,7 @@ module list
 ibrun ./myprogram input1	# runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes</pre>
 
-### [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous)
+#### [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous) { #running-launching-mpisimultaneous }
 
 To run more than one MPI application simultaneously in the same job, you need to do several things:
 
@@ -1617,7 +920,7 @@ The `task_affinity` script does two things:
 * **Don't confuse `task_affinity` with [`tacc_affinity`](#managing-memory)**; the keyword "`tacc_affinity`" is now a symbolic link to `mem_affinity`. The `mem_affinity` script and the symbolic link `tacc_affinity` manage MCDRAM in flat-quadrant mode on the KNL, but they do not pin MPI tasks.
 
 
-### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous)
+#### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous) { #running-launching-openmpsimultaneous }
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, <span style="white-space: nowrap;">"`numactl -C`"</span> specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
@@ -1629,7 +932,7 @@ numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Not
 wait</pre>
 
 
-## [Interactive Sessions with `idev` and `srun`](#running-idev)
+### [Interactive Sessions with `idev` and `srun`](#running-idev) { #running-idev }
 
 TACC's own `idev` utility is the best way to begin an interactive session on one or more compute nodes. To launch a thirty-minute session on a single node in the development queue, simply execute:
 
@@ -1667,7 +970,7 @@ You can also launch an interactive session with Slurm's `srun` command, though t
 <pre class="cmd-line">login1$ <b>srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l </b># same conditions as above</pre>
 
 
-## [Interactive Sessions using `ssh`](#running-ssh)
+### [Interactive Sessions using `ssh`](#running-ssh) { #running-ssh }
 
 If you have a batch job or interactive session running on a compute node, you "own the node": you can connect via `ssh` to open a new interactive session on that node. This is an especially convenient way to monitor your applications' progress. One particularly helpful example: login to a compute node that you own, execute "`top`", then press the "1" key to see a display that allows you to monitor thread ("CPU") and memory use.
 
@@ -1683,7 +986,7 @@ login1$ <b>squeue -u bjones</b>
 C448-004$</pre>
 
 
-## [SLURM Environment Variables](#running-slurmenvvars)
+### [SLURM Environment Variables](#running-slurmenvvars) { #running-slurmenvvars }
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. "`%j`" described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">"`env | grep SLURM`"</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like "`%j`" only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
@@ -1698,13 +1001,13 @@ Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` direc
 For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (<span style="white-space: nowrap;">"`man slurm`"</span>) and its individual command (e.g. <span style="white-space: nowrap;">"`man sbatch`"</span>); as well as numerous other online resources.
 
 
-# [Monitoring Jobs and Queues](#monitoring)
+### [Monitoring Jobs and Queues](#monitoring) { #monitoring }
 
 Several commands are available to help you plan and track your job submissions as well as check the status of the Slurm queues.
 
 When interpreting queue and job status, remember that **Stampede2 doesn't operate on a first-come-first-served basis**. Instead, the sophisticated, tunable algorithms built into Slurm attempt to keep the system busy, while scheduling jobs in a way that is as fair as possible to everyone. At times this means leaving nodes idle ("draining the queue") to make room for a large job that would otherwise never run. It also means considering each user's "fair share", scheduling jobs so that those who haven't run jobs recently may have a slightly higher priority than those who have.
 
-## [Monitoring Queue Status with `sinfo` and `qlimits`](#monitoring-queue)
+#### [Monitoring Queue Status with `sinfo` and `qlimits`](#monitoring-queue) { #monitoring-queue }
 
 To display resource limits for the Stampede2 queues, execute "**`qlimits`**". The result is real-time data; the corresponding information in this document's [table of Stampede2 queues](#running-queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
@@ -1722,7 +1025,7 @@ normal             up       3685/8/3/3696</pre>
 The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled "`NODES(A/I/O/T)`" shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute "`man sinfo`" for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Stampede2 (e.g. `TIMELIMIT`, displayed using the "`%l`" option).
 
 
-## [Monitoring Job Status with `squeue`](#monitoring-squeue)
+#### [Monitoring Job Status with `squeue`](#monitoring-squeue) { #monitoring-squeue }
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
@@ -1761,7 +1064,7 @@ The "`--start`" option displays job start times, including very rough estimates 
 <pre class="cmd-line">login1$ <b>squeue --start -j 167635</b>     # display estimated start time for job 167635</pre>
 
 
-## [Monitoring Job Status with `showq`](#monitoring-showq)
+#### [Monitoring Job Status with `showq`](#monitoring-showq) { #monitoring-showq }
 
 TACC's "`showq`" utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm "`squeue`" command:
 
@@ -1778,7 +1081,7 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each KNL node's 272 hardware threads (and each SKX node's 96 hardware threads) as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
 
-## [Other Job Management Commands (`scancel`, `scontrol`, and `sacct`)](#monitoring-other)
+#### [Other Job Management Commands (`scancel`, `scontrol`, and `sacct`)](#monitoring-other) { #monitoring-other }
 
 **It's not possible to add resources to a job (e.g. allow more time)** once you've submitted the job to the queue.
 
@@ -1799,7 +1102,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 <pre class="cmd-line">login1$ <b>sacct --starttime 2017-08-01</b>  # show jobs that started on or after this date</pre>
 
 
-## [Dependent Jobs using `sbatch`](#monitoring-dependent)
+#### [Dependent Jobs using `sbatch`](#monitoring-dependent) { #monitoring-dependent }
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the "`--dependency`" option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
@@ -1807,14 +1110,14 @@ You can use `sbatch` to help manage workflows that involve multiple steps: the "
 
 For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
 
-# [Visualization and Virtual Network Computing (VNC) Sessions](#vis)
+## [Visualization and Virtual Network Computing (VNC) Sessions](#vis) { #vis }
 
 Stampede2 uses the SKX and KNL processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. **On Stampede2, "`swr`" replaces "`vglrun`" (e.g. "`swr glxgears`") and uses similar syntax.** OpenSWR can be loaded by executing "`module load swr`". We expect most users will notice little difference in visualization experience on KNL. MCDRAM may improve visualization performance for some users. SKX nodes may provide better interactivity for intensive rendering applications.
 
 There is currently no separate visualization queue on Stampede2. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to the `development` queue (for KNL) or the `skx-dev` queue (for SKX) for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket through the TACC User Portal.
 
 
-## [Remote Desktop Access](#vis-remote)
+### [Remote Desktop Access](#vis-remote) { #vis-remote }
 
 Remote desktop access to Stampede2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Stampede2 login node (see System Access) and submit a special interactive batch job that:
 
@@ -1880,11 +1183,11 @@ Follow the steps below to start an interactive session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
-## [Running Applications on the VNC Desktop](#vis-apps)
+### [Running Applications on the VNC Desktop](#vis-apps) { #vis-apps }
 
 From an interactive desktop, applications can be run from icons or from xterm command prompts. Two special cases arise: running parallel applications, and running applications that use OpenGL.
 
-## [Running Parallel Applications from the Desktop](#vis-parallelapps)
+### [Running Parallel Applications from the Desktop](#vis-parallelapps) { #vis-parallelapps }
 
 Parallel applications are run on the desktop using the same `ibrun` wrapper described above (see [Running](#running)). The command:
 
@@ -1892,7 +1195,7 @@ Parallel applications are run on the desktop using the same `ibrun` wrapper desc
 
 will run application on the associated nodes, as modified by the `ibrun` options.
 
-## [Running OpenGL/X Applications On The Desktop](#vis-opengl)
+### [Running OpenGL/X Applications On The Desktop](#vis-opengl) { #vis-opengl }
 
 Stampede2 uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Stampede2 do not support native X instances. All windowing environments should use a VNC desktop launched via the job script in /share/doc/slurm/job.vnc or using the TACC Vis portal. 
 
@@ -1902,7 +1205,7 @@ swr: To access the accelerated OpenSWR OpenGL library, it is necessary to use th
 c442-001$ <b>module load swr</b>
 c442-001$ <b>swr <i>options</i> application <i>application-args</i></b></pre>
 
-## [Parallel VisIt on Stampede2](#vis-visit)
+### [Parallel VisIt on Stampede2](#vis-visit) { #vis-visit }
 
 [VisIt](https://wci.llnl.gov/simulation/computer-codes/visit/manuals) was compiled under the Intel compiler and the mvapich2 and MPI stacks. 
 
@@ -1914,11 +1217,11 @@ c442-001$ <b>swr visit</b></pre>
 
 VisIt first loads a dataset and presents a dialog allowing for selecting either a serial or parallel engine. Select the parallel engine. Note that this dialog will also present options for the number of processes to start and the number of nodes to use; these options are actually ignored in favor of the options specified when the VNC server job was started.
 
-### [Preparing Data for Parallel Visit](#vis-visit-preparingdata)
+#### [Preparing Data for Parallel Visit](#vis-visit-preparingdata) { #vis-visit-preparingdata }
 
 VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)`" format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
 
-## [Parallel ParaView on Stampede2](#vis-paraview)
+### [Parallel ParaView on Stampede2](#vis-paraview) { #vis-paraview }
 
 After connecting to a VNC server on Stampede2, as described above, do the following:
 
@@ -1936,13 +1239,13 @@ After connecting to a VNC server on Stampede2, as described above, do the follow
 1. Select the "auto" configuration, then press "Connect".  In the Paraview Output Messages window, you'll see what appears to be an 'lmod' error, but can be ignored.  Then you'll see the parallel servers being spawned and the connection established.
 
 
-# [Programming and Performance](#programming)
+## [Programming and Performance](#programming) { #programming }
 
-## [Programming and Performance: General](#programming-general)
+### [Programming and Performance: General](#programming-general) { #programming-general }
 
 Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
-### [Timing and Profiling](#programming-general-timingprofiling)
+#### [Timing and Profiling](#programming-general-timingprofiling) { #programming-general-timingprofiling }
 
 **Measure performance and experiment with both compiler and runtime options.** This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
 
@@ -1958,7 +1261,7 @@ As your needs evolve you can add timing intrinsics to your source code to time s
 
 It can be helpful to compare results with different compiler and runtime options: e.g. with and without [vectorization](http://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-vec-qvec), [threading](#running-launching-multi), or [Lustre striping](#files-striping). You may also want to learn to use profiling tools like [Intel VTune Amplifier](http://software.intel.com/en-us/intel-vtune-amplifier-xe) <span style="white-space: nowrap;">("`module load vtune`")</span> or GNU [`gprof`](http://sourceware.org/binutils/docs/gprof/).
 
-### [Data Locality](#programming-general-datalocality)
+#### [Data Locality](#programming-general-datalocality) { #programming-general-datalocality }
 
 **Appreciate the high cost (performance penalty) of moving data from one node to another**, from disk to RAM, and even from RAM to cache. Write your code to keep data as close to the computation as possible: e.g. in RAM when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. A simple KNL-specific example illustrates the point: all things being equal, there's a good chance you'll see better performance when you keep your data in the KNL's [fast MCDRAM](#programming-knl-memorymodes) instead of the slower DDR4.
 
@@ -1992,19 +1295,19 @@ for (i=0;i&lt;m;i++){
 </table>
 
 
-### [Vectorization](#programming-general-vectorization)
+#### [Vectorization](#programming-general-vectorization) { #programming-general-vectorization }
 
 **Give the compiler a chance to produce efficient, [vectorized](http://software.intel.com/en-us/articles/vectorization-essential) code**. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on [Programming Guidelines for Vectorization](http://software.intel.com/en-us/node/522571) for a nice summary of the factors that affect the compiler's ability to vectorize loops.
 
 It's often worthwhile to generate [optimization and vectorization reports](http://software.intel.com/en-us/articles/getting-the-most-out-of-your-intel-compiler-with-the-new-optimization-reports) when using the Intel compiler. This will allow you to see exactly what the compiler did and did not do with each loop, together with reasons why.
 
-### [Learning More](#programming-general-more)
+#### [Learning More](#programming-general-more) { #programming-general-more }
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64).
 
-## [Programming and Performance: KNL](#programming-knl)
+### [Programming and Performance: KNL](#programming-knl) { #programming-knl }
 
-### [Architecture](#programming-knl-architecture)
+#### [Architecture](#programming-knl-architecture) { #programming-knl-architecture }
 
 KNL cores are grouped in pairs; each pair of cores occupies a tile. Since there are 68 cores on each Stampede2 KNL node, each node has 34 active tiles. These 34 active tiles are connected by a two-dimensional mesh interconnect. Each KNL has 2 DDR memory controllers on opposite sides of the chip, each with 3 channels. There are 8 controllers for the fast, on-package MCDRAM, two in each quadrant.
 
@@ -2012,7 +1315,7 @@ Each core has its own local L1 cache (32KB, data, 32KB instruction) and two 512-
 
 Each core can run up to 4 hardware threads. The two cores on a tile share a 1MB L2 cache. Different [cluster modes](#programming-knl-clustermodes) specify the L2 cache coherence mechanism at the node level.
 
-### [Memory Modes](#programming-knl-memorymodes)
+#### [Memory Modes](#programming-knl-memorymodes) { #programming-knl-memorymodes }
 
 The processor's memory mode determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The output of commands like "`top`", "`free`", and <span style="white-space: nowrap;">"`ps -v`"</span> reflect the consequences of memory mode. Such commands will show the amount of RAM available to the operating system, not the hardware (DDR + MCDRAM) installed.
 
@@ -2025,7 +1328,7 @@ The processor's memory mode determines whether the fast MCDRAM operates as RAM, 
 
 * **Hybrid Mode (not available on Stampede2)**. In this mode, the MCDRAM is configured so that a portion acts as L3 cache and the rest as RAM (a second NUMA node supplementing DDR4).
 
-### [Cluster Modes](#programming-knl-clustermodes)
+#### [Cluster Modes](#programming-knl-clustermodes) { #programming-knl-clustermodes }
 
 The KNL's core-level L1 and tile-level L2 caches can reduce the time it takes for a core to access the data it needs. To share memory safely, however, there must be mechanisms in place to ensure cache coherency. Cache coherency means that all cores have a consistent view of the data: if data value x changes on a given core, there must be no risk of other cores using outdated values of x. This, of course, is essential on any multi-core chip, but it is especially difficult to achieve on manycore processors.
 
@@ -2044,7 +1347,7 @@ The KNL can do this in several ways, each of which is called a cluster mode. Eac
 TACC's early experience with the KNL suggests that there is little reason to deviate from Intel's recommended default memory and cluster modes. Cache-quadrant tends to be a good choice for almost all workflows; it offers a nice compromise between performance and ease of use for the applications we have tested. Flat-quadrant is the most promising alternative and sometimes offers moderately better performance, especially when memory requirements per node are less than 16GB. We have not yet observed significant performance differences across cluster modes, and our current recommendation is that configurations other than cache-quadrant and flat-quadrant are worth considering only for very specialized needs. For more information see [Managing Memory](#knl-programming-managingmemory) and [Best Known Practices...](#knl-programming-bestpractices).
 
 
-### [Managing Memory](#programming-knl-managingmemory)
+#### [Managing Memory](#programming-knl-managingmemory) { #programming-knl-managingmemory }
 
 By design, any application can run in any memory and cluster mode, and applications always have access to all available RAM. Moreover, regardless of memory and cluster modes, there are no code changes or other manual interventions required to run your application safely. However, there are times when explicit manual memory management is worth considering to improve performance. The Linux `numactl` (pronounced "NUMA Control") utility allows you to specify at runtime where your code should allocate memory.
 
@@ -2070,7 +1373,7 @@ It's safe to use `mem_affinity` even when it will have no effect (e.g. cache-qua
 
 On Stampede2 the keyword "`tacc_affinity`" was originally an older name for what is now the "`mem_affinity`" script. To ensure backward compatibility, `tacc_affinity` is now a symbolic link to `mem_affinity`. Note that `mem_affinity` and the symbolic link `tacc_affinity` do not pin MPI tasks.
 
-### [Best Known Practices and Preliminary Observations (KNL)](#programming-knl-bestpractices)
+#### [Best Known Practices and Preliminary Observations (KNL)](#programming-knl-bestpractices) { #programming-knl-bestpractices }
 
 **Hyperthreading. It is rarely a good idea to use all 272 hardware threads simultaneously**, and it's certainly not the first thing you should try. In most cases it's best to specify no more than <span style="white-space: nowrap;">64-68</span> MPI tasks or independent processes per node, and 1-2 threads/core. One exception is worth noting: when calling threaded MKL from a serial code, it's safe to set `OMP_NUM_THREADS` or `MKL_NUM_THREADS` to 272. This is because MKL will choose an appropriate thread count less than or equal to the value you specify. See [Controlling Threading in MKL](#mkl-threading) for more information. In any case remember that the default value of `OMP_NUM_THREADS` is 1.
 
@@ -2087,7 +1390,7 @@ On Stampede2 the keyword "`tacc_affinity`" was originally an older name for what
 **Tuning the Performance Scaled Messaging (PSM2) Library**. When running on KNL with MVAPICH2, set the environment variable `PSM2_KASSIST_MODE` to the value "`none`" per the [MVAPICH2 User Guide](http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.3b-userguide.html#x1-890006.19). Do not use this environment variable with IMPI; doing so may degrade performance. <!-- <span style="color:red">The `ibrun` launcher will eventually control this environment variable automatically.</span> -->
 
 
-## [Programming and Performance: SKX and ICX](#programming-skx)
+### [Programming and Performance: SKX and ICX](#programming-skx) { #programming-skx }
 
 **Hyperthreading. It is rarely a good idea to use all the hardware threads simultaneously**, and it's certainly not the first thing you should try. In most cases it's best to specify no more than 48 MPI tasks or independent processes per SKX node (80 per ICX node), and 1-2 threads/core. One exception is worth noting: when calling threaded MKL from a serial code, it's safe to set `OMP_NUM_THREADS` or `MKL_NUM_THREADS` to 96 for SKX or 160 for ICX. This is because MKL will choose an appropriate thread count less than or equal to the value you specify. See [Controlling Threading in MKL](#mkl-threading) for more information.  In any case remember that the default value of `OMP_NUM_THREADS` is 1.
 
@@ -2110,7 +1413,7 @@ The <span style="white-space: nowrap;">"`qopt-zmm-usage`"</span> flag affects th
 **Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH2, setting the environment variable `PSM2_KASSIST_MODE` to the value "`none`" may or may not improve performance. For more information see the [MVAPICH2 User Guide](http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.3b-userguide.html#x1-890006.19). Do not use this environment variable with IMPI; doing so may degrade performance. <span style="color:red">The `ibrun` launcher will eventually control this environment variable automatically.</span>
 
 
-## [File Operations: I/O Performance](#programming-fileio)
+### [File Operations: I/O Performance](#programming-fileio) { #programming-fileio }
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Navigating the Shared File Systems](#files-filesystems) for a brief overview of Stampede2's Lustre file systems and the concept of striping. See [TACC Training material](https://learn.tacc.utexas.edu/) for additional information on I/O performance.
 
@@ -2126,7 +1429,7 @@ This section includes general advice intended to help you achieve good performan
 
 When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-assume)"**. Equivalently, set the environment variable [`FORT_BUFFERED=TRUE`](https://software.intel.com/en-us/node/680054). Doing otherwise can dramatically slow down access to variable length unformatted files. More generally, direct access in Fortran is typically faster than sequential access, and accessing a binary file is faster than ASCII.
 
-# [References](#refs)
+## [References](#refs) { #refs }
 
 * [Bash Users' Startup Files: Quick Start Guide](https://portal.tacc.utexas.edu/tutorials/bashquickstart)
 * [`idev` documentation](http://portal.tacc.utexas.edu/software/idev)
@@ -2154,13 +1457,13 @@ document.getElementById("img-arrow").src = SMALL"../../../imgs/small-down-arrow.
 }
 </script>
 
-# [Revision History](#history)
+## [Revision History](#history) { #history }
 
 "Last Update" at the top of this document is the date of the most recent change to this document. This revision history is a list of non-trivial updates; it excludes routine items such as corrected typos and minor format changes.
  
 <a href="javascript:showhide()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-arrow">Click to view</a>
 
-#revisions(style="display:none")
+<div id="revisions" style="display:none">
 
 * 09/14/22 XSEDE project ends. Replace Globus with Grid Community Toolkit.
 * 03/07/22 Intel Ice Lake nodes introduced.  New `icx-normal` queue.
@@ -2171,3 +1474,4 @@ document.getElementById("img-arrow").src = SMALL"../../../imgs/small-down-arrow.
 * 11/30/17 Initial release supporting Phase 2 (SKX).
 * 08/02/17 Removed references and links to Stampede2 Transition Guide (now deprecated).
 * 06/12/17 Initial public release.
+</div>

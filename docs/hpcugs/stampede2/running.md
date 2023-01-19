@@ -1,12 +1,12 @@
-# [Running Jobs on the Stampede2 Compute Nodes](#running)
+## [Running Jobs on the Stampede2 Compute Nodes](#running) { #running }
 
-de 'include/stampede2-jobaccounting.html' %}
+{% include 'include/stampede2-jobaccounting.md' %}
 
-## [Slurm Job Scheduler](#running-slurm)
+### [Slurm Job Scheduler](#running-slurm) { #running-slurm }
 
 Stampede2's job scheduler is the [Slurm Workload Manager](http://schedmd.com). Slurm commands enable you to submit, manage, monitor, and control your jobs. 
 
-## [Slurm Partitions (Queues)](#running-queues)
+### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
 Currently available queues include those in [Stampede2 Production Queues](#table5). See [KNL Compute Nodes](#overview-phase1computenodes), [SKX Compute Nodes](#overview-skxcomputenodes), [Memory Modes](#programming-knl-memorymodes), and [Cluster Modes](#programming-knl-clustermodes) for more information on node types.
 
@@ -100,7 +100,7 @@ Currently available queues include those in [Stampede2 Production Queues](#table
 
 &#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, submit a ticket through the [TACC User Portal](TACCUSERPORTAL).
 
-## [Submitting Batch Jobs with `sbatch`](#running-sbatch)
+### [Submitting Batch Jobs with `sbatch`](#running-sbatch) { #running-sbatch }
 
 Use Slurm's "`sbatch`" command to [submit a batch job](#using-computenodes) to one of the Stampede2 queues:
 
@@ -110,706 +110,9 @@ Here "`myjobscript`" is the name of a text file containing `#SBATCH` directives 
 
 In your job script you (1) use `#SBATCH` directives to request computing resources (e.g. 10 nodes for 2 hrs); and then (2) use shell commands to specify what work you're going to do once your job begins. There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
 
-### [Job Scripts](#running-sbatch-jobscripts)
+#### [Job Scripts](#running-sbatch-jobscripts) { #running-sbatch-jobscripts }
 
-<center>
-<table border="1" cellpadding="3" cellspacing="1">
-<tr valign="top">
-<td><a href="javascript:showhideknlserial()"><img src=SMALLRIGHTARROW id="img-knlserial">KNL Serial Job in Normal Queue</a><br>
-#knlserial(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 KNL nodes
-		#
-		#   *** Serial Job on Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch knl.serial.slurm" on a Stampede2 login node.
-		#
-		#   -- Serial codes run on a single node (upper case N = 1).
-		#        A serial code ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- For a good way to run multiple serial executables at the
-		#        same time, execute "module load launcher" followed
-		#        by "module help launcher".
-
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for serial)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Launch serial code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxserial()"><img src=SMALLRIGHTARROW id="img-skxserial">SKX Serial Job in Normal Queue</a><br>
-#skxserial(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 SKX nodes
-		#
-		#   *** Serial Job on SKX Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch skx.serial.slurm" on a Stampede2 login node.
-		#
-		#   -- Serial codes run on a single node (upper case N = 1).
-		#        A serial code ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- For a good way to run multiple serial executables at the
-		#        same time, execute "module load launcher" followed
-		#        by "module help launcher".
-		
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for serial)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Launch serial code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-		<td valign="middle" align="center">N/A</td>
-
-<tr>
-<td valign="top"><a href="javascript:showhideknlmpi()"><img src=SMALLRIGHTARROW id="img-knlmpi">KNL MPI Job in Normal Queue</a>
-#knlmpi(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 KNL nodes
-		#
-		#   *** MPI Job on Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch knl.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- Max recommended MPI tasks per KNL node: 64-68
-		#      (start small, increase gradually).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks per node to give each task more memory.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 4               # Total # of nodes 
-		#SBATCH -n 32              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxmpi()"><img src=SMALLRIGHTARROW id="img-skxmpi">SKX MPI Job in Normal Queue</a>
-#skxmpi(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 SKX nodes
-		#
-		#   *** MPI Job on SKX Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch skx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- Max recommended MPI ranks per SKX node: 48
-		#      (start small, increase gradually).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks per node to give each task more memory.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 4               # Total # of nodes 
-		#SBATCH -n 32              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-		
-		module list
-		pwd
-		date
-		
-		# Launch MPI code... 
-		
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-		
-		# ---------------------------------------------------
-		</pre></td>
-
-</td>
-
-
-<td valign="top"><a href="javascript:showhideicxmpi()"><img src=SMALLRIGHTARROW id="img-skxmpi">ICX MPI Job in Normal Queue</a>
-#icxmpi(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 ICX nodes
-		#
-		#   *** MPI Job on ICX Normal Queue ***
-		# 
-		# Last revised: 09 Mar 2022
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch icx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- Max recommended MPI ranks per ICX node: 80
-		#      (start small, increase gradually).
-		#
-		#   -- If you're running out of memory, try running
-		#      on more nodes using fewer tasks and/or threads 
-		#      per node to give each task access to more memory.
-		#
-		#   -- Don't worry about task layout.  By default, ibrun
-		#      will provide proper affinity and pinning.
-		#
-		#   -- You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p icx-normal      # Queue (partition) name
-		#SBATCH -N 4               # Total # of nodes 
-		#SBATCH -n 320             # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=myname@myschool.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		# Change directories to your $SCRATCH directory where your executable is
-
-		cd $SCRATCH
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		#---------------------------------------------------
-		</pre></td>
-
-</td>
-
-</tr><tr valign="top">
-<td><a href="javascript:showhideknlopenmp()"><img src=SMALLRIGHTARROW id="img-knlopenmp">KNL OpenMP Job in Normal Queue</a>
-#knlopenmp(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 KNL nodes
-		#
-		#   *** OpenMP Job on Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch knl.openmp.slurm" on a Stampede2 login node.
-		#
-		#   -- OpenMP codes run on a single node (upper case N = 1).
-		#        OpenMP ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- Default value of OMP_NUM_THREADS is 1; be sure to change it!
-		#
-		#   -- Increase thread count gradually while looking for optimal setting.
-		#        If there is sufficient memory available, the optimal setting
-		#        is often 68 (1 thread per core) or 136 (2 threads per core).
-		
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=34
-
-		# Launch OpenMP code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxopenmp()"><img src=SMALLRIGHTARROW id="img-skxopenmp">SKX OpenMP Job in Normal Queue</a>
-#skxopenmp(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 SKX nodes
-		#
-		#   *** OpenMP Job on SKX Normal Queue ***
-		# 
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch skx.openmp.slurm" on a Stampede2 login node.
-		#
-		#   -- OpenMP codes run on a single node (upper case N = 1).
-		#        OpenMP ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- Default value of OMP_NUM_THREADS is 1; be sure to change it!
-		#
-		#   -- Increase thread count gradually while looking for optimal setting.
-		#        If there is sufficient memory available, the optimal setting
-		#        is often 48 (1 thread per core) but may be higher.
-		
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
-
-		# Launch OpenMP code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		# ---------------------------------------------------
-		</pre></td>
-
-
-<td valign="top"><a href="javascript:showhideicxopenmp()"><img src=SMALLRIGHTARROW id="img-icxopenmp">ICX OpenMP Job in Normal Queue</a>
-#icxopenmp(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Sample Slurm job script
-		#   for TACC Stampede2 ICX nodes
-		#
-		#   *** OpenMP Job on ICX Normal Queue ***
-		# 
-		# Last revised: 09 Mar 2022
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#   -- Copy/edit this script as desired.  Launch by executing
-		#      "sbatch icx.openmp.slurm" on a Stampede2 login node.
-		#
-		#   -- OpenMP codes run on a single node (upper case N = 1).
-		#        OpenMP ignores the value of lower case n,
-		#        but slurm needs a plausible value to schedule the job.
-		#
-		#   -- Default value of OMP_NUM_THREADS is 1; be sure to change it!
-		#
-		#   -- Increase thread count gradually while looking for optimal setting.
-		#        If there is sufficient memory available, the optimal setting
-		#        is often 80 (1 thread per core) but may be higher.
-		#
-		#   -- You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		#
-
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p icx-normal      # Queue (partition) name
-		#SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
-		#SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=myname@myschool.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=80   # this is 1 thread/core; may want to start lower
-
-		# You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		# Change directories to your $SCRATCH directory where your executable is
-
-		cd $SCRATCH
-
-		# Launch OpenMP code...
-
-		./myprogram         # Do not use ibrun or any other MPI launcher
-
-		#---------------------------------------------------
-		</pre></td>
-
-
-</tr><tr valign="top">
-<td><a href="javascript:showhideknlhybrid()"><img src=SMALLRIGHTARROW id="img-knlhybrid">KNL Hybrid Job in Normal Queue</a>
-#knlhybrid(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Example Slurm job script
-		# for TACC Stampede2 KNL nodes
-		#
-		#   *** Hybrid Job on Normal Queue ***
-		# 
-		#       This sample script specifies:
-		#         10 nodes (capital N)
-		#         40 total MPI tasks (lower case n); this is 4 tasks/node
-		#         16 OpenMP threads per MPI task (64 threads per node)
-		#
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch knl.hybrid.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- In most cases it's best to specify no more 
-		#      than 64-68 MPI ranks or independent processes 
-		#      per node, and 1-2 threads/core. 
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks and/or threads per node to give each 
-		#      process access to more memory.
-		#
-		#   -- IMPI and MVAPICH2 both do sensible process pinning by default.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p normal          # Queue (partition) name
-		#SBATCH -N 10              # Total # of nodes 
-		#SBATCH -n 40              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=16
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		# ---------------------------------------------------
-		</pre></td>
-
-<td valign="top"><a href="javascript:showhideskxhybrid()"><img src=SMALLRIGHTARROW id="img-skxhybrid">SKX Hybrid Job in Normal Queue</a>
-#skxhybrid(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Example Slurm job script
-		# for TACC Stampede2 SKX nodes
-		#
-		#   *** Hybrid Job on SKX Normal Queue ***
-		# 
-		#       This sample script specifies:
-		#         10 nodes (capital N)
-		#         40 total MPI tasks (lower case n); this is 4 tasks/node
-		#         12 OpenMP threads per MPI task (48 threads per node)
-		#
-		# Last revised: 20 Oct 2017
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch skx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- In most cases it's best to keep
-		#      ( MPI ranks per node ) x ( threads per rank )
-		#      to a number no more than 48 (total cores).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks and/or threads per node to give each 
-		#      process access to more memory.
-		#
-		#   -- IMPI and MVAPICH2 both do sensible process pinning by default.
-		#
-		#----------------------------------------------------
-		
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p skx-normal      # Queue (partition) name
-		#SBATCH -N 10              # Total # of nodes 
-		#SBATCH -n 40              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=username@tacc.utexas.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-		
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=12
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-
-		# ---------------------------------------------------
-		</pre></td>
-
-
-<td valign="top"><a href="javascript:showhideicxhybrid()"><img src=SMALLRIGHTARROW id="img-icxhybrid">ICX Hybrid Job in Normal Queue</a>
-#icxhybrid(style="display:none")
-	:markdown
-		<pre>
-		#!/bin/bash
-		#----------------------------------------------------
-		# Example Slurm job script
-		# for TACC Stampede2 ICX nodes
-		#
-		#   *** Hybrid Job on ICX Normal Queue ***
-		# 
-		#       This sample script specifies:
-		#         10 nodes (capital N)
-		#         40 total MPI tasks (lower case n); this is 4 tasks/node
-		#         20 OpenMP threads per MPI task (80 threads per node)
-		#
-		# Last revised: 09 Mar 2022
-		#
-		# Notes:
-		#
-		#   -- Launch this script by executing
-		#      "sbatch icx.mpi.slurm" on Stampede2 login node.
-		#
-		#   -- Use ibrun to launch MPI codes on TACC systems.
-		#      Do not use mpirun or mpiexec.
-		#
-		#   -- In most cases it's best to keep
-		#      ( MPI ranks per node ) x ( threads per rank )
-		#      to a number no more than 48 (total cores).
-		#
-		#   -- If you're running out of memory, try running
-		#      fewer tasks and/or threads per node to give each 
-		#      process access to more memory.
-		#
-		#   -- If you're running out of memory, try running
-		#      on more nodes using fewer tasks and/or threads 
-		#      per node to give each task access to more memory.
-		#
-		#   -- Don't worry about task layout.  By default, ibrun
-		#      will provide proper affinity and pinning.
-		#
-		#   -- You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		#
-		#----------------------------------------------------
-
-		#SBATCH -J myjob           # Job name
-		#SBATCH -o myjob.o%j       # Name of stdout output file
-		#SBATCH -e myjob.e%j       # Name of stderr error file
-		#SBATCH -p icx-normal      # Queue (partition) name
-		#SBATCH -N 10              # Total # of nodes 
-		#SBATCH -n 40              # Total # of mpi tasks
-		#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
-		#SBATCH --mail-user=myname@myschool.edu
-		#SBATCH --mail-type=all    # Send email at begin and end of job
-		#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
-
-		# Other commands must follow all #SBATCH directives...
-
-		module list
-		pwd
-		date
-
-		# Set thread count (default value is 1)...
-
-		export OMP_NUM_THREADS=20
-
-		# You should always run out of $SCRATCH.  Your input
-		#      files, output files, and exectuable should be 
-		#      in the $SCRATCH directory hierarchy.
-		# Change directories to your $SCRATCH directory where your executable is
-
-		cd $SCRATCH
-
-		# Launch MPI code... 
-
-		ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
-		#---------------------------------------------------
-		</pre></td>
-
-</tr></table></center><p>&nbsp;</p>
-
+{% include 'hpcugs/stampede2/scriptstable.md' %}
 
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm NOWRAP"`--export`"ESPAN option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
@@ -887,7 +190,7 @@ The [Common `sbatch` Options table](#table6) below describes some of the most co
 By default, Slurm writes all console output to a file named NOWRAP"`slurm-%j.out`"ESPAN, where `%j` is the numerical job ID. To specify a different filename use the NOWRAP"`-o`"ESPAN option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both NOWRAP"`-o`"ESPAN and NOWRAP"`-e`"ESPAN.
 
 
-## [Launching Applications](#running-launching)
+### [Launching Applications](#running-launching) { #running-launching }
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section:
 
@@ -899,7 +202,7 @@ The primary purpose of your job script is to launch your research application. H
 * [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous)
 * [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous)
 
-### [Launching One Serial Application](#running-launching-serial)
+#### [Launching One Serial Application](#running-launching-serial) { #running-launching-serial }
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
@@ -909,7 +212,7 @@ $WORK/apps/myprov/myprogram # explicit full path to executable
 ./myprogram                 # executable in current directory
 ./myprogram -m -k 6 input1  # executable with notional input options</pre>
 
-### [Launching One Multi-Threaded Application](#running-launching-multi)
+#### [Launching One Multi-Threaded Application](#running-launching-multi) { #running-launching-multi }
 
 Launch a threaded application the same way. Be sure to specify the number of threads. **Note that the default OpenMP thread count is 1**.
 
@@ -917,7 +220,7 @@ Launch a threaded application the same way. Be sure to specify the number of thr
 export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
 ./myprogram</pre>
 
-### [Launching One MPI Application](#running-launching-mpi)
+#### [Launching One MPI Application](#running-launching-mpi) { #running-launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher "`ibrun`", which is a Stampede2-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -934,7 +237,7 @@ login1$ <b>idev -N 2 -n 80 </b>
 c123-456$ <b>ibrun ./myprogram</b>    # ibrun uses idev's arguments to properly allocate nodes and tasks
 </pre>
 
-### [Launching One Hybrid (MPI+Threads) Application](#running-launching-hybrid)
+### [Launching One Hybrid (MPI+Threads) Application](#running-launching-hybrid) { #running-launching-hybrid }
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
@@ -944,11 +247,11 @@ ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
 
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (KNL nodes have 68 cores, SKX nodes have 48 cores, ICX nodes have 80 cores).
 
-### [More Than One Serial Application in the Same Job](#running-launching-serialmorethanone)
+### [More Than One Serial Application in the Same Job](#running-launching-serialmorethanone) { #running-launching-serialmorethanone }
 
 TACC's "`launcher`" utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The `launcher` utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute "`module load launcher`" followed by "`module help launcher`" for more information.
 
-### [MPI Applications One at a Time](#running-launching-consecutivempi)
+#### [MPI Applications One at a Time](#running-launching-consecutivempi) { #running-launching-consecutivempi }
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
@@ -959,7 +262,7 @@ module list
 ibrun ./myprogram input1	# runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes</pre>
 
-### [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous)
+#### [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous) { #running-launching-mpisimultaneous }
 
 To run more than one MPI application simultaneously in the same job, you need to do several things:
 
@@ -982,7 +285,7 @@ The `task_affinity` script does two things:
 * **Don't confuse `task_affinity` with [`tacc_affinity`](#managing-memory)**; the keyword "`tacc_affinity`" is now a symbolic link to `mem_affinity`. The `mem_affinity` script and the symbolic link `tacc_affinity` manage MCDRAM in flat-quadrant mode on the KNL, but they do not pin MPI tasks.
 
 
-### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous)
+#### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous) { #running-launching-openmpsimultaneous }
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, NOWRAP"`numactl -C`"ESPAN specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
@@ -994,7 +297,7 @@ numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Not
 wait</pre>
 
 
-## [Interactive Sessions with `idev` and `srun`](#running-idev)
+### [Interactive Sessions with `idev` and `srun`](#running-idev) { #running-idev }
 
 TACC's own `idev` utility is the best way to begin an interactive session on one or more compute nodes. To launch a thirty-minute session on a single node in the development queue, simply execute:
 
@@ -1032,7 +335,7 @@ You can also launch an interactive session with Slurm's `srun` command, though t
 <pre class="cmd-line">login1$ <b>srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l </b># same conditions as above</pre>
 
 
-## [Interactive Sessions using `ssh`](#running-ssh)
+### [Interactive Sessions using `ssh`](#running-ssh) { #running-ssh }
 
 If you have a batch job or interactive session running on a compute node, you "own the node": you can connect via `ssh` to open a new interactive session on that node. This is an especially convenient way to monitor your applications' progress. One particularly helpful example: login to a compute node that you own, execute "`top`", then press the "1" key to see a display that allows you to monitor thread ("CPU") and memory use.
 
@@ -1048,7 +351,7 @@ login1$ <b>squeue -u bjones</b>
 C448-004$</pre>
 
 
-## [SLURM Environment Variables](#running-slurmenvvars)
+### [SLURM Environment Variables](#running-slurmenvvars) { #running-slurmenvvars }
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. "`%j`" described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute NOWRAP"`env | grep SLURM`"ESPAN from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like "`%j`" only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 

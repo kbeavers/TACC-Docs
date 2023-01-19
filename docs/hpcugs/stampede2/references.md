@@ -1,4 +1,4 @@
-# [References](#refs)
+## [References](#refs) { #refs }
 
 * [Bash Users' Startup Files: Quick Start Guide](https://portal.tacc.utexas.edu/tutorials/bashquickstart)
 * [`idev` documentation](http://portal.tacc.utexas.edu/software/idev)
