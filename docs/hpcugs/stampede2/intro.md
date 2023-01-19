@@ -1,25 +1,17 @@
-#intro
-	:markdown
-		# [Introduction](#intro)
+# [Introduction](#intro)
 
-		Stampede2, generously funded by the National Science Foundation (NSF) through [award  ACI-1540931](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540931), is one of the Texas Advanced Computing Center (TACC), University of Texas at Austin's flagship supercomputers. Stampede2 entered full production in the Fall 2017 as an 18-petaflop national resource that builds on the successes of the original Stampede system it replaces. The first phase of the Stampede2 rollout featured the second generation of processors based on Intel's Many Integrated Core (MIC) architecture. Stampede2's 4,200 Knights Landing (KNL) nodes represent a radical break with the first-generation Knights Corner (KNC) MIC coprocessor. Unlike the legacy KNC, a Stampede2 KNL is not a coprocessor: each 68-core KNL is a stand-alone, self-booting processor that is the sole processor in its node. Phase 2 added to Stampede2 a total of 1,736 Intel Xeon Skylake (SKX) nodes. The final phase of Stampede2 features the replacement of 448 KNL nodes with 224 Ice Lake nodes. 
+Stampede2, generously funded by the National Science Foundation (NSF) through [award  ACI-1540931](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540931), is one of the Texas Advanced Computing Center (TACC), University of Texas at Austin's flagship supercomputers. Stampede2 entered full production in the Fall 2017 as an 18-petaflop national resource that builds on the successes of the original Stampede system it replaces. The first phase of the Stampede2 rollout featured the second generation of processors based on Intel's Many Integrated Core (MIC) architecture. Stampede2's 4,200 Knights Landing (KNL) nodes represent a radical break with the first-generation Knights Corner (KNC) MIC coprocessor. Unlike the legacy KNC, a Stampede2 KNL is not a coprocessor: each 68-core KNL is a stand-alone, self-booting processor that is the sole processor in its node. Phase 2 added to Stampede2 a total of 1,736 Intel Xeon Skylake (SKX) nodes. The final phase of Stampede2 features the replacement of 448 KNL nodes with 224 Ice Lake nodes. 
 
 
-#overview
-	:markdown
-		# [System Overview](#overview)
+# [System Overview](#overview)
 
-	#overview-phase1computenodes
-		:markdown
-			## [KNL Compute Nodes](#overview-phase1computenodes)
+## [KNL Compute Nodes](#overview-phase1computenodes)
 
-			Stampede2 hosts 4,200 KNL compute nodes, including 504 KNL nodes that were formerly configured as a Stampede1 sub-system.  
+Stampede2 hosts 4,200 KNL compute nodes, including 504 KNL nodes that were formerly configured as a Stampede1 sub-system.  
 
-			Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Memory (RAM). They also feature an additional 16GB of high bandwidth, on-package memory known as Multi-Channel Dynamic Random Access Memory (**MCDRAM**) that is up to four times faster than DDR4. The KNL's memory is configurable in two important ways: there are BIOS settings that determine at boot time the processor's **memory mode** and **cluster mode**. The processor's **memory mode** determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The **cluster mode** determines the mechanisms for achieving cache coherency, which in turn determines latency: roughly speaking, this mode specifies the degree to which some memory addresses are "closer" to some cores than to others. See "[Programming and Performance: KNL](#programming-knl)" below for a top-level description of these and other available memory and cluster modes.
+Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Memory (RAM). They also feature an additional 16GB of high bandwidth, on-package memory known as Multi-Channel Dynamic Random Access Memory (**MCDRAM**) that is up to four times faster than DDR4. The KNL's memory is configurable in two important ways: there are BIOS settings that determine at boot time the processor's **memory mode** and **cluster mode**. The processor's **memory mode** determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The **cluster mode** determines the mechanisms for achieving cache coherency, which in turn determines latency: roughly speaking, this mode specifies the degree to which some memory addresses are "closer" to some cores than to others. See "[Programming and Performance: KNL](#programming-knl)" below for a top-level description of these and other available memory and cluster modes.
 
-	#table1
-		:markdown
-			[Table 1. Stampede2 KNL Compute Node Specifications](#table1)  
+[Table 1. Stampede2 KNL Compute Node Specifications](#table1)  
 
 		%table(border="1" cellpadding="3")
 			%tr
@@ -48,15 +40,11 @@
 				%td All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and NOWRAP<code>flat-quadrant</code>ESPAN <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
 	
 	
-	#overview-skxcomputenodes
-		:markdown
-			## [SKX Compute Nodes](#overview-skxcomputenodes)
+## [SKX Compute Nodes](#overview-skxcomputenodes)
 
-			Stampede2 hosts 1,736 SKX compute nodes.
+Stampede2 hosts 1,736 SKX compute nodes.
 
-	#table2
-		:markdown
-			[Table 2. Stampede2 SKX Compute Node Specifications](#table2)
+[Table 2. Stampede2 SKX Compute Node Specifications](#table2)
 
 		%table(border="1" cellpadding="3")
 			%tr
@@ -84,15 +72,11 @@
 				%td(align="right") Local storage:&nbsp;
 				%td 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
 
-	#overview-icxcomputenodes
-		:markdown
-			## [ICX Compute Nodes](#overview-icxcomputenodes)
+## [ICX Compute Nodes](#overview-icxcomputenodes)
 
-			Stampede2 hosts 224 ICX compute nodes.
+Stampede2 hosts 224 ICX compute nodes.
 
-	#table2a
-		:markdown
-			[Table 2a. Stampede2 ICX Compute Node Specifications](#table2a)
+[Table 2a. Stampede2 ICX Compute Node Specifications](#table2a)
 
 		%table(border="1" cellpadding="3")
 			%tr
@@ -120,28 +104,20 @@
 				%td(align="right") Local storage:&nbsp;
 				%td 342 GB <code>/tmp</code> partition
 
-	#overview-loginnodes
-		:markdown
-			## [Login Nodes](#overview-loginnodes)
+## [Login Nodes](#overview-loginnodes)
 
-			The Stampede2 login nodes, upgraded at the start of Phase 2, are Intel Xeon Gold 6132 (SKX) nodes, each with 28 cores on two sockets (14 cores/socket). They replace the decommissioned Broadwell login nodes used during Phase 1.
+The Stampede2 login nodes, upgraded at the start of Phase 2, are Intel Xeon Gold 6132 (SKX) nodes, each with 28 cores on two sockets (14 cores/socket). They replace the decommissioned Broadwell login nodes used during Phase 1.
 
-	#overview-network
-		:markdown
-			## [Network](#overview-network)
+## [Network](#overview-network)
 
-			The interconnect is a 100Gb/sec Intel Omni-Path (OPA) network with a fat tree topology employing six core switches. There is one leaf switch for each 28-node half rack, each with 20 leaf-to-core uplinks (28/20 oversubscription).
+The interconnect is a 100Gb/sec Intel Omni-Path (OPA) network with a fat tree topology employing six core switches. There is one leaf switch for each 28-node half rack, each with 20 leaf-to-core uplinks (28/20 oversubscription).
 
-	#overview-filesystems
-		:markdown
-			## [File Systems Introduction](#overview-filesystems)
+## [File Systems Introduction](#overview-filesystems)
 
-			Stampede2 mounts three shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME`, `$WORK`, and `$SCRATCH`](#files-filesystems). Each file system is available from all Stampede2 nodes; the [Stockyard-hosted work file system](https://www.tacc.utexas.edu/systems/stockyard) is available on most other TACC HPC systems as well.  See [Navigating the Shared File Systems](#files-filesystems) for detailed information as well as the [Good Conduct](#table-file-system-usage-recommendations) file system guidelines. 
+Stampede2 mounts three shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME`, `$WORK`, and `$SCRATCH`](#files-filesystems). Each file system is available from all Stampede2 nodes; the [Stockyard-hosted work file system](https://www.tacc.utexas.edu/systems/stockyard) is available on most other TACC HPC systems as well.  See [Navigating the Shared File Systems](#files-filesystems) for detailed information as well as the [Good Conduct](#table-file-system-usage-recommendations) file system guidelines. 
 
 		
-	#table3
-		:markdown
-			[Table 3. Stampede2 File Systems](#table3)
+[Table 3. Stampede2 File Systems](#table3)
 
 		%table(border=1 cellpadding="3")
 			%tr
@@ -162,8 +138,6 @@
 				%td Overall capacity ~30PB. Four MDSs, 66 OSTs.<br>Defaults: 1 stripe, 1MB stripe size.<br>Not backed up.<br><b>Files are <a href="#scratchpolicy">subject to purge</a> if access time* is more than 10 days old</b>.
 	
 
-	/scratch policy
-	= File.read "../../include/scratchpolicy.html"
+{% include 'include/scratchpolicy.md' %}
 
 
-	
