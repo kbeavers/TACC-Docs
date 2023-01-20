@@ -30,98 +30,51 @@ Stampede2 hosts 4,200 KNL compute nodes, including 504 KNL nodes that were forme
 
 Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Memory (RAM). They also feature an additional 16GB of high bandwidth, on-package memory known as Multi-Channel Dynamic Random Access Memory (**MCDRAM**) that is up to four times faster than DDR4. The KNL's memory is configurable in two important ways: there are BIOS settings that determine at boot time the processor's **memory mode** and **cluster mode**. The processor's **memory mode** determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The **cluster mode** determines the mechanisms for achieving cache coherency, which in turn determines latency: roughly speaking, this mode specifies the degree to which some memory addresses are "closer" to some cores than to others. See "[Programming and Performance: KNL](#programming-knl)" below for a top-level description of these and other available memory and cluster modes.
 
-[Table 1. Stampede2 KNL Compute Node Specifications](#table1)   { # }
+#### [Table 1. Stampede2 KNL Compute Node Specifications](#table1)   { #table1 }
 
-		%table(border="1" cellpadding="3")
-			%tr
-				%td(align="right") Model:&nbsp;
-				%td Intel Xeon Phi 7250 ("Knights Landing")
-			%tr
-				%td(nowrap align="right") Total cores per KNL node:&nbsp; 
-				%td 68 cores on a single socket
-			%tr
-				%td(nowrap align="right") Hardware threads per core:&nbsp;
-				%td 4
-			%tr
-				%td(nowrap align="right") Hardware threads per node:&nbsp;
-				%td 68 x 4 = 272
-			%tr
-				%td(align="right") Clock rate:&nbsp;
-				%td 1.4GHz
-			%tr
-				%td(align="right") RAM:&nbsp;
-				%td 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
-			%tr
-				%td(align="right") Cache:&nbsp;
-				%td 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
-			%tr
-				%td(align="right") Local storage:&nbsp; 
-				%td All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
+Specification | Value
+--- | ---
+Model:&nbsp; | Intel Xeon Phi 7250 ("Knights Landing")
+Total cores per KNL node:&nbsp; | 68 cores on a single socket
+Hardware threads per core:&nbsp; | 4
+Hardware threads per node:&nbsp; | 68 x 4 = 272
+Clock rate:&nbsp; | 1.4GHz
+RAM:&nbsp; | 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
+Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
+Local storage:&nbsp; | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
 	
 	
 ### [SKX Compute Nodes](#overview-skxcomputenodes) { #overview-skxcomputenodes }
 
 Stampede2 hosts 1,736 SKX compute nodes.
 
-[Table 2. Stampede2 SKX Compute Node Specifications](#table2) { # }
+#### [Table 2. Stampede2 SKX Compute Node Specifications](#table2) { #table2 }
 
-		%table(border="1" cellpadding="3")
-			%tr
-				%td(align="right") Model:&nbsp;
-				%td Intel Xeon Platinum 8160 ("Skylake")
-			%tr
-				%td(align="right") Total cores per SKX node:&nbsp;
-				%td 48 cores on two sockets (24 cores/socket)
-			%tr
-				%td(nowrap align="right") Hardware threads per core:&nbsp;
-				%td 2
-			%tr
-				%td(nowrap align="right") Hardware threads per node:&nbsp;
-				%td 48 x 2 = 96
-			%tr
-				%td(align="right") Clock rate:&nbsp;
-				%td 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
-			%tr
-				%td(align="right") RAM:&nbsp;
-				%td 192GB (2.67GHz) DDR4
-			%tr
-				%td(align="right") Cache:&nbsp;
-				%td 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
-			%tr
-				%td(align="right") Local storage:&nbsp;
-				%td 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
+Specification | Value
+--- | ---
+Model:&nbsp; | Intel Xeon Platinum 8160 ("Skylake")
+Total cores per SKX node:&nbsp; | 48 cores on two sockets (24 cores/socket)
+Hardware threads per core:&nbsp; | 2
+Hardware threads per node:&nbsp; | 48 x 2 = 96
+Clock rate:&nbsp; | 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
+RAM:&nbsp; | 192GB (2.67GHz) DDR4
+Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
+Local storage:&nbsp; | 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
 
 ### [ICX Compute Nodes](#overview-icxcomputenodes) { #overview-icxcomputenodes }
 
 Stampede2 hosts 224 ICX compute nodes.
 
-[Table 2a. Stampede2 ICX Compute Node Specifications](#table2a) { # }
+#### [Table 2a. Stampede2 ICX Compute Node Specifications](#table2a) { #table2a }
 
-		%table(border="1" cellpadding="3")
-			%tr
-				%td(align="right") Model:&nbsp;
-				%td Intel Xeon Platinum 8380 ("Ice Lake")
-			%tr
-				%td(align="right") Total cores per ICX node:&nbsp;
-				%td 80 cores on two sockets (40 cores/socket)
-			%tr
-				%td(nowrap align="right") Hardware threads per core:&nbsp;
-				%td 2
-			%tr
-				%td(nowrap align="right") Hardware threads per node:&nbsp;
-				%td 80 x 2 = 160
-			%tr
-				%td(align="right") Clock rate:&nbsp;
-				%td 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
-			%tr
-				%td(align="right") RAM:&nbsp;
-				%td 256GB (3.2 GHz) DDR4
-			%tr
-				%td(align="right") Cache:&nbsp;
-				%td 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
-			%tr
-				%td(align="right") Local storage:&nbsp;
-				%td 342 GB <code>/tmp</code> partition
+Model:&nbsp; | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores per ICX node:&nbsp; | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core:&nbsp; | 2
+Hardware threads per node:&nbsp; | 80 x 2 = 160
+Clock rate:&nbsp; | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
+RAM:&nbsp; | 256GB (3.2 GHz) DDR4
+Cache:&nbsp; | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage:&nbsp; | 342 GB <code>/tmp</code> partition
 
 ### [Login Nodes](#overview-loginnodes) { #overview-loginnodes }
 
@@ -136,25 +89,13 @@ The interconnect is a 100Gb/sec Intel Omni-Path (OPA) network with a fat tree to
 Stampede2 mounts three shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME`, `$WORK`, and `$SCRATCH`](#files-filesystems). Each file system is available from all Stampede2 nodes; the [Stockyard-hosted work file system](https://www.tacc.utexas.edu/systems/stockyard) is available on most other TACC HPC systems as well.  See [Navigating the Shared File Systems](#files-filesystems) for detailed information as well as the [Good Conduct](#table-file-system-usage-recommendations) file system guidelines. 
 
 		
-[Table 3. Stampede2 File Systems](#table3) { # }
+#### [Table 3. Stampede2 File Systems](#table3) { #table3 }
 
-		%table(border=1 cellpadding="3")
-			%tr
-				%th(nowrap) File System
-				%th Quota
-				%th Key Features
-			%tr
-				%td <code>$HOME</code>
-				%td 10GB, 200,000 files
-				%td <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
-			%tr
-				%td <code>$WORK</code>
-				%td 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside.
-				%td <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
-			%tr
-				%td <code>$SCRATCH</code>
-				%td no quota
-				%td Overall capacity ~30PB. Four MDSs, 66 OSTs.<br>Defaults: 1 stripe, 1MB stripe size.<br>Not backed up.<br><b>Files are <a href="#scratchpolicy">subject to purge</a> if access time* is more than 10 days old</b>.
+File System | Quota | Key Features
+--- | --- | ---
+<code>$HOME</code> | 10GB, 200,000 files | <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
+<code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside. | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
+<code>$SCRATCH</code> | no quota | Overall capacity ~30PB. Four MDSs, 66 OSTs.<br>Defaults: 1 stripe, 1MB stripe size.<br>Not backed up.<br><b>Files are <a href="#scratchpolicy">subject to purge</a> if access time* is more than 10 days old</b>.
 	
 
 {% include 'include/scratchpolicy.md' %}
@@ -364,26 +305,14 @@ Note that resource-specific <span style="white-space: nowrap;">sub-directories</
 
 [Table 4. Built-in Account Level Aliases](#table4)
 
-		%table(border=1 cellpadding=3)
-			%tr
-				%th(colspan=2) Built-in Account Level Aliases
-			%tr 
-				%th Alias
-				%th Command
-			%tr
-				%td <code>cd</code> or <code>cdh</code>
-				%td <code>cd $HOME</code>
-			%tr
-				%td <code>cdw</code>
-				%td <code>cd $WORK</code>
-			%tr
-				%td <code>cds</code>
-				%td <code>cd $SCRATCH</code>
-			%tr
-				%td <code>cdy</code> or <code>cdg</code>
-				%td <code>cd $STOCKYARD</code>
+Alias | Command
+--- | ---
+<code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
+<code>cdw</code> | <code>cd $WORK</code>
+<code>cds</code> | <code>cd $SCRATCH</code>
+<code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-			## [Striping Large Files](#files-striping)
+## [Striping Large Files](#files-striping)
 
 Stampede2's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives (dozens of physical drives for `$HOME`, hundreds for `$WORK` and `$SCRATCH`).
 
@@ -645,89 +574,19 @@ Stampede2's job scheduler is the [Slurm Workload Manager](http://schedmd.com). S
 
 Currently available queues include those in [Stampede2 Production Queues](#table5). See [KNL Compute Nodes](#overview-phase1computenodes), [SKX Compute Nodes](#overview-skxcomputenodes), [Memory Modes](#programming-knl-memorymodes), and [Cluster Modes](#programming-knl-clustermodes) for more information on node types.
 
-[Table 5. Stampede2 Production Queues](#table5)
+#### [Table 5. Stampede2 Production Queues](#table5)
 
-	%table(border="1" cellpadding="3")
-		%tr(align="center")
-			%th(align="center") Queue Name 
-			%th(align="center") Node Type 
-			%th(align="center") Max Nodes per Job<br /> (assoc'd cores)* 
-			%th(align="center") Max Duration 
-			%th(align="center") Max Jobs in Queue* 
-			%th(align="center") Charge Rate<br /> (per node-hour) 
-	
-
-		%tr(align="center")
-			%td  <code>development</code> 
-			%td  KNL cache-quadrant 
-			%td  16 nodes<br /> (1,088 cores)* 
-			%td  2 hrs 
-			%td  1* 
-			%td  0.8 Service Unit (SU)
-	
-		%tr(align="center")
-			%td  <code>normal</code> 
-			%td  KNL cache-quadrant 
-			%td  256 nodes<br /> (17,408 cores)* 
-			%td  48 hrs 
-			%td  50* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>large</code>** 
-			%td  KNL cache-quadrant 
-			%td  2048 nodes<br /> (139,264 cores)* 
-			%td  48 hrs 
-			%td  5* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>long</code>
-			%td  KNL cache-quadrant 
-			%td  32 nodes<br>(2,176 cores)*
-			%td  120 hrs 
-			%td  2* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>flat-quadrant</code> 
-			%td  KNL flat-quadrant 
-			%td  32 nodes<br /> (2,176 cores)* 
-			%td  48 hrs 
-			%td  5* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>skx-dev</code>
-			%td  SKX 
-			%td  4 nodes<br>(192 cores)*
-			%td  2 hrs
-			%td  1*
-			%td  1 SU
-	
-		%tr(align="center")
-			%td  <code>skx-normal</code>
-			%td  SKX 
-			%td  128 nodes<br>(6,144 cores)*
-			%td  48 hrs
-			%td  20*
-			%td  1 SU
-	
-		%tr(align="center")
-			%td  <code>skx-large</code>**
-			%td  SKX 
-			%td  868 nodes<br>(41,664 cores)*
-			%td  48 hrs
-			%td  3*
-			%td  1 SU
-
-		%tr(align="center")
-			%td <code>icx-normal</code>
-			%td ICX
-			%td 40 nodes<br>(3,200 cores)*
-			%td 48 hrs
-			%td 20*
-			%td 1.67 SU
+Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Duration | Max Jobs in Queue &#42; | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- | --- | ---
+<code>development</code> | KNL cache-quadrant | 16 nodes<br /> (1,088 cores)&#42; | 2 hrs | 1&#42; | 0.8 Service Unit (SU)
+<code>normal</code> | KNL cache-quadrant | 256 nodes<br /> (17,408 cores) &#42; | 48 hrs | 50 &#42; | 0.8 SU
+<code>large</code> &#42;&#42; | KNL cache-quadrant | 2048 nodes<br /> (139,264 cores) &#42;&#42; | 48 hrs | 5 &#42;&#42; | 0.8 SU
+<code>long</code> | KNL cache-quadrant | 32 nodes<br>(2,176 cores) &#42; | 120 hrs | 2  &#42; | 0.8 SU
+<code>flat-quadrant</code> | KNL flat-quadrant | 32 nodes<br /> (2,176 cores)  &#42; | 48 hrs | 5  &#42; | 0.8 SU
+<code>skx-dev</code> | SKX | 4 nodes<br>(192 cores) &#42; | 2 hrs | 1 &#42; | 1 SU
+<code>skx-normal</code> | SKX | 128 nodes<br>(6,144 cores) &#42; | 48 hrs | 20 &#42; | 1 SU
+<code>skx-large</code> &#42; &#42; | SKX | 868 nodes<br>(41,664 cores) &#42; | 48 hrs | 3 &#42; | 1 SU
+<code>icx-normal</code> | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
 
 &#42; Queue status as of March 7, 2022. **Queues and limits are subject to change without notice.** Execute "`qlimits`" on Stampede2 for real-time information regarding limits on available queues. See [Monitoring Jobs and Queues](#monitoring) for additional information.
 
@@ -754,73 +613,25 @@ Your job will run in the environment it inherits at submission time; this enviro
 The [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with "`#SBATCH`"; most have a short form (e.g. <span style="white-space: nowrap;">"`-N`"</span>) and a long form (e.g. <span style="white-space: nowrap;">"`--nodes`"</span>). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases <span style="white-space: nowrap;">"`#!/bin/bash`"</span> or <span style="white-space: nowrap;">"`#!/bin/csh`"</span> is the right choice. Avoid <span style="white-space: nowrap;">"`#!/bin/sh`"</span> (its startup behavior can lead to subtle problems on Stampede2), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede2.
 
 
-[Table 6. Common <code>sbatch</code> Options](#table6)
+#### [Table 6. Common <code>sbatch</code> Options](#table6)
 
-	%table(border="1" cellpadding="3")
-		%tr 
-			%th Option
-			%th Argument
-			%th Comments
-		%tr 
-			%td <code>-p</code>
-			%td  <i>queue_name</i>
-			%td  Submits to queue (partition) designated by <i>queue_name</i>
-		%tr 
-			%td <code>-J</code>
-			%td  <i>job_name</i>
-			%td  Job Name
-		%tr
-			%td <code>-N</code>
-			%td <i>total_nodes</i>
-			%td Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
-		%tr
-			%td <code>-n</code>
-			%td <i>total_tasks</i>
-			%td This is total MPI tasks in this job. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
-		%tr 
-			<td nowrap><code>--ntasks-per-node</code><br>or<br><code>--tasks-per-node</code></td>
-			%td <i>tasks_per_node</i>
-			%td This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
-		%tr 
-			%td <code>-t</code>
-			%td <i>hh:mm:ss</i>
-			%td Required. Wall clock time for job.
-		%tr 
-			%td <code>--mail-user=</code>
-			%td <i>email_address</i>
-			%td Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
-		%tr 
-			%td <code>--mail-type=</code>
-			%td <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code>
-			%td Specify when user notifications are to be sent (one option per line).
-		%tr 
-			%td <code>-o</code>
-			%td <i>output_file</i>
-			%td Direct job standard output to <i>output_file</i> (without <code>-e</code> option error goes to this file)
-		%tr 
-			%td <code>-e</code>
-			%td <i>error_file</i>
-			%td Direct job error output to <i>error_file</i>
-		%tr
-			%td <code>-d=</code>
-			%td afterok:<i>jobid</i>
-			%td Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
-		%tr 
-			%td <code>-A</code>
-			%td <i>projectnumber</i>
-			%td Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
-		%tr
-			%td <code>-a</code><br>or<br><code>--array</code>
-			%td N/A
-			%td Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
-		%tr 
-			%td <code>--mem</code>
-			%td N/A
-			%td Not available. If you attempt to use this option, the scheduler will not accept your job.
-		%tr
-			%td <code>--export=</code>
-			%td N/A
-			%td Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
+Option | Argument | Comments
+--- | --- | ---
+<code>-p</code> | <i>queue_name</i> | Submits to queue (partition) designated by <i>queue_name</i>
+<code>-J</code> |  <i>job_name</i> |  Job Name
+<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
+<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
+<code><span style="white-space: nowrap;">--ntasks-per-node</span></code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
+<code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
+<code>--mail-user=</code> | <i>email_address</i> | Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
+<code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code> | Specify when user notifications are to be sent (one option per line).
+<code>-o</code> | <i>output_file</i> | Direct job standard output to <i>output_file</i> (without <code>-e</code> option error goes to this file)
+<code>-e</code> | <i>error_file</i> | Direct job error output to <i>error_file</i>
+<code>-d=</code> | afterok:<i>jobid</i> | Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
+<code>-A</code> | <i>projectnumber</i> | Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
+<code>-a</code><br>or<br><code>--array</code> | N/A | Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
+<code>--mem</code> | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
+<code>--export=</code> | N/A | Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
 By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">"`slurm-%j.out`"</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">"`-o`"</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">"`-o`"</span> and <span style="white-space: nowrap;">"`-e`"</span>.
 
