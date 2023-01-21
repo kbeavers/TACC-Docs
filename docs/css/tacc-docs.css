@@ -2,5 +2,15 @@
 /* NOTE: Some of this could become core-styles.docs.css */
 
 @layer project {
-  /* ... */
+
+
+
+/* To add space between messages & messages and messages & content */
+.admonition {
+  margin-block: 1em;
+}
+
+
+
+
 }
