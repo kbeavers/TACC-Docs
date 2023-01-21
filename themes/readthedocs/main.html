@@ -14,7 +14,7 @@
 
     /* Undo ReadTheDocs styles for page content */
     @layer foundation.tacc {
-      .rst-content * {
+      .rst-content :not(img) {
         all: revert;
       }
     }
