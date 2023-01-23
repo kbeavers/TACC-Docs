@@ -27,10 +27,15 @@ nav:
 #    - Remote Desktop Access: tutorials/remotedesktopaccess.md
 
 markdown_extensions:
- - tables
  - admonition
  - attr_list
  - abbr
+  # Some extensions are pre-enabled by MkDocs
+  # https://github.com/mkdocs/mkdocs/blob/1.4.2/docs/user-guide/configuration.md#markdown_extensions
+#  - meta
+#  - toc
+#  - tables
+#  - fenced_code
 
 plugins:
   - search
