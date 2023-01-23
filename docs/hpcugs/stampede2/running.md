@@ -10,89 +10,19 @@ Stampede2's job scheduler is the [Slurm Workload Manager](http://schedmd.com). S
 
 Currently available queues include those in [Stampede2 Production Queues](#table5). See [KNL Compute Nodes](#overview-phase1computenodes), [SKX Compute Nodes](#overview-skxcomputenodes), [Memory Modes](#programming-knl-memorymodes), and [Cluster Modes](#programming-knl-clustermodes) for more information on node types.
 
-[Table 5. Stampede2 Production Queues](#table5)
+#### [Table 5. Stampede2 Production Queues](#table5)
 
-	%table(border="1" cellpadding="3")
-		%tr(align="center")
-			%th(align="center") Queue Name 
-			%th(align="center") Node Type 
-			%th(align="center") Max Nodes per Job<br /> (assoc'd cores)* 
-			%th(align="center") Max Duration 
-			%th(align="center") Max Jobs in Queue* 
-			%th(align="center") Charge Rate<br /> (per node-hour) 
-	
-
-		%tr(align="center")
-			%td  <code>development</code> 
-			%td  KNL cache-quadrant 
-			%td  16 nodes<br /> (1,088 cores)* 
-			%td  2 hrs 
-			%td  1* 
-			%td  0.8 Service Unit (SU)
-	
-		%tr(align="center")
-			%td  <code>normal</code> 
-			%td  KNL cache-quadrant 
-			%td  256 nodes<br /> (17,408 cores)* 
-			%td  48 hrs 
-			%td  50* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>large</code>** 
-			%td  KNL cache-quadrant 
-			%td  2048 nodes<br /> (139,264 cores)* 
-			%td  48 hrs 
-			%td  5* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>long</code>
-			%td  KNL cache-quadrant 
-			%td  32 nodes<br>(2,176 cores)*
-			%td  120 hrs 
-			%td  2* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>flat-quadrant</code> 
-			%td  KNL flat-quadrant 
-			%td  32 nodes<br /> (2,176 cores)* 
-			%td  48 hrs 
-			%td  5* 
-			%td  0.8 SU
-	
-		%tr(align="center")
-			%td  <code>skx-dev</code>
-			%td  SKX 
-			%td  4 nodes<br>(192 cores)*
-			%td  2 hrs
-			%td  1*
-			%td  1 SU
-	
-		%tr(align="center")
-			%td  <code>skx-normal</code>
-			%td  SKX 
-			%td  128 nodes<br>(6,144 cores)*
-			%td  48 hrs
-			%td  20*
-			%td  1 SU
-	
-		%tr(align="center")
-			%td  <code>skx-large</code>**
-			%td  SKX 
-			%td  868 nodes<br>(41,664 cores)*
-			%td  48 hrs
-			%td  3*
-			%td  1 SU
-
-		%tr(align="center")
-			%td <code>icx-normal</code>
-			%td ICX
-			%td 40 nodes<br>(3,200 cores)*
-			%td 48 hrs
-			%td 20*
-			%td 1.67 SU
+Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Duration | Max Jobs in Queue &#42; | Charge Rate<br /> (per node-hour) 
+--- | --- | --- | --- | --- | ---
+<code>development</code> | KNL cache-quadrant | 16 nodes<br /> (1,088 cores)&#42; | 2 hrs | 1&#42; | 0.8 Service Unit (SU)
+<code>normal</code> | KNL cache-quadrant | 256 nodes<br /> (17,408 cores) &#42; | 48 hrs | 50 &#42; | 0.8 SU
+<code>large</code> &#42;&#42; | KNL cache-quadrant | 2048 nodes<br /> (139,264 cores) &#42;&#42; | 48 hrs | 5 &#42;&#42; | 0.8 SU
+<code>long</code> | KNL cache-quadrant | 32 nodes<br>(2,176 cores) &#42; | 120 hrs | 2  &#42; | 0.8 SU
+<code>flat-quadrant</code> | KNL flat-quadrant | 32 nodes<br /> (2,176 cores)  &#42; | 48 hrs | 5  &#42; | 0.8 SU
+<code>skx-dev</code> | SKX | 4 nodes<br>(192 cores) &#42; | 2 hrs | 1 &#42; | 1 SU
+<code>skx-normal</code> | SKX | 128 nodes<br>(6,144 cores) &#42; | 48 hrs | 20 &#42; | 1 SU
+<code>skx-large</code> &#42; &#42; | SKX | 868 nodes<br>(41,664 cores) &#42; | 48 hrs | 3 &#42; | 1 SU
+<code>icx-normal</code> | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
 
 &#42; Queue status as of March 7, 2022. **Queues and limits are subject to change without notice.** Execute "`qlimits`" on Stampede2 for real-time information regarding limits on available queues. See [Monitoring Jobs and Queues](#monitoring) for additional information.
 
@@ -119,73 +49,25 @@ Your job will run in the environment it inherits at submission time; this enviro
 The [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with "`#SBATCH`"; most have a short form (e.g. NOWRAP"`-N`"ESPAN) and a long form (e.g. NOWRAP"`--nodes`"ESPAN). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases NOWRAP"`#!/bin/bash`"ESPAN or NOWRAP"`#!/bin/csh`"ESPAN is the right choice. Avoid NOWRAP"`#!/bin/sh`"ESPAN (its startup behavior can lead to subtle problems on Stampede2), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede2.
 
 
-[Table 6. Common <code>sbatch</code> Options](#table6)
+#### [Table 6. Common <code>sbatch</code> Options](#table6)
 
-	%table(border="1" cellpadding="3")
-		%tr 
-			%th Option
-			%th Argument
-			%th Comments
-		%tr 
-			%td <code>-p</code>
-			%td  <i>queue_name</i>
-			%td  Submits to queue (partition) designated by <i>queue_name</i>
-		%tr 
-			%td <code>-J</code>
-			%td  <i>job_name</i>
-			%td  Job Name
-		%tr
-			%td <code>-N</code>
-			%td <i>total_nodes</i>
-			%td Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
-		%tr
-			%td <code>-n</code>
-			%td <i>total_tasks</i>
-			%td This is total MPI tasks in this job. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
-		%tr 
-			<td nowrap><code>--ntasks-per-node</code><br>or<br><code>--tasks-per-node</code></td>
-			%td <i>tasks_per_node</i>
-			%td This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
-		%tr 
-			%td <code>-t</code>
-			%td <i>hh:mm:ss</i>
-			%td Required. Wall clock time for job.
-		%tr 
-			%td <code>--mail-user=</code>
-			%td <i>email_address</i>
-			%td Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
-		%tr 
-			%td <code>--mail-type=</code>
-			%td <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code>
-			%td Specify when user notifications are to be sent (one option per line).
-		%tr 
-			%td <code>-o</code>
-			%td <i>output_file</i>
-			%td Direct job standard output to <i>output_file</i> (without <code>-e</code> option error goes to this file)
-		%tr 
-			%td <code>-e</code>
-			%td <i>error_file</i>
-			%td Direct job error output to <i>error_file</i>
-		%tr
-			%td <code>-d=</code>
-			%td afterok:<i>jobid</i>
-			%td Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
-		%tr 
-			%td <code>-A</code>
-			%td <i>projectnumber</i>
-			%td Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
-		%tr
-			%td <code>-a</code><br>or<br><code>--array</code>
-			%td N/A
-			%td Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
-		%tr 
-			%td <code>--mem</code>
-			%td N/A
-			%td Not available. If you attempt to use this option, the scheduler will not accept your job.
-		%tr
-			%td <code>--export=</code>
-			%td N/A
-			%td Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
+Option | Argument | Comments
+--- | --- | ---
+<code>-p</code> | <i>queue_name</i> | Submits to queue (partition) designated by <i>queue_name</i>
+<code>-J</code> |  <i>job_name</i> |  Job Name
+<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
+<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code>NOWRAP-NESPAN</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
+<code>NOWRAP--ntasks-per-nodeESPAN</code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
+<code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
+<code>--mail-user=</code> | <i>email_address</i> | Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
+<code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code> | Specify when user notifications are to be sent (one option per line).
+<code>-o</code> | <i>output_file</i> | Direct job standard output to <i>output_file</i> (without <code>-e</code> option error goes to this file)
+<code>-e</code> | <i>error_file</i> | Direct job error output to <i>error_file</i>
+<code>-d=</code> | afterok:<i>jobid</i> | Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
+<code>-A</code> | <i>projectnumber</i> | Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
+<code>-a</code><br>or<br><code>--array</code> | N/A | Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
+<code>--mem</code> | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
+<code>--export=</code> | N/A | Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
 By default, Slurm writes all console output to a file named NOWRAP"`slurm-%j.out`"ESPAN, where `%j` is the numerical job ID. To specify a different filename use the NOWRAP"`-o`"ESPAN option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both NOWRAP"`-o`"ESPAN and NOWRAP"`-e`"ESPAN.
 

@@ -53,7 +53,10 @@ Please [submit a ticket] [BUTTER]
 
 [BUTTER]: http://portal.tacc.utexas.edu
 
-<span style="font-style:italic; color:green;background:yellow">I'm within a span</span>
+
+<span style="font-style:italic; color:green;background:yellow">I'm within an inline-styled &lt;span&gt;</span>
+
+<mark>I'm within a &lt;mark&gt;</mark>
 
 include text under here
 
