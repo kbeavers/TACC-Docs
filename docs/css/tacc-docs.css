@@ -172,9 +172,20 @@
 
 /* CONTENT */
 
+
+
 /* To add space between messages & messages and messages & content */
 .admonition {
   margin-block: 1em;
+}
+
+
+
+/* To not shrink images inside figures */
+/* FAQ: This bug is caused by core-styles.docs.css & theme.css clash */
+/* https://github.com/TACC/Core-Styles/blob/abbcf68/src/lib/_imports/elements/html-elements.css#L58 */
+.rst-content figure > img {
+  max-width: unset; /* undo theme.css `rst-content img` and `img` */
 }
 
 
