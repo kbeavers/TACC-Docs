@@ -21,6 +21,9 @@
 [TACCMFA]: http://portal.tacc.utexas.edu/tutorials/multifactor-authentication "Multi-Factor Authentication at TACC"
 [TACCANALYSISPORTAL]: http://portal.tacc.utexas.edu/tutorials/tap "TACC Analysis Portal User Guide"
 [TACCREMOTEDESKTOPACCESS]: http://portal.tacc.utexas.edu/tutorials/remote-desktop-access "TACC Remote Desktop Access"
+[TACCSHARINGPROJECTFILES]: http://portal.tacc.utexas.edu/tutorials/sharing-project-files "Sharing Project Files"
+[TACCBASHQUICKSTART]: http://portal.tacc.utexas.edu/tutorials/bashquickstart "Bash Quick Start Guide"
+
 
 <!-- other -->
 [DOWNLOADCYBERDUCK]: https://cyberduck.io/download/ "Download Cyberduck"

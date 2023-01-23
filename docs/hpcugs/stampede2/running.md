@@ -1,4 +1,4 @@
-## [Running Jobs on the Stampede2 Compute Nodes](#running) { #running }
+## [Running Jobs on the Compute Nodes](#running) { #running }
 
 {% include 'include/stampede2-jobaccounting.md' %}
 
@@ -26,9 +26,9 @@ Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Dura
 
 &#42; Queue status as of March 7, 2022. **Queues and limits are subject to change without notice.** Execute "`qlimits`" on Stampede2 for real-time information regarding limits on available queues. See [Monitoring Jobs and Queues](#monitoring) for additional information.
 
-&#42;&#42; To request more nodes than are available in the normal queue, submit a consulting (help desk) ticket through the [TACC](TACCUSERPORTAL).  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede2.
+&#42;&#42; To request more nodes than are available in the normal queue, submit a consulting (help desk) ticket through the [TACC][TACCUSERPORTAL].  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede2.
 
-&#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, submit a ticket through the [TACC User Portal](TACCUSERPORTAL).
+&#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, submit a ticket through the [TACC User Portal][TACCUSERPORTAL].
 
 ### [Submitting Batch Jobs with `sbatch`](#running-sbatch) { #running-sbatch }
 
@@ -39,10 +39,6 @@ Use Slurm's "`sbatch`" command to [submit a batch job](#using-computenodes) to o
 Here "`myjobscript`" is the name of a text file containing `#SBATCH` directives and shell commands that describe the particulars of the job you are submitting. The details of your job script's contents depend on the type of job you intend to run. 
 
 In your job script you (1) use `#SBATCH` directives to request computing resources (e.g. 10 nodes for 2 hrs); and then (2) use shell commands to specify what work you're going to do once your job begins. There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
-
-#### [Job Scripts](#running-sbatch-jobscripts) { #running-sbatch-jobscripts }
-
-{% include 'hpcugs/stampede2/scriptstable.md' %}
 
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm NOWRAP"`--export`"ESPAN option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 

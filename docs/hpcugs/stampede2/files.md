@@ -53,7 +53,7 @@ You can check the stripe count of a file using the "`lfs getstripe`" command:
 
 ### [Transfer Using `scp`](#transferring-scp) { #transferring-scp }
 
-You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](STAMPEDE2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](#access-ssh) typically include `scp`-based file transfer capabilities.
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Stampede2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Stampede2 `$HOME` would look like this:
 
@@ -109,5 +109,5 @@ Stampede2 has two endpoints, one running Globus gridftp v5.4 software available 
 
 ### [Sharing Files with Collaborators](#files-sharing) { #files-sharing }
 
-If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems][TACCSHARINGPROGJECTFILES] for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 

@@ -1,6 +1,6 @@
 ## [Accessing the System](#access) { #access }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
@@ -16,7 +16,7 @@ To connect with X11 support on Stampede2 (usually required for applications with
 
 <pre class="cmd-line">localhost$ <b>ssh -X myusername@stampede2.tacc.utexas.edu</b></pre>
 
-Use your TACC password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal](TACCUSERPORTAL). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](TACCUSERPORTAL) home page and select "Password Reset" under the Home tab.
+Use your TACC password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal][TACCUSERPORTAL] home page and select "Password Reset" under the Home tab.
 
 To report a connection problem, execute the `ssh` command with the NOWRAP"`-vvv`"ESPAN option and include the verbose output when submitting a help ticket.
 
