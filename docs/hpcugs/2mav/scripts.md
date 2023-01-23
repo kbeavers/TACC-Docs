@@ -1,12 +1,8 @@
 ## [Job Scripts](#scripts)  { #scripts }
 
+<details><summary>Serial Job in Normal Queue</summary>
 
-<table border="1" cellpadding="3" cellspacing="1">
-<tr valign="top">
-<td>
-<a href="javascript:showhideserial()"><img src=RIGHTARROW id="img-serial">Serial Job in Normal Queue</a><br>
-<div id="serial" style="display:none">
-<pre>
+```bash
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -52,14 +48,12 @@ date
 ./mycode.exe         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre>
-</td>
-</div>
+```
 
-<tr valign="top">
-<td valign="top"><a href="javascript:showhidempi()"><img src=RIGHTARROW id="img-mpi">MPI Job in Normal Queue</a>
-<div id="mpi" style="display:none">
-<pre>
+</details>
+<details><summary>Serial Job in Normal Queue</summary>
+
+```bash
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -106,14 +100,12 @@ date
 ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></td>
-</div>
+```
 
+</details>
+<details><summary>Serial Job in Normal Queue</summary>
 
-<tr valign="top">
-<td><a href="javascript:showhideopenmp()"><img src=RIGHTARROW id="img-openmp">OpenMP Job in Normal Queue</a>
-<div id="openmp" style="display:none">
-<pre>
+```bash
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -166,13 +158,12 @@ export OMP_NUM_THREADS=34
 ./mycode.exe         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></td>
-</div>
+```
 
-<tr valign="top">
-<td><a href="javascript:showhidehybrid()"><img src=RIGHTARROW id="img-hybrid">Hybrid Job in Normal Queue</a>
-<div id="hybrid" style="display:none">
-<pre>
+</details>
+<details><summary>Serial Job in Normal Queue</summary>
+
+```bash
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script for TACC MACHINENAME nodes
@@ -232,9 +223,9 @@ export OMP_NUM_THREADS=16
 ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></td>
-</div>
-</tr></table><p>&nbsp;</p>
+```
+
+</details>
 
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm NOWRAP"`--export`"ESPAN option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
