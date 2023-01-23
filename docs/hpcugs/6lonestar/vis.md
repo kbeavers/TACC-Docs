@@ -1,10 +1,10 @@
-## Visualization and Virtual Network Computing (VNC) Sessions
+## [Visualization and Virtual Network Computing (VNC) Sessions](#vis) { #vis }
 
 Lonestar6 uses AMD's Milan processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing "`module load swr`".
 
 Lonestar6 currently has no separate visualization queue. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to Lonestar6's `development` queue for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket.
 
-### Remote Desktop Access
+### [Remote Desktop Access](#vis-remote) { #vis-remote }
 
 Remote desktop access to Lonestar6 is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Lonestar6 login node (see [Accessing the System](#access) and submit a special interactive batch job that:
 
@@ -35,7 +35,7 @@ Follow the steps below to start an interactive session.
 	* <code>-p <i>partition</i></code> specify an alternate queue   
 
 
-	Consult [Table 6](/user-guides/stampede2#table6) in the [Stampede2 User Guide](/user-guides/stampede2) for a listing of common Slurm `#SBATCH` options.
+	Consult [Table 6](STAMPEDE2UG#table6) in the [Stampede2 User Guide](STAMPEDE2UG) for a listing of common Slurm `#SBATCH` options.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
@@ -80,11 +80,11 @@ Follow the steps below to start an interactive session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
-### Running Applications on the Remote Desktop
+### [Running Applications on the Remote Desktop](#vis-apps) { #vis-apps }
 
 From an interactive desktop, applications can be run from icons or from xterm command prompts. Two special cases arise: running parallel applications, and running applications that use OpenGL.
 
-### Running Parallel Applications from the Desktop
+### [Running Parallel Applications from the Desktop](#vis-parallelapps) { #vis-parallelapps }
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
@@ -92,7 +92,7 @@ Parallel applications are run on the desktop using the same ibrun wrapper descri
 
 will run application on the associated nodes, as modified by the ibrun options.
 
-### Running OpenGL/X Applications On The Desktop
+### [Running OpenGL/X Applications On The Desktop](#vis-opengl) { #vis-opengl }
 
 Lonestar6 uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Lonestar6 do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the TACC Vis portal.
 
@@ -102,3 +102,34 @@ Lonestar6 uses the OpenSWR OpenGL library to perform efficient rendering. At pre
 c301-001$ <b>module load swr</b>
 c301-001$ <b>swr <i>options</i> application application-args</b></pre>
 
+### [Parallel VisIt on Lonestar6](#vis-visit) { #vis-visit }
+
+[VisIt](https://wci.llnl.gov/simulation/computer-codes/visit) was compiled under the Intel compiler and the mvapich2 and MPI stacks.
+
+After connecting to a VNC server on Lonestar6, as described above, load the VisIt module at the beginning of your interactive session before launching the VisIt application:
+
+<pre class="cmd-line">
+c301-001$ <b>module load swr visit</b>
+c301-001$ <b>swr visit</b></pre>
+
+VisIt first loads a dataset and presents a dialog allowing for selecting either a serial or parallel engine. Select the parallel engine. Note that this dialog will also present options for the number of processes to start and the number of nodes to use; these options are actually ignored in favor of the options specified when the VNC server job was started.
+
+#### [Preparing Data for Parallel Visit](#vis-visit-preparingdata) { #vis-visit-preparingdata }
+
+VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)`" format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
+
+### [Parallel ParaView on Lonestar6](#vis-paraview) { #vis-paraview }
+
+After connecting to a VNC server on Lonestar6, as described above, do the following:
+
+1. Set up your environment with the necessary modules. Load the `swr`, `qt5`, `ospray`, and `paraview` modules <b>in this order</b>:
+
+	<pre class="cmd-line">c301-001$ <b>module load swr qt5 ospray paraview</b></pre>
+
+1. Launch ParaView:
+
+	<pre class="cmd-line">c301-001$ <b>swr -p 1 paraview [<i>paraview client options</i>]</b></pre>
+
+1. Click the "Connect" button, or select File -&gt; Connect
+
+1. Select the "auto" configuration, then press "Connect". In the Paraview Output Messages window, you'll see what appears to be an 'lmod' error, but can be ignored. Then you'll see the parallel servers being spawned and the connection established.

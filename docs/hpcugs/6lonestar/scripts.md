@@ -1,10 +1,14 @@
-## Sample Job Scripts
+## [Sample Job Scripts](#scripts) { #scripts }
 
-### Serial Codes
-
+<a href="javascript:jscript1()"><img src=RIGHTARROW id="img-jscript1">Serial Codes</a><br>
+<div id="jscript1" style="display:none">
+  
+<details>
+<summary>
 **Run all serial jobs in the `normal` queue.**  
 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
+</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -48,8 +52,14 @@ date
 
 # Launch serial code...
 ./myprogram         # Do not use ibrun or any other MPI launcher</pre>
+</details>
 
-### MPI Jobs
+
+
+</div>
+
+<a href="javascript:jscript2()"><img src=RIGHTARROW id="img-jscript2">MPI Jobs</a><br>
+<div id="jscript2" style="display:none">
 
 This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
@@ -96,10 +106,11 @@ pwd
 date
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></div>
 
 
-### Hybrid (MPI + OpenMP) Job
+<a href="javascript:jscript3()"><img src=RIGHTARROW id="img-jscript3">Hybrid (MPI + OpenMP) Job</a><br>
+<div id="jscript3" style="display:none">
 
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
@@ -158,10 +169,11 @@ date
 export OMP_NUM_THREADS=14
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></div>
 
 
-### OpenMP Jobs
+<a href="javascript:jscript4()"><img src=RIGHTARROW id="img-jscript4">OpenMP Jobs</a>
+<div id="jscript4" style="display:none">
 
 **Run all OpenMP jobs in the `normal` queue.**  
 
@@ -212,10 +224,10 @@ date
 export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 
 # Launch OpenMP code...
-./myprogram         # Do not use ibrun or any other MPI launcher</pre>
+./myprogram         # Do not use ibrun or any other MPI launcher</pre></div>
 
 
-### Customizing your Job Script 
+## [Customizing your Job Script ](#scripts-customizations)
 
 Copy and customize the following scripts to specify and refine your job's requirements.</p>
 
@@ -226,5 +238,5 @@ Copy and customize the following scripts to specify and refine your job's requir
 
 In general, the fewer resources (nodes) you specify in your batch script, the less time your job will wait in the queue. See [4. Request Only the Resources You Need](#conduct-resources) in the [Good Conduct](#conduct) section. 
 
-Consult [Table 6](/user-guides/stampede2#table6) in the [Stampede2 User Guide](/user-guides/stampede2) for a listing of common Slurm `#SBATCH` options.
+Consult [Table 6](STAMPEDE2UG#table6) in the [Stampede2 User Guide](STAMPEDE2UG) for a listing of common Slurm `#SBATCH` options.
 

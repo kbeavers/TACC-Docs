@@ -1,6 +1,6 @@
-## Access the System
+## [Access the System](#access) { #access }
 
-### Secure Shell (SSH)
+### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
 The "`ssh`" command (SSH protocol) is the standard way to connect to Lonestar6 (**`ls6.tacc.utexas.edu`**). SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
@@ -25,25 +25,27 @@ After logging in again the system will generate a properly configured key pair.
 
 Regardless of your research workflow, <b>you'll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the <a href="https://portal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
-## Account Administration
+## [Account Administration](#admin) { #admin }
 
-### Check your Allocation Status
+### [Check your Allocation Status](#admin-allocations) { #admin-allocations }
 
 **You must be added to a Lonestar6 allocation in order to have access/login to Lonestar6.** The ability to log on to the TACC User Portal does NOT signify access to Lonestar6 or any TACC resource. Submit Lonestar6 allocations requests via [TACC's Resource Allocation System](https://tacc-submit.xras.xsede.org/). Continue to [manage your allocation's users](https://portal.tacc.utexas.edu/projects-and-allocations#) via the TACC User Portal. 
 
-### Multi-Factor Authentication
+### [Multi-Factor Authentication](#admin-mfa) { #admin-mfa }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](http://portal.tacc.utexas.edu/tutorials/multifactor-authentication) for further information. 
 
-### Password Management
+### [Password Management](#admin-password) { #admin-password }
 
-Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
-
-<img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-2.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<p class="image-caption">Lonestar6 IMAGE2</p>
+Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
 
 
-### Linux Shell
+ alt="Lonestar6" src="/documents/10157/2038620/Lonestar6+-+2/3882bab5-94e8-4de7-82d5-88a2119d1de0?t=1634257797976" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
+caption
+Lonestar6
+
+
+### [Linux Shell](#admin-shell) { #admin-shell }
 
 The default login shell for your user account is Bash. To determine your current login shell, execute: 
 
@@ -55,9 +57,9 @@ When you start a shell on Lonestar6, system-level startup files initialize your 
 
 Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the `bash` command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute <span style="white-space: nowrap;">`source ~/.bashrc`</span> from your `.profile`, then put all your customizations in `.bashrc`. The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
 
-For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute NOWRAP`/usr/local/startup_scripts/install_default_scripts`ESPAN.
+For more information see the [Bash Users' Startup Files: Quick Start Guide](https://portal.tacc.utexas.edu/tutorials/bashquickstart) and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
 
-### Environment Variables
+### [Environment Variables](#admin-envvars) { #admin-envvars }
 
 Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the [modules](#using-modules-to-manage-your-environment) that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
 
@@ -69,16 +71,16 @@ Pipe the results of `env` into `grep` to focus on specific environment variables
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
-### Account-Level Diagnostics
+<!-- ## [Account-Level Diagnostics](#admin-diagnostics)
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
 <pre class="cmd-line">login1$ <b>module load sanitytool</b>
 login1$ <b>sanitycheck</b></pre>
 
-Execute `module help sanitytool` for more information.
+Execute `module help sanitytool` for more information. -->
 
-### Using Modules to Manage your Environment
+### [Using Modules to Manage your Environment](#admin-modules) { #admin-modules }
 
 [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod), a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Lonestar6 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
@@ -153,4 +155,8 @@ $ <b>module help</b>         # show help text for the module system itself</pre>
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use NOWRAP`module save`ESPAN to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Lonestar6's default startup scripts for a safe way to do so.
+
+<figure> <img alt="Lonestar6" src="IMAGEDIR/6lonestar/Lonestar6-3.jpg" style="border-width: 1px; border-style: solid;" />
+<figcaption> Lonestar6 </figcaption> </figure>
+
 

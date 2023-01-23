@@ -1,8 +1,8 @@
-## Launching Applications
+## [Launching Applications](#launching) { #launching }
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section.</p>
 
-### Launching One Serial Application
+### [Launching One Serial Application](#launching-serial) { #launching-serial }
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
@@ -12,12 +12,12 @@ $SCRATCH/apps/mydir/myprogram			# explicit full path to executable
 ./myprogram								# executable in current directory
 ./myprogram -m -k 6 input1				# executable with notional input options</pre>
 
-### Parametric Sweep / HTC jobs
+### [Parametric Sweep / HTC jobs](#launching-parametric) { #launching-parametric }
 
 Consult the [Launcher at TACC](/software/launcher) documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
 
 
-### Launching One Multi-Threaded Application
+### [Launching One Multi-Threaded Application](#launching-multithreaded) { #launching-multithreaded }
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
@@ -25,7 +25,7 @@ Launch a threaded application the same way. Be sure to specify the number of thr
 export OMP_NUM_THREADS=128   	# 128 total OpenMP threads (1 per core)
 ./myprogram</pre>
 
-### Launching One MPI Application
+### [Launching One MPI Application](#launching-mpi) { #launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Lonestar6-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -44,7 +44,7 @@ login1$ <b>idev -N 2 -n 100 </b>
 c309-005$ <b>ibrun ./myprogram</b>
 </pre>
 
-### Launching One Hybrid (MPI+Threads) Application
+### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
@@ -55,11 +55,11 @@ ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (128 cores in the `development`/`normal`/`large` [queues](#queues)).
 
 
-### More Than One Serial Application in the Same Job
+### [More Than One Serial Application in the Same Job](#launching-serialmorethanone) { #launching-serialmorethanone }
 
 TACC's `launcher` utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The launcher utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute <span style="white-space: nowrap;">`module load launcher`</span> followed by <span style="white-space: nowrap;">`module help launcher`</span> for more information.
 
-### MPI Applications One at a Time
+### [MPI Applications One at a Time](#launching-mpioneatatime) { #launching-mpioneatatime }
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
@@ -69,7 +69,7 @@ ibrun ./myprogram input1    # runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes
 </pre>
 
-### More Than One MPI Application Running Concurrently
+### [More Than One MPI Application Running Concurrently](#launching-mpiconcurrent) { #launching-mpiconcurrent }
 
 To run more than one MPI application simultaneously in the same job, you need to do several things:
 
@@ -93,7 +93,7 @@ wait
 
 The `task_affinity` script manages task placement and memory pinning when you call ibrun with the `-n`, `-o` switches (it's not necessary under any other circumstances). 
 
-### More than One OpenMP Application Running Concurrently
+### [More than One OpenMP Application Running Concurrently](#launching-openmpconcurrent) { #launching-openmpconcurrent }
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to distribute and pin OpenMP threads appropriately. The most portable way to do this is with OpenMP Affinity.
 

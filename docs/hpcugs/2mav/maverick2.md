@@ -76,7 +76,7 @@ Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, le
 
 Table 1. Maverick2 GTX Compute Node Specifications
 
-Something | Something2
+Specification | Value
 --- | ---
 Model: | Super Micro X10DRG-Q Motherboard
 Processor: | Intel(R) Xeon(R) CPU E5-2620 v4

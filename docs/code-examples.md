@@ -1,6 +1,9 @@
-# Syntax Highlighting
+# Code Examples
 
 <style>:is(h1, h2, h3, h4, h5, h6) > b { text-decoration: underline; font-weight: inherit; }</style>
+
+This is class="cmd-line" , just courier-class.  I would prefer code not be in red.
+See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules).
 
 ## `class="cmd-line"`
 
@@ -9,6 +12,8 @@
 <pre class="cmd-line">login1$ <strong>module load kitten</strong></pre>
 
 ### Via Mark<b>down</b> [^2]
+
+Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .cmd-line }</code>.
 
 ``` { .bash .cmd-line }
 login1$ module load kitten
@@ -38,7 +43,9 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 
 ### Via Mark<b>down</b> [^2]
 
-``` { .bash .job-script }
+Use <code>&#96;&#96;&#96;slurm</code>, or—to add a class—use <code>&#96;&#96;&#96; { .slurm .job-script }</code>.
+
+``` { .slurm .job-script }
 #!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name
@@ -56,7 +63,8 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 ### Complex Mark<b>up</b> [^3]
 
 <pre class="job-script">
-<code class="language-bash hljs">#!/bin/bash
+<code class="language-slurm hljs">
+#!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name
 #SBATCH -o myjob.%j.out       # output file name

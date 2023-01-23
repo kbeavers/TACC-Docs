@@ -13,10 +13,10 @@ nav:
     - Code Examples: code-examples.md
   - HPC :
     - Corral: hpcugs/corral/corral.md
+    - Lonestar6: hpcugs/6lonestar/lonestar6.md
     - Maverick2: hpcugs/2mav/maverick2.md
     - Stampede2: hpcugs/stampede2/stampede2.md
-#   - Frontera: hpcugs/frontera/frontera.md
-#   - Lonestar6: hpcugs/6lonestar/lonestar6.md
+    - Frontera: hpcugs/frontera/frontera.md
 #   - Ranch: hpcugs/ranch/ranchsrc.md
 #   - Stallion: hpcugs/stallion/stallionsrc.md
 #  - Software :
