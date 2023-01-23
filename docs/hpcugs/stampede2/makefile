@@ -6,6 +6,7 @@ SRC =   \
         files.md \
         building.md \
         running.md \
+		scripts.md \
         monitoring.md \
         vis.md \
         programming.md \
@@ -14,7 +15,8 @@ SRC =   \
 
 
 stampede2:	$(SRC)
-	cat $(SRC) > temp.md
+	cat header.html > temp.md
+	cat $(SRC) >> temp.md
 	../configurestrings.sh temp.md stampede2.md
 	/bin/rm temp.md 
 
