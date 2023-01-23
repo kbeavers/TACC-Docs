@@ -7,7 +7,7 @@
 
 
 
-/* NAVIGATION */
+/* SIDE NAV */
 
 
 
@@ -123,6 +123,47 @@
 .wy-menu-vertical li.current > a button.toctree-expand::before,
 .wy-menu-vertical li.on a button.toctree-expand::before {
   content: "\f0d7";
+}
+
+
+
+
+
+/* BREADCRUMBS */
+
+/* To hide dangling separator */
+/* The .wy-breadcrumbs-aside is where repository links would show */
+/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/breadcrumbs.html#L14-L30 */
+/* NOTE: When empty is still has whitespace so `:empty` can not select it */
+.rst-content [role="navigation"] li.wy-breadcrumbs-aside::before {
+  content: unset;
+}
+
+/* To hide the <hr> from ReadTheDocs theme markup */
+.rst-content [role="navigation"] hr {
+  display: none;
+}
+
+/* To hide the ≫ from ReadTheDocs theme markup */
+.rst-content [role="navigation"] li::before {
+  margin-left: -1.25ch;
+  background-color: var(--global-color-primary--xx-light);
+}
+
+/* To hide link to home */
+/* FAQ: The link is not in design (cuz it is redundant cuz side nav has link) */
+.rst-content [role="navigation"] li:first-child {
+  display: none;
+}
+.rst-content [role="navigation"] li:nth-child(2)::before {
+  content: unset;
+}
+
+/* To bold last child */
+/* FAQ: The core-styles.docs.css bolds :last-child, but that does not work here,
+        because last list item is .wy-breadcrumbs-aside (used for repo links) */
+.rst-content [role="navigation"] li:nth-last-child(2) {
+  font-weight: var(--bold);
 }
 
 
