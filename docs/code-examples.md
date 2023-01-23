@@ -1,11 +1,15 @@
 # Code Examples
 
+[TOC]
+
 <style>:is(h1, h2, h3, h4, h5, h6) > b { text-decoration: underline; font-weight: inherit; }</style>
 
-This is class="cmd-line" , just courier-class.  I would prefer code not be in red.
+## `class="cmd-line"`
+
+This is `class="cmd-line"`, just courier-class.  I would prefer code not be in red*.
 See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules).
 
-## `class="cmd-line"`
+<small>* I.e. <kbd>&#96;class="cmd-line"&#96;<kbd> produces `class="cmd-line"` which is red using the ReadTheDocs theme.</small>
 
 ### Simple Mark<b>up</b> [^1]
 
@@ -76,6 +80,14 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 module load gromacs/2022.1
 
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</code></pre>
+
+## Syntax Highlighting
+
+Syntax
+:   <https://python-markdown.github.io/extensions/fenced_code_blocks/>
+
+Languages
+:   <https://pygments.org/languages/>
 
 [^1]: **Drawbacks**: No syntax highlighting. Instead, review relevant "Complex Markup" or "Via Markdown" syntax.
 [^2]: **Benefits**: Programatically consistent. **Drawbacks**: No internal markup (e.g. `<code>something <strong>bold</strong>`).
