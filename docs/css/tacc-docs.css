@@ -5,10 +5,137 @@
 
 
 
+
+
+/* NAVIGATION */
+
+
+
+/* To remove decresing font size in nav */
+/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
+
+.wy-menu-vertical li.toctree-l3,
+.wy-menu-vertical li.toctree-l4 {
+  font-size: unset;
+}
+.wy-menu-vertical a {
+  font-size: unset;
+}
+.wy-menu-vertical p.caption {
+  text-transform: unset;
+  font-size: unset;
+}
+.wy-menu-vertical p.caption {
+  text-transform: unset;
+  font-size: unset;
+}
+
+
+
+/* Re-color navigation */
+/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
+
+.wy-nav-side {
+  color: unset;
+  background: unset;
+}
+.wy-menu-vertical * {
+  color: unset;
+}
+.wy-menu-vertical a:hover {
+  background: #e3e3e3; /* copied from .wy-menu-vertical li.current */;
+}
+.wy-menu-vertical li.current {
+  background: unset;
+}
+.wy-menu-vertical li.current a {
+  border-right: unset;
+}
+.wy-menu-vertical li.toctree-l1.current > a {
+  border-bottom: unset;
+  border-top: unset;
+}
+.wy-menu-vertical li.toctree-l2.current > a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+  background: unset;
+}
+.wy-menu-vertical li.toctree-l3.current > a,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a {
+  background: unset;
+}
+/* FAQ: The `:not(.current)` (added by TACC) adds clarity and specificity */
+.wy-menu-vertical a:not(.current)
+/* Do not use (but show for reference) redundant selectors */
+/* FAQ: The selectors are redundatn because of @layer project specificity *//*
+.wy-menu-vertical li.current a
+.wy-menu-vertical li ul li a
+*/ {
+  color: var(--global-color-primary--x-dark);
+  font-weight: var(--medium);
+}
+.wy-menu-vertical a.current {
+  color: var(--global-color-primary--xxx-dark);
+  font-weight: var(--bold);
+}
+
+
+
+/* To separate sections of navigation */
+
+.wy-menu-vertical p.caption {
+  color: var(--global-color-primary--xxx-dark);
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+}
+
+
+
+/* To adapt nav layout to design */
+
+.wy-menu-vertical {
+  padding-left: 25px; /* NOTE: design is 24.5px */
+  padding-right: 15px; /* NOTE: design is 11.5px */
+}
+.wy-menu-vertical a,
+/* (separate ruleset in `theme.css`) */
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.on a,
+/* (separate ruleset in `theme.css`) */
+.wy-menu-vertical li.current a {
+  padding: 0.375em 2em; /* overwrite theme.css *//* NOTE: design is 25px ⨉ ? */
+}
+.wy-menu-vertical li.on ul,
+.wy-menu-vertical li.current ul {
+  padding-left: 25px;
+  padding-block: 10px;
+}
+.wy-menu-vertical li button.toctree-expand {
+  margin-left: unset; /* undo theme.css */
+  margin-right: 0.5em;
+}
+
+
+
+/* To change icons */
+
+.wy-menu-vertical li button.toctree-expand:before {
+  content: "\f0da";
+}
+.wy-menu-vertical li.current > a button.toctree-expand::before,
+.wy-menu-vertical li.on a button.toctree-expand::before {
+  content: "\f0d7";
+}
+
+
+
+
+
+/* CONTENT */
+
 /* To add space between messages & messages and messages & content */
 .admonition {
   margin-block: 1em;
 }
+
 
 
 
