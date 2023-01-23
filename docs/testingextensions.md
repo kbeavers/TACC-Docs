@@ -1,5 +1,6 @@
 Thu Dec  8 12:16:55 CST 2022
 Thu Jan 19 11:55:45 CST 2023
+Mon Jan 23 14:33:52 CST 2023
 
 This is a page for fiddling and styling.
 
@@ -20,9 +21,10 @@ See example here:  <https://portal.tacc.utexas.edu/user-guides/stampede2#using-m
 <pre class="cmd-line">login1$ <b>module load kitten</b></pre>
 
 
-This is "class="job-script"
+<s>This is "class="job-script"</s>
+This is "\`\`\`slurm"
 
-<pre class="job-script">
+```slurm
 #!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name
@@ -34,7 +36,8 @@ This is "class="job-script"
 #SBATCH -A myproject          # charge job to myproject
 module load gromacs/2022.1
 
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
+```
 
 
 ## H2 is here
