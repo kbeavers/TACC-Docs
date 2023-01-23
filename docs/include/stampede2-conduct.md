@@ -1,16 +1,16 @@
-# Citizenship
+## [Conduct](#conduct) { #conduct }
 
-**You share Stampede2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good citizenship to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
+**You share Stampede2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
 
-TACC staff has developed the following guidelines to good citizenship on Stampede2. Please familiarize yourself especially with the first two mandates. The next sections discuss best practices on [limiting and minimizing I/O activity](#citizenship-io) and [file transfers](#citizenship-filesystems). And finally, we provide [job submission tips](#citizenship-jobs) when constructing job scripts to help minimize wait times in the queues.  
+TACC staff has developed the following guidelines to good conduct on Stampede2. Please familiarize yourself especially with the first two mandates. The next sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
 
-* [Do Not Run Jobs on the Login Nodes](#citizenship-loginnodes)
-* [Do Not Stress the File Systems](#citizenship-filesystems)
-* [Limit Input/Output (I/O) Activity](#citizenship-io)
-* [File Transfer Guidelines](#citizenship-transfers)
-* [Job Submission Tips](#citizenship-jobs)
+* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
+* [Do Not Stress the File Systems](#conduct-filesystems)
+* [Limit Input/Output (I/O) Activity](#conduct-io)
+* [File Transfer Guidelines](#conduct-transfers)
+* [Job Submission Tips](#conduct-jobs)
 
-## [Do Not Run Jobs on the Login Nodes](#citizenship-loginnodes)
+### [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes) { #conduct-loginnodes }
 
 Stampede2's few login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the "back-end" compute nodes. 
 
@@ -20,41 +20,41 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 <p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.</p> 
 
-				### [Dos &amp; Don'ts on the Login Nodes](#citizenship-loginnodes-examples)
+### [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples) { #conduct-loginnodes-examples }
 
-				* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
 
-					DO THIS: Start an interactive session on a compute node and run Matlab.
-	
-					<pre class="cmd-line">
-					login1$ <b>idev</b>
-					nid00181$ <b>matlab</b></pre>
-	
-					DO NOT DO THIS: Run Matlab or other software packages on a login node
+	DO THIS: Start an interactive session on a compute node and run Matlab.
 
-					<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+	<pre class="cmd-line">
+	login1$ <b>idev</b>
+	nid00181$ <b>matlab</b></pre>
 
-				* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "NOWRAP`make -j 16`ESPAN" (which compiles on 16 cores) may impact other users.
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
 
-					DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
-	
-					<pre class="cmd-line">
-					login1$ <b>make <i>mytarget</i></b>
-					login1$ <b>sbatch <i>myjobscript</i></b></pre>
-		
-					DO NOT DO THIS: Invoke multiple build sessions.
-	
-					<pre class="cmd-line">login1$ <s><b>make -j 12</b></s></pre>
+	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
 
-					DO NOT DO THIS: Run an executable on a login node.
-	
-					<pre class="cmd-line">
-					login1$ <s><b>./myprogram</b></s></pre>
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "NOWRAP`make -j 16`ESPAN" (which compiles on 16 cores) may impact other users.
 
-				* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	<pre class="cmd-line">
+	login1$ <b>make <i>mytarget</i></b>
+	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+
+	DO NOT DO THIS: Invoke multiple build sessions.
+
+	<pre class="cmd-line">login1$ <s><b>make -j 12</b></s></pre>
+
+	DO NOT DO THIS: Run an executable on a login node.
+
+	<pre class="cmd-line">
+	login1$ <s><b>./myprogram</b></s></pre>
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 
 
-## [Do Not Stress the Shared File Systems](#citizenship-filesystems)
+### [Do Not Stress the Shared File Systems](#conduct-filesystems) { #conduct-filesystems }
 
 The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. 
 
@@ -70,7 +70,7 @@ To run your jobs out `$SCRATCH`:
 
 Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table. File System Usage Recommendations](#table-file-system-usage-recommendations). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.
 
-### [More File System Tips](#citizenship-filesystems-tips)
+#### [More File System Tips](#conduct-filesystems-tips) { #conduct-filesystems-tips }
 
 * **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
 
@@ -80,28 +80,16 @@ Consider that `$HOME` and `$WORK` are for storage and keeping track of important
 
 * TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
 
-### [File System Usage Recommendations](#table-file-system-usage-recommendations)
+#### [File System Usage Recommendations](#table-file-system-usage-recommendations) { table-file-system-usage-recommendations }
 
-	%table(border="1" cellspacing="3" cellpadding="5")
-		%tr
-			%th File System
-			%th Best Storage Practices
-			%th Best Activities
-		%tr
-			%td <code>$HOME</code>
-			%td cron jobs<br>small scripts<br>environment settings 
-			%td compiling, editing
-		%tr 
-			%td <code>$WORK</code>
-			%td store software installations<br> original datasets that can't be reproduced<br> job scripts and templates
-			%td staging datasets
-		%tr 
-			%td <code>$SCRATCH</code> 
-			%td <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets
-			%td all job I/O activity<br>see TACC's <a href="#scratchpolicy">Scratch File System Purge Policy</a>.
+File System | Best Storage Practices | Best Activities
+--- | --- | ---
+<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
+<code>$WORK</code> | store software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
+<code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="#scratchpolicy">Scratch File System Purge Policy</a>.
 
 
-## [Limit Input/Output (I/O) Activity](#citizenship-io)
+## [Limit Input/Output (I/O) Activity](#conduct-io) { conduct-io }
 
 In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
 
@@ -113,7 +101,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 <p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio) for additional information.</p>
 
-## [File Transfer Guidelines](#citizenship-transfers)
+## [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 
 In order to not stress both internal and external networks, be mindful of the following guidelines:
 
@@ -125,7 +113,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 
 
-## [Job Submission Tips](#citizenship-jobs)
+## [Job Submission Tips](#conduct-jobs) { #conduct-jobs }
 
 * **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
 

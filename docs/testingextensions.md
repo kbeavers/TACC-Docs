@@ -1,5 +1,6 @@
 Thu Dec  8 12:16:55 CST 2022
 Thu Jan 19 11:55:45 CST 2023
+Mon Jan 23 14:33:52 CST 2023
 
 This is a page for fiddling and styling.
 
@@ -13,29 +14,9 @@ I use image tags < figure > and < figcaption >.  See example here: <https://port
 <figcaption>Louis</figcaption></figure>
 
 
-## Code examples
-This is class="cmd-line" , just courier-class.  I would prefer code not be in red.
-See example here:  <https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules>
+## Code Examples
 
-<pre class="cmd-line">login1$ <b>module load kitten</b></pre>
-
-
-This is "class="job-script"
-
-<pre class="job-script">
-#!/bin/bash
-#SBATCH -J myjob              # job name
-#SBATCH -e myjob.%j.err       # error file name
-#SBATCH -o myjob.%j.out       # output file name
-#SBATCH -N 2                  # request 2 nodes
-#SBATCH -n 96                 # request 2x48=96 MPI tasks
-#SBATCH -p skx-normal         # designate queue
-#SBATCH -t 24:00:00           # designate max run time
-#SBATCH -A myproject          # charge job to myproject
-module load gromacs/2022.1
-
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
-
+See <a href="/code-examples">Fiddling: Code Examples</a>.
 
 ## H2 is here
 
@@ -67,11 +48,6 @@ This is [an example] [foo] reference-style link.
    [foo]: http://example.com/  "Optional Title Here"
    [foo]: http://example.com/  'Optional Title Here'
    [foo]: http://example.com/  (Optional Title Here)
-
-
-
-
-how do I highlight? styles - do I need to run this through a script? - yup
 
 ### H3 is h3re
 

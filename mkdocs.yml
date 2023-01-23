@@ -12,13 +12,15 @@ extra_css:
     - css/tacc-docs.css
 
 nav:
-  - Fiddling : testingextensions.md
+  - Fiddling : 
+    - Testing Extensions: testingextensions.md
+    - Code Examples: code-examples.md
   - HPC :
     - Corral: hpcugs/corral/corral.md
+    - Lonestar6: hpcugs/6lonestar/lonestar6.md
     - Maverick2: hpcugs/2mav/maverick2.md
     - Stampede2: hpcugs/stampede2/stampede2.md
-#   - Frontera: hpcugs/frontera/frontera.md
-#   - Lonestar6: hpcugs/6lonestar/lonestar6.md
+    - Frontera: hpcugs/frontera/frontera.md
 #   - Ranch: hpcugs/ranch/ranchsrc.md
 #   - Stallion: hpcugs/stallion/stallionsrc.md
 #  - Software :
@@ -31,10 +33,17 @@ nav:
 #    - Remote Desktop Access: tutorials/remotedesktopaccess.md
 
 markdown_extensions:
- - tables
- - admonition
- - attr_list
- - abbr
+  - footnotes
+  - def_list
+  - admonition
+  - attr_list
+  - abbr
+  # Some extensions are pre-enabled by MkDocs
+  # https://github.com/mkdocs/mkdocs/blob/1.4.2/docs/user-guide/configuration.md#markdown_extensions
+#  - meta
+#  - toc
+#  - tables
+#  - fenced_code
 
 plugins:
   - search

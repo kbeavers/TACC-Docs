@@ -1,23 +1,27 @@
-## Managing Files on Lonestar6
+## [Managing Files on Lonestar6](#files) { #files }
 
-### Table 3. Lonestar6 File Systems
 
- File System | Quota | Key Features
- --- | --- |
+### [Table 3. Lonestar6 File Systems](#files-table3) { #files-table3 }
+
+File System | Quota | Key Features
+--- | --- | ---
 <code>$HOME</code> | 10 GB | 200,000 files<br><b>Not intended for parallel or high-intensity file operations.</b><br>NFS file system<br>Backed up regularly.<br>Overall capacity 7 TB<br>Not purged.
 <code>$WORK</code> | 1 TB<br>3,000,000 files<br>Across all TACC systems | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>Lustre file system<br>On the Global Shared File System that is mounted on most TACC systems.<br>See Stockyard system description for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.
 <code>$SCRATCH</code> | none | Overall capacity 8 PB<br>Defaults: 4 targets, 512 KB chunk size<br>Not backed up<br><b>Files are subject to purge if access time* is more than 10 days old.</b><sup><a href="#sup1">&#42;</a></sup>
-<code>/tmp</code> | on nodes | 288 GB Data purged at the end of each job.<br>Access is local to the node.<br>Data in /tmp is not shared across nodes.
+<code>/tmp</code> on nodes | 288 GB | Data purged at the end of each job.<br>Access is local to the node.<br>Data in /tmp is not shared across nodes.
+
 
 &#42;The operating system updates a file's access time when that file is modified on a login or compute node. Reading or executing a file/script on a login node does not update the access time, but reading or executing on a compute node does update the access time. This approach helps us distinguish between routine management tasks <span style="white-space: nowrap;">(e.g. `tar`, `scp`)</span> and production use. Use the command <span style="white-space: nowrap;">`ls -ul`</span> to view access times.
 
-#### Scratch Purge Policy
+#### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy }
 
-!!! important
-	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
+<p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
+
+<!--- SDL --- make this an include -->
 
 
-### Navigating the Shared File Systems
+
+### [Navigating the Shared File Systems](#files-navigating) { #files-navigating }
 
 Lonestar6 mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Lonestar6's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH` and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the [Lonestar6 File Systems](#table3) table above for the basic characteristics of these file systems, <!--"File Operations: I/O Performance" for advice on performance issues,--> and the [Good Conduct](#conduct) sections for guidance on file system etiquette.
 
@@ -27,29 +31,26 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 [Figure. Stockyard Global File System](#stockyard)
 
-<img alt="Stockyard 2022" src="../../../imgs/stockyard-2022.jpg">
-<p class="image-caption">Stockyard 2022</p>
-Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.
+<figure>IMAGEDIR/stockyard-2022.jpg
+<figcaption>Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
 
 Your account-specific `$WORK` environment variable varies from system to system and is a subdirectory of `$STOCKYARD` (Figure 3). The subdirectory name corresponds to the associated TACC resource. The `$WORK` environment variable on Lonestar6 points to the `$STOCKYARD/ls6` subdirectory, a convenient location for files you use and jobs you run on Lonestar6. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Lonestar6 and Stampede2, for example, the `$STOCKYARD/ls6` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` directory is available from your Lonestar6 account. Your quota and reported usage on the Global Shared File System reflects **all files** that you own on Stockyard, regardless of their actual location on the file system.
 
 Note that resource-specific subdirectories of `$STOCKYARD` are simply convenient ways to manage your resource-specific files. You have access to any such subdirectory from any TACC resources. If you are logged into Lonestar6, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the resource-specific subdirectory `$STOCKYARD/ls6`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/ls6`</span>. These commands allow you to share files across TACC systems. In fact, several convenient account-level aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-Table 4. Built-in Account Level Aliases
-
-### Table 3. Built-in Account Level Aliases
+#### [Table 4. Built-in Account Level Aliases](#table4) { #table4 }
 
 Alias | Command
----- | ----
+--- | ---
 <code>cd</code> or <code>cdh</code> | <code>cd $HOME</code>
-<code>cdw</code> | <code>cd $WORK</code>
 <code>cds</code> | <code>cd $SCRATCH</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
+<code>cdw</code> | <code>cd $WORK</code>
 
 
-### Transferring your Files
+### [Transferring your Files](#files-transferring) { #files-transferring }
 
-#### Transferring Files with `scp`
+#### [Transferring Files with `scp`](#files-transferring-scp) { #files-transferring-scp }
 
 You can transfer files between Lonestar6 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows SSH clients typically include `scp`-based file transfer capabilities.
 
@@ -88,7 +89,7 @@ localhost$ <b>tar cvf ./mydata.tar mydata                                  # cre
 <!--localhost$ <b>scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$SCRATCH  # transfer archive</b></pre>-->
 localhost$ <b>scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive</b></pre>
 
-#### Transferring Files with `rsync`
+#### [Transferring Files with `rsync`](#files-transferring-rsync) { #files-transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
@@ -103,9 +104,10 @@ localhost$ <b>rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$SCRATCH/data</b
 The options on the second transfer are typical and appropriate when synching a directory: this is a <span style="white-space: nowrap;">recursive update (`-r`)</span> with verbose (`-v`) feedback; the synchronization preserves <span style="white-space: nowrap;">time stamps (`-t`)</span> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 
 
-### Sharing Files with Collaborators
+### [Sharing Files with Collaborators](#files-sharing) { #files-sharing }
 
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
-<img alt="Lonestar6" src="../../../imgs/6lonestar/lonestar6-3.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<p class="image-caption">Lonestar6: Stockyard File System</p>
+<figure><img alt="Lonestar6" src="IMAGEDIR/6lonestar/Lonestar6-2.jpg" style="border-width: 1px; border-style: solid;" />
+<figcaption>Lonestar6<br>Dielectric liquid coolant cabinet </figcaption> </figure>
+

@@ -1,16 +1,16 @@
-## Job Management
+## [Job Management](#jobs) { #jobs }
 
 In this section, we present several Slurm commands and other utilities that are available to help you plan and track your job submissions as well as check the status of the Slurm queues.
 
 When interpreting queue and job status, remember that **Lonestar6 doesn't operate on a first-come-first-served basis**. Instead, the sophisticated, tunable algorithms built into Slurm attempt to keep the system busy, while scheduling jobs in a way that is as fair as possible to everyone. At times this means leaving nodes idle ("draining the queue") to make room for a large job that would otherwise never run. It also means considering each user's "fair share", scheduling jobs so that those who haven't run jobs recently may have a slightly higher priority than those who have.
 
-### Monitoring Queue Status
+### [Monitoring Queue Status](#jobs-monitoring) { #jobs-monitoring }
 
-#### TACC's `qlimits` command
+#### [TACC's `qlimits` command](#jobs-monitoring-qlimits) { #jobs-monitoring-qlimits }
 
-To display resource limits for the Lonestar queues, execute: STTYLERED`qlimits`ESPAN. The result is real-time data; the corresponding information in this document's [table of Lonestar6 queues](#running-queues) may lag behind the actual configuration that the `qlimits` utility displays.
+To display resource limits for the Lonestar queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Lonestar6 queues](#running-queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
-#### Slurm's `sinfo` command
+#### [Slurm's `sinfo` command](#jobs-monitoring-sinfo) { #jobs-monitoring-sinfo }
 
 Slurm's `sinfo` command allows you to monitor the status of the queues. If you execute `sinfo` without arguments, you'll see a list of every node in the system together with its status. To skip the node list and produce a tight, alphabetized summary of the available queues and their status, execute:
 
@@ -18,18 +18,17 @@ Slurm's `sinfo` command allows you to monitor the status of the queues. If you e
 
 An excerpt from this command's output might look like this:
 
-<pre class="cmd-line">STYLERED
-login1$ <b>sinfo -S+P -o "%18P %8a %20F"</b>
+<pre class="cmd-line">login1$ <b>sinfo -S+P -o "%18P %8a %20F"</b>
 PARTITION          AVAIL    NODES(A/I/O/T)    
 development        up       0/8/0/8
 v100               up       44/43/1/96          
-v100-lm            up       0/8/0/8ESPAN</pre>
+v100-lm            up       0/8/0/8</pre>
 	
 The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled `NODES(A/I/O/T)` shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute `man sinfo` for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Lonestar6 (e.g. `TIMELIMIT`, displayed using the `%l` option).
 
-### Monitoring Job Status
+### [Monitoring Job Status](#jobs-monitoring-jobstatus) { #jobs-monitoring-jobstatus }
 
-#### Slurm's `squeue` command
+#### [Slurm's `squeue` command](#sjobs-monitoring-queuestatus) { #sjobs-monitoring-queuestatus }
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
@@ -40,7 +39,7 @@ login1$ <b>man squeue</b>         # more info</pre>
 
 An excerpt from the default output might look like this:
 
-<pre class="cmd-line">STYLERED
+<pre class="cmd-line">
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 25781 development idv72397   bjones CG       9:36      2 c001-011,012
 25918 development ppm_4828   bjones PD       0:00     20 (Resources)
@@ -50,7 +49,7 @@ An excerpt from the default output might look like this:
 25618        v100   SP256U   connor PD       0:00      1 (Dependency)
 25944        v100  MoTi_hi   wchung  R      35:13      1 c005-003
 25945        v100 WTi_hi_e   wchung  R      27:11      1 c006-001
-25606        v100   trainA   jackhu  R   23:28:28      1 c008-012ESPAN
+25606        v100   trainA   jackhu  R   23:28:28      1 c008-012
 </pre>
 
 The column labeled `ST` displays each job's status: 
@@ -71,7 +70,7 @@ The `--start` option displays job start times, including very rough estimates fo
 
 <pre class="cmd-line">login1$ <b>squeue --start -j 167635</b>     # display estimated start time for job 167635</pre>
 
-#### TACC's `showq` utility
+#### [TACC's `showq` utility](#jobs-monitoring-showq) { #jobs-monitoring-showq }
 
 TACC's `showq` utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm `squeue` command:
 
@@ -87,7 +86,8 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's 112 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
-### Other Job Management Commands
+
+### [Other Job Management Commands](#jobs-other) { #jobs-other }
 
  `scancel`, `scontrol`, and `sacct`
 
@@ -109,7 +109,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 
 <pre class="cmd-line">login1$ <b>sacct --starttime 2019-06-01</b>  # show jobs that started on or after this date</pre>
 
-### Dependent Jobs using `sbatch`
+### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
