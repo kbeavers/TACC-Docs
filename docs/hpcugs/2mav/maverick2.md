@@ -432,7 +432,6 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 <code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
 <code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
 
-
 ## [Job Scripts](#scripts)  { #scripts }
 
 <details><summary>Serial Job in Normal Queue</summary>

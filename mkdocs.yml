@@ -8,7 +8,9 @@ theme:
 
 
 nav:
-  - Fiddling : testingextensions.md
+  - Fiddling : 
+    - Testing Extensions: testingextensions.md
+    - Code Examples: code-examples.md
   - HPC :
     - Corral: hpcugs/corral/corral.md
     - Maverick2: hpcugs/2mav/maverick2.md
