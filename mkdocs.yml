@@ -5,6 +5,7 @@ site_url: https://docs.tacc.utexas.edu
 
 theme:
     name: readthedocs
+    custom_dir: themes/readthedocs
 
 
 nav:
