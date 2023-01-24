@@ -22,6 +22,15 @@ details > summary {
   cursor: pointer;
 }
 
+/* For edge-case headings */
+:is(h1, h2, h3, h4, h5, h6) > small,
+.understate:is(h1, h2, h3, h4, h5, h6) {
+    font-weight: normal;
+}
+details > summary > :is(h1, h2, h3, h4, h5, h6) {
+    display: inline-block;
+}
+
 
 
 }
