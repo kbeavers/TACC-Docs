@@ -15,7 +15,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.
 
-<figure>FIGURE-STOCKYARD<figcaption>**Figure 3.**<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure id="figure3"><img alt="Stockyard 2022" src="IMAGEDIR/stockyard-2022.jpg"<figcaption>Figure 3.<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
 
 Note that resource-specific NOWRAPsub-directoriesESPAN of `$STOCKYARD` are nothing more than convenient ways to manage your NOWRAPresource-specificESPAN files. You have access to any such NOWRAPsub-directoryESPAN from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to NOWRAP"`cd $WORK`"ESPAN) will take you to the NOWRAPresource-specificESPAN NOWRAPsub-directoryESPAN `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing NOWRAP"`cd $STOCKYARD/stampede2`"ESPAN. These commands allow you to share files across TACC systems. In fact, several convenient NOWRAPaccount-levelESPAN aliases make it even easier to navigate across the directories you own in the shared file systems:
 
@@ -28,7 +28,7 @@ Alias | Command
 <code>cds</code> | <code>cd $SCRATCH</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-## [Striping Large Files](#files-striping)
+### [Striping Large Files](#files-striping)
 
 Stampede2's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives (dozens of physical drives for `$HOME`, hundreds for `$WORK` and `$SCRATCH`).
 

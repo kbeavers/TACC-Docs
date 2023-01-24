@@ -40,9 +40,9 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
 
 
- alt="Lonestar6" src="/documents/10157/2038620/Lonestar6+-+2/3882bab5-94e8-4de7-82d5-88a2119d1de0?t=1634257797976" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-caption
-Lonestar6
+<figure>
+<img alt="Lonestar6" src="IMAGEDIR/6lonestar/Lonestar6-2.jpg" style="border-width: 1px; border-style: solid;" />
+<figcaption>Lonestar6 Cabling</figcaption></figure>
 
 
 ### [Linux Shell](#admin-shell) { #admin-shell }

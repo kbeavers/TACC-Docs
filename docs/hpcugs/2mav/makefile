@@ -8,6 +8,7 @@ MAVERICK2_OBJS	=	\
 		scripts.md \
 		vis.md \
 		software.md \
+		../../include/maverick2-help.md \
 		references.md
 		
 all:	maverick2

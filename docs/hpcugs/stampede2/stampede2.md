@@ -125,7 +125,7 @@ function showhideicxmpi() {
 <style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
 
 # Stampede2 User Guide
-<i>Last update: September 16, 2022</i> <span style="font-size:90%;">see <a href="#history">revision history</a></span>   
+<i>Last update: September 16, 2022</i> <span style="font-size:90%;">see <a href="#history">revision history</a></span>    xx
   
 ## [Notices](#notices) { #notices }
 
@@ -140,7 +140,7 @@ function showhideicxmpi() {
 * **Stampede2's Skylake (SKX) compute nodes each have 48 cores** on two sockets (24 cores/socket). Hyperthreading is enabled: there are two hardware threads per core, for a total of 48 x 2 = 96 hardware threads per node. See [Table 2](#table2) for more information. Note that SKX nodes have their own [queues](#running-queues). 
 
 
-<figure>FIGURE-STAMPEDEPANO<figcaption>Figure 1. Stampede2 System</figcaption></figure>
+<figure><img alt="Stampede2" src="../../../imgs/stampede2/Stampede2.jpg"><figcaption>Figure 1. Stampede2 System</figcaption></figure>
 ## [Introduction](#intro) { #intro }
 
 Stampede2, generously funded by the National Science Foundation (NSF) through [award  ACI-1540931](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540931), is one of the Texas Advanced Computing Center (TACC), University of Texas at Austin's flagship supercomputers. Stampede2 entered full production in the Fall 2017 as an 18-petaflop national resource that builds on the successes of the original Stampede system it replaces. The first phase of the Stampede2 rollout featured the second generation of processors based on Intel's Many Integrated Core (MIC) architecture. Stampede2's 4,200 Knights Landing (KNL) nodes represent a radical break with the first-generation Knights Corner (KNC) MIC coprocessor. Unlike the legacy KNC, a Stampede2 KNL is not a coprocessor: each 68-core KNL is a stand-alone, self-booting processor that is the sole processor in its node. Phase 2 added to Stampede2 a total of 1,736 Intel Xeon Skylake (SKX) nodes. The final phase of Stampede2 features the replacement of 448 KNL nodes with 224 Ice Lake nodes. 
@@ -321,7 +321,7 @@ $ <b>module load launcher</b>
 $ <b>module help launcher</b></pre>
 
 <figure>
-FIGURE-LOGINCOMPUTENODES
+<img alt="Stampede2" src="../../../imgs/stampede2/Stampede2.jpg">
 <figcaption>Figure 2. Login and compute nodes</figcaption></figure>
 
 ### [Using Modules to Manage your Environment](#conduct-modules) { #conduct-modules }
@@ -423,7 +423,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.
 
-<figure>FIGURE-STOCKYARD<figcaption>**Figure 3.**<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure id="figure3"><img alt="Stockyard 2022" src="../../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
 
 Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/stampede2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
@@ -436,7 +436,7 @@ Alias | Command
 <code>cds</code> | <code>cd $SCRATCH</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-## [Striping Large Files](#files-striping)
+### [Striping Large Files](#files-striping)
 
 Stampede2's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives (dozens of physical drives for `$HOME`, hundreds for `$WORK` and `$SCRATCH`).
 
@@ -1924,7 +1924,7 @@ Each core can run up to 4 hardware threads. The two cores on a tile share a 1MB 
 The processor's memory mode determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The output of commands like "`top`", "`free`", and <span style="white-space: nowrap;">"`ps -v`"</span> reflect the consequences of memory mode. Such commands will show the amount of RAM available to the operating system, not the hardware (DDR + MCDRAM) installed.
 
 
-<figure>FIGURE-KNLMEMORYMODES<figcaption>Figure 4. KNL Memory Modes</figcaption></figure>
+<figure><img src="../../../imgs/stampede2/KNL-Memory-Modes.png"><figcaption>Figure 4. KNL Memory Modes</figcaption></figure>
 
 * **Cache Mode**. In this mode, the fast MCDRAM is configured as an L3 cache. The operating system transparently uses the MCDRAM to move data from main memory. In this mode, the user has access to 96GB of RAM, all of it traditional DDR4. **Most Stampede2 KNL nodes are configured in cache mode.**
 
@@ -1946,7 +1946,7 @@ The KNL can do this in several ways, each of which is called a cluster mode. Eac
 
 * **Sub-NUMA 4 (variation: Sub-NUMA 2)**. This mode, abbreviated **SNC-4**, divides the chip into four NUMA nodes so that it acts like a four-socket processor. SNC-4 aims to optimize coherency-related on-chip communication by confining this communication to a single NUMA node when it is possible to do so. To achieve any performance benefit, this requires explicit manual memory management by the programmer/user (in particular, allocating memory within the NUMA node that will use that memory). Stampede2 does not have nodes in this cluster mode.
 
-<figure>FIGURE-KNLCLUSTERMODES<figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
+<figure><img src="../../../imgs/KNL-Cluster-Modes.png"><figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
 
 TACC's early experience with the KNL suggests that there is little reason to deviate from Intel's recommended default memory and cluster modes. Cache-quadrant tends to be a good choice for almost all workflows; it offers a nice compromise between performance and ease of use for the applications we have tested. Flat-quadrant is the most promising alternative and sometimes offers moderately better performance, especially when memory requirements per node are less than 16GB. We have not yet observed significant performance differences across cluster modes, and our current recommendation is that configurations other than cache-quadrant and flat-quadrant are worth considering only for very specialized needs. For more information see [Managing Memory](#knl-programming-managingmemory) and [Best Known Practices...](#knl-programming-bestpractices).
 
@@ -2047,6 +2047,20 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 * [TACC Visualization Portal](https://vis.tacc.utexas.edu/)
 
 {% include 'aliases.md' %}
+## [Help Desk](#help) { #help }
+
+[TACC Consulting](https://portal.tacc.utexas.edu/consulting/overview) operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with &quot;Stampede2&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+
+* **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
+
+* **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. When appropriate, include the information a consultant would need to find your artifacts and understand your workflow: e.g. the directory containing your build and/or job script; the modules you were using; relevant job numbers; and recent changes in your workflow that could affect or explain the behavior you're observing.
+
+* **Subscribe to [Stampede2 User News](https://portal.tacc.utexas.edu/user-news/-/news/Stampede2).** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+
+* **Have realistic expectations.** Consultants can address system issues and answer questions about Stampede2. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
+
+* **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
+
 <script type="text/javascript">
 function showhide() {
 var div = document.getElementById("revisions");

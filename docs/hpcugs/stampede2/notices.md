@@ -1,7 +1,7 @@
 <style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
 
 # Stampede2 User Guide
-<i>Last update: September 16, 2022</i> <span style="font-size:90%;">see <a href="#history">revision history</a></span>   
+<i>Last update: September 16, 2022</i> <span style="font-size:90%;">see <a href="#history">revision history</a></span>    xx
   
 ## [Notices](#notices) { #notices }
 
@@ -16,4 +16,4 @@
 * **Stampede2's Skylake (SKX) compute nodes each have 48 cores** on two sockets (24 cores/socket). Hyperthreading is enabled: there are two hardware threads per core, for a total of 48 x 2 = 96 hardware threads per node. See [Table 2](#table2) for more information. Note that SKX nodes have their own [queues](#running-queues). 
 
 
-<figure>FIGURE-STAMPEDEPANO<figcaption>Figure 1. Stampede2 System</figcaption></figure>
+<figure><img alt="Stampede2" src="IMAGEDIR/stampede2/Stampede2.jpg"><figcaption>Figure 1. Stampede2 System</figcaption></figure>

@@ -79,7 +79,7 @@ Researchers at our partner institutions may submit allocation requests through t
 
 
 <figure> <img alt="Lonestar6" src="../../../imgs/6lonestar/Lonestar6-1.jpg" style="border-width: 1px; border-style: solid;" />
-<figcaption> Lonestar6 %br Dielectric liquid coolant cabinet</figcaption> </figure>
+<figcaption> Lonestar6<br>Dielectric liquid coolant cabinet</figcaption> </figure>
 
 ## [System Architecture](#system) { #system }
 
@@ -155,7 +155,7 @@ The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) co
 ## [Managing Files on Lonestar6](#files) { #files }
 
 
-### [Table 3. Lonestar6 File Systems](#files-table3) { #files-table3 }
+### [Table 3. Lonestar6 File Systems](#files-table3) { #table3 }
 
 File System | Quota | Key Features
 --- | --- | ---
@@ -307,9 +307,9 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal](http://portal.tacc.utexas.edu/). Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
 
 
- alt="Lonestar6" src="/documents/10157/2038620/Lonestar6+-+2/3882bab5-94e8-4de7-82d5-88a2119d1de0?t=1634257797976" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-caption
-Lonestar6
+<figure>
+<img alt="Lonestar6" src="../../../imgs/6lonestar/Lonestar6-2.jpg" style="border-width: 1px; border-style: solid;" />
+<figcaption>Lonestar6 Cabling</figcaption></figure>
 
 
 ### [Linux Shell](#admin-shell) { #admin-shell }
@@ -443,9 +443,9 @@ TACC staff has developed the following guidelines to good conduct on Lonestar6. 
 
 Lonestar6's few login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the "back-end" compute nodes. 
 
-The compute nodes are where actual computations occur and where research is done. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](http://portal.tacc.utexas.edu/software/idev) utility. 
+The compute nodes are where actual computations occur and where research is done. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`][TACCIDEV] utility. 
 
-A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](/software/idev)) or by [submitting a batch job](#running).
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by [submitting a batch job](#running).
 
 <p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.</p> 
 
@@ -515,7 +515,7 @@ File System | Best Storage Practices | Best Activities
 --- | --- | ---
 <code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
 <code>$WORK</code> | store software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
-<code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="#scratchpolicy">Scratch File System Purge Policy</a>.
+<code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="#scratchpurgepolicy">Scratch File System Purge Policy</a>.
 
 
 ## [Limit Input/Output (I/O) Activity](#conduct-io) { conduct-io }
@@ -528,7 +528,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
-<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources](http://portal.tacc.utexas.edu/tutorials/managingio) for additional information.</p>
+<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMFA] for additional information.</p>
 
 ## [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 
@@ -538,7 +538,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
 
-* **Avoid recursive file transfers**, especially those involving many small files. Create a `tar` archive before transfers. This is especially true when transferring files to or from [Ranch](http://portal.tacc.utexas.edu/user-guides/ranch).
+* **Avoid recursive file transfers**, especially those involving many small files. Create a `tar` archive before transfers. This is especially true when transferring files to or from [Ranch][RANCHUG].
 
 
 
@@ -548,7 +548,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
 
-* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](http://portal.tacc.utexas.edu/software/remora) tool to monitor your application's needs. 
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora][TACCREMORA] tool to monitor your application's needs. 
 
 ## [Building Software](#building) { #building }
 

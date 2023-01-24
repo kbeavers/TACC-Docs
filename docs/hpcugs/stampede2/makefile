@@ -11,10 +11,11 @@ SRC =   \
         vis.md \
         programming.md \
         references.md \
+		../../include/stampede2-help.md \
         history.md
 
 
-stampede2:	$(SRC)
+stampede2:	FORCE $(SRC) 
 	cat header.html > temp.md
 	cat $(SRC) >> temp.md
 	../configurestrings.sh temp.md stampede2.md
@@ -23,3 +24,5 @@ stampede2:	$(SRC)
 outline: $(SRC)
 	grep -h "# " $(SRC) > outline.md
 
+
+FORCE:	

@@ -1,7 +1,7 @@
 ## [Managing Files on Lonestar6](#files) { #files }
 
 
-### [Table 3. Lonestar6 File Systems](#files-table3) { #files-table3 }
+### [Table 3. Lonestar6 File Systems](#files-table3) { #table3 }
 
 File System | Quota | Key Features
 --- | --- | ---
