@@ -117,6 +117,6 @@ echo '"quoted"' | tr -d \" > text.txt
 ```
 
 [^1]: **Drawbacks**: No syntax highlighting. Instead, review relevant "Complex Markup" or "Via Markdown" syntax.
-[^2]: **Benefits**: Programatically consistent. **Drawbacks**: No internal markup (e.g. `<code>something <strong>bold</strong>`).
+[^2]: **Benefits**: Programatically consistent. **Drawbacks**: No internal markup (e.g. `<code>something <strong>bold</strong></code>`).
 [^3]: **Benefits**: Follows the [WHATWG standard example](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element).
 [^4]: Pygments is probably supported by MkDocs theme. We use ReadTheDocs theme, which uses Highlight.js.
