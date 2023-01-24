@@ -9,7 +9,7 @@
 This is `class="cmd-line"`, just courier-class.  I would prefer code not be in red*.
 See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules).
 
-<small>* I.e. <kbd>&#96;class="cmd-line"&#96;<kbd> produces `class="cmd-line"` which is red using the ReadTheDocs theme.</small>
+<small>* I.e. <samp>&#96;class="cmd-line"&#96;</samp> produces `class="cmd-line"` which is red using the ReadTheDocs theme.</small>
 
 ### Simple Mark<b>up</b> [^1]
 
