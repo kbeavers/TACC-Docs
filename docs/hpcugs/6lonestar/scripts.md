@@ -1,14 +1,10 @@
 ## [Sample Job Scripts](#scripts) { #scripts }
 
-<a href="javascript:jscript1()"><img src=RIGHTARROW id="img-jscript1">Serial Codes</a><br>
-<div id="jscript1" style="display:none">
+<details><summary>Serial Codes </summary>
   
-<details>
-<summary>
 **Run all serial jobs in the `normal` queue.**  
 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
-</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -56,10 +52,7 @@ date
 
 
 
-</div>
-
-<a href="javascript:jscript2()"><img src=RIGHTARROW id="img-jscript2">MPI Jobs</a><br>
-<div id="jscript2" style="display:none">
+<details><summary>MPI Jobs</summary>
 
 This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
@@ -106,11 +99,10 @@ pwd
 date
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></div>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></details>
 
 
-<a href="javascript:jscript3()"><img src=RIGHTARROW id="img-jscript3">Hybrid (MPI + OpenMP) Job</a><br>
-<div id="jscript3" style="display:none">
+<details><summary>Hybrid (MPI + OpenMP) Job</summary>
 
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
@@ -169,11 +161,10 @@ date
 export OMP_NUM_THREADS=14
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></div>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></details>
 
 
-<a href="javascript:jscript4()"><img src=RIGHTARROW id="img-jscript4">OpenMP Jobs</a>
-<div id="jscript4" style="display:none">
+<details><summary>OpenMP Jobs</summary>
 
 **Run all OpenMP jobs in the `normal` queue.**  
 
@@ -224,7 +215,7 @@ date
 export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 
 # Launch OpenMP code...
-./myprogram         # Do not use ibrun or any other MPI launcher</pre></div>
+./myprogram         # Do not use ibrun or any other MPI launcher</pre></details>
 
 
 ## [Customizing your Job Script ](#scripts-customizations)

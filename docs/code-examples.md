@@ -2,20 +2,23 @@
 
 [TOC]
 
-<style>:is(h1, h2, h3, h4, h5, h6) > b { text-decoration: underline; font-weight: inherit; }</style>
+<style>:is(h1, h2, h4, h4, h5, h6) > b { text-decoration: underline; font-weight: inherit; }</style>
 
-## `class="cmd-line"`
+## Different Ways to Style & Author Code
 
-This is `class="cmd-line"`, just courier-class.  I would prefer code not be in red*.
-See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules).
+### Inline Code (`<code>…` or <code>&#96;…&#96;</code>)
+
+The default ReadTheDocs style of `courier` font and red `color` is **not** desirable.
+
+<br />
+
+### Command Line (`.cmd-line`)
+
+See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules){ target="_blank" }.
 
 <small>* I.e. <samp>&#96;class="cmd-line"&#96;</samp> produces `class="cmd-line"` which is red using the ReadTheDocs theme.</small>
 
-### Simple Mark<b>up</b> [^1]
-
-<pre class="cmd-line">login1$ <strong>module load kitten</strong></pre>
-
-### Via Mark<b>down</b> [^2]
+<details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
 
 Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .cmd-line }</code>.
 
@@ -23,29 +26,23 @@ Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;
 login1$ module load kitten
 ```
 
-### Complex Mark<b>up</b> [^3]
+</details>
+<details><summary><h4 class="understate">Simple Mark<b>up</b></h4></summary>
+
+<pre class="cmd-line">login1$ <strong>module load kitten</strong></pre>
+
+</details>
+<details><summary><h4 class="understate">Complex Mark<b>up</b></h4></summary>
 
 <pre class="cmd-line"><code class="language-bash hljs">login1$ <strong>module load kitten</strong></code></pre>
 
-## `class="job-script"`
+</details>
 
-### Simple Mark<b>up</b> [^1]
+<br />
 
-<pre class="job-script">
-#!/bin/bash
-#SBATCH -J myjob              # job name
-#SBATCH -e myjob.%j.err       # error file name
-#SBATCH -o myjob.%j.out       # output file name
-#SBATCH -N 2                  # request 2 nodes
-#SBATCH -n 96                 # request 2x48=96 MPI tasks
-#SBATCH -p skx-normal         # designate queue
-#SBATCH -t 24:00:00           # designate max run time
-#SBATCH -A myproject          # charge job to myproject
-module load gromacs/2022.1
+### Job Script (`.job-script`)
 
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
-
-### Via Mark<b>down</b> [^2]
+<details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
 
 Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .job-script }</code>.
 
@@ -64,7 +61,25 @@ module load gromacs/2022.1
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
 ```
 
-### Complex Mark<b>up</b> [^3]
+</details>
+<details><summary><h4 class="understate">Simple Mark<b>up</b></h4></summary>
+
+<pre class="job-script">
+#!/bin/bash
+#SBATCH -J myjob              # job name
+#SBATCH -e myjob.%j.err       # error file name
+#SBATCH -o myjob.%j.out       # output file name
+#SBATCH -N 2                  # request 2 nodes
+#SBATCH -n 96                 # request 2x48=96 MPI tasks
+#SBATCH -p skx-normal         # designate queue
+#SBATCH -t 24:00:00           # designate max run time
+#SBATCH -A myproject          # charge job to myproject
+module load gromacs/2022.1
+
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
+
+</details>
+<details><summary><h4 class="understate">Complex Mark<b>up</b></h4></summary>
 
 <pre class="job-script">
 <code class="language-bash hljs">
@@ -81,14 +96,57 @@ module load gromacs/2022.1
 
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</code></pre>
 
-## Syntax Highlighting
+</details>
+
+<br />
+
+### Syntax (`.syntax`)
+
+<details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
+
+Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .syntax }</code>.
+
+``` { .bash .syntax }
+man [options] -switch -verbose
+```
+
+</details>
+<details><summary><h4 class="understate">Simple Mark<b>up</b></h4></summary>
+
+<pre class="syntax">man [options] -switch -verbose</pre>
+
+</details>
+<details><summary><h4 class="understate">Complex Mark<b>up</b></h4></summary>
+
+<pre class="syntax"><code class="language-bash hljs">man [options] -switch -verbose</code></pre>
+
+</details>
+
+<br />
+
+### Pros & Cons of Each Way
+
+Simple Markup
+:   _Con_: Will not have syntax highlighting.
+
+Via Markdown
+:   _Pro_: Programatically consistent.
+:   _Con_: Can not add internal markup (e.g. `<code>something <strong>bold</strong></code>`).
+:   _Pro_: Follows the [WHATWG standard example](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element).
+
+Complex Markup
+:   _Pro_: Follows the [WHATWG standard example](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element).
+
+<br />
+<br />
+
+## Syntax Highlighting Reference
 
 Syntax
 :  [Python-Markdown `fenced_code_blocks`](https://python-markdown.github.io/extensions/fenced_code_blocks)
 
 Languages
-:  <del>[Pygments: Languages](https://pygments.org/languages/)</del>[^4]
-:  <ins>[Highlight.js: Supported Languages](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md#supported-languages)</ins>
+:  [Highlight.js: Supported Languages](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md#supported-languages)
 
 Themes
 :  [Highlight.js: Demo](https://highlightjs.org/static/demo/)
@@ -115,8 +173,3 @@ echo -e "# Host ${HOME_DIR}$1/$2 :"
 
 echo '"quoted"' | tr -d \" > text.txt
 ```
-
-[^1]: **Drawbacks**: No syntax highlighting. Instead, review relevant "Complex Markup" or "Via Markdown" syntax.
-[^2]: **Benefits**: Programatically consistent. **Drawbacks**: No internal markup (e.g. `<code>something <strong>bold</strong></code>`).
-[^3]: **Benefits**: Follows the [WHATWG standard example](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element).
-[^4]: Pygments is probably supported by MkDocs theme. We use ReadTheDocs theme, which uses Highlight.js.

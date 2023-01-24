@@ -1,3 +1,49 @@
+<script>
+function showhideserial() {
+	var div = document.getElementById("serial");
+	if (div.style.display == "block") {
+		document.getElementById("img-serial").src = "../../../imgs/small-right-arrow.png";
+		div.style.display = "none";
+	} else {
+		div.style.display = "block";
+		document.getElementById("img-serial").src = "../../../imgs/small-down-arrow.png";
+	}
+}
+
+function showhidempi() {
+	var div = document.getElementById("mpi");
+	if (div.style.display == "block") {
+		document.getElementById("img-mpi").src = "../../../imgs/small-right-arrow.png";
+		div.style.display = "none";
+	} else {
+		div.style.display = "block";
+		document.getElementById("img-mpi").src = "../../../imgs/small-down-arrow.png";
+	}
+}
+
+function showhideopenmp() {
+	var div = document.getElementById("openmp");
+	if (div.style.display == "block") {
+		document.getElementById("img-openmp").src = "../../../imgs/small-right-arrow.png";
+		div.style.display = "none";
+	} else {
+		div.style.display = "block";
+		document.getElementById("img-openmp").src = "../../../imgs/small-down-arrow.png";
+	}
+}
+
+function showhidehybrid() {
+	var div = document.getElementById("hybrid");
+	if (div.style.display == "block") {
+		document.getElementById("img-hybrid").src = "../../../imgs/small-right-arrow.png";
+		div.style.display = "none";
+	} else {
+		div.style.display = "block";
+		document.getElementById("img-hybrid").src = "../../../imgs/small-down-arrow.png";
+	}
+}
+
+</script>
 <style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
 
 # Maverick2 User Guide
@@ -386,11 +432,12 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 <code>v100</code><br>(4 nodes) | 4 nodes<br>(192 cores) | 24 hours | 4 | 1 SU
 <code>p100</code><br>(3 nodes) | 3 nodes<br /> (144 cores) | 24 hours | 4 | 1 SU
 
+
 ## [Job Scripts](#scripts)  { #scripts }
 
 <details><summary>Serial Job in Normal Queue</summary>
 
-```bash
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -441,7 +488,7 @@ date
 </details>
 <details><summary>MPI Job in Normal Queue</summary>
 
-```bash
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -493,7 +540,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 </details>
 <details><summary>OpenMP Job in Normal Queue</summary>
 
-```bash
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -551,7 +598,7 @@ export OMP_NUM_THREADS=34
 </details>
 <details><summary>Hybrid Job in Normal Queue</summary>
 
-```bash
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script for TACC MACHINENAME nodes
@@ -740,6 +787,20 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
 You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](http://portal.tacc.utexas.edu/user-guides/stampede2#building).  
+
+## [Help Desk](#help) { #help }
+
+[TACC Consulting](https://portal.tacc.utexas.edu/consulting/overview) operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with &quot;Maverick2&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+
+* **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
+
+* **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. When appropriate, include the information a consultant would need to find your artifacts and understand your workflow: e.g. the directory containing your build and/or job script; the modules you were using; relevant job numbers; and recent changes in your workflow that could affect or explain the behavior you're observing.
+
+* **Subscribe to [Maverick2 User News](https://portal.tacc.utexas.edu/user-news/-/news/Maverick2).** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+
+* **Have realistic expectations.** Consultants can address system issues and answer questions about Maverick2. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
+
+* **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
 
 <figure>
 <img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />

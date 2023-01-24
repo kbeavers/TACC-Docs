@@ -195,6 +195,7 @@
 /* CAVEAT: The `:has()` syntax is not supported in Firefox browser */
 :is(.cmd-line, .job-script, .syntax):not(:has(code)) {
     padding: 1em;
+    overflow: auto;
 }
 :is(.cmd-line, .job-script, .syntax):not(:has(code.hljs)) {
     color: #D0D0D0;
@@ -202,6 +203,23 @@
 }
 
 
+
+/* To add minimal hover state for <details> */
+/* TODO: Remove this after COr-Styles are loaded (task/tup-297-styles) */
+details > summary {
+  cursor: pointer;
+}
+
+
+
+/* For edge-case headings */
+:is(h1, h2, h3, h4, h5, h6) > small,
+.understate:is(h1, h2, h3, h4, h5, h6) {
+    font-weight: normal;
+}
+details > summary > :is(h1, h2, h3, h4, h5, h6) {
+    display: inline-block;
+}
 
 
 

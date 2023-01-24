@@ -1,131 +1,7 @@
-<script type="text/javascript">
-
-function showhideknlserial() {
-	var div = document.getElementById("knlserial");
-	if (div.style.display == "block") {
-		document.getElementById("img-knlserial").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-knlserial").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideskxserial() {
-	var div = document.getElementById("skxserial");
-	if (div.style.display == "block") {
-		document.getElementById("img-skxserial").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-skxserial").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideknlmpi() {
-	var div = document.getElementById("knlmpi");
-	if (div.style.display == "block") {
-		document.getElementById("img-knlmpi").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-knlmpi").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideskxmpi() {
-	var div = document.getElementById("skxmpi");
-	if (div.style.display == "block") {
-		document.getElementById("img-skxmpi").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-skxmpi").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideknlopenmp() {
-	var div = document.getElementById("knlopenmp");
-	if (div.style.display == "block") {
-		document.getElementById("img-knlopenmp").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-knlopenmp").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideskxopenmp() {
-	var div = document.getElementById("skxopenmp");
-	if (div.style.display == "block") {
-		document.getElementById("img-skxopenmp").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-skxopenmp").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideknlhybrid() {
-	var div = document.getElementById("knlhybrid");
-	if (div.style.display == "block") {
-		document.getElementById("img-knlhybrid").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-knlhybrid").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideskxhybrid() {
-	var div = document.getElementById("skxhybrid");
-	if (div.style.display == "block") {
-		document.getElementById("img-skxhybrid").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-skxhybrid").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideicxhybrid() {
-	var div = document.getElementById("icxhybrid");
-	if (div.style.display == "block") {
-		document.getElementById("img-icxhybrid").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-icxhybrid").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideicxopenmp() {
-	var div = document.getElementById("icxopenmp");
-	if (div.style.display == "block") {
-		document.getElementById("img-icxopenmp").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-icxopenmp").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideicxmpi() {
-	var div = document.getElementById("icxmpi");
-	if (div.style.display == "block") {
-		document.getElementById("img-icxmpi").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-icxmpi").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-</script>
 <style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
 
 # Stampede2 User Guide
-<i>Last update: September 16, 2022</i> <span style="font-size:90%;">see <a href="#history">revision history</a></span>   
+<i>Last update: September 16, 2022</i> <span style="font-size:90%;">see <a href="#history">revision history</a></span>    xx
   
 ## [Notices](#notices) { #notices }
 
@@ -140,7 +16,7 @@ function showhideicxmpi() {
 * **Stampede2's Skylake (SKX) compute nodes each have 48 cores** on two sockets (24 cores/socket). Hyperthreading is enabled: there are two hardware threads per core, for a total of 48 x 2 = 96 hardware threads per node. See [Table 2](#table2) for more information. Note that SKX nodes have their own [queues](#running-queues). 
 
 
-<figure>FIGURE-STAMPEDEPANO<figcaption>Figure 1. Stampede2 System</figcaption></figure>
+<figure><img alt="Stampede2" src="../../../imgs/stampede2/Stampede2.jpg"><figcaption>Figure 1. Stampede2 System</figcaption></figure>
 ## [Introduction](#intro) { #intro }
 
 Stampede2, generously funded by the National Science Foundation (NSF) through [award  ACI-1540931](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540931), is one of the Texas Advanced Computing Center (TACC), University of Texas at Austin's flagship supercomputers. Stampede2 entered full production in the Fall 2017 as an 18-petaflop national resource that builds on the successes of the original Stampede system it replaces. The first phase of the Stampede2 rollout featured the second generation of processors based on Intel's Many Integrated Core (MIC) architecture. Stampede2's 4,200 Knights Landing (KNL) nodes represent a radical break with the first-generation Knights Corner (KNC) MIC coprocessor. Unlike the legacy KNC, a Stampede2 KNL is not a coprocessor: each 68-core KNL is a stand-alone, self-booting processor that is the sole processor in its node. Phase 2 added to Stampede2 a total of 1,736 Intel Xeon Skylake (SKX) nodes. The final phase of Stampede2 features the replacement of 448 KNL nodes with 224 Ice Lake nodes. 
@@ -321,7 +197,7 @@ $ <b>module load launcher</b>
 $ <b>module help launcher</b></pre>
 
 <figure>
-FIGURE-LOGINCOMPUTENODES
+<img alt="Stampede2" src="../../../imgs/stampede2/Stampede2.jpg">
 <figcaption>Figure 2. Login and compute nodes</figcaption></figure>
 
 ### [Using Modules to Manage your Environment](#conduct-modules) { #conduct-modules }
@@ -423,7 +299,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.
 
-<figure>FIGURE-STOCKYARD<figcaption>**Figure 3.**<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure id="figure3"><img alt="Stockyard 2022" src="../../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
 
 Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/stampede2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
@@ -436,7 +312,7 @@ Alias | Command
 <code>cds</code> | <code>cd $SCRATCH</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-## [Striping Large Files](#files-striping)
+### [Striping Large Files](#files-striping)
 
 Stampede2's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives (dozens of physical drives for `$HOME`, hundreds for `$WORK` and `$SCRATCH`).
 
@@ -934,8 +810,9 @@ For more information on this and other matters related to Slurm job submission, 
 
 ## [Job Scripts](#jobscripts) { #jobscripts }
 
-<a href="javascript:showhideknlserial()"><img src="../../../imgs/small-right-arrow.png" id="img-knlserial">KNL Serial Job in Normal Queue</a><br>
-<div id="knlserial" style="display:none">
+<details>
+<summary>KNL Serial Job in Normal Queue   
+</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -983,10 +860,10 @@ date
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre>
+</details>
 
-<a href="javascript:showhideskxserial()"><img src="../../../imgs/small-right-arrow.png" id="img-skxserial">SKX Serial Job in Normal Queue</a><br>
-<div id="skxserial" style="display:none">
+<details><summary>SKX Serial Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1034,10 +911,9 @@ date
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideknlmpi()"><img src="../../../imgs/small-right-arrow.png" id="img-knlmpi">KNL MPI Job in Normal Queue</a>
-<div id="knlmpi" style="display:none">
+<details><summary>KNL MPI Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1086,10 +962,9 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideskxmpi()"><img src="../../../imgs/small-right-arrow.png" id="img-skxmpi">SKX MPI Job in Normal Queue</a>
-<div id="skxmpi" style="display:none">
+<details><summary>SKX MPI Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1138,10 +1013,9 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideicxmpi()"><img src="../../../imgs/small-right-arrow.png" id="img-skxmpi">ICX MPI Job in Normal Queue</a>
-<div id="icxmpi" style="display:none">
+<details><summary>ICX MPI Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1205,10 +1079,9 @@ cd $SCRATCH
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 #---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideknlopenmp()"><img src="../../../imgs/small-right-arrow.png" id="img-knlopenmp">KNL OpenMP Job in Normal Queue</a>
-<div id="knlopenmp" style="display:none">
+<details><summary>KNL OpenMP Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1263,10 +1136,9 @@ export OMP_NUM_THREADS=34
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideskxopenmp()"><img src="../../../imgs/small-right-arrow.png" id="img-skxopenmp">SKX OpenMP Job in Normal Queue</a>
-<div id="skxopenmp" style="display:none">
+<details><summary>SKX OpenMP Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1321,11 +1193,10 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
 
-<a href="javascript:showhideicxopenmp()"><img src="../../../imgs/small-right-arrow.png" id="img-icxopenmp">ICX OpenMP Job in Normal Queue</a>
-<div id="icxopenmp" style="display:none">
+<details><summary>ICX OpenMP Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1392,11 +1263,10 @@ cd $SCRATCH
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 #---------------------------------------------------
-</pre></div>
+</pre></details>
 
 
-<a href="javascript:showhideknlhybrid()"><img src="../../../imgs/small-right-arrow.png" id="img-knlhybrid">KNL Hybrid Job in Normal Queue</a>
-<div id="knlhybrid" style="display:none">
+<details><summary>KNL Hybrid Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1458,10 +1328,9 @@ export OMP_NUM_THREADS=16
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideskxhybrid()"><img src="../../../imgs/small-right-arrow.png" id="img-skxhybrid">SKX Hybrid Job in Normal Queue</a>
-<div id="skxhybrid" style="display:none">
+<details><summary>SKX Hybrid Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1523,10 +1392,9 @@ export OMP_NUM_THREADS=12
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideicxhybrid()"><img src="../../../imgs/small-right-arrow.png" id="img-icxhybrid">ICX Hybrid Job in Normal Queue</a>
-<div id="icxhybrid" style="display:none">
+<details><summary>ICX Hybrid Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -1603,15 +1471,18 @@ cd $SCRATCH
 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #---------------------------------------------------
-</pre></div>
+</pre></details>
 
-### [Monitoring Jobs and Queues](#monitoring) { #monitoring }
+   
+   
+<p>&nbsp;</p>
+## [Monitoring Jobs and Queues](#monitoring) { #monitoring }
 
 Several commands are available to help you plan and track your job submissions as well as check the status of the Slurm queues.
 
 When interpreting queue and job status, remember that **Stampede2 doesn't operate on a first-come-first-served basis**. Instead, the sophisticated, tunable algorithms built into Slurm attempt to keep the system busy, while scheduling jobs in a way that is as fair as possible to everyone. At times this means leaving nodes idle ("draining the queue") to make room for a large job that would otherwise never run. It also means considering each user's "fair share", scheduling jobs so that those who haven't run jobs recently may have a slightly higher priority than those who have.
 
-#### [Monitoring Queue Status with `sinfo` and `qlimits`](#monitoring-queue) { #monitoring-queue }
+### [Monitoring Queue Status with `sinfo` and `qlimits`](#monitoring-queue) { #monitoring-queue }
 
 To display resource limits for the Stampede2 queues, execute "**`qlimits`**". The result is real-time data; the corresponding information in this document's [table of Stampede2 queues](#running-queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
@@ -1629,7 +1500,7 @@ normal             up       3685/8/3/3696</pre>
 The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled "`NODES(A/I/O/T)`" shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute "`man sinfo`" for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Stampede2 (e.g. `TIMELIMIT`, displayed using the "`%l`" option).
 
 
-#### [Monitoring Job Status with `squeue`](#monitoring-squeue) { #monitoring-squeue }
+### [Monitoring Job Status with `squeue`](#monitoring-squeue) { #monitoring-squeue }
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
@@ -1668,7 +1539,7 @@ The "`--start`" option displays job start times, including very rough estimates 
 <pre class="cmd-line">login1$ <b>squeue --start -j 167635</b>     # display estimated start time for job 167635</pre>
 
 
-#### [Monitoring Job Status with `showq`](#monitoring-showq) { #monitoring-showq }
+### [Monitoring Job Status with `showq`](#monitoring-showq) { #monitoring-showq }
 
 TACC's "`showq`" utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm "`squeue`" command:
 
@@ -1685,7 +1556,7 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each KNL node's 272 hardware threads (and each SKX node's 96 hardware threads) as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
 
-#### [Other Job Management Commands (`scancel`, `scontrol`, and `sacct`)](#monitoring-other) { #monitoring-other }
+### [Other Job Management Commands (`scancel`, `scontrol`, and `sacct`)](#monitoring-other) { #monitoring-other }
 
 **It's not possible to add resources to a job (e.g. allow more time)** once you've submitted the job to the queue.
 
@@ -1706,7 +1577,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 <pre class="cmd-line">login1$ <b>sacct --starttime 2017-08-01</b>  # show jobs that started on or after this date</pre>
 
 
-#### [Dependent Jobs using `sbatch`](#monitoring-dependent) { #monitoring-dependent }
+### [Dependent Jobs using `sbatch`](#monitoring-dependent) { #monitoring-dependent }
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the "`--dependency`" option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
@@ -1924,7 +1795,7 @@ Each core can run up to 4 hardware threads. The two cores on a tile share a 1MB 
 The processor's memory mode determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The output of commands like "`top`", "`free`", and <span style="white-space: nowrap;">"`ps -v`"</span> reflect the consequences of memory mode. Such commands will show the amount of RAM available to the operating system, not the hardware (DDR + MCDRAM) installed.
 
 
-<figure>FIGURE-KNLMEMORYMODES<figcaption>Figure 4. KNL Memory Modes</figcaption></figure>
+<figure><img src="../../../imgs/stampede2/KNL-Memory-Modes.png"><figcaption>Figure 4. KNL Memory Modes</figcaption></figure>
 
 * **Cache Mode**. In this mode, the fast MCDRAM is configured as an L3 cache. The operating system transparently uses the MCDRAM to move data from main memory. In this mode, the user has access to 96GB of RAM, all of it traditional DDR4. **Most Stampede2 KNL nodes are configured in cache mode.**
 
@@ -1946,7 +1817,7 @@ The KNL can do this in several ways, each of which is called a cluster mode. Eac
 
 * **Sub-NUMA 4 (variation: Sub-NUMA 2)**. This mode, abbreviated **SNC-4**, divides the chip into four NUMA nodes so that it acts like a four-socket processor. SNC-4 aims to optimize coherency-related on-chip communication by confining this communication to a single NUMA node when it is possible to do so. To achieve any performance benefit, this requires explicit manual memory management by the programmer/user (in particular, allocating memory within the NUMA node that will use that memory). Stampede2 does not have nodes in this cluster mode.
 
-<figure>FIGURE-KNLCLUSTERMODES<figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
+<figure><img src="../../../imgs/KNL-Cluster-Modes.png"><figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
 
 TACC's early experience with the KNL suggests that there is little reason to deviate from Intel's recommended default memory and cluster modes. Cache-quadrant tends to be a good choice for almost all workflows; it offers a nice compromise between performance and ease of use for the applications we have tested. Flat-quadrant is the most promising alternative and sometimes offers moderately better performance, especially when memory requirements per node are less than 16GB. We have not yet observed significant performance differences across cluster modes, and our current recommendation is that configurations other than cache-quadrant and flat-quadrant are worth considering only for very specialized needs. For more information see [Managing Memory](#knl-programming-managingmemory) and [Best Known Practices...](#knl-programming-bestpractices).
 
@@ -2047,37 +1918,34 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 * [TACC Visualization Portal](https://vis.tacc.utexas.edu/)
 
 {% include 'aliases.md' %}
-<script type="text/javascript">
-function showhide() {
-var div = document.getElementById("revisions");
-if (div.style.display == "block") 
-{
-document.getElementById("img-arrow").src = SMALL"../../../imgs/small-right-arrow.png";
-div.style.display = "none";
-}
-else 
-{
-div.style.display = "block";
-document.getElementById("img-arrow").src = SMALL"../../../imgs/small-down-arrow.png";
-}
-}
-</script>
+## [Help Desk](#help) { #help }
+
+[TACC Consulting](https://portal.tacc.utexas.edu/consulting/overview) operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with &quot;Stampede2&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+
+* **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
+
+* **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. When appropriate, include the information a consultant would need to find your artifacts and understand your workflow: e.g. the directory containing your build and/or job script; the modules you were using; relevant job numbers; and recent changes in your workflow that could affect or explain the behavior you're observing.
+
+* **Subscribe to [Stampede2 User News](https://portal.tacc.utexas.edu/user-news/-/news/Stampede2).** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+
+* **Have realistic expectations.** Consultants can address system issues and answer questions about Stampede2. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
+
+* **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
 
 ## [Revision History](#history) { #history }
 
 "Last Update" at the top of this document is the date of the most recent change to this document. This revision history is a list of non-trivial updates; it excludes routine items such as corrected typos and minor format changes.
  
-<a href="javascript:showhide()"><img src=SMALL"../../../imgs/small-right-arrow.png" id="img-arrow">Click to view</a>
+<details><summary>Click to view</summary>
 
-<div id="revisions" style="display:none">
+<li> 09/14/22 XSEDE project ends. Replace Globus with Grid Community Toolkit. </li>
+<li> 03/07/22 Intel Ice Lake nodes introduced.  New `icx-normal` queue. </li>
+<li> 04/24/18 Changes to Table 1 and Table 5 associated with new `long` queue. </li>
+<li> 04/03/18 Stampede1 decommissioned; removed/revised references to Stampede1 as appropriate. </li>
+<li> 03/26/18 Corrected and relocated material on `qopt-zmm-usage`. </li>
+<li> 02/23/18 New functionality associated with `task_affinity`, `tacc_affinity`, and `mem_affinity` (scripts related to MPI task pinning and KNL memory management). </li>
+<li> 11/30/17 Initial release supporting Phase 2 (SKX). </li>
+<li> 08/02/17 Removed references and links to Stampede2 Transition Guide (now deprecated). </li>
+<li> 06/12/17 Initial public release. </li>
 
-* 09/14/22 XSEDE project ends. Replace Globus with Grid Community Toolkit.
-* 03/07/22 Intel Ice Lake nodes introduced.  New `icx-normal` queue.
-* 04/24/18 Changes to Table 1 and Table 5 associated with new `long` queue.
-* 04/03/18 Stampede1 decommissioned; removed/revised references to Stampede1 as appropriate.
-* 03/26/18 Corrected and relocated material on `qopt-zmm-usage`.
-* 02/23/18 New functionality associated with `task_affinity`, `tacc_affinity`, and `mem_affinity` (scripts related to MPI task pinning and KNL memory management).
-* 11/30/17 Initial release supporting Phase 2 (SKX).
-* 08/02/17 Removed references and links to Stampede2 Transition Guide (now deprecated).
-* 06/12/17 Initial public release.
-</div>
+</details>
