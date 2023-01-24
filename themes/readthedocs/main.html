@@ -21,7 +21,10 @@
   </style>
   {# /TACC #}
   {%- if config.theme.highlightjs %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    {# TACC: #}{# To use HighligtJS theme that designer prefers #}
+    {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" /> #}
+    <link rel="stylesheet" href="{{ 'css/base16-highlightjs/classic-dark.css'|url }}" />
+    {# /TACC #}
   {%- endif %}
   {%- for path in extra_css %}
     <link href="{{ path }}" rel="stylesheet" />

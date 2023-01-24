@@ -4,6 +4,27 @@
 
 <style>:is(h1, h2, h3, h4, h5, h6) > b { text-decoration: underline; font-weight: inherit; }</style>
 
+
+```bash
+#!/bin/bash
+
+###### CONFIG
+ACCEPTED_HOSTS="/root/.hag_accepted.conf"
+BE_VERBOSE=false
+
+if [ "$UID" -ne 0 ]
+then
+ echo "Superuser rights required"
+ exit 2
+fi
+
+genApacheConf(){
+ echo -e "# Host ${HOME_DIR}$1/$2 :"
+}
+
+echo '"quoted"' | tr -d \" > text.txt
+```
+
 ## `class="cmd-line"`
 
 This is `class="cmd-line"`, just courier-class.  I would prefer code not be in red*.
@@ -19,7 +40,7 @@ See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-m
 
 Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .cmd-line }</code>.
 
-``` { .bash .cmd-line }
+``` { .ruby .cmd-line }
 login1$ module load kitten
 ```
 
