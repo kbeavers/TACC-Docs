@@ -1,9 +1,9 @@
-# Running Jobs on the Frontera Compute Nodes
+## [Running Jobs on the Compute Nodes](#running)
 
 <p class="introtext">Frontera's job scheduler is the <a href="http://schedmd.com">Slurm Workload Manager</a>. Slurm commands enable you to submit, manage, monitor, and control your jobs. Jobs submitted to the scheduler are queued, then run on the compute nodes. Each job consumes Service Units (SUs) which are then charged to your allocation.</p>
 
 
-## Job Accounting
+### [Job Accounting](#running)
 
 Like all TACC systems, Frontera's accounting system is based on node-hours: one unadjusted Service Unit (SU) represents a single compute node used for one hour (a node-hour). For any given job, the total cost in SUs is the use of one compute node for one hour of wall clock time plus any additional charges for the use of specialized queues, e.g. Frontera's `flex` queue, Stampede2's `development` queue, and Longhorn's `v100` queue.  The [queue charge rates](#table-5-frontera-production-queues) are determined by the supply and demand for that particular queue or type of node used.  
 
@@ -19,7 +19,7 @@ Principal Investigators can monitor allocation usage via the [TACC User Portal](
 
 <p class="portlet-msg-info">To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ <b>/usr/local/etc/taccinfo</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre></p>  
 
-## Requesting Resources 
+### [Requesting Resources ](#running)
 
 Be sure to request computing resources e.g., number of nodes, number of tasks per node, max time per job, that are consistent with the type of application(s) you are running:
 
@@ -33,7 +33,7 @@ $ <b>module load launcher</b>
 $ <b>module help launcher</b>
 </pre>
 
-## Frontera Production Queues
+### [Frontera Production Queues](#running)
 
 Frontera's Slurm partitions (queues), maximum node limits and charge rates are summarized in the table below. **Queues and limits are subject to change without notice.** Execute `qlimits` on Frontera for real-time information regarding limits on available queues. See [Job Accounting](#job-accounting) to learn how jobs are charged to your allocation.
 
@@ -44,7 +44,7 @@ The `nvdimm` queue features 16 [large-memory (2.1TB) nodes](../system#large-memo
 Frontera's `flex` queue offers users a low cost queue for lower priority/node count jobs and jobs running software with checkpointing capabilities. Jobs in the `flex` queue are scheduled with lower priority and are also eligible for preemption after running for one hour.  That is, if other jobs in the other queues are currently waiting for nodes and there are jobs running in the `flex` queue, the Slurm scheduler will cancel any jobs in the `flex` queue that have run more than one hour in order to give resources back to the higher priority jobs. Any job started in the `flex` queue is guaranteed to run for at least an hour (assuming the requested wallclock time was >= 1 hour). If there remain no outstanding requests from other queues, then these jobs will continue to run until they hit their wallclock requested time. This flexibility in runtime is rewarded by a reduced charge rate of .8 SUs/hour. Also, the max total node count for one user with many jobs in the flex queue is 6400 nodes.
 
 
-### Table 5. Frontera Production Queues
+#### [Table 5. Frontera Production Queues](#running)
 Queue status as of March 14, 2022.   
 **Queues and limits are subject to change without notice.** 
 
@@ -70,12 +70,12 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 
 
 
-## Accessing the Compute Nodes
+### [Accessing the Compute Nodes](#running)
 
- The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Citizenship](../citizenship) for more information.
+ The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../conduct) for more information.
 
-### Figure 2. Login and Compute Nodes
-![Login and Compute Nodes](img/img-logincompute.png)   
+#### [Figure 2. Login and Compute Nodes](#running)
+![Login and Compute Nodes](IMAGEDIR/login-compute-nodes.jpg)   
 Login and Compute Nodes
 
 You can use your command-line prompt, or the `hostname` command, to discern whether you are on a login node or a compute node. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname <span style="white-space: nowrap;">(e.g. `c401-064`)</span>. The hostname for a Frontera login node begins with the string `login` (e.g. `login2.frontera.tacc.utexas.edu`), while compute node hostnames begin with the character `c` <span style="white-space: nowrap;">(e.g. `c401-064.frontera.tacc.utexas.edu`)</span>. 
@@ -89,7 +89,7 @@ While some workflows, tools, and applications hide the details, there are three 
 1.	Begin an [**interactive session** using `idev` or `srun`](#interactive-sessions-with-idev-and-srun). This will log you into a compute node and give you a command prompt there, where you can issue commands and run code as if you were doing so on your personal machine. An interactive session is a great way to develop, test, and debug code. Both the `srun` and `idev` commands submit a new batch job on your behalf, providing interactive access once the job starts. You will need to remain logged in until the interactive session begins.
 
 
-## Submitting Batch Jobs with `sbatch`
+### [Submitting Batch Jobs with `sbatch`](#running)
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Frontera queues:
 
@@ -113,7 +113,7 @@ Your job will run in the environment it inherits at submission time; this enviro
 Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. <span style="white-space: nowrap;">`-N`</span>) and a long form (e.g. <span style="white-space: nowrap;">`--nodes`</span>). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases <span style="white-space: nowrap;">`#!/bin/bash`</span> or <span style="white-space: nowrap;">`#!/bin/csh`</span> is the right choice. Avoid <span style="white-space: nowrap;">`#!/bin/sh`</span> (its startup behavior can lead to subtle problems on Frontera), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Frontera.
 
 
-### Table 6. Common <code>sbatch</code> Options
+#### [Table 6. Common <code>sbatch</code> Options](#running)
 
 | Option | Argument | Comments |
 | --- | --- | -- |
@@ -136,7 +136,7 @@ Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) belo
 By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">`slurm-%j.out`</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">`-o`</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">`-o`</span> and <span style="white-space: nowrap;">`-e`</span>.
 
 
-## Interactive Sessions with `idev` and `srun`
+### [Interactive Sessions with `idev` and `srun`](#running)
 
 TACC's own `idev` utility is the best way to begin an interactive session on one or more compute nodes. `idev` submits a batch script requesting access to a compute node. Once the scheduler allocates a compute node, you are then automatically ssh'd to that node where you can begin any compute-intensive jobs.  
 
@@ -181,7 +181,7 @@ login1$ <b>srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l</b> # same con
 
 Consult the [`idev`](http://portal.tacc.utexas.edu/software/idev) documentation for further details.
 
-## Interactive Sessions using SSH
+### [Interactive Sessions using SSH](#running)
 
 If you have a batch job or interactive session running on a compute node, you "own the node": you can connect via `ssh` to open a new interactive session on that node. This is an especially convenient way to monitor your applications' progress. One particularly helpful example: login to a compute node that you own, execute `top`, then press the "1" key to see a display that allows you to monitor thread ("CPU") and memory use.
 
@@ -198,7 +198,7 @@ C448-004$
 </pre>
 
 
-## Slurm Environment Variables
+### [Slurm Environment Variables](#running)
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 

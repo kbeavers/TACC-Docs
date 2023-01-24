@@ -1,12 +1,12 @@
-# Help Desk
+## [Help Desk](#help)
 
-## Submit a Ticket 
+### [Submit a Ticket](#help-submitticket)
 
 <p class="introtext"> <a href="https://portal.tacc.utexas.edu/consulting/overview">TACC Consulting</a> operates from 8am to 5pm CST, Monday through Friday, except for holidays.</p>
 
 You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
 
-## Best Practices aka Help Us Help You
+### [Best Practices aka Help Us Help You](#help-bestpractices)
 
 * **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
 

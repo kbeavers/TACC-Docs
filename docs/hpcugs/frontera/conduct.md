@@ -1,8 +1,8 @@
-# Citizenship on Frontera
+## [Good Conduct on Frontera](#conduct)
 
-<p class="introtext"><b>You share Frontera with many, sometimes hundreds, of other users</b>, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good citizenship to ensure that your activity does not adversely impact the system and the research community with whom you share it. </p>
+<p class="introtext"><b>You share Frontera with many, sometimes hundreds, of other users</b>, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. </p>
 
-TACC staff has developed the following guidelines to good citizenship on Frontera. Please familiarize yourself especially with the first two mandates. The next sections discuss best practices on [limiting and minimizing I/O activity](#limit-inputoutput-io-activity) and [file transfers](#limit-file-transfers). And finally, we provide [job submission tips](#job-submission-tips) when constructing job scripts to help minimize wait times in the queues.  
+TACC staff has developed the following guidelines to good conduct on Frontera. Please familiarize yourself especially with the first two mandates. The next sections discuss best practices on [limiting and minimizing I/O activity](#limit-inputoutput-io-activity) and [file transfers](#limit-file-transfers). And finally, we provide [job submission tips](#job-submission-tips) when constructing job scripts to help minimize wait times in the queues.  
 
 * [Do Not Run Jobs on the Login Nodes](#do-not-run-jobs-on-the-login-nodes)
 * [Do Not Stress the File Systems](#do-not-stress-the-shared-file-systems)
@@ -10,7 +10,7 @@ TACC staff has developed the following guidelines to good citizenship on Fronter
 * [File Transfer Guideliones](#file-transfer-guidelines)
 * [Job Submission Tips](#job-submission-tips)
 
-## Do Not Run Jobs on the Login Nodes
+### [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
 
 Frontera's few login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the "back-end" compute nodes. 
 
@@ -20,7 +20,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 <p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.</p> 
 
-### Dos &amp; Don'ts on the Login Nodes
+#### [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples)
 
 * **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
 
@@ -54,7 +54,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 * **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 
 
-## Do Not Stress the Shared File Systems
+### [Do Not Stress the Shared File Systems](#conduct-filesystems)
 
 The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. 
 
@@ -71,7 +71,7 @@ To run your jobs out `$SCRATCH`:
 Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [File System Usage Recommendations](#table-file-system-usage-recommendations). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.
 
 
-### More File System Tips
+#### [More File System Tips](#conduct-filesystems-tips)
 
 * **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
 
@@ -81,7 +81,7 @@ Consider that `$HOME` and `$WORK` are for storage and keeping track of important
 
 * TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. **Please follow each file system's recommended usage.**
 
-### File System Usage Recommendations
+#### [File System Usage Recommendations](#conduct)
 
 | File System | Best Storage Practices | Best Activities
 | --          | --                     | --
@@ -90,7 +90,7 @@ Consider that `$HOME` and `$WORK` are for storage and keeping track of important
 | <code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="../files#scratchpolicy">Scratch File System Purge Policy</a>.
 
 
-## Limit Input/Output (I/O) Activity
+### [Limit Input/Output (I/O) Activity](#conduct-io)
 
 In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
 
@@ -102,7 +102,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 <p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also <a href="https://portal.tacc.utexas.edu/tutorials/managingio">Managing I/O on TACC Resources</a> for additional information.</p>
 
-## File Transfer Guidelines
+### [File Transfer Guidelines](#conduct-transfers)
 
 In order to not stress both internal and external networks, be mindful of the following guidelines:
 
@@ -110,11 +110,11 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
 
-* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](http://portal.tacc.utexas.edu/user-guides/ranch).
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch][RANCHUG].
 
 
 
-## Job Submission Tips
+### [Job Submission Tips](#conduct-jobs)
 
 * **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
 
