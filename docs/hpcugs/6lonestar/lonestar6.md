@@ -1,50 +1,3 @@
-<script type="text/javascript">
-
-function jscript1() {
-	var div = document.getElementById("jscript1");
-	if (div.style.display == "block") {
-		document.getElementById("img-jscript1").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-jscript1").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function jscript2() {
-	var div = document.getElementById("jscript2");
-	if (div.style.display == "block") {
-		document.getElementById("img-jscript2").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-jscript2").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function jscript3() {
-	var div = document.getElementById("jscript3");
-	if (div.style.display == "block") {
-		document.getElementById("img-jscript3").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-jscript3").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function jscript4() {
-	var div = document.getElementById("jscript4");
-	if (div.style.display == "block") {
-		document.getElementById("img-jscript4").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-jscript4").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-</script>
 # Lonestar6 User Guide
 <span style="font-size:90%;"><i>Last update: January 13, 2023</i></span></p>
 
@@ -518,7 +471,7 @@ File System | Best Storage Practices | Best Activities
 <code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="#scratchpurgepolicy">Scratch File System Purge Policy</a>.
 
 
-## [Limit Input/Output (I/O) Activity](#conduct-io) { conduct-io }
+### [Limit Input/Output (I/O) Activity](#conduct-io) { conduct-io }
 
 In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
 
@@ -530,7 +483,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 <p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMFA] for additional information.</p>
 
-## [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
+### [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 
 In order to not stress both internal and external networks, be mindful of the following guidelines:
 
@@ -542,7 +495,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 
 
-## [Job Submission Tips](#conduct-jobs) { #conduct-jobs }
+### [Job Submission Tips](#conduct-jobs) { #conduct-jobs }
 
 * **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
 
@@ -856,15 +809,11 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 
 ## [Sample Job Scripts](#scripts) { #scripts }
 
-<a href="javascript:jscript1()"><img src="../../../imgs/small-right-arrow.png" id="img-jscript1">Serial Codes</a><br>
-<div id="jscript1" style="display:none">
+<details><summary>Serial Codes </summary>
   
-<details>
-<summary>
 **Run all serial jobs in the `normal` queue.**  
 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
-</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -912,10 +861,7 @@ date
 
 
 
-</div>
-
-<a href="javascript:jscript2()"><img src="../../../imgs/small-right-arrow.png" id="img-jscript2">MPI Jobs</a><br>
-<div id="jscript2" style="display:none">
+<details><summary>MPI Jobs</summary>
 
 This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
@@ -962,11 +908,10 @@ pwd
 date
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></div>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></details>
 
 
-<a href="javascript:jscript3()"><img src="../../../imgs/small-right-arrow.png" id="img-jscript3">Hybrid (MPI + OpenMP) Job</a><br>
-<div id="jscript3" style="display:none">
+<details><summary>Hybrid (MPI + OpenMP) Job</summary>
 
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
@@ -1025,11 +970,10 @@ date
 export OMP_NUM_THREADS=14
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></div>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></details>
 
 
-<a href="javascript:jscript4()"><img src="../../../imgs/small-right-arrow.png" id="img-jscript4">OpenMP Jobs</a>
-<div id="jscript4" style="display:none">
+<details><summary>OpenMP Jobs</summary>
 
 **Run all OpenMP jobs in the `normal` queue.**  
 
@@ -1080,7 +1024,7 @@ date
 export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 
 # Launch OpenMP code...
-./myprogram         # Do not use ibrun or any other MPI launcher</pre></div>
+./myprogram         # Do not use ibrun or any other MPI launcher</pre></details>
 
 
 ## [Customizing your Job Script ](#scripts-customizations)

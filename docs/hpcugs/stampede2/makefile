@@ -16,8 +16,7 @@ SRC =   \
 
 
 stampede2:	FORCE $(SRC) 
-	cat header.html > temp.md
-	cat $(SRC) >> temp.md
+	cat $(SRC) > temp.md
 	../configurestrings.sh temp.md stampede2.md
 	/bin/rm temp.md 
 

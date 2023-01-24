@@ -1,10 +1,20 @@
-Thu Dec  8 12:16:55 CST 2022
-Thu Jan 19 11:55:45 CST 2023
-Mon Jan 23 14:33:52 CST 2023
+Thu Dec  8 12:16:55 CST 2022   
+Thu Jan 19 11:55:45 CST 2023   
+Mon Jan 23 14:33:52 CST 2023   
 
-This is a page for fiddling and styling.
+# This is a page for fiddling and styling.
 
-# [Let's test some nested h1 headings](#top)  { #top } 
+<font color="red">NEW</font> - can we style the "< details >" and "< summary >" tags?
+
+See: <https://docs.tacc.utexas.edu/hpcugs/stampede2/stampede2/#jobscripts>
+
+<details><summary>Cheesy example</summary>
+I'm not a big fan of this arrow. <br> 
+Can we add some margin/whitespace at the bottom?  <br>
+Also, markdown doesn't work within these tags?
+</details>
+
+
 
 ## Images
 

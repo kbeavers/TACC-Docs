@@ -1,7 +1,8 @@
 ## [Job Scripts](#jobscripts) { #jobscripts }
 
-<a href="javascript:showhideknlserial()"><img src=RIGHTARROW id="img-knlserial">KNL Serial Job in Normal Queue</a><br>
-<div id="knlserial" style="display:none">
+<details>
+<summary>KNL Serial Job in Normal Queue   
+</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -49,10 +50,10 @@ date
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre>
+</details>
 
-<a href="javascript:showhideskxserial()"><img src=RIGHTARROW id="img-skxserial">SKX Serial Job in Normal Queue</a><br>
-<div id="skxserial" style="display:none">
+<details><summary>SKX Serial Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -100,10 +101,9 @@ date
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideknlmpi()"><img src=RIGHTARROW id="img-knlmpi">KNL MPI Job in Normal Queue</a>
-<div id="knlmpi" style="display:none">
+<details><summary>KNL MPI Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -152,10 +152,9 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideskxmpi()"><img src=RIGHTARROW id="img-skxmpi">SKX MPI Job in Normal Queue</a>
-<div id="skxmpi" style="display:none">
+<details><summary>SKX MPI Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -204,10 +203,9 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideicxmpi()"><img src=RIGHTARROW id="img-skxmpi">ICX MPI Job in Normal Queue</a>
-<div id="icxmpi" style="display:none">
+<details><summary>ICX MPI Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -271,10 +269,9 @@ cd $SCRATCH
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 #---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideknlopenmp()"><img src=RIGHTARROW id="img-knlopenmp">KNL OpenMP Job in Normal Queue</a>
-<div id="knlopenmp" style="display:none">
+<details><summary>KNL OpenMP Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -329,10 +326,9 @@ export OMP_NUM_THREADS=34
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideskxopenmp()"><img src=RIGHTARROW id="img-skxopenmp">SKX OpenMP Job in Normal Queue</a>
-<div id="skxopenmp" style="display:none">
+<details><summary>SKX OpenMP Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -387,11 +383,10 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
 
-<a href="javascript:showhideicxopenmp()"><img src=RIGHTARROW id="img-icxopenmp">ICX OpenMP Job in Normal Queue</a>
-<div id="icxopenmp" style="display:none">
+<details><summary>ICX OpenMP Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -458,11 +453,10 @@ cd $SCRATCH
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 #---------------------------------------------------
-</pre></div>
+</pre></details>
 
 
-<a href="javascript:showhideknlhybrid()"><img src=RIGHTARROW id="img-knlhybrid">KNL Hybrid Job in Normal Queue</a>
-<div id="knlhybrid" style="display:none">
+<details><summary>KNL Hybrid Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -524,10 +518,9 @@ export OMP_NUM_THREADS=16
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideskxhybrid()"><img src=RIGHTARROW id="img-skxhybrid">SKX Hybrid Job in Normal Queue</a>
-<div id="skxhybrid" style="display:none">
+<details><summary>SKX Hybrid Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -589,10 +582,9 @@ export OMP_NUM_THREADS=12
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></div>
+</pre></details>
 
-<a href="javascript:showhideicxhybrid()"><img src=RIGHTARROW id="img-icxhybrid">ICX Hybrid Job in Normal Queue</a>
-<div id="icxhybrid" style="display:none">
+<details><summary>ICX Hybrid Job in Normal Queue</summary>
 <pre>
 #!/bin/bash
 #----------------------------------------------------
@@ -669,5 +661,7 @@ cd $SCRATCH
 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #---------------------------------------------------
-</pre></div>
+</pre></details>
 
+   
+   

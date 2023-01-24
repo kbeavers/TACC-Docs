@@ -89,7 +89,7 @@ File System | Best Storage Practices | Best Activities
 <code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="#scratchpurgepolicy">Scratch File System Purge Policy</a>.
 
 
-## [Limit Input/Output (I/O) Activity](#conduct-io) { conduct-io }
+### [Limit Input/Output (I/O) Activity](#conduct-io) { conduct-io }
 
 In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
 
@@ -101,7 +101,7 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 <p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMFA] for additional information.</p>
 
-## [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
+### [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 
 In order to not stress both internal and external networks, be mindful of the following guidelines:
 
@@ -113,7 +113,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 
 
-## [Job Submission Tips](#conduct-jobs) { #conduct-jobs }
+### [Job Submission Tips](#conduct-jobs) { #conduct-jobs }
 
 * **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
 
