@@ -7,6 +7,9 @@ theme:
     name: readthedocs
     custom_dir: themes/readthedocs
 
+extra_css:
+    - css/tacc-docs.css
+
 
 nav:
   - Fiddling : 
