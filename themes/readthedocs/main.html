@@ -1,48 +1,48 @@
-{# https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/main.html #}
+{# https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/base.html #}
 {# All changes must start and end with comments " TACC: " and " /TACC " #}
 {%- extends "base.html" %}
 
-{%- block styles %}
-  {# TACC: #}{# To load ReadTheDocs such that Core-Styles takes precedence #}
-  <style>
-    /* Layers not used in this block are used in later stylesheets */
-    @layer foundation.mkdocs, foundation.tacc, base, project;
+  {%- block styles %}
+    {# TACC: #}{# To load ReadTheDocs such that Core-Styles takes precedence #}
+    <style>
+      /* Layers not used in this block are used in later stylesheets */
+      @layer foundation.mkdocs, foundation.tacc, base, project;
 
-    /* Import ReadTheDocs styles but in a bottom layer */
-    @import url("{{ 'css/theme.css'|url }}") layer(foundation.mkdocs);
-    @import url("{{ 'css/theme_extra.css'|url }}") layer(foundation.mkdocs);
+      /* Import ReadTheDocs styles but in a bottom layer */
+      @import url("{{ 'css/theme.css'|url }}") layer(foundation.mkdocs);
+      @import url("{{ 'css/theme_extra.css'|url }}") layer(foundation.mkdocs);
 
-    /* Undo ReadTheDocs styles for page content */
-    @layer foundation.tacc {
-      .rst-content :not(img) {
-        all: revert;
+      /* Undo ReadTheDocs styles for page content */
+      @layer foundation.tacc {
+        .rst-content :not(img) {
+          all: revert;
+        }
       }
-    }
-  </style>
-  {# /TACC #}
-  {%- if config.theme.highlightjs %}
-    {# TACC: #}{# To use HighligtJS theme that designer prefers #}
-    {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" /> #}
-    <link rel="stylesheet" href="{{ 'css/base16-highlightjs/classic-dark.css'|url }}" />
+    </style>
     {# /TACC #}
-  {%- endif %}
-  {%- for path in extra_css %}
-    <link href="{{ path }}" rel="stylesheet" />
-  {%- endfor %}
-{%- endblock %}
+    {%- if config.theme.highlightjs %}
+      {# TACC: #}{# To use HighligtJS theme that designer prefers #}
+      {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" /> #}
+      <link rel="stylesheet" href="{{ 'css/base16-highlightjs/classic-dark.css'|url }}" />
+      {# /TACC #}
+    {%- endif %}
+    {%- for path in extra_css %}
+      <link href="{{ path }}" rel="stylesheet" />
+    {%- endfor %}
+  {%- endblock %}
 
-{%- block scripts %}
-  <script>var base_url = '{{ base_url }}';</script>
-  {# TACC: #}{# To remove `docutils` class from tables #}
-  {# <script src="{{ 'js/theme_extra.js'|url }}" defer></script> #}
-  {# /TACC #}
-  <script src="{{ 'js/theme.js'|url }}" defer></script>
-  {%- for path in extra_javascript %}
-    <script src="{{ path }}" defer></script>
-  {%- endfor %}
-  <script defer>
-      window.onload = function () {
-          SphinxRtdTheme.Navigation.enable({{ 'true' if config.theme.sticky_navigation else 'false' }});
-      };
-  </script>
-{%- endblock %}
+  {%- block scripts %}
+    <script>var base_url = '{{ base_url }}';</script>
+    {# TACC: #}{# To remove `docutils` class from tables #}
+    {# <script src="{{ 'js/theme_extra.js'|url }}" defer></script> #}
+    {# /TACC #}
+    <script src="{{ 'js/theme.js'|url }}" defer></script>
+    {%- for path in extra_javascript %}
+      <script src="{{ path }}" defer></script>
+    {%- endfor %}
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable({{ 'true' if config.theme.sticky_navigation else 'false' }});
+        };
+    </script>
+  {%- endblock %}

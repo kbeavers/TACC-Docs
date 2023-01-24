@@ -84,10 +84,36 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 ## Syntax Highlighting
 
 Syntax
-:   <https://python-markdown.github.io/extensions/fenced_code_blocks/>
+:  <https://python-markdown.github.io/extensions/fenced_code_blocks/>
 
 Languages
-:   <https://pygments.org/languages/>
+:  <https://pygments.org/languages/>
+
+Themes
+:  <https://highlightjs.org/static/demo/>
+
+Sample
+:  (using `bash`)
+
+```bash
+#!/bin/bash
+
+###### CONFIG
+ACCEPTED_HOSTS="/root/.hag_accepted.conf"
+BE_VERBOSE=false
+
+if [ "$UID" -ne 0 ]
+then
+echo "Superuser rights required"
+exit 2
+fi
+
+genApacheConf(){
+echo -e "# Host ${HOME_DIR}$1/$2 :"
+}
+
+echo '"quoted"' | tr -d \" > text.txt
+```
 
 [^1]: **Drawbacks**: No syntax highlighting. Instead, review relevant "Complex Markup" or "Via Markdown" syntax.
 [^2]: **Benefits**: Programatically consistent. **Drawbacks**: No internal markup (e.g. `<code>something <strong>bold</strong>`).
