@@ -47,9 +47,9 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 
 ### Via Mark<b>down</b> [^2]
 
-Use <code>&#96;&#96;&#96;slurm</code>, or—to add a class—use <code>&#96;&#96;&#96; { .slurm .job-script }</code>.
+Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .job-script }</code>.
 
-``` { .slurm .job-script }
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name
@@ -67,7 +67,7 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 ### Complex Mark<b>up</b> [^3]
 
 <pre class="job-script">
-<code class="language-slurm hljs">
+<code class="language-bash hljs">
 #!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name
@@ -84,13 +84,14 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 ## Syntax Highlighting
 
 Syntax
-:  <https://python-markdown.github.io/extensions/fenced_code_blocks/>
+:  [Python-Markdown `fenced_code_blocks`](https://python-markdown.github.io/extensions/fenced_code_blocks)
 
 Languages
-:  <https://pygments.org/languages/>
+:  <del>[Pygments: Languages](https://pygments.org/languages/)</del>[^4]
+:  <ins>[Highlight.js: Supported Languages](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md#supported-languages)</ins>
 
 Themes
-:  <https://highlightjs.org/static/demo/>
+:  [Highlight.js: Demo](https://highlightjs.org/static/demo/)
 
 Sample
 :  (using `bash`)
@@ -118,3 +119,4 @@ echo '"quoted"' | tr -d \" > text.txt
 [^1]: **Drawbacks**: No syntax highlighting. Instead, review relevant "Complex Markup" or "Via Markdown" syntax.
 [^2]: **Benefits**: Programatically consistent. **Drawbacks**: No internal markup (e.g. `<code>something <strong>bold</strong>`).
 [^3]: **Benefits**: Follows the [WHATWG standard example](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element).
+[^4]: Pygments is probably supported by MkDocs theme. We use ReadTheDocs theme, which uses Highlight.js.
