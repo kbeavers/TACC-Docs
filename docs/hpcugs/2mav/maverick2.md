@@ -1,49 +1,3 @@
-<script>
-function showhideserial() {
-	var div = document.getElementById("serial");
-	if (div.style.display == "block") {
-		document.getElementById("img-serial").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-serial").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhidempi() {
-	var div = document.getElementById("mpi");
-	if (div.style.display == "block") {
-		document.getElementById("img-mpi").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-mpi").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhideopenmp() {
-	var div = document.getElementById("openmp");
-	if (div.style.display == "block") {
-		document.getElementById("img-openmp").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-openmp").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-function showhidehybrid() {
-	var div = document.getElementById("hybrid");
-	if (div.style.display == "block") {
-		document.getElementById("img-hybrid").src = "../../../imgs/small-right-arrow.png";
-		div.style.display = "none";
-	} else {
-		div.style.display = "block";
-		document.getElementById("img-hybrid").src = "../../../imgs/small-down-arrow.png";
-	}
-}
-
-</script>
 <style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
 
 # Maverick2 User Guide
@@ -332,7 +286,7 @@ Alias | Command
 
 ### [Transferring Files Using `scp` and `rsync`](#transferring-scp) { #transferring-scp }
 
-You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](http://portal.tacc.utexas.edu/user-guides/stampede2#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
+You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](S2UG#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
 
@@ -412,9 +366,9 @@ Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler
 
 The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the following sections for detailed information:
 
-* [Submitting Jobs with `sbatch`](http://portal.tacc.utexas.edu/user-guides/stampede2#running-sbatch)
-* [Common `sbatch` options](http://portal.tacc.utexas.edu/user-guides/stampede2#table6)
-* [Launching Applications](http://portal.tacc.utexas.edu/user-guides/stampede2#launching-applications)
+* [Submitting Jobs with `sbatch`](S2UG#running-sbatch)
+* [Common `sbatch` options](S2UG#table6)
+* [Launching Applications](S2UG#launching-applications)
 
 ### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
@@ -422,7 +376,7 @@ The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the fo
 
 Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
 
-See Stampede2's [Monitoring Jobs and Queues](http://portal.tacc.utexas.edu/user-guides/stampede2#monitoring) section for additional information.
+See Stampede2's [Monitoring Jobs and Queues](S2UG#monitoring) section for additional information.
 
 #### [Table 6. Maverick2 Production Queues](#table6) { #table6 }
 
@@ -786,7 +740,7 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 
 Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](http://portal.tacc.utexas.edu/user-guides/stampede2#building).  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](S2UG#building).  
 
 ## [Help Desk](#help) { #help }
 
