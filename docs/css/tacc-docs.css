@@ -9,6 +9,7 @@
 /* CAVEAT: The `:has()` syntax is not supported in Firefox browser */
 :is(.cmd-line, .job-script, .syntax):not(:has(code)) {
     padding: 1em;
+    overflow: auto;
 }
 :is(.cmd-line, .job-script, .syntax):not(:has(code.hljs)) {
     color: #D0D0D0;
