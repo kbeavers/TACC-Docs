@@ -16,6 +16,12 @@
     background: #151515;
 }
 
+/* To add minimal hover state for <details> */
+/* TODO: Remove this after COr-Styles are loaded (task/tup-297-styles) */
+details > summary {
+  cursor: pointer;
+}
+
 
 
 }
