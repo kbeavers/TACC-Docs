@@ -45,9 +45,9 @@ After logging in again the system will generate a properly configured key pair.
 
 Regardless of your research workflow, <b>you’ll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the <a href="https://portal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
-### [Configuring Your Account](#admin-configuring)
+### [Configuring Your Account](#admin-configuring) { #admin-configuring }
 
-#### [Linux Shell](#admin-configuring-shell)
+#### [Linux Shell](#admin-configuring-shell) { #admin-configuring-shell }
 
 The default login shell for your user account is Bash. To determine your current login shell, execute: 
 
@@ -61,7 +61,7 @@ Before editing your startup files, however, it's worth taking the time to unders
 
 For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
 
-#### [Environment Variables](#admin-configuring-envvars)
+#### [Environment Variables](#admin-configuring-envvars) { #admin-configuring-envvars }
 
 Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the [modules](#using-modules-to-manage-your-environment) that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
 
@@ -73,7 +73,7 @@ Pipe the results of `env` into `grep` to focus on specific environment variables
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
-#### [Account-Level Diagnostics](#admin-configuring-diagnostics)
+#### [Account-Level Diagnostics](#admin-configuring-diagnostics) { #admin-configuring-diagnostics }
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
@@ -82,7 +82,7 @@ login1$ <b>sanitycheck</b></pre>
 
 Execute `module help sanitytool` for more information.
 
-#### [Using Modules to Manage your Environment](#admin-configuring-modules)
+#### [Using Modules to Manage your Environment](#admin-configuring-modules) { #admin-configuring-modules }
 
 [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod), a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Frontera that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 

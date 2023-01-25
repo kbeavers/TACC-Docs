@@ -1,4 +1,4 @@
-## [Frontera User Portal](#portal)
+## [Frontera User Portal](#portal) { #portal }
 
 <!-- p class="introtext">The Frontera project team is pleased to announce the release of new <a href="https://frontera-portal.tacc.utexas.edu/workbench/dashboard">Dashboard</a> functionality within the Frontera User Portal. Upon login, click on your name in the upper right corner to access your Frontera dashboard and account settings. </p -->
 

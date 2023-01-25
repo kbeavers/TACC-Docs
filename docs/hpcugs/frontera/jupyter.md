@@ -1,8 +1,8 @@
-## [Jupyter](#jupyter)
+## [Jupyter](#jupyter) { #jupyter }
 
 See the [Transferring Files](../transferring) section to learn how to transfer your datasets to Frontera, prior to starting a Jupyter session.
 
-### [Launch a Jupyter session](#jupyter-launch)
+### [Launch a Jupyter session](#jupyter-launch) { #jupyter-launch }
 
 You can launch a Jupyter session via the Frontera User Portal.
 
@@ -36,7 +36,7 @@ You can launch a Jupyter session via the Frontera User Portal.
 1. Navigate to the URL specified in the email, enter your password specified in the email,  and begin your session.
 
 
-### [References](#jupyter-refs)
+### [References](#jupyter-refs) { #jupyter-refs }
 
 * [Jupyter Documentation](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
 

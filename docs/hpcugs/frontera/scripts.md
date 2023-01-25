@@ -1,4 +1,4 @@
-## Customizable Job Scripts
+## [Sample Job Scripts](#jobscripts)
 
 <p class="introtext">Copy and customize the following jobs scripts by specifying and refining your job's requirements.</p>
 
@@ -7,9 +7,9 @@
 * specify tasks per node with the `-n` option
 * specify the project to be charged with the `-A` option.
 
-Consult [Table 6](../running#table-6-common-sbatch-options) for a listing of common Slurm `#SBATCH` options.
+Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm `#SBATCH` options.
 
-### Serial Jobs
+### [Serial Jobs](#jobscripts-serial)
 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). **Run all serial jobs in the `small` queue.**  Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
 
@@ -59,7 +59,7 @@ date
 
 </pre>
 
-### MPI Jobs 
+### [MPI Jobs](#jobscripts-mpi)
 
 This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
@@ -110,7 +110,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 </pre>
 
-### OpenMP Jobs
+### [OpenMP Jobs](#jobscripts-openmp)
 
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->
 **Run all OpenMP jobs in the `small` queue.**  
@@ -167,7 +167,7 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 
 </pre>
 
-### Hybrid (MPI + OpenMP) Job
+### [Hybrid (MPI + OpenMP) Job](#jobscripts-hybrid)
 
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
@@ -231,7 +231,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 </pre>
 
-### Parametric Sweep / HTC jobs
+### [Parametric Sweep / HTC jobs](#jobscripts-htc)
 
 Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
 

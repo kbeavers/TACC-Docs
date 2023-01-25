@@ -1,6 +1,5 @@
-## [Help Desk](#help)
+## [Help Desk](#help) { #help }
 
-### [Submit a Ticket](#help-submitticket)
 
 <p class="introtext"> <a href="https://portal.tacc.utexas.edu/consulting/overview">TACC Consulting</a> operates from 8am to 5pm CST, Monday through Friday, except for holidays.</p>
 

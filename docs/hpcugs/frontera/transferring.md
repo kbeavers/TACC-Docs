@@ -1,8 +1,8 @@
-## [Transferring your Files](#transferring)
+## [Transferring your Files](#transferring) { #transferring } 
 
 There are several transfer mechanism for data to Frontera, some of which depend on where and how the data are to be stored.  Please review the following transfer mechanisms.
 
-### [Windows Users](#transferring)
+### [Windows Users](#transferring-windows) { #transferring-windows } 
 
 TACC staff recommends the open-source [Cyberduck](https://cyberduck.io/) utility for both Windows and Mac users that do not already have a preferred tool.
 
@@ -14,19 +14,19 @@ Once connected, you can navigate through your remote file hierarchy using famili
 
 <!-- IMAGE3 -->
 
-### [Grid Community Toolkit](#transferring)
+### [Grid Community Toolkit](#transferring-gct) { #transferring-gct } 
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.  
 
 Frontera has one Grid Community Toolkit endpoint. All users may authenticate using the CILogon myproxy authentication. See [Using Grid Community Toolkit at TACC][TACCGRIDCOMMUNITYTOOLKIT] for detailed information.  
 
-### [SSH Utilities: `scp` & `rsync`](#transferring)
+### [SSH Utilities: `scp` & `rsync`](#transferring-ssh) { #transferring-ssh } 
 
 The `scp` and `rsync` commands are standard UNIX data transfer mechanisms used to transfer moderate size files and data collections between systems. These applications use a single thread to transfer each file one at a time. The `scp` and `rsync` utilities are typically the best methods when transferring Gigabytes of data.  For larger data transfers, parallel data transfer mechanisms, e.g., Grid Community Toolkit, can often improve total throughput and reliability.
 
 You can transfer files between Frontera and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows SSH clients, such as Cyberduck and [Filezilla](https://filezilla-project.org/), typically include `scp`-based file transfer capabilities.
 
-#### [Transferring Files with **`scp`**](#transferring)
+#### [Transferring Files with **`scp`**](#transferring-scp) { #transferring-scp } 
 
 Data transfer from any Linux system can be accomplished using the `scp` utility to copy data to and from the login node. A file can be copied from your local system to the remote server by using the command:
 
@@ -70,7 +70,7 @@ Instead, use `tar` to create an archive of the directory, then transfer the dire
 localhost$ <b>tar cvf ./mydata.tar mydata                                  # create archive</b>
 localhost$ <b>scp     ./mydata.tar bjones@frontera.tacc.utexas.edu:\$WORK  # transfer archive</b></pre>
 
-#### [Transferring Files with `rsync`](#transferring)
+#### [Transferring Files with `rsync`](#transferring-rsync) { #transferring-rsync } 
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
@@ -98,7 +98,7 @@ For more `rsync` options and command details, run the command "`rsync -h`" or:
 
 When executing multiple instantiations of `scp` or `rsync`, please limit your transfers to no more than 2-3 processes at a time.
 
-### [Sharing Files with Collaborators](#transferring)
+### [Sharing Files with Collaborators](#transferring-sharing) { #transferring-sharing } 
 
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES] for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
