@@ -125,8 +125,7 @@ You may, of course, need to customize the build process in other ways. It's like
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
-![Building Frontera](IMAGEDIR/frontera/buildingfrontera.png)   
-Building Frontera
+<img alt="Building Frontera" src="IMAGEDIR/frontera/buildingfrontera.png">
 
 ### The Intel Math Kernel Library (MKL)
 

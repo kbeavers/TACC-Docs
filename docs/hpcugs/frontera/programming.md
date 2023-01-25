@@ -64,8 +64,7 @@ It's often worthwhile to generate [optimization and vectorization reports](http:
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](https://learn.tacc.utexas.edu/course/).
 
-![Frontera Assembly](IMAGEDIR/frontera/fronteradennis.png)    
-Frontera Assembly
+<img alt="Frontera Assembly" src="IMAGEDIR/frontera/fronteradennis.png">
 
 ### Programming and Performance: CLX
 

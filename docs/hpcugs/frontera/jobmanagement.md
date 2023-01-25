@@ -97,8 +97,7 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's 56 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
-![Above Frontera](IMAGEDIR/frontera/abovefrontera.png)   
-Above Frontera
+<img alt="Above Frontera" src="IMAGEDIR/frontera/abovefrontera.png">
 
 ### Other Job Management Commands <br>`scancel`, `scontrol`, and `sacct`
 

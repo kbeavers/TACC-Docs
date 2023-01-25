@@ -16,7 +16,7 @@
 * **All users: read the [Good Conduct](#conduct) section.** Frontera is a shared resource and your actions can impact other users. (10/10/2019) 
 
 
-![Frontera Art](../../../imgs/frontera/frontera-art.jpg)
+<img alt="Frontera Art" src="../../../imgs/frontera/frontera-art.jpg">
 
 ## [Introduction to Frontera](#intro)
 
@@ -26,8 +26,7 @@ Frontera provides a balanced set of capabilities that supports both capability a
 
 The design is anchored by Intel's top-of-the-line (at deployment) Xeon processor, Cascade Lake © (CLX). With a higher clock rate than other recent HPC processors, Intel's CLX processor delivers effective performance in the most commonly used and accessible programming model used in science applications today. Frontera's multi-tier storage system is designed to enable science at unprecedented scales with nearly 60 PB of Lustre-based storage, including 3 PB of flash storage for data-driven science applications that depend upon fast access to large amounts of data.  
 
-![Frontera Racks](../../../imgs/frontera/fronteraracks.png)   
-Frontera Racks
+<img alt="Frontera Racks" src="../../../imgs/frontera/fronteraracks.png">
 
 Frontera is also breaking new ground in its support for science applications. During the first six months of operation the system will provide support for users to run jobs using [containers](#containers), immediately making tens of thousands of container-ready applications accessible on Frontera without the need for users to find and build their own versions.  
 
@@ -47,8 +46,7 @@ Frontera's design also includes a totally new integration with web services, and
 * Review the [default modules with "`module list`"](../admin/#using-modules-to-manage-your-environment). Make any changes needed for your code. 
 * Start small. Run any jobs from other systems on a smaller scale in order to test the performance of your code on Frontera. You may find your code needs to be altered or recompiled in order to perform well and at scale on the new system. 
 
-![Below Frontera](../../../imgs/frontera/belowfrontera.png)   
-Below Frontera
+<img alt="Below Frontera" src="../../../imgs/frontera/belowfrontera.png">
 ## [Account Administration](#admin) { #admin }
 
 <!-- p class="introtext">Discuss account status, account configuration.</p -->
@@ -214,8 +212,8 @@ See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensiv
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">`module save`</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Frontera's default startup scripts for a safe way to do so.
 
-![Frontera Assembly](../../../imgs/frontera/fronteralaura.png)    
-Frontera Assembly
+<img alt="Frontera Assembly" src="../../../imgs/frontera/fronteralaura.png">
+
 ## [Frontera User Portal](#portal)
 
 <!-- p class="introtext">The Frontera project team is pleased to announce the release of new <a href="https://frontera-portal.tacc.utexas.edu/workbench/dashboard">Dashboard</a> functionality within the Frontera User Portal. Upon login, click on your name in the upper right corner to access your Frontera dashboard and account settings. </p -->
@@ -420,7 +418,7 @@ Frontera's four login nodes are Intel Xeon Platinum 8280 ("Cascade Lake") nodes 
 
 The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) connectivity between the switches and HDR100 (100 Gb/s) connectivity to the compute nodes. A fat tree topology employing six core switches connects the compute nodes and the `$HOME` and `$SCRATCH` filesystems. There are two 40-port leaf switches in each rack. Half of the nodes in a rack (44) connect to 22 downlinks of a leaf switch as pairs of HDR100 (100 Gb/s) links into HDR200 (200 Gb/s) ports of the leaf switch. The other 18 ports are uplinks to the six cores switches. The disparity in the number of uplinks and downlinks creates an oversubscription of 22/18.
 
-![Frontera Cables](../../../imgs/frontera/fronteracables.png)    
+<img alt="Frontera Cables" src="../../../imgs/frontera/fronteracables.png">
 Frontera Cables
 
 ## [Managing Files on Frontera](#files)
@@ -471,7 +469,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar5`, `stampede2`) will exist **only** if you have an allocation on that system.
 
 #### [Figure 3. Stockyard File System](#figure3)
-![Stockyard File System](../../../imgs/stockyard-2022.jpg)  
+<img alt="Stockyard File System" src="../../../imgs/stockyard-2022.jpg"> 
 
 **Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar5`, `stampede2`) exist only if you have allocations on the associated system.
 
@@ -521,7 +519,7 @@ There are several transfer mechanism for data to Frontera, some of which depend 
 
 TACC staff recommends the open-source [Cyberduck](https://cyberduck.io/) utility for both Windows and Mac users that do not already have a preferred tool.
 
-![cyberduck logo](../../../imgs/frontera/transferring-cyberduck.png) [Download Cybercuck](https://cyberduck.io/download/)
+<img alt="cyberduck logo" src="../../../imgs/frontera/transferring-cyberduck.png"> [Download Cybercuck](https://cyberduck.io/download/)
 
 Click on the "Open Connection" button in the top right corner of the Cyberduck window to open a connection configuration window (as shown below) transfer mechanism, and type in the server name "**`frontera.tacc.utexas.edu`**". Add your username and password in the spaces provided, and if the "more options" area is not shown click the small triangle or button to expand the window; this will allow you to enter the path to your project area so that when Cyberduck opens the connection you will immediately see your data. Then click the "Connect" button to open your connection.
 
@@ -829,8 +827,7 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
  The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../conduct) for more information.
 
 #### [Figure 2. Login and Compute Nodes](#running)
-![Login and Compute Nodes](../../../imgs/login-compute-nodes.jpg)   
-Login and Compute Nodes
+<img alt="[Figure 2. Login and Compute Nodes" src="../../../imgs/login-compute-nodes.jpg">
 
 You can use your command-line prompt, or the `hostname` command, to discern whether you are on a login node or a compute node. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname <span style="white-space: nowrap;">(e.g. `c401-064`)</span>. The hostname for a Frontera login node begins with the string `login` (e.g. `login2.frontera.tacc.utexas.edu`), while compute node hostnames begin with the character `c` <span style="white-space: nowrap;">(e.g. `c401-064.frontera.tacc.utexas.edu`)</span>. 
 
@@ -1307,8 +1304,7 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's 56 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
-![Above Frontera](../../../imgs/frontera/abovefrontera.png)   
-Above Frontera
+<img alt="Above Frontera" src="../../../imgs/frontera/abovefrontera.png">
 
 ### Other Job Management Commands <br>`scancel`, `scontrol`, and `sacct`
 
@@ -1465,8 +1461,7 @@ You may, of course, need to customize the build process in other ways. It's like
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
-![Building Frontera](../../../imgs/frontera/buildingfrontera.png)   
-Building Frontera
+<img alt="Building Frontera" src="../../../imgs/frontera/buildingfrontera.png">
 
 ### The Intel Math Kernel Library (MKL)
 
@@ -1616,8 +1611,7 @@ It's often worthwhile to generate [optimization and vectorization reports](http:
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](https://learn.tacc.utexas.edu/course/).
 
-![Frontera Assembly](../../../imgs/frontera/fronteradennis.png)    
-Frontera Assembly
+<img alt="Frontera Assembly" src="../../../imgs/frontera/fronteradennis.png">
 
 ### Programming and Performance: CLX
 
@@ -1923,13 +1917,12 @@ You can launch a Jupyter session via the Frontera User Portal.
 
 1. Login to the [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/login) and Select "My Dashboard" under your account name pulldown:
 
-	![Login to the Frontera Portal](../../../imgs/frontera/jupyter-selectDashboard.png)  
-	<!-- Figure 1. Login to the Frontera Portal -->  
+	<img alt="Login to the Frontera Portal" src="../../../imgs/frontera/jupyter-selectDashboard.png">
 
 1. From the workbench dashboard, click "Applications" in the left nav, then click "Data Processing" and select "Frontera HPC Jupyter":   
 
-	![Select Jupyter Notebook](../../../imgs/frontera/jupyter-selectJupyter.png)
-	<!-- Figure 2. Select Jupyter Notebook -->
+	<img alt="Select Jupyter Notebook" src="../../../imgs/frontera/jupyter-selectJupyter.png">
+	<img alt="Figure 2. Select Jupyter Notebook" src="../../../imgs/frontera/jupyter-selectDashboard.png">
 
 1. Fill out and submit the form:    
 
@@ -1942,13 +1935,11 @@ You can launch a Jupyter session via the Frontera User Portal.
 	* **Job name**: this is the portal/Tapis name for the job and will be used in the notifications indicating the job has started, etc. This is just for bookkeeping so the user knows what job is being referred to.  
 
 
-	![Submit session request form](../../../imgs/frontera/jupyter-fillForm.png)  
-	<!-- Figure 3. Submit session request form -->
+	<img alt="Figure 3. Submit session request form" src="../../../imgs/frontera/jupyter-fillForm.png">
 
 1. Submitting the form initiates a request to the Slurm scheduler to reserve a compute node for a specified time.  In the example above, `bjones` requests a two-hour Jupyter session in Frontera's `small` queue on a single node.  **Depending upon Frontera's load, Slurm may take several minutes to several hours** to fulfill the node request.  Once Slurm allocate time for the job, you'll be automatically notified at the given email address with instructions and a password on how to connect to the session.
 
-	![Notification email](../../../imgs/frontera/jupyter-email.png)
-	<!-- Figure 4. Notification email -->
+	<img alt="Figure 4. Notification email" src="../../../imgs/frontera/jupyter-email.png">
 
 
 1. Navigate to the URL specified in the email, enter your password specified in the email,  and begin your session.
@@ -2021,20 +2012,20 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 * Enter "203416866386" in the "Account ID" field 
 * Enter your [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/) ID in the "IAM user name" field.
 * New users enter the temporary password contained in your welcome email, then reset your password.  
-	![AWS-login](../../../imgs/frontera/AWS-login.png) 
+	<img alt="AWS-login" src="../../../imgs/frontera/AWS-login.png"> 
 
 #### [Add MFA](#cloudservices-amazon-mfa)
 
 Follow these instructions to enable MFA on your account. **Do not navigate away from the MFA window during the pairing process, or else your account may be left in an unstable state.** 
 
 1. From the top menu "<i>username</i>@2034-1686-6386", select "My Security Credentials"  
-	![AWS-securitycredentials.png](../../../imgs/frontera/AWS-securitycredentials.png)  
+	<img alt="AWS-securitycredentials" src="../../../imgs/frontera/AWS-securitycredentials.png"> 
 
 1. Click on the "Assign MFA device" button in the "Multi-factor authentication (MFA)" section. Then, select the "Virtual MFA device" option and click "Continue".  
-	![AWS-managemfadevice.png](../../../imgs/frontera/AWS-managemfadevice.png)  
+	<img alt="AWS-managemfadevice" src="../../../imgs/frontera/AWS-managemfadevice.png"> 
 
 1. Choose an Authentication method. Scroll down to see a list of free options. Many TACC users employ Duo Mobile or Google Authenticator. Open the authenticator app of your choice, scan the displayed QR code to add the account, then input the MFA codes as directed. 
-	![AWS-mfaapplications.png](../../../imgs/frontera/AWS-mfaapplications.png)  
+	<img alt="AWS-mfaapplications" src="../../../imgs/frontera/AWS-mfaapplications.png"> 
 
 1. Once the pairing process is completed, sign out and then log back in. **You will not be able to successfully proceed to the next step without doing so.**
 
@@ -2043,7 +2034,7 @@ Follow these instructions to enable MFA on your account. **Do not navigate away 
 <p class="msg-alert"><i>NOTE:</i> You must set up MFA and use it to log in to the AWS console prior to viewing or editing your access keys.</p>
 
 1. Once again, select "My Security Credentials" from the top menu, then click the "Create access key" button in the "Access keys for CLI, SDK, & API access" section.  
-	![AWS-accesskeyavailable](../../../imgs/frontera/AWS-accesskeyavailable.png)  
+	<img alt="AWS-accesskeyavailable" src="../../../imgs/frontera/AWS-accesskeyavailable.png"> 
 
 1. Install CLI: Follow the instructions at <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html>.
 1. For more info see [Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
@@ -2067,13 +2058,13 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 
 1. Navigate to the [Microsoft Azure Portal](https://portal.azure.com) and login with your TACC User Portal account.  
-	<img border="1" alt="Azure Portal Home" src="../../../imgs/frontera/image01.png" width="800">  <p>&nbsp;</p>
+	<img border="1" alt="Azure Portal Home" src="../../../imgs/frontera/image01.png"> 
 
 1. Click "Storage accounts". You should see a screen like the following:  
-	<img border="1" alt="" src="../../../imgs/frontera/image02.png" width="800">  <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image02.png"> 
 
 1. Click "Add". This should bring up the following form:  
-	![image3](../../../imgs/frontera/image03.png)  <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image03.png"> 
 
 1. Fill in the form to create a storage account. 
 
@@ -2087,28 +2078,28 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 	* Click Review+create to submit the form and run the audit.
 
-	![image4](../../../imgs/frontera/image04.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image04.png"> 
 
 
 1. Once Validation has completed, confirm that you see a green "Validation passed" message (see screenshot below), review the account details and click "Create" to actually create the storage account.
 
-	![image5](../../../imgs/frontera/image05.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image05.png"> 
 
 1. You will see a screen that says "Your deployment is underway..."; this will take a few minutes. 
-	![image6](../../../imgs/frontera/image06.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image06.png"> 
 
 1. Eventually it should say "Your deployment is complete".
-	![image7](../../../imgs/frontera/image07.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image07.png"> 
 
 
 #### [Retrieve Account Access Keys](#cloudservices-azure-keys)
 
 1. Go to Home -&gt; Storage accounts; You should see a list of your storage account similar to the following:
-	![image8](../../../imgs/frontera/image08.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image08.png"> 
 
 
 1. Select the storage account you created in part 1). This should bring up an overview screen for the storage account which should look similar to:
-	![image9](../../../imgs/frontera/image09.png)  <p>&nbsp;</p>
+	<img border="1" alt="" src="../../../imgs/frontera/image09.png"> 
 
 1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)  <p>&nbsp;</p> 1. --> Copy the key to your clipboard.
 
@@ -2295,7 +2286,8 @@ Frontera provides seamless, integrated support for the use of Singularity contai
 
 Frontera supports application containers from any specification-compliant science community (e.g. Biocontainers, with over 3,000 containers and counting, and the Nvidia GPU Cloud Library), opening this important resource for a wide range of new applications and new science communities. To make the experience seamless, our implementation injects mount points and environment variables into the container to match the HPC system environment – the `$SCRATCH`, `$WORK`, and `$HOME` filesystems all are identical to what users see natively on any Frontera node. 
 
-See the [Containers@TACC](../docs/containers-at-tacc.pdf) documentation for detailed information.
+<! -- SDL -->
+<!-- See the [Containers@TACC](../docs/containers-at-tacc.pdf) documentation for detailed information.-->
 ## [Help Desk](#help)
 
 ### [Submit a Ticket](#help-submitticket)

@@ -8,13 +8,12 @@ You can launch a Jupyter session via the Frontera User Portal.
 
 1. Login to the [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/login) and Select "My Dashboard" under your account name pulldown:
 
-	![Login to the Frontera Portal](IMAGEDIR/frontera/jupyter-selectDashboard.png)  
-	<!-- Figure 1. Login to the Frontera Portal -->  
+	<img alt="Login to the Frontera Portal" src="IMAGEDIR/frontera/jupyter-selectDashboard.png">
 
 1. From the workbench dashboard, click "Applications" in the left nav, then click "Data Processing" and select "Frontera HPC Jupyter":   
 
-	![Select Jupyter Notebook](IMAGEDIR/frontera/jupyter-selectJupyter.png)
-	<!-- Figure 2. Select Jupyter Notebook -->
+	<img alt="Select Jupyter Notebook" src="IMAGEDIR/frontera/jupyter-selectJupyter.png">
+	<img alt="Figure 2. Select Jupyter Notebook" src="IMAGEDIR/frontera/jupyter-selectDashboard.png">
 
 1. Fill out and submit the form:    
 
@@ -27,13 +26,11 @@ You can launch a Jupyter session via the Frontera User Portal.
 	* **Job name**: this is the portal/Tapis name for the job and will be used in the notifications indicating the job has started, etc. This is just for bookkeeping so the user knows what job is being referred to.  
 
 
-	![Submit session request form](IMAGEDIR/frontera/jupyter-fillForm.png)  
-	<!-- Figure 3. Submit session request form -->
+	<img alt="Figure 3. Submit session request form" src="IMAGEDIR/frontera/jupyter-fillForm.png">
 
 1. Submitting the form initiates a request to the Slurm scheduler to reserve a compute node for a specified time.  In the example above, `bjones` requests a two-hour Jupyter session in Frontera's `small` queue on a single node.  **Depending upon Frontera's load, Slurm may take several minutes to several hours** to fulfill the node request.  Once Slurm allocate time for the job, you'll be automatically notified at the given email address with instructions and a password on how to connect to the session.
 
-	![Notification email](IMAGEDIR/frontera/jupyter-email.png)
-	<!-- Figure 4. Notification email -->
+	<img alt="Figure 4. Notification email" src="IMAGEDIR/frontera/jupyter-email.png">
 
 
 1. Navigate to the URL specified in the email, enter your password specified in the email,  and begin your session.

@@ -10,5 +10,4 @@
 * Review the [default modules with "`module list`"](../admin/#using-modules-to-manage-your-environment). Make any changes needed for your code. 
 * Start small. Run any jobs from other systems on a smaller scale in order to test the performance of your code on Frontera. You may find your code needs to be altered or recompiled in order to perform well and at scale on the new system. 
 
-![Below Frontera](IMAGEDIR/frontera/belowfrontera.png)   
-Below Frontera
+<img alt="Below Frontera" src="IMAGEDIR/frontera/belowfrontera.png">

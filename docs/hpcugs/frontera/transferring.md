@@ -6,7 +6,7 @@ There are several transfer mechanism for data to Frontera, some of which depend 
 
 TACC staff recommends the open-source [Cyberduck](https://cyberduck.io/) utility for both Windows and Mac users that do not already have a preferred tool.
 
-![cyberduck logo](IMAGEDIR/frontera/transferring-cyberduck.png) [Download Cybercuck](https://cyberduck.io/download/)
+<img alt="cyberduck logo" src="IMAGEDIR/frontera/transferring-cyberduck.png"> [Download Cybercuck](https://cyberduck.io/download/)
 
 Click on the "Open Connection" button in the top right corner of the Cyberduck window to open a connection configuration window (as shown below) transfer mechanism, and type in the server name "**`frontera.tacc.utexas.edu`**". Add your username and password in the spaces provided, and if the "more options" area is not shown click the small triangle or button to expand the window; this will allow you to enter the path to your project area so that when Cyberduck opens the connection you will immediately see your data. Then click the "Connect" button to open your connection.
 

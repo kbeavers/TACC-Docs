@@ -16,5 +16,5 @@
 * **All users: read the [Good Conduct](#conduct) section.** Frontera is a shared resource and your actions can impact other users. (10/10/2019) 
 
 
-![Frontera Art](IMAGEDIR/frontera/frontera-art.jpg)
+<img alt="Frontera Art" src="IMAGEDIR/frontera/frontera-art.jpg">
 
