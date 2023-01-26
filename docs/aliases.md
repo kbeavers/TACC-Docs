@@ -5,6 +5,11 @@
 [CORRALUG]: http://portal.tacc.utexas.edu/user-guides/corral  "Corral User Guide"
 [RANCHUG]: http://portal.tacc.utexas.edu/user-guides/ranch  "Ranch User Guide"
 
+<!-- common links -->
+[STAMPEDE2UGRUNNING]: http://portal.tacc.utexas.edu/user-guides/stampede2#running  "Stampede2 User Guide"
+[FRONTERAUGRUNNING]: https://frontera-portal.tacc.utexas.edu/user-guide/#running  "Frontera User Guide"
+
+
 <!-- consulting -->
 [CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"
 [TACCUSERPORTAL]: http://portal.tacc.utexas.edu "TACC User Portal"

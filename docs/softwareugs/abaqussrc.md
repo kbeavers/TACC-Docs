@@ -2,7 +2,7 @@
 *Last update: November 2, 2021*
 
 
-<img alt="ABAQUS logo" src="../../../imgs/software/abaqus-logo.png" style="width:25%;"> 
+<img alt="ABAQUS logo" src="IMAGEDIR/software/abaqus-logo.png" style="width:25%;"> 
 The ABAQUS software suite from Dassault Systems is used for finite element analysis and computer-aided engineering.  The ABAQUS software is used on TACC resources for projects from a variety of domains, such as petroleum engineering, biomedical engineering, and aerospace engineering. 
 
 ## [Request Access to ABAQUS](#access) { #access }
@@ -17,7 +17,7 @@ For all ABAQUS technical questions, contact the customer care for Dassault Syste
 
 ### [License Tokens](#access-license) { #access-license }
 
-**TACC has a limited number of ABAQUS license tokens available.** Please submit a support ticket requesting the license server name.  In this document we'll refer to the license server as <span style="white-space: nowrap;">"`port-number@license-server`"</span>. In order to use this license server, the ABAQUS users should add the following line to their job script: 
+**TACC has a limited number of ABAQUS license tokens available.** Please submit a support ticket requesting the license server name.  In this document we'll refer to the license server as NOWRAP"`port-number@license-server`"ESPAN. In order to use this license server, the ABAQUS users should add the following line to their job script: 
 
 <pre class="cmd-line">$ <b>export ABAQUSLM_LICENSE_FILE=port-number@license-server</b></pre>
 

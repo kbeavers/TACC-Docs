@@ -25,23 +25,23 @@ nav:
 #   - Stallion: hpcugs/stallion/stallion.md
   - Software :
     - ABAQUS: softwareugs/abaqus.md
-    - ANSYS: softwareugs/ansys.md
-    - CD Tools: softwareugs/cdtools.md
-    - Gaussian: softwareugs/gaussian.md
-    - GROMACS: softwareugs/gromacs.md
-    - idev: softwareugs/idev.md
-    - IRODS: softwareugs/irods.md
-    - LAMMPS: softwareugs/lammps.md
-    - Launcher: softwareugs/launcher.md
-    - MATLAB: softwareugs/matlab.md
-    - NAMD: softwareugs/namd.md
-    - OpenFOAM: softwareugs/openfoam.md
-    - Paraview VisIt: softwareugs/paraview-visit.md
-    - Quantum Espresso: softwareugs/quantumespresso.md 
-    - REMORA: softwareugs/remora.md
-    - TAU: softwareugs/tau.md
-    - Tensorflow: softwareugs/tensorflow.md
-    - VASP: softwareugs/vasp.md
+#   - ANSYS: softwareugs/ansys.md
+#   - CD Tools: softwareugs/cdtools.md
+#   - Gaussian: softwareugs/gaussian.md
+#   - GROMACS: softwareugs/gromacs.md
+#   - idev: softwareugs/idev.md
+#   - IRODS: softwareugs/irods.md
+#   - LAMMPS: softwareugs/lammps.md
+#   - Launcher: softwareugs/launcher.md
+#   - MATLAB: softwareugs/matlab.md
+#   - NAMD: softwareugs/namd.md
+#   - OpenFOAM: softwareugs/openfoam.md
+#   - Paraview VisIt: softwareugs/paraview-visit.md
+#   - Quantum Espresso: softwareugs/quantumespresso.md 
+#   - REMORA: softwareugs/remora.md
+#   - TAU: softwareugs/tau.md
+#   - Tensorflow: softwareugs/tensorflow.md
+#   - VASP: softwareugs/vasp.md
 
 #    - GROMACS: softwareugs/gromacs.md
 #    - Gaussian: softwareugs/gaussian.md
