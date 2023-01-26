@@ -3,13 +3,15 @@ SRC	=	\
 	abaqussrc.md \
 	ansyssrc.md \
 	alphafoldsrc.md \
-	cdtoolssrc.md
+	cdtoolssrc.md \
+	gaussiansrc.md
 
 OBJS	=	\
 	abaqus.md \
 	ansys.md \
 	alphafold.md \
-	cdtools.md
+	cdtools.md \
+	gaussian.md
 
 
 all:	$(OBJS)
@@ -26,11 +28,19 @@ alphafold.md: alphafoldsrc.md
 cdtools.md: cdtoolssrc.md
 	./configurestrings.sh cdtoolssrc.md cdtools.md 
 
+gaussian.md:	gaussiansrc.md
+	./configurestrings.sh gaussiansrc.md gaussian.md 
+
+
+
+
+
+
 # ugh makefile in progress...
-gromacs:	gromacssrc.md
-	filename="`echo "gromacssrc" | sed -e "s/src//g"` + ".md""
-	echo $filename
-	./configurestrings.sh gromacssrc.md $filename 
+#gromacs:	gromacssrc.md
+#	filename="`echo "gromacssrc" | sed -e "s/src//g"` + ".md""
+#	echo $filename
+#	./configurestrings.sh gromacssrc.md $filename 
 
 
 

@@ -40,7 +40,7 @@ You will obtain a list of output files or directories copied back to your target
 
 ## [Notes](#notes) { #notes }
 
-* This tool should work for both batch mode and interactive mode. An example job script can be found in ${CDTools}/test.
+* This tool should work for both batch mode and interactive mode. An example job script can be found in `${CDTools}/test`.
 * When using the tool, users should test their workflow with CDTools before any productive runs to make sure required files are successfully distributed and collected.
 * Users should still understand and respect the `/tmp` limit and other I/O rules when using it.
 

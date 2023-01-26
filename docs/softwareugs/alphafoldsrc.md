@@ -1,5 +1,5 @@
 # AlphaFold at TACC
-*Last update: May 31, 2022*
+*Last update: May 31, 2022* xx
 
 
 <img alt="AlphaFold logo" src="IMAGEDIR/software/alphafold-logo.png" style="width:25%;">
