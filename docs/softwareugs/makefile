@@ -2,24 +2,29 @@ HAML	=	/usr/local/bin/md
 SRC	=	\
 	abaqussrc.md \
 	ansyssrc.md \
-	alphafoldsrc.md
+	alphafoldsrc.md \
+	cdtoolssrc.md
 
 OBJS	=	\
-	abaqus \
-	ansys \
-	alphafold
+	abaqus.md \
+	ansys.md \
+	alphafold.md \
+	cdtools.md
 
 
 all:	$(OBJS)
 
-abaqus:	abaqussrc.md
+abaqus.md:	abaqussrc.md
 	./configurestrings.sh abaqussrc.md abaqus.md 
 
-ansys: ansyssrc.md
+ansys.md: ansyssrc.md
 	./configurestrings.sh ansyssrc.md ansys.md 
 
-alphafold: alphafoldsrc.md
+alphafold.md: alphafoldsrc.md
 	./configurestrings.sh alphafoldsrc.md alphafold.md 
+
+cdtools.md: cdtoolssrc.md
+	./configurestrings.sh cdtoolssrc.md cdtools.md 
 
 # ugh makefile in progress...
 gromacs:	gromacssrc.md
