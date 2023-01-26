@@ -25,7 +25,7 @@ nav:
 #   - Stallion: hpcugs/stallion/stallion.md
   - Software :
     - ABAQUS: softwareugs/abaqus.md
-#   - ANSYS: softwareugs/ansys.md
+    - ANSYS: softwareugs/ansys.md
 #   - CD Tools: softwareugs/cdtools.md
 #   - Gaussian: softwareugs/gaussian.md
 #   - GROMACS: softwareugs/gromacs.md

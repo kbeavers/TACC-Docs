@@ -11,10 +11,13 @@ SRC	=	\
 	$(HAML) $< $@
 
 
-all:	abaqus	
+all:	abaqus ansys	
 
 abaqus:	abaqussrc.md
 	./configurestrings.sh abaqussrc.md abaqus.md 
+
+ansys: ansyssrc.md
+	./configurestrings.sh ansyssrc.md ansys.md 
 
 # ugh makefile in progress...
 gromacs:	gromacssrc.md

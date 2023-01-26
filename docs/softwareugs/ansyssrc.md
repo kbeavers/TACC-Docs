@@ -2,7 +2,7 @@
 *Last update: March 8, 2022*
 
 
-<img alt="ANSYS logo" src="../../../imgs/software/ansys-logo.png" style="width:25%" /> 
+<img alt="ANSYS logo" src="IMAGEDIR/software/ansys-logo.png" style="width:25%" /> 
 ANSYS offers a comprehensive software suite that spans the entire range of physics, providing access to virtually any field of engineering simulation that a design process requires. ANSYS sofware is used to simulate computer models of structures, electronics, or machine components for analyzing strength, toughness, elasticity, temperature distribution, electromagnetism, fluid flow, and other attributes.
 
 ANSYS is installed at TACC and is currently installed on TACC's [Frontera][FRONTERAUG], [Lonestar6][LONESTAR6UG] and [Stampede2][STAMPEDE2UG] resources. 
@@ -47,7 +47,7 @@ Launch the ANSYS GUI within the VNC session:
 <pre class="cmd-line">$ <b>/home1/apps/ANSYS/2021R2/v212/ansys/bin/launcher212</b></pre>
 
 <figure>
-	<img alt="ANSYS1" src="../../../imgs/software/ansys-1.png"/>
+	<img alt="ANSYS1" src="IMAGEDIR/software/ansys-1.png"/>
 	<figcaption> Figure 1. Commands to run Ansys Mechanical Ansys Parametric Design Language (APDL) jobs </figcaption></figure>
 
 
@@ -67,18 +67,18 @@ You can also submit your ANSYS job to the batch nodes (compute nodes) on TACC re
 #SBATCH -p normal                # designate queue 
 
 module load ansys
-# <span style="color:blue;font-style:bold">Your-ANSYS-COMMAND-HERE</span>
+# STYLEBLUEYour-ANSYS-COMMAND-HEREESPAN
 # Define your working directory
 MY_JOB_DIR = /scratch1/01234/joe/Ansys_test
 
 # Run ANSYS Job
 &quot;/home1/apps/ANSYS/v201/ansys/bin/mapdl&quot; \
 		-p ansys -dis -mpi INTELMPI -np 56 -lch    \
-		-dir &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR</span>&quot; \
+		-dir &quot;STYLEBLUE$MY_JOB_DIRESPAN&quot; \
 		-j &quot;Ansys_test&quot; -s read -l en-us -b \
-		&lt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_input.txt</span>&quot; &gt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_output.out</span>&quot;</pre>
+		&lt; &quot;STYLEBLUE$MY_JOB_DIR/Ansys_test_input.txtESPAN&quot; &gt; &quot;STYLEBLUE$MY_JOB_DIR/Ansys_test_output.outESPAN&quot;</pre>
 
-To obtain the correct <span style="color:blue;font-style:bold">`Your-ANSYS-COMMAND-HERE`</span>, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No "`ibrun`" or "`mpirun`" command is needed for running ANSYS jobs.
+To obtain the correct STYLEBLUE`Your-ANSYS-COMMAND-HERE`ESPAN, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No "`ibrun`" or "`mpirun`" command is needed for running ANSYS jobs.
 
 Other ANSYS binaries, e.g. Aqwa, CFX, Fluent, can be found at `/home1/apps/ANSYS/2021R2/v212`. 
 	
@@ -112,7 +112,7 @@ Other ANSYS binaries, e.g. Aqwa, CFX, Fluent, can be found at `/home1/apps/ANSYS
 			
 In the figure below, the small window on top displays the command to run an ANSYS Mechanical job through the command line, which corresponds to the information (i.e., Working directory, Job Name, Input File, Output File) entered on the bottom.
 
-<figure> <img alt="ANSYS" src="../../../imgs/software/ansys-2.png">
+<figure> <img alt="ANSYS" src="IMAGEDIR/software/ansys-2.png">
 	<figcaption> Figure 2. Ansys Mechanical Ansys Parametric Design Language (APDL) Product Launcher </figcaption></figure>
 		
 
