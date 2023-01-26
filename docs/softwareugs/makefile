@@ -1,23 +1,25 @@
 HAML	=	/usr/local/bin/md
 SRC	=	\
-		gaussian.md \
-		gromacssrc.md \
-		tensorflow.md \
-		vasp.md
+	abaqussrc.md \
+	ansyssrc.md \
+	alphafoldsrc.md
 
-# OBJ =	$(SRC:%.md=%.html)
+OBJS	=	\
+	abaqus \
+	ansys \
+	alphafold
 
-.md.html :
-	$(HAML) $< $@
 
-
-all:	abaqus ansys	
+all:	$(OBJS)
 
 abaqus:	abaqussrc.md
 	./configurestrings.sh abaqussrc.md abaqus.md 
 
 ansys: ansyssrc.md
 	./configurestrings.sh ansyssrc.md ansys.md 
+
+alphafold: alphafoldsrc.md
+	./configurestrings.sh alphafoldsrc.md alphafold.md 
 
 # ugh makefile in progress...
 gromacs:	gromacssrc.md
@@ -28,8 +30,4 @@ gromacs:	gromacssrc.md
 
 
 .SUFFIXES:	.md .html
-
-clean:
-	cd ../include; make clean
-	/bin/rm *.html
 

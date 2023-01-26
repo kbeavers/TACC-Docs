@@ -26,6 +26,7 @@ nav:
   - Software :
     - ABAQUS: softwareugs/abaqus.md
     - ANSYS: softwareugs/ansys.md
+    - AlphaFold : softwareugs/alphafold.md
 #   - CD Tools: softwareugs/cdtools.md
 #   - Gaussian: softwareugs/gaussian.md
 #   - GROMACS: softwareugs/gromacs.md
