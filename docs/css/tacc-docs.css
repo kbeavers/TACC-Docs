@@ -82,7 +82,7 @@
 
 /* To separate sections of navigation */
 
-.wy-menu-vertical p.caption {
+.wy-menu-vertical p.caption:not(:first-child) {
   color: var(--global-color-primary--xxx-dark);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
@@ -181,11 +181,17 @@
 
 
 
+/* To prevent figure image overflow */
+.rst-content figure {
+  max-width: 100%; /* mimics theme.css `.rst-content img` */
+}
+
 /* To not shrink images inside figures */
 /* FAQ: This bug is caused by core-styles.docs.css & theme.css clash */
 /* https://github.com/TACC/Core-Styles/blob/abbcf68/src/lib/_imports/elements/html-elements.css#L58 */
-.rst-content figure > img {
-  max-width: unset; /* undo theme.css `rst-content img` and `img` */
+.rst-content figure {
+  /* NOTE: This style has caused trouble here and on CMS… reconsider purpose */
+  width: unset; /* undo core-styles.base.css *//* TODO: Remove from Core */
 }
 
 
@@ -216,6 +222,7 @@ details > summary {
 :is(h1, h2, h3, h4, h5, h6) > small,
 .understate:is(h1, h2, h3, h4, h5, h6) {
     font-weight: normal;
+    margin-block: 0;
 }
 details > summary > :is(h1, h2, h3, h4, h5, h6) {
     display: inline-block;
