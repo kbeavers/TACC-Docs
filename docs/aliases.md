@@ -5,6 +5,12 @@
 [CORRALUG]: http://portal.tacc.utexas.edu/user-guides/corral  "Corral User Guide"
 [RANCHUG]: http://portal.tacc.utexas.edu/user-guides/ranch  "Ranch User Guide"
 
+<!-- common links -->
+[STAMPEDE2UGRUNNING]: http://portal.tacc.utexas.edu/user-guides/stampede2#running  "Stampede2 User Guide"
+[STAMPEDE2UGBUILDING]: http://portal.tacc.utexas.edu/user-guides/stampede2#building  "Stampede2 User Guide"
+[FRONTERAUGRUNNING]: https://frontera-portal.tacc.utexas.edu/user-guide/#running  "Frontera User Guide"
+
+
 <!-- consulting -->
 [CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"
 [TACCUSERPORTAL]: http://portal.tacc.utexas.edu "TACC User Portal"
@@ -17,12 +23,13 @@
 
 <!-- tutorial links -->
 [TACCACLS]: http://portal.tacc.utexas.edu/tutorials/acls "Manage Permissions with Access Control Lists"
+[TACCANALYSISPORTAL]: http://portal.tacc.utexas.edu/tutorials/tap "TACC Analysis Portal User Guide"
 [TACCMANAGINGIO]: http://portal.tacc.utexas.edu/tutorials/managingio "Managing I/O at TACC"
 [TACCMFA]: http://portal.tacc.utexas.edu/tutorials/multifactor-authentication "Multi-Factor Authentication at TACC"
-[TACCANALYSISPORTAL]: http://portal.tacc.utexas.edu/tutorials/tap "TACC Analysis Portal User Guide"
 [TACCREMOTEDESKTOPACCESS]: http://portal.tacc.utexas.edu/tutorials/remote-desktop-access "TACC Remote Desktop Access"
 [TACCSHARINGPROJECTFILES]: http://portal.tacc.utexas.edu/tutorials/sharing-project-files "Sharing Project Files"
 [TACCBASHQUICKSTART]: http://portal.tacc.utexas.edu/tutorials/bashquickstart "Bash Quick Start Guide"
+[TACCACCESSCONTROLLISTS]: http://portal.tacc.utexas.edu/tutorials/acls "Access Control Lists"
 
 
 <!-- other -->

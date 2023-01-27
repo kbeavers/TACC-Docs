@@ -1,4 +1,4 @@
-# Cloud Services Integration
+## [Cloud Services Integration](#cloudservices) { #cloudservices }
 
 <p class="introtext">Frontera's design includes a totally new integration with cloud services, providing users with new options for data storage and access to emerging computing technologies. </p>
 
@@ -6,11 +6,11 @@ For projects utilizing data of exceptional importance - such as may result from 
 
 Users may access emerging computational capabilities (such as Tensor processors) that run on specially-designated processors at Google, Microsoft, and Amazon. This allows us to regularly refresh the project with novel computing technologies, while providing a real-world platform for users to explore the future of their science applications.
 
-## Google Cloud Platform
+### [Google Cloud Platform](#cloudservices-google) { #cloudservices-google }
 
 TACC now offers Frontera users access to Google Cloud Platform.
 
-### Request Access
+#### [Request Access](#cloudservices-google-requestaccess) { #cloudservices-google-requestaccess }
 
 Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) requesting access to TACC Frontera's Google Cloud Platform. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
@@ -35,7 +35,7 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 
 		<pre class="cmd-line">login1$ <b>./google-cloud-sdk/bin/gcloud config set project ut-tacc-np-sandbox-1</b></pre>
 
-### Storage basics
+#### [Storage basics](#cloudservices-google-storage) { #cloudservices-google-storage }
 
 Learn the basic `gsutil` commands: [Quickstart: Using the `gsutil` tool](https://cloud.google.com/storage/docs/quickstart-gsutil)
 
@@ -43,15 +43,15 @@ Learn the basic `gsutil` commands: [Quickstart: Using the `gsutil` tool](https:/
 
 <pre class="cmd-line">login1$ <b>./google-cloud-sdk/bin/gsutil ls</b></pre>
 
-## Amazon Web Services (AWS)
+### [Amazon Web Services (AWS)](#cloudservices-amazon) { #cloudservices-amazon }
 
 TACC now offers Frontera users access to Amazon Web Services. 
 
-### Request Access
+#### [Request Access](#cloudservices-amazon-requestaccess) { #cloudservices-amazon-requestaccess }
 
 Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) requesting access to TACC Frontera's Amazon Web Services. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
-### Log In to the Console
+#### [Log In to the Console](#cloudservices-amazon-login) { #cloudservices-amazon-login }
 
 If you are a new user then you should have received an email "Welcome to Amazon Web Services" containing a temporary password. Follow the instructions below to set up your AWS account.
 
@@ -60,59 +60,59 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 * Enter "203416866386" in the "Account ID" field 
 * Enter your [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/) ID in the "IAM user name" field.
 * New users enter the temporary password contained in your welcome email, then reset your password.  
-	![AWS-login](img/AWS-login.png) 
+	<img alt="AWS-login" src="IMAGEDIR/frontera/AWS-login.png"> 
 
-### Add MFA
+#### [Add MFA](#cloudservices-amazon-mfa) { #cloudservices-amazon-mfa }
 
 Follow these instructions to enable MFA on your account. **Do not navigate away from the MFA window during the pairing process, or else your account may be left in an unstable state.** 
 
 1. From the top menu "<i>username</i>@2034-1686-6386", select "My Security Credentials"  
-	![AWS-securitycredentials.png](img/AWS-securitycredentials.png)  
+	<img alt="AWS-securitycredentials" src="IMAGEDIR/frontera/AWS-securitycredentials.png"> 
 
 1. Click on the "Assign MFA device" button in the "Multi-factor authentication (MFA)" section. Then, select the "Virtual MFA device" option and click "Continue".  
-	![AWS-managemfadevice.png](img/AWS-managemfadevice.png)  
+	<img alt="AWS-managemfadevice" src="IMAGEDIR/frontera/AWS-managemfadevice.png"> 
 
 1. Choose an Authentication method. Scroll down to see a list of free options. Many TACC users employ Duo Mobile or Google Authenticator. Open the authenticator app of your choice, scan the displayed QR code to add the account, then input the MFA codes as directed. 
-	![AWS-mfaapplications.png](img/AWS-mfaapplications.png)  
+	<img alt="AWS-mfaapplications" src="IMAGEDIR/frontera/AWS-mfaapplications.png"> 
 
 1. Once the pairing process is completed, sign out and then log back in. **You will not be able to successfully proceed to the next step without doing so.**
 
-### Add CLI and API access key
+#### [Add CLI and API access key](#cloudservices-amazon-keys) { #cloudservices-amazon-keys }
 
 <p class="msg-alert"><i>NOTE:</i> You must set up MFA and use it to log in to the AWS console prior to viewing or editing your access keys.</p>
 
 1. Once again, select "My Security Credentials" from the top menu, then click the "Create access key" button in the "Access keys for CLI, SDK, & API access" section.  
-	![AWS-accesskeyavailable](img/AWS-accesskeyavailable.png)  
+	<img alt="AWS-accesskeyavailable" src="IMAGEDIR/frontera/AWS-accesskeyavailable.png"> 
 
 1. Install CLI: Follow the instructions at <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html>.
 1. For more info see [Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 
-### All Set
+#### [All Set](#cloudservices-amazon-allset) { #cloudservices-amazon-allset }
 
 Now that your account is set up, you have access to the AWS S3 functionality. See the full documentation at <https://docs.aws.amazon.com/s3/index.html>.
 
 
-## Microsoft's Azure Cloud Service
+### [Microsoft's Azure Cloud Service](#cloudservices-azure) { #cloudservices-azure }
 
 Frontera's cloud service integration begins with Microsoft's Azure Service. 
 
-### Request Access
+#### [Request Access](#cloudservices-azure-requestaccess) { #cloudservices-azure-requestaccess }
 
 Please [submit a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) and a TACC admin will grant you access to the [Microsoft Azure Portal](http://portal.azure.com). Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
-### Create a Storage Group and Account
+#### [Create a Storage Group and Account](#cloudservices-azure-storage) { #cloudservices-azure-storage }
 
 Once you've been given access, and before uploading files to Azure, you must first create a storage group and storage account. These are one time steps.
 
 
 1. Navigate to the [Microsoft Azure Portal](https://portal.azure.com) and login with your TACC User Portal account.  
-	<img border="1" alt="Azure Portal Home" src="../img/image01.png" width="800">  <p>&nbsp;</p>
+	<img border="1" alt="Azure Portal Home" src="IMAGEDIR/frontera/image01.png"> 
 
 1. Click "Storage accounts". You should see a screen like the following:  
-	<img border="1" alt="" src="../img/image02.png" width="800">  <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image02.png"> 
 
 1. Click "Add". This should bring up the following form:  
-	![image3](img/image03.png)  <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image03.png"> 
 
 1. Fill in the form to create a storage account. 
 
@@ -126,33 +126,33 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 	* Click Review+create to submit the form and run the audit.
 
-	![image4](img/image04.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image04.png"> 
 
 
 1. Once Validation has completed, confirm that you see a green "Validation passed" message (see screenshot below), review the account details and click "Create" to actually create the storage account.
 
-	![image5](img/image05.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image05.png"> 
 
 1. You will see a screen that says "Your deployment is underway..."; this will take a few minutes. 
-	![image6](img/image06.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image06.png"> 
 
 1. Eventually it should say "Your deployment is complete".
-	![image7](img/image07.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image07.png"> 
 
 
-### Retrieve Account Access Keys
+#### [Retrieve Account Access Keys](#cloudservices-azure-keys) { #cloudservices-azure-keys }
 
 1. Go to Home -&gt; Storage accounts; You should see a list of your storage account similar to the following:
-	![image8](img/image08.png) <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image08.png"> 
 
 
 1. Select the storage account you created in part 1). This should bring up an overview screen for the storage account which should look similar to:
-	![image9](img/image09.png)  <p>&nbsp;</p>
+	<img border="1" alt="" src="IMAGEDIR/frontera/image09.png"> 
 
 1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)  <p>&nbsp;</p> 1. --> Copy the key to your clipboard.
 
 
-### Install the Azure Client for CLI Access
+#### [Install the Azure Client for CLI Access](#cloudservices-azure-cli) { #cloudservices-azure-cli }
 
 To install on Frontera in your home directory using Python, this should be sufficient:
 
@@ -169,7 +169,7 @@ We recommend creating a "`~/azure`" subdirectory to put everything in. It will a
 More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>
 
 
-### Upload a File
+#### [Upload a File](#cloudservices-azure-upload) { #cloudservices-azure-upload }
 
 1. Login with the Azure CLI and follow the steps to open a web browser and enter the access code from above.
 

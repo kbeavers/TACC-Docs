@@ -1,80 +1,73 @@
-Thu Dec  8 12:16:55 CST 2022   
-Thu Jan 19 11:55:45 CST 2023   
-Mon Jan 23 14:33:52 CST 2023   
+Wed Jan 25 12:46:03 CST 2023
 
-# This is a page for fiddling and styling.
+# fiddling and styling.
 
-<font color="red">NEW</font> - can we style the "< details >" and "< summary >" tags?
+## Styles I use
+
+### details and summary tags
+
 
 See: <https://docs.tacc.utexas.edu/hpcugs/stampede2/stampede2/#jobscripts>
 
-<details><summary>Cheesy example</summary>
+<details><summary>Cheesy example - click on arrow to expand</summary>
 I'm not a big fan of this arrow. <br> 
 Can we add some margin/whitespace at the bottom?  <br>
 Also, markdown doesn't work within these tags?
 </details>
 
 
+### Images
 
-## Images
+I use image tags < figure > and < figcaption >.  
 
-I use image tags < figure > and < figcaption >.  See example here: <https://portal.tacc.utexas.edu/user-guides/stampede2#programming-knl-memorymodes>
+See real life example here: <https://portal.tacc.utexas.edu/user-guides/stampede2#programming-knl-memorymodes>
 
+and demonstrated here
 <figure><img src="../imgs/louis.jpg" width="50%">
 <figcaption>Louis</figcaption></figure>
 
 
-## Code Examples
+### Code Examples
 
 See <a href="/code-examples">Fiddling: Code Examples</a>.
 
-## H2 is here
+### Need a style called "introtext"
 
+Only used in Frontera User Guide.  See: .... and I just realized it's disappeared from Frontera.
 
-Reference style links I get 10 times more traffic from [Google] [1] than from
-[Yahoo] [2] or [MSN] [3].
+p class="introtext" - it's just a larger font, used as introductory text.  
 
-  [1]: http://google.com/        "Google"
-  [2]: http://search.yahoo.com/  "Yahoo Search"
-  [3]: http://search.msn.com/    "MSN Search"
+See <https://frontera-portal.tacc.utexas.edu/user-guide/running/>.  The first sentences, prior to "Job Accounting" should be displayed in a larger than normal font.
 
+### Reference style links 
 
-Doe this alias work [Stampede2][STAMPEDE2UG] louis  
-Please [submit a ticket] [BUTTER]
-
-[BUTTER]: http://portal.tacc.utexas.edu
-
-
-<span style="font-style:italic; color:green;background:yellow">I'm within an inline-styled &lt;span&gt;</span>
-
-<mark>I'm within a &lt;mark&gt;</mark>
-
-include text under here
+all aliases are stored in 'aliases.md'
 
 {% include 'aliases.md' %}
 
-This is [an example] [foo] reference-style link.
+Doe this alias work [Stampede2][STAMPEDE2UG]?   
 
-   [foo]: http://example.com/  "Optional Title Here"
-   [foo]: http://example.com/  'Optional Title Here'
-   [foo]: http://example.com/  (Optional Title Here)
+Submit a [ticket][TACCUSERPORTAL] via TUP.
 
-### H3 is h3re
+[TACCUSERPORTAL]: http://portal.tacc.utexas.edu
 
-#### h4 is here
 
-##### h5 is here
 
-##### another h5  is here
+<mark>I'm within a &lt;mark&gt;</mark>
 
-###### h6 is here
+can you < mark > with a color other than <mark>yellow</mark>?  Pink or cyan?
+
+include text under here
+
+
 
 ## `admonition` extension
+
 
 I use "attention", "note", "warning" the most
 
 !!! important
-	Admonition type: important
+	Admonition type: important  
 	See example: <https://portal.tacc.utexas.edu/user-guides/stampede2#files-striping>
 
 !!! attention "pay attention"
@@ -96,7 +89,6 @@ I use "attention", "note", "warning" the most
 	Admonition type: warning
 
 
-[CREATETICKET]: http://example.com/  "Optional Title Here"
 
 ## `attr_list`
 

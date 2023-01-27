@@ -13,11 +13,11 @@ stylenowrap="<span\ style=\"white-space:\ nowrap;\">"
 endspan="<\/span>"
 
 imagedir="..\/..\/..\/imgs"
-figurestockyard=$imagedir+"\/stockyard-2022.jpg"
+pdfdir="..\/pdfs"
 
 sed	\
 	-e "s/IMAGEDIR/$imagedir/g" \
-	-e "s/FIGURE_STOCKARD/$figurestockyard/g" \
+	-e "s/PDFDIR/$pdfdir/g" \
 	\
 	-e "s/GREEN/$stylegreen/g" \
 	-e "s/STYLERED/$stylered/g" \

@@ -1,11 +1,10 @@
+## [Programming and Performance](#programming) { #programming } 
 
-# Programming and Performance
-
-## Programming and Performance: General
+### [Programming and Performance: General](#programming-general) { #programming-general } 
 <p class="introtext">Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.</p>
 
 
-### Timing and Profiling
+#### [Timing and Profiling](#programming-general-profiling) { #programming-general-profiling } 
 
 **Measure performance and experiment with both compiler and runtime options.** This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
 
@@ -21,7 +20,7 @@ As your needs evolve you can add timing intrinsics to your source code to time s
 
 It can be helpful to compare results with different compiler and runtime options: e.g. with and without [vectorization](http://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-vec-qvec), [threading](../launching#launching-one-multi-threaded-application), or [Lustre striping](../files#striping-large-files). You may also want to learn to use profiling tools like [Intel VTune Amplifier](http://software.intel.com/en-us/intel-vtune-amplifier-xe) <span style="white-space: nowrap;">(`module load vtune`)</span> or GNU [`gprof`](http://sourceware.org/binutils/docs/gprof/).
 
-### Data Locality
+#### [Data Locality](#programming-general-datalocality) { #programming-general-datalocality } 
 
 **Appreciate the high cost (performance penalty) of moving data from one node to another**, from disk to RAM, and even from RAM to cache. Write your code to keep data as close to the computation as possible: e.g. in RAM when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. 
 
@@ -55,20 +54,19 @@ for (i=0;i&lt;m;i++){
 </table>
 
 
-### Vectorization
+#### [Vectorization](#programming-vectorization) { #programming-vectorization } 
 
 **Give the compiler a chance to produce efficient, [vectorized](http://software.intel.com/en-us/articles/vectorization-essential) code**. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on [Programming Guidelines for Vectorization](http://software.intel.com/en-us/node/522571) for a nice summary of the factors that affect the compiler's ability to vectorize loops.
 
 It's often worthwhile to generate [optimization and vectorization reports](http://software.intel.com/en-us/articles/getting-the-most-out-of-your-intel-compiler-with-the-new-optimization-reports) when using the Intel compiler. This will allow you to see exactly what the compiler did and did not do with each loop, together with reasons why.
 
-### Learning More
+#### [Learning More](#programming-more) { #programming-more } 
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](https://learn.tacc.utexas.edu/course/).
 
-![Frontera Assembly](img/img-fronteradennis.png)    
-Frontera Assembly
+<img alt="Frontera Assembly" src="IMAGEDIR/frontera/fronteradennis.png">
 
-## Programming and Performance: CLX
+### [Programming and Performance: CLX](#programming-clx) { #programming-clx } 
 
 <!-- span style="color:red">**Hyperthreading.** Hyperthreading is not enabled on Frontera.</span> It is rarely a good idea to use 96 hardware threads simultaneously**, and it's certainly not the first thing you should try. In most cases it's best to specify no more than 48 MPI tasks or independent processes per node, and 1-2 threads/core. One exception is worth noting: when calling threaded MKL from a serial code, it's safe to set `OMP_NUM_THREADS` or `MKL_NUM_THREADS` to 96. This is because MKL will choose an appropriate thread count less than or equal to the value you specify. See [Controlling Threading in MKL](#mkl-threading) for more information.  In any case remember that the default value of `OMP_NUM_THREADS` is 1.-->
 
@@ -87,11 +85,11 @@ The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag affects the 
 **Core Numbering.** Execute "`lscpu`" or "`lstopo`" on a CLX node to see the numbering scheme for socket cores. Note that core numbers alternate between the sockets: even numbered cores are on socket 0 (NUMA node 0), while odd numbered cores are on socket 1 (NUMA node 1).<!-- 06/10/2019 hyperthreading not enabled Furthermore, the two hardware threads on a given core have thread numbers that differ by exactly 48 (e.g. threads 3 and 51 are on the same core). -->
 
 
-## File Operations: I/O Performance
+### [File Operations: I/O Performance](#programming-fileio) { #programming-fileio } 
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Navigating the Shared File Systems](../files#navigating-the-shared-filesystems) for a brief overview of Frontera's Lustre file systems and the concept of striping. See [TACC Training material](https://learn.tacc.utexas.edu/) for additional information on I/O performance.
 
-**Follow the advice in [Good Citizenship](../citizenship#do-not-stress-the-shared-lustre-file-systems)** to avoid stressing the file system.
+**Follow the advice in [Good Conduct](../conduct#do-not-stress-the-shared-lustre-file-systems)** to avoid stressing the file system.
 
 **Stripe for performance**. If your application writes large files using MPI-based parallel I/O (including [MPI-IO](http://mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf), [parallel HDF5](https://support.hdfgroup.org/HDF5/PHDF5/), and [parallel netCDF](https://www.unidata.ucar.edu/software/netcdf/docs/parallel_io.html), you should experiment with stripe counts larger than the default values (2 stripes on `$SCRATCH`, 1 stripe on `$WORK`). See [Striping Large Files](../files/#striping-large-files) for the simplest way to set the stripe count on the directory in which you will create new output files. You may also want to try larger stripe sizes up to 16MB or even 32MB; execute `man lfs` for more information. If you write many small files you should probably leave the stripe count at its default value, especially if you write each file from a single process. Note that it's not possible to change the stripe parameters on files that already exist. This means that you should make decisions about striping when you *create* input files, not when you read them.
 
