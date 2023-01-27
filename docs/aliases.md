@@ -23,12 +23,13 @@
 
 <!-- tutorial links -->
 [TACCACLS]: http://portal.tacc.utexas.edu/tutorials/acls "Manage Permissions with Access Control Lists"
+[TACCANALYSISPORTAL]: http://portal.tacc.utexas.edu/tutorials/tap "TACC Analysis Portal User Guide"
 [TACCMANAGINGIO]: http://portal.tacc.utexas.edu/tutorials/managingio "Managing I/O at TACC"
 [TACCMFA]: http://portal.tacc.utexas.edu/tutorials/multifactor-authentication "Multi-Factor Authentication at TACC"
-[TACCANALYSISPORTAL]: http://portal.tacc.utexas.edu/tutorials/tap "TACC Analysis Portal User Guide"
 [TACCREMOTEDESKTOPACCESS]: http://portal.tacc.utexas.edu/tutorials/remote-desktop-access "TACC Remote Desktop Access"
 [TACCSHARINGPROJECTFILES]: http://portal.tacc.utexas.edu/tutorials/sharing-project-files "Sharing Project Files"
 [TACCBASHQUICKSTART]: http://portal.tacc.utexas.edu/tutorials/bashquickstart "Bash Quick Start Guide"
+[TACCACCESSCONTROLLISTS]: http://portal.tacc.utexas.edu/tutorials/acls "Access Control Lists"
 
 
 <!-- other -->

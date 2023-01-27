@@ -6,7 +6,8 @@ SRC	=	\
 	cdtoolssrc.md \
 	gaussiansrc.md \
 	gromacssrc.md \
-	idevsrc.md
+	idevsrc.md \
+	irodssrc.md
 
 OBJS	=	\
 	abaqus.md \
@@ -15,7 +16,8 @@ OBJS	=	\
 	cdtools.md \
 	gaussian.md \
 	gromacs.md \
-	idev.md
+	idev.md \
+	irods.md
 
 
 all:	$(OBJS)
@@ -40,6 +42,9 @@ gromacs.md:	gromacssrc.md
 
 idev.md:	idevsrc.md
 	./configurestrings.sh idevsrc.md idev.md 
+
+irods.md:	irodssrc.md
+	./configurestrings.sh irodssrc.md irods.md 
 
 
 

@@ -31,7 +31,7 @@ nav:
     - Gaussian: softwareugs/gaussian.md
     - GROMACS: softwareugs/gromacs.md
     - idev: softwareugs/idev.md
-#   - IRODS: softwareugs/irods.md
+    - IRODS: softwareugs/irods.md
 #   - LAMMPS: softwareugs/lammps.md
 #   - Launcher: softwareugs/launcher.md
 #   - MATLAB: softwareugs/matlab.md
