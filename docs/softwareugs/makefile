@@ -4,14 +4,16 @@ SRC	=	\
 	ansyssrc.md \
 	alphafoldsrc.md \
 	cdtoolssrc.md \
-	gaussiansrc.md
+	gaussiansrc.md \
+	gromacssrc.md
 
 OBJS	=	\
 	abaqus.md \
 	ansys.md \
 	alphafold.md \
 	cdtools.md \
-	gaussian.md
+	gaussian.md \
+	gromacs.md
 
 
 all:	$(OBJS)
@@ -31,7 +33,8 @@ cdtools.md: cdtoolssrc.md
 gaussian.md:	gaussiansrc.md
 	./configurestrings.sh gaussiansrc.md gaussian.md 
 
-
+gromacs.md:	gromacssrc.md
+	./configurestrings.sh gromacssrc.md gromacs.md 
 
 
 

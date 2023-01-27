@@ -29,7 +29,7 @@ nav:
     - AlphaFold : softwareugs/alphafold.md
     - CD Tools: softwareugs/cdtools.md
     - Gaussian: softwareugs/gaussian.md
-#   - GROMACS: softwareugs/gromacs.md
+    - GROMACS: softwareugs/gromacs.md
 #   - idev: softwareugs/idev.md
 #   - IRODS: softwareugs/irods.md
 #   - LAMMPS: softwareugs/lammps.md

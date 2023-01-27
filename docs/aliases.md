@@ -7,6 +7,7 @@
 
 <!-- common links -->
 [STAMPEDE2UGRUNNING]: http://portal.tacc.utexas.edu/user-guides/stampede2#running  "Stampede2 User Guide"
+[STAMPEDE2UGBUILDING]: http://portal.tacc.utexas.edu/user-guides/stampede2#building  "Stampede2 User Guide"
 [FRONTERAUGRUNNING]: https://frontera-portal.tacc.utexas.edu/user-guide/#running  "Frontera User Guide"
 
 
