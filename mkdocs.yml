@@ -8,6 +8,7 @@ theme:
     custom_dir: themes/readthedocs
 
 extra_css:
+    - css/core-styles.css
     - css/tacc-docs.css
 
 

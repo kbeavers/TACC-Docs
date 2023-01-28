@@ -22,7 +22,7 @@ See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-m
 
 Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .cmd-line }</code>.
 
-``` { .bash .cmd-line }
+``` { .ruby .cmd-line }
 login1$ module load kitten
 ```
 

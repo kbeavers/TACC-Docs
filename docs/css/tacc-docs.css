@@ -1,8 +1,200 @@
+/* Styles specific to TACC-Docs */
+/* NOTE: Some of this could become core-styles.docs.css */
+
 @layer project {
 
 
 
+
+
+/* SIDE NAV */
+
+
+
+/* To remove decresing font size in nav */
+/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
+
+.wy-menu-vertical li.toctree-l3,
+.wy-menu-vertical li.toctree-l4 {
+  font-size: unset;
+}
+.wy-menu-vertical a {
+  font-size: unset;
+}
+.wy-menu-vertical p.caption {
+  text-transform: unset;
+  font-size: unset;
+}
+.wy-menu-vertical p.caption {
+  text-transform: unset;
+  font-size: unset;
+}
+
+
+
+/* Re-color navigation */
+/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
+
+.wy-nav-side {
+  color: unset;
+  background: unset;
+}
+.wy-menu-vertical * {
+  color: unset;
+}
+.wy-menu-vertical a:hover {
+  background: #e3e3e3; /* copied from .wy-menu-vertical li.current */;
+}
+.wy-menu-vertical li.current {
+  background: unset;
+}
+.wy-menu-vertical li.current a {
+  border-right: unset;
+}
+.wy-menu-vertical li.toctree-l1.current > a {
+  border-bottom: unset;
+  border-top: unset;
+}
+.wy-menu-vertical li.toctree-l2.current > a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+  background: unset;
+}
+.wy-menu-vertical li.toctree-l3.current > a,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a {
+  background: unset;
+}
+/* FAQ: The `:not(.current)` (added by TACC) adds clarity and specificity */
+.wy-menu-vertical a:not(.current)
+/* Do not use (but show for reference) redundant selectors */
+/* FAQ: The selectors are redundatn because of @layer project specificity *//*
+.wy-menu-vertical li.current a
+.wy-menu-vertical li ul li a
+*/ {
+  color: var(--global-color-primary--x-dark);
+  font-weight: var(--medium);
+}
+.wy-menu-vertical a.current {
+  color: var(--global-color-primary--xxx-dark);
+  font-weight: var(--bold);
+}
+
+
+
+/* To separate sections of navigation */
+
+.wy-menu-vertical p.caption:not(:first-child) {
+  color: var(--global-color-primary--xxx-dark);
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+}
+
+
+
+/* To adapt nav layout to design */
+
+.wy-menu-vertical {
+  padding-left: 25px; /* NOTE: design is 24.5px */
+  padding-right: 15px; /* NOTE: design is 11.5px */
+}
+.wy-menu-vertical a,
+/* (separate ruleset in `theme.css`) */
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.on a,
+/* (separate ruleset in `theme.css`) */
+.wy-menu-vertical li.current a {
+  padding: 0.375em 2em; /* overwrite theme.css *//* NOTE: design is 25px ⨉ ? */
+}
+.wy-menu-vertical li.on ul,
+.wy-menu-vertical li.current ul {
+  padding-left: 25px;
+  padding-block: 10px;
+}
+.wy-menu-vertical li button.toctree-expand {
+  margin-left: unset; /* undo theme.css */
+  margin-right: 0.5em;
+}
+
+
+
+/* To change icons */
+
+.wy-menu-vertical li button.toctree-expand:before {
+  content: "\f0da";
+}
+.wy-menu-vertical li.current > a button.toctree-expand::before,
+.wy-menu-vertical li.on a button.toctree-expand::before {
+  content: "\f0d7";
+}
+
+
+
+
+
+/* BREADCRUMBS */
+
+/* To hide dangling separator */
+/* The .wy-breadcrumbs-aside is where repository links would show */
+/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/breadcrumbs.html#L14-L30 */
+/* NOTE: When empty is still has whitespace so `:empty` can not select it */
+.rst-content [role="navigation"] li.wy-breadcrumbs-aside::before {
+  content: unset;
+}
+
+/* To hide the <hr> from ReadTheDocs theme markup */
+.rst-content [role="navigation"] hr {
+  display: none;
+}
+
+/* To hide the ≫ from ReadTheDocs theme markup */
+.rst-content [role="navigation"] li::before {
+  margin-left: -1.25ch;
+  background-color: var(--global-color-primary--xx-light);
+}
+
+/* To hide link to home */
+/* FAQ: The link is not in design (cuz it is redundant cuz side nav has link) */
+.rst-content [role="navigation"] li:first-child {
+  display: none;
+}
+.rst-content [role="navigation"] li:nth-child(2)::before {
+  content: unset;
+}
+
+/* To bold last child */
+/* FAQ: The core-styles.docs.css bolds :last-child, but that does not work here,
+        because last list item is .wy-breadcrumbs-aside (used for repo links) */
+.rst-content [role="navigation"] li:nth-last-child(2) {
+  font-weight: var(--bold);
+}
+
+
+
+
+
 /* CONTENT */
+
+
+
+/* To add space between messages & messages and messages & content */
+.admonition {
+  margin-block: 1em;
+}
+
+
+
+/* To prevent figure image overflow */
+.rst-content figure {
+  max-width: 100%; /* mimics theme.css `.rst-content img` */
+}
+
+/* To not shrink images inside figures */
+/* FAQ: This bug is caused by core-styles.docs.css & theme.css clash */
+/* https://github.com/TACC/Core-Styles/blob/abbcf68/src/lib/_imports/elements/html-elements.css#L58 */
+.rst-content figure {
+  /* NOTE: This style has caused trouble here and on CMS… reconsider purpose */
+  width: unset; /* undo core-styles.base.css *//* TODO: Remove from Core */
+}
+
+
 
 /* To replicate highlightjs (hljs) styles on loose TACC-Docs classes */
 /* FAQ: "Loose" classes being those that are not coupled with <code> */
@@ -16,16 +208,21 @@
     background: #151515;
 }
 
+
+
 /* To add minimal hover state for <details> */
 /* TODO: Remove this after COr-Styles are loaded (task/tup-297-styles) */
 details > summary {
   cursor: pointer;
 }
 
+
+
 /* For edge-case headings */
 :is(h1, h2, h3, h4, h5, h6) > small,
 .understate:is(h1, h2, h3, h4, h5, h6) {
     font-weight: normal;
+    margin-block: 0;
 }
 details > summary > :is(h1, h2, h3, h4, h5, h6) {
     display: inline-block;
