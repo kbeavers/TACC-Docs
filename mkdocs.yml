@@ -2,6 +2,7 @@ site_name: TACC HPC Documentation
 site_description: TACC HPC Documentation
 site_author: Susan Lindsey
 site_url: https://docs.tacc.utexas.edu
+repo_url: https://github.com/TACC/TACC-Docs
 
 theme:
     name: readthedocs
