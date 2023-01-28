@@ -43,11 +43,11 @@
       <script src="{{ path }}" defer></script>
     {%- endfor %}
     #}
-    <script type="module">/*
-      import someFunction from '{{ "js/modules/someModule.js"|url }}';
+    <script type="module">
+      import findLinksAndSetTargets from '{{ "js/modules/setTargetForExternalLinks.js"|url }}';
 
-      someFunction();
-    */</script>
+      findLinksAndSetTargets();
+    </script>
     {# /TACC #}
     <script defer>
         window.onload = function () {
