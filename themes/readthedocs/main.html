@@ -37,9 +37,18 @@
     {# <script src="{{ 'js/theme_extra.js'|url }}" defer></script> #}
     {# /TACC #}
     <script src="{{ 'js/theme.js'|url }}" defer></script>
+    {# TACC: #}{# To suggest extra JavaScript be imported as modules #}
+    {#
     {%- for path in extra_javascript %}
       <script src="{{ path }}" defer></script>
     {%- endfor %}
+    #}
+    <script type="module">/*
+      import someFunction from '{{ "js/modules/someModule.js"|url }}';
+
+      someFunction();
+    */</script>
+    {# /TACC #}
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable({{ 'true' if config.theme.sticky_navigation else 'false' }});
