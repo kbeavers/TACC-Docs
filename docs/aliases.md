@@ -23,6 +23,7 @@
 <!-- software links -->
 [TACCIDEV]: http://portal.tacc.utexas.edu/software/idev "idev User Guide"
 [TACCIRODS]: http://portal.tacc.utexas.edu/software/irods "IRODS at TACC"
+[TACCMODULES]: https://lmod.readthedocs.io/en/latest/ "Lmod"
 [TACCREMORA]: http://portal.tacc.utexas.edu/software/remora "REMORA at TACC"
 [TACCTENSORFLOW]: http://portal.tacc.utexas.edu/software/tensorflow "Tensorflow at TACC"
 

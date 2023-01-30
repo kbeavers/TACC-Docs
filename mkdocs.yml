@@ -43,9 +43,9 @@ nav:
     - Launcher: softwareugs/launcher.md
     - MATLAB: softwareugs/matlab.md
     - NAMD: softwareugs/namd.md
-#   - OpenFOAM: softwareugs/openfoam.md
+    - OpenFOAM: softwareugs/openfoam.md
 #   - Paraview VisIt: softwareugs/paraview-visit.md
-#   - Quantum Espresso: softwareugs/quantumespresso.md 
+    - Quantum Espresso: softwareugs/quantumespresso.md 
 #   - REMORA: softwareugs/remora.md
 #   - TAU: softwareugs/tau.md
 #   - Tensorflow: softwareugs/tensorflow.md
