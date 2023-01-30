@@ -7,7 +7,8 @@ SRC	=	\
 	gaussiansrc.md \
 	gromacssrc.md \
 	idevsrc.md \
-	irodssrc.md
+	irodssrc.md \
+	lammpssrc.md
 
 OBJS	=	\
 	abaqus.md \
@@ -17,7 +18,8 @@ OBJS	=	\
 	gaussian.md \
 	gromacs.md \
 	idev.md \
-	irods.md
+	irods.md \
+	lammps.md
 
 
 all:	$(OBJS)
@@ -45,6 +47,10 @@ idev.md:	idevsrc.md
 
 irods.md:	irodssrc.md
 	./configurestrings.sh irodssrc.md irods.md 
+
+lammps.md:	lammpssrc.md
+	./configurestrings.sh lammpssrc.md lammps.md 
+
 
 
 

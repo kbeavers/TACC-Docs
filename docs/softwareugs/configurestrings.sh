@@ -13,7 +13,7 @@ stylenowrap="<span\ style=\"white-space:\ nowrap;\">"
 endspan="<\/span>"
 
 imagedir="..\/..\/..\/imgs"
-pdfdir="..\/pdfs"
+pdfdir="..\/..\/pdfs"
 
 sed	\
 	-e "s/IMAGEDIR/$imagedir/g" \
