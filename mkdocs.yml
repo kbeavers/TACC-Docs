@@ -46,7 +46,7 @@ nav:
     - OpenFOAM: softwareugs/openfoam.md
 #   - Paraview VisIt: softwareugs/paraview-visit.md
     - Quantum Espresso: softwareugs/quantumespresso.md 
-#   - REMORA: softwareugs/remora.md
+    - REMORA: softwareugs/remora.md
 #   - TAU: softwareugs/tau.md
 #   - Tensorflow: softwareugs/tensorflow.md
 #   - VASP: softwareugs/vasp.md
