@@ -40,8 +40,8 @@ nav:
     - idev: softwareugs/idev.md
     - IRODS: softwareugs/irods.md
     - LAMMPS: softwareugs/lammps.md
-#   - Launcher: softwareugs/launcher.md
-#   - MATLAB: softwareugs/matlab.md
+    - Launcher: softwareugs/launcher.md
+    - MATLAB: softwareugs/matlab.md
 #   - NAMD: softwareugs/namd.md
 #   - OpenFOAM: softwareugs/openfoam.md
 #   - Paraview VisIt: softwareugs/paraview-visit.md

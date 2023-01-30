@@ -4,16 +4,21 @@
 [FRONTERAUG]: https://frontera-portal.tacc.utexas.edu/user-guide/  "Frontera User Guide"
 [CORRALUG]: http://portal.tacc.utexas.edu/user-guides/corral  "Corral User Guide"
 [RANCHUG]: http://portal.tacc.utexas.edu/user-guides/ranch  "Ranch User Guide"
+[MAVERICK2UG]: http://portal.tacc.utexas.edu/user-guides/maverick2  "Maverick2 User Guide"
 
 <!-- common links -->
-[STAMPEDE2UGRUNNING]: http://portal.tacc.utexas.edu/user-guides/stampede2#running  "Stampede2 User Guide"
-[STAMPEDE2UGBUILDING]: http://portal.tacc.utexas.edu/user-guides/stampede2#building  "Stampede2 User Guide"
-[FRONTERAUGRUNNING]: https://frontera-portal.tacc.utexas.edu/user-guide/#running  "Frontera User Guide"
+[STAMPEDE2UGRUNNING]: http://portal.tacc.utexas.edu/user-guides/stampede2#running  "Stampede2 User Guide - Running"
+[STAMPEDE2UGBUILDING]: http://portal.tacc.utexas.edu/user-guides/stampede2#building  "Stampede2 User Guide - Running"
+[FRONTERAUGRUNNING]: https://frontera-portal.tacc.utexas.edu/user-guide/#running  "Frontera User Guide - Running"
+[LONESTAR6UGRUNNING]:http://portal.utexas.edu/user-guide/lonestar6#running  "Lonestar6 User Guide - Running"
+
 
 
 <!-- consulting -->
 [CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"
 [TACCUSERPORTAL]: http://portal.tacc.utexas.edu "TACC User Portal"
+[TACCUSERPORTAL]: http://portal.tacc.utexas.edu/tacc-usage-policy "TACC Usage Policy"
+
 
 <!-- software links -->
 [TACCIDEV]: http://portal.tacc.utexas.edu/software/idev "idev User Guide"

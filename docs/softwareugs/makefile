@@ -8,7 +8,8 @@ SRC	=	\
 	gromacssrc.md \
 	idevsrc.md \
 	irodssrc.md \
-	lammpssrc.md
+	lammpssrc.md \
+	matlabsrc.md
 
 OBJS	=	\
 	abaqus.md \
@@ -19,7 +20,8 @@ OBJS	=	\
 	gromacs.md \
 	idev.md \
 	irods.md \
-	lammps.md
+	lammps.md \
+	matlab.md
 
 
 all:	$(OBJS)
@@ -50,6 +52,10 @@ irods.md:	irodssrc.md
 
 lammps.md:	lammpssrc.md
 	./configurestrings.sh lammpssrc.md lammps.md 
+
+
+matlab.md:	matlabsrc.md
+	./configurestrings.sh matlabsrc.md matlab.md 
 
 
 

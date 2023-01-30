@@ -29,7 +29,7 @@ The following figure shows how MATLAB is launched inside the VNC session.
 
 ## [Running MATLAB in Batch Mode](#batch) { #batch }
 
-You can also submit your MATLAB job to the batch nodes (compute nodes) on the TACC resources, e.g. Frontera, Stampede2, Lonestar5, or Maverick2. To do so, first make sure that the MATLAB module has been loaded, and then launch "`matlab`" with the <span style="white-space: nowrap;">"`-nodesktop -nodisplay -nosplash`"</span> option as shown in the sample Stampede2 job script below.
+You can also submit your MATLAB job to the batch nodes (compute nodes) on the TACC resources, e.g. Frontera, Stampede2, Lonestar5, or Maverick2. To do so, first make sure that the MATLAB module has been loaded, and then launch "`matlab`" with the NOWRAP"`-nodesktop -nodisplay -nosplash`"ESPAN option as shown in the sample Stampede2 job script below.
 
 ### [Example 1. Sample MATLAB job script to run on Stampede2](#example1)
 
