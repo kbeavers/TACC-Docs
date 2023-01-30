@@ -42,7 +42,7 @@ nav:
     - LAMMPS: softwareugs/lammps.md
     - Launcher: softwareugs/launcher.md
     - MATLAB: softwareugs/matlab.md
-#   - NAMD: softwareugs/namd.md
+    - NAMD: softwareugs/namd.md
 #   - OpenFOAM: softwareugs/openfoam.md
 #   - Paraview VisIt: softwareugs/paraview-visit.md
 #   - Quantum Espresso: softwareugs/quantumespresso.md 

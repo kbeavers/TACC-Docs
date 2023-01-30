@@ -17,7 +17,7 @@
 <!-- consulting -->
 [CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"
 [TACCUSERPORTAL]: http://portal.tacc.utexas.edu "TACC User Portal"
-[TACCUSERPORTAL]: http://portal.tacc.utexas.edu/tacc-usage-policy "TACC Usage Policy"
+[TACCUSAGEPOLICY]: http://portal.tacc.utexas.edu/tacc-usage-policy "TACC Usage Policy"
 
 
 <!-- software links -->
