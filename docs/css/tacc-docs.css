@@ -204,10 +204,9 @@
 :is(.cmd-line, .job-script, .syntax):not(:has(code)) {
     padding: 1em;
     overflow: auto;
-}
-:is(.cmd-line, .job-script, .syntax):not(:has(code.hljs)) {
+
     color: #D0D0D0;
-    background: #151515;
+    background: var(--global-color-primary--xx-dark);
 }
 
 
@@ -232,4 +231,31 @@ details > summary > :is(h1, h2, h3, h4, h5, h6) {
 
 
 
+}
+
+
+
+
+
+/* OVERRIDE ANONYMOUS STYLES */
+/* To override anonymous (non-layered) styles e.g. highlightjs */
+
+
+
+/* To overwrite highlightjs background */
+.hljs {
+  background: var(--global-color-primary--xx-dark);
+}
+/* To distinguish code block backgrounds */
+.cmd-line code,
+.cmd-line:not(:has(code)) {
+  background: var(--global-color-accent--xxx-dark);
+}
+.job-script code,
+.job-script:not(:has(code)) {
+  background: var(--global-color-secondary--xxx-dark);
+}
+.syntax code,
+.syntax:not(:has(code)) {
+  background: var(--global-color-tertiary--xxx-dark);
 }

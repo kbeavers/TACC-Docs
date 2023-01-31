@@ -12,7 +12,48 @@ The default ReadTheDocs style of `courier` font and red `color` is **not** desir
 
 <br />
 
-### Command Line (`.cmd-line`)
+### Code Block (`<pre>…` or <code>&#96;&#96;&#96;…</code>)
+
+#### Quick Start
+
+<style>
+/* To remove space between labels and code blocks */
+/* TODO: Evaluate wheteher to make this reusable */
+p:has(small) + pre {
+    margin-top: calc( -1 * var(--global-space--p-below));
+}
+</style>
+
+<small>`.cmd-line`</small>
+
+``` { .bash .cmd-line }
+#!/bin/bash
+#SBATCH -J myjob              # job name
+module load gromacs/2022.1
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
+```
+
+<small>`.job-script`</small>
+
+``` { .bash .job-script }
+#!/bin/bash
+#SBATCH -J myjob              # job name
+module load gromacs/2022.1
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
+```
+
+<small>`.syntax`</small>
+
+``` { .bash .syntax }
+#!/bin/bash
+#SBATCH -J myjob              # job name
+module load gromacs/2022.1
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
+```
+
+<br />
+
+#### Command Line (`.cmd-line`)
 
 See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules){ target="_blank" }.
 
@@ -40,7 +81,7 @@ login1$ module load kitten
 
 <br />
 
-### Job Script (`.job-script`)
+#### Job Script (`.job-script`)
 
 <details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
 
@@ -100,7 +141,7 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 
 <br />
 
-### Syntax (`.syntax`)
+#### Syntax (`.syntax`)
 
 <details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
 
@@ -124,7 +165,7 @@ man [options] -switch -verbose
 
 <br />
 
-### Pros & Cons of Each Way
+#### Pros & Cons of Each Way
 
 Simple Markup
 :   _Con_: Will not have syntax highlighting.
