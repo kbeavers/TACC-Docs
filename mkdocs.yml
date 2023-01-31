@@ -50,6 +50,19 @@ nav:
     - TAU: softwareugs/tau.md
     - Tensorflow: softwareugs/tensorflow.md
     - VASP: softwareugs/vasp.md
+  - Tutorials :
+    - Access Control Lists: tutorials/aclssrc.md
+    - Bash Quick Start Guide: tutorials/bashstartupsrc.md
+    - BLAS/LAPACK: tutorials/blas-lapack.md
+    - DDT Debugger: tutorials/ddtsrc.md
+    - Sharing Project Files: tutorials/filesharing.md
+    - Grid Community Toolkit: tutorials/gridcommunitytoolkitsrc.md
+    - Managing I/O: tutorials/managingio.md
+    - MAP: tutorials/mapsrc.md
+    - Multi-Factor Authentication: tutorials/mfasrc.md
+    - XXX: tutorials/modulessrc.md
+    - Remote Desktop Access: tutorials/remotedesktopaccess.md
+    - TACC Analysis Portal: tutorials/TAP.md
 
 
 markdown_extensions:
