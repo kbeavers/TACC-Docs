@@ -48,8 +48,8 @@ nav:
     - Quantum Espresso: softwareugs/quantumespresso.md 
     - REMORA: softwareugs/remora.md
     - TAU: softwareugs/tau.md
-#   - Tensorflow: softwareugs/tensorflow.md
-#   - VASP: softwareugs/vasp.md
+    - Tensorflow: softwareugs/tensorflow.md
+    - VASP: softwareugs/vasp.md
 
 
 markdown_extensions:

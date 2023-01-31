@@ -13,7 +13,6 @@
 [LONESTAR6UGRUNNING]:http://portal.utexas.edu/user-guide/lonestar6#running  "Lonestar6 User Guide - Running"
 
 
-
 <!-- consulting -->
 [CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"
 [TACCUSERPORTAL]: http://portal.tacc.utexas.edu "TACC User Portal"
