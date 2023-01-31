@@ -51,7 +51,7 @@ nav:
     - Tensorflow: softwareugs/tensorflow.md
     - VASP: softwareugs/vasp.md
   - Tutorials :
-    - Access Control Lists: tutorials/aclssrc.md
+    - Access Control Lists: tutorials/acls.md
     - Bash Quick Start Guide: tutorials/bashstartupsrc.md
     - BLAS/LAPACK: tutorials/blas-lapack.md
     - DDT Debugger: tutorials/ddtsrc.md
