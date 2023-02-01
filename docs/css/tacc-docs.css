@@ -188,14 +188,6 @@
   max-width: 100%; /* mimics theme.css `.rst-content img` */
 }
 
-/* To not shrink images inside figures */
-/* FAQ: This bug is caused by core-styles.docs.css & theme.css clash */
-/* https://github.com/TACC/Core-Styles/blob/abbcf68/src/lib/_imports/elements/html-elements.css#L58 */
-.rst-content figure {
-  /* NOTE: This style has caused trouble here and on CMS… reconsider purpose */
-  width: unset; /* undo core-styles.base.css *//* TODO: Remove from Core */
-}
-
 
 
 /* To replicate highlightjs (hljs) styles on loose TACC-Docs classes */
