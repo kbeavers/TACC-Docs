@@ -20,9 +20,18 @@ The default ReadTheDocs style of `courier` font and red `color` is **not** desir
 /* To remove space between labels and code blocks */
 /* TODO: Evaluate wheteher to make this reusable */
 p:has(small) + pre {
-    margin-top: calc( -1 * var(--global-space--p-below));
+    margin-top: calc( -1 * var(--global-space--p-buffer-below));
 }
 </style>
+
+<small>default</small>
+
+```bash
+#!/bin/bash
+#SBATCH -J myjob              # job name
+module load gromacs/2022.1
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
+```
 
 <small>`.cmd-line`</small>
 
