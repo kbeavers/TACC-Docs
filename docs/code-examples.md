@@ -51,15 +51,6 @@ module load gromacs/2022.1
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
 ```
 
-<small>`.syntax`</small>
-
-``` { .bash .syntax }
-#!/bin/bash
-#SBATCH -J myjob              # job name
-module load gromacs/2022.1
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
-```
-
 <br />
 
 #### Command Line (`.cmd-line`)
@@ -145,30 +136,6 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 module load gromacs/2022.1
 
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</code></pre>
-
-</details>
-
-<br />
-
-#### Syntax (`.syntax`)
-
-<details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
-
-Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .syntax }</code>.
-
-``` { .bash .syntax }
-man [options] -switch -verbose
-```
-
-</details>
-<details><summary><h4 class="understate">Simple Mark<b>up</b></h4></summary>
-
-<pre class="syntax">man [options] -switch -verbose</pre>
-
-</details>
-<details><summary><h4 class="understate">Complex Mark<b>up</b></h4></summary>
-
-<pre class="syntax"><code class="language-bash hljs">man [options] -switch -verbose</code></pre>
 
 </details>
 
