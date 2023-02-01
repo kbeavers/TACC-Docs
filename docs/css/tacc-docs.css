@@ -193,7 +193,7 @@
 /* To replicate highlightjs (hljs) styles on loose TACC-Docs classes */
 /* FAQ: "Loose" classes being those that are not coupled with <code> */
 /* CAVEAT: The `:has()` syntax is not supported in Firefox browser */
-:is(.cmd-line, .job-script, .syntax):not(:has(code)) {
+:is(.cmd-line, .job-script):not(:has(code)) {
     padding: 1em;
     overflow: auto;
 
