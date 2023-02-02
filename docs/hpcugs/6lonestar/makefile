@@ -18,5 +18,6 @@ lonestar6:	$(LONESTAR6_OBJS)
 	cat $(LONESTAR6_OBJS) > temp.md
 	 ../configurestrings.sh temp.md lonestar6.md
 	/bin/rm temp.md
+	/bin/mv lonestar6.md ..
 
 

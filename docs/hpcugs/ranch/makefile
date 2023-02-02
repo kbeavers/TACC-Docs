@@ -7,4 +7,5 @@ ranch:	$(RANCHSRC)
 	cat $(RANCHSRC) > temp.md
 	 ../configurestrings.sh temp.md ranch.md
 	/bin/rm temp.md
+	/bin/mv ranch.md ..
 

@@ -15,13 +15,9 @@ SRC =   \
         history.md
 
 
-stampede2:	FORCE $(SRC) 
+stampede2:	$(SRC) 
 	cat $(SRC) > temp.md
 	../configurestrings.sh temp.md stampede2.md
 	/bin/rm temp.md 
+	/bin/mv stampede2.md ..
 
-outline: $(SRC)
-	grep -h "# " $(SRC) > outline.md
-
-
-FORCE:	

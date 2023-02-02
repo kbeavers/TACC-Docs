@@ -3,10 +3,10 @@ all:	corral
 
 CORRALSRC	=	corralsrc.md
 
-corral:	$(CORRALSRC) FORCE
+corral:	$(CORRALSRC) 
 	cat $(CORRALSRC) > temp.md
 	 ../configurestrings.sh temp.md corral.md
 	/bin/rm temp.md
+	/bin/mv corral.md ..
 
-FORCE:	
 

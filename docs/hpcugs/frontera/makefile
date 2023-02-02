@@ -23,13 +23,9 @@ SRC =   \
 	refs.md
 
 
-frontera:	FORCE $(SRC) 
+frontera:	$(SRC) 
 	cat $(SRC) > temp.md
 	../configurestrings.sh temp.md frontera.md
 	/bin/rm temp.md 
+	/bin/mv frontera.md ..
 
-outline: $(SRC)
-	grep -h "# " $(SRC) > outline.md
-
-
-FORCE:	
