@@ -23,33 +23,33 @@ nav:
     - Testing Extensions: testingextensions.md
     - Code Examples: code-examples.md
   - HPC :
-    - Corral: hpcugs/corral.md
-    - Frontera: hpcugs/frontera.md
-    - Lonestar6: hpcugs/lonestar6.md
-    - Maverick2: hpcugs/maverick2.md
-    - Ranch: hpcugs/ranch.md
-    - Stampede2: hpcugs/stampede2.md
-#   - Stallion: hpcugs/stallion/stallion.md
+    - Corral: hpc/corral.md
+    - Frontera: hpc/frontera.md
+    - Lonestar6: hpc/lonestar6.md
+    - Maverick2: hpc/maverick2.md
+    - Ranch: hpc/ranch.md
+    - Stampede2: hpc/stampede2.md
+#   - Stallion: hpc/stallion/stallion.md
   - Software :
-    - ABAQUS: softwareugs/abaqus.md
-    - ANSYS: softwareugs/ansys.md
-    - AlphaFold : softwareugs/alphafold.md
-    - CD Tools: softwareugs/cdtools.md
-    - Gaussian: softwareugs/gaussian.md
-    - GROMACS: softwareugs/gromacs.md
-    - idev: softwareugs/idev.md
-    - IRODS: softwareugs/irods.md
-    - LAMMPS: softwareugs/lammps.md
-    - Launcher: softwareugs/launcher.md
-    - MATLAB: softwareugs/matlab.md
-    - NAMD: softwareugs/namd.md
-    - OpenFOAM: softwareugs/openfoam.md
-#   - Paraview VisIt: softwareugs/paraview-visit.md
-    - Quantum Espresso: softwareugs/quantumespresso.md 
-    - REMORA: softwareugs/remora.md
-    - TAU: softwareugs/tau.md
-    - Tensorflow: softwareugs/tensorflow.md
-    - VASP: softwareugs/vasp.md
+    - ABAQUS: software/abaqus.md
+    - ANSYS: software/ansys.md
+    - AlphaFold : software/alphafold.md
+    - CD Tools: software/cdtools.md
+    - Gaussian: software/gaussian.md
+    - GROMACS: software/gromacs.md
+    - idev: software/idev.md
+    - IRODS: software/irods.md
+    - LAMMPS: software/lammps.md
+    - Launcher: software/launcher.md
+    - MATLAB: software/matlab.md
+    - NAMD: software/namd.md
+    - OpenFOAM: software/openfoam.md
+#   - Paraview VisIt: software/paraview-visit.md
+    - Quantum Espresso: software/quantumespresso.md 
+    - REMORA: software/remora.md
+    - TAU: software/tau.md
+    - Tensorflow: software/tensorflow.md
+    - VASP: software/vasp.md
   - Tutorials :
     - Access Control Lists: tutorials/acls.md
     - Bash Quick Start Guide: tutorials/bashstartup.md
