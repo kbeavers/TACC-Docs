@@ -52,14 +52,14 @@ nav:
     - VASP: softwareugs/vasp.md
   - Tutorials :
     - Access Control Lists: tutorials/acls.md
-    - Bash Quick Start Guide: tutorials/bashstartupsrc.md
+    - Bash Quick Start Guide: tutorials/bashstartup.md
     - BLAS/LAPACK: tutorials/blas-lapack.md
-    - DDT Debugger: tutorials/ddtsrc.md
-    - Grid Community Toolkit: tutorials/gridcommunitytoolkitsrc.md
+    - DDT Debugger: tutorials/ddt.md
+    - Grid Community Toolkit: tutorials/gridcommunitytoolkit.md
     - Managing I/O: tutorials/managingio.md
-    - MAP: tutorials/mapsrc.md
-    - Modules/LMod: tutorials/modulessrc.md
-    - Multi-Factor Authentication: tutorials/mfasrc.md
+    - MAP: tutorials/map.md
+    - Modules/LMod: tutorials/modules.md
+    - Multi-Factor Authentication: tutorials/mfa.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
     - Sharing Project Files: tutorials/filesharing.md
     - TACC Analysis Portal: tutorials/TAP.md
