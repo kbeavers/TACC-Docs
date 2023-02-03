@@ -61,7 +61,7 @@ nav:
     - Modules/LMod: tutorials/modules.md
     - Multi-Factor Authentication: tutorials/mfa.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
-    - Sharing Project Files: tutorials/filesharing.md
+    - Sharing Project Files: tutorials/sharingprojectfiles.md
     - TACC Analysis Portal: tutorials/TAP.md
 
 
