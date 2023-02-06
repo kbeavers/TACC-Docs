@@ -1,11 +1,87 @@
-Wed Jan 25 12:46:03 CST 2023
+Mon Feb  6 11:45:39 CST 2023
 
-# fiddling and styling.
+# Documentation Meeting
+
+## alert boxes
+
+<p class="portlet-msg-alert">This is an alert and it should be a call out box</p>
+
+See example: <https://portal.tacc.utexas.edu/user-guides/stampede2#files-filesystems>
+
+## info box
+
+<p class="portlet-msg-info">This is an info box and it should be a call out</p>
+
+See example: <https://portal.tacc.utexas.edu/user-guides/lonestar6#scratchpurgepolicy>
+
+## 'cmd-line' class examples
+
+<pre class="cmd-line">login1$ <b>module load kitten</b></pre>
+
+``` { .bash .cmd-line }
+login1$ **module load kitten**
+```
+
+See example: <https://portal.tacc.utexas.edu/user-guides/stampede2#building-basics-mpi>
+
+## 'job-script' class examples
+
+<pre class="job-script">
+#!/bin/bash
+#----------------------------------------------------
+# Sample Slurm job script
+#   for TACC Stampede2 KNL nodes
+#
+#   *** Serial Job on Normal Queue ***
+#   -- Serial codes run on a single node (upper case N = 1).
+#        A serial code ignores the value of lower case n,
+#        but slurm needs a plausible value to schedule the job.
+#
+#   -- For a good way to run multiple serial executables at the
+#        same time, execute "module load launcher" followed
+#        by "module help launcher".
+
+#----------------------------------------------------
+
+#SBATCH -J myjob           # Job name
+#SBATCH -o myjob.o%j       # Name of stdout output file
+#SBATCH -e myjob.e%j       # Name of stderr error file
+#SBATCH -p normal          # Queue (partition) name
+#SBATCH -N 1               # Total # of nodes (must be 1 for serial)
+#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
+
+module load kitten
+ibrun -np 4 -N 2 -p small myexecutable
+</pre>
+
+
+``` { .bash .cmd-line }
+#!/bin/bash
+#----------------------------------------------------
+# Sample Slurm job script
+#   for TACC Stampede2 KNL nodes
+#
+#   *** Serial Job on Normal Queue ***
+#
+# Last revised: 20 Oct 2017
+#
+#----------------------------------------------------
+
+#SBATCH -J myjob           # Job name
+#SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
+#SBATCH -t 01:30:00        # Run time (hh:mm:ss)
+#SBATCH --mail-user=username@tacc.utexas.edu
+#SBATCH --mail-type=all    # Send email at begin and end of job
+#SBATCH -A myproject       # Allocation name (req'd if you have more than 1)
+
+module load randomsoftware
+ibrun -N 6 -n 12 myexecutable
+
+```
 
 ## Styles I use
 
 ### details and summary tags
-
 
 See: <https://docs.tacc.utexas.edu/hpcugs/stampede2/stampede2/#jobscripts>
 
@@ -26,39 +102,29 @@ and demonstrated here
 <figure><img src="../imgs/louis.jpg" width="50%">
 <figcaption>Louis</figcaption></figure>
 
+## Need more space for long command lines
 
-### Code Examples
+See old: <https://portal.tacc.utexas.edu/user-guides/stampede2#building-performance-architecture>
 
-See <a href="/code-examples">Fiddling: Code Examples</a>.
+vs.
 
-### Need a style called "introtext"
+See new: <https://docs.tacc.utexas.edu/hpc/stampede2/#building-performance-architecture>
 
-Only used in Frontera User Guide.  See: .... and I just realized it's disappeared from Frontera.
+## Table renderings are very small
+
+See <https://docs.tacc.utexas.edu/hpc/stampede2/#table6>
+
+## Need a style called "introtext"
+
+Only used in Frontera User Guide.  
 
 p class="introtext" - it's just a larger font, used as introductory text.  
 
 See <https://frontera-portal.tacc.utexas.edu/user-guide/running/>.  The first sentences, prior to "Job Accounting" should be displayed in a larger than normal font.
 
-### Reference style links 
+## Code Examples
 
-all aliases are stored in 'aliases.md'
-
-{% include 'aliases.md' %}
-
-Doe this alias work [Stampede2][STAMPEDE2UG]?   
-
-Submit a [ticket][TACCUSERPORTAL] via TUP.
-
-[TACCUSERPORTAL]: http://portal.tacc.utexas.edu
-
-
-
-<mark>I'm within a &lt;mark&gt;</mark>
-
-can you < mark > with a color other than <mark>yellow</mark>?  Pink or cyan?
-
-include text under here
-
+See <a href="/code-examples">Fiddling: Code Examples</a>.
 
 
 ## `admonition` extension
