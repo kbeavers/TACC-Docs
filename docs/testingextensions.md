@@ -55,7 +55,7 @@ ibrun -np 4 -N 2 -p small myexecutable
 </pre>
 
 
-``` { .bash .cmd-line }
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
