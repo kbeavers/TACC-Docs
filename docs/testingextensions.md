@@ -18,9 +18,16 @@ See example: <https://portal.tacc.utexas.edu/user-guides/lonestar6#scratchpurgep
 
 <pre class="cmd-line">login1$ <b>module load kitten</b></pre>
 
-``` { .bash .cmd-line }
-login1$ **module load kitten**
+``` { .bash }
+login1$ { .bash }
+login1$ module load kitten
 ```
+
+``` { .bash .cmd-line }
+login1$ { .bash .cmd-line}
+login1$ module load kitten
+```
+
 
 See example: <https://portal.tacc.utexas.edu/user-guides/stampede2#building-basics-mpi>
 
