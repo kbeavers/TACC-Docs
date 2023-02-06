@@ -50,7 +50,7 @@ date
 # ---------------------------------------------------
 </pre> </details>
 
-<details><summary>Serial Job in Normal Queue</summary>
+<details><summary>MPI Job in Normal Queue</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -102,7 +102,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 </pre> </details>
 
 
-<details><summary>Serial Job in Normal Queue</summary>
+<details><summary>OpenMP Job in Normal Queue</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -159,7 +159,7 @@ export OMP_NUM_THREADS=34
 # ---------------------------------------------------
 </pre> </details>
 
-<details><summary>Serial Job in Normal Queue</summary>
+<details><summary>Hybrid Job in Normal Queue</summary>
 
 <pre class="job-script">
 #!/bin/bash
