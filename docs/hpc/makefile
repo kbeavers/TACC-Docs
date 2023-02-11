@@ -6,9 +6,9 @@ include:
 	echo "====== Building includes ======"
 	cd ../include; make;
 
-corral: FORCE
-	echo "====== Building Corral ======"
-	cd corral; make;
+#corral: FORCE
+#	echo "====== Building Corral ======"
+#	cd corral; make;
 
 frontera: FORCE
 	echo "====== Building Frontera ======"

@@ -1,8 +1,5 @@
-<style>.help{box-sizing:border-box}.help *,.help *:before,.help *:after{box-sizing:inherit}.row{margin-bottom:10px;margin-left:-15px;margin-right:-15px}.row:before,.row:after{content:" ";display:table}.row:after{clear:both}[class*="col-"]{box-sizing:border-box;float:left;position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-1-5{width:20%}.col-2-5{width:40%}.col-3-5{width:60%}.col-4-5{width:80%}.col-1-4{width:25%}.col-1-3{width:33.3%}.col-1-2,.col-2-4{width:50%}.col-2-3{width:66.7%}.col-3-4{width:75%}.col-1-1{width:100%}article.help{font-size:1.25em;line-height:1.2em}.text-center{text-align:center}figure{display:block;margin-bottom:20px;line-height:1.42857143;border:1px solid #ddd;border-radius:4px;padding:4px;text-align:center}figcaption{font-weight:bold}.lead{font-size:1.7em;line-height:1.4;font-weight:300}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}</style>
-
-
 # Corral User Guide
-<span style="font-size:90%;"><i>Last update: November 24, 2021</i></span>  editing 01/19/2023 xy
+*Last update: November 24, 2021*
 
 
 ## [System Overview](#overview) { #overview }
@@ -34,7 +31,7 @@ The S3 interface is most suitable for programmatic interaction from within custo
 
 Please direct any further questions you may have regarding the cloud storage interface to Corral through the [TACC ticket system](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create).
 
-<figure><img alt="Corral4 Data Storage" src="../../../imgs/corral/Corral4.jpg" style="border-width: 1px; border-style: solid;" /> 
+<figure id="figure1"><img alt="Corral4 Data Storage" src="../../../imgs/corral/Corral4.jpg"> 
 <figcaption>Figure 1. Corral4 Data Storage</figcaption></figure>
 
 
@@ -134,7 +131,7 @@ Click on the "Open Connection" button in the top right corner of the Cyberduck w
 
 Once connected, you can navigate through your remote file hierarchy using familiar graphical navigation techniques. You may also drag-and-drop files into and out of the Cyberduck window to transfer files to and from Corral.
 
-<figure><img alt="Cyberduck-SSH" src="../../../imgs/corral/CorralCyberduck-1.jpg"><figcaption>Figure 2. Cyberduck connection setup screen</figcaption></figure>
+<figure id="figure2"><img alt="Cyberduck-SSH" src="../../../imgs/corral/CorralCyberduck-1.jpg"><figcaption>Figure 2. Cyberduck connection setup screen</figcaption></figure>
 
 
 ## [Managing Files &amp; Permissions](#managing) { #managing }
