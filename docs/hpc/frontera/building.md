@@ -125,8 +125,6 @@ You may, of course, need to customize the build process in other ways. It's like
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
-<img alt="Building Frontera" src="IMAGEDIR/frontera/buildingfrontera.png">
-
 ### [The Intel Math Kernel Library (MKL)](#building-mkl)
 
 The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a collection of highly optimized functions implementing some of the most important mathematical kernels used in computational science, including standardized interfaces to:

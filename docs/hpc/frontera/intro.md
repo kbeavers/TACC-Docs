@@ -6,8 +6,6 @@ Frontera provides a balanced set of capabilities that supports both capability a
 
 The design is anchored by Intel's top-of-the-line (at deployment) Xeon processor, Cascade Lake © (CLX). With a higher clock rate than other recent HPC processors, Intel's CLX processor delivers effective performance in the most commonly used and accessible programming model used in science applications today. Frontera's multi-tier storage system is designed to enable science at unprecedented scales with nearly 60 PB of Lustre-based storage, including 3 PB of flash storage for data-driven science applications that depend upon fast access to large amounts of data.  
 
-<img alt="Frontera Racks" src="IMAGEDIR/frontera/fronteraracks.png">
-
 Frontera is also breaking new ground in its support for science applications. During the first six months of operation the system will provide support for users to run jobs using [containers](#containers), immediately making tens of thousands of container-ready applications accessible on Frontera without the need for users to find and build their own versions.  
 
 Following the initial CPU-only rollout, the system will also provide users with access to the latest accelerator cards from NVIDIA with outstanding single-precision support especially targeted for machine-learning workloads. Later this summer a separate system will enter production to provide users with access to the latest double-precision HPC cards from NVIDIA, designed to serve more "traditional" science and engineering simulation needs.   

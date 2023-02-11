@@ -64,8 +64,6 @@ It's often worthwhile to generate [optimization and vectorization reports](http:
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](https://learn.tacc.utexas.edu/course/).
 
-<img alt="Frontera Assembly" src="IMAGEDIR/frontera/fronteradennis.png">
-
 ### [Programming and Performance: CLX](#programming-clx) { #programming-clx } 
 
 <!-- span style="color:red">**Hyperthreading.** Hyperthreading is not enabled on Frontera.</span> It is rarely a good idea to use 96 hardware threads simultaneously**, and it's certainly not the first thing you should try. In most cases it's best to specify no more than 48 MPI tasks or independent processes per node, and 1-2 threads/core. One exception is worth noting: when calling threaded MKL from a serial code, it's safe to set `OMP_NUM_THREADS` or `MKL_NUM_THREADS` to 96. This is because MKL will choose an appropriate thread count less than or equal to the value you specify. See [Controlling Threading in MKL](#mkl-threading) for more information.  In any case remember that the default value of `OMP_NUM_THREADS` is 1.-->
