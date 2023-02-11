@@ -46,9 +46,9 @@ Launch the ANSYS GUI within the VNC session:
 
 <pre class="cmd-line">$ <b>/home1/apps/ANSYS/2021R2/v212/ansys/bin/launcher212</b></pre>
 
-<figure>
+<figure id="figure1">>
 	<img alt="ANSYS1" src="../../../imgs/software/ansys-1.png"/>
-	<figcaption> Figure 1. Commands to run Ansys Mechanical Ansys Parametric Design Language (APDL) jobs </figcaption></figure>
+	<figcaption>Figure 1. Commands to run Ansys Mechanical Ansys Parametric Design Language (APDL) jobs </figcaption></figure>
 
 
 ### [Batch Mode](#running-batch) { #running-batch }
@@ -112,7 +112,7 @@ Other ANSYS binaries, e.g. Aqwa, CFX, Fluent, can be found at `/home1/apps/ANSYS
 			
 In the figure below, the small window on top displays the command to run an ANSYS Mechanical job through the command line, which corresponds to the information (i.e., Working directory, Job Name, Input File, Output File) entered on the bottom.
 
-<figure> <img alt="ANSYS" src="../../../imgs/software/ansys-2.png">
+<figure id="figure2">> <img alt="ANSYS2" src="../../../imgs/software/ansys-2.png">
 	<figcaption> Figure 2. Ansys Mechanical Ansys Parametric Design Language (APDL) Product Launcher </figcaption></figure>
 		
 

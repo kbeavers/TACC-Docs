@@ -23,7 +23,7 @@ The following figure shows how MATLAB is launched inside the VNC session.
 
 ### [Figure 1. MATLAB launched in a VNC session](#figure1) { #figure1 }
 
-<img alt="" src="../../imgs/software/MATLAB-1.png">
+<figure id="figure1"> <img alt="MATLAB-1" src="../../imgs/software/MATLAB-1.png"><figcaption></figcaption></figure>
 
 **IMPORTANT**: Do NOT launch MATLAB on the login nodes. This may fail and, more importantly, it will prevent other users from doing their work, as your execution will take up too many cycles on the shared login node. Using MATLAB on the login nodes is considered system abuse, and will be treated as such.  See TACC [usage policies][TACCUSAGEPOLICY].
 

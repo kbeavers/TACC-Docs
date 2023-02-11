@@ -13,11 +13,15 @@ All TACC system users are organized into UNIX "groups", collections of users who
 
 At TACC, users assigned to the same allocated project typically belong to the same UNIX group. This group number will (usually) correspond directly to the project/allocation number. To determine your project's UNIX group number, go to the "[Projects and Allocations](https://portal.tacc.utexas.edu/projects-and-allocations)" page in the [TACC User Portal](http://portal.tacc.utexas.edu) (TUP).
 
+<figure id="figure1">
 <img alt="Project Detail" border="1" src="../../imgs/tutorials/sharingfiles-1.png" style="width: 600px; height: 201px;" />
+<figcaption></figcaption></figure>
 
 Click on the "Project Detail" button to view the group number:
 
+<figure id="figure2">
 <img alt="Project's UNIX group number" border="1" src="../../imgs/tutorials/sharingfiles-1.png" style="width: 600px; height: 258px;" />
+<figcaption></figcaption></figure>
 
 In this case, Test Project XYZ's UNIX group ID (GID) is "G-816631". Therefore, all files to be associated with this project must belong to this group.
 
@@ -101,7 +105,9 @@ login1$ <b>man umask</b></pre>
 ## [Adding users to TACC Projects](#addusers) { #addusers }
 Principal Investigators (PIs) or their delegates can manage project membership through the [TACC User Portal](http://portal.tacc.utexas.edu) under Allocations. 
 
+<figure id="figure3">
 <img alt="Add users to project" src="../../imgs/tutorials/sharingfiles-1.png" style="width: 500px; height: 205px;" />
+<figcaption></figcaption></figure>
 
 ## [References](#refs) { #refs }
 

@@ -15,12 +15,12 @@ Authentication is the process of determining if you are you. Traditional methods
 
 To pair a new device, sign in to the TACC User Portal and click on the "Manage Profile" link in the right corner. Users who've not set up MFA before will see a message similar to Figure 1.
 
-<figure><img border="1" alt="" src="../../imgs/tutorials/MFA-1.png">
+<figure id="figure1"><img border="1" alt="" src="../../imgs/tutorials/MFA-1.png">
 <figcaption>Figure 1. Profile with no MFA enabled</figcaption></figure>
 
 Click "Pair a Device" to get to the TACC device pairing page. Here you'll be presented with two different pairing methods. Users may authenticate with one and only one method. It's easy to pair and unpair using either of the first two methods. 
 
-<figure><img alt="" src="../../imgs/tutorials/MFA-2.png"> 
+<figure id="figure2"><img alt="" src="../../imgs/tutorials/MFA-2.png"> 
 <figcaption>Figure 2. Select Pairing Method</figcaption></figure>
 	
 ### [2. Select Pairing Method](#setupmfa-step2) { #setupmfa-step2 }
@@ -58,9 +58,9 @@ When logging into a TACC resource you'll be prompted for your standard password,
 **This token code is valid for this login session only and cannot be re-used.  It may take up to 60 seconds for the text to reach you.  We advise you to clear out your text messages in order to avoid confusion during future logins.**
 
 <table border="1"><tr>
-<td><figure><img border="1" alt="" src="../../imgs/tutorials/MFA-3a.png">
+<td><figure id="figure3a"><img border="1" alt="" src="../../imgs/tutorials/MFA-3a.png">
 <figcaption>Figure 3a. SMS pairing code</figcaption></figure></td>
-<td><figure><img border="1" alt="" src="../../imgs/tutorials/MFA-3b.png">
+<td><figure id="figure3b"><img border="1" alt="" src="../../imgs/tutorials/MFA-3b.png">
 <figcaption>Figure 3b. Pairing with SMS</figcaption></figure></td></tr></table>
 
 ## [Example: Pairing with TACC Token App](#tacctokenapp) { #tacctokenapp }
@@ -69,15 +69,15 @@ Here we demonstrate pairing with the TACC Token App, though you may use any any 
 
 Begin by pressing the "Use Your Preferred Authenticator App to Pair" button on the portal (Figure 2. above).  A personalized QR code will be generated on your computer screen as in Figure 4. below. 
 
-<figure><img alt="" src="../../imgs/tutorials/MFA-4.png"> 
+<figure id="figure4"><img alt="" src="../../imgs/tutorials/MFA-4.png"> 
 <figcaption> Figure 4. Scan the generated QR code on your screen</figcaption></figure>
 
 3. Open the TACC Token App on your device. Your mobile device screen should appear similar to Figure 5a. Tap the "+" in the lower right corner of the app to start the pairing process.  The app will launch the mobile device's camera.  Scan the generated QR code on your computer screen.  Do not scan the image on this tutorial's page. 
 
 <table border="1"><tr>
-<td><figure><img border="1" src="../../imgs/tutorials/MFA-5a.png"> 
+<td><figure id="figure5a"><img border="1" src="../../imgs/tutorials/MFA-5a.png"> 
 <figcaption > Figure 5a.</figcaption></figure></td>
-<td><figure><img border="1" alt="" src="../../imgs/tutorials/MFA-5b.png">
+<td><figure id="figure5b"><img border="1" alt="" src="../../imgs/tutorials/MFA-5b.png">
 <figcaption> Figure 5b. TACC Token App<br>generating token code</figcaption></figure></td></tr></table>
 
 ## [Logging into TACC Resources](#login) { #login }
@@ -109,9 +109,9 @@ After typing in your password, you'll be prompted for "**`TACC Token Code:`**". 
 
 
 <table border="1"><tr>
-<td><figure><img alt="" src="../../imgs/tutorials/MFA-6a.png">
+<td><figure id="figure6a"><img alt="" src="../../imgs/tutorials/MFA-6a.png">
 <figcaption> Figure 6a. SMS token code </figcaption></figure></td>
-<td><figure><img border="1" alt="" src="../../imgs/tutorials/MFA-6b.png">
+<td><figure id="figure6b"><img border="1" alt="" src="../../imgs/tutorials/MFA-6b.png">
 <figcaption> Figure 6b. TACC Token App token code</figcaption></figure></td></tr></table>
 
 ## [International Users and Travelers](#international) { #international }
@@ -122,12 +122,12 @@ Users located outside the U.S. **must** pair using a [Multi-Factor Authenticatio
 
 To unpair your device, sign into the TACC User Portal and click on "Manage Profile".  Depending upon the method of pairing you'll see a message similar to Figure 7.  Click on the red subtract symbol to begin the unpairing process.
 
-<figure><img src="../../imgs/tutorials/MFA-7.png"></p>
+<figure id="figure7"><img src="../../imgs/tutorials/MFA-7.png"></p>
 <figcaption> Figure 7. Profile configured with SMS pairing</figcaption></figure>
 
 On the next screen (Figure 8.) you'll be asked to to confirm the unpairing.  Similar to the pairing process, you must verify unpairing by entering the token code when prompted.  If you've lost access to the device you originally paired with, you may unpair using email notification.
 
 
-<figure><img border="1" alt="SMS Unpairing" src="../../imgs/tutorials/MFA-8.png">
+<figure id="figure8"><img border="1" alt="SMS Unpairing" src="../../imgs/tutorials/MFA-8.png">
 <figcaption> Figure 8. Unpairing TACC Token App or SMS pairings</figcaption></figure>
 

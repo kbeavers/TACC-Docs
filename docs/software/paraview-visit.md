@@ -28,7 +28,7 @@ ParaView is currently installed on TACC&rsquo;s Stampede2 and Frontera resources
 
 First, use the TACC Analysis Portal to allocate one (or more) compute nodes and run a desktop: <a href="https://tap.tacc.utexas.edu/jobs/">https://tap.tacc.utexas.edu/jobs/</a>   You can choose to use either VNC or DCV to provide the desktop.
 
-<figure><img alt="" src="../../imgs/software/paraview-visit-1.png"><figcaption></figcaption></figure>
+<figure id="figure1"><img alt="paraview-visit-1" src="../../imgs/software/paraview-visit-1.png"><figcaption></figcaption></figure>
 
 Select your desired options, and press Submit.   Eventually the job will run, allocate the specified nodes and tasks, and provide a means to connect to it in a separate browser tab.   There you will see a desktop.   In the terminal window on that desktop:
 
@@ -50,7 +50,7 @@ We do not use GPUs to run Paraview on either Stampede2 or Lonestar6.  swr is a w
 
 To run Paraview in parallel, you must first start your VNC or DCV desktop with more than one tasks, running on one or more nodes.  This is easily done on the TACC vis portal:
 
-<figure><img alt="" src="../../imgs/software/paraview-visit-2.png"><figcaption></figcaption></figure>
+<figure id="figure2"><img alt="paraview-visit-2" src="../../imgs/software/paraview-visit-2.png"><figcaption></figcaption></figure>
 
 Then start Paraview as above.    Once the GUI appears, File-&gt;connect&hellip; opens the Choose Server Configuration dialog.   The auto configuration will cause Paraview to launch a parallel server using one server process on each task allocated above.   In this case the available cores will be meted out to the server processes based on the number of tasks running on each node.
 
@@ -116,7 +116,7 @@ The scary looking text that emerges can be ignored.
 
 This will create a file named &lsquo;tt.png&rsquo; containing an image of a sphere:
 
-<figure><img alt="" src="../../imgs/software/paraview-visit-3.png"><figcaption></figcaption></figure>
+<figure id="figure3"><img alt="paraview-visit-3.png" src="../../imgs/software/paraview-visit-3.png"><figcaption></figcaption></figure>
 
 #### Notes from the Vis Team
 

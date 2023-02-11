@@ -41,19 +41,19 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 
 1. **Click the "Run and Debug a Program" button in the "DDT - Welcome" window**:
 
-	<figure><img src="../../imgs/tutorials/DDT-1.png" style="height: 487px; width: 800px; border-width: 1px; border-style: solid;" />
+	<figure id="figure1"><img src="../../imgs/tutorials/DDT-1.png" style="height: 487px; width: 800px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. This displays the "Run" window, where you **specify the executable path, command-line arguments, and processor count**. Once set, these values remain from one session to the next.
 
-	<figure><img src="../../imgs/tutorials/DDT-2.png" style="height: 497px; width: 400px; border-width: 1px; border-style: solid;" />
+	<figure id="figure2"><img src="../../imgs/tutorials/DDT-2.png" style="height: 497px; width: 400px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. **Select each of the "Change" buttons in this window, and adjust the job parameters**.
 
 	* With the "Options" change button, set the MPI Implementation to either "Intel MPI" or "MVAPICH 2i", depending on which MPI software stack you used to compile your program. Click OK.
 
-		<figure><img src="../../imgs/tutorials/DDT-3.png" style="width: 600px; border-width: 1px; border-style: solid; height: 435px;" />
+		<figure id="figure3"><img src="../../imgs/tutorials/DDT-3.png" style="width: 600px; border-width: 1px; border-style: solid; height: 435px;" />
 	<figcaption></figcaption></figure>
 
 	* In the "Queue Submission Parameters" window, fill in the following fields:
@@ -65,17 +65,17 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 
 		<p>You must set the Project field to a valid project id. When you login, a list of the projects associated with your account and the corresponding balance should appear. Click OK, and you'll return to the "Run" window.
 
-		<figure><img alt="" src="../../imgs/tutorials/DDT-4.png" style="width: 300px; height: 258px; border-width: 1px; border-style: solid;" />
+		<figure id="figure4"><img alt="" src="../../imgs/tutorials/DDT-4.png" style="width: 300px; height: 258px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. Back in the "Run" window, **set the number of tasks you will need in the "Number of processes" box and the number of nodes you will be requesting**. If you are debugging an OpenMP program, set the number of OpenMP threads also.
 
-	<figure><img alt="" src="../../imgs/tutorials/DDT-5.png" style="width: 400px; height: 497px; border-width: 1px; border-style: solid;" />
+	<figure id="figure5"><img alt="" src="../../imgs/tutorials/DDT-5.png" style="width: 400px; height: 497px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. **Finally, click "Submit"**. A submitted status box will appear:
 
-	<figure><img src="../../imgs/tutorials/DDT-6.png" style="height: 346px; width: 700px; border-width: 1px; border-style: solid;" />
+	<figure id="figure6"><img src="../../imgs/tutorials/DDT-6.png" style="height: 346px; width: 700px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 
@@ -83,7 +83,7 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 
 Once your job is launched by the SLURM scheduler and starts to run, the DDT GUI will fill up with a code listing, stack trace, local variables and a project file list. Double click on line numbers to set breakpoints, and then click on the play symbol (>) in the upper left corner to start the run.
 
-<figure><img alt="" src="../../imgs/tutorials/DDT-7.png" style="width: 800px; height: 485px; border-width: 1px; border-style: solid;" />
+<figure id="figure7"><img alt="" src="../../imgs/tutorials/DDT-7.png" style="width: 800px; height: 485px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 ## [DDT with Reverse Connect](#reverse) { #reverse }
@@ -94,14 +94,14 @@ By starting DDT from a login node you let it use X11 graphics, which can be slow
 
 1. **Under "Remote Launch" make a new configuration**:
 
-	<figure><img src="../../imgs/tutorials/DDT-8.png" style="height: 73px; width: 300px; border-width: 1px; border-style: solid;" />
+	<figure id="figure8"><img src="../../imgs/tutorials/DDT-8.png" style="height: 73px; width: 300px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 	Fill in your login name and the cluster to connect to, for instance "`stampede2.tacc.utexas.edu`". The remote installation directory is stored in the "`$TACC_DDT_DIR`" environment variable after the module is loaded.
 
 1. **Make the connection; you'll be promped for your password and two-factor code**:
 
-	<figure><img src="../../imgs/tutorials/DDT-9.png" style="width: 500px; height: 309px; border-width: 1px; border-style: solid;" />
+	<figure id="figure9"><img src="../../imgs/tutorials/DDT-9.png" style="width: 500px; height: 309px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. **From any login node, submit a batch job where the "`ibrun`" line is replaced by**:
@@ -110,7 +110,7 @@ By starting DDT from a login node you let it use X11 graphics, which can be slow
 
 1. **When your batch job (and therefore your DDT execution) starts, the remote client will ask you to accept the connection**:
 
-	<figure><img src="../../imgs/tutorials/DDT-10.png" style="width: 300px; height: 127px; border-width: 1px; border-style: solid;" />
+	<figure id="figure10"><img src="../../imgs/tutorials/DDT-10.png" style="width: 300px; height: 127px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 	**Your DDT session will now use the remote client.**
