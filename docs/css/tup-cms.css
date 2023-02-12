@@ -8,12 +8,13 @@
 
 
 /* Figures & Blockquotes & Captions */
+/* IMPORTANT: Remove `p.caption` selectors (because RTD theme has p.caption) */
 /* https://dev.tup.tacc.utexas.edu/admin/djangocms_snippet/snippet/77 */
 
 /* To add space abvoe and below small text beneath these patterns */
 figure,
 blockquote,
-p.caption,
+/* p.caption, */
 .embed-responsive {
     --buffer-top: 10px;
     --buffer-bottom: 2rem; /* mimic core-styles.cms <p> margin-bottom: 2rem; */
@@ -31,8 +32,8 @@ p.caption,
 }
 
 /* TODO: In Core, share styles (how?) */
-figcaption,
-p.caption,
+figcaption/*,
+p.caption, */
 blockquote footer {
     color: var(--global-color-primary--dark);
     font-style: italic;
@@ -40,8 +41,8 @@ blockquote footer {
     font-size: var(--global-font-size--small);
 }
 /* FAQ: Not for blockquote footer, because blockquote line-height is enough */
-figcaption,
-p.caption {
+figcaption/*,
+p.caption */ {
     margin-top: var(--buffer-top);
 }
 
