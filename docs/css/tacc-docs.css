@@ -14,10 +14,13 @@
 
 /* To increase global font size */
 body {
-  font-size: var(--global-font-size--large);
+  font-size: var(--global-font-size--large); /* overwrite core-styles.base */
 }
 p {
-  font-size: inherit;
+  font-size: inherit; /* overwrite theme.css */
+}
+table {
+  font-size: var(--global-font-size--large); /* overwrite core-styles.base */
 }
 
 
