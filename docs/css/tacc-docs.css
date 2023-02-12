@@ -174,7 +174,8 @@ table {
   text-align: left; /* to prevent width: 100% from moving ::before to center */
 }
 /* To make space for button which is on top of link text */
-.wy-menu-vertical li[aria-expanded] /* open or closed */ a {
+.wy-menu-vertical li.current a /* before opened or closed */,
+.wy-menu-vertical li[aria-expanded] /* after opened or closed */ a {
   padding-left: calc( var(--link-pad-horz) + var(--button-space) );
 }
 
