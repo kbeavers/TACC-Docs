@@ -95,6 +95,7 @@
 
   padding-left: 25px; /* NOTE: design is 24.5px */
   padding-right: 25px; /* NOTE: design is 11.5px */
+  padding-bottom: 25px; /* NOTE: developer addition */
 }
 .wy-menu-vertical a,
 /* (separate ruleset in `theme.css`) */
@@ -147,11 +148,15 @@
 
 
 
-/* To hide sidebar "« Previous" and "Next »" */
+/* To hide sidebar bottom "« Previous" and "Next »" */
 
 /* NOTE: This also hides repo link, but that already exists on every page */
 .rst-versions {
   display: none;
+}
+/* Remove extra spce for `.rst-versions` */
+.wy-nav-side {
+  padding-bottom: unset; /* undo theme_extra.css and theme.css */
 }
 
 
