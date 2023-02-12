@@ -14,7 +14,3 @@
 
 Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
 
-<figure>
-<img alt="" src="IMAGEDIR/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
-<figcaption><font size=-2>Figure 1. Edward Blein - Trail of Horses</font></figcaption></figure>
-

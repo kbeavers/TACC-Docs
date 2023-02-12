@@ -1,5 +1,5 @@
 
-all:	include corral frontera lonestar6 maverick2 ranch stampede2 
+all:	include frontera lonestar6 maverick2 ranch stampede2 
 
 
 include:

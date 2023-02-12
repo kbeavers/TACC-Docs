@@ -16,7 +16,8 @@
 * **All users: read the [Good Conduct](#conduct) section.** Frontera is a shared resource and your actions can impact other users. (10/10/2019) 
 
 
-<img alt="Frontera Art" src="../../../imgs/frontera/frontera-art.jpg">
+<figure id="figure1"><img alt="Frontera Art" src="../../../imgs/frontera/frontera-art.jpg">
+<figcaption></figcaption></figure>
 
 ## [Introduction to Frontera](#intro) { #intro } 
 
@@ -25,8 +26,6 @@ Frontera is funded by the National Science Foundation (NSF) through award #18182
 Frontera provides a balanced set of capabilities that supports both capability and capacity simulation, data-intensive science, visualization, and data analysis, as well as emerging applications in AI and deep learning. Blue Waters and other cyberinfrastructure users in the open science community will find a familiar programming model and tools in a system that is productive today while serving as a bridge to the exascale future.  
 
 The design is anchored by Intel's top-of-the-line (at deployment) Xeon processor, Cascade Lake © (CLX). With a higher clock rate than other recent HPC processors, Intel's CLX processor delivers effective performance in the most commonly used and accessible programming model used in science applications today. Frontera's multi-tier storage system is designed to enable science at unprecedented scales with nearly 60 PB of Lustre-based storage, including 3 PB of flash storage for data-driven science applications that depend upon fast access to large amounts of data.  
-
-<img alt="Frontera Racks" src="../../../imgs/frontera/fronteraracks.png">
 
 Frontera is also breaking new ground in its support for science applications. During the first six months of operation the system will provide support for users to run jobs using [containers](#containers), immediately making tens of thousands of container-ready applications accessible on Frontera without the need for users to find and build their own versions.  
 
@@ -46,7 +45,6 @@ Frontera's design also includes a totally new integration with web services, and
 * Review the [default modules with "`module list`"](../admin/#using-modules-to-manage-your-environment). Make any changes needed for your code. 
 * Start small. Run any jobs from other systems on a smaller scale in order to test the performance of your code on Frontera. You may find your code needs to be altered or recompiled in order to perform well and at scale on the new system. 
 
-<img alt="Below Frontera" src="../../../imgs/frontera/belowfrontera.png">
 ## [Account Administration](#admin) { #admin }
 
 <!-- p class="introtext">Discuss account status, account configuration.</p -->
@@ -212,8 +210,6 @@ See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensiv
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">`module save`</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Frontera's default startup scripts for a safe way to do so.
 
-<img alt="Frontera Assembly" src="../../../imgs/frontera/fronteralaura.png">
-
 ## [Frontera User Portal](#portal) { #portal }
 
 <!-- p class="introtext">The Frontera project team is pleased to announce the release of new <a href="https://frontera-portal.tacc.utexas.edu/workbench/dashboard">Dashboard</a> functionality within the Frontera User Portal. Upon login, click on your name in the upper right corner to access your Frontera dashboard and account settings. </p -->
@@ -362,7 +358,9 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 <p class="introtext">Frontera has two computing subsystems, a primary computing system focused on double precision performance, and a second subsystem focused on single precision streaming-memory computing. Frontera also has multiple storage systems, as well as interfaces to cloud and archive systems, and a set of application nodes for hosting virtual servers.</p>
 
+<figure id="figurex">
 <img src="../../../imgs/frontera/Ecosystem-Graphic.png" style="width:800px">
+<figcaption></figcaption></figure>
 
 ### [Cascade Lake (CLX) Compute Nodes](#system) { # }
 
@@ -418,12 +416,10 @@ Frontera's four login nodes are Intel Xeon Platinum 8280 ("Cascade Lake") nodes 
 
 The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) connectivity between the switches and HDR100 (100 Gb/s) connectivity to the compute nodes. A fat tree topology employing six core switches connects the compute nodes and the `$HOME` and `$SCRATCH` filesystems. There are two 40-port leaf switches in each rack. Half of the nodes in a rack (44) connect to 22 downlinks of a leaf switch as pairs of HDR100 (100 Gb/s) links into HDR200 (200 Gb/s) ports of the leaf switch. The other 18 ports are uplinks to the six cores switches. The disparity in the number of uplinks and downlinks creates an oversubscription of 22/18.
 
-<img alt="Frontera Cables" src="../../../imgs/frontera/fronteracables.png">
-Frontera Cables
 
 ## [Managing Files on Frontera](#files) { #files }
 
-<p class="introtext">Frontera mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.</p>
+Frontera mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.
 
 
 ### [File Systems](#files-filesystems) { #files-filesystems } 
@@ -469,7 +465,8 @@ Your account-specific `$WORK` environment variable varies from system to system 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar5`, `stampede2`) will exist **only** if you have an allocation on that system.
 
 #### [Figure 3. Stockyard File System](#figure3) { #figure3 } 
-<img alt="Stockyard File System" src="../../../imgs/stockyard-2022.jpg"> 
+<figure id="figure3"><img alt="Stockyard File System" src="../../../imgs/stockyard-2022.jpg"> 
+<figcaption></figcaption></figure>
 
 **Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar5`, `stampede2`) exist only if you have allocations on the associated system.
 
@@ -827,7 +824,8 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
  The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../conduct) for more information.
 
 #### [Figure 2. Login and Compute Nodes](#figure2) { #figure2 } 
-<img alt="[Figure 2. Login and Compute Nodes" src="../../../imgs/login-compute-nodes.jpg">
+<figure id="figure2"><img alt="[Figure 2. Login and Compute Nodes" src="../../../imgs/login-compute-nodes.jpg">
+<figcaption></figcaption></figure>
 
 You can use your command-line prompt, or the `hostname` command, to discern whether you are on a login node or a compute node. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname <span style="white-space: nowrap;">(e.g. `c401-064`)</span>. The hostname for a Frontera login node begins with the string `login` (e.g. `login2.frontera.tacc.utexas.edu`), while compute node hostnames begin with the character `c` <span style="white-space: nowrap;">(e.g. `c401-064.frontera.tacc.utexas.edu`)</span>. 
 
@@ -1304,11 +1302,7 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's 56 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
-<img alt="Above Frontera" src="../../../imgs/frontera/abovefrontera.png">
-
-### [Other Job Management Commands <br>`scancel`, `scontrol`, and `sacct`](#monitoring-other) { #monitoring-other }
-
-**It's not possible to add resources to a job (e.g. allow more time)** once you've submitted the job to the queue.
+**It is not possible to add resources to a job (e.g. allow more time)** once you've submitted the job to the queue.
 
 To **cancel** a pending or running job, first determine its jobid, then use `scancel`:
 
@@ -1461,8 +1455,6 @@ You may, of course, need to customize the build process in other ways. It's like
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
-<img alt="Building Frontera" src="../../../imgs/frontera/buildingfrontera.png">
-
 ### [The Intel Math Kernel Library (MKL)](#building-mkl)
 
 The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a collection of highly optimized functions implementing some of the most important mathematical kernels used in computational science, including standardized interfaces to:
@@ -1610,8 +1602,6 @@ It's often worthwhile to generate [optimization and vectorization reports](http:
 #### [Learning More](#programming-more) { #programming-more } 
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](https://learn.tacc.utexas.edu/course/).
-
-<img alt="Frontera Assembly" src="../../../imgs/frontera/fronteradennis.png">
 
 ### [Programming and Performance: CLX](#programming-clx) { #programming-clx } 
 
@@ -1917,12 +1907,15 @@ You can launch a Jupyter session via the Frontera User Portal.
 
 1. Login to the [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/login) and Select "My Dashboard" under your account name pulldown:
 
-	<img alt="Login to the Frontera Portal" src="../../../imgs/frontera/jupyter-selectDashboard.png">
+	<figure id="figure1"><img alt="Login to the Frontera Portal" src="../../../imgs/frontera/jupyter-selectDashboard.png">
+	<figcaption></figcaption></figure>
 
 1. From the workbench dashboard, click "Applications" in the left nav, then click "Data Processing" and select "Frontera HPC Jupyter":   
 
-	<img alt="Select Jupyter Notebook" src="../../../imgs/frontera/jupyter-selectJupyter.png">
-	<img alt="Figure 2. Select Jupyter Notebook" src="../../../imgs/frontera/jupyter-selectDashboard.png">
+	<figure id="figure1"><img alt="Select Jupyter Notebook" src="../../../imgs/frontera/jupyter-selectJupyter.png">
+	<figcaption></figcaption></figure>
+	<figure id="figure2"><img alt="Figure 2. Select Jupyter Notebook" src="../../../imgs/frontera/jupyter-selectDashboard.png">
+	<figcaption></figcaption></figure>
 
 1. Fill out and submit the form:    
 
@@ -1935,11 +1928,13 @@ You can launch a Jupyter session via the Frontera User Portal.
 	* **Job name**: this is the portal/Tapis name for the job and will be used in the notifications indicating the job has started, etc. This is just for bookkeeping so the user knows what job is being referred to.  
 
 
-	<img alt="Figure 3. Submit session request form" src="../../../imgs/frontera/jupyter-fillForm.png">
+	<figure id="figure3"><img alt="Figure 3. Submit session request form" src="../../../imgs/frontera/jupyter-fillForm.png">
+	<figcaption></figcaption></figure>
 
 1. Submitting the form initiates a request to the Slurm scheduler to reserve a compute node for a specified time.  In the example above, `bjones` requests a two-hour Jupyter session in Frontera's `small` queue on a single node.  **Depending upon Frontera's load, Slurm may take several minutes to several hours** to fulfill the node request.  Once Slurm allocate time for the job, you'll be automatically notified at the given email address with instructions and a password on how to connect to the session.
 
-	<img alt="Figure 4. Notification email" src="../../../imgs/frontera/jupyter-email.png">
+	<figure id="figure4"><img alt="Figure 4. Notification email" src="../../../imgs/frontera/jupyter-email.png">
+	<figcaption></figcaption></figure>
 
 
 1. Navigate to the URL specified in the email, enter your password specified in the email,  and begin your session.
@@ -2012,20 +2007,24 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 * Enter "203416866386" in the "Account ID" field 
 * Enter your [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/) ID in the "IAM user name" field.
 * New users enter the temporary password contained in your welcome email, then reset your password.  
-	<img alt="AWS-login" src="../../../imgs/frontera/AWS-login.png"> 
+	<figure id="login"><img alt="AWS-login" src="../../../imgs/frontera/AWS-login.png"> 
+	<figcaption></figcaption></figure>
 
 #### [Add MFA](#cloudservices-amazon-mfa) { #cloudservices-amazon-mfa }
 
 Follow these instructions to enable MFA on your account. **Do not navigate away from the MFA window during the pairing process, or else your account may be left in an unstable state.** 
 
 1. From the top menu "<i>username</i>@2034-1686-6386", select "My Security Credentials"  
-	<img alt="AWS-securitycredentials" src="../../../imgs/frontera/AWS-securitycredentials.png"> 
+	<figure id="securitycredentials"><img alt="AWS-securitycredentials" src="../../../imgs/frontera/AWS-securitycredentials.png"> 
+	<figcaption></figcaption></figure>
 
 1. Click on the "Assign MFA device" button in the "Multi-factor authentication (MFA)" section. Then, select the "Virtual MFA device" option and click "Continue".  
-	<img alt="AWS-managemfadevice" src="../../../imgs/frontera/AWS-managemfadevice.png"> 
+	<figure id="managemfadevice"><img alt="AWS-managemfadevice" src="../../../imgs/frontera/AWS-managemfadevice.png"> 
+	<figcaption></figcaption></figure>
 
 1. Choose an Authentication method. Scroll down to see a list of free options. Many TACC users employ Duo Mobile or Google Authenticator. Open the authenticator app of your choice, scan the displayed QR code to add the account, then input the MFA codes as directed. 
-	<img alt="AWS-mfaapplications" src="../../../imgs/frontera/AWS-mfaapplications.png"> 
+	<figure id="mfaapplications"><img alt="AWS-mfaapplications" src="../../../imgs/frontera/AWS-mfaapplications.png"> 
+	<figcaption></figcaption></figure>
 
 1. Once the pairing process is completed, sign out and then log back in. **You will not be able to successfully proceed to the next step without doing so.**
 
@@ -2034,7 +2033,8 @@ Follow these instructions to enable MFA on your account. **Do not navigate away 
 <p class="msg-alert"><i>NOTE:</i> You must set up MFA and use it to log in to the AWS console prior to viewing or editing your access keys.</p>
 
 1. Once again, select "My Security Credentials" from the top menu, then click the "Create access key" button in the "Access keys for CLI, SDK, & API access" section.  
-	<img alt="AWS-accesskeyavailable" src="../../../imgs/frontera/AWS-accesskeyavailable.png"> 
+	<figure id="accesskeyavailable"><img alt="AWS-accesskeyavailable" src="../../../imgs/frontera/AWS-accesskeyavailable.png"> 
+	<figcaption></figcaption></figure>
 
 1. Install CLI: Follow the instructions at <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html>.
 1. For more info see [Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
@@ -2058,13 +2058,16 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 
 1. Navigate to the [Microsoft Azure Portal](https://portal.azure.com) and login with your TACC User Portal account.  
-	<img border="1" alt="Azure Portal Home" src="../../../imgs/frontera/image01.png"> 
+	<figure id="figure1"><img border="1" alt="Azure Portal Home" src="../../../imgs/frontera/image01.png"> 
+	<figcaption></figcaption></figure>
 
 1. Click "Storage accounts". You should see a screen like the following:  
-	<img border="1" alt="" src="../../../imgs/frontera/image02.png"> 
+	<figure id="figure2"><img border="1" alt="" src="../../../imgs/frontera/image02.png"> 
+	<figcaption></figcaption></figure>
 
 1. Click "Add". This should bring up the following form:  
-	<img border="1" alt="" src="../../../imgs/frontera/image03.png"> 
+	<figure id="figure3"><img border="1" alt="" src="../../../imgs/frontera/image03.png"> 
+	<figcaption></figcaption></figure>
 
 1. Fill in the form to create a storage account. 
 
@@ -2077,29 +2080,33 @@ Once you've been given access, and before uploading files to Azure, you must fir
 	* Enter a Storage account name
 
 	* Click Review+create to submit the form and run the audit.
-
-	<img border="1" alt="" src="../../../imgs/frontera/image04.png"> 
+		<figure id="figure4"><img border="1" alt="" src="../../../imgs/frontera/image04.png"> 
+	<figcaption></figcaption></figure>
 
 
 1. Once Validation has completed, confirm that you see a green "Validation passed" message (see screenshot below), review the account details and click "Create" to actually create the storage account.
-
-	<img border="1" alt="" src="../../../imgs/frontera/image05.png"> 
+	<figure id="figure5"><img border="1" alt="" src="../../../imgs/frontera/image05.png"> 
+	<figcaption></figcaption></figure>
 
 1. You will see a screen that says "Your deployment is underway..."; this will take a few minutes. 
-	<img border="1" alt="" src="../../../imgs/frontera/image06.png"> 
+	<figure id="figure6"><img border="1" alt="" src="../../../imgs/frontera/image06.png"> 
+	<figcaption></figcaption></figure>
 
 1. Eventually it should say "Your deployment is complete".
-	<img border="1" alt="" src="../../../imgs/frontera/image07.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../../../imgs/frontera/image07.png"> 
+	<figcaption></figcaption></figure>
 
 
 #### [Retrieve Account Access Keys](#cloudservices-azure-keys) { #cloudservices-azure-keys }
 
 1. Go to Home -&gt; Storage accounts; You should see a list of your storage account similar to the following:
-	<img border="1" alt="" src="../../../imgs/frontera/image08.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../../../imgs/frontera/image08.png"> 
+	<figcaption></figcaption></figure>
 
 
 1. Select the storage account you created in part 1). This should bring up an overview screen for the storage account which should look similar to:
-	<img border="1" alt="" src="../../../imgs/frontera/image09.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../../../imgs/frontera/image09.png"> 
+	<figcaption></figcaption></figure>
 
 1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)  <p>&nbsp;</p> 1. --> Copy the key to your clipboard.
 

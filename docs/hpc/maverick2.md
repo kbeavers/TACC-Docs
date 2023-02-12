@@ -14,10 +14,6 @@
 
 Maverick2 is an extension to TACC's services to support GPU accelerated Machine Learning and Deep Learning research workloads. The power of this system is in its multiple GPUs per node and it is mostly intended to support workloads that are better supported with a dense cluster of GPUs and little CPU compute. The system is designed to support model training via GPU powered frameworks that can take advantage of the 4 GPUs in a node. In addition to the 96 1080-TI Nvidia GPU cards, a limited number of Pascal 100 and Volta 100 cards are available to support any workloads that cannot be done in the smaller memory footprints of the primary GPU cards. The system software supports Tensorflow and Caffe and can also be augmented to run other frameworks. 
 
-<figure>
-<img alt="" src="../../../imgs/2mav/trailofhorses.jpg" style="width: 600px; border-width: 1px; border-style: solid; height: 360px;" />
-<figcaption><font size=-2>Figure 1. Edward Blein - Trail of Horses</font></figcaption></figure>
-
 ## [System Overview](#overview) { #overview }
 
 Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs running in a Broadwell based compute node; four nodes each with two of NVidia V100s GPUs running in a Skylake based Dell R740 based node; and three nodes each with two NVidia P100s GPUs running in a Skylake based Dell R740 node.
@@ -107,11 +103,6 @@ Maverick2 mounts two shared Lustre file systems on which each user has correspon
 
 <!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
 
-
-<figure>
-<img alt="" src="../../../imgs/2mav/cooling-system.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<figcaption><font size=-2>Figure 2. Maverick2 Immersion Cooling System</font></figcaption>
-</figure>
 
 ## [Accessing the System](#access) { #access }
 
@@ -266,7 +257,7 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 Your account-specific `$WORK` environment variable varies from system to system and (except for the decommissioned Stampede1 system) is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Maverick2 points to the `$STOCKYARD/maverick2` subdirectory, a convenient location for files you use and jobs you run on Maverick2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Maverick2 and Stampede2, for example, the `$STOCKYARD/maverick2` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Maverick2 account. Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
-<figure>
+<figure id="figure-stockyard">
 <img src="../../../imgs/stockyard-2022.jpg">
 <figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.
 </figcaption></figure>
@@ -437,7 +428,7 @@ date
 # ---------------------------------------------------
 </pre> </details>
 
-<details><summary>Serial Job in Normal Queue</summary>
+<details><summary>MPI Job in Normal Queue</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -489,7 +480,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 </pre> </details>
 
 
-<details><summary>Serial Job in Normal Queue</summary>
+<details><summary>OpenMP Job in Normal Queue</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -546,7 +537,7 @@ export OMP_NUM_THREADS=34
 # ---------------------------------------------------
 </pre> </details>
 
-<details><summary>Serial Job in Normal Queue</summary>
+<details><summary>Hybrid Job in Normal Queue</summary>
 
 <pre class="job-script">
 #!/bin/bash
@@ -752,11 +743,6 @@ You're welcome to download third-party research software and install it in your 
 
 * **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
 
-<figure>
-<img alt="A Maverick" src="../../../imgs/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
-<figcaption><font size=-2>Figure 4. Person and Horse</font>
-</figcaption>
-</figure>
 
 ## [References](#refs) { #refs }
 

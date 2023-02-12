@@ -88,8 +88,3 @@ Maverick2 mounts two shared Lustre file systems on which each user has correspon
 <!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
 
 
-<figure>
-<img alt="" src="IMAGEDIR/2mav/cooling-system.jpg" style="width: 800px; height: 524px; border-width: 1px; border-style: solid;" />
-<figcaption><font size=-2>Figure 2. Maverick2 Immersion Cooling System</font></figcaption>
-</figure>
-

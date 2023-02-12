@@ -1,8 +1,3 @@
-<figure>
-<img alt="A Maverick" src="IMAGEDIR/2mav/bw-manandhorses.jpg" style="width: 700px; height: 394px; border-width: 1px; border-style: solid;" />
-<figcaption><font size=-2>Figure 4. Person and Horse</font>
-</figcaption>
-</figure>
 
 ## [References](#refs) { #refs }
 
