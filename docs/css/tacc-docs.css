@@ -7,6 +7,23 @@
 
 
 
+/* CORE STYLES */
+/* https://github.com/TACC/Core-Styles/blob/main/src/lib/_imports/core-styles.base.css */
+
+
+
+/* To increase global font size */
+body {
+  font-size: var(--global-font-size--large);
+}
+p {
+  font-size: inherit;
+}
+
+
+
+
+
 /* SIDE NAV */
 /* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
 
