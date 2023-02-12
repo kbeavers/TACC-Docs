@@ -105,15 +105,33 @@
   padding-left: 25px;
   padding-block: 10px;
 }
-.wy-menu-vertical li button.toctree-expand {
-  margin-left: unset; /* undo theme.css */
-  margin-right: 0.5em;
-}
 /* .wy-menu-vertical header, *//* NOTE: not seen in markup yet */
 .wy-menu-vertical p.caption {
   height: unset; /* undo theme.css */
   line-height: unset; /* undo theme.css */
   margin: 0 0 15px; /* NOTE: design is 13px */
+}
+
+
+
+/* To style open/close buttons */
+/* To prevent open/close buttons dynamic arrival from moving text */
+
+.wy-menu-vertical li a {
+  --expand-button-width: 1ch;
+  --expand-button-space: 0.5em;
+}
+.wy-menu-vertical li a button.toctree-expand {
+  width: var(--expand-button-width);
+  margin-right: var(--expand-button-space);
+  margin-left: unset; /* undo theme.css */
+}
+@supports selector(:has(*)) {
+  .wy-menu-vertical li.current a:not(:has(button.toctree-expand)) {
+    text-indent: calc(
+      var(--expand-button-width) + var(--expand-button-space)
+    );
+  }
 }
 
 
