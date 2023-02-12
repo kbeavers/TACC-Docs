@@ -25,6 +25,17 @@ table {
 
 
 
+/* To not use link style for a header link */
+/* TODO: Create a link icon that:
+         - appears on hover over heading
+         - turns link color on hover over icon
+         - has TODO comment that says to migrate it to Core-Styles */
+:is(h1, h2, h3, h4, h5, h6) a {
+  color: inherit;
+}
+
+
+
 
 
 /* SIDE NAV */
@@ -273,6 +284,13 @@ table {
 /* To increase content width */
 .wy-nav-content {
   max-width: 1200px;
+}
+
+
+
+/* To use browser margin-top for headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: revert;
 }
 
 
