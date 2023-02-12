@@ -248,9 +248,16 @@
 /* CONTENT */
 /* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
 
+
+
+/* To increase content width */
 .wy-nav-content {
   max-width: 1200px;
 }
+
+
+
+/* To remove two-tone background */
 @media screen and (min-width: 1100px) {
   .wy-nav-content-wrap {
     background: #fcfcfc; /* mimic theme.css non-media query background */
