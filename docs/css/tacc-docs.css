@@ -82,6 +82,7 @@
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
   margin-top: 20px; /* NOTE: dsign is 18.75px */
   padding-top: 20px; /* NOTE: dsign is 19.5px */
+  padding-left: var(--link-pad-horz);
 }
 
 
@@ -89,6 +90,9 @@
 /* To adapt nav layout to design */
 
 .wy-menu-vertical {
+  --link-pad-vert: 0.375em; /* NOTE: design is 25px */
+  --link-pad-horz: 2em; /* NOTE: design is ??? */
+
   padding-left: 25px; /* NOTE: design is 24.5px */
   padding-right: 25px; /* NOTE: design is 11.5px */
 }
@@ -98,7 +102,7 @@
 .wy-menu-vertical li.on a,
 /* (separate ruleset in `theme.css`) */
 .wy-menu-vertical li.current a {
-  padding: 0.375em 2em; /* overwrite theme.css *//* NOTE: design is 25px ⨉ ? */
+  padding: var(--link-pad-vert) var(--link-pad-horz); /* overwrite theme.css */
 }
 .wy-menu-vertical li.on ul,
 .wy-menu-vertical li.current ul {
@@ -115,23 +119,30 @@
 
 
 /* To style open/close buttons */
+/* To make whole link clickable, not just button */
 /* To prevent open/close buttons dynamic arrival from moving text */
 
 .wy-menu-vertical li a {
-  --expand-button-width: 1ch;
-  --expand-button-space: 0.5em;
+  --button-width: 1ch; /* estimate, based on icon (e.g. ▾, ▸) */
+  --button-buffer: 0.5em;
+  --button-space: calc( var(--button-width) + var(--button-buffer) );
+
+  position: relative; /* support `position: absolute` child */
 }
 .wy-menu-vertical li a button.toctree-expand {
-  width: var(--expand-button-width);
-  margin-right: var(--expand-button-space);
   margin-left: unset; /* undo theme.css */
+
+  /* To expand button over entire link */
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: var(--link-pad-vert) var(--link-pad-horz);
+  width: 100%;
+  text-align: left; /* to prevent width: 100% from moving ::before to center */
 }
-@supports selector(:has(*)) {
-  .wy-menu-vertical li.current a:not(:has(button.toctree-expand)) {
-    text-indent: calc(
-      var(--expand-button-width) + var(--expand-button-space)
-    );
-  }
+/* To make space for button which is on top of link text */
+.wy-menu-vertical li[aria-expanded] /* open or closed */ a {
+  padding-left: calc( var(--link-pad-horz) + var(--button-space) );
 }
 
 
