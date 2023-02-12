@@ -21,9 +21,16 @@ extra_javascript:
     - js/setTargetForExternalLinks.js
 
 nav:
-  - Fiddling : 
-    - Testing Extensions: testingextensions.md
-    - Code Examples: code-examples.md
+  # To match design and remind author about Core-CMS docs
+  # E.g. https://cep.tacc.utexas.edu/guides/globus-data-transfer-guide/
+  # NOTE: These pages do not exist but might look good for screenshot day
+  # NOTE: If not suitable for screenshot day or not suitable at all, then remove
+  - TACC Basics :
+    - Getting Started: getting-started.md
+    - Multi-Factor Authentication (MFA): mfa.md
+    - Globus File Transfer: globus-file-transfer.md
+    - SSH Access: ssh-access.md
+    - Code of Conduct: code-of-conduct.md
   - HPC :
     - Corral: hpc/corral.md
     - Frontera: hpc/frontera.md
@@ -65,6 +72,9 @@ nav:
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
     - Sharing Project Files: tutorials/sharingprojectfiles.md
     - TACC Analysis Portal: tutorials/TAP.md
+  - Fiddling :
+    - Testing Extensions: testingextensions.md
+    - Code Examples: code-examples.md
 
 
 markdown_extensions:
