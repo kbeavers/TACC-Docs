@@ -8,11 +8,11 @@
 
 
 /* SIDE NAV */
+/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
 
 
 
 /* To remove decresing font size in nav */
-/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
 
 .wy-menu-vertical li.toctree-l3,
 .wy-menu-vertical li.toctree-l4 {
@@ -25,15 +25,10 @@
   text-transform: unset;
   font-size: unset;
 }
-.wy-menu-vertical p.caption {
-  text-transform: unset;
-  font-size: unset;
-}
 
 
 
 /* Re-color navigation */
-/* https://github.com/mkdocs/mkdocs/blob/1.4.2/mkdocs/themes/readthedocs/css/theme.css */
 
 .wy-nav-side {
   color: unset;
@@ -85,6 +80,8 @@
 .wy-menu-vertical p.caption:not(:first-child) {
   color: var(--global-color-primary--xxx-dark);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  margin-top: 20px; /* NOTE: dsign is 18.75px */
+  padding-top: 20px; /* NOTE: dsign is 19.5px */
 }
 
 
@@ -93,7 +90,7 @@
 
 .wy-menu-vertical {
   padding-left: 25px; /* NOTE: design is 24.5px */
-  padding-right: 15px; /* NOTE: design is 11.5px */
+  padding-right: 25px; /* NOTE: design is 11.5px */
 }
 .wy-menu-vertical a,
 /* (separate ruleset in `theme.css`) */
@@ -111,6 +108,47 @@
 .wy-menu-vertical li button.toctree-expand {
   margin-left: unset; /* undo theme.css */
   margin-right: 0.5em;
+}
+/* .wy-menu-vertical header, *//* NOTE: not seen in markup yet */
+.wy-menu-vertical p.caption {
+  height: unset; /* undo theme.css */
+  line-height: unset; /* undo theme.css */
+  margin: 0 0 15px; /* NOTE: design is 13px */
+}
+
+
+
+/* To hide sidebar "« Previous" and "Next »" */
+
+/* NOTE: This also hides repo link, but that already exists on every page */
+.rst-versions {
+  display: none;
+}
+
+
+
+/* To adapt search to design */
+
+.wy-side-nav-search {
+  padding: 40px; /* NOTE: design is 38px 38px 30px 37px */
+  margin-bottom: unset; /* undo theme.css */
+  background-color: unset; /* undo theme.css */
+}
+.wy-side-nav-search .icon-home {
+  display: none;
+}
+.wy-side-nav-search input[type=search] /* TACC */,
+.wy-side-nav-search input[type=text] /* orignal */ {
+  width: unset; /* undo theme.css *//* .wy-form does this via display: grid */
+  border: var(--global-border-width--normal) solid var(--global-color-primary--light);
+  border-radius: 5px;
+  font-size: unset; /* undo theme.css */
+  box-shadow: unset; /* undo theme.css */
+  transition: unset; /* undo theme.css */
+}
+
+.wy-form {
+  display: grid;
 }
 
 
