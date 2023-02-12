@@ -40,9 +40,9 @@ Here "`myjobscript`" is the name of a text file containing `#SBATCH` directives 
 
 In your job script you (1) use `#SBATCH` directives to request computing resources (e.g. 10 nodes for 2 hrs); and then (2) use shell commands to specify what work you're going to do once your job begins. There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
 
-Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm NOWRAP"`--export`"ESPAN option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
+Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm <span style="white-space: nowrap;">"`--export`"</span> option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
-The [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with "`#SBATCH`"; most have a short form (e.g. NOWRAP"`-N`"ESPAN) and a long form (e.g. NOWRAP"`--nodes`"ESPAN). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases NOWRAP"`#!/bin/bash`"ESPAN or NOWRAP"`#!/bin/csh`"ESPAN is the right choice. Avoid NOWRAP"`#!/bin/sh`"ESPAN (its startup behavior can lead to subtle problems on Stampede2), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede2.
+The [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with "`#SBATCH`"; most have a short form (e.g. <span style="white-space: nowrap;">"`-N`"</span>) and a long form (e.g. <span style="white-space: nowrap;">"`--nodes`"</span>). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases <span style="white-space: nowrap;">"`#!/bin/bash`"</span> or <span style="white-space: nowrap;">"`#!/bin/csh`"</span> is the right choice. Avoid <span style="white-space: nowrap;">"`#!/bin/sh`"</span> (its startup behavior can lead to subtle problems on Stampede2), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede2.
 
 
 #### [Table 6. Common <code>sbatch</code> Options](#table6)
@@ -52,8 +52,8 @@ Option | Argument | Comments
 <code>-p</code> | <i>queue_name</i> | Submits to queue (partition) designated by <i>queue_name</i>
 <code>-J</code> |  <i>job_name</i> |  Job Name
 <code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
-<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code>NOWRAP-NESPAN</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
-<code>NOWRAP--ntasks-per-nodeESPAN</code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
+<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code><span style="white-space: nowrap;">-N</span></code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
+<code><span style="white-space: nowrap;">--ntasks-per-node</span></code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
 <code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
 <code>--mail-user=</code> | <i>email_address</i> | Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
 <code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code> | Specify when user notifications are to be sent (one option per line).
@@ -65,7 +65,7 @@ Option | Argument | Comments
 <code>--mem</code> | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
 <code>--export=</code> | N/A | Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
-By default, Slurm writes all console output to a file named NOWRAP"`slurm-%j.out`"ESPAN, where `%j` is the numerical job ID. To specify a different filename use the NOWRAP"`-o`"ESPAN option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both NOWRAP"`-o`"ESPAN and NOWRAP"`-e`"ESPAN.
+By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">"`slurm-%j.out`"</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">"`-o`"</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">"`-o`"</span> and <span style="white-space: nowrap;">"`-e`"</span>.
 
 
 ### [Launching Applications](#running-launching) { #running-launching }
@@ -149,7 +149,7 @@ To run more than one MPI application simultaneously in the same job, you need to
 * use the `ibrun "-n"` and "`-o`" switches to specify task counts and hostlist offsets respectively; and
 * include a call to the `task_affinity` script in your `ibrun` launch line.
 
-If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The "`-n`" and "`-o`" switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute NOWRAP"`ibrun --help`"ESPAN for more information. **Don't forget the ampersands ("`&`")** to launch the jobs in the background, **and the "`wait`" command** to pause the script until the background tasks complete:
+If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The "`-n`" and "`-o`" switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute <span style="white-space: nowrap;">"`ibrun --help`"</span> for more information. **Don't forget the ampersands ("`&`")** to launch the jobs in the background, **and the "`wait`" command** to pause the script until the background tasks complete:
 
 <pre class="job-script">
 ibrun -n 64 -o  0 task_affinity ./myprogram input1 &amp;   # 64 tasks; offset by  0 entries in hostfile.
@@ -165,7 +165,7 @@ The `task_affinity` script does two things:
 
 #### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous) { #running-launching-openmpsimultaneous }
 
-You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, NOWRAP"`numactl -C`"ESPAN specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
+You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, <span style="white-space: nowrap;">"`numactl -C`"</span> specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
 <pre class="job-script">
 export OMP_NUM_THREADS=2
@@ -202,7 +202,7 @@ c449-001$</pre>
 
 The "`job status`" messages indicate that your interactive session is waiting in the queue. When your session begins, you'll see a command prompt on a compute node (in this case, the node with hostname c449-001). If this is the first time you launch `idev`, the prompts may invite you to choose a default project and a default number of tasks per node for future `idev` sessions.
 
-For command line options and other information, execute NOWRAP"`idev --help`"ESPAN. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
+For command line options and other information, execute <span style="white-space: nowrap;">"`idev --help`"</span>. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
 <pre class="cmd-line">login1$ <b>idev -p normal -N 2 -n 8 -m 150</b> # normal queue, 2 nodes, 8 total tasks, 150 minutes</pre>
 
@@ -231,7 +231,7 @@ C448-004$</pre>
 
 ### [SLURM Environment Variables](#running-slurmenvvars) { #running-slurmenvvars }
 
-Be sure to distinguish between internal Slurm replacement symbols (e.g. "`%j`" described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute NOWRAP"`env | grep SLURM`"ESPAN from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like "`%j`" only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
+Be sure to distinguish between internal Slurm replacement symbols (e.g. "`%j`" described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">"`env | grep SLURM`"</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like "`%j`" only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
 <pre class="job-script"><s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect</pre>
 
@@ -241,6 +241,6 @@ Instead, use the following directive:
 
 Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` directive.
 
-For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (NOWRAP"`man slurm`"ESPAN) and its individual command (e.g. NOWRAP"`man sbatch`"ESPAN); as well as numerous other online resources.
+For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (<span style="white-space: nowrap;">"`man slurm`"</span>) and its individual command (e.g. <span style="white-space: nowrap;">"`man sbatch`"</span>); as well as numerous other online resources.
 
 

@@ -12,13 +12,13 @@ The above command will rotate connections across all available login nodes and r
 
 <pre class="cmd-line">localhost$ <b>ssh myusername@login2.stampede2.tacc.utexas.edu</b></pre>
 
-To connect with X11 support on Stampede2 (usually required for applications with graphical user interfaces), use the NOWRAP"`-X`"ESPAN or NOWRAP"`-Y`"ESPAN switch:
+To connect with X11 support on Stampede2 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">"`-X`"</span> or <span style="white-space: nowrap;">"`-Y`"</span> switch:
 
 <pre class="cmd-line">localhost$ <b>ssh -X myusername@stampede2.tacc.utexas.edu</b></pre>
 
 Use your TACC password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal][TACCUSERPORTAL] home page and select "Password Reset" under the Home tab.
 
-To report a connection problem, execute the `ssh` command with the NOWRAP"`-vvv`"ESPAN option and include the verbose output when submitting a help ticket.
+To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
 
 **Do not run the "`ssh-keygen`" command on Stampede2.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Stampede2.
 

@@ -117,7 +117,7 @@ This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
-#         STYLERED14 OpenMP threads per MPI task (56 threads per node)ESPAN
+#         14 OpenMP threads per MPI task (56 threads per node)
 #
 # Last revised: October 22, 2021
 #

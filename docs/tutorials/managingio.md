@@ -187,7 +187,7 @@ To turn off throttling on the `$SCRATCH` file system for a submitted job, run th
 	<pre class="job-script">#SBATCH -N 4<br>#SBATCH -n 64<br>#SBATCH -J myjob.%j
 	&#46;...
 	module load ooops
-	NOWRAPset_io_param_batch $SLURM_JOBID 0 lowESPAN
+	<span style="white-space: nowrap;">set_io_param_batch $SLURM_JOBID 0 low</span>
 	ibrun <i>myprogram</i></pre></td>
 <td width="450" valign="top">
 	<pre class="cmd-line">

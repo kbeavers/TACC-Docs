@@ -90,8 +90,8 @@ To access the system:
 1) If not using ssh-keys, please enter your TACC password at the password prompt
 2) At the TACC Token prompt, enter your 6-digit code followed by <return>.
 
-STYLEBLUEPassword: ESPAN
-STYLEBLUETACC Token Code:ESPAN
+<span style="color: blue;">Password: </span></span>
+<span style="color: blue;">TACC Token Code:</span></span>
 Last login: Mon Nov  1 18:42:37 2021 from 76.167.191.93
 ------------------------------------------------------------------------------
 &nbsp;           		Welcome to the Maverick2 Supercomputer

@@ -22,7 +22,7 @@ Hardware threads per node:&nbsp; | 68 x 4 = 272
 Clock rate:&nbsp; | 1.4GHz
 RAM:&nbsp; | 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
 Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
-Local storage:&nbsp; | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and NOWRAP<code>flat-quadrant</code>ESPAN <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
+Local storage:&nbsp; | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
 	
 	
 ### [SKX Compute Nodes](#overview-skxcomputenodes) { #overview-skxcomputenodes }

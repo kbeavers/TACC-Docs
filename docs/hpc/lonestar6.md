@@ -363,7 +363,7 @@ $ <b>module help</b>         # show help text for the module system itself</pre>
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
-It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use NOWRAP`module save`ESPAN to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Lonestar6's default startup scripts for a safe way to do so.
+It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">`module save`</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Lonestar6's default startup scripts for a safe way to do so.
 
 
 ## [Conduct](#conduct) { #conduct }
@@ -402,7 +402,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
 
-* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "NOWRAP`make -j 16`ESPAN" (which compiles on 16 cores) may impact other users.
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">"`make -j 16`"</span> (which compiles on 16 cores) may impact other users.
 
 	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 
@@ -485,7 +485,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
 
-* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; NOWRAP`hello world`ESPAN codes; one-liners like NOWRAP`ibrun hostname`ESPAN; or an `ldd` on your executable.
+* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
 
 * **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora][TACCREMORA] tool to monitor your application's needs. 
 
@@ -780,7 +780,7 @@ The jobs in this queue consume 1/7 the resources of a full node.  Jobs are charg
 
 **Queue limits are subject to change without notice.**  Use TACC's `qlimits` utility to see the latest configuration.
 
-Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration | Max Nodes<br> per User | Max Jobs<br> per User | Charge Rate<br />NOWRAP(per node-hour)ESPAN
+Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration | Max Nodes<br> per User | Max Jobs<br> per User | Charge Rate<br /><span style="white-space: nowrap;">(per node-hour)</span>
 --- | --- | --- | --- | --- | ---
 <code>development</code> | 4 nodes<br>(512 cores) | 2 hours | 6 | 1 | 1 SU
 <code>gpu-a100</code> | 16 nodes<br>(2048 cores) | 48 hours | 16 | 8 | 4 SUs
@@ -912,7 +912,7 @@ This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
-#         STYLERED14 OpenMP threads per MPI task (56 threads per node)ESPAN
+#         14 OpenMP threads per MPI task (56 threads per node)
 #
 # Last revised: October 22, 2021
 #
