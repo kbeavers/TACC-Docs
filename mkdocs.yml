@@ -10,7 +10,9 @@ theme:
     custom_dir: themes/readthedocs
 
 extra_css:
+    - css/bootstrap.css
     - css/core-styles.css
+    - css/tup-cms.css
     - css/tacc-docs.css
 
 # These are not loaded automatically (TACC/TACC-Docs#3)
