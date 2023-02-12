@@ -13,5 +13,3 @@
 * **Stampede2's Knights Landing (KNL) compute nodes each have 68 cores**, and each core has 4 hardware threads. But it may not be a good idea to use all 272 hardware threads simultaneously, and it's certainly not the first thing you should try. In most cases it's best to specify no more than 64-68 MPI tasks or independent processes per node, and 1-2 threads/core. See [Best Known Practices...](#programming-knl-bestpractices) for more information.
 * **Stampede2's Skylake (SKX) compute nodes each have 48 cores** on two sockets (24 cores/socket). Hyperthreading is enabled: there are two hardware threads per core, for a total of 48 x 2 = 96 hardware threads per node. See [Table 2](#table2) for more information. Note that SKX nodes have their own [queues](#running-queues). 
 
-
-<figure><img alt="Stampede2" src="IMAGEDIR/stampede2/Stampede2.jpg"><figcaption>Figure 1. Stampede2 System</figcaption></figure>

@@ -1,5 +1,5 @@
 
-all:	include frontera lonestar6 maverick2 ranch stampede2 
+all:	include frontera lonestar6 maverick2 stampede2 
 
 
 include:
@@ -22,9 +22,9 @@ maverick2: FORCE
 	echo "====== Building Maverick2 ======"
 	cd 2mav; make;
 
-ranch: FORCE
-	echo "====== Building Ranch  ======"
-	cd ranch; make; 
+#ranch: FORCE
+#	echo "====== Building Ranch  ======"
+#	cd ranch; make; 
 
 stampede2: FORCE
 	echo "====== Building Stampede2 ======"

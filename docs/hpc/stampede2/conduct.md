@@ -63,8 +63,8 @@ Be sure to request computing resources that are consistent with the type of appl
 $ <b>module load launcher</b>
 $ <b>module help launcher</b></pre>
 
-<figure>
-<img alt="Stampede2" src="IMAGEDIR/stampede2/Stampede2.jpg">
+<figure id="figure-logincomputenodes">
+<img alt="Stampede2" src="../../imgs/stampede2/Stampede2.jpg">
 <figcaption>Figure 2. Login and compute nodes</figcaption></figure>
 
 ### [Using Modules to Manage your Environment](#conduct-modules) { #conduct-modules }

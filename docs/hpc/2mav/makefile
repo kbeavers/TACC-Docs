@@ -14,9 +14,7 @@ MAVERICK2_OBJS	=	\
 all:	maverick2
 
 maverick2:	$(MAVERICK2_OBJS)
-	cat $(MAVERICK2_OBJS) > temp.md
-	 ../configurestrings.sh temp.md maverick2.md
-	/bin/rm temp.md
+	cat $(MAVERICK2_OBJS) > maverick2.md
 	/bin/mv maverick2.md ..
 
 

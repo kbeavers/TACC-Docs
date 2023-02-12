@@ -15,9 +15,7 @@ LONESTAR6_OBJS	=	\
 all:	lonestar6
 
 lonestar6:	$(LONESTAR6_OBJS)
-	cat $(LONESTAR6_OBJS) > temp.md
-	 ../configurestrings.sh temp.md lonestar6.md
-	/bin/rm temp.md
+	cat $(LONESTAR6_OBJS) > lonestar6.md
 	/bin/mv lonestar6.md ..
 
 

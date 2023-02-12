@@ -16,8 +16,6 @@ SRC =   \
 
 
 stampede2:	$(SRC) 
-	cat $(SRC) > temp.md
-	../configurestrings.sh temp.md stampede2.md
-	/bin/rm temp.md 
+	cat $(SRC) > stampede2.md
 	/bin/mv stampede2.md ..
 

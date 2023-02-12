@@ -30,7 +30,3 @@ Researchers at our partner institutions may submit allocation requests through t
 * [University of North Texas](https://research.unt.edu/research-services/research-computing)
 
 
-
-<figure> <img alt="Lonestar6" src="IMAGEDIR/6lonestar/Lonestar6-1.jpg" style="border-width: 1px; border-style: solid;" />
-<figcaption> Lonestar6<br>Dielectric liquid coolant cabinet</figcaption> </figure>
-

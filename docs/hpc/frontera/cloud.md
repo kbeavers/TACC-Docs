@@ -60,7 +60,7 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 * Enter "203416866386" in the "Account ID" field 
 * Enter your [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/) ID in the "IAM user name" field.
 * New users enter the temporary password contained in your welcome email, then reset your password.  
-	<figure id="login"><img alt="AWS-login" src="IMAGEDIR/frontera/AWS-login.png"> 
+	<figure id="login"><img alt="AWS-login" src="../../imgs/frontera/AWS-login.png"> 
 	<figcaption></figcaption></figure>
 
 #### [Add MFA](#cloudservices-amazon-mfa) { #cloudservices-amazon-mfa }
@@ -68,15 +68,15 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 Follow these instructions to enable MFA on your account. **Do not navigate away from the MFA window during the pairing process, or else your account may be left in an unstable state.** 
 
 1. From the top menu "<i>username</i>@2034-1686-6386", select "My Security Credentials"  
-	<figure id="securitycredentials"><img alt="AWS-securitycredentials" src="IMAGEDIR/frontera/AWS-securitycredentials.png"> 
+	<figure id="securitycredentials"><img alt="AWS-securitycredentials" src="../../imgs/frontera/AWS-securitycredentials.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click on the "Assign MFA device" button in the "Multi-factor authentication (MFA)" section. Then, select the "Virtual MFA device" option and click "Continue".  
-	<figure id="managemfadevice"><img alt="AWS-managemfadevice" src="IMAGEDIR/frontera/AWS-managemfadevice.png"> 
+	<figure id="managemfadevice"><img alt="AWS-managemfadevice" src="../../imgs/frontera/AWS-managemfadevice.png"> 
 	<figcaption></figcaption></figure>
 
 1. Choose an Authentication method. Scroll down to see a list of free options. Many TACC users employ Duo Mobile or Google Authenticator. Open the authenticator app of your choice, scan the displayed QR code to add the account, then input the MFA codes as directed. 
-	<figure id="mfaapplications"><img alt="AWS-mfaapplications" src="IMAGEDIR/frontera/AWS-mfaapplications.png"> 
+	<figure id="mfaapplications"><img alt="AWS-mfaapplications" src="../../imgs/frontera/AWS-mfaapplications.png"> 
 	<figcaption></figcaption></figure>
 
 1. Once the pairing process is completed, sign out and then log back in. **You will not be able to successfully proceed to the next step without doing so.**
@@ -86,7 +86,7 @@ Follow these instructions to enable MFA on your account. **Do not navigate away 
 <p class="msg-alert"><i>NOTE:</i> You must set up MFA and use it to log in to the AWS console prior to viewing or editing your access keys.</p>
 
 1. Once again, select "My Security Credentials" from the top menu, then click the "Create access key" button in the "Access keys for CLI, SDK, & API access" section.  
-	<figure id="accesskeyavailable"><img alt="AWS-accesskeyavailable" src="IMAGEDIR/frontera/AWS-accesskeyavailable.png"> 
+	<figure id="accesskeyavailable"><img alt="AWS-accesskeyavailable" src="../../imgs/frontera/AWS-accesskeyavailable.png"> 
 	<figcaption></figcaption></figure>
 
 1. Install CLI: Follow the instructions at <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html>.
@@ -111,15 +111,15 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 
 1. Navigate to the [Microsoft Azure Portal](https://portal.azure.com) and login with your TACC User Portal account.  
-	<figure id="figure1"><img border="1" alt="Azure Portal Home" src="IMAGEDIR/frontera/image01.png"> 
+	<figure id="figure1"><img border="1" alt="Azure Portal Home" src="../../imgs/frontera/image01.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click "Storage accounts". You should see a screen like the following:  
-	<figure id="figure2"><img border="1" alt="" src="IMAGEDIR/frontera/image02.png"> 
+	<figure id="figure2"><img border="1" alt="" src="../../imgs/frontera/image02.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click "Add". This should bring up the following form:  
-	<figure id="figure3"><img border="1" alt="" src="IMAGEDIR/frontera/image03.png"> 
+	<figure id="figure3"><img border="1" alt="" src="../../imgs/frontera/image03.png"> 
 	<figcaption></figcaption></figure>
 
 1. Fill in the form to create a storage account. 
@@ -133,32 +133,32 @@ Once you've been given access, and before uploading files to Azure, you must fir
 	* Enter a Storage account name
 
 	* Click Review+create to submit the form and run the audit.
-		<figure id="figure4"><img border="1" alt="" src="IMAGEDIR/frontera/image04.png"> 
+		<figure id="figure4"><img border="1" alt="" src="../../imgs/frontera/image04.png"> 
 	<figcaption></figcaption></figure>
 
 
 1. Once Validation has completed, confirm that you see a green "Validation passed" message (see screenshot below), review the account details and click "Create" to actually create the storage account.
-	<figure id="figure5"><img border="1" alt="" src="IMAGEDIR/frontera/image05.png"> 
+	<figure id="figure5"><img border="1" alt="" src="../../imgs/frontera/image05.png"> 
 	<figcaption></figcaption></figure>
 
 1. You will see a screen that says "Your deployment is underway..."; this will take a few minutes. 
-	<figure id="figure6"><img border="1" alt="" src="IMAGEDIR/frontera/image06.png"> 
+	<figure id="figure6"><img border="1" alt="" src="../../imgs/frontera/image06.png"> 
 	<figcaption></figcaption></figure>
 
 1. Eventually it should say "Your deployment is complete".
-	<figure id="figure7"><img border="1" alt="" src="IMAGEDIR/frontera/image07.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image07.png"> 
 	<figcaption></figcaption></figure>
 
 
 #### [Retrieve Account Access Keys](#cloudservices-azure-keys) { #cloudservices-azure-keys }
 
 1. Go to Home -&gt; Storage accounts; You should see a list of your storage account similar to the following:
-	<figure id="figure7"><img border="1" alt="" src="IMAGEDIR/frontera/image08.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image08.png"> 
 	<figcaption></figcaption></figure>
 
 
 1. Select the storage account you created in part 1). This should bring up an overview screen for the storage account which should look similar to:
-	<figure id="figure7"><img border="1" alt="" src="IMAGEDIR/frontera/image09.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image09.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)  <p>&nbsp;</p> 1. --> Copy the key to your clipboard.

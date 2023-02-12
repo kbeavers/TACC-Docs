@@ -24,8 +24,6 @@ SRC =   \
 
 
 frontera:	$(SRC) 
-	cat $(SRC) > temp.md
-	../configurestrings.sh temp.md frontera.md
-	/bin/rm temp.md 
+	cat $(SRC) > frontera.md
 	/bin/mv frontera.md ..
 
