@@ -114,7 +114,6 @@ table {
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
   margin-top: 20px; /* NOTE: dsign is 18.75px */
   padding-top: 20px; /* NOTE: dsign is 19.5px */
-  padding-left: var(--link-pad-horz);
 }
 
 
@@ -147,6 +146,7 @@ table {
   height: unset; /* undo theme.css */
   line-height: unset; /* undo theme.css */
   margin: 0 0 15px; /* NOTE: design is 13px */
+  padding-left: var(--link-pad-horz);
 }
 
 
