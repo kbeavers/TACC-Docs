@@ -49,8 +49,11 @@ table {
 .wy-menu-vertical li.toctree-l4 {
   font-size: unset;
 }
-.wy-menu-vertical a {
+.wy-menu-vertical li.toctree-l1 > a {
   font-size: unset;
+}
+.wy-menu-vertical a:not(li.toctree-l1 > *) {
+  font-size: var(--global-font-size--medium);
 }
 .wy-menu-vertical p.caption {
   text-transform: unset;
