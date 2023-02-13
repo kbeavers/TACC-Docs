@@ -178,6 +178,13 @@ table {
 .wy-menu-vertical li[aria-expanded] /* after opened or closed */ a {
   padding-left: calc( var(--link-pad-horz) + var(--button-space) );
 }
+@supports selector(:has(*)) {
+  /* Overwrite edge cases */
+  /* FAQ: Edge case of link to page that has no headings nor child pages */
+  .wy-menu-vertical li.current a:not(:has(button.toctree-expand)) {
+    padding-left: var(--link-pad-horz);
+  }
+}
 
 
 
