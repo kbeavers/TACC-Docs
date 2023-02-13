@@ -26,6 +26,7 @@ nav:
   # NOTE: These pages do not exist but might look good for screenshot day
   # NOTE: If not suitable for screenshot day or not suitable at all, then remove
   - TACC Basics :
+    - Introduction: index.md
     - Getting Started: getting-started.md
     - Multi-Factor Authentication (MFA): mfa.md
     - Globus File Transfer: globus-file-transfer.md
