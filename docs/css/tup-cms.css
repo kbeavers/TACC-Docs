@@ -32,8 +32,8 @@ blockquote,
 }
 
 /* TODO: In Core, share styles (how?) */
-figcaption/*,
-p.caption, */
+figcaption,
+/* p.caption, */
 blockquote footer {
     color: var(--global-color-primary--dark);
     font-style: italic;
