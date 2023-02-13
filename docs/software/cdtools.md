@@ -3,7 +3,7 @@
 
 Leveraging each node's `/tmp` directory space can effectively minimize the I/O load on the global Lustre file system and can also improve the performance of I/O work. Due to its limited size, the `/tmp` space is appropriate for executables/binaries, frequently-used object files, and small size common files, e.g. the global configuration files or the initial/pre-processed data files. 
 
-Collect-Distribute (CDTools) has been designed and developed to distribute files or directories to or from the `/tmp` directory. In CDTools, "`distribute.bash`" can be used to copy/clone the binaries and frequently accessed input files to the local `/tmp` space on each compute node when a job starts, and "`collect.bash`" can be used to collect output files and log files back to `$WORK` or `$SCRATCH` before a job finishes. 
+Collect-Distribute (CDTools) has been designed and developed to distribute files or directories to or from the `/tmp` directory. In CDTools, `distribute.bash` can be used to copy/clone the binaries and frequently accessed input files to the local `/tmp` space on each compute node when a job starts, and `collect.bash` can be used to collect output files and log files back to `$WORK` or `$SCRATCH` before a job finishes. 
 
 ## [Using CD Tools](#setup) { #setup }
 
@@ -35,7 +35,7 @@ Once your job completes, collect the job output files from the `/tmp` space of e
 or                                        
 <pre class="cmd-line">$ <b>collect.bash /tmp/outputfile ${SCRATCH}/output_collected</b></pre>
 
-You will obtain a list of output files or directories copied back to your target directories in `$SCRATCH`. These output files or directories have been appended with an underscore and a number that indicates the rank of compute nodes. For example, given a job run on four nodes: files "`outputfile_0`", "`outputfile_1`", "`outputfile_2`" and "`outputfile_3`" will all be placed in the "`/output_collected`" directory.
+You will obtain a list of output files or directories copied back to your target directories in `$SCRATCH`. These output files or directories have been appended with an underscore and a number that indicates the rank of compute nodes. For example, given a job run on four nodes: files `outputfile_0`, `outputfile_1`, "`outputfile_2` and "`outputfile_3` will all be placed in the "`/output_collected` directory.
 
 
 ## [Notes](#notes) { #notes }

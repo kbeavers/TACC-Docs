@@ -31,7 +31,7 @@ These compiler wrappers can be used directly on a command line or within a makef
 
 <pre class="cmd-line">login1$ <b>tau_cc.sh -o myprogram myprogramfile.c</b></pre>
 
-Use the "`-tau:help`" option after the compiler wrapper command to see useful TAU options.
+Use the `-tau:help` option after the compiler wrapper command to see useful TAU options.
 
 For a makefile that works both with and without TAU, use:
 
@@ -49,7 +49,7 @@ endif
 %.o : %.cxx
 	${CXX} -c $*.cxx</pre>
 
-Behind the scenes, compiler wrappers create and execute a simple makefile that includes appropriate makefile options from an include makefile stored in the "`$TAU_MAKEFILE`" variable. Include makefiles are stored in the "`$TACC_TAU_LIB`" directory. The default "`$TAU_MAKEFILE`" value  will provide normal MPI and hybrid (MPI/OpenMP) instrumentation. Set the variable to "`$TACC_TAU_LIB/Makefile.tau-intelomp-icpc-papi-ompt-pdt-openmp`" for pure OpenMP codes.
+Behind the scenes, compiler wrappers create and execute a simple makefile that includes appropriate makefile options from an include makefile stored in the `$TAU_MAKEFILE` variable. Include makefiles are stored in the `$TACC_TAU_LIB` directory. The default `$TAU_MAKEFILE` value  will provide normal MPI and hybrid (MPI/OpenMP) instrumentation. Set the variable to `$TACC_TAU_LIB/Makefile.tau-intelomp-icpc-papi-ompt-pdt-openmp` for pure OpenMP codes.
 
 
 

@@ -7,7 +7,7 @@ Quantum Espresso (QE) is an integrated suite of open-source codes for electronic
 
 ## [Installations](#installations) { #installations }
 
-The latest QE stable release is installed on TACC's [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG] and [Frontera][FRONTERAUG] systems. Use "`module`" commands to load the latest installed version by default, and to list all installed versions.  
+The latest QE stable release is installed on TACC's [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG] and [Frontera][FRONTERAUG] systems. Use `module` commands to load the latest installed version by default, and to list all installed versions.  
 
 <pre class="cmd-line">
 $ <b>module load qe</b>
@@ -22,7 +22,7 @@ $ <b>cd $TACC_QE_DIR/PW/Doc</b>		# explore PWscf documentation</pre>
 
 Quantum Espresso executables have many optional command line arguments described in the [user manual](http://www.quantum-espresso.org/resources/users-manual). QE users may run with their default settings usually with no problem. QE contains many packages and executables and `pw.x` is the most popular. **We strongly recommend you refer to the [QE manual](http://www.quantum-espresso.org/resources/users-manual) to learn how to construct input files, and learn the correct and optimal way to run your codes**.
 
-Use the following job scripts for Quantum Espresso runs on Stampede2 and Frontera. To configure a script for Lonestar5, vary the <span style="white-space: nowrap;">"`-N`"</span> and <span style="white-space: nowrap;">"`-n`"</span> directives.
+Use the following job scripts for Quantum Espresso runs on Stampede2 and Frontera. To configure a script for Lonestar5, vary the <span style="white-space: nowrap;">`-N`</span> and <span style="white-space: nowrap;">`-n`</span> directives.
 
 ### [Sample Job Script: QE on Frontera](#jobscript-frontera) { #jobscript-frontera }
 
@@ -53,7 +53,7 @@ The script below submits a Quantum Espresso job to Stampede2's `normal` queue (K
 #SBATCH -e qe.%j.err 
 #SBATCH -N 4         						# request 4 nodes 
 #SBATCH -n 256								# 256 total tasks = 64 tasks/node
-#SBATCH -p normal     						# submit to "<code>normal</code>" queue 
+#SBATCH -p normal     						# submit to <code>normal</code> queue 
 #SBATCH -t 4:00:00       					# run for 4 hours max 
 #SBATCH -A <i>projectname</i>
 

@@ -48,7 +48,7 @@ ibrun namd2 +ppn 6 \
 			+pemap 2-12:2,16-26:2,30-40:2,44-54:2,3-13:2,17-27:2,31-41:2,45-55:2\
 			+commap 0,14,28,42,1,15,29,43 input &amp;&gt; output</pre>
 
-For very large simulations, users may want to use compressed structures. See the [NAMD wiki: NamdMemoryReduction](https://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?NamdMemoryReduction) to prepare your compressed input files and set up your input files. In this case use the "`namd2_memopt`" executable instead of "`namd2`": 
+For very large simulations, users may want to use compressed structures. See the [NAMD wiki: NamdMemoryReduction](https://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?NamdMemoryReduction) to prepare your compressed input files and set up your input files. In this case use the `namd2_memopt` executable instead of `namd2`: 
 
 compressed input files
 <pre class="job-script">ibrun namd2_memopt +ppn 6 \
@@ -80,7 +80,7 @@ ibrun namd2_knl +ppn 32 \
 				+commap 64-67 input &amp;&gt; output</pre>
 
 
-To run the same job on more than one node, vary the "`-N`" and "`n`" `#SBATCH` directives. This job script requests 3 nodes and 39 MPI tasks: 13 tasks/node. 
+To run the same job on more than one node, vary the `-N` and `n` `#SBATCH` directives. This job script requests 3 nodes and 39 MPI tasks: 13 tasks/node. 
 
 <pre class="job-script">
 #SBATCH -J mynamd       # Set job name
@@ -95,7 +95,7 @@ ibrun namd2_knl +ppn 8 \
 				+pemap 0-51+68 \
 				+commap 52-67 input &amp;&gt; output</pre>
 
-As well as the Slurm `#SBATCH` directives ("`-N`" and "`-n`"), try varying the [affinity](http://www.ks.uiuc.edu/Research/namd/2.12/ug/node89.html) settings to determine the optimal performance of your job. You can try both settings then use the optimal one. If your system is small or the number of nodes are large, you can try:
+As well as the Slurm `#SBATCH` directives (`-N` and `-n`), try varying the [affinity](http://www.ks.uiuc.edu/Research/namd/2.12/ug/node89.html) settings to determine the optimal performance of your job. You can try both settings then use the optimal one. If your system is small or the number of nodes are large, you can try:
 
 4 tasks per node:
 <pre class="job-script">ibrun namd2_knl +ppn 16 +pemap 0-63 +commap 64-67</pre> 
@@ -149,7 +149,7 @@ login1$ <b>module load namd/2.14</b></pre>
 
 <p class="portlet-msg-info">TACC staff recommends assigning 4 tasks per node for NAMD jobs running on Lonestar6's compute nodes.</p>
 
-The following Lonestar6 job script requests 2 node and 8 MPI tasks. To run the same job on more nodes, vary the "`-N`" and "`-n`" Slurm directives, **ensuring the value of `n` is four times the value of `N`**.  
+The following Lonestar6 job script requests 2 node and 8 MPI tasks. To run the same job on more nodes, vary the `-N` and `-n` Slurm directives, **ensuring the value of `n` is four times the value of `N`**.  
 
 <pre class="job-script">
 #!/bin/bash

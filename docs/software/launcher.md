@@ -9,7 +9,7 @@ With Launcher and Launcher GPU, users can create their own miniature high-throug
 
 ## [Serial Jobs](#serial) { #serial }
 
-Users can submit a Launcher job by creating a SLURM job script, in this example, "`runserial.bash`". 
+Users can submit a Launcher job by creating a SLURM job script, in this example, `runserial.bash`. 
 
 ### [Sample Job Script](#serial-jobscript) { #serial-jobscript }
 
@@ -51,7 +51,7 @@ echo "Hello, World!"
 echo "Hello, World!"
 echo "Hello, World!"</pre>
 
-Users can connect several command lines into one job using Unix's "`&&`" or "`;`" operators. For example,
+Users can connect several command lines into one job using Unix's `&&` or `;` operators. For example,
 
 <pre class="file">
 hostname && date && echo "Hello, World!" 
@@ -97,7 +97,7 @@ ${LAUNCHER_DIR}/paramrun</pre>
 
 #### [Sample Job File](#multithreaded-jobscript) { #multithreaded-jobscript }
 
-"`hello_openmp`" is the job file that contains all the OpenMP jobs you plan to run simultaneously. 
+`hello_openmp` is the job file that contains all the OpenMP jobs you plan to run simultaneously. 
 
 <pre class="file">
 ./openMP1.exe
@@ -119,7 +119,7 @@ Launcher-GPU is a newly developed tool based on Launcher, which supports running
 
 ### [Sample Job Script](#launchergpu-jobscript) { #launchergpu-jobscript }
 
-Users can submit a Launcher-GPU job by creating a SLURM job script, for example, "`rungpu.bash`". 
+Users can submit a Launcher-GPU job by creating a SLURM job script, for example, `rungpu.bash`. 
 
 <pre class="job-script">
 #!/bin/bash
@@ -140,9 +140,9 @@ ${LAUNCHER_DIR}/paramrun</pre>
 Then submit the job script:
 <pre class="cmd-line">login1$ <b>sbatch rungpu.bash</b></pre>
 
-This job will run 16 tasks in parallel ("`-n 16`") on 4 GPU nodes ("`-N 4`").  
+This job will run 16 tasks in parallel (`-n 16`) on 4 GPU nodes (`-N 4`).  
 
-When assigning the value of "`N`" and "`n`", note that `n/N` must equal the number of GPUs available per node on the resource. In the above example, `n/N` is 16/4 = 4 GPUs/node, which corresponds to the 4 RTX GPUs on each GPU node of the Frontera system.   
+When assigning the value of `N` and `n`, note that `n/N` must equal the number of GPUs available per node on the resource. In the above example, `n/N` is 16/4 = 4 GPUs/node, which corresponds to the 4 RTX GPUs on each GPU node of the Frontera system.   
 
 ### [Sample Job File](#launchergpu-jobfile) { #launchergpu-jobfile }
 
