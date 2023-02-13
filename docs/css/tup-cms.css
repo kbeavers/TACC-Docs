@@ -51,7 +51,7 @@ p.caption */ {
 /* TODO: Hide "TACC Site" Blockquote plugin */
 blockquote {
     font-size: var(--global-font-size--large); /* HP wanted non-standard 20px */
-    color: var(--global-color-accent--normal);
+    color: var(--global-color-accent--secondary);
     width: fit-content;
     line-height: 1.7;
 }
