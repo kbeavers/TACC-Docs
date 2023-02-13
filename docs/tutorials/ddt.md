@@ -5,7 +5,7 @@
 
 ## [Set up Debugging Environment](#env) { #env }
 
-Before running any debugger, the application code must be compiled with the "`-g`" and "`-O0`" options as shown below:
+Before running any debugger, the application code must be compiled with the `-g` and `-O0` options as shown below:
 
 <pre class="cmd-line">login1$ <b>mpif90 -g -O0 mycode.f90</b></pre>
 
@@ -15,7 +15,7 @@ or
 
 Follow these steps to set up your debugging environment on Frontera, Stampede2, Lonestar5 and other TACC compute resources.
 
-1. **Enable X11 forwarding**. To use the DDT GUI, ensure that X11 forwarding is enabled when you `ssh` to the TACC system. Use the "`-X`" option on the `ssh` command line if X11 forwarding is not enabled in your SSH client by default.
+1. **Enable X11 forwarding**. To use the DDT GUI, ensure that X11 forwarding is enabled when you `ssh` to the TACC system. Use the `-X` option on the `ssh` command line if X11 forwarding is not enabled in your SSH client by default.
 
 	<pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@stampede2.tacc.utexas.edu</b></pre>
 
@@ -37,7 +37,7 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 
 	<pre class="cmd-line">ddt: cannot connect to X server</pre>
 
-	...then X11 forwarding was not enabled (Step 1.) or the system may not have local X11 support. If logging in with the "`-X`" flag doesn't fix the problem, please [create a help ticket][CREATETICKET] for assistance.
+	...then X11 forwarding was not enabled (Step 1.) or the system may not have local X11 support. If logging in with the `-X` flag doesn't fix the problem, please [create a help ticket][CREATETICKET] for assistance.
 
 1. **Click the "Run and Debug a Program" button in the "DDT - Welcome" window**:
 
@@ -59,7 +59,7 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 	* In the "Queue Submission Parameters" window, fill in the following fields:
 
 		<table border="1" cellpadding="3">
-		<tr><th>Queue</th><td>default queue is "<code>skx-dev</code>" for Stampede2, and "<code>development</code>" for other systems</td></tr>
+		<tr><th>Queue</th><td>default queue is <code>skx-dev</code> for Stampede2, and <code>development</code> for other systems</td></tr>
 		<tr><th>Time</th><td>(hh:mm:ss)</td></tr>
 		<tr><th>Project</th><td>Allocation/Project to charge the batch job to</td></tr></table>
 
@@ -97,14 +97,14 @@ By starting DDT from a login node you let it use X11 graphics, which can be slow
 	<figure id="figure8"><img src="../../imgs/tutorials/DDT-8.png" style="height: 73px; width: 300px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
-	Fill in your login name and the cluster to connect to, for instance "`stampede2.tacc.utexas.edu`". The remote installation directory is stored in the "`$TACC_DDT_DIR`" environment variable after the module is loaded.
+	Fill in your login name and the cluster to connect to, for instance `stampede2.tacc.utexas.edu`. The remote installation directory is stored in the `$TACC_DDT_DIR` environment variable after the module is loaded.
 
 1. **Make the connection; you'll be promped for your password and two-factor code**:
 
 	<figure id="figure9"><img src="../../imgs/tutorials/DDT-9.png" style="width: 500px; height: 309px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
-1. **From any login node, submit a batch job where the "`ibrun`" line is replaced by**:
+1. **From any login node, submit a batch job where the `ibrun` line is replaced by**:
 
 	<pre class="cmd-line">$ <b>ddt --connect -n $SLURM_NPROCS ./yourprogram</b></pre>
 

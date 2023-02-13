@@ -8,7 +8,7 @@ BLAS (Basic Linear Algebra Subprograms) is a set of definitions of common operat
 
 ## [Updating your `makefile`](#makefile) { #makefile }
 
-Your makefile may contain "`libblas.a`" or "`-lblas"`. Most Linux distributions indeed have a library by that name, but it will not be tuned for the TACC processor types. Instead, use one of the following libraries.
+Your makefile may contain `libblas.a` or `-lblas`. Most Linux distributions indeed have a library by that name, but it will not be tuned for the TACC processor types. Instead, use one of the following libraries.
 
 ### [MKL](#mkl) { #mkl }
 
@@ -20,9 +20,9 @@ Intel's Math Kernal Library (MKL) is a high performance implementation of BLAS/L
 
 In general:
 
-* Under the Intel compiler, using BLAS/LAPACK is done through adding the flag "`-mkl`" both at compile and link time.
+* Under the Intel compiler, using BLAS/LAPACK is done through adding the flag `-mkl` both at compile and link time.
 
-* Under the GCC compiler, there is a module "`mkl`" that defines the `TACC_MKL_DIR` and `TACC_MKL_LIB` environment variables. What libraries you need depends on your application, but often the following works:
+* Under the GCC compiler, there is a module `mkl` that defines the `TACC_MKL_DIR` and `TACC_MKL_LIB` environment variables. What libraries you need depends on your application, but often the following works:
 
 		-L${TACC_MKL_LIB} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread
 
@@ -45,7 +45,7 @@ In general:
 
 ### [BLIS](#blis) { #blis }
 
-BLIS (BLAS-like Library Instantiation Software Framework) is an open source high performance implementation of BLAS/LAPACK. It can be accessed through a module: "`module load blis`". You will then find the library file in `$TACC_BLIS_LIB`. BLIS extends the BLAS specification; for documentation see <https://github.com/flame/blis>.
+BLIS (BLAS-like Library Instantiation Software Framework) is an open source high performance implementation of BLAS/LAPACK. It can be accessed through a module: `module load blis`. You will then find the library file in `$TACC_BLIS_LIB`. BLIS extends the BLAS specification; for documentation see <https://github.com/flame/blis>.
 
 ### [Reference BLAS/LAPACK](#refs) { #refs }
 
@@ -53,7 +53,7 @@ The reference implementation for BLAS/LAPACK is written in Fortran and is very l
 
 	module load referencelapack
 
-This gives access to the compiled Fortran sources from netlib.org/lapack. When building your program with this library, you either need to use the Fortran compiler as linker, or add "`-lgfortran`" to the link line.
+This gives access to the compiled Fortran sources from netlib.org/lapack. When building your program with this library, you either need to use the Fortran compiler as linker, or add `-lgfortran` to the link line.
 
 
 ### [Goto Blas and OpenBlas](#goto) { #goto }

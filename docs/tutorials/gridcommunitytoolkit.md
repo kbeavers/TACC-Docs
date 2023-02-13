@@ -57,13 +57,13 @@ On the Manage DNs page, near the bottom, is a form to associate a DN to your acc
 Now that you have associated the DN with your TACC account **and** given the DN time to propagate to the systems (up to thirty minutes), you can activate the Grid Community Toolkit transfer endpoints and begin transferring files.
 
 
-Go to [https://globus.org](https://globus.org), log in, and click "Manage Data". Alternatively, navigate directly to [https://app.globus.org/file-manager](https://app.globus.org/file-manager). In one of the transfer endpoint form boxes, search for endpoints prefixed "`tacc#`". For example, you should be able to find "`tacc#stampede2`". 
+Go to [https://globus.org](https://globus.org), log in, and click "Manage Data". Alternatively, navigate directly to [https://app.globus.org/file-manager](https://app.globus.org/file-manager). In one of the transfer endpoint form boxes, search for endpoints prefixed `tacc#`. For example, you should be able to find `tacc#stampede2`. 
 
 
 <figure id="figure6"><img alt="" src="../../imgs/tutorials/GCT-6.png" style="width: 600px; height: 624px;" />
 <figcaption></figcaption></figure>
 
-After selecting the endpoint you'll be prompted to authenticate in order to active the endpoint. Click "`Continue`" and you will be redirected to a Grid Community Toolkit-branded CILogon authentication page. Select the same identity provider that you used when you retrieved your certificate above and re-authenticate. 
+After selecting the endpoint you'll be prompted to authenticate in order to active the endpoint. Click `Continue` and you will be redirected to a Grid Community Toolkit-branded CILogon authentication page. Select the same identity provider that you used when you retrieved your certificate above and re-authenticate. 
 
 
 <figure id="figure7"><img alt="" src="../../imgs/tutorials/GCT-7.png" style="width: 600px; height: 624px;" />

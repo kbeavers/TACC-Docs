@@ -39,10 +39,10 @@ TACC has a limited number of DCV licenses available, so concurrent DCV sessions 
 
 You can modify or overwrite script defaults with `sbatch` command-line options:
 
-* "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
-* "<code>-A <i>projectname</i></code>" specify the project/allocation to be charged 
-* "<code>-N <i>nodes</i></code>" specify number of nodes needed  
-* "<code>-p <i>partition</i></code>" specify an alternate queue 
+* <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime 
+* <code>-A <i>projectname</i></code> specify the project/allocation to be charged 
+* <code>-N <i>nodes</i></code> specify number of nodes needed  
+* <code>-p <i>partition</i></code> specify an alternate queue 
 
 See more `sbatch` options in the [Stampede2 User Guide: Common `sbatch` Options](../../hpcugs/stampede2/stampede2#table6)
 
@@ -121,7 +121,7 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 	
 1. **Poll the queue, waiting till the job runs...**
 
-	You can poll the job's status with the "`squeue`" command, waiting till the submitted job actually runs, or by waiting for the job output file, (`dcvserver.out` or `vncserver.out` depending on the connection type and job script submitted), to appear in the submission directory.  
+	You can poll the job's status with the `squeue` command, waiting till the submitted job actually runs, or by waiting for the job output file, (`dcvserver.out` or `vncserver.out` depending on the connection type and job script submitted), to appear in the submission directory.  
 
 	<pre class="cmd-line">
 	login4(690)$ <b>squeue -u slindsey</b>
@@ -153,7 +153,7 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 
 		6. **Start your graphics-enabled application.** Once the desktop is generated ([Figure 3.](#figure3)), you can launch your applications. Here we run a simple visualization program, `glxgears`. ([Figure 4.](#figure4))
 
-			**Note:** The "Terminal" button at the bottom of the DCV window creates a terminal **without `ibrun` support**. To create an xterm with full `ibrun` support, type "`xterm &`" in the initial xterm window.
+			**Note:** The "Terminal" button at the bottom of the DCV window creates a terminal **without `ibrun` support**. To create an xterm with full `ibrun` support, type `xterm &` in the initial xterm window.
 
 <figure id="figure3"><img alt="" src="../../imgs/tutorials/RDA-3.png" style="width: 800px; height: 480px;" />
 <figcaption>Figure 3. DCV Desktop in Chrome Browser</figcaption></figure>
@@ -196,9 +196,9 @@ Follow the steps below to start an interactive session.
 
 1. **Display the job's output file, `vncserver.out`, to extract the port connection number:**
 
-	The "`job.vnc`" script starts a vncserver process and writes the connect port for the vncviewer to the output file, "`vncserver.out`" in the job submission directory. 
+	The `job.vnc` script starts a vncserver process and writes the connect port for the vncviewer to the output file, `vncserver.out` in the job submission directory. 
 
-	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.
 
 1. **Create an SSH Tunnel to Stampede2**
 
@@ -212,11 +212,11 @@ Follow the steps below to start an interactive session.
 
 	where
 
-	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
-	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
-	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
-	*  "`-N`" puts the `ssh` command into the background after connecting 
-	*  "`-L`" forwards the port 
+	*  <code><i>yyyy</i></code> is the port number given by the vncserver batch job 
+	*  <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  `-f` instructs SSH to only forward ports, not to execute a remote command 
+	*  `-N` puts the `ssh` command into the background after connecting 
+	*  `-L` forwards the port 
 
 	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Stampede2.
 
@@ -238,7 +238,7 @@ Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedi
 <figure id="figure7"><img alt="" src="../../imgs/tutorials/RDA-7.png" style="width: 800px; height: 661px;" /> 
 <figcaption>Figure 7. Run a Visualization Application</figcaption></figure>
 
-Once the desktop has been established an initial xterm window appears. (Figure 6.) This window manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. 
+Once the desktop has been established an initial xterm window appears. (Figure 6.) This window manages the lifetime of the VNC server process. Killing this window (typically by typing `exit` or `ctrl-D` at the prompt) will cause the vncserver to terminate and the original batch job to end. 
 
 
 7. Once you've completed your work and closed the browser window, remember to kill the job you submitted in Step 2.
