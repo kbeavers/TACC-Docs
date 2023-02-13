@@ -17,7 +17,7 @@ See the example for fictitious user `bjones` in the figure below. All directorie
 
 <figure id="figure3"><img alt="Stockyard 2022" src="../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
 
-Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/stampede2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/stampede2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
 [Table 4. Built-in Account Level Aliases](#table4)
 
@@ -40,11 +40,11 @@ To avoid exceeding your fair share of any given OST, a good rule of thumb is to 
 
 <pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
 
-Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Stampede2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+Note that an `lfs setstripe` command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Stampede2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
 
-Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the `mv` command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the `cp` command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
 
-You can check the stripe count of a file using the "`lfs getstripe`" command:
+You can check the stripe count of a file using the `lfs getstripe` command:
 
 <pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
 
@@ -55,15 +55,15 @@ You can check the stripe count of a file using the "`lfs getstripe`" command:
 
 You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](#access-ssh) typically include `scp`-based file transfer capabilities.
 
-The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Stampede2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Stampede2 `$HOME` would look like this:
+The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Stampede2 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Stampede2 `$HOME` would look like this:
 
 <pre class="cmd-line">localhost$ <b>scp ./myfile bjones@stampede2.tacc.utexas.edu:</b>  # note colon after net address</pre>
 
-You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in "`.txt`" from the current directory on your local machine to `/work/01234/bjones/scripts` on Stampede2:
+You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Stampede2:
 
 <pre class="cmd-line">localhost$ <b>scp *.txt bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2</b></pre>
 
-To delay wildcard expansion until reaching Stampede2, use a backslash ("`\`") as an escape character before the wildcard. For example, to pull all files ending in "`.txt`" from `/work/01234/bjones/scripts` on Stampede2 to the current directory on your local system:
+To delay wildcard expansion until reaching Stampede2, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Stampede2 to the current directory on your local system:
 
 <pre class="cmd-line">localhost$ <b>scp bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2/\*.txt .</b></pre>
 
@@ -73,11 +73,11 @@ You can of course use shell or environment variables in your calls to `scp`. For
 localhost$ <b>destdir="/work/01234/bjones/stampede2/data"</b>
 localhost$ <b>scp ./myfile bjones@stampede2.tacc.utexas.edu:$destdir</b></pre>
 
-You can also issue `scp` commands on your local client that use Stampede2 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash ("`\`") as an escape character before the "`$`"; this ensures that expansion occurs after establishing the connection to Stampede2:
+You can also issue `scp` commands on your local client that use Stampede2 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Stampede2:
 
 <pre class="cmd-line">localhost$ <b>scp ./myfile bjones@stampede2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
 
-Avoid using `scp` for recursive ("`-r`") transfers of directories that contain nested directories of many small files:
+Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
 <pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@stampede2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
 
@@ -95,7 +95,7 @@ The `rsync` (remote synchronization) utility is a great way to synchronize files
 localhost$ <b>rsync       mybigfile bjones@stampede2.tacc.utexas.edu:\$WORK/data</b>
 localhost$ <b>rsync -avtr mybigdir  bjones@stampede2.tacc.utexas.edu:\$WORK/data</b></pre>
 
-The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update ("`-r`") with verbose ("`-v`") feedback; the synchronization preserves time stamps ("`-t`") as well as symbolic links and other meta-data ("`-a`"). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update (`-r`) with verbose (`-v`) feedback; the synchronization preserves time stamps (`-t`) as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 
 See [Striping Large Files](#files-striping) for additional important advice about striping the receiving directory when transferring or creating large files on TACC systems. 
 

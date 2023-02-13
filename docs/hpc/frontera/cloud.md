@@ -31,7 +31,7 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 
 	* You'll be presented a URL to paste into a browser; Log in using the appropriate Google account. 
 	* You'll then be presented an authentication string. Copy and paste this string when promped with: "Enter verification code:".  
-	* Configure the CLI for the correct project. For Frontera, use "`ut-tacc-np-sandbox-1`".
+	* Configure the CLI for the correct project. For Frontera, use `ut-tacc-np-sandbox-1`.
 
 		<pre class="cmd-line">login1$ <b>./google-cloud-sdk/bin/gcloud config set project ut-tacc-np-sandbox-1</b></pre>
 
@@ -170,7 +170,7 @@ To install on Frontera in your home directory using Python, this should be suffi
 
 <p class="cmd-line">login1$ <b>curl -L https://aka.ms/InstallAzureCli | bash</b></p>
 
-We recommend creating a "`~/azure`" subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
+We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
 <pre class="cmd-line">===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
 <b>/home1/01983/mpackard/azure/lib/azurecli</b>

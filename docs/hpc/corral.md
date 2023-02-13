@@ -63,7 +63,7 @@ Corral group quotas will be set to the quantity each project has been allocated.
 
 There are no limitations on the size of files stored on Corral nor are there limits on the number of files per-directory; by default, there is a limit of 1 million files per 5TB allocated, but limited exceptions to allow for higher file counts can be granted on request. You may submit an exception request through the ticket system if your dataset will have exceptionally high file counts. Limitations on overall usage are set through quotas on the project group - once you go over the allocated limit, you will receive quota errors when trying to write new data or create new files on the file system. Quotas can also be set on a per-user basis if project PIs wish to control the usage of individuals within a research group.
 
-When creating files on Corral, it is important that you be aware of your current Group Identity (GID), as this will control the sharing permissions and the project against which the data will be charged. You may use the command "<code>newgrp <i>groupname</i></code>" to change your effective GID before writing data, and you can check your default group either through the user portal or with the "`id`" command on any TACC system.
+When creating files on Corral, it is important that you be aware of your current Group Identity (GID), as this will control the sharing permissions and the project against which the data will be charged. You may use the command "<code>newgrp <i>groupname</i></code>" to change your effective GID before writing data, and you can check your default group either through the user portal or with the `id` command on any TACC system.
 
 
 ### [Data Retention Policies](#policies-retention) { #policies-retention }
@@ -76,7 +76,7 @@ Files on Corral are never "purged" using automated processes, however each alloc
 
 Data transfer mechanisms differ depending on whether you are using iRODS or basic file system access. For iRODS users, please see the iRODS user guide. Data transfer to and from the file system is described below.
 
-**For Secure data:** All the instructions for SCP and Cyberduck as shown below can be used for transferring data to a secure location on Corral, however please substitute the hostname "`secure.corral.tacc.utexas.edu`" for "`data.tacc.utexas.edu`". You will be given access to this system when you are granted access to a secure Corral folder, and this system can be used exclusively for accessing your secure data area on Corral. Secure locations on Corral are not generally accessible from TACC data transfer and login nodes.
+**For Secure data:** All the instructions for SCP and Cyberduck as shown below can be used for transferring data to a secure location on Corral, however please substitute the hostname `secure.corral.tacc.utexas.edu` for `data.tacc.utexas.edu`. You will be given access to this system when you are granted access to a secure Corral folder, and this system can be used exclusively for accessing your secure data area on Corral. Secure locations on Corral are not generally accessible from TACC data transfer and login nodes.
 
 ### [Command-line data transfer](#transferring-cl) { #transferring-cl }
 
@@ -85,7 +85,7 @@ Data transfer from any Unix/Linux system can be accomplished using the `scp` uti
 <pre class="cmd-line">login1$ <b>scp <i>filename</i> \
 	 <i>username</i>@data.tacc.utexas.edu:/path/to/project/directory</b></pre>
 
-Where <i>filename</i> is the path to the file on your local system, and the path is what was provided to you when your allocation was granted. While a whole directory can be copied recursively using the "`-r`" switch:
+Where <i>filename</i> is the path to the file on your local system, and the path is what was provided to you when your allocation was granted. While a whole directory can be copied recursively using the `-r` switch:
 
 <pre class="cmd-line">login1$ <b>scp -r <i>directory</i> \
 	<i>username</i>@data.tacc.utexas.edu:/<i>path/to/project/directory</i></b></pre>
@@ -95,7 +95,7 @@ Copying data from the Corral system to your local machine is similar, but revers
 <pre class="cmd-line">login1$ <b>scp <i>username</i>@data.tacc.utexas.edu:<i>/path/to/project/directory/filename</i> \
 	 <i>/path/to/local/directory</i></b></pre>
 
-The `scp` utility has many options and allows you to provide many defaults and other options in a configuration file to make transfers easier. Type "`man scp`" at the prompt to get extensive documentation of the options available for transferring files.
+The `scp` utility has many options and allows you to provide many defaults and other options in a configuration file to make transfers easier. Type `man scp` at the prompt to get extensive documentation of the options available for transferring files.
 
 
 ### [Staging to and from Lonestar6 File Systems](#transferring-staging) { #transferring-staging }
@@ -104,7 +104,7 @@ If you are performing computational and analysis tasks on Lonestar6, and those t
 
 <pre class="cmd-line">login1$ <b>cp /corral-repl/utexas/myproject/myfile $SCRATCH/job_directory/</b></pre>
 
-The above example stages a single file. If you wish to stage a whole directory instead, use the "`-r`" switch to cp:
+The above example stages a single file. If you wish to stage a whole directory instead, use the `-r` switch to cp:
 
 <pre class="cmd-line">
 login1$ <b>cp -r /corral-repl/utexas/myproject/job_directory $SCRATCH/</b></pre>
@@ -125,7 +125,7 @@ A wide variety of graphical tools are available that support the secure copy (SC
 
 <a href="http://download.cnet.com/Cyberduck/3000-2160_4-10246246.html" target="_blank">Download Cyberduck here</a>
 
-Click on the "Open Connection" button in the top right corner of the Cyberduck window to open a connection configuration window (as shown below) transfer mechanism, and type in the server name "`data.tacc.utexas.edu`". Add your username and password in the spaces provided, and if the "more options" area is not shown click the small triangle or button to expand the window; this will allow you to enter the path to your project area so that when Cyberduck opens the connection you will immediately see your data. Then click the "Connect" button to open your connection.
+Click on the "Open Connection" button in the top right corner of the Cyberduck window to open a connection configuration window (as shown below) transfer mechanism, and type in the server name `data.tacc.utexas.edu`. Add your username and password in the spaces provided, and if the "more options" area is not shown click the small triangle or button to expand the window; this will allow you to enter the path to your project area so that when Cyberduck opens the connection you will immediately see your data. Then click the "Connect" button to open your connection.
 
 **Note that in addition to your account password, you will be prompted for your TACC token value and will need to have the [MFA pairing][TACCMFA] step completed to connect to the system.
 
@@ -154,11 +154,11 @@ within that directory, or
 
 at any time  
 
-Permissions are shown as a set of three letters for each group, as in the following example line of output from "`ls -l`":
+Permissions are shown as a set of three letters for each group, as in the following example line of output from `ls -l`:
 
 <pre>drwxrwxr-x 3 ctjordan G-802037 4096 Mar 6 10:08 mydirectory</pre>
 
-In this example, the "`d`" at the front indicates that this is a directory, and it is **r**eadable and **w**ritable by the user and anyone in the user's group. Other users on the system can list the directory's contents but cannot write to it.
+In this example, the `d` at the front indicates that this is a directory, and it is **r**eadable and **w**ritable by the user and anyone in the user's group. Other users on the system can list the directory's contents but cannot write to it.
 
 ### [Managing Files and Permissions using ACLs](#managing-acls) { #managing-acls }
 
@@ -167,16 +167,16 @@ For a more fine-grained approach to files and permissions, use **A**ccess **C**o
 
 ### [Managing Permissions with `chmod`](#managing-chmod) { #managing-chmod }
 
-File permissions can be managed using the "`chmod`" command from the command-line prompt, and from the permissions window in [Cyberduck](#cyberduck). The permissions window is shown below, and can be accessed by right-clicking on a file or folder in Cyberduck and selecting "Info ..." from the menu. Other graphical fie transfer utilities may have a similar window or panel used to control permissions. The `chmod` command has a straightforward syntax:
+File permissions can be managed using the `chmod` command from the command-line prompt, and from the permissions window in [Cyberduck](#cyberduck). The permissions window is shown below, and can be accessed by right-clicking on a file or folder in Cyberduck and selecting "Info ..." from the menu. Other graphical fie transfer utilities may have a similar window or panel used to control permissions. The `chmod` command has a straightforward syntax:
 
 <pre>chmod <i>permissions-to-change</i> <i>filename</i></pre>
 
-where <i>permissions-to-change</i> can be any or all of "`u`" for user, "`g`" for group, and "`o`" for other, a "`+`" to add permissions or a minus, "`-`", to remove permissions, and the initials of permissions to add or removed, "`r`" for read, "`w`" for write, and "`x`" for execution. For example, to add read access for all users of the system the command would be:
+where <i>permissions-to-change</i> can be any or all of `u` for user, `g` for group, and `o` for other, a `+` to add permissions or a minus, `-`, to remove permissions, and the initials of permissions to add or removed, `r` for read, `w` for write, and `x` for execution. For example, to add read access for all users of the system the command would be:
 
 <pre class="cmd-line">
 login1$ <b>chmod o+r <i>filename</i></b></pre>
 
-There are various shortcuts one can use to apply specific permissions, and the user is encouraged to read the documentation for the `chmod` command by typing "`man chmod`" at the command-line prompt. The `chown` command may also be of interest in understanding permissions, and full documentation can be read using "`man chown`".
+There are various shortcuts one can use to apply specific permissions, and the user is encouraged to read the documentation for the `chmod` command by typing `man chmod` at the command-line prompt. The `chown` command may also be of interest in understanding permissions, and full documentation can be read using `man chown`.
 
 <!-- <figure><img src="../../../imgs/corral/xxx.jpg"> SDL
 <figcaption>Figure 3. Cyberduck interface for setting permissions</figcaption></figure> -->

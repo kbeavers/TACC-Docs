@@ -10,19 +10,19 @@ The default login shell for your user account is Bash.  To determine your curren
 
 <pre class="cmd-line">$ <b>echo $SHELL</b></pre>
 
-If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC User Portal][TACCUSERPORTAL]. The "`chsh`" ("change shell") command will not work on TACC systems. 
+If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC User Portal][TACCUSERPORTAL]. The `chsh` ("change shell") command will not work on TACC systems. 
 
-When you start a shell on Stampede2, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: <span style="white-space: nowrap;">"`ls -a`"</span>.
+When you start a shell on Stampede2, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: <span style="white-space: nowrap;">`ls -a`</span>.
 
-Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the "`bash`" command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using  `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute <span style="white-space: nowrap;">"`source ~/.bashrc`"</span> from your "`.profile`", then put all your customizations in "`.bashrc`".  The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
+Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the `bash` command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using  `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute <span style="white-space: nowrap;">`source ~/.bashrc`</span> from your `.profile`, then put all your customizations in `.bashrc`.  The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
 
-For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTARTGUIDE] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">"`/usr/local/startup_scripts/install_default_scripts`"</span>.
+For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTARTGUIDE] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
 
 #### [Environment Variables](#conduct-account-envvars) { #conduct-account-envvars }
 
 Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the [modules](#conduct-modules) that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
 
-Execute the "`env`" command to see the environment variables that define the way your shell and child shells behave. 
+Execute the `env` command to see the environment variables that define the way your shell and child shells behave. 
 
 Pipe the results of `env` into `grep` to focus on specific environment variables. For example, to see all environment variables that contain the string GIT (in all caps), execute:
 
@@ -38,13 +38,13 @@ TACC's `sanitytool` module loads an account-level diagnostic package that detect
 login1$ <b>module load sanitytool</b>
 login1$ <b>sanitycheck</b></pre>
 
-Execute "`module help sanitytool`" for more information.
+Execute `module help sanitytool` for more information.
 
 ### [Accessing the Compute Nodes](#conduct-computenodes) { #conduct-computenodes }
 
 You connect to Stampede2 through one of four "front-end" login nodes. The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes ([Figure 2. Login and Compute Nodes](#figure2)). What you do on the login nodes affects other users directly because you are competing for the same memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](#conduct-conduct) for more information. 
 
-**You can use your command-line prompt, or the "`hostname`" command, to tell you whether you are on a login node or a compute node**. The default prompt, or any custom prompt containing "`\h`", displays the short form of the hostname (e.g. `c401-064`). The hostname for a Stampede2 login node begins with the string "`login`" (e.g. `login2.stampede2.tacc.utexas.edu`), while compute node hostnames begin with the character "`c`" (e.g. `c401-064.stampede2.tacc.utexas.edu`). Note that the default prompts on the compute nodes include the node type (`knl`, `skx` or `icx`) as well. The environment variable `TACC_NODE_TYPE`, defined only on the compute nodes, also displays the node type. The simplified prompts in the User Guide examples are shorter than Stampede2's actual default prompts.
+**You can use your command-line prompt, or the `hostname` command, to tell you whether you are on a login node or a compute node**. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname (e.g. `c401-064`). The hostname for a Stampede2 login node begins with the string `login` (e.g. `login2.stampede2.tacc.utexas.edu`), while compute node hostnames begin with the character `c` (e.g. `c401-064.stampede2.tacc.utexas.edu`). Note that the default prompts on the compute nodes include the node type (`knl`, `skx` or `icx`) as well. The environment variable `TACC_NODE_TYPE`, defined only on the compute nodes, also displays the node type. The simplified prompts in the User Guide examples are shorter than Stampede2's actual default prompts.
 
 While some workflows, tools, and applications hide the details, there are three basic ways to access the compute nodes:
 
@@ -57,7 +57,7 @@ Be sure to request computing resources that are consistent with the type of appl
 * A **serial** (non-parallel) application can only make use of a single core on a single node, and will only see that node's memory.
 * A threaded program (e.g. one that uses **OpenMP**) employs a shared memory programming model and is also restricted to a single node, but the program's individual threads can run on multiple cores on that node. 
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try  launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
-* A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The "`launcher`" tool is designed to make it easy to submit this type of job. For more information:
+* A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
 <pre class="cmd-line">
 $ <b>module load launcher</b>
@@ -93,7 +93,7 @@ Lmod is automatically replacing "intel/17.0.4" with "gcc/7.1.0".
 Due to MODULEPATH changes, the following have been reloaded:
 1) impi/17.0.3     2) petsc/3.7</pre>
 
-On Stampede2, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the "`papi`" module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
+On Stampede2, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
 <pre class="cmd-line">
 $ <b>module show papi</b>   # see what this module does to your environment
@@ -137,7 +137,7 @@ Two commands make it easy to return to a known, reproducible state:
 $ <b>module reset</b>   # load the system default collection of modules
 $ <b>module restore</b> # load your personal default collection of modules</pre>
 
-On TACC systems, the command "`module reset`" is equivalent to "`module purge; module load TACC`". It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
+On TACC systems, the command `module reset` is equivalent to `module purge; module load TACC`. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 
@@ -147,5 +147,5 @@ $ <b>module help</b>         # show help text for the module system itself</pre>
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
-It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">"`module save`"</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede2's default startup scripts for a safe way to do so.
+It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">`module save`</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede2's default startup scripts for a safe way to do so.
 

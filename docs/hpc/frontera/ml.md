@@ -47,7 +47,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 	<pre class="cmd-line">c123-456$ <b>cd $SCRATCH/kfac-pytorch</b></pre>
 
-1. Create a script called "`run.sh`". This script needs two parameters, the hostname of the master node and the number of nodes.
+1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
 	<pre class="job-script">
 	&#35;!/bin/bash
