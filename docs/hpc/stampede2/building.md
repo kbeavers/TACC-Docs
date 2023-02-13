@@ -38,13 +38,13 @@ $ <b>g++ mycode.cpp        -o myexe</b>  # C++ source file
 $ <b>gfortran mycode.f90   -o myexe</b>  # Fortran90 source file
 $ <b>gcc -fopenmp mycode.c -o myexe</b>  # OpenMP; GNU flag is different than Intel</pre>
 
-Note that some compiler options are the same for both Intel and GNU (e.g. "`-o`"), while others are different (e.g. "`-qopenmp`" vs "`-fopenmp`"). Many options are available in one compiler suite but not the other. See the [online GNU documentation](http://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
+Note that some compiler options are the same for both Intel and GNU (e.g. `-o`), while others are different (e.g. `-qopenmp` vs `-fopenmp`). Many options are available in one compiler suite but not the other. See the [online GNU documentation](http://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
 
 #### [Compiling and Linking as Separate Steps](#building-basics-complink) { #building-basics-complink }
 
 Building an executable requires two separate steps: (1) compiling (generating a binary object file associated with each source file); and (2) linking (combining those object files into a single executable file that also specifies the libraries that executable needs). The examples in the previous section accomplish these two steps in a single call to the compiler. When building more sophisticated applications or libraries, however, it is often necessary or helpful to accomplish these two steps separately.
 
-Use the "`-c`" ("compile") flag to produce object files from source files:
+Use the `-c` ("compile") flag to produce object files from source files:
 
 <pre class="cmd-line">$ <b>icc -c main.c calc.c results.c</b></pre>
 
@@ -58,7 +58,7 @@ The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task.
 
 #### [Include and Library Paths](#building-basics-inclib) { #building-basics-inclib }
 
-Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the "`-I`" option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the "`-L`" option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
+Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the `-I` option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the `-L` option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
 
 <pre class="cmd-line">
 $ <b>icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}</b>                  # compile
@@ -66,7 +66,7 @@ $ <b>icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5<
 
 On Stampede2, both the `hdf5` and `phdf5` modules define the environment variables `$TACC_HDF5_INC` and `$TACC_HDF5_LIB`. Other module files define similar environment variables; see [Using Modules to Manage Your Environment](#using-modules) for more information.
 
-The details of the linking process vary, and order sometimes matters. Much depends on the type of library: static (`.a` suffix; library's binary code becomes part of executable image at link time) versus dynamically-linked shared (.so suffix; library's binary code is not part of executable; it's located and loaded into memory at run time). The link line can use rpath to store in the executable an explicit path to a shared library. In general, however, the `LD_LIBRARY_PATH` environment variable specifies the search path for dynamic libraries. For software installed at the system-level, TACC's modules generally modify `LD_LIBRARY_PATH` automatically. To see whether and how an executable named "`myexe`" resolves dependencies on dynamically linked libraries, execute "`ldd myexe`".
+The details of the linking process vary, and order sometimes matters. Much depends on the type of library: static (`.a` suffix; library's binary code becomes part of executable image at link time) versus dynamically-linked shared (.so suffix; library's binary code is not part of executable; it's located and loaded into memory at run time). The link line can use rpath to store in the executable an explicit path to a shared library. In general, however, the `LD_LIBRARY_PATH` environment variable specifies the search path for dynamic libraries. For software installed at the system-level, TACC's modules generally modify `LD_LIBRARY_PATH` automatically. To see whether and how an executable named `myexe` resolves dependencies on dynamically linked libraries, execute `ldd myexe`.
 
 A separate section below addresses the [Intel Math Kernel Library](#intel-math-kernel-library-mkl) (MKL).
 
@@ -80,7 +80,7 @@ $ <b>mpicc -c mycode.c</b>              # C source, compile without linking
 $ <b>mpicxx   mycode.cpp -o myexe</b>   # C++ source, full build
 $ <b>mpif90   mycode.f90 -o myexe</b>   # Fortran source, full build</pre>
 
-These wrappers call the compiler with the options, include paths, and libraries necessary to produce an MPI executable using the MPI module you're using. To see the effect of a given wrapper, call it with the "`-show`" option:
+These wrappers call the compiler with the options, include paths, and libraries necessary to produce an MPI executable using the MPI module you're using. To see the effect of a given wrapper, call it with the `-show` option:
 
 <pre class="cmd-line">$ <b>mpicc -show</b>  # Show compile line generated by call to mpicc; similarly for other wrappers</pre>
 
@@ -122,12 +122,12 @@ If you wish to share a software package with collaborators, you may need to modi
 
 #### [Compiler](#building-performance-compiler) { #building-performance-compiler }
 
-When building software on Stampede2, we recommend using the most recent Intel compiler and Intel MPI library available on Stampede2. The most recent versions may be newer than the defaults. Execute <span style="white-space: nowrap;">"`module spider intel`"</span> and <span style="white-space: nowrap;">"`module spider impi`"</span> to see what's installed. When loading these modules you may need to specify version numbers explicitly (e.g. <span style="white-space: nowrap;">"`module load intel/18.0.0`"</span> and <span style="white-space: nowrap;">"`module load impi/18.0.0`"</span>).
+When building software on Stampede2, we recommend using the most recent Intel compiler and Intel MPI library available on Stampede2. The most recent versions may be newer than the defaults. Execute <span style="white-space: nowrap;">`module spider intel`</span> and <span style="white-space: nowrap;">`module spider impi`</span> to see what's installed. When loading these modules you may need to specify version numbers explicitly (e.g. <span style="white-space: nowrap;">`module load intel/18.0.0`</span> and <span style="white-space: nowrap;">`module load impi/18.0.0`</span>).
 
 
 #### [Architecture-Specific Flags](#building-performance-architecture) { #building-performance-architecture }
 
-To compile for KNL only, include "`-xMIC-AVX512`" as a build option. The "`-x`" switch allows you to specify a [target architecture](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-x-qx), while `MIC-AVX512` is the KNL-specific subset of Intel's Advanced Vector Extensions 512-bit [instruction set](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).  Besides all other appropriate compiler options, you should also consider specifying an [optimization level](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-o) using the "`-O`" flag:
+To compile for KNL only, include `-xMIC-AVX512` as a build option. The `-x` switch allows you to specify a [target architecture](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-x-qx), while `MIC-AVX512` is the KNL-specific subset of Intel's Advanced Vector Extensions 512-bit [instruction set](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).  Besides all other appropriate compiler options, you should also consider specifying an [optimization level](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-o) using the `-O` flag:
 
 <pre class="cmd-line">$ <b>icc   -xMIC-AVX512  -O3 mycode.c   -o myexe</b>         # will run only on KNL</pre>
 
@@ -139,17 +139,17 @@ Because Stampede2 has two kinds of compute nodes, however, we recommend a more f
 
 	-xCORE-AVX2 -axCORE-AVX512,MIC-AVX512
 
-These particular choices allow you to build on any Stampede2 node (KNL, SKX and ICX nodes), and use [CPU dispatch](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-sse-generation-and-processor-specific-optimizations-continue#1) to produce a multi-architecture binary. We recommend that you specify these flags in both the compile and link steps. Specify an optimization level (e.g. "`-O3`") along with any other appropriate compiler switches:
+These particular choices allow you to build on any Stampede2 node (KNL, SKX and ICX nodes), and use [CPU dispatch](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-sse-generation-and-processor-specific-optimizations-continue#1) to produce a multi-architecture binary. We recommend that you specify these flags in both the compile and link steps. Specify an optimization level (e.g. `-O3`) along with any other appropriate compiler switches:
 
 <pre class="cmd-line">$ <b>icc -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512 -O3 mycode.c -o myexe</b></pre>
 
-The "`-x`" option is the target base architecture (instruction set). The base instruction set must run on all targeted processors. Here we specify <span style="white-space: nowrap;">`CORE-AVX2`</span>, which is native for older Broadwell processors and supported on all KNL, SKX and ICX nodex. This option allows configure scripts and similar build systems to run test executables on any Stampede2 login or compute node. The "`-ax`" option is a comma-separated list of alternate instruction sets: <span style="white-space: nowrap;">`CORE-AVX512`</span> for SKX and ICX, and <span style="white-space: nowrap;">`MIC-AVX512`</span> for KNL. 
+The `-x` option is the target base architecture (instruction set). The base instruction set must run on all targeted processors. Here we specify <span style="white-space: nowrap;">`CORE-AVX2`</span>, which is native for older Broadwell processors and supported on all KNL, SKX and ICX nodex. This option allows configure scripts and similar build systems to run test executables on any Stampede2 login or compute node. The `-ax` option is a comma-separated list of alternate instruction sets: <span style="white-space: nowrap;">`CORE-AVX512`</span> for SKX and ICX, and <span style="white-space: nowrap;">`MIC-AVX512`</span> for KNL. 
 
-Now that we have replaced the original Broadwell login nodes with newer Skylake login nodes, <span style="white-space: nowrap;">"`-xCORE-AVX2`"</span> remains a reasonable (though conservative) base option. Another plausible, more aggressive base option is <span style="white-space: nowrap;">"`-xCOMMON-AVX512`"</span>, which is a subset of `AVX512` that runs on all KNL, SKX and ICX nodex. 
+Now that we have replaced the original Broadwell login nodes with newer Skylake login nodes, <span style="white-space: nowrap;">`-xCORE-AVX2`</span> remains a reasonable (though conservative) base option. Another plausible, more aggressive base option is <span style="white-space: nowrap;">`-xCOMMON-AVX512`</span>, which is a subset of `AVX512` that runs on all KNL, SKX and ICX nodex. 
 
-**It's best to avoid building with "`-xHost`"** (a flag that means "optimize for the architecture on which I'm compiling now"). Using "`-xHost`" on a SKX login node, for example, will result in a binary that won't run on KNL.
+**It's best to avoid building with `-xHost`** (a flag that means "optimize for the architecture on which I'm compiling now"). Using `-xHost` on a SKX login node, for example, will result in a binary that won't run on KNL.
 
-Don't skip the "`-x`" flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either <span style="white-space: nowrap;">"`-xMIC-AVX512`"</span> (native on KNL) or <span style="white-space: nowrap;">"`-xCORE-AVX512`"</span> (native on SKX/ICX);** there are no meaningful, compatible alternate ("`-ax`") instruction sets:
+Don't skip the `-x` flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either <span style="white-space: nowrap;">`-xMIC-AVX512`</span> (native on KNL) or <span style="white-space: nowrap;">`-xCORE-AVX512`</span> (native on SKX/ICX);** there are no meaningful, compatible alternate (`-ax`) instruction sets:
 
 <pre class="cmd-line">$ <b>icc <s>-xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe</s></b>       # NO! Base incompatible with alternate</pre>
 On Stampede2, the module files for newer Intel compilers (Intel 18.0.0 and later) define the environment variable `TACC_VEC_FLAGS` that stores the recommended architecture flags described above. This can simplify your builds:

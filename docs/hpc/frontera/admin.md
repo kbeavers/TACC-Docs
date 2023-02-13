@@ -21,7 +21,7 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 #### [Secure Shell (SSH)](#admin-access-ssh)
 
-The "`ssh`" command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+The `ssh` command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@frontera.tacc.utexas.edu</b></pre>
 
@@ -29,15 +29,15 @@ The above command will rotate connections across all available login nodes, `log
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@login2.frontera.tacc.utexas.edu</b></pre>
 
-To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">"`-X`"</span> or <span style="white-space: nowrap;">"`-Y`"</span> switch:
+To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
 <pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@frontera.tacc.utexas.edu</b></pre>
 
-To report a connection problem, execute the `ssh` command with the "`-vvv`" option and include the verbose output when submitting a help ticket.
+To report a connection problem, execute the `ssh` command with the `-vvv` option and include the verbose output when submitting a help ticket.
 
-**Do not run the "`ssh-keygen`" command on Frontera.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Frontera.
+**Do not run the `ssh-keygen` command on Frontera.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Frontera.
 
-1. execute "`mv .ssh dot.ssh.old`" 
+1. execute `mv .ssh dot.ssh.old` 
 1. log out
 1. log into Frontera again
 

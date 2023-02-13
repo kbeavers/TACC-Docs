@@ -17,19 +17,19 @@ For all ABAQUS technical questions, contact the customer care for Dassault Syste
 
 ### [License Tokens](#access-license) { #access-license }
 
-**TACC has a limited number of ABAQUS license tokens available.** Please submit a support ticket requesting the license server name.  In this document we'll refer to the license server as <span style="white-space: nowrap;">"`port-number@license-server`"</span>. In order to use this license server, the ABAQUS users should add the following line to their job script: 
+**TACC has a limited number of ABAQUS license tokens available.** Please submit a support ticket requesting the license server name.  In this document we'll refer to the license server as <span style="white-space: nowrap;">`port-number@license-server`</span>. In order to use this license server, the ABAQUS users should add the following line to their job script: 
 
 <pre class="cmd-line">$ <b>export ABAQUSLM_LICENSE_FILE=port-number@license-server</b></pre>
 
 Setting this environment variable on the login node before submitting the job will also work.
 
-Users can also set the information about the license server by setting the value of "`abaquslm_license_file`" in the "`abaqus_v6.env`" file. For example: 
+Users can also set the information about the license server by setting the value of `abaquslm_license_file` in the `abaqus_v6.env` file. For example: 
 
 <pre class="job-script">abaquslm_license_file="port-number@license-server"</pre>
 
 You can estimate your token needs here: <https://www.simuleon.com/abaqus-token-calculator/>
 
-Since the number of ABAQUS licenses are linited, we encourage you to bring your own license tokens (from your local license server) if you have the option to do so.  If using your own license, you may need to work with the license server's administrator to open the appropriate firewalls for accepting connections from TACC resources. The license server administrator will need the [IP addresses range](#ips) of the TACC systems (Stampede2 or Frontera).  Users will then use the port number and hostname of their license server to set the values of "`ABAQUSLM_LICENSE_FILE`" in either their job script or the value of "`abaquslm_license_file`" in the "`abaqus_v6.env`".
+Since the number of ABAQUS licenses are linited, we encourage you to bring your own license tokens (from your local license server) if you have the option to do so.  If using your own license, you may need to work with the license server's administrator to open the appropriate firewalls for accepting connections from TACC resources. The license server administrator will need the [IP addresses range](#ips) of the TACC systems (Stampede2 or Frontera).  Users will then use the port number and hostname of their license server to set the values of `ABAQUSLM_LICENSE_FILE` in either their job script or the value of `abaquslm_license_file` in the `abaqus_v6.env`.
 
 ## [ABAQUS Installations at TACC](#installations) { #installations }
 
@@ -61,14 +61,14 @@ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt</pre>
 
 	lmhanglimit=5
 
-1. To run a test job, run the following commands on a compute node after replacing "`myinputfile`" with the actual name of your input file:
+1. To run a test job, run the following commands on a compute node after replacing `myinputfile` with the actual name of your input file:
 
 	<pre class="cmd-line">
 	$ unset SLURM_GTIDS
 	$ ml abaqus
 	$ $TACC_ABAQUS_BIN/abaqus input=myinputfile job=test interactive</pre>
 
-	This command will block until completion or give an error. Check the log file ("`jobname.log`"). If no error, it should say the job checked out licenses and completed successfully.
+	This command will block until completion or give an error. Check the log file (`jobname.log`). If no error, it should say the job checked out licenses and completed successfully.
 
 1. Compile user modules on the login nodes:
 
@@ -76,7 +76,7 @@ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt</pre>
 
 1. Place resulting files (`sourcefile-basename.o`, `sourcefile-basename.so`) into a directory: `/path-to-the-directory/abaqus_libs`
 
-1.	In the ABAQUS environment file, add the following line.  In a normal use-case the "`usub_lib_dir`" will be in your scratch, work or home directory. 
+1.	In the ABAQUS environment file, add the following line.  In a normal use-case the `usub_lib_dir` will be in your scratch, work or home directory. 
 
 		usub_lib_dir="/path-to-the-directory/abaqus_libs"
 
@@ -88,7 +88,7 @@ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt</pre>
 
 ## [Job Script](#jobscript) { #jobscript }
 
-The following job script demonstrates an example of running ABAQUS in parallel, on one node, and can be run on the Stampede2 and Frontera systems after adjusting the number of nodes and cores, the values of "`-N`" and, "`-n`" respectively.  This script is also located in `$TACC_ABAQUS_DIR/tacc_test/abaqus.slm`.
+The following job script demonstrates an example of running ABAQUS in parallel, on one node, and can be run on the Stampede2 and Frontera systems after adjusting the number of nodes and cores, the values of `-N` and, `-n` respectively.  This script is also located in `$TACC_ABAQUS_DIR/tacc_test/abaqus.slm`.
 
 <pre class="job-script">
 #!/bin/bash

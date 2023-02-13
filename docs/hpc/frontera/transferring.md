@@ -82,17 +82,17 @@ The options on the second transfer are typical and appropriate when synching a d
 
 See [Good Conduct](../conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
 
-The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named "`myfile.c`" from its current location on Stampede to Frontera's `$DATA` directory.
+The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
 
 <pre class="cmd-line">login1$ <b>rsync myfile.c \
 <i>TACC-username</i>@frontera.tacc.utexas.edu:/data/01698/<i>TACC-username</i>/data</b></pre>
 
-An entire directory can be transferred from source to destination by using `rsync` as well. For directory transfers the options "`-avtr`" will transfer the files recursively ("`-r`" option) along with the modification times ("`-t`" option) and in the archive mode ("`-a`" option) to preserve symbolic links, devices, attributes, permissions, ownerships, etc. The "`-v`" option (verbose) increases the amount of information displayed during any transfer. The following example demonstrates the usage of the "`-avtr`" options for transferring a directory named "`gauss`" from the present working directory on Stampede to a directory named "`data`" in the $WORK file system on Frontera.
+An entire directory can be transferred from source to destination by using `rsync` as well. For directory transfers the options `-avtr` will transfer the files recursively (`-r` option) along with the modification times (`-t` option) and in the archive mode (`-a` option) to preserve symbolic links, devices, attributes, permissions, ownerships, etc. The `-v` option (verbose) increases the amount of information displayed during any transfer. The following example demonstrates the usage of the `-avtr` options for transferring a directory named `gauss` from the present working directory on Stampede to a directory named `data` in the $WORK file system on Frontera.
 
 <pre class="cmd-line">login1$ <b>rsync -avtr ./gauss \
 <i>TACC-username</i>@frontera.tacc.utexas.edu:/data/01698/<i>TACC-username</i>/data</b></pre>
 
-For more `rsync` options and command details, run the command "`rsync -h`" or:
+For more `rsync` options and command details, run the command `rsync -h` or:
 
 <pre class="cmd-line">login1$ <b>man rsync</b></pre>
 

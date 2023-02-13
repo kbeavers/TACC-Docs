@@ -1,7 +1,7 @@
 # Bash Users' Startup Files: Quick Start Guide</span><br>
 *Last update: May 29, 2019*
 
-While the startup behavior of the bash shell can seem to require a Ph.D in Shellology, here we try to simplify the discussion to the minimum required to get you started. In general, every time you interactively access a TACC resource, Bash will source either your "`~/.profile`" or "`~/.bashrc`" file.  Which one is sourced is complicated and not really important; see the troubleshooting notes below for some additional fine print.  In either case, to get the same behavior in all of the interactive shells, you'll need to have your "`~/.profile`" source the "`~/.bashrc`" and put all the important statements in your "`~/.bashrc`".
+While the startup behavior of the bash shell can seem to require a Ph.D in Shellology, here we try to simplify the discussion to the minimum required to get you started. In general, every time you interactively access a TACC resource, Bash will source either your `~/.profile` or `~/.bashrc` file.  Which one is sourced is complicated and not really important; see the troubleshooting notes below for some additional fine print.  In either case, to get the same behavior in all of the interactive shells, you'll need to have your `~/.profile` source the `~/.bashrc` and put all the important statements in your `~/.bashrc`.
 
 ``` { .bash .job-script }
 # ~/.profile
@@ -11,7 +11,7 @@ if [ -f ~/.bashrc ]; then
 fi
 ```
 
-One important idea is that every interactive sub-shell will source your `~/.bashrc`.  This means that if you wish to add personal directories to your `$PATH`, you'll only want do it once.  An environment variable (called "`MYPATH`" in the example) can be used to enforce this behavior:
+One important idea is that every interactive sub-shell will source your `~/.bashrc`.  This means that if you wish to add personal directories to your `$PATH`, you'll only want do it once.  An environment variable (called `MYPATH` in the example) can be used to enforce this behavior:
 
 ``` { .bash .job-script }
 # ~/.bashrc            
@@ -45,9 +45,9 @@ To test always have one terminal to edit and another terminal to test with.
 
 ## [Troubleshooting](#troubleshooting) { #troubleshooting }
 
-* Your "`~/.profile`" is not read during a login shell.
+* Your `~/.profile` is not read during a login shell.
 
-	Check to see if your home directory contains "`~/.bash_profile`" or "`~/.bash_login`".  For a login shell bash will search first for "`~/.bash_profile`", if doesn't exist, then it searches for "`~/.bash_login`". Finally it searches for a "`~/.profile`".  Please pick one of the three and stick with that.
+	Check to see if your home directory contains `~/.bash_profile` or `~/.bash_login`.  For a login shell bash will search first for `~/.bash_profile`, if doesn't exist, then it searches for `~/.bash_login`. Finally it searches for a `~/.profile`.  Please pick one of the three and stick with that.
 
 
 * For every sub-shell your path gets longer and longer.

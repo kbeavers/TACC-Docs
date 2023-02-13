@@ -20,10 +20,10 @@ Follow the steps below to start an interactive session.
 
 	You may modify or overwrite script defaults with `sbatch` command-line options:
 
-	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
-	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
-	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
-	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+	*  <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime 
+	*  <code>-A <i>projectnumber</i></code> specify the project/allocation to be charged 
+	*  <code>-N <i>nodes</i></code> specify number of nodes needed 
+	*  <code>-p <i>partition</i></code> specify an alternate queue. 
 
 	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
 
@@ -31,11 +31,11 @@ Follow the steps below to start an interactive session.
 
 	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
 
-	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
 	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
 
-	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.
 
 1. Create an SSH Tunnel to Maverick2 
 
@@ -46,11 +46,11 @@ Follow the steps below to start an interactive session.
 
 	where:
 
-	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
-	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
-	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
-	*  "`-N`" puts the `ssh` command into the background after connecting 
-	*  "`-L`" forwards the port 
+	*  <code><i>yyyy</i></code> is the port number given by the vncserver batch job 
+	*  <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  `-f` instructs SSH to only forward ports, not to execute a remote command 
+	*  `-N` puts the `ssh` command into the background after connecting 
+	*  `-L` forwards the port 
 
 	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
 
@@ -60,7 +60,7 @@ Follow the steps below to start an interactive session.
 
 	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
 
-	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing `exit` or `ctrl-D` at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 

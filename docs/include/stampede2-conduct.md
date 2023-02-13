@@ -34,7 +34,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
 
-* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">"`make -j 16`"</span> (which compiles on 16 cores) may impact other users.
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">`make -j 16`</span> (which compiles on 16 cores) may impact other users.
 
 	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 

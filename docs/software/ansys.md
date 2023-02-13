@@ -78,7 +78,7 @@ MY_JOB_DIR = /scratch1/01234/joe/Ansys_test
 		-j &quot;Ansys_test&quot; -s read -l en-us -b \
 		&lt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_input.txt</span>&quot; &gt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_output.out</span>&quot;</pre>
 
-To obtain the correct <span style="color:blue;font-style:bold">`Your-ANSYS-COMMAND-HERE`</span>, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No "`ibrun`" or "`mpirun`" command is needed for running ANSYS jobs.
+To obtain the correct <span style="color:blue;font-style:bold">`Your-ANSYS-COMMAND-HERE`</span>, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No `ibrun` or `mpirun` command is needed for running ANSYS jobs.
 
 Other ANSYS binaries, e.g. Aqwa, CFX, Fluent, can be found at `/home1/apps/ANSYS/2021R2/v212`. 
 	

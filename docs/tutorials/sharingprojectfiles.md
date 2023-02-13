@@ -27,7 +27,7 @@ In this case, Test Project XYZ's UNIX group ID (GID) is "G-816631". Therefore, a
 
 ## [Display a File's Owner, Group and Permissions Information](#displaypermissions) { #displaypermissions }
 
-The UNIX command "`groups`" displays all groups a user belongs to:
+The UNIX command `groups` displays all groups a user belongs to:
 
 <pre class="cmd-line">login1$ <b>groups slindsey</b>
 G-40300 G-80748 G-80906 G-801508 G-803450 G-803454 G-813602 G-816631</pre>
@@ -40,12 +40,12 @@ In the above output, the user `slindsey`'s primary or default group is G-40300, 
 
 Now all files created by this user will belong to the project's group. Note that this command does not change the group or permissions of any files that have already been created. If the user's default group matches the project's group, then this step is not necessary.-->
 
-To display a file's owner and group membership, use the "`ls -l`" command:
+To display a file's owner and group membership, use the `ls -l` command:
 
 <pre class="cmd-line">login1$ <b>ls -l myfile</b>
 -rw------- 1 slindsey G-40300 983 Nov 13 10:40 myfile</pre> 
 
-In the above output the file "`myfile`" is owned by user "`slindsey`" and belongs to the "`G-40300`" project/group. This file's permissions are set to read and write, "`rw`", for the owner, `slindsey`, only.
+In the above output the file `myfile` is owned by user `slindsey` and belongs to the `G-40300` project/group. This file's permissions are set to read and write, `rw`, for the owner, `slindsey`, only.
 
 Please consult the UNIX man pages for more information on these commands:
 
@@ -55,7 +55,7 @@ login1$ <b>man chgrp</b></pre>
 
 ## [Create a Shared Project Workspace](#createworkspace) { #createworkspace }
 
-It is not possible to make a shared, writable directory under a user's `$HOME` directory and the `$SCRATCH` file system is subject to periodic purging. Therefore, TACC staff strongly recommends placing all files to be shared in the top level of the user's area of the "`/work`" filesystem, defined in the `$STOCKYARD` environment variable. This new shared directory will be accessible only to members of the unix group and by extension the project members.
+It is not possible to make a shared, writable directory under a user's `$HOME` directory and the `$SCRATCH` file system is subject to periodic purging. Therefore, TACC staff strongly recommends placing all files to be shared in the top level of the user's area of the `/work` filesystem, defined in the `$STOCKYARD` environment variable. This new shared directory will be accessible only to members of the unix group and by extension the project members.
 
 Note that `$STOCKYARD` points to the highest level directory you own on Stockyard, TACC's [Global Shared File System](https://www.tacc.utexas.edu/systems/stockyard), which is mounted and available across all TACC systems. Your `$WORK` environment variable points to a resource-specific eponymous subdirectory of `$STOCKYARD`. For example on Stampede2, `$WORK` is defined as `$STOCKYARD/stampede2` while on Maverick2 `$WORK` points to `$STOCKYARD/maverick2`. All subdirectories are accessible to you on any TACC system where you have an allocation.
 
@@ -80,7 +80,7 @@ Note that `$STOCKYARD` points to the highest level directory you own on Stockyar
 	a. Set the group id bit. Any new files created in the shared directory will inherit the group ownership:
 		<pre class="cmd-line">login1$ <b>chmod g+s mysharedirectory</b></pre>
 
-	a. Then edit your "`.bashrc`" and set the umask variable to "027". This ensures that all NEW files created will inherit the proper permissions.
+	a. Then edit your `.bashrc` and set the umask variable to "027". This ensures that all NEW files created will inherit the proper permissions.
 		<pre>umask 027</pre>
 	
 	a. Last, set permissions to readable and accessible to group members:

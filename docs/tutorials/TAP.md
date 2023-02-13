@@ -30,8 +30,8 @@ A TACC Analysis Portal job requires the following inputs:  <span style="backgrou
 * **Application:** which application the job will run. The application selector will contain the applications available on the selected system.  
 * **Project:** which project allocation to bill for the job run. The project selector will contain the projects associated with your account on the selected system.  
 * **Queue:** which system queue will receive the job. The queue selector will contain the TAP-supported queues on the selected system.  
-* **Nodes:** the number of nodes the job will occupy. We recommend leaving this setting at 1 unless you know you need more nodes. This is equivalent to the "`-N`" option in Slurm.  
-* **Tasks:** the number of MPI tasks the job will use. We recommend leaving this setting at 1 unless you know you need more tasks. This is equivalent to the "`-n`" option in Slurm.  
+* **Nodes:** the number of nodes the job will occupy. We recommend leaving this setting at 1 unless you know you need more nodes. This is equivalent to the `-N` option in Slurm.  
+* **Tasks:** the number of MPI tasks the job will use. We recommend leaving this setting at 1 unless you know you need more tasks. This is equivalent to the `-n` option in Slurm.  
 
 A TAP job also accepts these additional optional inputs:  <span style="background-color:#FF7F00; color:#FFFFFF;">(&nbsp;2&nbsp;)</span>
 

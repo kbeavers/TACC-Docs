@@ -62,7 +62,7 @@ Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the sam
 
 Lonestar6 hosts 28 `vm-small` compute nodes running on 4 physical hosts.
 
-#### [Table 1.5. "`vm-small` Compute Node Specifications](#table15) { #table15 }
+#### [Table 1.5. `vm-small` Compute Node Specifications](#table15) { #table15 }
 
 Specification | Value
 --- | ---
@@ -216,7 +216,7 @@ If you wish to share files and data with collaborators in your project, see [Sha
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
-The "`ssh`" command (SSH protocol) is the standard way to connect to Lonestar6 (**`ls6.tacc.utexas.edu`**). SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+The `ssh` command (SSH protocol) is the standard way to connect to Lonestar6 (**`ls6.tacc.utexas.edu`**). SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@ls6.tacc.utexas.edu</b></pre>
 
@@ -224,14 +224,14 @@ The above command will rotate connections across all available login nodes, `log
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@login2.ls6.tacc.utexas.edu</b></pre>
 
-To connect with X11 support on Lonestar6 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">"`-X`"</span> or <span style="white-space: nowrap;">"`-Y`"</span> switch:
+To connect with X11 support on Lonestar6 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
 <pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@ls6.tacc.utexas.edu</b></pre>
 
-To report a connection problem, execute the `ssh` command with the "`-vvv`" option and include the verbose output when submitting a help ticket.
-**Do not run the "`ssh-keygen`" command on Lonestar6.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Lonestar6.
+To report a connection problem, execute the `ssh` command with the `-vvv` option and include the verbose output when submitting a help ticket.
+**Do not run the `ssh-keygen` command on Lonestar6.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Lonestar6.
 
-1. execute "`mv .ssh dot.ssh.old`" 
+1. execute `mv .ssh dot.ssh.old` 
 1. log out
 1. log into Lonestar6 again
 
@@ -402,7 +402,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
 
-* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">"`make -j 16`"</span> (which compiles on 16 cores) may impact other users.
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">`make -j 16`</span> (which compiles on 16 cores) may impact other users.
 
 	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 
@@ -715,7 +715,7 @@ The `task_affinity` script manages task placement and memory pinning when you ca
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to distribute and pin OpenMP threads appropriately. The most portable way to do this is with OpenMP Affinity.
 
-An OpenMP executable sequentially assigns its `N` forked threads (thread number `0,...N-1`) at a parallel region to the sequence of "places" listed in the `$OMP_PLACES` environment variable. Each place is specified within braces ({}). The sequence "`{0,1},{2,3},{4,5}`" has three places, and OpenMP thread numbers `0`, `1`, and `2` are assigned to the processor ids (proc-ids) `0,1` and `2,3` and `4,5`, respectively. The hardware assigned to the proc-ids can be found in the `/proc/cpuinfo` file.
+An OpenMP executable sequentially assigns its `N` forked threads (thread number `0,...N-1`) at a parallel region to the sequence of "places" listed in the `$OMP_PLACES` environment variable. Each place is specified within braces ({}). The sequence `{0,1},{2,3},{4,5}` has three places, and OpenMP thread numbers `0`, `1`, and `2` are assigned to the processor ids (proc-ids) `0,1` and `2,3` and `4,5`, respectively. The hardware assigned to the proc-ids can be found in the `/proc/cpuinfo` file.
 
 The sequence of proc-ids on socket 0 and socket 1 are sequentially numbered.  
 
@@ -770,7 +770,7 @@ This section provides an overview of how compute jobs are charged to allocations
 
 ### [Production Queues](#queues) { #queues }
 
-Lonestar6's new queue, "`vm-small`" is designed for users who only need a subset of a node's entire 128 cores in the "normal" queue.  Run your jobs in this queue if your job requires 16 cores or less and needs less than 29 GB of memory.  If your job is memory bandwidth dependent, your performance may decrease since your job will be possibly sharing memory bandwidth with other jobs.  
+Lonestar6's new queue, `vm-small` is designed for users who only need a subset of a node's entire 128 cores in the "normal" queue.  Run your jobs in this queue if your job requires 16 cores or less and needs less than 29 GB of memory.  If your job is memory bandwidth dependent, your performance may decrease since your job will be possibly sharing memory bandwidth with other jobs.  
 
 The jobs in this queue consume 1/7 the resources of a full node.  Jobs are charged accordingly at .143 SUs per node hour.
 
@@ -1147,7 +1147,7 @@ For more information see the [Slurm online documentation](http://www.schedmd.com
 
 ## [Visualization and Virtual Network Computing (VNC) Sessions](#vis) { #vis }
 
-Lonestar6 uses AMD's Milan processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing "`module load swr`".
+Lonestar6 uses AMD's Milan processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing `module load swr`.
 
 Lonestar6 currently has no separate visualization queue. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to Lonestar6's `development` queue for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket.
 
@@ -1188,7 +1188,7 @@ Follow the steps below to start an interactive session.
 
 	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
 
-	The "`vnc.job`" script starts a `vncserver` process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. 
+	The `vnc.job` script starts a `vncserver` process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. 
 
 	Note that the DCV viewer adjusts desktop resolution to your browser or DCV client, so desktop resolution does not need to be specified.
 
@@ -1198,7 +1198,7 @@ Follow the steps below to start an interactive session.
 	login1$ <b>touch vncserver.out ; tail -f vncserver.out</b>
 	login1$ <b>touch dcvserver.out ; tail -f dcvserver.out</b></pre>
 
-	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
+	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
 
 1. Create an SSH Tunnel to Lonestar6
 
@@ -1223,7 +1223,7 @@ Follow the steps below to start an interactive session.
 
 	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc) VNC Client, a platform independent client/server application.
 
-	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing `exit` or `ctrl-D` at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
@@ -1263,7 +1263,7 @@ VisIt first loads a dataset and presents a dialog allowing for selecting either 
 
 #### [Preparing Data for Parallel Visit](#vis-visit-preparingdata) { #vis-visit-preparingdata }
 
-VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)`" format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
+VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)` format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
 
 ### [Parallel ParaView on Lonestar6](#vis-paraview) { #vis-paraview }
 

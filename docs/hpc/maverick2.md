@@ -110,13 +110,13 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
-The "`ssh`" command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+The `ssh` command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@maverick2.tacc.utexas.edu</b></pre>
 
 Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal][TACCUSERPORTAL] home page and select "Password Reset" under the Home tab.
 
-To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">"`-vvv`"</span> option and include the verbose output when submitting a help ticket.
+To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">`-vvv`</span> option and include the verbose output when submitting a help ticket.
 
 
 ## [Good Conduct](#conduct) { #conduct }
@@ -156,7 +156,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
 
-* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "NOWRAP`make -j 16`ESPAN" (which compiles on 16 cores) may impact other users.
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
 
 	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 
@@ -235,7 +235,7 @@ In order to not stress both internal and external networks:
 
 * **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
 
-* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; NOWRAP`hello world`ESPAN codes; one-liners like NOWRAP`ibrun hostname`ESPAN; or an `ldd` on your executable.
+* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
 
 * **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora][TACCREMORA] tool to monitor your application's needs. 
 
@@ -262,7 +262,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 <figcaption>**Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `frontera`, `maverick2`) exist only when you have allocations on the associated system.
 </figcaption></figure>
 
-Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">"`cd $WORK`"</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">"`cd $STOCKYARD/maverick2`"</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Maverick2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/maverick2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/maverick2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
 #### [Table 5. Built-in Account Level Aliases](#table5) { #table5 }
 
@@ -277,15 +277,15 @@ Alias | Command
 
 You can transfer files between Maverick2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](S2UG#secure-shell-ssh) typically include `scp`-based file transfer capabilities.
 
-The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named "`myfile`" from your local Linux system to Maverick2 `$HOME` would look like this:
+The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Maverick2 `$HOME` would look like this:
 
 <pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:</b>  # note colon after net address</pre>
 
-You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in "`.txt`" from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
+You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
 
 <pre class="cmd-line">localhost$ <b>scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2</b></pre>
 
-To delay wildcard expansion until reaching Maverick2, use a backslash ("`\`") as an escape character before the wildcard. For example, to pull all files ending in "`.txt`" from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
+To delay wildcard expansion until reaching Maverick2, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
 
 <pre class="cmd-line">localhost$ <b>scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .</b></pre>
 
@@ -295,11 +295,11 @@ You can of course use shell or environment variables in your calls to `scp`. For
 localhost$ <b>destdir="/work/01234/bjones/maverick2/data"</b>
 localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir</b></pre>
 
-You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash ("`\`") as an escape character before the "`$`"; this ensures that expansion occurs after establishing the connection to Maverick2:
+You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Maverick2:
 
 <pre class="cmd-line">localhost$ <b>scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
 
-Avoid using `scp` for recursive ("`-r`") transfers of directories that contain nested directories of many small files:
+Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
 <pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
 
@@ -315,7 +315,7 @@ The `rsync` (remote synchronization) utility is a great way to synchronize files
 localhost$ <b>rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data</b>
 localhost$ <b>rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data</b></pre>
 
-The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update ("`-r`") with verbose ("`-v`") feedback; the synchronization preserves time stamps ("`-t`") as well as symbolic links and other meta-data ("`-a`"). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update (`-r`) with verbose (`-v`) feedback; the synchronization preserves time stamps (`-t`) as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 
 See [Good Conduct](#conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
 
@@ -336,9 +336,9 @@ Before transferring large files to Maverick2, or creating new large files, be su
 
 <pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
 
-Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+Note that an `lfs setstripe` command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Maverick2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
 
-Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the `mv` command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the `cp` command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
 
 
 
@@ -363,7 +363,7 @@ The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the fo
 
 **Queues and limits are subject to change without notice.** 
 
-Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
+Execute `qlimits` on Maverick2 for real-time information regarding limits on available queues.
 
 See Stampede2's [Monitoring Jobs and Queues](S2UG#monitoring) section for additional information.
 
@@ -603,7 +603,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 </details>
 
-Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm <span style="white-space: nowrap;">"`--export`"</span> option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
+Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm <span style="white-space: nowrap;">`--export`</span> option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
 ## [Remote Desktop Access](#remote-desktop-access)
 
@@ -627,10 +627,10 @@ Follow the steps below to start an interactive session.
 
 	You may modify or overwrite script defaults with `sbatch` command-line options:
 
-	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
-	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
-	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
-	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+	*  <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime 
+	*  <code>-A <i>projectnumber</i></code> specify the project/allocation to be charged 
+	*  <code>-N <i>nodes</i></code> specify number of nodes needed 
+	*  <code>-p <i>partition</i></code> specify an alternate queue. 
 
 	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
 
@@ -638,11 +638,11 @@ Follow the steps below to start an interactive session.
 
 	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
 
-	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
 	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
 
-	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.
 
 1. Create an SSH Tunnel to Maverick2 
 
@@ -653,11 +653,11 @@ Follow the steps below to start an interactive session.
 
 	where:
 
-	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
-	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
-	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
-	*  "`-N`" puts the `ssh` command into the background after connecting 
-	*  "`-L`" forwards the port 
+	*  <code><i>yyyy</i></code> is the port number given by the vncserver batch job 
+	*  <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Maverick2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  `-f` instructs SSH to only forward ports, not to execute a remote command 
+	*  `-N` puts the `ssh` command into the background after connecting 
+	*  `-L` forwards the port 
 
 	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Maverick2.
 
@@ -667,14 +667,14 @@ Follow the steps below to start an interactive session.
 
 	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
 
-	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing `exit` or `ctrl-D` at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
 
 ## [Software on Maverick2](#software) { #software }
 
-As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via "`module`" commands e.g., "`module spider`", "`module avail`" to retrieve the most up-to-date listing.
+As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
 
 <pre class="cmd-line">login1$ <b>module avail</b>
 
@@ -714,7 +714,7 @@ At this time, with the limited size of the local disks on Maverick2, we are keep
 
 Users must provide their own license for commercial packages. TACC will work on a best effort level with any commercial vendors to support that software on the system, but make no guarantee that licences can migrate to our systems or can be supported within the support framework at TACC.
 
-You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the "`--prefix`" option when configuring then making the package.
+You are welcome to install packages in your own `$HOME` or `$WORK` directories. No super-user privileges are needed, simply use the `--prefix` option when configuring then making the package.
 
 ### [Deep Learning Packages](#software-ml) { #software-ml }
 
@@ -725,7 +725,7 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 
 ### [Building Software](#software-building) { #software-building }
 
-Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands "`mpicc`", "`mpicxx`", "`mpif90`" and "`mpif77`" are available. Also, the compilers "`icc`", "`icpc`", and "`ifort`" are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
+Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands `mpicc`, `mpicxx`, `mpif90` and `mpif77` are available. Also, the compilers `icc`, `icpc`, and `ifort` are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
 You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](S2UG#building).  
 

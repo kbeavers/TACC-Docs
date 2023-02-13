@@ -17,7 +17,7 @@ Ranch is an allocated resource, meaning that Ranch is available only to users wi
 
 ### [Intended Use](#intro-use) { #intro-use }
 
-**Ranch is fundamentally implemented using long-term <u>tape</u> storage and as such is designed for archiving data that is in a state wherein the data will not likely change, and will not likely need to be accessed very often.** Obviously, Ranch is to be used only for work-related data. In addition, and most importantly, Ranch is not meant for active data and is never to be used as a replication solution for your "`/scratch`" directory. Ranch is also not suitable for system backups, due to the large number of small files that backups inevitably generate. 
+**Ranch is fundamentally implemented using long-term <u>tape</u> storage and as such is designed for archiving data that is in a state wherein the data will not likely change, and will not likely need to be accessed very often.** Obviously, Ranch is to be used only for work-related data. In addition, and most importantly, Ranch is not meant for active data and is never to be used as a replication solution for your `/scratch` directory. Ranch is also not suitable for system backups, due to the large number of small files that backups inevitably generate. 
 
 **Ranch is a single-copy archival system.** Ranch user data is neither backed up nor replicated. This means that Ranch contains only a single, active, instance of user data. While lost data due to tape damage or other system failure is rare, please keep this possibility in mind when formulating your data management plans. If you have irreplaceable data and would like a different level of service, let us know via the ticketing system, and we may be able to help you find a solution.
 
@@ -81,13 +81,13 @@ Keep in mind the above commands only display file **space** used, not a total fi
 
 <pre class="cmd-line">ranch$ <b>find . -type f | wc</b></pre>
 
-It is your responsibility to keep the file count below the 50,000 quota by using the UNIX "`tar`" command or some other methodology to bundle files when necessary. Both the file space and file count quotas apply to all data copied from the Oracle archive and all new incoming data.
+It is your responsibility to keep the file count below the 50,000 quota by using the UNIX `tar` command or some other methodology to bundle files when necessary. Both the file space and file count quotas apply to all data copied from the Oracle archive and all new incoming data.
 
 
 
 ### [Monitor your Disk Usage and File Counts](#organizing-quotas) { #organizing-quotas }
 
-Users can check their current and historical Ranch usage by looking at the contents of the "`HSM_usage`" file in their Ranch user directory. Note that this file contains quota, on-disk, and on-tape, usage information for the directory it is in and all those beneath it.
+Users can check their current and historical Ranch usage by looking at the contents of the `HSM_usage` file in their Ranch user directory. Note that this file contains quota, on-disk, and on-tape, usage information for the directory it is in and all those beneath it.
 
 <pre class="cmd-line">ranch$ <b>tail ~/HSM_usage</b></pre>
 
@@ -112,7 +112,7 @@ Since Ranch is an archive system, any files which have not been accessed recentl
 
 However, for any file that is to be read or accessed that has been truncated, it must first be read, in its entirety, from tape. These retrievals from tape take time, from minutes to hours, and the time necessary is a normal aspect of file manipulation within Ranch.  While these retrievals are transparent to the user, the user will notice that time lag during the access of the file or files.  Again, the time lag, regardless of duration, is entirely normal.
 
-Note that simply doing an "`ls -l`" to look at a file's attributes or an "`mv`" to rename the file will not provoke file retrieval from tape, as these are operations against the file’s metadata.
+Note that simply doing an `ls -l` to look at a file's attributes or an `mv` to rename the file will not provoke file retrieval from tape, as these are operations against the file’s metadata.
 
 
 ### [Data Transfer Methods](#transferring-methods) { #transferring-methods }
@@ -123,11 +123,11 @@ Ranch also has two endpoints, one running Globus gridftp v5.4 software available
 
 #### [Secure Copy with `scp` Command](#transferring-methods-scp) { #transferring-methods-scp }
 
-The simplest way to transfer files to and from Ranch is to use the Secure Shell "`scp`" command:
+The simplest way to transfer files to and from Ranch is to use the Secure Shell `scp` command:
 
 <pre class="cmd-line">stampede2$ <b>scp myfile ${ARCHIVER}:${ARCHIVE}/myfilepath</b></pre>
 
-where "`myfile`" is the name of the file to copy and "`myfilepath`" is either the new name you want the file to have in Ranch, or is a directory into which you want to place "`myfile`".
+where `myfile` is the name of the file to copy and `myfilepath` is either the new name you want the file to have in Ranch, or is a directory into which you want to place `myfile`.
 
 For large numbers of small files, we again **strongly** recommend you first employ the `tar` or `gtar` command to create an archive (tarfile) of files before transferring the data to Ranch.  Then use `scp` to copy the tarfile(s) over to Ranch.
 
@@ -137,16 +137,16 @@ To use `tar`, `ssh`, and `cat` to create a good tarfile in Ranch from a source d
 
 <pre class="cmd-line">stampede2$ <b>tar cf - dirname/ | ssh ${ARCHIVER} "cat &gt; ${ARCHIVE}/dirname.tar"</b></pre>
 
-where "`dirname/`" is the path to the directory you want to archive, and "`dirname.tar`" is the name of the tarfile to be created on Ranch.
+where `dirname/` is the path to the directory you want to archive, and `dirname.tar` is the name of the tarfile to be created on Ranch.
 
 To be very UNIX specific about what the command above is doing: 
 
 * `tar` creates a stream of bytes in `tar` format of the directory "dirname/" (recursively) and writes that to its standard output.  
-* The pipe ("`|`") reads that stream of bytes and writes that stream to the `ssh` command which has started the `cat` command over on a Ranch login node.  
+* The pipe (`|`) reads that stream of bytes and writes that stream to the `ssh` command which has started the `cat` command over on a Ranch login node.  
 * The `cat` command reads its standard input, which is the stream of `tar` formatted bytes, and then redirects that stream of bytes to its standard output via the "&gt;" creating or overwriting the file `dirname.tar`.  
 * When the `tar` command is complete and exits, the stream of bytes will stop, and `cat` will gracefully close the file `dirname.tar`, `ssh` will exit, and you will be returned to the command line on stampede2.
 
-And in one simple command line, you have created a single tar file, "`dirname.tar`", containing the entire data structure of the directory dirname/ over on Ranch, and ideally that tarfile is quite large as per the recommendations above.
+And in one simple command line, you have created a single tar file, `dirname.tar`, containing the entire data structure of the directory dirname/ over on Ranch, and ideally that tarfile is quite large as per the recommendations above.
 
 Note that when transferring to Ranch, any destination directory specified must already exist. If not, `scp` will respond with:
 
@@ -171,16 +171,16 @@ The `rsync` utility has several methods for checking to see if file data transfe
 
 In addition, the retrieval of large amounts of data off tape simply to add "one more file" into a data structure, or into a tarfile, is also a **massive waste of resources** and puts more data at risk, a risk that also grows larger every time it is invoked.
 
-Therefore, TACC Staff highly recommends to NOT use "`rsync`" for ANY kind of data synchronization with the Ranch archive system.  
+Therefore, TACC Staff highly recommends to NOT use `rsync` for ANY kind of data synchronization with the Ranch archive system.  
 
-Using "`rsync`", **without synchronization**, continues to be a viable method of transferring data into and out of Ranch.
+Using `rsync`, **without synchronization**, continues to be a viable method of transferring data into and out of Ranch.
 
 
 ### [Large Data Usage and Transfers](#transferring-largedata) { #transferring-largedata }
 
 If you are moving a very large amount of data into Ranch and you encounter a quota limit error, then you are bumping into one of the limits on the amount of data you can have on Ranch's user-facing file systems. These quotas limit both file count as well as total file size.  However, it is expected that these limits should only affect a small number of users.  Again, the file "HSM_usage" at the top level of both users’ and Projects’ directories is updated nightly and should be consulted to see current usage with Ranch.  If you encounter a quota error, please submit a ticket to the TACC user portal, and we will see what remediation may be possible. 
 
-Again, use the "`du -sh .`" and "`find . -type f | wc`" commands to see how much data and how many files you currently have on the disk or directory at that moment.
+Again, use the `du -sh .` and `find . -type f | wc` commands to see how much data and how many files you currently have on the disk or directory at that moment.
 
 #### [Examples](#transferring-largedata-examples) { #transferring-largedata-examples }
 

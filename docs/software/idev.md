@@ -43,7 +43,7 @@ job status: r
 --> Checking to make sure your job has initialized an env for you....OK
 --> Creating interactive terminal session (login) on master node c301-202.</pre>
 
-Note the prompt, "`c301-202%`", in the above session. It is your interactive compute-node prompt. You can test the "`ibrun`" command by executing "`ibrun date`" which will return `date`'s output from each core of your session. You can begin immediately launching MPI applications with "`ibrun myapp`". On the compute nodes in some queues, compiler access is not available.  In this case **compile on the login node in another window**.
+Note the prompt, `c301-202%`, in the above session. It is your interactive compute-node prompt. You can test the `ibrun` command by executing `ibrun date` which will return `date`'s output from each core of your session. You can begin immediately launching MPI applications with `ibrun myapp`. On the compute nodes in some queues, compiler access is not available.  In this case **compile on the login node in another window**.
 
 By default only a single node is requested for 30 minutes. However, you can change the limits with command line options, using syntax similar to the request specifications used in a job script. The syntax is conveniently described in the `idev` help display:
 
@@ -61,7 +61,7 @@ OPTION ARGUMENTS         DESCRIPTION
 ...  
 </pre>
 
-Options may be used in any order. Only a subset of the options is presented above.  The "`-r`" option may be used on any system to request a specific resource (e.g. requesting a specific set of nodes).
+Options may be used in any order. Only a subset of the options is presented above.  The `-r` option may be used on any system to request a specific resource (e.g. requesting a specific set of nodes).
 
 ## [Compiling](#compiling) { #compiling }
 

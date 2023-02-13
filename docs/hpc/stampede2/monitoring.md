@@ -20,7 +20,7 @@ PARTITION          AVAIL    NODES(A/I/O/T)
 development*       up       41/70/1/112
 normal             up       3685/8/3/3696</pre>
 
-The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled "`NODES(A/I/O/T)`" shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute "`man sinfo`" for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Stampede2 (e.g. `TIMELIMIT`, displayed using the "`%l`" option).
+The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled `NODES(A/I/O/T)` shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute `man sinfo` for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Stampede2 (e.g. `TIMELIMIT`, displayed using the `%l` option).
 
 
 ### [Monitoring Job Status with `squeue`](#monitoring-squeue) { #monitoring-squeue }
@@ -43,13 +43,13 @@ An excerpt from the default output looks like this:
 170250 development idv59074  aturing  R      29:30      1 c455-044
 169669      normal  04-99a1  aturing CG    2:47:47      1 c425-003</pre>
 
-The column labeled "`ST`" displays each job's status: 
+The column labeled `ST` displays each job's status: 
 
-* "`PD`" means "Pending" (waiting); 
-* "`R`" means "Running";
-* "`CG`" means "Completing" (cleaning up after exiting the job script).
+* `PD` means "Pending" (waiting); 
+* `R` means "Running";
+* `CG` means "Completing" (cleaning up after exiting the job script).
 
-Pending jobs appear in order of decreasing priority. The last column includes a nodelist for running/completing jobs, or a reason for pending jobs. If you submit a job before a scheduled system maintenance period, and the job cannot complete before the maintenance begins, your job will run when the maintenance/reservation concludes. The `squeue` command will report "`ReqNodeNotAvailable`" ("Required Node Not Available"). The job will remain in the `PD` state until Stampede2 returns to production.
+Pending jobs appear in order of decreasing priority. The last column includes a nodelist for running/completing jobs, or a reason for pending jobs. If you submit a job before a scheduled system maintenance period, and the job cannot complete before the maintenance begins, your job will run when the maintenance/reservation concludes. The `squeue` command will report `ReqNodeNotAvailable` ("Required Node Not Available"). The job will remain in the `PD` state until Stampede2 returns to production.
 
 The default format for `squeue` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each KNL node's 272 hardware threads (and each SKX node's 96 hardware threads) as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
@@ -57,14 +57,14 @@ The default format lists all nodes assigned to displayed jobs; this can make the
 
 <pre class="cmd-line">login1$ <b>squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"</b>  # suppress nodelist</pre>
 
-The "`--start`" option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
+The `--start` option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
 
 <pre class="cmd-line">login1$ <b>squeue --start -j 167635</b>     # display estimated start time for job 167635</pre>
 
 
 ### [Monitoring Job Status with `showq`](#monitoring-showq) { #monitoring-showq }
 
-TACC's "`showq`" utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm "`squeue`" command:
+TACC's `showq` utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm `squeue` command:
 
 <pre class="cmd-line">
 login1$ <b>showq</b>            # show all jobs; default format
@@ -74,7 +74,7 @@ login1$ <b>showq -h</b>         # more info</pre>
 
 The output groups jobs in four categories: `ACTIVE`, `WAITING`, `BLOCKED`, and `COMPLETING/ERRORED`. A **`BLOCKED`** job is one that cannot yet run due to temporary circumstances (e.g. a pending maintenance or other large reservation.).
 
-If your waiting job cannot complete before a maintenance/reservation begins, `showq` will display its state as "**`WaitNod`"** ("Waiting for Nodes"). The job will remain in this state until Stampede2 returns to production.
+If your waiting job cannot complete before a maintenance/reservation begins, `showq` will display its state as "**`WaitNod`** ("Waiting for Nodes"). The job will remain in this state until Stampede2 returns to production.
 
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each KNL node's 272 hardware threads (and each SKX node's 96 hardware threads) as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
@@ -102,7 +102,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 
 ### [Dependent Jobs using `sbatch`](#monitoring-dependent) { #monitoring-dependent }
 
-You can use `sbatch` to help manage workflows that involve multiple steps: the "`--dependency`" option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
+You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
 <pre class="cmd-line">login1$ <b>sbatch --dependency=afterok:173210 myjobscript</b></pre>
 

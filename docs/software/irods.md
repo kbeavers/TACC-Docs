@@ -5,7 +5,7 @@
 
 iRODS is a data grid/data management tool. iRODS allows you to store data in a unified namespace using multiple storage resources, to replicate data so that copies exist on multiple systems, and to store checksums and arbitrary metadata with a file. The TACC iRODS configuration supports accessing iRODS through either the native iRODS tools such as the UNIX "i-Commands" or via the HTTPS and WebDAV protocols.
 
-Each storage system accessed through iRODS is referred to as a "resource". In TACC's current [Corral][CORRALUG] configuration, there are two disk-based resources accessible through iRODS, one for each of the Corral filesystems. The unreplicated GPFS filesystem is referred to within iRODS as "`corral-tacc`" and the replicated filesystem is referred to as "`corral-repl`". By default all data will be stored in the "`corral-repl`" file system.
+Each storage system accessed through iRODS is referred to as a "resource". In TACC's current [Corral][CORRALUG] configuration, there are two disk-based resources accessible through iRODS, one for each of the Corral filesystems. The unreplicated GPFS filesystem is referred to within iRODS as `corral-tacc` and the replicated filesystem is referred to as `corral-repl`. By default all data will be stored in the `corral-repl` file system.
 
 ### [Table 1. TACC iRODS Resource Names and Corresponding Filesystems](#table1) { #table1 }
 
@@ -22,7 +22,7 @@ Use of the Corral resource may be subject to allocation constraints.
 
 ### [Command-line Usage](#setup-cli) { #setup-cli }
 
-The IRODS command-line utilities, collectively referred to as "i-commands", use a JSON configuration file to store iRODS initialization information under a user's home directory. A template version of that file is shown below in Example 1 below. To set up your computing environment, copy and paste this text into a file called "`~/.irods/irods_environment.json`", then edit the file, replacing each instance of "USERNAME" with your TACC username. You may also change the "`irods_default_resource`" line to use a different default resource if you so choose. Once you have created and saved this file, you can issue the "`iinit`" command to start your iRODS session, after which you can store and retrieve data normally using the i-commands as documented below. If you will be accessing iRODS only through the WebDAV or other Web-based mechanisms you do not need to create this configuration file.
+The IRODS command-line utilities, collectively referred to as "i-commands", use a JSON configuration file to store iRODS initialization information under a user's home directory. A template version of that file is shown below in Example 1 below. To set up your computing environment, copy and paste this text into a file called `~/.irods/irods_environment.json`, then edit the file, replacing each instance of "USERNAME" with your TACC username. You may also change the `irods_default_resource` line to use a different default resource if you so choose. Once you have created and saved this file, you can issue the `iinit` command to start your iRODS session, after which you can store and retrieve data normally using the i-commands as documented below. If you will be accessing iRODS only through the WebDAV or other Web-based mechanisms you do not need to create this configuration file.
 
 #### [Example 1. iRODS Configuration Template](#example1) { #example1 }
 
@@ -63,7 +63,7 @@ You can download Cyberduck for free from <https://cyberduck.io>. To connect to i
 
 ## [Basic i-Commands](#icommands) { #icommands }
 
-Once you have configured the "`~/.irods/irods_environment.json`" file, you can use i-commands to access and manipulate data in the system. The i-commands nomenclature mimcs that of UNIX but with an "i" prepended to the command name e.g. `ils`, `imkdir`, `icd`. Generally, i-commands are functionally equivalent to their UNIX counterparts. Complete <a href="https://docs.irods.org/master/icommands/user/">i-commands documentation</a> can be found on the iRODS site. The following table summarizes some of the most common i-commands.
+Once you have configured the `~/.irods/irods_environment.json` file, you can use i-commands to access and manipulate data in the system. The i-commands nomenclature mimcs that of UNIX but with an "i" prepended to the command name e.g. `ils`, `imkdir`, `icd`. Generally, i-commands are functionally equivalent to their UNIX counterparts. Complete <a href="https://docs.irods.org/master/icommands/user/">i-commands documentation</a> can be found on the iRODS site. The following table summarizes some of the most common i-commands.
 
 ### [Table 2. Common i-Commands](#table2) { #table2 }
 
@@ -82,7 +82,7 @@ i-Command | Syntax | Description
 
 Use the `irsync` command to synchronize a local directory with iRODS, similar to the Unix rsync command. It can be used to make an exact copy of a directory hierarchy on a local disk within iRODS, or retrieve an exact copy of a directory hierarchy already stored in iRODS. It may also be used to create an exact copy of a file or directory within iRODS. iRODS paths are identified with an i: prefix in the `irsync` command.
 
-For example, if you have created a directory within iRODS called "`/corralZ/home/joeuser/myproject`", and you wish to retrieve an exact copy of that directory on Stampede, run the command:
+For example, if you have created a directory within iRODS called `/corralZ/home/joeuser/myproject`, and you wish to retrieve an exact copy of that directory on Stampede, run the command:
 
 <pre class="cmd-line">login1$ <b>irsync -r i:/corralZ/home/joeuser/myproject /path/to/joeusers/workdir</b></pre>
 
@@ -90,12 +90,12 @@ After editing the files on Stampede, you can then synchronize the data back into
 
 <pre class="cmd-line">login1$ <b>irsync -r /path/to/joeusers/workdir i:/corralZ/home/joeuser/myproject</b></pre>
 
-If you are storing or retrieving data to Ranch with the "`-R ranch-main"` option, you should also use the "`-s`" switch - this will use the size rather than the checksum of the file to determine whether synchronization is necessary, thereby avoiding the need to retrieve all the files from tape to compute checksums. This will greatly improve the performance of synchronization with Ranch.
+If you are storing or retrieving data to Ranch with the `-R ranch-main` option, you should also use the `-s` switch - this will use the size rather than the checksum of the file to determine whether synchronization is necessary, thereby avoiding the need to retrieve all the files from tape to compute checksums. This will greatly improve the performance of synchronization with Ranch.
 
 
 ### [`irm`](#icommands-irm) { #icommands-irm }
 
-Use the `irm` command to remove files. By default, the `irm` command only moves files to a temporary "trash" folder, and these files can be restored at a later date or completely removed with the `irmtrash` command. You can use the "`-f`" switch to force deletion of the file immediately, but files removed with the force switch can not be recovered.
+Use the `irm` command to remove files. By default, the `irm` command only moves files to a temporary "trash" folder, and these files can be restored at a later date or completely removed with the `irmtrash` command. You can use the `-f` switch to force deletion of the file immediately, but files removed with the force switch can not be recovered.
 
 `irm` options include:
 
@@ -115,7 +115,7 @@ All users can see all other users' collections and files but cannot access, (rea
 	login1$ <b>ichmod read testuser testfile.txt </b>
 	login1$ <b>ils -A testfile.txt</b></pre>
 
-	The "`ils -A`" command shows the Access Control List (ACL) for the file "`testfile.txt`". Here, `testuser` has been given read permission on `testfile`.
+	The `ils -A` command shows the Access Control List (ACL) for the file `testfile.txt`. Here, `testuser` has been given read permission on `testfile`.
 
 * **Ownership Permission**
 
@@ -125,7 +125,7 @@ All users can see all other users' collections and files but cannot access, (rea
 
 * **Removing Permissions**
 
-	You can assign "`null`" to remove permissions from the ACL for a file or folder:
+	You can assign `null` to remove permissions from the ACL for a file or folder:
 
 	<pre class="cmd-line">login1$ <b>ichmod null testuser testfile.txt</b></pre>
 

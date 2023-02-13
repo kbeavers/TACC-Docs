@@ -5,7 +5,7 @@
 
 ## [Set up Profiling Environment](#env) { #env }
 
-Before running MAP, the application code must be compiled with the "`-g`" option as shown below:
+Before running MAP, the application code must be compiled with the `-g` option as shown below:
 
 <pre class="cmd-line">login1$ <b>mpif90 -g mycode.f90</b></pre>
 
@@ -13,11 +13,11 @@ or
 
 <pre class="cmd-line">login1$ <b>mpiCC -g mycode.c</b></pre>
 
-Leave in any optimization flags to ensure that optimization is still enabled.  If there were no other optimization flags, add the "`-O2`" flag.  Otherwise, the "`-g`" flag by itself will drop the default optimization from "`-O2`" to "`-O0`".
+Leave in any optimization flags to ensure that optimization is still enabled.  If there were no other optimization flags, add the `-O2` flag.  Otherwise, the `-g` flag by itself will drop the default optimization from `-O2` to `-O0`.
 
 Follow these steps to set up your profiling environment on Frontera, Stampede2, Lonestar5 and other TACC compute resources.
 
-1. **Enable X11 forwarding**. To use the MAP GUI, ensure that X11 forwarding is enabled when you ssh to the TACC system. Use the "`-X`" option on the ssh command line if X11 forwarding is not enabled in your ssh client by default.
+1. **Enable X11 forwarding**. To use the MAP GUI, ensure that X11 forwarding is enabled when you ssh to the TACC system. Use the `-X` option on the ssh command line if X11 forwarding is not enabled in your ssh client by default.
 
 	<pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@stampede2.tacc.utexas.edu</b></pre>
 
@@ -35,7 +35,7 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 
 	<pre class="cmd-line">map: cannot connect to X server</pre>
 
-	...then X11 forwarding was not enabled or the system may not have local X11 support. If logging in with the "`-X`" flag doesn't fix the problem, please contact the [help desk][CREATETICKET] for assistance.
+	...then X11 forwarding was not enabled or the system may not have local X11 support. If logging in with the `-X` flag doesn't fix the problem, please contact the [help desk][CREATETICKET] for assistance.
 
 1. **Click the "Profile a Program" button in the "arm FORGE" window if the "Run" window did not open**.
 
@@ -61,7 +61,7 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 
 		<table border="1" cellpadding="3"> <tr>
 		<th> Queue
-		<td> default queue is "<code>skx-dev</code>" for Stampede2, and "`development`" for other systems
+		<td> default queue is <code>skx-dev</code> for Stampede2, and `development` for other systems
 		</tr><tr>
 		<th> Time
 		<td> (hh:mm:ss)
@@ -95,7 +95,7 @@ Once your job is launched by the SLURM scheduler and starts to run, the MAP wind
 <img alt="figure7" src="../../imgs/tutorials/MAP-7.png" style="height: 491px; width: 800px; border-width: 1px; border-style: solid;" />
 <figcaption></figcaption></figure>
 
-After your code completes, MAP will run an analysis of the profiling data collected, and then open the MAP GUI. This screen shows a time progression of the profiled code showing activity, floating point and memory usage. Other timelines, such as IO, MPI, or Lustre, may be added by clicking on the "Metrics" menu.  If you compiled with "`-g`" and MAP can find the source code, a code listing will also be available.  
+After your code completes, MAP will run an analysis of the profiling data collected, and then open the MAP GUI. This screen shows a time progression of the profiled code showing activity, floating point and memory usage. Other timelines, such as IO, MPI, or Lustre, may be added by clicking on the "Metrics" menu.  If you compiled with `-g` and MAP can find the source code, a code listing will also be available.  
 
 <figure id="figure8">
 <img alt="figure8" src="../../imgs/tutorials/MAP-8.png" style="height: 491px; width: 800px; border-width: 1px; border-style: solid;" />
@@ -113,7 +113,7 @@ By starting MAP from a login node you let it use X11 graphics, which can be slow
 	<img alt="figure9" src="../../imgs/tutorials/MAP-9.png" style="width: 300px; border-width: 1px; border-style: solid; height: 73px;" />
 	<figcaption></figcaption></figure>
 
-1. **Fill in your login name and the cluster to connect to**, for instance "`stampede2.tacc.utexas.edu`". The remote installation directory is stored in the "`$TACC_MAP_DIR`" environment variable once the module is loaded.  
+1. **Fill in your login name and the cluster to connect to**, for instance `stampede2.tacc.utexas.edu`. The remote installation directory is stored in the `$TACC_MAP_DIR` environment variable once the module is loaded.  
 
 1. **Make the connection**; you'll be prompted for your password and two-factor code:
 

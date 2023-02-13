@@ -30,7 +30,7 @@ Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the sam
 
 Lonestar6 hosts 28 `vm-small` compute nodes running on 4 physical hosts.
 
-#### [Table 1.5. "`vm-small` Compute Node Specifications](#table15) { #table15 }
+#### [Table 1.5. `vm-small` Compute Node Specifications](#table15) { #table15 }
 
 Specification | Value
 --- | ---

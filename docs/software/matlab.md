@@ -29,7 +29,7 @@ The following figure shows how MATLAB is launched inside the VNC session.
 
 ## [Running MATLAB in Batch Mode](#batch) { #batch }
 
-You can also submit your MATLAB job to the batch nodes (compute nodes) on the TACC resources, e.g. Frontera, Stampede2, Lonestar5, or Maverick2. To do so, first make sure that the MATLAB module has been loaded, and then launch "`matlab`" with the <span style="white-space: nowrap;">"`-nodesktop -nodisplay -nosplash`"</span> option as shown in the sample Stampede2 job script below.
+You can also submit your MATLAB job to the batch nodes (compute nodes) on the TACC resources, e.g. Frontera, Stampede2, Lonestar5, or Maverick2. To do so, first make sure that the MATLAB module has been loaded, and then launch `matlab` with the <span style="white-space: nowrap;">`-nodesktop -nodisplay -nosplash`</span> option as shown in the sample Stampede2 job script below.
 
 ### [Example 1. Sample MATLAB job script to run on Stampede2](#example1)
 
@@ -60,7 +60,7 @@ Maverick2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://po
 
 The parallel computing toolbox is available on the TACC resources as well.  Our MathWorks Total Academic Headcount (TAH) license for the UT-Austin campus does not include MATLAB Distributed Computing Server. Therefore, multi-node parallel operations are not supported.
 
-The following two examples demonstrate parallel operations using the "`parfor`" and "`matlabpool`" functions. Here are the basic examples.
+The following two examples demonstrate parallel operations using the `parfor` and `matlabpool` functions. Here are the basic examples.
 
 ### [Example 2. MATLAB `parfor`](#example2)
 <pre>
@@ -95,7 +95,7 @@ MATLAB, Simulink, and a lot of MATLAB toolboxes are available on the TACC resour
 <td valign="top"> Simscape Power Systems <br>Simulink <br>Simulink Check <br>Simulink Coder <br>Simulink Control Design <br>Simulink Coverage <br>Simulink Design Optimization                          <br>Simulink Requirements <br>Stateflow <br>Statistics and Machine Learning Toolbox <br>Symbolic Math Toolbox <br>System Identification Toolbox <br>WLAN System Toolbox <br>Wavelet Toolbox</td></tr></table>
 
 
-To see a complete list of MATLAB, Simulink, and MATLAB Toolboxes and their version information, type the "`ver`" command at the MATLAB prompt
+To see a complete list of MATLAB, Simulink, and MATLAB Toolboxes and their version information, type the `ver` command at the MATLAB prompt
 
 <pre>>> ver</pre>
 

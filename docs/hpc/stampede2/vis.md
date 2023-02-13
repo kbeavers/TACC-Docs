@@ -1,6 +1,6 @@
 ## [Visualization and Virtual Network Computing (VNC) Sessions](#vis) { #vis }
 
-Stampede2 uses the SKX and KNL processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. **On Stampede2, "`swr`" replaces "`vglrun`" (e.g. "`swr glxgears`") and uses similar syntax.** OpenSWR can be loaded by executing "`module load swr`". We expect most users will notice little difference in visualization experience on KNL. MCDRAM may improve visualization performance for some users. SKX nodes may provide better interactivity for intensive rendering applications.
+Stampede2 uses the SKX and KNL processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. **On Stampede2, `swr` replaces `vglrun` (e.g. `swr glxgears`) and uses similar syntax.** OpenSWR can be loaded by executing `module load swr`. We expect most users will notice little difference in visualization experience on KNL. MCDRAM may improve visualization performance for some users. SKX nodes may provide better interactivity for intensive rendering applications.
 
 There is currently no separate visualization queue on Stampede2. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to the `development` queue (for KNL) or the `skx-dev` queue (for SKX) for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket through the TACC User Portal.
 
@@ -27,10 +27,10 @@ Follow the steps below to start an interactive session.
 
 	You may modify or overwrite script defaults with `sbatch` command-line options:
 
-	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
-	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
-	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
-	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+	*  <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime 
+	*  <code>-A <i>projectnumber</i></code> specify the project/allocation to be charged 
+	*  <code>-N <i>nodes</i></code> specify number of nodes needed 
+	*  <code>-p <i>partition</i></code> specify an alternate queue. 
 
 	See more `sbatch` options in the [Common `sbatch` Options](#table6)
 
@@ -38,11 +38,11 @@ Follow the steps below to start an interactive session.
 
 	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
 
-	The "`vnc.job`" script starts a vncserver process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
+	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
 	<pre class="cmd-line">login1$ <b>touch vncserver.out ; tail -f vncserver.out</b></pre>
 
-	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.
+	The lightweight window manager, `xfce`, is the default VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.
 
 1. Create an SSH Tunnel to Stampede2 
 
@@ -53,11 +53,11 @@ Follow the steps below to start an interactive session.
 
 	where:
 
-	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
-	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
-	*  "`-f`" instructs SSH to only forward ports, not to execute a remote command 
-	*  "`-N`" puts the `ssh` command into the background after connecting 
-	*  "`-L`" forwards the port 
+	*  <code><i>yyyy</i></code> is the port number given by the vncserver batch job 
+	*  <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  `-f` instructs SSH to only forward ports, not to execute a remote command 
+	*  `-N` puts the `ssh` command into the background after connecting 
+	*  `-L` forwards the port 
 
 	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then `ssh` to Stampede2.
 
@@ -67,7 +67,7 @@ Follow the steps below to start an interactive session.
 
 	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
 
-	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing `exit` or `ctrl-D` at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
@@ -107,7 +107,7 @@ VisIt first loads a dataset and presents a dialog allowing for selecting either 
 
 #### [Preparing Data for Parallel Visit](#vis-visit-preparingdata) { #vis-visit-preparingdata }
 
-VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)`" format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
+VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)` format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
 
 ### [Parallel ParaView on Stampede2](#vis-paraview) { #vis-paraview }
 

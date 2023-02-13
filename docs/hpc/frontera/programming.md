@@ -80,7 +80,7 @@ The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag affects the 
 
 **Task Affinity.** If you run one MPI application at a time, the `ibrun` MPI launcher will spread each node's tasks evenly across an CLX node's two sockets, with consecutive tasks occupying the same socket when possible.
 
-**Core Numbering.** Execute "`lscpu`" or "`lstopo`" on a CLX node to see the numbering scheme for socket cores. Note that core numbers alternate between the sockets: even numbered cores are on socket 0 (NUMA node 0), while odd numbered cores are on socket 1 (NUMA node 1).<!-- 06/10/2019 hyperthreading not enabled Furthermore, the two hardware threads on a given core have thread numbers that differ by exactly 48 (e.g. threads 3 and 51 are on the same core). -->
+**Core Numbering.** Execute `lscpu` or `lstopo` on a CLX node to see the numbering scheme for socket cores. Note that core numbers alternate between the sockets: even numbered cores are on socket 0 (NUMA node 0), while odd numbered cores are on socket 1 (NUMA node 1).<!-- 06/10/2019 hyperthreading not enabled Furthermore, the two hardware threads on a given core have thread numbers that differ by exactly 48 (e.g. threads 3 and 51 are on the same core). -->
 
 
 ### [File Operations: I/O Performance](#programming-fileio) { #programming-fileio } 

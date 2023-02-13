@@ -4,16 +4,7 @@
 ## [Status Updates and Notices](#notices) { #notices }
 
 * **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/21/2021)
-* **New Queue: A new queue: "`small`" has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#frontera-production-queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues. (03-30-21) 
-* **Frontera has new [large memory nodes](#large-memory-nodes)**, accessible via the [`nvdimm` queue](#frontera-production-queues). (04/03/20)
-* Users now have access to additional [Frontera User Portal](#portal) functionality. **Log in the portal to access your [dashboard](https://frontera-portal.tacc.utexas.edu/workbench/dashboard) and other features.** (03-25-20)
-* TACC Staff have put forth new file system and job submission guidelines. **All users: read [Managing I/O on TACC Resources][TACCMANAGINGIO].** (01/09/20)
-* **Frontera's [GPU](#gpu-nodes) queues, `rtx` and `rtx-dev` are now open.** See [Frontera's production queues](#frontera-production-queues) for more information. Execute [`qlimits`](#taccs-qlimits-command) to display Frontera's queue configurations and charge rates. (12/07/19)
-*  **The [TACC Analysis Portal][TACCANALYSISPORTAL] now supports Frontera job submission for VNC and DCV remote desktops as well as Jupyter Notebook sessions.** We recommend submitting to the `development queue` for fastest turn-around. (12/05/2019)
-* **Frontera's `flex` queue is now open.** Jobs in this queue are charged a lower rate (.8 SUs) but are pre-emptable after a guaranteed runtime of at least one hour. (10/30/2019) 
-* Please run all your jobs out of the `$SCRATCH` filesystem, instead of `$WORK`, to preserve the stability of the system. (10/10/2019)
-* You may now **[subscribe](https://portal.tacc.utexas.edu/news/subscribe) to [Frontera User News](https://portal.tacc.utexas.edu/user-news/-/news/Frontera)**. Stay up-to-date on Frontera's status, scheduled maintenances and other notifications. (10/10/2019) 
-* **All users: read the [Good Conduct](#conduct) section.** Frontera is a shared resource and your actions can impact other users. (10/10/2019) 
+* **New Queue: A new queue: `small` has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#frontera-production-queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues. (03-30-21) 
 
 
 <figure id="figure1"><img alt="Frontera Art" src="../../imgs/frontera/frontera-art.jpg">
@@ -35,14 +26,14 @@ Frontera's design also includes a totally new integration with web services, and
 
 ## [Quickstart for Experienced Users](#quickstart) { #quickstart }
 
-<p class="introtext">Experienced HPC/TACC users will be very familiar with many of the topics presented in this guide. Here we'll highlight some sections for a quick start on Frontera.</p>
+Experienced HPC/TACC users will be very familiar with many of the topics presented in this guide. Here we'll highlight some sections for a quick start on Frontera.
 
 * Log into the [TACC User Portal](http://portal.tacc.utexas.edu) to confirm that [you've been added to a Frontera allocation](https://portal.tacc.utexas.edu/projects-and-allocations#). Then, connect via SSH to `frontera.tacc.utexas.edu`.
 * Review the TACC info box displayed at login for your allocation availability and SU balances.
 * Read the [Good Conduct](../conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
 * Consult the [Frontera File Systems](../files) and [Frontera Production Queues](../running#frontera-production-queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
 * Copy and modify any of the [Sample Job Scripts](../scripts) for your own use. These scripts will also be helpful to show you how to modify any Jobs Scripts you are bringing over from other TACC systems so that they run efficiently on Frontera. 
-* Review the [default modules with "`module list`"](../admin/#using-modules-to-manage-your-environment). Make any changes needed for your code. 
+* Review the [default modules with `module list`](../admin/#using-modules-to-manage-your-environment). Make any changes needed for your code. 
 * Start small. Run any jobs from other systems on a smaller scale in order to test the performance of your code on Frontera. You may find your code needs to be altered or recompiled in order to perform well and at scale on the new system. 
 
 ## [Account Administration](#admin) { #admin }
@@ -68,7 +59,7 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 #### [Secure Shell (SSH)](#admin-access-ssh)
 
-The "`ssh`" command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
+The `ssh` command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@frontera.tacc.utexas.edu</b></pre>
 
@@ -76,15 +67,15 @@ The above command will rotate connections across all available login nodes, `log
 
 <pre class="cmd-line">localhost$ <b>ssh <i>username</i>@login2.frontera.tacc.utexas.edu</b></pre>
 
-To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">"`-X`"</span> or <span style="white-space: nowrap;">"`-Y`"</span> switch:
+To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
 <pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@frontera.tacc.utexas.edu</b></pre>
 
-To report a connection problem, execute the `ssh` command with the "`-vvv`" option and include the verbose output when submitting a help ticket.
+To report a connection problem, execute the `ssh` command with the `-vvv` option and include the verbose output when submitting a help ticket.
 
-**Do not run the "`ssh-keygen`" command on Frontera.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Frontera.
+**Do not run the `ssh-keygen` command on Frontera.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Frontera.
 
-1. execute "`mv .ssh dot.ssh.old`" 
+1. execute `mv .ssh dot.ssh.old` 
 1. log out
 1. log into Frontera again
 
@@ -448,7 +439,7 @@ File System | Characteristics	| Purpose |
 
 <p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
 
-&#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">"`ls -ul`"</span> command to view access times.
+&#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">`ls -ul`</span> command to view access times.
 
 
 
@@ -481,9 +472,6 @@ Alias | Command
 <code>cds</code> | <code>cd $SCRATCH</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-
-<p> &nbsp;</p> 
-
 ### [Striping Large Files](#files-striping) { #files-striping } 
 
 Frontera's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives. Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
@@ -500,11 +488,11 @@ While the `$WORK` file system has hundreds of OSTs, Frontera's scratch system ha
 
 	<pre class="cmd-line">$ <b>lfs setstripe -c 16 $PWD</b></pre>
 
-Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Frontera's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+Note that an `lfs setstripe` command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Frontera's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
 
-Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the `mv` command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the `cp` command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
 
-You can check the stripe count of a file using the "`lfs getstripe`" command:
+You can check the stripe count of a file using the `lfs getstripe` command:
 
 <pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
 
@@ -592,17 +580,17 @@ The options on the second transfer are typical and appropriate when synching a d
 
 See [Good Conduct](../conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
 
-The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named "`myfile.c`" from its current location on Stampede to Frontera's `$DATA` directory.
+The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
 
 <pre class="cmd-line">login1$ <b>rsync myfile.c \
 <i>TACC-username</i>@frontera.tacc.utexas.edu:/data/01698/<i>TACC-username</i>/data</b></pre>
 
-An entire directory can be transferred from source to destination by using `rsync` as well. For directory transfers the options "`-avtr`" will transfer the files recursively ("`-r`" option) along with the modification times ("`-t`" option) and in the archive mode ("`-a`" option) to preserve symbolic links, devices, attributes, permissions, ownerships, etc. The "`-v`" option (verbose) increases the amount of information displayed during any transfer. The following example demonstrates the usage of the "`-avtr`" options for transferring a directory named "`gauss`" from the present working directory on Stampede to a directory named "`data`" in the $WORK file system on Frontera.
+An entire directory can be transferred from source to destination by using `rsync` as well. For directory transfers the options `-avtr` will transfer the files recursively (`-r` option) along with the modification times (`-t` option) and in the archive mode (`-a` option) to preserve symbolic links, devices, attributes, permissions, ownerships, etc. The `-v` option (verbose) increases the amount of information displayed during any transfer. The following example demonstrates the usage of the `-avtr` options for transferring a directory named `gauss` from the present working directory on Stampede to a directory named `data` in the $WORK file system on Frontera.
 
 <pre class="cmd-line">login1$ <b>rsync -avtr ./gauss \
 <i>TACC-username</i>@frontera.tacc.utexas.edu:/data/01698/<i>TACC-username</i>/data</b></pre>
 
-For more `rsync` options and command details, run the command "`rsync -h`" or:
+For more `rsync` options and command details, run the command `rsync -h` or:
 
 <pre class="cmd-line">login1$ <b>man rsync</b></pre>
 
@@ -868,9 +856,9 @@ Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) belo
 | --- | --- | -- |
 <code>-p</code> | <i>queue_name</i> | Submits to queue (partition) designated by <i>queue_name</i>
 <code>-J</code> | <i>job_name</i> | Job Name
-<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
-<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
-<span style="white-space: nowrap;"><code>--ntasks-per-node</code></span><br>or<br><code>--tasks-per-node</code></td> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
+<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) <code>-N</code> and <code>-n</code>; or<br>(2) <code>-N</code> and <code>--ntasks-per-node</code>. 
+<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See <code>-N</code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as <code>-N</code>.
+<span style="white-space: nowrap;"><code>--ntasks-per-node</code></span><br>or<br><code>--tasks-per-node</code></td> | <i>tasks_per_node</i> | This is MPI tasks per node. See <code>-N</code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
 <code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
 <span style="white-space: nowrap;"><code>--mail-user=</code></span> | <i>email_address</i> | Specify the email address to use for notifications.
 <code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or <code>all</code> | Specify when user notifications are to be sent (one option per line).
@@ -1619,7 +1607,7 @@ The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag affects the 
 
 **Task Affinity.** If you run one MPI application at a time, the `ibrun` MPI launcher will spread each node's tasks evenly across an CLX node's two sockets, with consecutive tasks occupying the same socket when possible.
 
-**Core Numbering.** Execute "`lscpu`" or "`lstopo`" on a CLX node to see the numbering scheme for socket cores. Note that core numbers alternate between the sockets: even numbered cores are on socket 0 (NUMA node 0), while odd numbered cores are on socket 1 (NUMA node 1).<!-- 06/10/2019 hyperthreading not enabled Furthermore, the two hardware threads on a given core have thread numbers that differ by exactly 48 (e.g. threads 3 and 51 are on the same core). -->
+**Core Numbering.** Execute `lscpu` or `lstopo` on a CLX node to see the numbering scheme for socket cores. Note that core numbers alternate between the sockets: even numbered cores are on socket 0 (NUMA node 0), while odd numbered cores are on socket 1 (NUMA node 1).<!-- 06/10/2019 hyperthreading not enabled Furthermore, the two hardware threads on a given core have thread numbers that differ by exactly 48 (e.g. threads 3 and 51 are on the same core). -->
 
 
 ### [File Operations: I/O Performance](#programming-fileio) { #programming-fileio } 
@@ -1687,7 +1675,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 	<pre class="cmd-line">c123-456$ <b>cd $SCRATCH/kfac-pytorch</b></pre>
 
-1. Create a script called "`run.sh`". This script needs two parameters, the hostname of the master node and the number of nodes.
+1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
 	<pre class="job-script">
 	&#35;!/bin/bash
@@ -1763,7 +1751,7 @@ c123-456$ <b>ibrun -np 4 python3 tf_cnn_benchmarks.py --variable_update=horovod 
 *Coming Soon*
 ## [Visualization and Virtual Network Computing (VNC) Sessions](#vis)
 
-<p class="introtext">Frontera uses Intel's Cascade Lake (CLX) processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing "<code>module load swr</code>".</p>
+<p class="introtext">Frontera uses Intel's Cascade Lake (CLX) processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing <code>module load swr</code>.</p>
 
 Frontera currently has no separate visualization queue. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to Frontera's `development` queue for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket through the Frontera Portal.
 
@@ -1805,7 +1793,7 @@ Follow the steps below to start an interactive session.
 
 	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
 
-	The "`vnc.job`" script starts a `vncserver` process and writes to the output file, "`vncserver.out`" in the job submission directory, with the connect port for the vncviewer. 
+	The `vnc.job` script starts a `vncserver` process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. 
 
 	Note that the DCV viewer adjusts desktop resolution to your browser or DCV client, so desktop resolution does not need to be specified.
 
@@ -1815,7 +1803,7 @@ Follow the steps below to start an interactive session.
 	login1$ <b>touch vncserver.out ; tail -f vncserver.out</b>
 	login1$ <b>touch dcvserver.out ; tail -f dcvserver.out</b></pre>
 
-	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the "`~/.vnc/xstartup`" file (created after your first VNC session) and replace "`startxfce4`" with "`gnome-session`". Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
+	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
 
 1. Create an SSH Tunnel to Frontera
 
@@ -1840,15 +1828,15 @@ Follow the steps below to start an interactive session.
 
 	We recommend the [TigerVNC](http://sourceforge.net/projects/tigervnc) VNC Client, a platform independent client/server application.
 
-	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing "`exit`" or "`ctrl-D`" at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
+	Once the desktop has been established, two initial xterm windows are presented (which may be overlapping). One, which is white-on-black, manages the lifetime of the VNC server process. Killing this window (typically by typing `exit` or `ctrl-D` at the prompt) will cause the vncserver to terminate and the original batch job to end. Because of this, we recommend that this window not be used for other purposes; it is just too easy to accidentally kill it and terminate the session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
-### [unning Applications on the Remote Desktop](#vis)
+### [Running Applications on the Remote Desktop](#vis)
 
 From an interactive desktop, applications can be run from icons or from xterm command prompts. Two special cases arise: running parallel applications, and running applications that use OpenGL.
 
-### [unning Parallel Applications from the Desktop](#vis)
+### [Running Parallel Applications from the Desktop](#vis)
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
@@ -1856,7 +1844,7 @@ Parallel applications are run on the desktop using the same ibrun wrapper descri
 
 will run application on the associated nodes, as modified by the ibrun options.
 
-### [unning OpenGL/X Applications On The Desktop](#vis)
+### [Running OpenGL/X Applications On The Desktop](#vis)
 
 Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Frontera do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the TACC Vis portal.
 
@@ -1866,7 +1854,7 @@ Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At pres
 c101-001$ <b>module load swr</b>
 c101-001$ <b>swr <i>options</i> application application-args</b></pre>
 
-### [arallel VisIt on Frontera](#vis)
+### [Parallel VisIt on Frontera](#vis)
 
 [VisIt](https://wci.llnl.gov/simulation/computer-codes/visit) was compiled under the Intel compiler and the mvapich2 and MPI stacks.
 
@@ -1878,11 +1866,11 @@ c101-001$ <b>swr visit</b></pre>
 
 VisIt first loads a dataset and presents a dialog allowing for selecting either a serial or parallel engine. Select the parallel engine. Note that this dialog will also present options for the number of processes to start and the number of nodes to use; these options are actually ignored in favor of the options specified when the VNC server job was started.
 
-#### [reparing Data for Parallel Visit](#vis)
+#### [Preparing Data for Parallel Visit](#vis)
 
-VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)`" format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
+VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)` format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
 
-### [arallel ParaView on Frontera](#vis)
+### [Parallel ParaView on Frontera](#vis)
 
 After connecting to a VNC server on Frontera, as described above, do the following:
 
@@ -1978,7 +1966,7 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 
 	* You'll be presented a URL to paste into a browser; Log in using the appropriate Google account. 
 	* You'll then be presented an authentication string. Copy and paste this string when promped with: "Enter verification code:".  
-	* Configure the CLI for the correct project. For Frontera, use "`ut-tacc-np-sandbox-1`".
+	* Configure the CLI for the correct project. For Frontera, use `ut-tacc-np-sandbox-1`.
 
 		<pre class="cmd-line">login1$ <b>./google-cloud-sdk/bin/gcloud config set project ut-tacc-np-sandbox-1</b></pre>
 
@@ -2117,7 +2105,7 @@ To install on Frontera in your home directory using Python, this should be suffi
 
 <p class="cmd-line">login1$ <b>curl -L https://aka.ms/InstallAzureCli | bash</b></p>
 
-We recommend creating a "`~/azure`" subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
+We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
 <pre class="cmd-line">===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
 <b>/home1/01983/mpackard/azure/lib/azurecli</b>

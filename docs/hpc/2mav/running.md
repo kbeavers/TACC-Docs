@@ -19,7 +19,7 @@ The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the fo
 
 **Queues and limits are subject to change without notice.** 
 
-Execute "`qlimits`" on Maverick2 for real-time information regarding limits on available queues.
+Execute `qlimits` on Maverick2 for real-time information regarding limits on available queues.
 
 See Stampede2's [Monitoring Jobs and Queues](S2UG#monitoring) section for additional information.
 

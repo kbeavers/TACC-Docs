@@ -7,7 +7,7 @@ Access Control Lists (ACLs) are a very powerful tool for managing permissions wi
 
 **Important note**: Access Control Lists work only in an additive fashion and cannot be used to remove permissions granted through the regular UNIX permissions commands. For example, if you want all the members of a group but one to have access to a file, you cannot start by granting access to the group and then removing access for one user; instead, you must remove access for the whole group, then add the appropriate permissions for each individual. 
 
-The two important command-line tools for managing ACLs are "`setfacl`" and "`getfacl`". These commands are used to create or change ACLs, and to read the contents of an ACL, respectively. The man pages provide detailed documentation on both these commands. 
+The two important command-line tools for managing ACLs are `setfacl` and `getfacl`. These commands are used to create or change ACLs, and to read the contents of an ACL, respectively. The man pages provide detailed documentation on both these commands. 
 
 <pre class="cmd-line">login1$ <b>man setfacl</b></pre>
 
@@ -17,7 +17,7 @@ and
 
 ## [Viewing ACLs](#viewing) { #viewing }
 
-Viewing ACLs for a specific file or directory is quite simple, and can be accomplished using the "`getfacl`" command:
+Viewing ACLs for a specific file or directory is quite simple, and can be accomplished using the `getfacl` command:
 
 <pre class="cmd-line">login1$ <b>getfacl <i>myfile</i></b></pre>
 
@@ -32,32 +32,32 @@ group::---
 mask::r--
 other::---</pre>
 
-Note that the command's output is in a specialized format that can also be used to set ACLs, as described [below](#multiplefiles).  You may use the wildcard ("`*`") character to generate ACL listings for all files which match a specific pattern, however this may produce a lot of output if there are many files in a given directory. You must have read access to the file or directory in question in order to read its ACLs.
+Note that the command's output is in a specialized format that can also be used to set ACLs, as described [below](#multiplefiles).  You may use the wildcard (`*`) character to generate ACL listings for all files which match a specific pattern, however this may produce a lot of output if there are many files in a given directory. You must have read access to the file or directory in question in order to read its ACLs.
 
 ## [Setting ACLs from the Command-Line](#setting) { #setting }
 
-The "`setfacl`" command is the simplest way to manage ACLs. The example below modifies (with the -m) option an ACL to add read access for the username "testuser". 
+The `setfacl` command is the simplest way to manage ACLs. The example below modifies (with the -m) option an ACL to add read access for the username "testuser". 
 
 <pre class="cmd-line">login1$ <b>setfacl -m u:<i>testuser</i>:r <i>file</i></b></pre>
 
-The "`-w`" and "`-x`" flags can also be added to give read, write, and execute permissions:
+The `-w` and `-x` flags can also be added to give read, write, and execute permissions:
 
 <pre class="cmd-line">login1$ <b>setfacl -m u:<i>testuser</i>:rwx <i>file</i></b></pre>
 
-The "`-x`" option can be used to remove permissions from the ACL. The following command removes the permissions granted in the previous example:
+The `-x` option can be used to remove permissions from the ACL. The following command removes the permissions granted in the previous example:
 
 <pre class="cmd-line">login1$ <b>setfacl -x u:<i>testuser</i>:rwx <i>file</i></b></pre>
 
 
 ## [Setting Complex ACLs](#multiplefiles) { #multiplefiles }
 
-You can use a named file, or a pipe with the "`getfacl`" command, to set complex ACLs or to copy ACLs from one file to another. The following commands save the output of the `getfacl` command to a file named "`myfile.acl`", and then reads that ACL to set the permissions on a second file:
+You can use a named file, or a pipe with the `getfacl` command, to set complex ACLs or to copy ACLs from one file to another. The following commands save the output of the `getfacl` command to a file named `myfile.acl`, and then reads that ACL to set the permissions on a second file:
 
 <pre class="cmd-line">
 login1$ <b>getfacl <i>file</i> > <i>myfile.acl</i></b>
 login1$ <b>setfacl -M <i>myfile.acl</i> <i>file2</i></b></pre>
 
-You can also use the "`-R`" flag for recursion and/or the wildcard character to set permissions for all files in a given directory tree.  The following command sets permissions using the specification in "`myfile.acl`" set in the above example on all files in the current directory:
+You can also use the `-R` flag for recursion and/or the wildcard character to set permissions for all files in a given directory tree.  The following command sets permissions using the specification in `myfile.acl` set in the above example on all files in the current directory:
 
 <pre class="cmd-line">login1$ <b>setfacl -M <i>file.acl</i> *</b></pre>
 
@@ -73,11 +73,11 @@ login1$ <b>man setfacl</b></pre>
 
 ## [Default ACLs](#defaultacls) { #defaultacls }
 
-Default ACLs can be set on a directory, and once set, are assigned automatically to all new files created within that directory. Default ACLs are useful when you have a specific and/or complex set of permissions you wish to apply uniformly to all new data in a project directory. Setting default ACLs follows the same format as regular ACLs, with a "`d:`" prefix in the ACL specification. For example, to assign a default ACL granting user "`thomas`" full permissions to all NEW data in mydirectory, use the following command:
+Default ACLs can be set on a directory, and once set, are assigned automatically to all new files created within that directory. Default ACLs are useful when you have a specific and/or complex set of permissions you wish to apply uniformly to all new data in a project directory. Setting default ACLs follows the same format as regular ACLs, with a `d:` prefix in the ACL specification. For example, to assign a default ACL granting user `thomas` full permissions to all NEW data in mydirectory, use the following command:
 
 <pre class="cmd-line">login1$ <b>setfacl -m d:u:thomas:rwX mydirectory</b></pre>
 
-The capital "`X`" in the ACL specification means "add execute permission for directories only" and is convenient for situations where you don't know whether the ACL will be applied to a directory or a file. Default ACLs can be set for both users and groups, just as regular ACLs can.
+The capital `X` in the ACL specification means "add execute permission for directories only" and is convenient for situations where you don't know whether the ACL will be applied to a directory or a file. Default ACLs can be set for both users and groups, just as regular ACLs can.
 
 Note that default ACLs do not alter the permissions for any currently existing files; they only apply to files created after the default ACL is set.
 

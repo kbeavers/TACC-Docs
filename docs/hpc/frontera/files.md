@@ -29,7 +29,7 @@ File System | Characteristics	| Purpose |
 
 <p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
 
-&#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">"`ls -ul`"</span> command to view access times.
+&#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">`ls -ul`</span> command to view access times.
 
 
 
@@ -62,9 +62,6 @@ Alias | Command
 <code>cds</code> | <code>cd $SCRATCH</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-
-<p> &nbsp;</p> 
-
 ### [Striping Large Files](#files-striping) { #files-striping } 
 
 Frontera's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives. Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
@@ -81,11 +78,11 @@ While the `$WORK` file system has hundreds of OSTs, Frontera's scratch system ha
 
 	<pre class="cmd-line">$ <b>lfs setstripe -c 16 $PWD</b></pre>
 
-Note that an "`lfs setstripe`" command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Frontera's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
+Note that an `lfs setstripe` command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Frontera's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
 
-Remember that it's not possible to change the striping on a file that already exists. Moreover, the "`mv`" command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the "`cp`" command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
+Remember that it's not possible to change the striping on a file that already exists. Moreover, the `mv` command has no effect on a file's striping if the source and destination directories are on the same file system. You can, of course, use the `cp` command to create a second copy with different striping; to do so, copy the file to a directory with the intended stripe parameters.
 
-You can check the stripe count of a file using the "`lfs getstripe`" command:
+You can check the stripe count of a file using the `lfs getstripe` command:
 
 <pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
 

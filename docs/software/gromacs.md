@@ -28,15 +28,15 @@ Variable | Value
 ## [Running GROMACS](#running) { #running }
 
 
-To launch simulation jobs, please use the TACC-specific MPI launcher "`ibrun`", which is a TACC-system-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. The executable, "`gmx_mpi`", is the parallel component of GROMACS. It can be invoked in a job script like this:
+To launch simulation jobs, please use the TACC-specific MPI launcher `ibrun`, which is a TACC-system-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. The executable, `gmx_mpi`, is the parallel component of GROMACS. It can be invoked in a job script like this:
 
 <pre class="job-script">ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
 
-In the above command, "`gmx_mpi`" (single-precision) can be replaced by "`gmx_mpi_d`" (double-precision) or "`gmx_tmpi`" (single-precision, single-node thread-MPI). Please refer to the GROMACS manual for more information.
+In the above command, `gmx_mpi` (single-precision) can be replaced by `gmx_mpi_d` (double-precision) or `gmx_tmpi` (single-precision, single-node thread-MPI). Please refer to the GROMACS manual for more information.
 
-On Stampede2, the executables with a "`_knl`" postfix should be run on the KNL nodes only in the appropriate queues.
+On Stampede2, the executables with a `_knl` postfix should be run on the KNL nodes only in the appropriate queues.
 
-On Frontera and Lonestar6, you may use "`gmx_mpi_gpu`" instead of "`gmx_mpi`" to run GROMACS on GPUs nodes. Note that not all GROMACS modules on the TACC systems support GPU acceleration. Consult "`module help`" to find details about supported functionality.
+On Frontera and Lonestar6, you may use `gmx_mpi_gpu` instead of `gmx_mpi` to run GROMACS on GPUs nodes. Note that not all GROMACS modules on the TACC systems support GPU acceleration. Consult `module help` to find details about supported functionality.
 
 You can also compile and link your own source code with the GROMACS libraries:
 
@@ -44,11 +44,11 @@ You can also compile and link your own source code with the GROMACS libraries:
 
 ### [Running GROMACS in Batch Mode](#running-batch) { #running-sbatch }
 
-Use Slurm's "`sbatch`" command to submit a batch job to one of the Stampede2 queues:
+Use Slurm's `sbatch` command to submit a batch job to one of the Stampede2 queues:
 
 <pre class="cmd-line"> login1$ <b>sbatch myjobscript</b></pre>
 
-Here "`myjobscript`" is the name of a text file containing `#SBATCH` directives and shell commands that describe the particulars of the job you are submitting. 
+Here `myjobscript` is the name of a text file containing `#SBATCH` directives and shell commands that describe the particulars of the job you are submitting. 
 
 ### [Frontera Job Scripts](#jobscript-frontera) { #jobscript-frontera }
 
@@ -75,7 +75,7 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
  
 #### [GPU](#jobscript-frontera-gpu) { #jobscript-frontera-gpu }
 
-The following job script requests 4 RTX GPU nodes on Frontera. The "`-gpu_id 0000`" directive indicates all four MPI ranks on the same node share the same GPU with id 0. You may use, for example "`-gpu_id 0123`", to use all four available GPUs on each RTX node.
+The following job script requests 4 RTX GPU nodes on Frontera. The `-gpu_id 0000` directive indicates all four MPI ranks on the same node share the same GPU with id 0. You may use, for example `-gpu_id 0123`, to use all four available GPUs on each RTX node.
 
 <pre class="jobs-script">
 #!/bin/bash
@@ -114,7 +114,7 @@ module load gromacs/2022.1
 
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
  
-NOTE: To run on Stampede2's KNL nodes, substitute "`gmx_mpi`" with one of the following executables: "`gmx_mpi_knl`", "`gmx_tmpi_knl`", or "`gmx_mpi_d_knl`".
+NOTE: To run on Stampede2's KNL nodes, substitute `gmx_mpi` with one of the following executables: `gmx_mpi_knl`, `gmx_tmpi_knl`, or `gmx_mpi_d_knl`.
 
 
 ### [Lonestar6 Job Scripts](#running-lonestar6) { #jobscript-lonestar6 }
@@ -142,7 +142,7 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
  
 #### [GPU](#running-lonestar6-gpu) { #jobscript-lonestar6-gpu }
 
-The following job script requests two [A100 GPU nodes on Lonestar6](../../hpcugs/6lonestar/lonestar6/#queues). The "`-gpu_id 000`" directive indicates all three MPI ranks on the same node share the same GPU with id 0.  You may use, for example "`-gpu_id 012`", to use all three available GPUs on each A100 GPU node.
+The following job script requests two [A100 GPU nodes on Lonestar6](../../hpcugs/6lonestar/lonestar6/#queues). The `-gpu_id 000` directive indicates all three MPI ranks on the same node share the same GPU with id 0.  You may use, for example `-gpu_id 012`, to use all three available GPUs on each A100 GPU node.
 
 <pre class="job-script">
 #!/bin/bash

@@ -5,7 +5,7 @@ The TACC Global Shared File System, <a href="https://www.tacc.utexas.edu/systems
 
 ## [What is I/O?](#io) { #io }
 
-I/O stands for **I**nput/**O**utput and refers to the idea that for every input to a computer (keyboard input, mouse click, external disk access), there is an output (to the screen, in game play, write to disk). In the HPC environment, I/O refers almost exclusively to disk access: opening and closing files, reading from, writing to, and searching within files. Each of these I/O operations (iops), "`open`", "`write`", and "`close`", access each file system's MetaData Server (MDS). The MDS coordinates access to the `/work` file system for all users. If a file system's MDS is overwhelmed by a user's I/O workflow activities, then that file system could go down for an indeterminate period and all current jobs on that resource may fail.
+I/O stands for **I**nput/**O**utput and refers to the idea that for every input to a computer (keyboard input, mouse click, external disk access), there is an output (to the screen, in game play, write to disk). In the HPC environment, I/O refers almost exclusively to disk access: opening and closing files, reading from, writing to, and searching within files. Each of these I/O operations (iops), `open`, `write`, and `close`, access each file system's MetaData Server (MDS). The MDS coordinates access to the `/work` file system for all users. If a file system's MDS is overwhelmed by a user's I/O workflow activities, then that file system could go down for an indeterminate period and all current jobs on that resource may fail.
 
 Examples of intensive I/O activity that could affect the system include, but are not limited to:
 
@@ -36,7 +36,7 @@ File System | Recommended Use | Notes
 
 [1](#sup1) Maverick2 does not have its own `$SCRATCH` file system. Consult the [Maverick2 User Guide][MAVERICK2UG]'s File Systems section for further guidance.  
 
-[2](#sup2) The operating system updates a file's access time when that file is modified on a login or compute node. Reading or executing a file/script on a login node does not update the access time, but reading or executing on a compute node does update the access time. This approach helps us distinguish between routine management tasks (e.g. `tar`, `scp`) and production use. Use the command "`ls -ul`" to view access times.
+[2](#sup2) The operating system updates a file's access time when that file is modified on a login or compute node. Reading or executing a file/script on a login node does not update the access time, but reading or executing on a compute node does update the access time. This approach helps us distinguish between routine management tasks (e.g. `tar`, `scp`) and production use. Use the command `ls -ul` to view access times.
 
 ## [Best Practices for Minimizing I/O](#bestpractices) { #bestpractices }
 
@@ -143,17 +143,17 @@ The OOOPS module is currently installed on TACC's [Frontera][FRONTERAUG] and [St
 
 ### [Functions](#ooops-functions) { #ooops-functions }
 
-The OOOPS module provides two functions "`set_io_param`" and "`set_io_param_batch`" for single-node jobs and multiple-node jobs, respectively. These commands adjust the maximum allowed frequency of "`open`" and "`stat`" function calls on all compute nodes involved in a running job. Execute these two commands within a Slurm job script or within an `idev` session. 
+The OOOPS module provides two functions `set_io_param` and `set_io_param_batch` for single-node jobs and multiple-node jobs, respectively. These commands adjust the maximum allowed frequency of `open` and `stat` function calls on all compute nodes involved in a running job. Execute these two commands within a Slurm job script or within an `idev` session. 
 
 These functions instruct the system to modulate your job's I/O activity, thus reducing the impact on the designated file system. For both functions, use "0" to indicate the `$SCRATCH` file system and "1" to indicate the `$WORK` file system. Note: these indices are subject to change. See each command's `help` option to ensure correct parameters:
 
 <pre class="cmd-line">c123-456$ <b>set_io_param -h</b></pre> 
 
-Indicate the frequency of "`open`" and "`stat`" function calls, from the least to the most, with "`low`", "`medium`", or "`high`".
+Indicate the frequency of `open` and `stat` function calls, from the least to the most, with `low`, `medium`, or `high`.
 
 ### [How to Use OOOPS](#ooops-howto) { #ooops-howto }
 
-First, load the "`ooops`" module in your job script or `idev` session to deploy OOOPS. Next, set the frequency of I/O activities using either the "`set_io_param`" or "`set_io_param_batch`" command. 
+First, load the `ooops` module in your job script or `idev` session to deploy OOOPS. Next, set the frequency of I/O activities using either the `set_io_param` or `set_io_param_batch` command. 
 
 #### [Example: Single-Node Job on `$SCRATCH`](#ooops-howto-singlenode) { #ooops-howto-singlenode }
 
@@ -215,18 +215,18 @@ Contact the OOOPS developers, <a href="mailto:huang@tacc.utexas.edu">Lei Huang</
 
 For jobs that make use of large numbers of Python modules or use local installations of Python/Anaconda/MiniConda, TACC staff provides additional tools to help manage the I/O activity caused by library and module calls.
 
-**On Stampede2 and Frontera**: Load the "`python_cacher`" module in your job script:
+**On Stampede2 and Frontera**: Load the `python_cacher` module in your job script:
 
 <pre class="job-script">module load python_cacher</pre>
 
- This library will cache python modules to local disk so python programs won't keep pulling the modules over and over from the "`/scratch`" or "`/work`" file systems.
+ This library will cache python modules to local disk so python programs won't keep pulling the modules over and over from the `/scratch` or `/work` file systems.
 
 In case `python_cacher` does not work, you can copy your Python/Anaconda/MiniConda directory to the local `/tmp` directory of each involved compute node for a specific job. 
 
 
 ## [Tracking Job I/O](#tracking) { #tracking }
 
-**Stampede2 and Frontera**: To track the full extent of your I/O activity over the course of your job, you can employ another TACC tool, "`iomonitor`" that will report on "`open()`" and "`stat()`" calls during your job's run. Place the following lines in your job submission script after your Slurm commands, to wrap your executable:
+**Stampede2 and Frontera**: To track the full extent of your I/O activity over the course of your job, you can employ another TACC tool, `iomonitor` that will report on `open()` and `stat()` calls during your job's run. Place the following lines in your job submission script after your Slurm commands, to wrap your executable:
 
 <pre class="job-script">
 export LD_PRELOAD=/home1/apps/tacc-patches/io_monitor/io_monitor.so:\
@@ -234,7 +234,7 @@ export LD_PRELOAD=/home1/apps/tacc-patches/io_monitor/io_monitor.so:\
 ibrun my_executable
 unset LD_PRELOAD</pre>
 
-Log files will be generated during the job run in the working directory with prefix "`log_io_*.`"
+Log files will be generated during the job run in the working directory with prefix `log_io_*.`
 
 **Note**: Since the `iomonitor` tool may itself generate a lot of files, we highly recommend you profile your job beginning with trivial cases, then ramping up to the desired number of nodes/tasks.
 
