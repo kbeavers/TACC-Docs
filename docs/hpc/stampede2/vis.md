@@ -27,10 +27,10 @@ Follow the steps below to start an interactive session.
 
 	You may modify or overwrite script defaults with `sbatch` command-line options:
 
-	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
-	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
-	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
-	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+	*  <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime 
+	*  <code>-A <i>projectnumber</i></code> specify the project/allocation to be charged 
+	*  <code>-N <i>nodes</i></code> specify number of nodes needed 
+	*  <code>-p <i>partition</i></code> specify an alternate queue. 
 
 	See more `sbatch` options in the [Common `sbatch` Options](#table6)
 
@@ -53,8 +53,8 @@ Follow the steps below to start an interactive session.
 
 	where:
 
-	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
-	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  <code><i>yyyy</i></code> is the port number given by the vncserver batch job 
+	*  <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
 	*  `-f` instructs SSH to only forward ports, not to execute a remote command 
 	*  `-N` puts the `ssh` command into the background after connecting 
 	*  `-L` forwards the port 

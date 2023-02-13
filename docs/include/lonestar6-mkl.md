@@ -10,13 +10,13 @@ The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a 
 
 #### [MKL with Intel C, C++, and Fortran Compilers](#mkl-intel) { #mkl-intel }
 
-There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the <span style="white-space: nowrap;">"`-mkl`"</span> option.; e.g.
+There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the <span style="white-space: nowrap;">`-mkl`</span> option.; e.g.
 
 <pre class="cmd-line">
 $ <b>icc   -mkl mycode.c</b>
 $ <b>ifort -mkl mycode.c</b></pre>
 
-The "`-mkl`" switch is an abbreviated form of <span style="white-space: nowrap;">"`-mkl=parallel`"</span>, which links your code to the threaded version of MKL. To link to the unthreaded version, use <span style="white-space: nowrap;">"`-mkl=sequential`"</span>. A third option, <span style="white-space: nowrap;">"`-mkl=cluster`"</span>, which also links to the unthreaded libraries, is necessary and appropriate only when using ScaLAPACK or other distributed memory packages. For additional information, including advanced linking options, see the [MKL documentation](http://software.intel.com/intel-mkl) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor).
+The `-mkl` switch is an abbreviated form of <span style="white-space: nowrap;">`-mkl=parallel`</span>, which links your code to the threaded version of MKL. To link to the unthreaded version, use <span style="white-space: nowrap;">`-mkl=sequential`</span>. A third option, <span style="white-space: nowrap;">`-mkl=cluster`</span>, which also links to the unthreaded libraries, is necessary and appropriate only when using ScaLAPACK or other distributed memory packages. For additional information, including advanced linking options, see the [MKL documentation](http://software.intel.com/intel-mkl) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor).
 
 
 #### [MKL with GNU C, C++, and Fortran Compilers](#mkl-gnu) { #mkl-gnu }
@@ -33,11 +33,11 @@ $ <b>gcc -fopenmp -I$MKLROOT/include         \
 		 -lm -ldl mycode.c</b>
 </pre>
 
-For your convenience the `mkl` module file also provides alternative TACC-defined variables like `$TACC_MKL_INCLUDE` (equivalent to `$MKLROOT/include`). Execute "`module help mkl`" for more information.
+For your convenience the `mkl` module file also provides alternative TACC-defined variables like `$TACC_MKL_INCLUDE` (equivalent to `$MKLROOT/include`). Execute `module help mkl` for more information.
 
 #### [Using MKL as BLAS/LAPACK with Third-Party Software](#mkl-thirdparty) { #mkl-thirdparty }
 
-When your third-party software requires BLAS or LAPACK, you can use MKL to supply this functionality. Replace generic instructions that include link options like <span style="white-space: nowrap;">"`-lblas`"</span> or <span style="white-space: nowrap;">"`-llapack`"</span> with the simpler MKL approach described above. There is no need to download and install alternatives like OpenBLAS.
+When your third-party software requires BLAS or LAPACK, you can use MKL to supply this functionality. Replace generic instructions that include link options like <span style="white-space: nowrap;">`-lblas`</span> or <span style="white-space: nowrap;">`-llapack`</span> with the simpler MKL approach described above. There is no need to download and install alternatives like OpenBLAS.
 
 #### [Using MKL as BLAS/LAPACK with TACC's MATLAB, Python, and R Modules](#mkl-tacc) { #mkl-tacc }
 
@@ -45,7 +45,7 @@ TACC's MATLAB, Python, and R modules all use threaded (parallel) MKL as their un
 
 #### [Controlling Threading in MKL](#mkl-threading) { #mkl-threading }
 
-Any code that calls MKL functions can potentially benefit from MKL's thread-based parallelism; this is true even if your code is not otherwise a parallel application. If you are linking to the threaded MKL (using <span style="white-space: nowrap;">"`-mkl`"</span>, <span style="white-space: nowrap;">"`-mkl=parallel`"</span>, or the equivalent explicit link line), you need only specify an appropriate value for the max number of threads available to MKL. You can do this with either of the two environment variables `MKL_NUM_THREADS` or `OMP_NUM_THREADS`. The environment variable `MKL_NUM_THREADS` specifies the max number of threads available to each instance of MKL, and has no effect on non-MKL code. If `MKL_NUM_THREADS` is undefined, MKL uses `OMP_NUM_THREADS` to determine the max number of threads available to MKL functions. In either case, MKL will attempt to choose an optimal thread count less than or equal to the specified value. Note that `OMP_NUM_THREADS` defaults to 1 on TACC systems; if you use the default value you will get no thread-based parallelism from MKL.
+Any code that calls MKL functions can potentially benefit from MKL's thread-based parallelism; this is true even if your code is not otherwise a parallel application. If you are linking to the threaded MKL (using <span style="white-space: nowrap;">`-mkl`</span>, <span style="white-space: nowrap;">`-mkl=parallel`</span>, or the equivalent explicit link line), you need only specify an appropriate value for the max number of threads available to MKL. You can do this with either of the two environment variables `MKL_NUM_THREADS` or `OMP_NUM_THREADS`. The environment variable `MKL_NUM_THREADS` specifies the max number of threads available to each instance of MKL, and has no effect on non-MKL code. If `MKL_NUM_THREADS` is undefined, MKL uses `OMP_NUM_THREADS` to determine the max number of threads available to MKL functions. In either case, MKL will attempt to choose an optimal thread count less than or equal to the specified value. Note that `OMP_NUM_THREADS` defaults to 1 on TACC systems; if you use the default value you will get no thread-based parallelism from MKL.
 
 If you are running a single serial, unthreaded application (or an unthreaded MPI code involving a single MPI task per node) it is usually best to give MKL as much flexibility as possible by setting the max thread count to the total number of hardware threads on the node (128 on AMD Milan). Of course things are more complicated if you are running more than one process on a node: e.g. multiple serial processes, threaded applications, hybrid MPI-threaded applications, or pure MPI codes running more than one MPI rank per node. See <http://software.intel.com/en-us/articles/recommended-settings-for-calling-intel-mkl-routines-from-multi-threaded-applications> and related Intel resources for examples of how to manage threading when calling MKL from multiple processes. 
 

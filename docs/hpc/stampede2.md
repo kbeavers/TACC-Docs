@@ -611,9 +611,9 @@ Option | Argument | Comments
 --- | --- | ---
 <code>-p</code> | <i>queue_name</i> | Submits to queue (partition) designated by <i>queue_name</i>
 <code>-J</code> |  <i>job_name</i> |  Job Name
-<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
-<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code><span style="white-space: nowrap;">-N</span></code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
-<code><span style="white-space: nowrap;">--ntasks-per-node</span></code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
+<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) <code>-N</code> and <code>-n</code>; or<br>(2) <code>-N</code> and <code>--ntasks-per-node</code>. 
+<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See <code><span style="white-space: nowrap;">-N</span></code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as <code>-N</code>.
+<code><span style="white-space: nowrap;">--ntasks-per-node</span></code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See <code>-N</code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
 <code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
 <code>--mail-user=</code> | <i>email_address</i> | Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
 <code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code> | Specify when user notifications are to be sent (one option per line).
@@ -1610,10 +1610,10 @@ Follow the steps below to start an interactive session.
 
 	You may modify or overwrite script defaults with `sbatch` command-line options:
 
-	*  "<code>-t <i>hours:minutes:seconds</i></code>" modify the job runtime 
-	*  "<code>-A <i>projectnumber</i></code>" specify the project/allocation to be charged 
-	*  "<code>-N <i>nodes</i></code>" specify number of nodes needed 
-	*  "<code>-p <i>partition</i></code>" specify an alternate queue. 
+	*  <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime 
+	*  <code>-A <i>projectnumber</i></code> specify the project/allocation to be charged 
+	*  <code>-N <i>nodes</i></code> specify number of nodes needed 
+	*  <code>-p <i>partition</i></code> specify an alternate queue. 
 
 	See more `sbatch` options in the [Common `sbatch` Options](#table6)
 
@@ -1636,8 +1636,8 @@ Follow the steps below to start an interactive session.
 
 	where:
 
-	*  "<code><i>yyyy</i></code>" is the port number given by the vncserver batch job 
-	*  "<code><i>xxxx</i></code>" is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
+	*  <code><i>yyyy</i></code> is the port number given by the vncserver batch job 
+	*  <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Stampede2 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well 
 	*  `-f` instructs SSH to only forward ports, not to execute a remote command 
 	*  `-N` puts the `ssh` command into the background after connecting 
 	*  `-L` forwards the port 

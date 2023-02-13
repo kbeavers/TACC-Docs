@@ -63,7 +63,7 @@ Corral group quotas will be set to the quantity each project has been allocated.
 
 There are no limitations on the size of files stored on Corral nor are there limits on the number of files per-directory; by default, there is a limit of 1 million files per 5TB allocated, but limited exceptions to allow for higher file counts can be granted on request. You may submit an exception request through the ticket system if your dataset will have exceptionally high file counts. Limitations on overall usage are set through quotas on the project group - once you go over the allocated limit, you will receive quota errors when trying to write new data or create new files on the file system. Quotas can also be set on a per-user basis if project PIs wish to control the usage of individuals within a research group.
 
-When creating files on Corral, it is important that you be aware of your current Group Identity (GID), as this will control the sharing permissions and the project against which the data will be charged. You may use the command "<code>newgrp <i>groupname</i></code>" to change your effective GID before writing data, and you can check your default group either through the user portal or with the `id` command on any TACC system.
+When creating files on Corral, it is important that you be aware of your current Group Identity (GID), as this will control the sharing permissions and the project against which the data will be charged. You may use the command <code>newgrp <i>groupname</i></code> to change your effective GID before writing data, and you can check your default group either through the user portal or with the `id` command on any TACC system.
 
 
 ### [Data Retention Policies](#policies-retention) { #policies-retention }

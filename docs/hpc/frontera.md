@@ -856,9 +856,9 @@ Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) belo
 | --- | --- | -- |
 <code>-p</code> | <i>queue_name</i> | Submits to queue (partition) designated by <i>queue_name</i>
 <code>-J</code> | <i>job_name</i> | Job Name
-<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) "<code>-N</code>" and "<code>-n</code>"; or<br>(2) "<code>-N</code>" and "<code>--ntasks-per-node</code>". 
-<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as "<code>-N</code>".
-<span style="white-space: nowrap;"><code>--ntasks-per-node</code></span><br>or<br><code>--tasks-per-node</code></td> | <i>tasks_per_node</i> | This is MPI tasks per node. See "<code>-N</code>" above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
+<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) <code>-N</code> and <code>-n</code>; or<br>(2) <code>-N</code> and <code>--ntasks-per-node</code>. 
+<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See <code>-N</code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as <code>-N</code>.
+<span style="white-space: nowrap;"><code>--ntasks-per-node</code></span><br>or<br><code>--tasks-per-node</code></td> | <i>tasks_per_node</i> | This is MPI tasks per node. See <code>-N</code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
 <code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
 <span style="white-space: nowrap;"><code>--mail-user=</code></span> | <i>email_address</i> | Specify the email address to use for notifications.
 <code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or <code>all</code> | Specify when user notifications are to be sent (one option per line).
@@ -1751,7 +1751,7 @@ c123-456$ <b>ibrun -np 4 python3 tf_cnn_benchmarks.py --variable_update=horovod 
 *Coming Soon*
 ## [Visualization and Virtual Network Computing (VNC) Sessions](#vis)
 
-<p class="introtext">Frontera uses Intel's Cascade Lake (CLX) processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing "<code>module load swr</code>".</p>
+<p class="introtext">Frontera uses Intel's Cascade Lake (CLX) processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing <code>module load swr</code>.</p>
 
 Frontera currently has no separate visualization queue. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to Frontera's `development` queue for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket through the Frontera Portal.
 

@@ -7,5 +7,5 @@ TACC's `sanitytool` module loads an account-level diagnostic package that detect
 login1$ <b>module load sanitytool</b>
 login1$ <b>sanitycheck</b></pre>
 
-Execute "`module help sanitytool`" for more information.
+Execute `module help sanitytool` for more information.
 
