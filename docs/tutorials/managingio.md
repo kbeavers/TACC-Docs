@@ -107,7 +107,7 @@ If you are close to file quota on either the `$WORK` or `$HOME` file system, you
 
 Monitor your file system's quotas and usage using the `taccinfo` command. This output displays whenever you log on to a TACC resource.
 
-<pre class="cmd-line">
+``` { .bash .cmd-line }
 ---------------------- Project balances for user <user> ----------------------
 | Name           Avail SUs     Expires | Name           Avail SUs     Expires |
 | Allocation             1             | Alloc                100             |
@@ -117,9 +117,10 @@ Monitor your file system's quotas and usage using the `taccinfo` command. This o
 | /work             107.5    1024.0    10.50         2434     3000000    0.08 |
 | /scratch1           0.0       0.0     0.00            3           0    0.00 |
 | /scratch3       41829.5       0.0     0.00       246295           0    0.00 |
--------------------------------------------------------------------------------</pre>
+-------------------------------------------------------------------------------
+```
 
-= File.read "../include/tinfo.html"
+{% include File.read "../include/tinfo.md" %}
 
 
 ### [Manipulate Data in Memory, not on Disk](#bestpractices-memory) { #bestpractices-memory }
@@ -150,7 +151,9 @@ The OOOPS module provides two functions `set_io_param` and `set_io_param_batch` 
 
 These functions instruct the system to modulate your job's I/O activity, thus reducing the impact on the designated file system. For both functions, use "0" to indicate the `$SCRATCH` file system and "1" to indicate the `$WORK` file system. Note: these indices are subject to change. See each command's `help` option to ensure correct parameters:
 
-<pre class="cmd-line">c123-456$ <b>set_io_param -h</b></pre> 
+``` { .bash .cmd-line }
+c123-456$ <b>set_io_param -h</b>
+```
 
 Indicate the frequency of `open` and `stat` function calls, from the least to the most, with `low`, `medium`, or `high`.
 
@@ -168,9 +171,12 @@ First, load the `ooops` module in your job script or `idev` session to deploy OO
 &#46;...
 module load ooops 
 set_io_param 0 low 
-ibrun <i>myprogram</i> </pre></td>
+ibrun <i>myprogram</i> 
+```
+</td>
 <td width="450" valign="top">
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
+
 	login1$ <b>idev -N 1</b>
 	&#46;...
 	c123-456$ <b>module load ooops</b>
@@ -181,7 +187,10 @@ ibrun <i>myprogram</i> </pre></td>
 		
 To turn off throttling on the `$SCRATCH` file system for a submitted job, run the following command on a login node or within an `idev` session while the job is running:
 
-<pre class="cmd-line">login1$ <b>set_io_param 0 unlimited</b></pre>
+``` { .bash .cmd-line }
+login1$ <b>set_io_param 0 unlimited</b>
+```
+
 
 #### [Example: Multi-Node Job on `$SCRATCH`](#ooops-howto-multinode) { #ooops-howto-multinode }
 
@@ -199,17 +208,22 @@ To turn off throttling on the `$SCRATCH` file system for a submitted job, run th
     ```
 </td>
 <td width="450" valign="top">
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
+
 	login1$ <b>idev -N 4</b>
 	&#46;...
 	c123-456$ <b>module load ooops</b>
 	c123-456$ <b>set_io_param_batch [jobid] 0 low</b>
-	c123-456$ <b>ibrun <i>myprogram</i></b></pre>
+	c123-456$ <b>ibrun <i>myprogram</i></b>
+	```
+
 </td></tr></table>
 
 To turn off throttling on the `$SCRATCH` file system for a submitted job, you can run the following command (on a login node) after the job is submitted:
 
-<pre class="cmd-line">login1$ <b>set_io_param_batch [jobid] 0 unlimited</b></pre>
+``` { .bash .cmd-line }
+login1$ <b>set_io_param_batch [jobid] 0 unlimited</b>
+```
 
 ### [I/O Warning](#ooops-warnings) { #ooops-warnings }
 

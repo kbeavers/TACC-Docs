@@ -36,7 +36,9 @@ Rather than describe all these steps here we have sample startup scripts that yo
 
 Your account may already have these files, but if not run the following script:
 
-<pre class="cmd-line">login1$ <b>/usr/local/startup_scripts/install_default_scripts</b></pre>
+``` { .bash .cmd-line }
+login1$ <b>/usr/local/startup_scripts/install_default_scripts</b>
+```
 
 Then edit your new `~/.bashrc` to suit yourself.
 
