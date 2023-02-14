@@ -379,7 +379,7 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 
 <details><summary>Serial Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -425,11 +425,12 @@ date
 ./mycode.exe         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre> </details>
+```
+ </details>
 
 <details><summary>MPI Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -476,12 +477,13 @@ date
 ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre> </details>
+```
+ </details>
 
 
 <details><summary>OpenMP Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -534,11 +536,12 @@ export OMP_NUM_THREADS=34
 ./mycode.exe         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre> </details>
+```
+ </details>
 
 <details><summary>Hybrid Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script for TACC MACHINENAME nodes

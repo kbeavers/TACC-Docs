@@ -646,29 +646,32 @@ The primary purpose of your job script is to launch your research application. H
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
-<pre class="job-script">
+``` { .bash .job-script }
 myprogram                   # executable in a directory listed in $PATH
 $WORK/apps/myprov/myprogram # explicit full path to executable
 ./myprogram                 # executable in current directory
-./myprogram -m -k 6 input1  # executable with notional input options</pre>
+./myprogram -m -k 6 input1  # executable with notional input options
+```
 
 #### [Launching One Multi-Threaded Application](#running-launching-multi) { #running-launching-multi }
 
 Launch a threaded application the same way. Be sure to specify the number of threads. **Note that the default OpenMP thread count is 1**.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
-./myprogram</pre>
+./myprogram
+```
 
 #### [Launching One MPI Application](#running-launching-mpi) { #running-launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Stampede2-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #SBATCH -N 5
 #SBATCH -n 200
 ibrun ./myprogram              # ibrun uses the $SBATCH directives to properly allocate nodes and tasks
-</pre>
+
+```
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
@@ -681,9 +684,10 @@ c123-456$ <b>ibrun ./myprogram</b>    # ibrun uses idev's arguments to properly 
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
-ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
+ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
+```
 
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (KNL nodes have 68 cores, SKX nodes have 48 cores, ICX nodes have 80 cores).
 
@@ -695,12 +699,13 @@ TACC's `launcher` utility provides an easy way to launch more than one serial ap
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
-<pre class="job-script">
+``` { .bash .job-script }
 module load git
 module list
 ./preprocess.sh
 ibrun ./myprogram input1	# runs after preprocess.sh completes
-ibrun ./myprogram input2    # runs after previous MPI app completes</pre>
+ibrun ./myprogram input2    # runs after previous MPI app completes
+```
 
 #### [More than One MPI Application Running Concurrently](#running-launching-mpisimultaneous) { #running-launching-mpisimultaneous }
 
@@ -713,10 +718,11 @@ To run more than one MPI application simultaneously in the same job, you need to
 
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute <span style="white-space: nowrap;">`ibrun --help`</span> for more information. **Don't forget the ampersands (`&`)** to launch the jobs in the background, **and the `wait` command** to pause the script until the background tasks complete:
 
-<pre class="job-script">
+``` { .bash .job-script }
 ibrun -n 64 -o  0 task_affinity ./myprogram input1 &amp;   # 64 tasks; offset by  0 entries in hostfile.
 ibrun -n 64 -o 64 task_affinity ./myprogram input2 &amp;   # 64 tasks; offset by 64 entries in hostfile.
-wait                                                       # Required; else script will exit immediately.</pre>
+wait                                                       # Required; else script will exit immediately.
+```
 
 The `task_affinity` script does two things:
 
@@ -729,12 +735,13 @@ The `task_affinity` script does two things:
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, <span style="white-space: nowrap;">`numactl -C`</span> specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=2
 numactl -C 0-1 ./myprogram inputfile1 &amp;  # HW threads (hence cores) 0-1. Note ampersand.
 numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Note ampersand.
 
-wait</pre>
+wait
+```
 
 
 ### [Interactive Sessions with `idev` and `srun`](#running-idev) { #running-idev }
@@ -795,11 +802,15 @@ C448-004$</pre>
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-<pre class="job-script"><s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect</pre>
+``` { .bash .job-script }
+<s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect
+```
 
 Instead, use the following directive:
 
-<pre class="job-script">#SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID</pre>
+``` { .bash .job-script }
+#SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
+```
 
 Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` directive.
 
@@ -862,7 +873,7 @@ date
 </details>
 
 <details><summary>SKX Serial Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -909,10 +920,11 @@ date
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>KNL MPI Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -960,10 +972,11 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>SKX MPI Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1011,10 +1024,11 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>ICX MPI Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1077,10 +1091,11 @@ cd $SCRATCH
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 #---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>KNL OpenMP Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1134,10 +1149,11 @@ export OMP_NUM_THREADS=34
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>SKX OpenMP Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1191,11 +1207,12 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 
 <details><summary>ICX OpenMP Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1261,11 +1278,12 @@ cd $SCRATCH
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 #---------------------------------------------------
-</pre></details>
+```
+</details>
 
 
 <details><summary>KNL Hybrid Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1326,10 +1344,11 @@ export OMP_NUM_THREADS=16
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>SKX Hybrid Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1390,10 +1409,11 @@ export OMP_NUM_THREADS=12
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>ICX Hybrid Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1469,7 +1489,8 @@ cd $SCRATCH
 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #---------------------------------------------------
-</pre></details>
+```
+</details>
 
    
    
