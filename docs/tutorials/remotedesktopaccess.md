@@ -101,7 +101,9 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 
 	Copy into your home directory, then edit either of the job scripts listed above to include your project allocation:
 
-	<pre class="job-script">#SBATCH -A <i>projectname</i></pre>
+	``` { .bash .job-script }
+	#SBATCH -A <i>projectname</i>
+	```
 
 	or you can provide the allocation number on the command line as an argument to the `sbatch` command:
 

@@ -54,7 +54,7 @@ date
 </details>
 
 <details><summary>SKX Serial Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -101,10 +101,11 @@ date
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>KNL MPI Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -152,10 +153,11 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>SKX MPI Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -203,10 +205,11 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>ICX MPI Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -269,10 +272,11 @@ cd $SCRATCH
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 #---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>KNL OpenMP Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -326,10 +330,11 @@ export OMP_NUM_THREADS=34
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>SKX OpenMP Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -383,11 +388,12 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 
 <details><summary>ICX OpenMP Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -453,11 +459,12 @@ cd $SCRATCH
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 #---------------------------------------------------
-</pre></details>
+```
+</details>
 
 
 <details><summary>KNL Hybrid Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -518,10 +525,11 @@ export OMP_NUM_THREADS=16
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>SKX Hybrid Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -582,10 +590,11 @@ export OMP_NUM_THREADS=12
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre></details>
+```
+</details>
 
 <details><summary>ICX Hybrid Job in Normal Queue</summary>
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -661,7 +670,8 @@ cd $SCRATCH
 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #---------------------------------------------------
-</pre></details>
+```
+</details>
 
    
    

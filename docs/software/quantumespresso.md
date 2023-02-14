@@ -28,7 +28,7 @@ Use the following job scripts for Quantum Espresso runs on Stampede2 and Fronter
 
 The script below submits a Quantum Espresso job to Frontera's normal queue (CLX compute nodes), requesting 4 nodes and 224 tasks for a maximum of 4 hours. Refer to Frontera's [Running Jobs][FRONTERAUGRUNNING] section for more Slurm options.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash 
 #SBATCH -J qe                               # define the job name
 #SBATCH -o qe.%j.out                        # define stdout & stderr output files 
@@ -40,13 +40,14 @@ The script below submits a Quantum Espresso job to Frontera's normal queue (CLX 
 #SBATCH -A <i>projectname</i>
 
 module load qe/6.4.1                        # setup environment
-ibrun pw.x -input qeinput > qe_test.out     # launch job</pre>
+ibrun pw.x -input qeinput > qe_test.out     # launch job
+```
 
 ### [Sample Job Script: QE on Stampede2](#jobscript-stampede2) { #jobscript-stampede2 }
 
 The script below submits a Quantum Espresso job to Stampede2's `normal` queue (KNL compute nodes), requesting 4 nodes and 256 tasks for a maximum of 4 hours. Refer to Stampede2's [Running Jobs][STAMPEDE2UGRUNNING] section for more Slurm options. 
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash 
 #SBATCH -J qe          						# define the job name
 #SBATCH -o qe.%j.out    					# define stdout & stderr output files 
@@ -58,7 +59,8 @@ The script below submits a Quantum Espresso job to Stampede2's `normal` queue (K
 #SBATCH -A <i>projectname</i>
 
 module load qe/6.2.1						# setup environment
-ibrun pw.x -input qeinput > qe_test.out	    # launch job</pre>
+ibrun pw.x -input qeinput > qe_test.out	    # launch job
+```
 
 ## [References](#refs) { #refs }
 

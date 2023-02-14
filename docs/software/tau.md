@@ -82,7 +82,7 @@ c455-073[knl]$ <b>export TAU_PROFILE=0 TAU_TRACE=1</b>
 c455-073[knl]$ <b>ibrun myprogram</b>
 </pre>
 
-<pre class="job-script">
+``` { .bash .job-script }
 &#35;SBATCH directives
 ...
 export PROFILEDIR=mytaudir/profiles
@@ -92,7 +92,7 @@ ibrun myprogram
 export TAU_PROFILE=0
 export TAU_TRACE=1
 ibrun myprogram
-</pre>
+```
 
 Then run your program as normal.  Once execution finishes, you can process and examine the TAU profile and/or tracing output.
 

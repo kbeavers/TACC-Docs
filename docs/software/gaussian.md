@@ -32,7 +32,7 @@ Gaussian 16 is currently installed on TACC's Stampede2, Frontera and Lonestar5 c
 
 The Linda MPI addon is not part of TACC's Gaussian module, so each Gaussian execution cannot use more than one node. In the Gaussian input file, (`input.conf` in the example below), set the `%NProcShared` variable to the number of CPU cores you wish to use. Do not use the `ibrun` invocation. Gaussian job submission scripts should look something like the following: 
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J my_job_name # Job Name
 #SBATCH -o output.%j # Output file name (%j expands to jobID)
@@ -44,7 +44,8 @@ The Linda MPI addon is not part of TACC's Gaussian module, so each Gaussian exec
 
 module load gaussian
 
-g16 < input.conf > output.log</pre>
+g16 < input.conf > output.log
+```
 
 ## [References](#refs) { #refs }
 

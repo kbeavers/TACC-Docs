@@ -72,7 +72,7 @@ Compute nodes should not reference the `$WORK` file system unless it's to stage 
 
 Your job script should also direct the job's output to the local scratch directory:
 
-<pre class="job-script">
+``` { .bash .job-script }
 &#35; stage executable and data
 cd $SCRATCH
 mkdir testrunA
@@ -83,7 +83,8 @@ cp $WORK/jobinputdata testrunA
 ibrun testrunA/myprogram testrunA/myinputdata &gt; testrunA/output
 
 &#35; copy results back permanent storage once job is done
-cp testrunA/output $WORK/savetestrunA</pre>
+cp testrunA/output $WORK/savetestrunA
+```
 
 
 ### [Avoid Writing One File Per Process](#bestpractices-perprocess) { #bestpractices-perprocess }
@@ -161,7 +162,9 @@ First, load the `ooops` module in your job script or `idev` session to deploy OO
 
 <table border="1">
 <tr><th>Job Script Example</th><th>Interactive Session Example</th></tr>
-<tr><td><pre class="job-script">#SBATCH -N 1<br>#SBATCH -J myjob.%j<br>
+<tr><td>
+``` { .bash .job-script }
+#SBATCH -N 1<br>#SBATCH -J myjob.%j<br>
 &#46;...
 module load ooops 
 set_io_param 0 low 
@@ -172,7 +175,8 @@ ibrun <i>myprogram</i> </pre></td>
 	&#46;...
 	c123-456$ <b>module load ooops</b>
 	c123-456$ <b>set_io_param 0 low</b>
-	c123-456$ <b>ibrun <i>myprogram</i></b></pre>
+	c123-456$ <b>ibrun <i>myprogram</i></b>
+```
 </td></tr></table>
 		
 To turn off throttling on the `$SCRATCH` file system for a submitted job, run the following command on a login node or within an `idev` session while the job is running:
@@ -186,11 +190,14 @@ To turn off throttling on the `$SCRATCH` file system for a submitted job, run th
 <th>Interactive Session Example</th></tr>
 <tr>
 <td width="450" valign="top"> 
-	<pre class="job-script">#SBATCH -N 4<br>#SBATCH -n 64<br>#SBATCH -J myjob.%j
+	``` { .bash .job-script }
+	#SBATCH -N 4<br>#SBATCH -n 64<br>#SBATCH -J myjob.%j
 	&#46;...
 	module load ooops
 	<span style="white-space: nowrap;">set_io_param_batch $SLURM_JOBID 0 low</span>
-	ibrun <i>myprogram</i></pre></td>
+	ibrun <i>myprogram</i>
+    ```
+</td>
 <td width="450" valign="top">
 	<pre class="cmd-line">
 	login1$ <b>idev -N 4</b>
@@ -219,7 +226,9 @@ For jobs that make use of large numbers of Python modules or use local installat
 
 **On Stampede2 and Frontera**: Load the `python_cacher` module in your job script:
 
-<pre class="job-script">module load python_cacher</pre>
+``` { .bash .job-script }
+module load python_cacher
+```
 
  This library will cache python modules to local disk so python programs won't keep pulling the modules over and over from the `/scratch` or `/work` file systems.
 
@@ -230,11 +239,12 @@ In case `python_cacher` does not work, you can copy your Python/Anaconda/MiniCon
 
 **Stampede2 and Frontera**: To track the full extent of your I/O activity over the course of your job, you can employ another TACC tool, `iomonitor` that will report on `open()` and `stat()` calls during your job's run. Place the following lines in your job submission script after your Slurm commands, to wrap your executable:
 
-<pre class="job-script">
+``` { .bash .job-script }
 export LD_PRELOAD=/home1/apps/tacc-patches/io_monitor/io_monitor.so:\
 	/home1/apps/tacc-patches/io_monitor/hook.so
 ibrun my_executable
-unset LD_PRELOAD</pre>
+unset LD_PRELOAD
+```
 
 Log files will be generated during the job run in the working directory with prefix `log_io_*.`
 

@@ -6,31 +6,31 @@
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 	
-<pre class="job-script">
+``` { .bash .job-script }
 myprogram                   			# executable in a directory listed in $PATH
 $SCRATCH/apps/myprov/myprogram 			# explicit full path to executable
 ./myprogram                 			# executable in current directory
 ./myprogram -m -k 6 input1  			# executable with notional input options
-</pre>
+```
 
 ### [Launching One Multi-Threaded Application](#launching-multithreaded)
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=56   	# 56 total OpenMP threads (1 per CLX core)
 ./myprogram
-</pre>
+```
 
 ### [Launching One MPI Application](#launching-mpi)
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Frontera-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #SBATCH -N 5				
 #SBATCH -n 200
 ibrun ./myprogram				# ibrun uses the $SBATCH directives to properly allocate nodes and tasks
-</pre>
+```
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
@@ -45,9 +45,10 @@ c123-456$ <b>ibrun ./myprogram</b>	   # ibrun uses idev's arguments to properly 
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
-ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
+ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
+```
 
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (56 cores in the development/small/normal/large/flex [queues](../running#frontera-production-queues).
 
@@ -60,13 +61,13 @@ TACC's `launcher` utility provides an easy way to launch more than one serial ap
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
-<pre class="job-script">
+``` { .bash .job-script }
 module load git
 module list
 ./preprocess.sh
 ibrun ./myprogram input1    # runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes
-</pre>
+```
 
 ### [More than One MPI Application Running Concurrently](#launching-mpiconcurrent)
 
@@ -79,11 +80,11 @@ To run more than one MPI application simultaneously in the same job, you need to
 
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=112 total MPI tasks, Slurm will generate a hostfile with 112 entries (28 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute `ibrun --help` for more information. Don't forget the ampersands ("&") to launch the jobs in the background, and the `wait` command to pause the script until the background tasks complete:
 
-<pre class="job-script">
+``` { .bash .job-script }
 ibrun -n 56 -o  0 task_affinity ./myprogram input1 &    # 56 tasks; offset by  0 entries in hostfile.
 ibrun -n 56 -o 56 task_affinity ./myprogram input2 &    # 56 tasks; offset by 56 entries in hostfile.
 wait                                                    # Required; else script will exit immediately.
-</pre>
+```
 
 The `task_affinity` script manages task placement and memory pinning when you call ibrun with the `-n`, `-o` switches (it's not necessary under any other circumstances). 
 
@@ -115,21 +116,24 @@ Specifically, the proc-id mapping to the cores for CLX is:
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on these systems, the places would be:
  
-<pre class="job-script">
+``` { .bash .job-script }
 CLX socket 0:  export OMP_PLACES="{0,56},{2,58},{4,60}"
-CLX socket 1:  export OMP_PLACES="{1,57},{3,59},{5,61}"</pre>
+CLX socket 1:  export OMP_PLACES="{1,57},{3,59},{5,61}"
+```
  
 Interval notation can be used to express a sequences of places.  The syntax is: {proc-ids},N,S, where N is the number of places to create from the base place ({proc-ids}) with a stride of S.  Hence the above sequences could have been written:
  
-<pre class="job-script">
+``` { .bash .job-script }
 CLX socket 0:  export OMP_PLACES="{0,56},3,2"
-CLX socket 1:  export OMP_PLACES="{1,57},3,2"</pre>
+CLX socket 1:  export OMP_PLACES="{1,57},3,2"
+```
  
 In the example below two OpenMP programs are executed on a single node, each using 28 threads. The first program uses the cores on socket 0.  It is put in the background, using the ampersand (&) character at the end of the line, so that the job script execution can continue to the second OpenMP program execution, which uses the cores on socket 1.  It, too, is put in the background, and the job execution waits for both to finish with the wait command at the end.
  
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=28
 env OMP_PLACES="{0,56},28,2" ./omp.exe &   #execution on socket 0 cores
 env OMP_PLACES="{1,57},28,2" ./omp.exe &   #execution on socket 1 cores
-wait</pre>
+wait
+```
 

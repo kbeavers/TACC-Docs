@@ -33,7 +33,7 @@ You can also submit your MATLAB job to the batch nodes (compute nodes) on the TA
 
 ### [Example 1. Sample MATLAB job script to run on Stampede2](#example1)
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J matlabjob              # job name
 #SBATCH -e matlabjob.%j.err       # error file name 
@@ -45,7 +45,8 @@ You can also submit your MATLAB job to the batch nodes (compute nodes) on the TA
 #SBATCH -p skx-normal             # designate queue 
 
 module load matlab
-matlab -nodesktop -nodisplay -nosplash &lt; mymatlabprog.m</pre>
+matlab -nodesktop -nodisplay -nosplash &lt; mymatlabprog.m
+```
 
 Then submit the job to the scheduler in the standard way. See the Running Jobs section in the respective user guides
 Resource | Submit a batch job

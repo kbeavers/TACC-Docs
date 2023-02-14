@@ -49,7 +49,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
-	<pre class="job-script">
+	``` { .bash .job-script }
 	&#35;!/bin/bash
 
 	HOST=$1
@@ -57,7 +57,8 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 	LOCAL_RANK=${PMI_RANK}
 
 	python3 -m torch.distributed.launch --nproc_per_node=4 --nnodes=$NODES --node_rank=${LOCAL_RANK} --master_addr=$HOST \
-	   examples/torch_cifar10_resnet.py --kfac-update-freq 0</pre>
+	   examples/torch_cifar10_resnet.py --kfac-update-freq 0
+	```
 
 
 1. Run multi-gpu training:

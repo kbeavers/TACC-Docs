@@ -28,7 +28,7 @@ nav:
   - TACC Basics :
     - Introduction: index.md
     - Getting Started: getting-started.md
-    - Multi-Factor Authentication (MFA): mfa.md
+    - Multi-Factor Authentication (MFA): tutorials/mfa.md
     - Globus File Transfer: globus-file-transfer.md
     - SSH Access: ssh-access.md
     - Code of Conduct: code-of-conduct.md

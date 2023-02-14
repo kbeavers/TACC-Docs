@@ -1,4 +1,4 @@
-Multifactor Authentication at TACC 
+# Multifactor Authentication at TACC 
 *Last update: January 14, 2022*
 
 TACC requires Multi-Factor Authentication (MFA) as an additional security measure when accessing all compute and storage resources.  To set up MFA pairing at TACC on your approved account, proceed directly to the [TACC pairing page](http://portal.tacc.utexas.edu/account-profile/-/mfa/pairing).

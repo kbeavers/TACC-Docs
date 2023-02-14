@@ -56,7 +56,7 @@ Launch the ANSYS GUI within the VNC session:
 
 You can also submit your ANSYS job to the batch nodes (compute nodes) on TACC resources. To do so, first make sure that the ANSYS module has been loaded, and then launch your ANSYS programs as shown in the sample Frontera job script below.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J ansysjob              # job name
 #SBATCH -e ansysjob.%j.err       # error file name 
@@ -77,7 +77,8 @@ MY_JOB_DIR = /scratch1/01234/joe/Ansys_test
 		-p ansys -dis -mpi INTELMPI -np 56 -lch    \
 		-dir &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR</span>&quot; \
 		-j &quot;Ansys_test&quot; -s read -l en-us -b \
-		&lt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_input.txt</span>&quot; &gt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_output.out</span>&quot;</pre>
+		&lt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_input.txt</span>&quot; &gt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_output.out</span>&quot;
+```
 
 To obtain the correct <span style="color:blue;font-style:bold">`Your-ANSYS-COMMAND-HERE`</span>, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No `ibrun` or `mpirun` command is needed for running ANSYS jobs.
 

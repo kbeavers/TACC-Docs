@@ -41,7 +41,7 @@ Next, prepare a batch job submission script for running AlphaFold. Two different
 
 See the AlphaFold documentation for more information on the speed / quality tradeoff of each preset. The example templates each need to be customized before they can be used. Copy the desired template to your `$WORK` or `$SCRATCH` space along with the input fasta file. After necessary customizations, a batch script for running the full databases on Frontera may contain:
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 # -----------------------------------------------------------------
 #SBATCH -J my_af2_job                 # Job name
@@ -64,7 +64,8 @@ run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--fasta_paths=$SCRATCH/sample.fasta \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--output_dir=$SCRATCH/output \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--model_preset=monomer \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--use_gpu_relax=True</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--use_gpu_relax=True
+```
 
 In the batch script, make sure to use a batch queue (`#SBATCH -p`), node / wallclock limits, and allocation name (`#SBATCH -A`) appropriate to the machine you are running on. Also, make sure the path shown in the module use line matches the machine-specific "Module" path listed in the table above.
 
@@ -120,7 +121,7 @@ NOTE: Due to the way `launcher_gpu` distributes tasks to individual GPUs, the fu
 
 Prepare a batch job submission script by merging the AlphaFold template with a launcher template. Adjust the number of nodes, number of tasks, and the wall clock time appropriately for the number of jobs in the `jobfile`:
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 # -----------------------------------------------------------------
 #SBATCH -J my_af2_launcher_job          # Job name
@@ -144,7 +145,8 @@ export LAUNCHER_WORKDIR=$SCRATCH
 export LAUNCHER_JOB_FILE=jobfile
 
 # Run AlphaFold with Launcher
-${LAUNCHER_DIR}/paramrun</pre>
+${LAUNCHER_DIR}/paramrun
+```
 
 Once the input sequences, the `jobfile`, and the batch job submission script are all prepared, submit the job to the queue with:
 

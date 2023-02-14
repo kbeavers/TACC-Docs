@@ -30,7 +30,9 @@ Variable | Value
 
 To launch simulation jobs, please use the TACC-specific MPI launcher `ibrun`, which is a TACC-system-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. The executable, `gmx_mpi`, is the parallel component of GROMACS. It can be invoked in a job script like this:
 
-<pre class="job-script">ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
+``` { .bash .job-script }
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
+```
 
 In the above command, `gmx_mpi` (single-precision) can be replaced by `gmx_mpi_d` (double-precision) or `gmx_tmpi` (single-precision, single-node thread-MPI). Please refer to the GROMACS manual for more information.
 
@@ -125,7 +127,7 @@ Here are two job scripts for running the latest version of GROMACS on Lonestar6.
 
 The following job script requests 4 nodes (128 cores/node) for 24 hours using Lonestar6 AMD EPYC CPU nodes (`normal` queue).
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name 
@@ -138,13 +140,14 @@ The following job script requests 4 nodes (128 cores/node) for 24 hours using Lo
 
 module load gromacs/2022.1
 export OMP_NUM_THREADS=1      # 1 OMP thread per MPI task
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
+```
  
 #### [GPU](#running-lonestar6-gpu) { #jobscript-lonestar6-gpu }
 
 The following job script requests two [A100 GPU nodes on Lonestar6](../../hpcugs/6lonestar/lonestar6/#queues). The `-gpu_id 000` directive indicates all three MPI ranks on the same node share the same GPU with id 0.  You may use, for example `-gpu_id 012`, to use all three available GPUs on each A100 GPU node.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J myjob      	     # job name
 #SBATCH -e myjob.%j.err      # error file name
@@ -162,7 +165,8 @@ export OMP_NUM_THREADS=4     # 4 OMP threads per MPI task
 ibrun gmx_mpi_gpu mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log -gpu_id 000
 
 # Case 2: the 3 MPI tasks on the same node run on GPU 0, 1, and 2 respectively
-ibrun gmx_mpi_gpu mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log -gpu_id 012</pre>
+ibrun gmx_mpi_gpu mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log -gpu_id 012
+```
 
 ## [References](#refs)
 

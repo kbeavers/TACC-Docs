@@ -26,7 +26,7 @@ The IRODS command-line utilities, collectively referred to as "i-commands", use 
 
 #### [Example 1. iRODS Configuration Template](#example1) { #example1 }
 
-<pre class="job-script">
+``` { .bash .job-script }
 {
 	"irods_host": "irods.corral.tacc.utexas.edu",
 	"irods_port": 1247,
@@ -49,7 +49,8 @@ The IRODS command-line utilities, collectively referred to as "i-commands", use 
 	"irods_maximum_size_for_single_buffer_in_megabytes": 32,
 	"irods_default_number_of_transfer_threads": 4,
 	"irods_transfer_buffer_size_for_parallel_transfer_in_megabytes": 4
-	}</pre>
+	}
+```
 
 ### [GUI Usage](#setup-gui) { #setup-gui }
 
