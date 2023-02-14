@@ -56,7 +56,8 @@ For this reason, users **must** bundle up their small-file-filled directories in
 
 The best way to bundle files is to use the UNIX `tar` or `gtar` commands to create single large files typically called "tarfiles". We include several examples below.  Consult the `tar` or `gtar` man pages for detailed information on these commands.
 
-<p class="portlet-msg-alert">From careful auditing of past performance (predominantly the total retrieval time for a given data set until completion), we strongly recommend an average file size within Ranch of between 300GB to 4TB.</p>
+!!! tip
+	From careful auditing of past performance (predominantly the total retrieval time for a given data set until completion), we strongly recommend an average file size within Ranch of between 300GB to 4TB.
 
 Users should be using `tar` or `gtar` to achieve file sizes in this range before placing them in Ranch.  Manipulating smaller files will detrimentally affect performance during both storage and retrieval.  For example, retrieval time of a 120TB data set comprised of `tar` files of 300GB can be an order of magnitude faster, or more, than the retrieval of the same data stored in its original form as individual files of 1GB or less.
 
@@ -68,9 +69,9 @@ The new Quantum-based environment is designed to meet the demand of retrieving m
 
 ### [Ranch Quotas](#organizing-quotas)  { #organizing-quotas }
 
-<p class="portlet-msg-info">
-<b>File Count Quota:</b> Users are limited to 50,000 files in their `$HOME` directories.  
-<b>File Space Quota:</b> Users are limited to 2 Terabytes (TB) of disk space in their `$HOME` directories.</p>
+!!! note
+	<b>File Count Quota:</b> Users are limited to 50,000 files in their `$HOME` directories.  
+	<b>File Space Quota:</b> Users are limited to 2 Terabytes (TB) of disk space in their `$HOME` directories.</p>
 
 
 You can display your current Ranch on-disk **file space usage** by executing the following UNIX command while the current directory is either the user or Project directory:

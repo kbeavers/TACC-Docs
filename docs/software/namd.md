@@ -17,7 +17,8 @@ The recommended and latest installed NAMD version is 2.14 on Frontera. Users are
 
 ### [Job Scripts: NAMD on Frontera](#running-frontera-jobscript) { #running-frontera-jobscript }
 
-<p class="portlet-msg-info">TACC staff recommends that users attempt runs with 4 tasks per node and 8 tasks per node (scales better at large number of nodes) and then pick the configuration that provides the best performance.</p>
+!!! note
+	TACC staff recommends that users attempt runs with 4 tasks per node and 8 tasks per node (scales better at large number of nodes) and then pick the configuration that provides the best performance.
 
 4 tasks per node:
 <pre class="job-script">
@@ -62,7 +63,8 @@ As of this date, the recommended and latest version is 2.14 . Users are welcome 
 
 ### [Job Script: NAMD on Stampede2's KNL Nodes](#jobscript-stampede2-knl) { #jobscript-stampede2-knl }
 
-<p class="portlet-msg-info">TACC staff recommends assigning 13 tasks per node for NAMD jobs running on Stampede2's KNL compute nodes. </p>
+!!! tip
+	TACC staff recommends assigning 13 tasks per node for NAMD jobs running on Stampede2's KNL compute nodes. 
 
 This job script requests 1 node and 4 MPI tasks: 4 tasks/node. 
 
@@ -105,7 +107,8 @@ As well as the Slurm `#SBATCH` directives (`-N` and `-n`), try varying the [affi
 
 ### [Job Script: NAMD on Stampede2's SKX Nodes](#jobscript-stampede2-skx) { #jobscript-stampede2-skx }
 
-<p class="portlet-msg-info">TACC staff recommends assigning 4 tasks per node for jobs running on Stampede2's SKX compute nodes. </p>
+!!! tip
+	TACC staff recommends assigning 4 tasks per node for jobs running on Stampede2's SKX compute nodes. 
 
 <pre class="job-script">
 #SBATCH -J test         # Job Name
@@ -147,7 +150,8 @@ login1$ <b>module load namd/2.14</b></pre>
 
 ### [Job Script: NAMD on Lonestar6](#running-lonestar6-jobscript) { #running-lonestar6-jobscript }
 
-<p class="portlet-msg-info">TACC staff recommends assigning 4 tasks per node for NAMD jobs running on Lonestar6's compute nodes.</p>
+!!! tip
+	TACC staff recommends assigning 4 tasks per node for NAMD jobs running on Lonestar6's compute nodes.
 
 The following Lonestar6 job script requests 2 node and 8 MPI tasks. To run the same job on more nodes, vary the `-N` and `-n` Slurm directives, **ensuring the value of `n` is four times the value of `N`**.  
 

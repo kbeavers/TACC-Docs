@@ -241,7 +241,8 @@ The compute nodes are where actual computations occur and where research is done
 
 A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](https://portal.tacc.utexas.edu/software/idev) or by [submitting a batch job](../running).
 
-<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.</p> 
+!!! caution
+	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.
 
 #### [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples) { #conduct-loginnodes-examples }
 
@@ -289,7 +290,8 @@ To run your jobs out `$SCRATCH`:
 * Make sure your job script directs all output to `$SCRATCH`  
 * Once your job is finished, move your output files to `$WORK` to avoid any data purges.
 
-<p class="portlet-msg-alert">Compute nodes should not reference <code>$WORK</code> unless it's to stage data in or out, and only before or after jobs.</p> 
+!!! tip
+	Compute nodes should not reference <code>$WORK</code> unless it's to stage data in or out, and only before or after jobs.
 
 Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [File System Usage Recommendations](#table-file-system-usage-recommendations). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.
 
@@ -323,7 +325,8 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
-<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also <a href="https://portal.tacc.utexas.edu/tutorials/managingio">Managing I/O on TACC Resources</a> for additional information.</p>
+!!! tip
+	If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also <a href="https://portal.tacc.utexas.edu/tutorials/managingio">Managing I/O on TACC Resources</a> for additional information.
 
 ### [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 
@@ -437,7 +440,8 @@ File System | Characteristics	| Purpose |
 
 ### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy } 
 
-<p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
+!!! caution
+	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.
 
 &#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">`ls -ul`</span> command to view access times.
 
@@ -451,7 +455,8 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 Your account-specific `$WORK` environment variable varies from system to system and is a sub-directory of `$STOCKYARD` ([Figure 3](#figure-3-stockyard-file-system)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Frontera points to the `$STOCKYARD/stampede2` subdirectory, a convenient location for files you use and jobs you run on Frontera. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Frontera and Stampede2, for example, the `$STOCKYARD/frontera` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Frontera account. 
 
-<p class="portlet-msg-alert">Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.</p>
+!!! tip
+	Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar5`, `stampede2`) will exist **only** if you have an allocation on that system.
 
@@ -476,7 +481,8 @@ Alias | Command
 
 Frontera's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives. Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
 
-<p class="portlet-msg-alert">Before transferring to, or creating large files on Frontera, be sure to set an appropriate default stripe count on the receiving directory.</p>
+!!! tip
+	Before transferring to, or creating large files on Frontera, be sure to set an appropriate default stripe count on the receiving directory.
 
 While the `$WORK` file system has hundreds of OSTs, Frontera's scratch system has far fewer. Therefore, the recommended stripe counts when transferring or creating large files depends on the file's destination. 
 
@@ -748,13 +754,15 @@ Like all TACC systems, Frontera's accounting system is based on node-hours: one 
 
 The Slurm scheduler tracks and charges for usage to a granularity of a few seconds of wall clock time. **The system charges only for the resources you actually use, not those you request.** If your job finishes early and exits properly, Slurm will release the nodes back into the pool of available nodes. Your job will only be charged for as long as you are using the nodes.
 
-<p class="portlet-msg-info">TACC does not implement node-sharing on any compute resource. Each Frontera node can be assigned to only one user at a time; hence a complete node is dedicated to a user's job and accrues wall-clock time for all the node's cores whether or not all cores are used.</p>
+!!! note
+	TACC does not implement node-sharing on any compute resource. Each Frontera node can be assigned to only one user at a time; hence a complete node is dedicated to a user's job and accrues wall-clock time for all the node's cores whether or not all cores are used.
 
 **Tip**: Your queue wait times will be less if you request only the time you need: the scheduler will have a much easier time finding a slot for the 2 hours you really need than say, for the 12 hours requested in your job script. 
 
 Principal Investigators can monitor allocation usage via the [TACC User Portal](https://portal.tacc.utexas.edu) under ["Allocations->Projects and Allocations"](https://portal.tacc.utexas.edu/projects-and-allocations). Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
 
-<p class="portlet-msg-info">To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ <b>/usr/local/etc/taccinfo</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre></p>  
+!!! tip
+	To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ <b>/usr/local/etc/taccinfo</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre>
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 

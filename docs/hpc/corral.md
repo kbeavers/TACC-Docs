@@ -31,9 +31,6 @@ The S3 interface is most suitable for programmatic interaction from within custo
 
 Please direct any further questions you may have regarding the cloud storage interface to Corral through the [TACC ticket system](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create).
 
-<figure id="figure1"><img alt="Corral4 Data Storage" src="../../../imgs/corral/Corral4.jpg"> 
-<figcaption>Figure 1. Corral4 Data Storage</figcaption></figure>
-
 
 ## [System Access](#access) { #access }
 Corral is available to researchers at all UT System campuses, including both academic and health institutions. Corral is intended to support research activities involving large quantities of data and/or complex data management requirements. There is no requirement that users have allocations on other TACC systems, and Corral can be utilized independently of TACC computational and visualization resources. All Corral users must have TACC accounts; if you do not yet have a TACC account you can create one on the [TACC user portal](https://portal.tacc.utexas.edu/).

@@ -3,7 +3,8 @@
 
 Access Control Lists (ACLs) are a very powerful tool for managing permissions within a file system. ACLs allow for arbitrary lists of specific users and groups to be given read, write, and/or execute permissions on any file or directory that you own. They provide a much more flexible mechanism for managing permissions than the traditional Unix "user, group, and other" permissions system.  ACLs provide the common UNIX read, write, and execute permissions for individual users or groups of users, and you may have as many ACL entries as necessary to achieve the precise set of permissions you need on a given file or directory. 
 
-<p class="portlet-msg-info">While TACC's <a href="../../hpcugs/corral/corral">Corral</a> supports ACLs, not all file systems have this feature enabled. Please consult the appropriate user guide for questions about specific file systems.</p>
+!!! tip
+	While TACC's <a href="../../hpcugs/corral/corral">Corral</a> supports ACLs, not all file systems have this feature enabled. Please consult the appropriate user guide for questions about specific file systems.
 
 **Important note**: Access Control Lists work only in an additive fashion and cannot be used to remove permissions granted through the regular UNIX permissions commands. For example, if you want all the members of a group but one to have access to a file, you cannot start by granting access to the group and then removing access for one user; instead, you must remove access for the whole group, then add the appropriate permissions for each individual. 
 

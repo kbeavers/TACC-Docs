@@ -9,7 +9,8 @@ Authentication is the process of determining if you are you. Traditional methods
 
 ## [Setting up MFA at TACC](#setupmfa) { #setupmfa }
 
-<p class="portlet-msg-alert">If you are trying to set up MFA on a new account, you will not be able to generate a QR Code until after your account request is accepted by TACC Staff. Account requests are usually approved within 24 hours.</p>
+!!! note
+	If you are trying to set up MFA on a new account, you will not be able to generate a QR Code until after your account request is accepted by TACC Staff. Account requests are usually approved within 24 hours.
 
 ### [1. Manage Profile](#setupmfa-step1) { #setupmfa-step1 }
 
@@ -35,7 +36,8 @@ TACC offers two mutually exclusive authentication (pairing) methods.
 
 	Users may instead enable multi-factor authentication with SMS, standard text messaging.”
 
-<p class="portlet-msg-alert">Users located outside the U.S. **must** pair using a [Multi-Factor Authentication app](#mfaapps) of your choice. Because the cost associated with sending multiple international text messages is prohibitive, international users may NOT set up multi-factor authentication with SMS.</p>
+!!! note
+	Users located outside the U.S. **must** pair using a [Multi-Factor Authentication app](#mfaapps) of your choice. Because the cost associated with sending multiple international text messages is prohibitive, international users may NOT set up multi-factor authentication with SMS.
 
 ####  [MFA Authentication Apps](#mfaapps) { #mfaapps }
 

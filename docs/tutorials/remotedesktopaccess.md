@@ -224,7 +224,8 @@ Follow the steps below to start an interactive session.
 
 Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Stampede2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
 
-<p class="portlet-msg-info">TACC staff recommends the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.</p>
+!!! tip
+	TACC staff recommends the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
 
 		
 <figure id="figure5"><img alt="" src="../../imgs/tutorials/RDA-5.png" style="width: 800px; height: 661px;" /> 

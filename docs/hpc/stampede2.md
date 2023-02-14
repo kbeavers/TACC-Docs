@@ -291,7 +291,8 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 Your account-specific `$WORK` environment variable varies from system to system and is a sub-directory of `$STOCKYARD` ([Figure 3](#figure3)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Stampede2 points to the `$STOCKYARD/stampede2` subdirectory, a convenient location for files you use and jobs you run on Stampede2. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Stampede2 and Frontera, for example, the `$STOCKYARD/stampede2` directory is available from your Frontera account, and `$STOCKYARD/frontera` is available from your Stampede2 account. 
 
-<p class="portlet-msg-alert">Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.</p>
+!!! note
+	Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.
 
@@ -314,7 +315,8 @@ Stampede2's Lustre file systems look and act like a single logical hard disk, bu
 
 Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
 
-<p class="portlet-msg-alert">Before transferring to, or creating large files on Stampede2, be sure to set an appropriate default stripe count on the receiving directory.</p>
+!!! tip
+	Before transferring to, or creating large files on Stampede2, be sure to set an appropriate default stripe count on the receiving directory.
 
 To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 

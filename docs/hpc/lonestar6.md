@@ -118,7 +118,8 @@ File System | Quota | Key Features
 
 #### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy }
 
-<p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
+!!! caution
+	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
 
 <!--- SDL --- make this an include -->
 
@@ -386,7 +387,8 @@ The compute nodes are where actual computations occur and where research is done
 
 A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by [submitting a batch job](#running).
 
-<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.</p> 
+!!! caution
+	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.
 
 ### [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples) { #conduct-loginnodes-examples }
 
@@ -434,7 +436,8 @@ To run your jobs out `$SCRATCH`:
 * Make sure your job script directs all output to `$SCRATCH`  
 * Once your job is finished, move your output files to `$WORK` to avoid any data purges.
 
-<p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> 
+!!! tip
+	Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.
 
 Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table. File System Usage Recommendations](#table-file-system-usage-recommendations). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.
 
@@ -467,7 +470,8 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
-<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMFA] for additional information.</p>
+!!! tip
+	If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMFA] for additional information.
 
 ### [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 

@@ -18,7 +18,8 @@ Lonestar6 | AlphaFold: v2.2.0<br> Data: <code>/scratch/tacc/apps/bio/alphafold/d
 
 ## [Running AlphaFold](#running) { #running }
 
-<p class="portlet-msg-alert">Note: AlphaFold is still being tested for performance and I/O efficiency. These instructions are subject to change.</p>
+!!! note
+	Note: AlphaFold is still being tested for performance and I/O efficiency. These instructions are subject to change.
 
 
 ### [Single Sequence Prediction](#running-singlesequence) { #running-singlesequence }
@@ -89,7 +90,9 @@ Using the scheme above with `full_dbs` precision, we expect each job to take bet
 
 ### [Multiple Sequence Predictions](#running-multiplesequence) { #running-multiplesequence }
 
-<p class="portlet-msg-alert">The multiple sequence alignment step of the AlphaFold workflow is exceedingly I/O intensive.<br><b>Limit your concurrent AlphaFold processes per node to a maximum of four.</b></p>
+!!! tip
+	The multiple sequence alignment step of the AlphaFold workflow is exceedingly I/O intensive.  
+	**Limit your concurrent AlphaFold processes per node to a maximum of four.**
 
 To perform 3-D protein structure prediction with AlphaFold for many protein sequences, we recommend using TACC's `launcher` or `launcher-gpu` utility. First review the instructions for submitting single sequence predictions above, then make the following adjustments:
 

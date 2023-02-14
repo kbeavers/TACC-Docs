@@ -15,7 +15,8 @@ Examples of intensive I/O activity that could affect the system include, but are
 
 As TACC's user base continues to expand, the stress on the resources' shared file systems increases daily. TACC staff now recommends new file system and job submission guidelines in order to maintain file system stability. If a user's jobs or activities are stressing the file system, then every other user's jobs and activities are impacted, and the system admins may resort to cancelling the user's jobs and suspending access to the queues. 
 
-<p class="portlet-msg-alert">If you know your jobs will generate significant I/O, please [submit a support ticket][CREATETICKET] and an HPC consultant will work with you.</p>
+!!! note
+	If you know your jobs will generate significant I/O, please [submit a support ticket][CREATETICKET] and an HPC consultant will work with you.
 
 ## [Recommended File Systems Usage](#files) { #files }
 
@@ -136,7 +137,8 @@ When transferring or creating large files, it's important that you stripe the re
 
 TACC staff has developed OOOPS, **O**ptimal **O**verloaded I/O **P**rotection **S**ystem, an easy-to-use tool to help HPC users optimize heavy I/O requests and reduce the impact of high I/O jobs.  If your jobs have a particularly high I/O footprint, then you must employ the OOOPS tool to govern that I/O activity.
 
-<p class="portlet-msg-alert">Employing OOOPS may slow down your job significantly if your job has a lot of I/O.</p>
+!!! note
+	Employing OOOPS may slow down your job significantly if your job has a lot of I/O.
 
 The OOOPS module is currently installed on TACC's [Frontera][FRONTERAUG] and [Stampede2][STAMPEDE2UG] resources.
 

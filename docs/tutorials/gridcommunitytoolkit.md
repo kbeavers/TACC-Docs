@@ -15,7 +15,8 @@ In order to transfer files using Grid Community Toolkit you will need to:
 
 To create a DN, you need to log in from some authoritative source that can verify your identity, typically your university or employer. If you already have a DN from another source, you can use that. If you do not, you can associate one with your account from many of the major universities in the world via the "CI Logon" service.
 
-<p class="portlet-msg-info">You must use your institution’s credentials and not your personal Google account when setting up Grid Community Toolkit. If you use a personal account, you will encounter an issue with the endpoint.</p>
+!!! tip
+	You must use your institution’s credentials and not your personal Google account when setting up Grid Community Toolkit. If you use a personal account, you will encounter an issue with the endpoint.
 
 Grid Community Toolkit supports MyProxy and MyProxy OAuth identity providers. While you should be able to use any MyProxy/MyProxy OAuth provider, for this documentation we will be using [CILogon.org](https://cilogon.org/).
 
@@ -47,7 +48,8 @@ On the Manage DNs page, near the bottom, is a form to associate a DN to your acc
 <figure id="figure4"><img alt="" src="../../imgs/tutorials/GCT-4.png" style="height: 625px; width: 600px;" />
 <figcaption></figcaption></figure>
 
-<p class="portlet-msg-alert">Please note, it may take up to 30 minutes for this change to propagate to all TACC systems.</p>
+!!! note
+	It may take up to 30 minutes for this change to propagate to all TACC systems.</p>
 
 <figure id="figure5"><img alt="" src="../../imgs/tutorials/GCT-5.png" style="width: 600px; height: 624px;" />
 <figcaption></figcaption></figure>
