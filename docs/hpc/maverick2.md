@@ -101,7 +101,6 @@ Maverick2 hosts a single login node:
 
 Maverick2 mounts two shared Lustre file systems on which each user has corresponding account-specific directories [`$HOME` and `$WORK`](#files-filesystems). **Unlike most TACC resources, Maverick2 does not mount a `/scratch` file system.**  Both the `/home` and `/work` file systems are available from all Maverick2 nodes; the [Stockyard-hosted `/work` file system](https://www.tacc.utexas.edu/systems/stockyard) is available on other TACC systems as well. A Lustre file system looks and acts like a single logical hard disk, but is actually a sophisticated integrated system involving many physical drives (dozens of physical drives for `$HOME` and thousands for `$WORK`).
 
-<!-- p class="portlet-msg-info">See <a href="#files">Managing Your Files</a> section below and consult the <a href="/user-guides/stampede2#using-citizenship-filesystems">Shared Lustre File Systems</a> section in the <a href="/user-guides/stampede2">Stampede2 User Guide</a> for best practices. </p> -->
 
 
 ## [Accessing the System](#access) { #access }
@@ -380,7 +379,7 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 
 <details><summary>Serial Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -426,11 +425,12 @@ date
 ./mycode.exe         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre> </details>
+```
+ </details>
 
 <details><summary>MPI Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -477,12 +477,13 @@ date
 ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-</pre> </details>
+```
+ </details>
 
 
 <details><summary>OpenMP Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -535,11 +536,12 @@ export OMP_NUM_THREADS=34
 ./mycode.exe         # Do not use ibrun or any other MPI launcher
 
 # ---------------------------------------------------
-</pre> </details>
+```
+ </details>
 
 <details><summary>Hybrid Job in Normal Queue</summary>
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script for TACC MACHINENAME nodes

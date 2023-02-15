@@ -14,9 +14,10 @@ TensorFlow is installed on TACC's [Lonestar6][LONESTAR6UG], [Frontera][FRONTERAU
 * Parallel Training with TensorFlow and Horovod is available on both Stampede2 and Maverick2.
 * TensorFlow v2.1 is available on Stampede2.
 
-<p class="portlet-msg-alert">Running programs or performing computations on the login nodes may result in account suspension.<br>
-All of the following examples are run on compute, not login, nodes.<br>
-Use TACC's <a href="../idev"><code>idev</code></a> utility to grab compute node/s when conducting any TensorFlow activities.</p>
+!!! caution
+	Running programs or performing computations on the login nodes may result in account suspension.<br>
+	All of the following examples are run on compute, not login, nodes.<br>
+	Use TACC's <a href="../idev"><code>idev</code></a> utility to grab compute node/s when conducting any TensorFlow activities.
 
 
 ## [TensorFlow on Lonestar6](#lonestar6) { #lonestar6 }

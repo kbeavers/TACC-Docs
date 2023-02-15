@@ -25,7 +25,9 @@ Setting this environment variable on the login node before submitting the job wi
 
 Users can also set the information about the license server by setting the value of `abaquslm_license_file` in the `abaqus_v6.env` file. For example: 
 
-<pre class="job-script">abaquslm_license_file="port-number@license-server"</pre>
+``` { .bash .job-script }
+abaquslm_license_file="port-number@license-server"
+```
 
 You can estimate your token needs here: <https://www.simuleon.com/abaqus-token-calculator/>
 
@@ -90,7 +92,7 @@ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt</pre>
 
 The following job script demonstrates an example of running ABAQUS in parallel, on one node, and can be run on the Stampede2 and Frontera systems after adjusting the number of nodes and cores, the values of `-N` and, `-n` respectively.  This script is also located in `$TACC_ABAQUS_DIR/tacc_test/abaqus.slm`.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J myabaqusjob
 #SBATCH -t 1:00:00
@@ -147,7 +149,8 @@ $TACC_ABAQUS_BIN/abaqus job=test_abaqus_job cpus=$core_count \
 	input=./knee_bolster.inp -verbose 3 mp_mode=mpi \
 	standard_parallel=all interactive scratch="."
 
-sed -i "/mp_host_list/d" $abaqus_environment_file</pre>
+sed -i "/mp_host_list/d" $abaqus_environment_file
+```
 
 ## [TACC Resources IP Address Ranges](#ips) { #ips }
 

@@ -15,7 +15,8 @@ File System | Quota | Key Features
 
 #### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy }
 
-<p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
+!!! caution
+	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
 
 <!--- SDL --- make this an include -->
 

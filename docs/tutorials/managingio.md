@@ -15,7 +15,8 @@ Examples of intensive I/O activity that could affect the system include, but are
 
 As TACC's user base continues to expand, the stress on the resources' shared file systems increases daily. TACC staff now recommends new file system and job submission guidelines in order to maintain file system stability. If a user's jobs or activities are stressing the file system, then every other user's jobs and activities are impacted, and the system admins may resort to cancelling the user's jobs and suspending access to the queues. 
 
-<p class="portlet-msg-alert">If you know your jobs will generate significant I/O, please [submit a support ticket][CREATETICKET] and an HPC consultant will work with you.</p>
+!!! note
+	If you know your jobs will generate significant I/O, please [submit a support ticket][CREATETICKET] and an HPC consultant will work with you.
 
 ## [Recommended File Systems Usage](#files) { #files }
 
@@ -71,7 +72,7 @@ Compute nodes should not reference the `$WORK` file system unless it's to stage 
 
 Your job script should also direct the job's output to the local scratch directory:
 
-<pre class="job-script">
+``` { .bash .job-script }
 &#35; stage executable and data
 cd $SCRATCH
 mkdir testrunA
@@ -82,7 +83,8 @@ cp $WORK/jobinputdata testrunA
 ibrun testrunA/myprogram testrunA/myinputdata &gt; testrunA/output
 
 &#35; copy results back permanent storage once job is done
-cp testrunA/output $WORK/savetestrunA</pre>
+cp testrunA/output $WORK/savetestrunA
+```
 
 
 ### [Avoid Writing One File Per Process](#bestpractices-perprocess) { #bestpractices-perprocess }
@@ -105,7 +107,7 @@ If you are close to file quota on either the `$WORK` or `$HOME` file system, you
 
 Monitor your file system's quotas and usage using the `taccinfo` command. This output displays whenever you log on to a TACC resource.
 
-<pre class="cmd-line">
+``` { .bash .cmd-line }
 ---------------------- Project balances for user <user> ----------------------
 | Name           Avail SUs     Expires | Name           Avail SUs     Expires |
 | Allocation             1             | Alloc                100             |
@@ -115,9 +117,10 @@ Monitor your file system's quotas and usage using the `taccinfo` command. This o
 | /work             107.5    1024.0    10.50         2434     3000000    0.08 |
 | /scratch1           0.0       0.0     0.00            3           0    0.00 |
 | /scratch3       41829.5       0.0     0.00       246295           0    0.00 |
--------------------------------------------------------------------------------</pre>
+-------------------------------------------------------------------------------
+```
 
-= File.read "../include/tinfo.html"
+{% include File.read "../include/tinfo.md" %}
 
 
 ### [Manipulate Data in Memory, not on Disk](#bestpractices-memory) { #bestpractices-memory }
@@ -136,7 +139,8 @@ When transferring or creating large files, it's important that you stripe the re
 
 TACC staff has developed OOOPS, **O**ptimal **O**verloaded I/O **P**rotection **S**ystem, an easy-to-use tool to help HPC users optimize heavy I/O requests and reduce the impact of high I/O jobs.  If your jobs have a particularly high I/O footprint, then you must employ the OOOPS tool to govern that I/O activity.
 
-<p class="portlet-msg-alert">Employing OOOPS may slow down your job significantly if your job has a lot of I/O.</p>
+!!! note
+	Employing OOOPS may slow down your job significantly if your job has a lot of I/O.
 
 The OOOPS module is currently installed on TACC's [Frontera][FRONTERAUG] and [Stampede2][STAMPEDE2UG] resources.
 
@@ -147,7 +151,9 @@ The OOOPS module provides two functions `set_io_param` and `set_io_param_batch` 
 
 These functions instruct the system to modulate your job's I/O activity, thus reducing the impact on the designated file system. For both functions, use "0" to indicate the `$SCRATCH` file system and "1" to indicate the `$WORK` file system. Note: these indices are subject to change. See each command's `help` option to ensure correct parameters:
 
-<pre class="cmd-line">c123-456$ <b>set_io_param -h</b></pre> 
+``` { .bash .cmd-line }
+c123-456$ <b>set_io_param -h</b>
+```
 
 Indicate the frequency of `open` and `stat` function calls, from the least to the most, with `low`, `medium`, or `high`.
 
@@ -159,23 +165,32 @@ First, load the `ooops` module in your job script or `idev` session to deploy OO
 
 <table border="1">
 <tr><th>Job Script Example</th><th>Interactive Session Example</th></tr>
-<tr><td><pre class="job-script">#SBATCH -N 1<br>#SBATCH -J myjob.%j<br>
+<tr><td>
+``` { .bash .job-script }
+#SBATCH -N 1<br>#SBATCH -J myjob.%j<br>
 &#46;...
 module load ooops 
 set_io_param 0 low 
-ibrun <i>myprogram</i> </pre></td>
+ibrun <i>myprogram</i> 
+```
+</td>
 <td width="450" valign="top">
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
+
 	login1$ <b>idev -N 1</b>
 	&#46;...
 	c123-456$ <b>module load ooops</b>
 	c123-456$ <b>set_io_param 0 low</b>
-	c123-456$ <b>ibrun <i>myprogram</i></b></pre>
+	c123-456$ <b>ibrun <i>myprogram</i></b>
+```
 </td></tr></table>
 		
 To turn off throttling on the `$SCRATCH` file system for a submitted job, run the following command on a login node or within an `idev` session while the job is running:
 
-<pre class="cmd-line">login1$ <b>set_io_param 0 unlimited</b></pre>
+``` { .bash .cmd-line }
+login1$ <b>set_io_param 0 unlimited</b>
+```
+
 
 #### [Example: Multi-Node Job on `$SCRATCH`](#ooops-howto-multinode) { #ooops-howto-multinode }
 
@@ -184,23 +199,31 @@ To turn off throttling on the `$SCRATCH` file system for a submitted job, run th
 <th>Interactive Session Example</th></tr>
 <tr>
 <td width="450" valign="top"> 
-	<pre class="job-script">#SBATCH -N 4<br>#SBATCH -n 64<br>#SBATCH -J myjob.%j
+	``` { .bash .job-script }
+	#SBATCH -N 4<br>#SBATCH -n 64<br>#SBATCH -J myjob.%j
 	&#46;...
 	module load ooops
 	<span style="white-space: nowrap;">set_io_param_batch $SLURM_JOBID 0 low</span>
-	ibrun <i>myprogram</i></pre></td>
+	ibrun <i>myprogram</i>
+    ```
+</td>
 <td width="450" valign="top">
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
+
 	login1$ <b>idev -N 4</b>
 	&#46;...
 	c123-456$ <b>module load ooops</b>
 	c123-456$ <b>set_io_param_batch [jobid] 0 low</b>
-	c123-456$ <b>ibrun <i>myprogram</i></b></pre>
+	c123-456$ <b>ibrun <i>myprogram</i></b>
+	```
+
 </td></tr></table>
 
 To turn off throttling on the `$SCRATCH` file system for a submitted job, you can run the following command (on a login node) after the job is submitted:
 
-<pre class="cmd-line">login1$ <b>set_io_param_batch [jobid] 0 unlimited</b></pre>
+``` { .bash .cmd-line }
+login1$ <b>set_io_param_batch [jobid] 0 unlimited</b>
+```
 
 ### [I/O Warning](#ooops-warnings) { #ooops-warnings }
 
@@ -217,7 +240,9 @@ For jobs that make use of large numbers of Python modules or use local installat
 
 **On Stampede2 and Frontera**: Load the `python_cacher` module in your job script:
 
-<pre class="job-script">module load python_cacher</pre>
+``` { .bash .job-script }
+module load python_cacher
+```
 
  This library will cache python modules to local disk so python programs won't keep pulling the modules over and over from the `/scratch` or `/work` file systems.
 
@@ -228,11 +253,12 @@ In case `python_cacher` does not work, you can copy your Python/Anaconda/MiniCon
 
 **Stampede2 and Frontera**: To track the full extent of your I/O activity over the course of your job, you can employ another TACC tool, `iomonitor` that will report on `open()` and `stat()` calls during your job's run. Place the following lines in your job submission script after your Slurm commands, to wrap your executable:
 
-<pre class="job-script">
+``` { .bash .job-script }
 export LD_PRELOAD=/home1/apps/tacc-patches/io_monitor/io_monitor.so:\
 	/home1/apps/tacc-patches/io_monitor/hook.so
 ibrun my_executable
-unset LD_PRELOAD</pre>
+unset LD_PRELOAD
+```
 
 Log files will be generated during the job run in the working directory with prefix `log_io_*.`
 

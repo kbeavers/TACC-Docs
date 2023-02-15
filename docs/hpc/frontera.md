@@ -6,10 +6,6 @@
 * **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/21/2021)
 * **New Queue: A new queue: `small` has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#frontera-production-queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues. (03-30-21) 
 
-
-<figure id="figure1"><img alt="Frontera Art" src="../../imgs/frontera/frontera-art.jpg">
-<figcaption></figcaption></figure>
-
 ## [Introduction to Frontera](#intro) { #intro } 
 
 Frontera is funded by the National Science Foundation (NSF) through award #1818253, [Computing for the Endless Frontier](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1818253). It is the largest cluster dedicated to open science in the United States and is the Texas Advanced Computing Center's latest flagship system. Frontera enters production in early summer 2019, building on the successes of the Stampede1 and Stampede2 systems.  
@@ -241,7 +237,8 @@ The compute nodes are where actual computations occur and where research is done
 
 A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](https://portal.tacc.utexas.edu/software/idev) or by [submitting a batch job](../running).
 
-<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.</p> 
+!!! caution
+	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.
 
 #### [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples) { #conduct-loginnodes-examples }
 
@@ -289,7 +286,8 @@ To run your jobs out `$SCRATCH`:
 * Make sure your job script directs all output to `$SCRATCH`  
 * Once your job is finished, move your output files to `$WORK` to avoid any data purges.
 
-<p class="portlet-msg-alert">Compute nodes should not reference <code>$WORK</code> unless it's to stage data in or out, and only before or after jobs.</p> 
+!!! tip
+	Compute nodes should not reference <code>$WORK</code> unless it's to stage data in or out, and only before or after jobs.
 
 Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [File System Usage Recommendations](#table-file-system-usage-recommendations). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.
 
@@ -323,7 +321,8 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
-<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also <a href="https://portal.tacc.utexas.edu/tutorials/managingio">Managing I/O on TACC Resources</a> for additional information.</p>
+!!! tip
+	If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also <a href="https://portal.tacc.utexas.edu/tutorials/managingio">Managing I/O on TACC Resources</a> for additional information.
 
 ### [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 
@@ -437,7 +436,8 @@ File System | Characteristics	| Purpose |
 
 ### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy } 
 
-<p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
+!!! caution
+	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.
 
 &#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">`ls -ul`</span> command to view access times.
 
@@ -451,7 +451,8 @@ The `$STOCKYARD` environment variable points to the highest-level directory that
 
 Your account-specific `$WORK` environment variable varies from system to system and is a sub-directory of `$STOCKYARD` ([Figure 3](#figure-3-stockyard-file-system)). The sub-directory name corresponds to the associated TACC resource. The `$WORK` environment variable on Frontera points to the `$STOCKYARD/stampede2` subdirectory, a convenient location for files you use and jobs you run on Frontera. Remember, however, that all subdirectories contained in your `$STOCKYARD` directory are available to you from any system that mounts the file system. If you have accounts on both Frontera and Stampede2, for example, the `$STOCKYARD/frontera` directory is available from your Stampede2 account, and `$STOCKYARD/stampede2` is available from your Frontera account. 
 
-<p class="portlet-msg-alert">Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.</p>
+!!! tip
+	Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar5`, `stampede2`) will exist **only** if you have an allocation on that system.
 
@@ -476,7 +477,8 @@ Alias | Command
 
 Frontera's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives. Lustre can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes. Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs assigned to a file, as well as the file's descriptive data.
 
-<p class="portlet-msg-alert">Before transferring to, or creating large files on Frontera, be sure to set an appropriate default stripe count on the receiving directory.</p>
+!!! tip
+	Before transferring to, or creating large files on Frontera, be sure to set an appropriate default stripe count on the receiving directory.
 
 While the `$WORK` file system has hundreds of OSTs, Frontera's scratch system has far fewer. Therefore, the recommended stripe counts when transferring or creating large files depends on the file's destination. 
 
@@ -608,31 +610,31 @@ If you wish to share files and data with collaborators in your project, see [Sha
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 	
-<pre class="job-script">
+``` { .bash .job-script }
 myprogram                   			# executable in a directory listed in $PATH
 $SCRATCH/apps/myprov/myprogram 			# explicit full path to executable
 ./myprogram                 			# executable in current directory
 ./myprogram -m -k 6 input1  			# executable with notional input options
-</pre>
+```
 
 ### [Launching One Multi-Threaded Application](#launching-multithreaded)
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=56   	# 56 total OpenMP threads (1 per CLX core)
 ./myprogram
-</pre>
+```
 
 ### [Launching One MPI Application](#launching-mpi)
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Frontera-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #SBATCH -N 5				
 #SBATCH -n 200
 ibrun ./myprogram				# ibrun uses the $SBATCH directives to properly allocate nodes and tasks
-</pre>
+```
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
@@ -647,9 +649,10 @@ c123-456$ <b>ibrun ./myprogram</b>	   # ibrun uses idev's arguments to properly 
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
-ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
+ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
+```
 
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (56 cores in the development/small/normal/large/flex [queues](../running#frontera-production-queues).
 
@@ -662,13 +665,13 @@ TACC's `launcher` utility provides an easy way to launch more than one serial ap
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
-<pre class="job-script">
+``` { .bash .job-script }
 module load git
 module list
 ./preprocess.sh
 ibrun ./myprogram input1    # runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes
-</pre>
+```
 
 ### [More than One MPI Application Running Concurrently](#launching-mpiconcurrent)
 
@@ -681,11 +684,11 @@ To run more than one MPI application simultaneously in the same job, you need to
 
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=112 total MPI tasks, Slurm will generate a hostfile with 112 entries (28 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute `ibrun --help` for more information. Don't forget the ampersands ("&") to launch the jobs in the background, and the `wait` command to pause the script until the background tasks complete:
 
-<pre class="job-script">
+``` { .bash .job-script }
 ibrun -n 56 -o  0 task_affinity ./myprogram input1 &    # 56 tasks; offset by  0 entries in hostfile.
 ibrun -n 56 -o 56 task_affinity ./myprogram input2 &    # 56 tasks; offset by 56 entries in hostfile.
 wait                                                    # Required; else script will exit immediately.
-</pre>
+```
 
 The `task_affinity` script manages task placement and memory pinning when you call ibrun with the `-n`, `-o` switches (it's not necessary under any other circumstances). 
 
@@ -717,23 +720,26 @@ Specifically, the proc-id mapping to the cores for CLX is:
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on these systems, the places would be:
  
-<pre class="job-script">
+``` { .bash .job-script }
 CLX socket 0:  export OMP_PLACES="{0,56},{2,58},{4,60}"
-CLX socket 1:  export OMP_PLACES="{1,57},{3,59},{5,61}"</pre>
+CLX socket 1:  export OMP_PLACES="{1,57},{3,59},{5,61}"
+```
  
 Interval notation can be used to express a sequences of places.  The syntax is: {proc-ids},N,S, where N is the number of places to create from the base place ({proc-ids}) with a stride of S.  Hence the above sequences could have been written:
  
-<pre class="job-script">
+``` { .bash .job-script }
 CLX socket 0:  export OMP_PLACES="{0,56},3,2"
-CLX socket 1:  export OMP_PLACES="{1,57},3,2"</pre>
+CLX socket 1:  export OMP_PLACES="{1,57},3,2"
+```
  
 In the example below two OpenMP programs are executed on a single node, each using 28 threads. The first program uses the cores on socket 0.  It is put in the background, using the ampersand (&) character at the end of the line, so that the job script execution can continue to the second OpenMP program execution, which uses the cores on socket 1.  It, too, is put in the background, and the job execution waits for both to finish with the wait command at the end.
  
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=28
 env OMP_PLACES="{0,56},28,2" ./omp.exe &   #execution on socket 0 cores
 env OMP_PLACES="{1,57},28,2" ./omp.exe &   #execution on socket 1 cores
-wait</pre>
+wait
+```
 
 ## [Running Jobs on the Compute Nodes](#running) { #running }
 
@@ -748,13 +754,15 @@ Like all TACC systems, Frontera's accounting system is based on node-hours: one 
 
 The Slurm scheduler tracks and charges for usage to a granularity of a few seconds of wall clock time. **The system charges only for the resources you actually use, not those you request.** If your job finishes early and exits properly, Slurm will release the nodes back into the pool of available nodes. Your job will only be charged for as long as you are using the nodes.
 
-<p class="portlet-msg-info">TACC does not implement node-sharing on any compute resource. Each Frontera node can be assigned to only one user at a time; hence a complete node is dedicated to a user's job and accrues wall-clock time for all the node's cores whether or not all cores are used.</p>
+!!! note
+	TACC does not implement node-sharing on any compute resource. Each Frontera node can be assigned to only one user at a time; hence a complete node is dedicated to a user's job and accrues wall-clock time for all the node's cores whether or not all cores are used.
 
 **Tip**: Your queue wait times will be less if you request only the time you need: the scheduler will have a much easier time finding a slot for the 2 hours you really need than say, for the 12 hours requested in your job script. 
 
 Principal Investigators can monitor allocation usage via the [TACC User Portal](https://portal.tacc.utexas.edu) under ["Allocations->Projects and Allocations"](https://portal.tacc.utexas.edu/projects-and-allocations). Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
 
-<p class="portlet-msg-info">To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ <b>/usr/local/etc/taccinfo</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre></p>  
+!!! tip
+	To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ <b>/usr/local/etc/taccinfo</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre>
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 
@@ -939,15 +947,15 @@ C448-004$
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-<pre class="job-script">
+``` { .bash .job-script }
 <s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect
-</pre>
+```
 
 Instead, use the following directive:
 
-<pre class="job-script">
+``` { .bash .job-script }
 #SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
-</pre>
+```
 
 Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` directive.
 
@@ -970,7 +978,7 @@ Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). **Run all serial jobs in the `small` queue.**  Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
 
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1012,14 +1020,13 @@ date
 
 # Launch serial code...
 ./myprogram         # Do not use ibrun or any other MPI launcher
-
-</pre>
+```
 
 ### [MPI Jobs](#jobscripts-mpi)
 
 This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1064,14 +1071,14 @@ date
 # Launch MPI code... 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
-</pre>
+```
 
 ### [OpenMP Jobs](#jobscripts-openmp)
 
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->
 **Run all OpenMP jobs in the `small` queue.**  
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1121,14 +1128,14 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 # Launch OpenMP code...
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
-</pre>
+```
 
 ### [Hybrid (MPI + OpenMP) Job](#jobscripts-hybrid)
 
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1185,7 +1192,7 @@ export OMP_NUM_THREADS=14
 # Launch MPI code... 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
-</pre>
+```
 
 ### [Parametric Sweep / HTC jobs](#jobscripts-htc)
 
@@ -1677,7 +1684,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
-	<pre class="job-script">
+	``` { .bash .job-script }
 	&#35;!/bin/bash
 
 	HOST=$1
@@ -1685,7 +1692,8 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 	LOCAL_RANK=${PMI_RANK}
 
 	python3 -m torch.distributed.launch --nproc_per_node=4 --nnodes=$NODES --node_rank=${LOCAL_RANK} --master_addr=$HOST \
-	   examples/torch_cifar10_resnet.py --kfac-update-freq 0</pre>
+	   examples/torch_cifar10_resnet.py --kfac-update-freq 0
+	```
 
 
 1. Run multi-gpu training:

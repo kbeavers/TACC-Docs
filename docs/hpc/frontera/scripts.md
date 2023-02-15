@@ -14,7 +14,7 @@ Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). **Run all serial jobs in the `small` queue.**  Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
 
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -56,14 +56,13 @@ date
 
 # Launch serial code...
 ./myprogram         # Do not use ibrun or any other MPI launcher
-
-</pre>
+```
 
 ### [MPI Jobs](#jobscripts-mpi)
 
 This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -108,14 +107,14 @@ date
 # Launch MPI code... 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
-</pre>
+```
 
 ### [OpenMP Jobs](#jobscripts-openmp)
 
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->
 **Run all OpenMP jobs in the `small` queue.**  
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -165,14 +164,14 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 # Launch OpenMP code...
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
-</pre>
+```
 
 ### [Hybrid (MPI + OpenMP) Job](#jobscripts-hybrid)
 
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -229,7 +228,7 @@ export OMP_NUM_THREADS=14
 # Launch MPI code... 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
-</pre>
+```
 
 ### [Parametric Sweep / HTC jobs](#jobscripts-htc)
 

@@ -61,10 +61,4 @@ This gives access to the compiled Fortran sources from netlib.org/lapack. When b
 Older implementations such as Goto Blas (after former TACC employee Kazushige Goto), and its offshoot, OpenBlas, are no longer maintained and should not be used. Instead, use MKL or BLIS as described above.
 
 
-<!-- # [BLAS/Lapack on Longhorn](#longhorn)
-
-Longhorn is an IBM system, which comes with IBM's own compilers and numerical libraries. The equivalent of MKL is [ESSL (Engineering and Scientific Software Library)](https://www.ibm.com/support/knowledgecenter/en/SSFHY8/essl_welcome.html). Link ESSL into your code with:
-
-<pre class="cmd-line">login1$ <b>xlc -o myprogram myprogram.c -L/opt/ibmmath/essl/6.2/lib64/ -lessl</b></pre> -->
-
 

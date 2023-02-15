@@ -1,4 +1,4 @@
-Multifactor Authentication at TACC 
+# Multifactor Authentication at TACC 
 *Last update: January 14, 2022*
 
 TACC requires Multi-Factor Authentication (MFA) as an additional security measure when accessing all compute and storage resources.  To set up MFA pairing at TACC on your approved account, proceed directly to the [TACC pairing page](http://portal.tacc.utexas.edu/account-profile/-/mfa/pairing).
@@ -9,7 +9,8 @@ Authentication is the process of determining if you are you. Traditional methods
 
 ## [Setting up MFA at TACC](#setupmfa) { #setupmfa }
 
-<p class="portlet-msg-alert">If you are trying to set up MFA on a new account, you will not be able to generate a QR Code until after your account request is accepted by TACC Staff. Account requests are usually approved within 24 hours.</p>
+!!! note
+	If you are trying to set up MFA on a new account, you will not be able to generate a QR Code until after your account request is accepted by TACC Staff. Account requests are usually approved within 24 hours.
 
 ### [1. Manage Profile](#setupmfa-step1) { #setupmfa-step1 }
 
@@ -35,7 +36,8 @@ TACC offers two mutually exclusive authentication (pairing) methods.
 
 	Users may instead enable multi-factor authentication with SMS, standard text messaging.”
 
-<p class="portlet-msg-alert">Users located outside the U.S. **must** pair using a [Multi-Factor Authentication app](#mfaapps) of your choice. Because the cost associated with sending multiple international text messages is prohibitive, international users may NOT set up multi-factor authentication with SMS.</p>
+!!! note
+	Users located outside the U.S. **must** pair using a [Multi-Factor Authentication app](#mfaapps) of your choice. Because the cost associated with sending multiple international text messages is prohibitive, international users may NOT set up multi-factor authentication with SMS.
 
 ####  [MFA Authentication Apps](#mfaapps) { #mfaapps }
 
@@ -84,7 +86,8 @@ Begin by pressing the "Use Your Preferred Authenticator App to Pair" button on t
 
 A typical login session will look something like this:
 
-<pre class="cmd-line">localhost$ <b>ssh bjones@maverick2.tacc.utexas.edu</b>
+``` { .bash .cmd-line }
+localhost$ <b>ssh bjones@maverick2.tacc.utexas.edu</b>
 To access the system:
 
 1) If not using ssh-keys, please enter your TACC password at the password prompt
@@ -99,7 +102,8 @@ Last login: Mon Nov  1 18:42:37 2021 from 76.167.191.93
 ------------------------------------------------------------------------------
 &nbsp;...
 
-login1.maverick2(399)$ </pre>
+login1.maverick2(399)$ 
+```
 
 After typing in your password, you'll be prompted for "**`TACC Token Code:`**".  At this point, turn to your mobile device/phone.  
 

@@ -95,38 +95,45 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 
 1. **Connect to Stampede2 or Frontera in your usual manner**, e.g.:
 
-	<pre class="cmd-line">login1$ <b>ssh -l <i>username</i> stampede2.tacc.utexas.edu</pre>
+	``` { .bash .cmd-line }
+	login1$ <b>ssh -l <i>username</i> stampede2.tacc.utexas.edu
+	```
 
 1. **Submit one of two standard job scripts.** If you submit the `job.dcv2vnc` script, then either a DCV or VNC session is created. The following instructions demonstrate submitting the `job.dcv` script.  
 
 	Copy into your home directory, then edit either of the job scripts listed above to include your project allocation:
 
-	<pre class="job-script">#SBATCH -A <i>projectname</i></pre>
+	``` { .bash .job-script }
+	#SBATCH -A <i>projectname</i>
+	```
 
 	or you can provide the allocation number on the command line as an argument to the `sbatch` command:
 
-	<pre class="syntax">
+	``` { .bash .job-script }
 	sbatch -A <i>projectname</i> /share/doc/slurm/job.dcv
-	sbatch -A <i>projectname</i> /share/doc/slurm/job.dcv2vnc</pre>
+	sbatch -A <i>projectname</i> /share/doc/slurm/job.dcv2vnc
+	```
 
 	In the following example we also override the time option, requesting one hour instead of the script's default of two hours.
 
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
 	login4(689)$ <b>sbatch -A <i>projectname</i> -t 01:00:00 /share/doc/slurm/job.dcv</b>
 	...
 	--> Verifying access to desired queue (skx-dev)...OK
 	--> Verifying job request is within current queue limits...OK
 	--> Checking available allocation (TG-123456)...OK
-	Submitted batch job <span style="color: blue;">1965942</span></pre>
+	Submitted batch job <span style="color: blue;">1965942</span>
+	```
 	
 1. **Poll the queue, waiting till the job runs...**
 
 	You can poll the job's status with the `squeue` command, waiting till the submitted job actually runs, or by waiting for the job output file, (`dcvserver.out` or `vncserver.out` depending on the connection type and job script submitted), to appear in the submission directory.  
 
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
 	login4(690)$ <b>squeue -u slindsey</b>
 	  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-	1965942     skx-dev dcvserve slindsey  <span style="color: blue;">R</span>       0:16      1 c506-082</pre>
+	1965942     skx-dev dcvserve slindsey  <span style="color: blue;">R</span>       0:16      1 c506-082
+	```
 
 	If your job could not acquire a DCV license and launched a VNC session instead, jump to step 3 of the [VNC connection instructions](#vnc) below.
 
@@ -134,7 +141,7 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 
 	Once the DCV job starts running, a file called `dcvserver.out` will be created in the submission directory.  
 
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
 	login4(691)$ <b>cat dcvserver.out</b>
 	TACC: job 1965942 execution at: Tue Aug 21 14:25:54 CDT 2018
 	TACC: running on node c506-082
@@ -143,7 +150,8 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 	TACC: Created reverse ports on Stampede2 logins
 	TACC: Your DCV session is now running!
 	TACC: To connect to your DCV session, please point a modern web browser to:
-	TACC:          STYLEBLUEhttps://stampede2.tacc.utexas.edu:18606</span></pre>
+	TACC:          STYLEBLUEhttps://stampede2.tacc.utexas.edu:18606</span>
+	```
 
 
 1. **Load this generated URL in your favorite browser and then authenticate using your Stampede2 or Frontera password**. 
@@ -163,9 +171,10 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 
 7. Once you've completed your work and closed the browser window, remember to kill the job you submitted in Step 2.
 		
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
 	login4(692)$ <b>scancel 1965942</b>
-	login4(693)$ <b>exit</b></pre>
+	login4(693)$ <b>exit</b>
+	```
 
 ## [Start a VNC Session](#vnc) { #vnc }
 
@@ -175,24 +184,32 @@ Follow the steps below to start an interactive session.
 
 1. **Connect to the TACC resource in your usual manner, e.g.:**
 
-	<pre class="cmd-line">login1$ <b>ssh -l slindsey ls5.tacc.utexas.edu</b></pre>
+	``` { .bash .cmd-line }
+	login1$ <b>ssh -l slindsey ls5.tacc.utexas.edu</b>
+	```
 
 1. **Submit the standard job script**, `job.vnc`, see [Table 1.](#table1).  
 
 	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours.
 
-	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc</b></pre>
+	``` { .bash .cmd-line }
+	login1$ <b>sbatch /share/doc/slurm/job.vnc</b>
+	```
 
 	All arguments after the job script name are sent to the `vncserver` command. For example, to set the desktop resolution to 1440x900, use:
 
-	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+	``` { .bash .cmd-line }
+	login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b>
+	```
 
 1. **Poll and wait till the job runs...**
 
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
+	
 	login1$ <b>squeue -u slindsey</b>
 	&nbsp;&nbsp;JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-	1974882 development vncserve slindsey  STYLEBLUER</span>       0:16      1 c455-084</pre>
+	1974882 development vncserve slindsey  STYLEBLUER</span>       0:16      1 c455-084
+	```
 
 1. **Display the job's output file, `vncserver.out`, to extract the port connection number:**
 
@@ -206,9 +223,11 @@ Follow the steps below to start an interactive session.
 
 	In a new local terminal window, create the SSH tunnel:
 
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
+	
 	localhost$ <b>ssh -f -N -L <i>xxxx</i>:STAMPEDEHOSTNAME:<i>yyyy</i> \
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username@STAMPEDEHOSTNAME</b></pre>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username@STAMPEDEHOSTNAME</b>
+	```
 
 	where
 
@@ -224,7 +243,8 @@ Follow the steps below to start an interactive session.
 
 Once the SSH tunnel has been established, use a [VNC client](https://en.wikipedia.org/wiki/Virtual_Network_Computing) to connect to the local port you created, which will then be tunneled to your VNC server on Stampede2. Connect to <code>localhost:<i>xxxx</i></code>, where <code><i>xxxx</i></code> is the local port you used for your tunnel. In the examples above, we would connect the VNC client to <code>localhost::<i>xxxx</i></code>. (Some VNC clients accept <code>localhost:<i>xxxx</i></code>).
 
-<p class="portlet-msg-info">TACC staff recommends the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.</p>
+!!! tip
+	TACC staff recommends the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
 
 		
 <figure id="figure5"><img alt="" src="../../imgs/tutorials/RDA-5.png" style="width: 800px; height: 661px;" /> 
@@ -243,9 +263,11 @@ Once the desktop has been established an initial xterm window appears. (Figure 6
 
 7. Once you've completed your work and closed the browser window, remember to kill the job you submitted in Step 2.
 		
-	<pre class="cmd-line">
+	``` { .bash .cmd-line }
+	
 	login4(692)$ <b>scancel 1974882</b>
-	login4(693)$ <b>exit</b></pre>
+	login4(693)$ <b>exit</b>
+	```
 
 ### [Sample VNC session](#vncsession)   { #vncsession }
 
@@ -253,7 +275,8 @@ Once the desktop has been established an initial xterm window appears. (Figure 6
 
 Submit a VNC job for user `slindsey`.
 
-<pre class="cmd-line">
+``` { .bash .cmd-line }
+	
 localhost$ <b>ssh slindsey@stampede2.tacc.utexas.edu</b>
 &nbsp;...
 login4(804)$ <b>sbatch -A TG-123456 -t 01:00:00 /share/doc/slur m/job.vnc</b>
@@ -284,18 +307,21 @@ JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 login4(809)$ <b>exit</b>
 logout
 Connection to stampede2.tacc.utexas.edu closed.
-bash-3.2$ <b>exit</b></pre>
+bash-3.2$ <b>exit</b>
+	```
 
 #### [Window 2](#vncwindow2) { #vncwindow2 }
 
 Create the SSH tunnel from your local machine to Stampede2
 
-<pre class="cmd-line">
+``` { .bash .cmd-line }
+	
 localhost$ <b>ssh -f -N -L 18455:stampede2.tacc.utexas.edu:18455 slindsey@stampede2.tacc.utexas.edu</b>
 &nbsp;...
 Password:
 TACC Token Code:
-localhost$</pre>
+localhost$
+	```
 
 ## [Running Apps on the Desktop](#running) { #running }
 

@@ -36,7 +36,7 @@ Modify the following sample job scripts for VASP jobs on Stampede2, Lonestar6 an
 
 The script below submits a VASP job to Lonestar6's normal queue ( Milan compute nodes), requesting 2 nodes and 256 tasks for a maximum of 4 hours. Refer to lonestar6's Running Jobs section for more Slurm options.
 
-<pre class="job-script">
+``` { .bash .job-script }
 &#35;!/bin/bash 
 &#35;SBATCH -J vasp          
 &#35;SBATCH -o vasp.%j.out     
@@ -48,13 +48,14 @@ The script below submits a VASP job to Lonestar6's normal queue ( Milan compute 
 &#35;SBATCH -A projectnumber
 
 module load vasp/5.4.4.pl2
-ibrun vasp_std > vasp_test.out</pre>
+ibrun vasp_std > vasp_test.out
+```
 
 ## [Sample Job Script: VASP on Frontera](#jobscript-frontera) { #jobscript-frontera }
 
 The script below submits a VASP job to [Frontera's normal queue](https://frontera-portal.tacc.utexas.edu/user-guide/running/#table-5-frontera-production-queues) (CLX compute nodes), requesting 4 nodes and 224 tasks for a maximum of 4 hours. Refer to Frontera's [Running Jobs](https://frontera-portal.tacc.utexas.edu/user-guide#running) section for more Slurm options.
 
-<pre class="job-script">
+``` { .bash .job-script }
 &#35;!bin/bash 
 &#35;SBATCH -J vasp          
 &#35;SBATCH -o vasp.%j.out     
@@ -66,14 +67,15 @@ The script below submits a VASP job to [Frontera's normal queue](https://fronter
 &#35;SBATCH -A <i>projectnumber</i>
 
 module load vasp/5.4.4.pl2
-ibrun vasp_std > vasp_test.out</pre>
+ibrun vasp_std > vasp_test.out
+```
 
 
 ### [Sample Job Script: VASP on Stampede2](#jobscript-stampede2) { #jobscript-stampede2 }
 
 The script below requests 4 nodes and 256 tasks, for a maximum of four hours in Stampede2's `normal` queue (KNL compute nodes). See the [Stampede2 User Guide: Common `sbatch` Options](../../hpcugs/stampede2/stampede2#running-sbatch) for more about job options.  
 
-<pre class="job-script">
+``` { .bash .job-script }
 &#35;!/bin/bash 
 &#35;SBATCH -J vasp          
 &#35;SBATCH -o vasp.%j.out     
@@ -85,7 +87,8 @@ The script below requests 4 nodes and 256 tasks, for a maximum of four hours in 
 &#35;SBATCH -A <i>projectnumber</i>
 
 module load vasp/5.4.4.p12
-ibrun vasp_std > vasp_test.out</pre>
+ibrun vasp_std > vasp_test.out
+```
 
 ## [References](#refs) { #refs }
 

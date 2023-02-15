@@ -22,7 +22,7 @@ c123-456$ <b>remora myserialcode <i>args</i></b></pre>
 
 Modify your batch script and include 'remora' before your script, executable, or MPI launcher within your script as shown below:
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 &#35;SBATCH -J myjob           		# Job name
 &#35;SBATCH -oe myjob.o%j      		# Name of stdout/stderr output file
@@ -33,7 +33,8 @@ Modify your batch script and include 'remora' before your script, executable, or
 &#35;SBATCH -A <i>myproject</i>     		# Allocation name (req'd if you have more than 1)
 
 <b>module load remora 
-remora ibrun ./my_parallel_job	# or "remora ./serial_job" if running a serial job</b></pre>
+remora ibrun ./my_parallel_job	# or "remora ./serial_job" if running a serial job</b>
+```
 
 
 ## [Remora Options](#options) { #options }

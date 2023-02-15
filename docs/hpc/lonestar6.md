@@ -118,7 +118,8 @@ File System | Quota | Key Features
 
 #### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy }
 
-<p class="portlet-msg-info">The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
+!!! caution
+	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
 
 <!--- SDL --- make this an include -->
 
@@ -386,7 +387,8 @@ The compute nodes are where actual computations occur and where research is done
 
 A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by [submitting a batch job](#running).
 
-<p class="portlet-msg-alert">Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.</p> 
+!!! caution
+	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.
 
 ### [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples) { #conduct-loginnodes-examples }
 
@@ -434,7 +436,8 @@ To run your jobs out `$SCRATCH`:
 * Make sure your job script directs all output to `$SCRATCH`  
 * Once your job is finished, move your output files to `$WORK` to avoid any data purges.
 
-<p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> 
+!!! tip
+	Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.
 
 Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table. File System Usage Recommendations](#table-file-system-usage-recommendations). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.
 
@@ -467,7 +470,8 @@ In addition to the file system tips above, it's important that your jobs limit a
 
 * **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
 
-<p class="portlet-msg-alert">If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMFA] for additional information.</p>
+!!! tip
+	If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMFA] for additional information.
 
 ### [File Transfer Guidelines](#conduct-transfers) { #conduct-transfers }
 
@@ -624,11 +628,12 @@ The primary purpose of your job script is to launch your research application. H
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
-<pre class="job-script">
+``` { .bash .job-script }
 myprogram								# executable in a directory listed in $PATH
 $SCRATCH/apps/mydir/myprogram			# explicit full path to executable
 ./myprogram								# executable in current directory
-./myprogram -m -k 6 input1				# executable with notional input options</pre>
+./myprogram -m -k 6 input1				# executable with notional input options
+```
 
 ### [Parametric Sweep / HTC jobs](#launching-parametric) { #launching-parametric }
 
@@ -639,36 +644,40 @@ Consult the [Launcher at TACC](/software/launcher) documentation for instruction
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=128   	# 128 total OpenMP threads (1 per core)
-./myprogram</pre>
+./myprogram
+```
 
 ### [Launching One MPI Application](#launching-mpi) { #launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Lonestar6-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #SBATCH -N 4				
 #SBATCH -n 512
 
 # ibrun uses the $SBATCH directives to properly allocate nodes and tasks
 ibrun ./myprogram				
-</pre>
+
+```
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
 <pre class="cmd-line">
 login1$ <b>idev -N 2 -n 100 </b>				
 c309-005$ <b>ibrun ./myprogram</b>
-</pre>
+
+```
 
 ### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
-ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec</pre>
+ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
+```
 
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (128 cores in the `development`/`normal`/`large` [queues](#queues)).
 
@@ -681,11 +690,12 @@ TACC's `launcher` utility provides an easy way to launch more than one serial ap
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
-<pre class="job-script">
+``` { .bash .job-script }
 ./preprocess.sh
 ibrun ./myprogram input1    # runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes
-</pre>
+
+```
 
 ### [More Than One MPI Application Running Concurrently](#launching-mpiconcurrent) { #launching-mpiconcurrent }
 
@@ -698,7 +708,7 @@ To run more than one MPI application simultaneously in the same job, you need to
 
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=256 total MPI tasks, Slurm will generate a hostfile with 256 entries (64 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute `ibrun --help` for more information. Don't forget the ampersands ("&") to launch the jobs in the background, and the `wait` command to pause the script until the background tasks complete:
 
-<pre class="job-script">
+``` { .bash .job-script }
 # 128 tasks; offset by  0 entries in hostfile.
 ibrun -n 128 -o  0 task_affinity ./myprogram input1 &   
 
@@ -707,7 +717,8 @@ ibrun -n 128 -o 128 task_affinity ./myprogram input2 &
 
 # Required; else script will exit immediately.
 wait
-</pre>
+
+```
 
 The `task_affinity` script manages task placement and memory pinning when you call ibrun with the `-n`, `-o` switches (it's not necessary under any other circumstances). 
 
@@ -738,29 +749,33 @@ The proc-id mapping to the cores for Milan is:
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on each socket, the places would be:
 
-<pre class="job-script">
+``` { .bash .job-script }
 socket 0:  export OMP_PLACES="{0},{1},{2}"
-socket 1:  export OMP_PLACES="{64},{65},{66}"</pre>
+socket 1:  export OMP_PLACES="{64},{65},{66}"
+```
 
 Under the NUMA covers, each AMD chip is actually composed of 8 "chiplets" which share a 32 MB L3 cache.  To place each thread on its own chiplet for an 8 thread OpenMP program, you would use this command:
 
-<pre class="job-script">
+``` { .bash .job-script }
 socket 0:  export OMP_PLACES="{0},{8},{16},{24},{32},{40},{48},{56}"
-socket 1:  export OMP_PLACES="{64},{72},{80},{88},{96},{104},{112},{120}"</pre>
+socket 1:  export OMP_PLACES="{64},{72},{80},{88},{96},{104},{112},{120}"
+```
 
 Interval notation can be used to express a sequence of places. The syntax is: {proc-ids},N,S, where N is the number of places to create from the base place ({proc-ids}) with a stride of S. Hence the above sequences could have been written:
 
-<pre class="job-script">
+``` { .bash .job-script }
 socket 0:  export OMP_PLACES="{0},8,8"
-socket 1:  export OMP_PLACES="{64},8,8"</pre>
+socket 1:  export OMP_PLACES="{64},8,8"
+```
 
 In the example below two OpenMP programs are executed on a single node, each using 64 threads. The first program uses the cores on socket 0. It is put in the background, using the ampersand (&amp;) character at the end of the line, so that the job script execution can continue to the second OpenMP program execution, which uses the cores on socket 1. It, too, is put in the background, and the job execution waits for both to finish with the wait command at the end.
 
-<pre class="job-script">
+``` { .bash .job-script }
 export OMP_NUM_THREADS=64
 env OMP_PLACES="{0},64,1" ./omp.exe &    #execution on socket 0 cores
 env OMP_PLACES="{64},64,1" ./omp.exe &   #execution on socket 1 cores
-wait</pre>
+wait
+```
 
 ## [Running Jobs on Lonestar6](#running) { #running }
 
@@ -801,7 +816,7 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -842,7 +857,8 @@ pwd
 date
 
 # Launch serial code...
-./myprogram         # Do not use ibrun or any other MPI launcher</pre>
+./myprogram         # Do not use ibrun or any other MPI launcher
+```
 </details>
 
 
@@ -851,7 +867,7 @@ date
 
 This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -894,14 +910,16 @@ pwd
 date
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></details>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
+```
+</details>
 
 
 <details><summary>Hybrid (MPI + OpenMP) Job</summary>
 
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -956,14 +974,16 @@ date
 export OMP_NUM_THREADS=14
 
 # Launch MPI code... 
-ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec</pre></details>
+ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
+```
+</details>
 
 
 <details><summary>OpenMP Jobs</summary>
 
 **Run all OpenMP jobs in the `normal` queue.**  
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1010,7 +1030,9 @@ date
 export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 
 # Launch OpenMP code...
-./myprogram         # Do not use ibrun or any other MPI launcher</pre></details>
+./myprogram         # Do not use ibrun or any other MPI launcher
+```
+</details>
 
 
 ## [Customizing your Job Script ](#scripts-customizations)

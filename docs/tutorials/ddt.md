@@ -7,35 +7,52 @@
 
 Before running any debugger, the application code must be compiled with the `-g` and `-O0` options as shown below:
 
-<pre class="cmd-line">login1$ <b>mpif90 -g -O0 mycode.f90</b></pre>
+``` { .bash .cmd-line }
+login1$ <b>mpif90 -g -O0 mycode.f90</b>
+```
 
 or
 
-<pre class="cmd-line">login1$ <b>mpiCC -g -O0 mycode.c</b></pre>
+``` { .bash .cmd-line }
+login1$ <b>mpiCC -g -O0 mycode.c</b>
+```
 
 Follow these steps to set up your debugging environment on Frontera, Stampede2, Lonestar5 and other TACC compute resources.
 
 1. **Enable X11 forwarding**. To use the DDT GUI, ensure that X11 forwarding is enabled when you `ssh` to the TACC system. Use the `-X` option on the `ssh` command line if X11 forwarding is not enabled in your SSH client by default.
 
-	<pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@stampede2.tacc.utexas.edu</b></pre>
+	``` { .bash .cmd-line }
+	localhost$ <b>ssh -X <i>username</i>@stampede2.tacc.utexas.edu</b>
+	```
 
 1. **Load the DDT module on the remote system along with any other modules needed to run the application**:
 
-	<pre class="cmd-line">$ <b>module load ddt <i>mymodule1 mymodule2</i></b></pre>
+	``` { .bash .cmd-line }
+	$ <b>module load ddt <i>mymodule1 mymodule2</i></b>
+	```
 
 	NOTE: On Stampede2, there are 2 DDT modules, `ddt_skx` and `ddt_knl`, because the KNL's require a different license.
 
-	<pre class="cmd-line">$ <b>module load ddt_knl <i>mymodule1 mymodule2</i> # for KNL nodes</b></pre>
+	``` { .bash .cmd-line }
+	$ <b>module load ddt_knl <i>mymodule1 mymodule2</i> # for KNL nodes</b>
+	```
+
 	or
-	<pre class="cmd-line">$ <b>module load ddt_skx <i>mymodule1 mymodule2</i> # for SKX nodes</b></pre>
+	``` { .bash .cmd-line }
+	$ <b>module load ddt_skx <i>mymodule1 mymodule2</i> # for SKX nodes</b>
+	```
 
 1. **Start the debugger**:
 
-	<pre class="cmd-line">$ <b>ddt myprogram</b></pre>
+	``` { .bash .cmd-line }
+	$ <b>ddt myprogram</b>
+	```
 
 	If this error message appears...
 
-	<pre class="cmd-line">ddt: cannot connect to X server</pre>
+	``` { .bash .cmd-line }
+	ddt: cannot connect to X server
+	```
 
 	...then X11 forwarding was not enabled (Step 1.) or the system may not have local X11 support. If logging in with the `-X` flag doesn't fix the problem, please [create a help ticket][CREATETICKET] for assistance.
 
@@ -106,7 +123,9 @@ By starting DDT from a login node you let it use X11 graphics, which can be slow
 
 1. **From any login node, submit a batch job where the `ibrun` line is replaced by**:
 
-	<pre class="cmd-line">$ <b>ddt --connect -n $SLURM_NPROCS ./yourprogram</b></pre>
+	``` { .bash .cmd-line }
+	$ <b>ddt --connect -n $SLURM_NPROCS ./yourprogram</b>
+	```
 
 1. **When your batch job (and therefore your DDT execution) starts, the remote client will ask you to accept the connection**:
 

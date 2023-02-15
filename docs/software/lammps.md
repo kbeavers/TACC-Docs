@@ -34,7 +34,7 @@ LAMMPS uses spatial-decomposition techniques to partition the simulation domain 
 
 Refer to Stampede2's [Running Jobs][STAMPEDE2UGRUNNING] section for more Slurm options. To configure this script for Lonestar6 and Frontera, vary the `-p`, `-N` and `-n` directives.
 
-<pre class="job-script">
+``` { .bash .job-script }
 &#x23!/bin/bash
 &#x23#SBATCH -J test                    # Job Name
 &#x23#SBATCH -A <i>myProject</i>               # Your project name 
@@ -51,29 +51,35 @@ module load   lammps/9Jan20
 
 export OMP_NUM_THREADS=1   
 
-ibrun lmp_knl -in lammps_input </pre>
+ibrun lmp_knl -in lammps_input 
+```
 
 ## [Example command-line invocations:](#running-batch-examples) { #running-batch-examples } 
 
 * LAMMPS with [USER-OMP](https://lammps.sandia.gov/doc/Packages_details.html#pkg-user-omp) package (e.g. using 2 threads)
 
-	<pre class="job-script">ibrun lmp_stampede -sf omp -pk omp 2 -in lammps_input</pre>
+	``` { .bash .job-script }
+	ibrun lmp_stampede -sf omp -pk omp 2 -in lammps_input
+	```
 
 * LAMMPS with [USER-INTEL](https://lammps.sandia.gov/doc/Speed_intel.html) package (e.g. using 2 threads)
 
-	<pre class="job-script">ibrun lmp_stampede -sf intel -pk intel 0 omp 2 -in lammps_input</pre>
+	``` { .bash .job-script }
+	ibrun lmp_stampede -sf intel -pk intel 0 omp 2 -in lammps_input
+	```
 
 * LAMMPS with GPU package (Frontera 15Apr20 only)
 
 	The GPU `lammps` executable is `lmp_gpu`.  On Frontera GPU nodes, you could set `-pk gpu 4` to utilize all four RTX GPUs available on each node. Set the `-n` directive to a value &gt; 1 to let more than one MPI task share one GPU.
 
-	<pre class="job-script">
+	``` { .bash .job-script }
 	&#x23SBATCH -N 1                      # Requesting 1 node
 	&#x23SBATCH -n 16                     # and 16 tasks that share 4 GPU
 	&#x23SBATCH -p rtx                    # Frontera rtx queue
 
 	&#x23 Use all 4 GPUs
-	ibrun lmp_gpu -sf gpu -pk gpu 4 -in lammps_input</pre>
+	ibrun lmp_gpu -sf gpu -pk gpu 4 -in lammps_input
+	```
 
 ## [Running LAMMPS within `idev`](#running-interactive) { #running-interactive } 
 

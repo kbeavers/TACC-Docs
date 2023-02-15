@@ -13,7 +13,7 @@ Users can submit a Launcher job by creating a SLURM job script, in this example,
 
 ### [Sample Job Script](#serial-jobscript) { #serial-jobscript }
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J launcher-test            # job name
 #SBATCH -o launcher.o%j             # output and error file name (%j expands to SLURM jobID)
@@ -28,7 +28,8 @@ module load launcher
 export LAUNCHER_WORKDIR=/scratch/01234/joe/tests
 export LAUNCHER_JOB_FILE=helloworld 
 
-${LAUNCHER_DIR}/paramrun</pre>
+${LAUNCHER_DIR}/paramrun
+```
 
 Then submit the job script:
 
@@ -76,7 +77,7 @@ Users can also use Launcher to submit multithreaded jobs in parallel, such as Op
 
 ### [Sample Job Script](#multithreaded-jobscript) { #multithreaded-jobscript }
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J launcher-test            # job name
 #SBATCH -o launcher.o%j             # output and error file name (%j expands to jobID)
@@ -93,7 +94,8 @@ export OMP_NUM_THREADS=6
 export LAUNCHER_WORKDIR=/scratch1/01234/joe/tests
 export LAUNCHER_JOB_FILE=hello_openmp 
 
-${LAUNCHER_DIR}/paramrun</pre>
+${LAUNCHER_DIR}/paramrun
+```
 
 #### [Sample Job File](#multithreaded-jobscript) { #multithreaded-jobscript }
 
@@ -121,7 +123,7 @@ Launcher-GPU is a newly developed tool based on Launcher, which supports running
 
 Users can submit a Launcher-GPU job by creating a SLURM job script, for example, `rungpu.bash`. 
 
-<pre class="job-script">
+``` { .bash .job-script }
 #!/bin/bash
 #SBATCH -J launchergpu           	# job name
 #SBATCH -o launchergpu.o%j       	# output and error file name (%j expands to jobID)
@@ -135,7 +137,8 @@ module load launcher_gpu
 export LAUNCHER_WORKDIR=/scratch1/01234/joe/tests 
 export LAUNCHER_JOB_FILE= helloworld-gpu
 
-${LAUNCHER_DIR}/paramrun</pre>
+${LAUNCHER_DIR}/paramrun
+```
 
 Then submit the job script:
 <pre class="cmd-line">login1$ <b>sbatch rungpu.bash</b></pre>
