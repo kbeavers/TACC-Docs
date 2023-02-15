@@ -21,17 +21,12 @@ extra_javascript:
     - js/setTargetForExternalLinks.js
 
 nav:
-  # To match design and remind author about Core-CMS docs
-  # E.g. https://cep.tacc.utexas.edu/guides/globus-data-transfer-guide/
-  # NOTE: These pages do not exist but might look good for screenshot day
-  # NOTE: If not suitable for screenshot day or not suitable at all, then remove
   - TACC Basics :
-    - Introduction: index.md
-    - Getting Started: getting-started.md
-    - Multi-Factor Authentication (MFA): tutorials/mfa.md
-    - Globus File Transfer: globus-file-transfer.md
-    - SSH Access: ssh-access.md
-    - Code of Conduct: code-of-conduct.md
+    - Getting Started: basics/gettingstarted.md
+    - New User Information: basics/newuserinfo.md
+    - Data Transfer Guide: basics/datatransferguide.md
+    - Conduct on HPC: basics/conduct.md
+    - Help: basics/help.md
   - HPC :
     - Chameleon: https://chameleoncloud.readthedocs.io/en/latest
     - Corral: hpc/corral.md
@@ -71,7 +66,6 @@ nav:
     - Grid Community Toolkit: tutorials/gridcommunitytoolkit.md
     - Managing I/O: tutorials/managingio.md
     - MAP: tutorials/map.md
-    - Modules/LMod: tutorials/modules.md
     - Multi-Factor Authentication: tutorials/mfa.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
     - Sharing Project Files: tutorials/sharingprojectfiles.md
