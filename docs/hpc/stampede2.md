@@ -145,7 +145,7 @@ When you start a shell on Stampede2, system-level startup files initialize your 
 
 Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the `bash` command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using  `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute <span style="white-space: nowrap;">`source ~/.bashrc`</span> from your `.profile`, then put all your customizations in `.bashrc`.  The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
 
-For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTARTGUIDE] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
+For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
 
 #### [Environment Variables](#conduct-account-envvars) { #conduct-account-envvars }
 
@@ -391,7 +391,7 @@ Stampede2 has two endpoints, one running Globus gridftp v5.4 software available 
 
 ### [Sharing Files with Collaborators](#files-sharing) { #files-sharing }
 
-If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems][TACCSHARINGPROGJECTFILES] for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES] for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
 ## [Building Software](#building) { #building }
 
@@ -802,9 +802,7 @@ C448-004$</pre>
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-``` { .bash .job-script }
-<s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect
-```
+<pre class="cmd-line"><s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect</pre>
 
 Instead, use the following directive:
 
@@ -1925,7 +1923,7 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 
 ## [References](#refs) { #refs }
 
-* [Bash Users' Startup Files: Quick Start Guide][BASHQUICKSTARTGUIDE]
+* [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
 * [`idev` documentation][TACCIDEV]
 * [GNU documentation](https://www.gnu.org/doc/doc.en.html)
 * [Intel software documentation](http://software.intel.com/en-us/intel-software-technical-documentation)

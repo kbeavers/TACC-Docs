@@ -10,11 +10,11 @@
 
 VASP requires an individual license. TACC's HPC support license allows us to install only the compiled VASP executables and grant the access to licensed users who have accounts on our systems. We are not allowed to share source code.  
 
-If you have your own license and want to use your own compilation, you may [install it in your own account](../../hpcugs/stampede2/stampede2#building-basics-thirdparty). If you wish to use TACC's installed version, then TACC will have to verify your license. [Submit a support ticket][CREATETICKET] and include the following information: your **full** name, affiliated institution, and your TACC user name along with the license number or a scanned PDF of the license. TACC will notify you once the license is confirmed. 
+If you have your own license and want to use your own compilation, you may [install it in your own account](../../hpc/stampede2#building-basics-thirdparty). If you wish to use TACC's installed version, then TACC will have to verify your license. [Submit a support ticket][CREATETICKET] and include the following information: your **full** name, affiliated institution, and your TACC user name along with the license number or a scanned PDF of the license. TACC will notify you once the license is confirmed. 
 
 ### [Installations](#installations) { #installations }
 
-The latest stable release of VASP is installed on [Stampede2](../../hpcugs/stampede2/stampede2), [Lonestar6](../../hpcugs/6lonestar/lonestar6) and [Frontera](../../hpcugs/frontera/frontera) systems. Note that you will be unable to load any VASP module until your license is confirmed.
+The latest stable release of VASP is installed on [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/lonestar6) and [Frontera](../../hpc/frontera) systems. Note that you will be unable to load any VASP module until your license is confirmed.
 
 Use the "[`module`](https://lmod.readthedocs.io/en/latest/)" commands to explore other VASP installations, for example: 
 
@@ -73,7 +73,7 @@ ibrun vasp_std > vasp_test.out
 
 ### [Sample Job Script: VASP on Stampede2](#jobscript-stampede2) { #jobscript-stampede2 }
 
-The script below requests 4 nodes and 256 tasks, for a maximum of four hours in Stampede2's `normal` queue (KNL compute nodes). See the [Stampede2 User Guide: Common `sbatch` Options](../../hpcugs/stampede2/stampede2#running-sbatch) for more about job options.  
+The script below requests 4 nodes and 256 tasks, for a maximum of four hours in Stampede2's `normal` queue (KNL compute nodes). See the [Stampede2 User Guide: Common `sbatch` Options](../../hpc/stampede2#running-sbatch) for more about job options.  
 
 ``` { .bash .job-script }
 &#35;!/bin/bash 

@@ -37,15 +37,13 @@ To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which 
 
 # ibrun uses the $SBATCH directives to properly allocate nodes and tasks
 ibrun ./myprogram				
-
 ```
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
-<pre class="cmd-line">
+``` { .bash .job-script }
 login1$ <b>idev -N 2 -n 100 </b>				
 c309-005$ <b>ibrun ./myprogram</b>
-
 ```
 
 ### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
@@ -72,7 +70,6 @@ To run one MPI application after another (or any sequence of commands one at a t
 ./preprocess.sh
 ibrun ./myprogram input1    # runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes
-
 ```
 
 ### [More Than One MPI Application Running Concurrently](#launching-mpiconcurrent) { #launching-mpiconcurrent }
@@ -95,7 +92,6 @@ ibrun -n 128 -o 128 task_affinity ./myprogram input2 &
 
 # Required; else script will exit immediately.
 wait
-
 ```
 
 The `task_affinity` script manages task placement and memory pinning when you call ibrun with the `-n`, `-o` switches (it's not necessary under any other circumstances). 

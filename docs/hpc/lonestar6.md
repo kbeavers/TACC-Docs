@@ -493,6 +493,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora][TACCREMORA] tool to monitor your application's needs. 
 
+{% include 'aliases.md' %}
 ## [Building Software](#building) { #building }
 
 The phrase "building software" is a common way to describe the process of producing a machine-readable executable file from source files written in C, Fortran, or some other programming language. In its simplest form, building software involves a simple, one-line call or short shell script that invokes a compiler. More typically, the process leverages the power of <a href="http://www.gnu.org/software/make/manual/make.html">makefiles</a>, so you can change a line or two in the source code, then rebuild in a systematic way only the components affected by the change. Increasingly, however, the build process is a sophisticated multi-step automated workflow managed by a special framework like <a href="http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html">autotools</a> or <a href="http://cmake.org"><code>cmake</code></a>, intended to achieve a repeatable, maintainable, portable mechanism for installing software across a wide range of target platforms.</p>
@@ -659,15 +660,13 @@ To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which 
 
 # ibrun uses the $SBATCH directives to properly allocate nodes and tasks
 ibrun ./myprogram				
-
 ```
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
-<pre class="cmd-line">
+``` { .bash .job-script }
 login1$ <b>idev -N 2 -n 100 </b>				
 c309-005$ <b>ibrun ./myprogram</b>
-
 ```
 
 ### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
@@ -694,7 +693,6 @@ To run one MPI application after another (or any sequence of commands one at a t
 ./preprocess.sh
 ibrun ./myprogram input1    # runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes
-
 ```
 
 ### [More Than One MPI Application Running Concurrently](#launching-mpiconcurrent) { #launching-mpiconcurrent }
@@ -717,7 +715,6 @@ ibrun -n 128 -o 128 task_affinity ./myprogram input2 &
 
 # Required; else script will exit immediately.
 wait
-
 ```
 
 The `task_affinity` script manages task placement and memory pinning when you call ibrun with the `-n`, `-o` switches (it's not necessary under any other circumstances). 
@@ -806,6 +803,7 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 &#42; Access to the `large` queue is restricted. To request more nodes than are available in the normal queue, submit a consulting (help desk) ticket through the TACC User Portal. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Lonestar6.
 
 &#42;&#42; The `vm-small` queue contains virtual nodes with fewer resources (cores) than the nodes in the other queues.
+
 
 
 ## [Sample Job Scripts](#scripts) { #scripts }

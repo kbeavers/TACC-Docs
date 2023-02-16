@@ -132,7 +132,7 @@ Manipulate data in memory instead of files on disk when necessary. This means:
 
 ### [Stripe Large Files on `$SCRATCH` and `$WORK`](#striping) { #striping }
 
-When transferring or creating large files, it's important that you stripe the receiving directory. See the respective "Striping Large Files" sections in the [Stampede2](../../hpcugs/stampede2/stampede2#files-striping]) and [Frontera](https://frontera-portal.tacc.utexas.edu/user-guide/files/#striping-large-files) user guides. 
+When transferring or creating large files, it's important that you stripe the receiving directory. See the respective "Striping Large Files" sections in the [Stampede2](../../hpc/stampede2#files-striping]) and [Frontera](../../hpc/frontera#striping-large-files) user guides. 
 
 
 ## [Govern I/O with OOOPS](#ooops) { #ooops }

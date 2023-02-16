@@ -145,7 +145,7 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
  
 #### [GPU](#running-lonestar6-gpu) { #jobscript-lonestar6-gpu }
 
-The following job script requests two [A100 GPU nodes on Lonestar6](../../hpcugs/6lonestar/lonestar6/#queues). The `-gpu_id 000` directive indicates all three MPI ranks on the same node share the same GPU with id 0.  You may use, for example `-gpu_id 012`, to use all three available GPUs on each A100 GPU node.
+The following job script requests two [A100 GPU nodes on Lonestar6](../../hpc/lonestar6#queues). The `-gpu_id 000` directive indicates all three MPI ranks on the same node share the same GPU with id 0.  You may use, for example `-gpu_id 012`, to use all three available GPUs on each A100 GPU node.
 
 ``` { .bash .job-script }
 #!/bin/bash
