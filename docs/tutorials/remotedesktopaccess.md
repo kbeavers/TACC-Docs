@@ -29,7 +29,7 @@ Connect to the TACC Analysis Portal at <https://tap.tacc.utexas.edu>. Everyone w
 
 ## [DCV & VNC at TACC](#jobscripts) { #jobscripts }
 
-TACC resources [Frontera](../../hpc/frontera.md), [Stampede2](../../hpc/stampede2.md), [Lonestar6](../../hpc/6lonestar.md), and [Maverick2](../../hpc/maverick2.md) all offer remote desktop capabilities via a VNC (Virtual Network Computing) connection. Frontera and Stampede2 also provide remote desktop access through a DCV (Desktop Cloud Visualization) connection to one or more nodes.  
+TACC resources [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/6lonestar), and [Maverick2](../../hpc/maverick2) all offer remote desktop capabilities via a VNC (Virtual Network Computing) connection. Frontera and Stampede2 also provide remote desktop access through a DCV (Desktop Cloud Visualization) connection to one or more nodes.  
 
 TACC has a limited number of DCV licenses available, so concurrent DCV sessions may be limited. TACC has provided two DCV job scripts for two different scenarios:
 
@@ -151,7 +151,9 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 
 1. **Start your graphics-enabled application.** Once the desktop is generated ([Figure 3.](#figure3)), you can launch your applications. Here we run a simple visualization program, `glxgears`. ([Figure 4.](#figure4))
 
-	**Note:** The "Terminal" button at the bottom of the DCV window creates a terminal **without `ibrun` support**. To create an xterm with full `ibrun` support, type `xterm &` in the initial xterm window.
+	!!! Tip
+		The "Terminal" button at the bottom of the DCV window creates a terminal **without `ibrun` support**.   
+		To create an xterm with full `ibrun` support, type `xterm &` in the initial xterm window.
 
 	<figure id="figure3"><img alt="" src="../../imgs/tutorials/RDA-3.png" style="width: 800px; height: 480px;" />
 	<figcaption>Figure 3. DCV Desktop in Chrome Browser</figcaption></figure>

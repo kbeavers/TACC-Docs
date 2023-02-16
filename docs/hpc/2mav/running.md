@@ -1,7 +1,6 @@
 ## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
 
-<!-- /taccinfo blurb
-= File.read "../../include/maverick2-jobaccounting.html" -->
+{% include 'include/tinfo.md' %}
 
 {% include 'include/maverick2-jobaccounting.md' %}
 

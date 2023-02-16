@@ -618,8 +618,7 @@ You may, of course, need to customize the build process in other ways. It's like
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators](http://portal.tacc.utexas.edu/tutorials/sharing-project-files) for more information.
 
-/Intel MKL
-= File.read "../../include/lonestar6-mkl.html"
+{% include "include/lonestar6-mkl.md" %}
 
 ## [Launching Applications](#launching) { #launching }
 

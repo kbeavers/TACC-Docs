@@ -19,7 +19,7 @@ Lonestar6 | AlphaFold: v2.2.0<br> Data: <code>/scratch/tacc/apps/bio/alphafold/d
 ## [Running AlphaFold](#running) { #running }
 
 !!! note
-	Note: AlphaFold is still being tested for performance and I/O efficiency. These instructions are subject to change.
+	AlphaFold is still being tested for performance and I/O efficiency. These instructions are subject to change.
 
 
 ### [Single Sequence Prediction](#running-singlesequence) { #running-singlesequence }

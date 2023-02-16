@@ -5,3 +5,4 @@
 
 &#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">`ls -ul`</span> command to view access times.
 
+
