@@ -68,7 +68,7 @@ Follow the steps below to start an interactive session.
 	* `-N` puts the ssh command into the background after connecting
 	* `-L` forwards the port   
 
-	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then ssh to Frontera.  <p>&nbsp;</p>
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then ssh to Frontera. 
 
 
 1. Connecting the vncviewer

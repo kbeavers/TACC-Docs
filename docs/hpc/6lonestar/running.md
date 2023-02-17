@@ -29,3 +29,4 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 &#42;&#42; The `vm-small` queue contains virtual nodes with fewer resources (cores) than the nodes in the other queues.
 
 
+

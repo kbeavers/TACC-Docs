@@ -16,7 +16,7 @@ Examples of intensive I/O activity that could affect the system include, but are
 As TACC's user base continues to expand, the stress on the resources' shared file systems increases daily. TACC staff now recommends new file system and job submission guidelines in order to maintain file system stability. If a user's jobs or activities are stressing the file system, then every other user's jobs and activities are impacted, and the system admins may resort to cancelling the user's jobs and suspending access to the queues. 
 
 !!! note
-	If you know your jobs will generate significant I/O, please [submit a support ticket][CREATETICKET] and an HPC consultant will work with you.
+	If you know your jobs will generate significant I/O, please <a href="http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create">submit a support ticket</a> and an HPC consultant will work with you.
 
 ## [Recommended File Systems Usage](#files) { #files }
 
@@ -31,13 +31,13 @@ Consider that your `/home` (`$HOME`) and `/work` (`$WORK`) directories are for s
 File System | Recommended Use | Notes
 --- | --- | ---
 <code>$HOME</code> | cron jobs, scripts and templates, environment settings, compilations | each user's <code>$HOME</code> directory is backed up
-<code>$WORK</code>  | software installations, original datasets that can't be reproduced.  | The Stockyard file system is NOT backed up.<br>Ensure that your important data is backed up to [Ranch][RANCHUSERGUIDE] long-term storage.
-<code>$SCRATCH</code> <sup><a href="#sup1">1</a></sup> | Reproducible datasets, I/O files: temporary files, checkpoint/restart files, job output files | Not backed up.<br>All <code>$SCRATCH</code> file systems are <b>subject to purge</b> if access time <sup><a href="#sup2">2</a></sup> is more than 10 days old.
+<code>$WORK</code>  | software installations, original datasets that can't be reproduced.  | The Stockyard file system is NOT backed up.<br>Ensure that your important data is backed up to <a href="../../hpc/ranch">Ranch</a> long-term storage.
+<span style="white-space: nowrap;"><code>$SCRATCH</code> <sup><a href="#sup1">1</a></sup></span> | Reproducible datasets, I/O files: temporary files, checkpoint/restart files, job output files | Not backed up.<br>All <code>$SCRATCH</code> file systems are <b>subject to purge</b> if access time <sup><a href="#sup2">2</a></sup> is more than 10 days old.
 
 
-[1](#sup1) Maverick2 does not have its own `$SCRATCH` file system. Consult the [Maverick2 User Guide][MAVERICK2UG]'s File Systems section for further guidance.  
+<a id="#sup1">1</a> Maverick2 does not have its own `$SCRATCH` file system. Consult the <a href="../../hpc/maverick2">Maverick2 User Guide</a>'s File Systems section for further guidance.  
 
-[2](#sup2) The operating system updates a file's access time when that file is modified on a login or compute node. Reading or executing a file/script on a login node does not update the access time, but reading or executing on a compute node does update the access time. This approach helps us distinguish between routine management tasks (e.g. `tar`, `scp`) and production use. Use the command `ls -ul` to view access times.
+<a id="#sup2">2</a> The operating system updates a file's access time when that file is modified on a login or compute node. Reading or executing a file/script on a login node does not update the access time, but reading or executing on a compute node does update the access time. This approach helps us distinguish between routine management tasks (e.g. `tar`, `scp`) and production use. Use the command `ls -ul` to view access times.
 
 ## [Best Practices for Minimizing I/O](#bestpractices) { #bestpractices }
 
@@ -62,7 +62,7 @@ Maverick2 | 32 GB p100/v100<br>60 GB gtx
 
 ### [Run Jobs Out of Each Resource's Scratch File System](#bestpractices-redirect-scratch) { #bestpractices-redirect-scratch }
 
-Each TACC resource (except <a href="https://portal.tacc.utexas.edu/user-guides/maverick2#files">Maverick2</a>) has its own Scratch file system, `/scratch`, accessible by the `$SCRATCH` environment variable and the `cds` alias.
+Each TACC resource (except <a href="../../hpc/maverick2#files">Maverick2</a>) has its own Scratch file system, `/scratch`, accessible by the `$SCRATCH` environment variable and the `cds` alias.
 
 **Scratch file systems are not shared across TACC production systems but are specific to one resource. Scratch file systems have neither file count or file size quotas, but are subject to periodic and unscheduled file purges should total disk usage exceed a safety threshold.**
 
@@ -72,7 +72,7 @@ Compute nodes should not reference the `$WORK` file system unless it's to stage 
 
 Your job script should also direct the job's output to the local scratch directory:
 
-``` { .bash .job-script }
+<pre class="job-script">
 &#35; stage executable and data
 cd $SCRATCH
 mkdir testrunA
@@ -84,7 +84,7 @@ ibrun testrunA/myprogram testrunA/myinputdata &gt; testrunA/output
 
 &#35; copy results back permanent storage once job is done
 cp testrunA/output $WORK/savetestrunA
-```
+</pre>
 
 
 ### [Avoid Writing One File Per Process](#bestpractices-perprocess) { #bestpractices-perprocess }
@@ -106,6 +106,7 @@ If you anticipate the need for multiple nodes or processes to write to a single 
 If you are close to file quota on either the `$WORK` or `$HOME` file system, your job may fail due to being unable to write output, and this will cause stress to the file systems when attempting to write beyond quota. It's important to monitor your disk and file usage on all TACC resources where you have an allocation.
 
 Monitor your file system's quotas and usage using the `taccinfo` command. This output displays whenever you log on to a TACC resource.
+{% include "include/tinfo.md" %}
 
 ``` { .bash .cmd-line }
 ---------------------- Project balances for user <user> ----------------------
@@ -120,7 +121,6 @@ Monitor your file system's quotas and usage using the `taccinfo` command. This o
 -------------------------------------------------------------------------------
 ```
 
-{% include File.read "../include/tinfo.md" %}
 
 
 ### [Manipulate Data in Memory, not on Disk](#bestpractices-memory) { #bestpractices-memory }
@@ -132,7 +132,7 @@ Manipulate data in memory instead of files on disk when necessary. This means:
 
 ### [Stripe Large Files on `$SCRATCH` and `$WORK`](#striping) { #striping }
 
-When transferring or creating large files, it's important that you stripe the receiving directory. See the respective "Striping Large Files" sections in the [Stampede2](../../hpcugs/stampede2/stampede2#files-striping]) and [Frontera](https://frontera-portal.tacc.utexas.edu/user-guide/files/#striping-large-files) user guides. 
+When transferring or creating large files, it's important that you stripe the receiving directory. See the respective "Striping Large Files" sections in the [Stampede2](../../hpc/stampede2#files-striping]) and [Frontera](../../hpc/frontera#striping-large-files) user guides. 
 
 
 ## [Govern I/O with OOOPS](#ooops) { #ooops }
@@ -149,10 +149,13 @@ The OOOPS module is currently installed on TACC's [Frontera][FRONTERAUG] and [St
 
 The OOOPS module provides two functions `set_io_param` and `set_io_param_batch` for single-node jobs and multiple-node jobs, respectively. These commands adjust the maximum allowed frequency of `open` and `stat` function calls on all compute nodes involved in a running job. Execute these two commands within a Slurm job script or within an `idev` session. 
 
-These functions instruct the system to modulate your job's I/O activity, thus reducing the impact on the designated file system. For both functions, use "0" to indicate the `$SCRATCH` file system and "1" to indicate the `$WORK` file system. Note: these indices are subject to change. See each command's `help` option to ensure correct parameters:
+These functions instruct the system to modulate your job's I/O activity, thus reducing the impact on the designated file system. For both functions, use "0" to indicate the `$SCRATCH` file system and "1" to indicate the `$WORK` file system. 
+
+!!! note
+	These indices are subject to change. See each command's `help` option to ensure correct parameters:
 
 ``` { .bash .cmd-line }
-c123-456$ <b>set_io_param -h</b>
+c123-456$ set_io_param -h
 ```
 
 Indicate the frequency of `open` and `stat` function calls, from the least to the most, with `low`, `medium`, or `high`.
@@ -166,23 +169,22 @@ First, load the `ooops` module in your job script or `idev` session to deploy OO
 <table border="1">
 <tr><th>Job Script Example</th><th>Interactive Session Example</th></tr>
 <tr><td>
-``` { .bash .job-script }
+<pre class="job-script">
 #SBATCH -N 1<br>#SBATCH -J myjob.%j<br>
 &#46;...
 module load ooops 
 set_io_param 0 low 
 ibrun <i>myprogram</i> 
-```
+</pre>
 </td>
 <td width="450" valign="top">
-	``` { .bash .cmd-line }
-
+	<pre class="job-script">
 	login1$ <b>idev -N 1</b>
 	&#46;...
 	c123-456$ <b>module load ooops</b>
 	c123-456$ <b>set_io_param 0 low</b>
 	c123-456$ <b>ibrun <i>myprogram</i></b>
-```
+	</pre>
 </td></tr></table>
 		
 To turn off throttling on the `$SCRATCH` file system for a submitted job, run the following command on a login node or within an `idev` session while the job is running:
@@ -199,23 +201,22 @@ login1$ <b>set_io_param 0 unlimited</b>
 <th>Interactive Session Example</th></tr>
 <tr>
 <td width="450" valign="top"> 
-	``` { .bash .job-script }
+	<pre class="job-script">
 	#SBATCH -N 4<br>#SBATCH -n 64<br>#SBATCH -J myjob.%j
 	&#46;...
 	module load ooops
 	<span style="white-space: nowrap;">set_io_param_batch $SLURM_JOBID 0 low</span>
 	ibrun <i>myprogram</i>
-    ```
+    </pre>
 </td>
 <td width="450" valign="top">
-	``` { .bash .cmd-line }
-
+	<pre class="job-script">
 	login1$ <b>idev -N 4</b>
 	&#46;...
 	c123-456$ <b>module load ooops</b>
 	c123-456$ <b>set_io_param_batch [jobid] 0 low</b>
 	c123-456$ <b>ibrun <i>myprogram</i></b>
-	```
+	</pre>
 
 </td></tr></table>
 
@@ -282,3 +283,5 @@ Perform large-scale runs with R/Python on <code>$HOME</code>/<code>$WORK</code> 
 Overlook I/O pattern and I/O workload | Use profilers or I/O monitoring tools when necessary
 
 {% include 'aliases.md' %}
+
+

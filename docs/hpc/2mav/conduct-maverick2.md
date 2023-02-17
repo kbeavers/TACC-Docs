@@ -106,7 +106,7 @@ In order to not stress both internal and external networks:
 
 * **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
 
-* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch][RANCH].
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](../../hpc/ranch).
 
 * When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
 

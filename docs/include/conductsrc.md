@@ -124,3 +124,4 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora][TACCREMORA] tool to monitor your application's needs. 
 
+{% include 'aliases.md' %}

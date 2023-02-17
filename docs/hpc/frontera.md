@@ -344,19 +344,19 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](https://portal.tacc.utexas.edu/software/remora) tool to monitor your application's needs. 
 
-## [System Architecture](#system) { # }
+## [System Architecture](#system) { #system }
 
-<p class="introtext">Frontera has two computing subsystems, a primary computing system focused on double precision performance, and a second subsystem focused on single precision streaming-memory computing. Frontera also has multiple storage systems, as well as interfaces to cloud and archive systems, and a set of application nodes for hosting virtual servers.</p>
+Frontera has two computing subsystems, a primary computing system focused on double precision performance, and a second subsystem focused on single precision streaming-memory computing. Frontera also has multiple storage systems, as well as interfaces to cloud and archive systems, and a set of application nodes for hosting virtual servers.
 
-<figure id="figurex">
+<figure id="figure1">
 <img src="../../imgs/frontera/Ecosystem-Graphic.png" style="width:800px">
-<figcaption></figcaption></figure>
+<figcaption>Frontera Ecosystem</figcaption></figure>
 
-### [Cascade Lake (CLX) Compute Nodes](#system) { # }
+### [Cascade Lake (CLX) Compute Nodes](#system-clx) { #system-clx }
 
 Frontera hosts 8,368 Cascade Lake (CLX) compute nodes contained in 101 racks. 
 
-#### [Table 4. CLX Specifications](#system) { # }
+#### [Table 4. CLX Specifications](#table4) { #table4 }
 
 Model       | Intel Xeon Platinum 8280 ("Cascade Lake")
 ----------- | ------------
@@ -367,11 +367,11 @@ RAM:        | 192GB (2933 MT/s) DDR4
 Cache: | 32KB L1 data cache per core;<br>1MB L2 per core;<br>38.5 MB L3 per socket.<br>Each socket can cache up to 66.5 MB (sum of L2 and L3 capacity).
 Local storage: | 144GB /tmp partition on a 240GB SSD.
 
-### [Large Memory Nodes](#system) { # }
+### [Large Memory Nodes](#system-largememory) { #system-largememory }
 
 Frontera hosts 16 large memory nodes featuring 2.1TB of Optane memory. Access these nodes via the [`nvdimm` queue](../running#frontera-production-queues).
 
-#### [Table 5. Large Memory Nodes ](#system) { # }
+#### [Table 5. Large Memory Nodes ](#table5) { #table5 }
 
 Model | Intel Xeon Platinum 8280M ("Cascade Lake")
 ----------- | ------------
@@ -382,11 +382,11 @@ Memory:	| **2.1 TB NVDIMM**
 Cache:	| 32KB L1 data cache per core;<br> 1MB L2 per core;<br> 38.5 MB L3 per socket.<br>384 GB DDR4 RAM configured as an L4 cache<br>Each socket can cache up to 66.5 MB (sum of L2 and L3 capacity).
 Local storage: | 144GB /tmp partition on a 240GB SSD<br> 4x 833 GB /mnt/fsdax[0,1,2,3] partitions on NVDIMM<br> 3.2 TB usable local storage
 
-### [GPU Nodes](#system) { # }
+### [GPU Nodes](#system-gpu) { #system-gpu }
 
 Frontera hosts 90 GPU nodes contained in 4 Green Revolution Cooling ICEraQ racks. Access these nodes via the [`rtx` and `rtx-dev` queues](../running#frontera-production-queues).
 
-#### [Table 6. Frontera GPU node specifications](#system) { # }
+#### [Table 6. Frontera GPU node specifications](#table6) { #table6 }
 
 Feature                          | Specifications
 ------------------------         | ------------------------------------
@@ -398,11 +398,11 @@ CPUs:                            | 2 Intel Xeon E5-2620 v4 (“Broadwell”)
 RAM:                             | 128GB (2133 MT/s) DDR4
 Local storage:                   | 144GB /tmp partition on a 240GB SSD.
 
-### [Login Nodes](#system) { # }
+### [Login Nodes](#system-login) { #system-login }
 
 Frontera's four login nodes are Intel Xeon Platinum 8280 ("Cascade Lake") nodes with 56 cores and 192 GB of RAM. The login nodes are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login node for file management, compilation, and data movement. Any computing should be done within a batch job or an interactive session on compute nodes.
 
-### [Network](#system) { # }
+### [Network](#system-network) { #system-network }
 
 The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) connectivity between the switches and HDR100 (100 Gb/s) connectivity to the compute nodes. A fat tree topology employing six core switches connects the compute nodes and the `$HOME` and `$SCRATCH` filesystems. There are two 40-port leaf switches in each rack. Half of the nodes in a rack (44) connect to 22 downlinks of a leaf switch as pairs of HDR100 (100 Gb/s) links into HDR200 (200 Gb/s) ports of the leaf switch. The other 18 ports are uplinks to the six cores switches. The disparity in the number of uplinks and downlinks creates an oversubscription of 22/18.
 
@@ -518,7 +518,7 @@ Once connected, you can navigate through your remote file hierarchy using famili
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.  
 
-Frontera has one Grid Community Toolkit endpoint. All users may authenticate using the CILogon myproxy authentication. See [Using Grid Community Toolkit at TACC][TACCGRIDCOMMUNITYTOOLKIT] for detailed information.  
+Frontera has one Grid Community Toolkit endpoint. All users may authenticate using the CILogon myproxy authentication. See [Using Grid Community Toolkit at TACC](../../tutorials/gridcommunitytoolkit) for detailed information.  
 
 ### [SSH Utilities: `scp` & `rsync`](#transferring-ssh) { #transferring-ssh } 
 
@@ -1827,7 +1827,7 @@ Follow the steps below to start an interactive session.
 	* `-N` puts the ssh command into the background after connecting
 	* `-L` forwards the port   
 
-	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then ssh to Frontera.  <p>&nbsp;</p>
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then ssh to Frontera. 
 
 
 1. Connecting the vncviewer

@@ -18,7 +18,7 @@ Once connected, you can navigate through your remote file hierarchy using famili
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.  
 
-Frontera has one Grid Community Toolkit endpoint. All users may authenticate using the CILogon myproxy authentication. See [Using Grid Community Toolkit at TACC][TACCGRIDCOMMUNITYTOOLKIT] for detailed information.  
+Frontera has one Grid Community Toolkit endpoint. All users may authenticate using the CILogon myproxy authentication. See [Using Grid Community Toolkit at TACC](../../tutorials/gridcommunitytoolkit) for detailed information.  
 
 ### [SSH Utilities: `scp` & `rsync`](#transferring-ssh) { #transferring-ssh } 
 

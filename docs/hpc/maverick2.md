@@ -22,7 +22,7 @@ Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs
 
 Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
 
-Table 1. Maverick2 GTX Compute Node Specifications
+#### [Table 1. Maverick2 GTX Compute Node Specifications](#table1)
 
 Specification | Value
 --- | ---
@@ -43,7 +43,7 @@ GPUs: | 4 x NVidia 1080-TI GPUs
 
 Maverick2 has 4 V100 compute nodes.
 
-Table 2. Maverick2 V100 Compute Node Specifications
+#### [Table 2. Maverick2 V100 Compute Node Specifications](#table2)
 
 Specification | Value
 --- | ---
@@ -64,7 +64,7 @@ GPUs: | 2 NVidia  V100 adapters
 
 Maverick2 has 3 P100 nodes.
 
-Table 3. Maverick2 P100 Compute Node Specifications
+#### [Table 3. Maverick2 P100 Compute Node Specifications](#table3)
 
 Specification | Value
 --- | ---
@@ -226,7 +226,7 @@ In order to not stress both internal and external networks:
 
 * **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
 
-* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch][RANCH].
+* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](../../hpc/ranch).
 
 * When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
 
@@ -242,7 +242,7 @@ In order to not stress both internal and external networks:
 
 Maverick2 mounts two Lustre file systems that are shared across all nodes: the home and work file systems. Maverick2's startup mechanisms define corresponding account-level environment variables, `$HOME` and `$WORK`, that store the paths to directories that you own on each of these file systems. Maverick2's home file system is mounted only on Maverick2, but the work file system mounted on Maverick2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). This is the same work file system that is currently available on Stampede2, Frontera, Lonestar6, and several other TACC resources.
 
-Table 4. Maverick2 File Systems
+### [Table 4. Maverick2 File Systems](#table4)
 
 File System | Quota | Key Features
 --- | --- | ---
@@ -343,8 +343,7 @@ Remember that it's not possible to change the striping on a file that already ex
 
 ## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
 
-<!-- /taccinfo blurb
-= File.read "../../include/maverick2-jobaccounting.html" -->
+{% include 'include/tinfo.md' %}
 
 {% include 'include/maverick2-jobaccounting.md' %}
 
@@ -617,7 +616,8 @@ Remote desktop access to Maverick2 is formed through a VNC connection to one or 
 
 Once the vncserver process is running on the visualization node and a tunnel through the login node is created, an output message identifies the access port for connecting a VNC viewer. A VNC viewer application is run on the user's remote system and presents the desktop to the user.
 
-Note: If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+!!! tip
+	If this is your first time connecting to Maverick2, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
 
 Follow the steps below to start an interactive session.
 

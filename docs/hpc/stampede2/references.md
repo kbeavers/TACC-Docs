@@ -1,6 +1,6 @@
 ## [References](#refs) { #refs }
 
-* [Bash Users' Startup Files: Quick Start Guide][BASHQUICKSTARTGUIDE]
+* [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
 * [`idev` documentation][TACCIDEV]
 * [GNU documentation](https://www.gnu.org/doc/doc.en.html)
 * [Intel software documentation](http://software.intel.com/en-us/intel-software-technical-documentation)

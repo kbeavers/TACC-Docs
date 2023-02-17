@@ -35,7 +35,7 @@ login1$ <b>HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR \
 
 ### [Single-Node](#lonestar6-singlenode) { #lonestar6-singlenode }
 
-To run a single-node job benchmark on one GPU, first create an `idev` session in LS6's [`gpu_a100`](../../hpcugs/6lonestar/lonestar6#queues) queue: 
+To run a single-node job benchmark on one GPU, first create an `idev` session in LS6's [`gpu_a100`](../../hpc/lonestar6#queues) queue: 
 
 <pre class="cmd-line">login1$ <b>idev -N 1 -n 2 -p gpu_a100</b></pre>
 
@@ -56,7 +56,7 @@ Run the same benchmark using both GPUs:
 
 ### [Multi-Node](#lonestar6-multinode) { #lonestar6-multinode }
 
-To run a multi-node job benchmark, first create a multi-node `idev` session in LS6's [`gpu_a100`](../../hpcugs/6lonestar/lonestar6#queues) queue: 
+To run a multi-node job benchmark, first create a multi-node `idev` session in LS6's [`gpu_a100`](../../hpc/lonestar6#queues) queue: 
 
 <pre class="cmd-line">login1$ <b>idev -N 2 -n 4 -p gpu_a100</b></pre>
 
@@ -186,7 +186,7 @@ c123-456$ <b>ibrun -np 8 python3 tf_cnn_benchmarks.py --variable_update=horovod 
 
 These instructions detail installing and running TensorFlow benchmarks on Stampede2. Stampede2 runs TensorFlow 2.1.0 with Python 3.7 and Intel 18.
 
-Use TACC's `idev` utility to grab a single compute node for 1 hour in Stampede2's [skx-dev queue](../../hpcugs/stampede2/stampede2#queues):
+Use TACC's `idev` utility to grab a single compute node for 1 hour in Stampede2's [skx-dev queue](../../hpc/stampede2#queues):
 
 <pre class="cmd-line">login1$ <b>idev -p skx-dev -N 1 -n 1 -m 60</b></pre>
 
