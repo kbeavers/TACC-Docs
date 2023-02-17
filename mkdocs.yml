@@ -87,6 +87,7 @@ markdown_extensions:
   - admonition
   - attr_list
   - abbr
+  - pymdownx.superfences
   # Some extensions are pre-enabled by MkDocs
   # https://github.com/mkdocs/mkdocs/blob/1.4.2/docs/user-guide/configuration.md#markdown_extensions
 #  - meta
