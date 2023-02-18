@@ -1,4 +1,4 @@
-# Mkdocs, Python-Markdown, PyMdown Extensions
+# External Libraries
 
 TACC/TACC-Docs uses external libraries with unintutive relationships.
 
