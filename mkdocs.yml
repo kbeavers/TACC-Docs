@@ -7,6 +7,15 @@ edit_uri: edit/main/docs/
 
 theme:
     name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - bash
+        - ruby
+    hljs_aliases:
+        - name: cmd-line
+          lang: ruby
+        - name: job-script
+          lang: bash
     custom_dir: themes/readthedocs
 
 extra_css:
@@ -75,19 +84,31 @@ nav:
     - Code Examples: code-examples.md
 
 
+# Python-Markdown extensions
+# https://python-markdown.github.io/extensions/
 markdown_extensions:
   - footnotes
   - def_list
   - admonition
   - attr_list
   - abbr
-  - pymdownx.superfences
-  # Some extensions are pre-enabled by MkDocs
+  # Enabled by MkDocs by default
   # https://github.com/mkdocs/mkdocs/blob/1.4.2/docs/user-guide/configuration.md#markdown_extensions
-#  - meta
-#  - toc
-#  - tables
-#  - fenced_code
+  # - meta
+  # - toc
+  # - tables
+  # - fenced_code
+  # Extensions from PyMdown
+  # https://facelessuser.github.io/pymdown-extensions
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  # FAQ: The `pymdownx.highlight` is useful only if Pygments is installed
+  #      because Pygments would offer:
+  #      - build-time syntax highlight markup
+  #      - custom language tags and formatters
+  # WARNING: Installing Pygments causes MkDocs build error
+  # - pymdownx.highlight
+  #     use_pygments: true
 
 plugins:
   - search

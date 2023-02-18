@@ -59,15 +59,37 @@ See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-m
 
 <small>* I.e. <samp>&#96;class="cmd-line"&#96;</samp> produces `class="cmd-line"` which is red using the ReadTheDocs theme.</small>
 
-<details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
+<!-- <details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary> -->
+
+!!! caution
+    Outdated. Testing.
 
 Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .cmd-line }</code>.
 
-``` { .ruby .cmd-line }
-login1$ module load kitten
+Testing
+Inline: `#!ruby login1$ module load kitten0`
+
+```
+login1$ module load kitten0
 ```
 
-</details>
+```{ .bash }
+login1$ module load kitten1
+```
+
+```cmd-line
+login1$ module load kitten2
+```
+
+```job-script
+login1$ module load kitten3
+```
+
+```ruby
+login1$ module load kitten4
+```
+
+<!-- </details> -->
 <details><summary><h4 class="understate">Simple Mark<b>up</b></h4></summary>
 
 <pre class="cmd-line">login1$ <strong>module load kitten</strong></pre>
