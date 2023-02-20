@@ -403,9 +403,29 @@ figcaption {
 
 
 
+/* To define borrowed and changed highlightjs colors */
+:root {
+  --hljs-color--code-text: #545454; /* mimics ally-light.css */
+  --hljs-color--code-bkgd: var(--global-color-primary--x-light);
+}
+/* To overwrite highlightjs background */
+.hljs {
+  background: var(--hljs-color--code-bkgd);
+}
+/* To replicate highlightjs (hljs) styles on loose TACC-Docs classes */
+/* FAQ: "Loose" classes being those that are not coupled with <code> */
+/* CAVEAT: The `:has()` syntax is not supported in Firefox browser */
+:is(.cmd-line, .job-script):not(:has(code)) {
+    padding: 1em;
+    overflow: auto;
+
+    color: var(--hljs-color--code-text);
+    background: var(--hljs-color--code-bkgd);
+    border: var(--global-border-width--normal) solid var(--global-color-primary--light); /* mimic core-styles.docs.css */
+}
 /* To distinguish code block backgrounds */
 :root {
-  --global-color-accent--xx-light: #F1E1FF;
+  --global-color-accent--xx-light: #f1e1ff;
 }
 .job-script code,
 .job-script:not(:has(code)) {
