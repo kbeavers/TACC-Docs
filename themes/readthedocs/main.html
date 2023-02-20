@@ -59,7 +59,7 @@
       {%- for alias in config.theme.hljs_aliases %}
       hljs.registerLanguage('{{alias.name}}', {{alias.lang}});
       {%- endfor %}
-      hljs.initHighlightingOnLoad();
+      hljs.highlightAll();
     </script>
     {%- endif %}
     {# /TACC #}
