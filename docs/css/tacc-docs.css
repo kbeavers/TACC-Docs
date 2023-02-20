@@ -405,7 +405,7 @@ figcaption {
 
 /* To distinguish code block backgrounds */
 :root {
-  --global-color-accent--xx-light: #f4efff;
+  --global-color-accent--xx-light: #F1E1FF;
 }
 .job-script code,
 .job-script:not(:has(code)) {
