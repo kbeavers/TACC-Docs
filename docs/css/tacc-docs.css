@@ -329,19 +329,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-/* To replicate highlightjs (hljs) styles on loose TACC-Docs classes */
-/* FAQ: "Loose" classes being those that are not coupled with <code> */
-/* CAVEAT: The `:has()` syntax is not supported in Firefox browser */
-:is(.cmd-line, .job-script):not(:has(code)) {
-    padding: 1em;
-    overflow: auto;
-
-    color: #D0D0D0;
-    background: var(--global-color-primary--xx-dark);
-}
-
-
-
 /* To add minimal hover state for <details> */
 /* TODO: Remove this after COr-Styles are loaded (task/tup-297-styles) */
 details > summary {
@@ -359,7 +346,6 @@ details > summary {
 details > summary > :is(h1, h2, h3, h4, h5, h6) {
     display: inline-block;
 }
-
 
 
 
@@ -417,16 +403,15 @@ figcaption {
 
 
 
-/* To overwrite highlightjs background */
-.hljs {
-  background: var(--global-color-primary--xx-dark);
-}
 /* To distinguish code block backgrounds */
-.cmd-line code,
-.cmd-line:not(:has(code)) {
-  background: var(--global-color-primary--xx-dark);
+:root {
+  --global-color-accent--xx-light: #f4efff;
 }
 .job-script code,
 .job-script:not(:has(code)) {
-  background: var(--global-color-accent--xxx-dark);
+  background: var(--global-color-accent--xx-light);
 }
+
+
+
+
