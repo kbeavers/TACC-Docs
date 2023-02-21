@@ -17,28 +17,28 @@
 !!! tip "Preferred"
 
             ```cmd-line
-            login1$ module load kitten
+            module load kitten
             ```
 
     ```cmd-line
-    login1$ module load kitten
+    module load kitten
     ```
 
     {% include 'code-examples/_preferred-way-pro-con.md' %}
 
 !!! caution "Avoided"
 
-            <pre class="cmd-line"><code>login1$ <strong>module load <em>kitten</em></strong></code></pre>
+            <pre class="cmd-line"><code>module <strong>load <em>kitten</em></strong></code></pre>
 
-    <pre class="cmd-line"><code>login1$ <strong>module load <em>kitten</em></strong></code></pre>
+    <pre class="cmd-line"><code>module <strong>load <em>kitten</em></strong></code></pre>
 
     {% include 'code-examples/_avoided-way-pro-con.md' %}
 
 !!! danger "Deprecated"
 
-            <pre class="cmd-line">login1$ <strong>module load <em>kitten</em></strong></pre>
+            <pre class="cmd-line">module <strong>load <em>kitten</em></strong></pre>
 
-    <pre class="cmd-line">login1$ <strong>module load <em>kitten</em></strong></pre>
+    <pre class="cmd-line">module <strong>load <em>kitten</em></strong></pre>
 
     {% include 'code-examples/_deprecated-way-pro-con.md' %}
 
@@ -72,7 +72,7 @@
     #SBATCH -t 24:00:00           # designate max run time
     #SBATCH -A myproject          # charge job to myproject
     module load gromacs/2022.1
-    &nbsp;
+    
     ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
     ```
 
@@ -90,7 +90,7 @@
             #SBATCH -p skx-normal         # designate queue
             #SBATCH -t 24:00:00           # designate max run time
             #SBATCH -A myproject          # charge job to myproject
-            <strong>module load <em>gromacs/2022.1</em></strong>
+            module <strong>load <em>gromacs/2022.1</em></strong>
 
             ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</code></pre>
 
@@ -104,7 +104,7 @@
     #SBATCH -p skx-normal         # designate queue
     #SBATCH -t 24:00:00           # designate max run time
     #SBATCH -A myproject          # charge job to myproject
-    <strong>module load <em>gromacs/2022.1</em></strong>
+    module <strong>load <em>gromacs/2022.1</em></strong>
     &nbsp;
     ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</code></pre>
 
@@ -121,7 +121,7 @@
             #SBATCH -p skx-normal         # designate queue
             #SBATCH -t 24:00:00           # designate max run time
             #SBATCH -A myproject          # charge job to myproject
-            <strong>module load <em>gromacs/2022.1</em></strong>
+            module <strong>load <em>gromacs/2022.1</em></strong>
 
             ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
 
@@ -134,7 +134,7 @@
     #SBATCH -p skx-normal         # designate queue
     #SBATCH -t 24:00:00           # designate max run time
     #SBATCH -A myproject          # charge job to myproject
-    <strong>module load <em>gromacs/2022.1</em></strong>
+    module <strong>load <em>gromacs/2022.1</em></strong>
     &nbsp;
     ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
 
