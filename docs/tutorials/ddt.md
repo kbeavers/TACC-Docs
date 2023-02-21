@@ -8,13 +8,13 @@
 Before running any debugger, the application code must be compiled with the `-g` and `-O0` options as shown below:
 
 ``` { .bash .cmd-line }
-login1$ <b>mpif90 -g -O0 mycode.f90</b>
+login1$ mpif90 -g -O0 mycode.f90
 ```
 
 or
 
 ``` { .bash .cmd-line }
-login1$ <b>mpiCC -g -O0 mycode.c</b>
+login1$ mpiCC -g -O0 mycode.c
 ```
 
 Follow these steps to set up your debugging environment on Frontera, Stampede2, Lonestar5 and other TACC compute resources.
@@ -22,30 +22,30 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 1. **Enable X11 forwarding**. To use the DDT GUI, ensure that X11 forwarding is enabled when you `ssh` to the TACC system. Use the `-X` option on the `ssh` command line if X11 forwarding is not enabled in your SSH client by default.
 
 	``` { .bash .cmd-line }
-	localhost$ <b>ssh -X <i>username</i>@stampede2.tacc.utexas.edu</b>
+	localhost$ ssh -X username@stampede2.tacc.utexas.edu
 	```
 
 1. **Load the DDT module on the remote system along with any other modules needed to run the application**:
 
 	``` { .bash .cmd-line }
-	$ <b>module load ddt <i>mymodule1 mymodule2</i></b>
+	$ module load ddt mymodule1 mymodule2
 	```
 
 	NOTE: On Stampede2, there are 2 DDT modules, `ddt_skx` and `ddt_knl`, because the KNL's require a different license.
 
 	``` { .bash .cmd-line }
-	$ <b>module load ddt_knl <i>mymodule1 mymodule2</i> # for KNL nodes</b>
+	$ module load ddt_knl mymodule1 mymodule2 # for KNL nodes
 	```
 
 	or
 	``` { .bash .cmd-line }
-	$ <b>module load ddt_skx <i>mymodule1 mymodule2</i> # for SKX nodes</b>
+	$ module load ddt_skx mymodule1 mymodule2 # for SKX nodes
 	```
 
 1. **Start the debugger**:
 
 	``` { .bash .cmd-line }
-	$ <b>ddt myprogram</b>
+	$ ddt myprogram
 	```
 
 	If this error message appears...
@@ -124,7 +124,7 @@ By starting DDT from a login node you let it use X11 graphics, which can be slow
 1. **From any login node, submit a batch job where the `ibrun` line is replaced by**:
 
 	``` { .bash .cmd-line }
-	$ <b>ddt --connect -n $SLURM_NPROCS ./yourprogram</b>
+	$ ddt --connect -n $SLURM_NPROCS ./yourprogram
 	```
 
 1. **When your batch job (and therefore your DDT execution) starts, the remote client will ask you to accept the connection**:
