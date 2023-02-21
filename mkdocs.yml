@@ -81,7 +81,7 @@ nav:
     - TACC Analysis Portal: tutorials/TAP.md
   - Fiddling :
     - Testing Extensions: testingextensions.md
-    - Code Examples: code-examples.md
+    - Code Examples: code-examples/index.md
 
 
 # Python-Markdown extensions
