@@ -6,110 +6,43 @@
 
 ## Different Ways to Style & Author Code
 
-### Inline Code (`<code>…` or <code>&#96;…&#96;</code>)
+### Inline Code
 
 The default ReadTheDocs style of `courier` font and red `color` is **not** desirable.
 
-<br />
+### Code Block
 
-### Code Block (`<pre>…` or <code>&#96;&#96;&#96;…</code>)
+#### Command Line
 
-#### Quick Start
+<details open><summary><h4>Via Markdown <small>(recommended)</small></h4></summary>
 
-<style>
-/* To remove space between labels and code blocks */
-/* TODO: Evaluate wheteher to make this reusable */
-p:has(small) + pre {
-    margin-top: calc( -1 * var(--global-space--p-buffer-below));
-}
-</style>
-
-<small>default</small>
-
-```bash
-#!/bin/bash
-#SBATCH -J myjob              # job name
-module load gromacs/2022.1
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
-```
-
-<small>`.cmd-line`</small>
-
-``` { .bash .cmd-line }
-#!/bin/bash
-#SBATCH -J myjob              # job name
-module load gromacs/2022.1
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
-```
-
-<small>`.job-script`</small>
-
-``` { .bash .job-script }
-#!/bin/bash
-#SBATCH -J myjob              # job name
-module load gromacs/2022.1
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
-```
-
-<br />
-
-#### Command Line (`.cmd-line`)
-
-See [usage example](https://portal.tacc.utexas.edu/user-guides/stampede2#using-modules){ target="_blank" }.
-
-<small>* I.e. <samp>&#96;class="cmd-line"&#96;</samp> produces `class="cmd-line"` which is red using the ReadTheDocs theme.</small>
-
-<!-- <details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary> -->
-
-!!! caution
-    Outdated. Testing.
-
-Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .cmd-line }</code>.
-
-Testing
-Inline: `#!ruby login1$ module load kitten0`
-
-```
-login1$ module load kitten0
-```
-
-```{ .bash }
-login1$ module load kitten1
-```
+Use <code>&#96;&#96;&#96;cmd-line</code>.
 
 ```cmd-line
-login1$ module load kitten2
+login1$ module load kitten
 ```
-
-```job-script
-login1$ module load kitten3
-```
-
-```ruby
-login1$ module load kitten4
-```
-
-<!-- </details> -->
-<details><summary><h4 class="understate">Simple Mark<b>up</b></h4></summary>
-
-<pre class="cmd-line">login1$ <strong>module load kitten</strong></pre>
 
 </details>
-<details><summary><h4 class="understate">Complex Mark<b>up</b></h4></summary>
+<details><summary><h4 class="understate">Manual HTML</h4></summary>
 
-<pre class="cmd-line"><code class="language-bash hljs">login1$ <strong>module load kitten</strong></code></pre>
+<pre class="cmd-line"><code>login1$ <strong>module load <em>kitten</em></strong></code></pre>
+
+</details>
+<details><summary><h4 class="understate">Manual HTML (Outdated)</h4></summary>
+
+<pre class="cmd-line">login1$ <strong>module load <em>kitten</em></strong></pre>
 
 </details>
 
 <br />
 
-#### Job Script (`.job-script`)
+#### Job Script
 
 <details open><summary><h4>Via Mark<b>down</b> <small>(recommended)</small></h4></summary>
 
-Use <code>&#96;&#96;&#96;bash</code>, or—to add a class—use <code>&#96;&#96;&#96; { .bash .job-script }</code>.
+Use <code>&#96;&#96;&#96;job-script</code>.
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name
@@ -125,10 +58,10 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 ```
 
 </details>
-<details><summary><h4 class="understate">Simple Mark<b>up</b></h4></summary>
+<details><summary><h4 class="understate">Manual HTML</h4></summary>
 
 <pre class="job-script">
-#!/bin/bash
+<code>#!/bin/bash
 #SBATCH -J myjob              # job name
 #SBATCH -e myjob.%j.err       # error file name
 #SBATCH -o myjob.%j.out       # output file name
@@ -137,27 +70,25 @@ ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.lo
 #SBATCH -p skx-normal         # designate queue
 #SBATCH -t 24:00:00           # designate max run time
 #SBATCH -A myproject          # charge job to myproject
-module load gromacs/2022.1
-
-ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
-
-</details>
-<details><summary><h4 class="understate">Complex Mark<b>up</b></h4></summary>
-
-<pre class="job-script">
-<code class="language-bash hljs">
-#!/bin/bash
-#SBATCH -J myjob              # job name
-#SBATCH -e myjob.%j.err       # error file name
-#SBATCH -o myjob.%j.out       # output file name
-#SBATCH -N 2                  # request 2 nodes
-#SBATCH -n 96                 # request 2x48=96 MPI tasks
-#SBATCH -p skx-normal         # designate queue
-#SBATCH -t 24:00:00           # designate max run time
-#SBATCH -A myproject          # charge job to myproject
-module load gromacs/2022.1
+<strong>module load <em>gromacs/2022.1</em></strong>
 
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</code></pre>
+
+</details>
+<details><summary><h4 class="understate">Manual HTML (Outdated)</h4></summary>
+
+<pre class="job-script">#!/bin/bash
+#SBATCH -J myjob              # job name
+#SBATCH -e myjob.%j.err       # error file name
+#SBATCH -o myjob.%j.out       # output file name
+#SBATCH -N 2                  # request 2 nodes
+#SBATCH -n 96                 # request 2x48=96 MPI tasks
+#SBATCH -p skx-normal         # designate queue
+#SBATCH -t 24:00:00           # designate max run time
+#SBATCH -A myproject          # charge job to myproject
+<strong>module load <em>gromacs/2022.1</em></strong>
+
+ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log</pre>
 
 </details>
 
