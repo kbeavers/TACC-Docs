@@ -59,6 +59,9 @@
       {%- for alias in config.theme.hljs_aliases %}
       hljs.registerLanguage('{{alias.name}}', {{alias.lang}});
       {%- endfor %}
+      hljs.configure({
+        cssSelector: 'pre:is(.highlight, .codehilite) code'
+      });
       hljs.highlightAll();
     </script>
     {%- endif %}

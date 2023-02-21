@@ -403,35 +403,49 @@ figcaption {
 
 
 
-/* To define borrowed and changed highlightjs colors */
-:root {
-  --hljs-color--code-text: #545454; /* mimics ally-light.css */
-  --hljs-color--code-bkgd: var(--global-color-primary--x-light);
-}
-/* To overwrite highlightjs background */
-.hljs {
-  background: var(--hljs-color--code-bkgd);
-}
-/* To replicate highlightjs (hljs) styles on loose TACC-Docs classes */
-/* FAQ: "Loose" classes being those that are not coupled with <code> */
-/* CAVEAT: The `:has()` syntax is not supported in Firefox browser */
-:is(.cmd-line, .job-script):not(:has(code)) {
-    padding: 1em;
-    overflow: auto;
+/* CODE */
 
-    color: var(--hljs-color--code-text);
-    background: var(--hljs-color--code-bkgd);
-    border: var(--global-border-width--normal) solid var(--global-color-primary--light); /* mimic core-styles.docs.css */
-}
-/* To distinguish code block backgrounds */
+/* TODO: Integrate into Core CMS */
 :root {
   --global-color-accent--xx-light: #FAF4FF;
 }
-.job-script code,
-.job-script:not(:has(code)) {
+
+/* To change style for each type of code block (HighlightJS or TACC) */
+pre.cmd-line code,
+code.language-cmd-line {
+  background: var(--global-color-primary--x-light);
+}
+pre.job-script code,
+code.language-job-script {
   background: var(--global-color-accent--xx-light);
 }
+@supports selector(:has(*)) {
+  /* To support code blocks that are not using <code> (yet) */
+  pre.cmd-line:not(:has(code)) {
+    background: var(--global-color-primary--x-light);
+  }
+  pre.job-script:not(:has(code)) {
+    background: var(--global-color-accent--xx-light);
+  }
+}
 
+/* To replicate missing styles on TACC code blocks */
+pre.cmd-line code,
+pre.job-script code {
+  /* To replicate HighlightJS code blocks */
+  overflow-x: auto;
+}
+@supports selector(:has(*)) {
+  /* To support code blocks that are not using <code> (yet) */
+  pre.cmd-line:not(:has(code)),
+  pre.job-script:not(:has(code)) {
+    /* To replicate HighlightJS code blocks */
+    overflow-x: auto;
 
-
-
+    /* To replicate Core Styles code blocks */
+    display: inline-block;
+    padding: var(--global-space--x-small) var(--global-space--small);
+    border: var(--global-border-width--normal) solid var(--global-color-primary--light);
+    color: var(--global-color-primary--xx-dark);
+  }
+}
