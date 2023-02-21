@@ -102,6 +102,7 @@ markdown_extensions:
   # https://facelessuser.github.io/pymdown-extensions
   - pymdownx.superfences
   - pymdownx.inlinehilite
+  - pymdownx.saneheaders
   # FAQ: The `pymdownx.highlight` is useful only if Pygments is installed
   #      because Pygments would offer:
   #      - build-time syntax highlight markup
