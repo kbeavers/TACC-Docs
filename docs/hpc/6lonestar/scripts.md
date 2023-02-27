@@ -1,10 +1,13 @@
 ## [Sample Job Scripts](#scripts) { #scripts }
 
+
+
 <details><summary>Serial Codes </summary>
   
-**Run all serial jobs in the `normal` queue.**  
+!!! important 
+	Run all serial jobs in the `normal` queue.
 
-Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
+Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the <a href="https://portal.tacc.utexas.edu/software/launcher">Launcher at TACC</a> documentation to run multiple serial executables at one time.
 
 ``` { .bash .job-script }
 #!/bin/bash
@@ -38,8 +41,8 @@ Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -91,8 +94,8 @@ This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`)
 #SBATCH -n 32              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -152,8 +155,8 @@ This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -208,8 +211,8 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -225,7 +228,7 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 </details>
 
 
-## [Customizing your Job Script ](#scripts-customizations)
+### [Customizing your Job Script ](#scripts-customizations)
 
 Copy and customize the following scripts to specify and refine your job's requirements.</p>
 
@@ -236,5 +239,5 @@ Copy and customize the following scripts to specify and refine your job's requir
 
 In general, the fewer resources (nodes) you specify in your batch script, the less time your job will wait in the queue. See [4. Request Only the Resources You Need](#conduct-resources) in the [Good Conduct](#conduct) section. 
 
-Consult [Table 6](STAMPEDE2UG#table6) in the [Stampede2 User Guide](STAMPEDE2UG) for a listing of common Slurm `#SBATCH` options.
+Consult [Table 6](../stampede2#table6) in the [Stampede2 User Guide](../stampede2) for a listing of common Slurm `#SBATCH` options.
 

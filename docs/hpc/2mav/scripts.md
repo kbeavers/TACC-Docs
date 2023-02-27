@@ -224,7 +224,7 @@ export OMP_NUM_THREADS=16
 ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
-<pre>
+```
 
 </details>
 
