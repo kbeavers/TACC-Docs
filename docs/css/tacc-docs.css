@@ -66,7 +66,7 @@ table {
 
 .wy-nav-side {
   color: unset;
-  background: unset;
+  background: var(--global-color-primary--x-light);
   border-right: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
 .wy-menu-vertical * {
