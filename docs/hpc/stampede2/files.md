@@ -40,7 +40,9 @@ Lustre can **stripe** (distribute) large files over several physical disks, maki
 
 To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 
-<pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
+``` cmd-line 
+$ lfs setstripe -c 30 $PWD
+```
 
 Note that an `lfs setstripe` command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Stampede2's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
 
@@ -48,7 +50,9 @@ Remember that it's not possible to change the striping on a file that already ex
 
 You can check the stripe count of a file using the `lfs getstripe` command:
 
-<pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
+``` cmd-line 
+$ lfs getstripe myfile
+```
 
 
 ## [Transferring Files](#transferring) { #transferring }
@@ -59,43 +63,56 @@ You can transfer files between Stampede2 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Stampede2 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Stampede2 `$HOME` would look like this:
 
-<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@stampede2.tacc.utexas.edu:</b>  # note colon after net address</pre>
+``` cmd-line 
+localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:  # note colon after net address
+```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Stampede2:
 
-<pre class="cmd-line">localhost$ <b>scp *.txt bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2</b></pre>
+``` cmd-line 
+localhost$ scp *.txt bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2
+```
 
 To delay wildcard expansion until reaching Stampede2, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Stampede2 to the current directory on your local system:
 
-<pre class="cmd-line">localhost$ <b>scp bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2/\*.txt .</b></pre>
+``` cmd-line 
+localhost$ scp bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2/\*.txt .
+```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-<pre class="cmd-line">
-localhost$ <b>destdir="/work/01234/bjones/stampede2/data"</b>
-localhost$ <b>scp ./myfile bjones@stampede2.tacc.utexas.edu:$destdir</b></pre>
+``` cmd-line
+localhost$ destdir="/work/01234/bjones/stampede2/data"
+localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:$destdir
+```
 
 You can also issue `scp` commands on your local client that use Stampede2 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Stampede2:
 
-<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@stampede2.tacc.utexas.edu:\$WORK/data</b>   # Note backslash</pre>
+``` cmd-line 
+localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:\$WORK/data   # Note backslash
+```
 
 Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
-<pre class="cmd-line">localhost$ <s><b>scp -r  ./mydata     bjones@stampede2.tacc.utexas.edu:\$WORK</b></s>  # DON'T DO THIS</pre>
+``` cmd-line 
+localhost$ <s>scp -r  ./mydata     bjones@stampede2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
+```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-<pre class="cmd-line">
-localhost$ <b>tar cvf ./mydata.tar mydata</b>                                   # create archive
-localhost$ <b>scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK</b>  # transfer archive</pre>
+``` cmd-line
+localhost$ tar cvf ./mydata.tar mydata</b>                                   # create archive
+localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # transfer archive
+```
 
 ### [Transfer Using `rsync`](#transferring-rsync) { #transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-<pre class="cmd-line">
-localhost$ <b>rsync       mybigfile bjones@stampede2.tacc.utexas.edu:\$WORK/data</b>
-localhost$ <b>rsync -avtr mybigdir  bjones@stampede2.tacc.utexas.edu:\$WORK/data</b></pre>
+``` cmd-line
+localhost$ rsync       mybigfile bjones@stampede2.tacc.utexas.edu:\$WORK/data
+localhost$ rsync -avtr mybigdir  bjones@stampede2.tacc.utexas.edu:\$WORK/data
+```
 
 The options on the second transfer are typical and appropriate when synching a directory: this is a recursive update (`-r`) with verbose (`-v`) feedback; the synchronization preserves time stamps (`-t`) as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 

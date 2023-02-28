@@ -59,7 +59,7 @@ DisplayCluster presents graphics on the 28.5&rsquo; X 8&rsquo; 600 megapixel mon
 Before you can use the display, you must power on the televisions individually with the remote (TACC staff in the VisLab will provide), noting you need to hold and aim the remote close to the sensor at bottom right otherwise you&rsquo;ll be randomly powering on and off neighboring units.
 Then at Stallion&rsquo;s console:
 Open a terminal window and enter
-$ <i>stallion_on </i>  (it will continue running until it&rsquo;s exited after you&rsquo;re finished with displaycluster, note below)
+$ stallion_on   (it will continue running until it&rsquo;s exited after you&rsquo;re finished with displaycluster, note below)
 
 Open a second terminal window and enter
 $ startdisplaycluster   (its interface will start up)
@@ -91,9 +91,10 @@ Stallion&rsquo;s televisions&rsquo; settings: (please only adjust settings with 
 
 1. Login to the Stallion head node console.  In a terminal, run the following:
 
-	<pre class="cmd-line">
-	$ <b>module load sage</b>
-	$ <b>startsage</b></pre>
+	``` cmd-line
+	$ module load sage
+	$ startsage
+	```
 
 1. When the GUI appears, hit the &lsquo;Start&rsquo; button. The screens will one-by-one turn black as SAGE processes are started.
 
@@ -105,16 +106,18 @@ Stallion&rsquo;s televisions&rsquo; settings: (please only adjust settings with 
 
 The SAGE image viewer is ideal for viewing medium- to high-resolution static imagery. For extremely large images (those greater than 100 megapixels), see the Magic Carpet section. To use the image viewer, run the following in a terminal:
 
-<pre class="cmd-line">
-$ <b>module load sage</b>
-$ <b>imageviewer</b></pre>
+``` cmd-line
+$ module load sage
+$ imageviewer
+```
 
 #### Playing animations with SAGE
 MPlayer has been compiled with SAGE support. Users can thus play most kinds of video content to the tiled display. To use the SAGE-enabled MPlayer, run the following in a terminal:
 
-<pre class="cmd-line">
-$ <i>module load sage</i>
-$ <i>mplayer</i></pre>
+``` cmd-line
+$ module load sage
+$ mplayer
+```
 
 ## [References](#refs)
 
