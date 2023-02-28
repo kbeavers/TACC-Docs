@@ -1,5 +1,6 @@
 # Frontera User Guide
-<span style="font-size:90%;"><i>Last update: September 15, 2022</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span> editing 01/24/2023
+Last update: September 15, 2022
+<a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>
 
 ## [Status Updates and Notices](#notices) { #notices }
 

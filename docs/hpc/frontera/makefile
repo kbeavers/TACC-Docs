@@ -4,7 +4,6 @@ SRC =   \
 	quickstart.md \
 	admin.md \
 	portal.md \
-	conduct.md \
 	system.md \
 	files.md \
 	transferring.md \

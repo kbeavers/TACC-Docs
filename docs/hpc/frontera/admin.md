@@ -1,7 +1,5 @@
 ## [Account Administration](#admin) { #admin }
 
-<!-- p class="introtext">Discuss account status, account configuration.</p -->
-
 ### [Setting up Your Account](#admin-account) { #admin-account }
 
 #### [Check your Allocation Status](#admin-account-allocation) { #admin-account-allocation }
@@ -23,15 +21,21 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 The `ssh` command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@frontera.tacc.utexas.edu</b></pre>
+``` cmd-line
+localhost$ ssh username@frontera.tacc.utexas.edu
+```
 
 The above command will rotate connections across all available login nodes, `login1-login4`, and route your connection to one of them. To connect to a specific login node, use its full domain name:
 
-<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@login2.frontera.tacc.utexas.edu</b></pre>
+``` cmd-line
+localhost$ ssh username@login2.frontera.tacc.utexas.edu
+```
 
 To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
-<pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@frontera.tacc.utexas.edu</b></pre>
+``` cmd-line
+localhost$ ssh -X username@frontera.tacc.utexas.edu
+```
 
 To report a connection problem, execute the `ssh` command with the `-vvv` option and include the verbose output when submitting a help ticket.
 
@@ -51,7 +55,9 @@ Regardless of your research workflow, <b>you’ll need to master Linux basics</b
 
 The default login shell for your user account is Bash. To determine your current login shell, execute: 
 
-<pre class="cmd-line">$ <b>echo $SHELL</b></pre>
+``` cmd-line
+$ echo $SHELL
+```
 
 If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC](http://portal.tacc.utexas.edu/) portal. The `chsh` ("change shell") command will not work on TACC systems. 
 
@@ -69,7 +75,9 @@ Execute the `env` command to see the environment variables that define the way y
 
 Pipe the results of `env` into `grep` to focus on specific environment variables. For example, to see all environment variables that contain the string GIT (in all caps), execute:
 
-<pre class="cmd-line">$ <b>env | grep GIT</b></pre>
+``` cmd-line
+$ env | grep GIT
+```
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
@@ -77,8 +85,10 @@ The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important.
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
-<pre class="cmd-line">login1$ <b>module load sanitytool</b>
-login1$ <b>sanitycheck</b></pre>
+``` cmd-line
+login1$ module load sanitytool
+login1$ sanitycheck
+```
 
 Execute `module help sanitytool` for more information.
 
@@ -86,22 +96,24 @@ Execute `module help sanitytool` for more information.
 
 [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod), a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Frontera that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>          # load the default Intel compiler v19.0.4
-$ <b>module load intel/18.0.5</b>   # load a specific version of the Intel compiler</pre>
-</pre>
+``` cmd-line
+$ module load intel          # load the default Intel compiler v19.0.4
+$ module load intel/18.0.5   # load a specific version of the Intel compiler
+```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
-<pre class="cmd-line">$ <b>module load   ddt</b>  # defines DDT-related env vars; modifies others
-$ <b>module unload ddt</b>  # undoes changes made by load</pre>
+``` cmd-line
+$ module load   ddt  # defines DDT-related env vars; modifies others
+$ module unload ddt  # undoes changes made by load
+```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and FFTW3 with versions compatible with gcc:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>  # load default version of Intel compiler
-$ <b>module load fftw3</b>  # load default version of fftw3
-$ <b>module load gcc</b>    # change compiler
+``` cmd-line
+$ module load intel  # load default version of Intel compiler
+$ module load fftw3  # load default version of fftw3
+$ module load gcc    # change compiler
 
 Lmod is automatically replacing "intel/19.0.4" with "gcc/9.1.0".
 
@@ -109,55 +121,69 @@ Inactive Modules:
   1) python2
 
 Due to MODULEPATH changes, the following have been reloaded:
-  1) fftw3/3.3.8     2) impi/19.0.4</pre>
+  1) fftw3/3.3.8     2) impi/19.0.4
+```
 
 On Frontera, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
-<pre class="cmd-line">$ <b>module show papi</b>   # see what this module does to your environment
-$ <b>env | grep PAPI</b>    # see env vars that contain the string PAPI
-$ <b>env | grep -i papi</b> # case-insensitive search for 'papi' in environment</pre>
+``` cmd-line
+$ module show papi   # see what this module does to your environment
+$ env | grep PAPI    # see env vars that contain the string PAPI
+$ env | grep -i papi # case-insensitive search for 'papi' in environment
+```
 
 To see the modules you currently have loaded:
 
-<pre class="cmd-line">$ <b>module list</b></pre>
+``` cmd-line
+$ module list
+```
 
 To see all modules that you can load right now because they are compatible with the currently loaded modules:
 
-<pre class="cmd-line">$ <b>module avail</b></pre>
+``` cmd-line
+$ module avail
+```
 
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
-<pre class="cmd-line">$ <b>module spider</b>   # list all modules, even those not available to load</pre>
+``` cmd-line
+$ module spider   # list all modules, even those not available to load
+```
 
 To filter your search:
 
-<pre class="cmd-line">
-$ <b>module spider slep</b>             # all modules with names containing 'slep'
-$ <b>module spider sundials/2.5.1</b>   # additional details on a specific module</pre>
+``` cmd-line
+$ module spider slep             # all modules with names containing 'slep'
+$ module spider sundials/2.5.1   # additional details on a specific module
+```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
 
-<pre class="cmd-line">
-$ <b>module keyword performance</b></pre>
+``` cmd-line
+$ module keyword performance
+```
 
 You can save a collection of modules as a personal default collection that will load every time you log into Frontera. To do so, load the modules you want in your collection, then execute:
 
-<pre class="cmd-line">
-$ <b>module save</b>    # save the currently loaded collection of modules </pre>
+``` cmd-line
+$ module save    # save the currently loaded collection of modules 
+```
 
 Two commands make it easy to return to a known, reproducible state:
 
-<pre class="cmd-line">
-$ <b>module reset</b>   # load the system default collection of modules
-$ <b>module restore</b> # load your personal default collection of modules</pre>
+``` cmd-line
+$ module reset   # load the system default collection of modules
+$ module restore # load your personal default collection of modules
+```
 
 On TACC systems, the command `module reset` is equivalent to `module purge; module load TACC`. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 
-<pre class="cmd-line">
-$ <b>module help swr</b>     # show help text for software package swr
-$ <b>module help</b>         # show help text for the module system itself</pre>
+``` cmd-line
+$ module help swr     # show help text for software package swr
+$ module help         # show help text for the module system itself
+```
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 

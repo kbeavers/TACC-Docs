@@ -75,11 +75,15 @@ While the `$WORK` file system has hundreds of OSTs, Frontera's scratch system ha
 
 * **Transferring to `$WORK`**: A good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 
-	<pre class="cmd-line">$ <b>lfs setstripe -c 30 $PWD</b></pre>
+	``` cmd-line
+	$ lfs setstripe -c 30 $PWD
+	```
 
 * **Transferring to Frontera's `$SCRATCH` file system**: The rule of thumb still applies, but limit the stripe count to no more than 16 since Frontera's `$SCRATCH` file system is served by far fewer OSTs. 
 
-	<pre class="cmd-line">$ <b>lfs setstripe -c 16 $PWD</b></pre>
+	``` cmd-line
+	$ lfs setstripe -c 16 $PWD
+	```
 
 Note that an `lfs setstripe` command always sets both stripe count and stripe size, even if you explicitly specify only one or the other. Since the example above does not explicitly specify stripe size, the command will set the stripe size on the directory to Frontera's system default (1MB). In general there's no need to customize stripe size when creating or transferring files.
 
@@ -87,5 +91,7 @@ Remember that it's not possible to change the striping on a file that already ex
 
 You can check the stripe count of a file using the `lfs getstripe` command:
 
-<pre class="cmd-line">$ <b>lfs getstripe <i>myfile</i></b></pre>
+``` cmd-line
+$ lfs getstripe myfile
+```
 

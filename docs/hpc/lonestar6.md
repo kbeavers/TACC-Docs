@@ -428,30 +428,40 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	DO THIS: Start an interactive session on a compute node and run Matlab.
 
-	<pre class="cmd-line">
-	login1$ <b>idev</b>
-	nid00181$ <b>matlab</b></pre>
+	``` cmd-line
+	login1$ idev
+	nid00181$ matlab
+	```
 
+
+!!! warning
 	DO NOT DO THIS: Run Matlab or other software packages on a login node
 
-	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+	``` cmd-line
+	login1$ matlab
+	```
 
 * **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">`make -j 16`</span> (which compiles on 16 cores) may impact other users.
 
 	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 
-	<pre class="cmd-line">
-	login1$ <b>make <i>mytarget</i></b>
-	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+	``` cmd-line
+	login1$ make mytarget
+	login1$ sbatch myjobscript
+	```
 
+!!! warning
 	DO NOT DO THIS: Invoke multiple build sessions.
 
-	<pre class="cmd-line">login1$ <s><b>make -j 12</b></s></pre>
+	``` cmd-line
+	login1$ make -j 12
+	```
 
 	DO NOT DO THIS: Run an executable on a login node.
 
-	<pre class="cmd-line">
-	login1$ <s><b>./myprogram</b></s></pre>
+	``` cmd-line
+	login1$ ./myprogram
+	```
 
 * **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 

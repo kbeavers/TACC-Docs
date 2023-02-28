@@ -12,9 +12,10 @@ The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a 
 
 There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the <span style="white-space: nowrap;">`-mkl`</span> option.; e.g.
 
-<pre class="cmd-line">
-$ <b>icc   -mkl mycode.c</b>
-$ <b>ifort -mkl mycode.c</b></pre>
+``` cmd-line
+$ icc   -mkl mycode.c
+$ ifort -mkl mycode.c
+```
 
 The `-mkl` switch is an abbreviated form of <span style="white-space: nowrap;">`-mkl=parallel`</span>, which links your code to the threaded version of MKL. To link to the unthreaded version, use <span style="white-space: nowrap;">`-mkl=sequential`</span>. A third option, <span style="white-space: nowrap;">`-mkl=cluster`</span>, which also links to the unthreaded libraries, is necessary and appropriate only when using ScaLAPACK or other distributed memory packages. For additional information, including advanced linking options, see the [MKL documentation](http://software.intel.com/intel-mkl) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor).
 
@@ -23,15 +24,15 @@ The `-mkl` switch is an abbreviated form of <span style="white-space: nowrap;">`
 
 When using a GNU compiler, load the MKL module before compiling or running your code, then specify explicitly the MKL libraries, library paths, and include paths your application needs. Consult the [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor) for details. A typical compile/link process on a TACC system will look like this:
 
-<pre class="cmd-line">
-$ <b>module load gcc</b>
-$ <b>module load mkl</b>                         # available/needed only for GNU compilers
-$ <b>gcc -fopenmp -I$MKLROOT/include         \
+``` cmd-line
+$ module load gcc
+$ module load mkl                         # available/needed only for GNU compilers
+$ gcc -fopenmp -I$MKLROOT/include         \
 		 -Wl,-L${MKLROOT}/lib/intel64     \
 		 -lmkl_intel_lp64 -lmkl_core      \
 		 -lmkl_gnu_thread -lpthread       \
-		 -lm -ldl mycode.c</b>
-</pre>
+		 -lm -ldl mycode.c
+```
 
 For your convenience the `mkl` module file also provides alternative TACC-defined variables like `$TACC_MKL_INCLUDE` (equivalent to `$MKLROOT/include`). Execute `module help mkl` for more information.
 

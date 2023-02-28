@@ -6,50 +6,65 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
 
-	<pre class="cmd-line">login2.frontera$ <b>idev -N 1 -n 1 -p rtx-dev -t 02:00:00</b></pre>
+	``` cmd-line
+	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
+	```
 
 1. Create a Python virtual environment
 
-	<pre class="cmd-line">c123-456$ <b>python3 -m venv /path/to/virtual-env</b>  # (e.g., $SCRATCH/python-envs/test)</pre>
+	``` cmd-line
+	c123-456$ python3 -m venv /path/to/virtual-env  # (e.g., $SCRATCH/python-envs/test)
+	```
 
 1. Activate the Python virtual environment
 
-	<pre class="cmd-line">c123-456$ <b>source /path/to/virtual-env/bin/activate</b></pre>
+	``` cmd-line
+	c123-456$ source /path/to/virtual-env/bin/activate
+	```
 
 1. Install PyTorch 
 
-	<pre class="cmd-line">c123-456$ <b>pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113</b></pre>
+	``` cmd-line
+	c123-456$ pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+	```
 
 #### [Single-Node](#ml-pytorch-single) { #ml-pytorch-single }
 
 1. Download the benchmark:
 
-	<pre class="cmd-line">
-	c123-456$ <b>cd $SCRATCH</b>
-	c123-456$ <b>git clone https://github.com/gpauloski/kfac-pytorch.git</b>
-	c123-456$ <b>cd kfac-pytorch</b>
-	c123-456$ <b>git checkout tags/v0.3.2</b>
-	c123-456$ <b>pip3 install -e .</b>
-	c123-456$ <b>pip3 install torchinfo tqdm Pillow</b>
-	c123-456$ <b>export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH</b></pre>
+	``` cmd-line
+	c123-456$ cd $SCRATCH
+	c123-456$ git clone https://github.com/gpauloski/kfac-pytorch.git
+	c123-456$ cd kfac-pytorch
+	c123-456$ git checkout tags/v0.3.2
+	c123-456$ pip3 install -e .
+	c123-456$ pip3 install torchinfo tqdm Pillow
+	c123-456$ export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH
+	```
 
 1. Run the benchmark on one node (4 GPUs):
 
-	<pre class="cmd-line">c123-456$ <b>python3 -m torch.distributed.launch --nproc_per_node=4 examples/torch_cifar10_resnet.py --kfac-update-freq 0</b></pre>
+	``` cmd-line
+	c123-456$ python3 -m torch.distributed.launch --nproc_per_node=4 examples/torch_cifar10_resnet.py --kfac-update-freq 0
+	```
 
 #### [Multi-Node](#ml-pytorch-multi) { #ml-pytorch-multi }
 
 1. Request two nodes in the `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
 
-	<pre class="cmd-line">login2.frontera$ <b>idev -N 2 -n 2 -p rtx-dev -t 02:00:00</b></pre>
+	``` cmd-line
+	login2.frontera$ idev -N 2 -n 2 -p rtx-dev -t 02:00:00
+	```
 
 1. Go to the benchmark directory:
 
-	<pre class="cmd-line">c123-456$ <b>cd $SCRATCH/kfac-pytorch</b></pre>
+	``` cmd-line
+	c123-456$ cd $SCRATCH/kfac-pytorch
+	```
 
 1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
-	``` { .bash .job-script }
+	``` job-script
 	&#35;!/bin/bash
 
 	HOST=$1
@@ -63,7 +78,9 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Run multi-gpu training:
 	
-	<pre class="cmd-line">c123-456$ <b>ibrun -np 2 ./run.sh c123-456 2</b></pre>
+	``` cmd-line
+	c123-456$ ibrun -np 2 ./run.sh c123-456 2
+	```
 
 
 ### [Running Tensorflow ](#ml-tensorflow) { #ml-tensorflow }
@@ -72,52 +89,66 @@ Follow these instructions to install and run TensorFlow benchmarks on Frontera R
 
 1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
 
-	<pre class="cmd-line">login2.frontera$ <b>idev -N 1 -n 1 -p rtx-dev -t 02:00:00</b></pre>
+	``` cmd-line
+	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
+	```
 
 1. Create a Python virtual environment:
 
-	<pre class="cmd-line">c123-456$ <b>python3 -m venv /path/to/virtual-env</b> # e.g., $SCRATCH/python-envs/test</pre>
+	``` cmd-line
+	c123-456$ python3 -m venv /path/to/virtual-env # e.g., $SCRATCH/python-envs/test
+	```
 
 1. Activate the Python virtual environment:
 
-	<pre class="cmd-line">c123-456$ <b>source /path/to/virtual-env/bin/activate</b></pre>
+	``` cmd-line
+	c123-456$ source /path/to/virtual-env/bin/activate
+	```
 
 1. Install TensorFlow and Horovod
 
-	<pre class="cmd-line">
-	c123-456$ <b>module load cuda/11.3 cudnn nccl</b>
-	c123-456$ <b>pip3 install tensorflow-gpu==2.8.2</b></pre>
+	``` cmd-line
+	c123-456$ module load cuda/11.3 cudnn nccl
+	c123-456$ pip3 install tensorflow-gpu==2.8.2
+	```
 
 	We suggest installing Horovod version 0.25.0. If you wish to install other versions of Horovod, please submit a support ticket with the subject "Request for Horovod" and TACC staff will provide special instructions.
 
-	<pre class="cmd-line">c123-456$ <b>HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=gcc \
-    	HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install horovod==0.25.0</b></pre>
+	``` cmd-line
+	c123-456$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=gcc \
+    	HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install horovod==0.25.0
+	```
 
 #### [Single-Node](#ml-tensorflow-single) { ml-tensorflow-single }
 
 1. Download the tensorflow benchmark to your $SCRATCH directory, then check out the branch that matches your tensorflow version.
 
-	<pre class="cmd-line">
-	c123-456$ <b>cds; git clone https://github.com/tensorflow/benchmarks.git</b>
-	c123-456$ <b>cd benchmarks</b> 
-	c123-456$ <b>git checkout 51d647f</b>     # master head as of 08/18/2022</pre>
+	``` cmd-line
+	c123-456$ cds; git clone https://github.com/tensorflow/benchmarks.git
+	c123-456$ cd benchmarks 
+	c123-456$ git checkout 51d647f     # master head as of 08/18/2022
+	```
 
 1. Activate the Python virtual environment
 
-	<pre class="cmd-line">c123-456$ <b>source /path/to/virtual-env/bin/activate</b></pre>
+	``` cmd-line
+	c123-456$ source /path/to/virtual-env/bin/activate
+	```
 
 1. Benchmark the performance with synthetic dataset on 1 GPU
 
-	<pre class="cmd-line">
-	c123-456$ <b>cd scripts/tf_cnn_benchmarks</b>
-	c123-456$ <b>python3 tf_cnn_benchmarks.py --num_gpus=1 --model resnet50 --batch_size 32 --num_batches 200</b></pre>
+	``` cmd-line
+	c123-456$ cd scripts/tf_cnn_benchmarks
+	c123-456$ python3 tf_cnn_benchmarks.py --num_gpus=1 --model resnet50 --batch_size 32 --num_batches 200
+	```
 
 1. Benchmark the performance with synthetic dataset on 4 GPUs
 
-<pre class="cmd-line">
-c123-456$ <b>cd scripts/tf_cnn_benchmarks</b>
-c123-456$ <b>ibrun -np 4 python3 tf_cnn_benchmarks.py --variable_update=horovod --num_gpus=1 \
-    --model resnet50 --batch_size 32 --num_batches 200 --allow_growth=True</b></pre>
+	``` cmd-line
+	c123-456$ cd scripts/tf_cnn_benchmarks
+	c123-456$ ibrun -np 4 python3 tf_cnn_benchmarks.py --variable_update=horovod --num_gpus=1 \
+    	--model resnet50 --batch_size 32 --num_batches 200 --allow_growth=True
+	```
 
 #### [Multi-Node](#ml-tensorflow-multi) { #ml-tensorflow-multi }
 

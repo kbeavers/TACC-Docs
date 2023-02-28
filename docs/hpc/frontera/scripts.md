@@ -14,7 +14,7 @@ Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). **Run all serial jobs in the `small` queue.**  Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
 
 
-``` { .bash .job-script }
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -46,8 +46,8 @@ Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -62,7 +62,7 @@ date
 
 This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-``` { .bash .job-script }
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -96,8 +96,8 @@ This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), fo
 #SBATCH -n 32              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -114,7 +114,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->
 **Run all OpenMP jobs in the `small` queue.**  
 
-``` { .bash .job-script }
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -150,8 +150,8 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -171,7 +171,7 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-``` { .bash .job-script }
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -214,8 +214,8 @@ This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`). 
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list

@@ -79,18 +79,22 @@ Data transfer mechanisms differ depending on whether you are using iRODS or basi
 
 Data transfer from any Unix/Linux system can be accomplished using the `scp` utility to copy data to and from the login node. A file can be copied from your local system to the remote server using the command:
 
-<pre class="cmd-line">login1$ <b>scp <i>filename</i> \
-	 <i>username</i>@data.tacc.utexas.edu:/path/to/project/directory</b></pre>
+``` cmd-line
+login1$ scp filename username@data.tacc.utexas.edu:/path/to/project/directory
+```
 
 Where <i>filename</i> is the path to the file on your local system, and the path is what was provided to you when your allocation was granted. While a whole directory can be copied recursively using the `-r` switch:
 
-<pre class="cmd-line">login1$ <b>scp -r <i>directory</i> \
-	<i>username</i>@data.tacc.utexas.edu:/<i>path/to/project/directory</i></b></pre>
+``` cmd-line
+login1$ scp -r directory username@data.tacc.utexas.edu:/path/to/project/directory
+```
 
 Copying data from the Corral system to your local machine is similar, but reverse the order of the arguments:
 
-<pre class="cmd-line">login1$ <b>scp <i>username</i>@data.tacc.utexas.edu:<i>/path/to/project/directory/filename</i> \
-	 <i>/path/to/local/directory</i></b></pre>
+``` cmd-line
+login1$ scp username@data.tacc.utexas.edu:/path/to/project/directory/filename \
+	 /path/to/local/directory
+```
 
 The `scp` utility has many options and allows you to provide many defaults and other options in a configuration file to make transfers easier. Type `man scp` at the prompt to get extensive documentation of the options available for transferring files.
 
@@ -99,17 +103,21 @@ The `scp` utility has many options and allows you to provide many defaults and o
 
 If you are performing computational and analysis tasks on Lonestar6, and those tasks are I/O intensive, you may achieve improved performance by "staging" data to the Lonestar6 `$WORK` or `$SCRATCH` file systems before running a compute task. This is due to the use of the high-performance network of Lonestar6 for access to `$WORK` and `$SCRATCH`, as opposed to the slightly slower TCP/IP network used for access to Corral. The simplest way to stage a file is to copy it to your `$SCRATCH` directory before you submit your job:
 
-<pre class="cmd-line">login1$ <b>cp /corral-repl/utexas/myproject/myfile $SCRATCH/job_directory/</b></pre>
+``` cmd-line
+login1$ cp /corral-repl/utexas/myproject/myfile $SCRATCH/job_directory/
+```
 
 The above example stages a single file. If you wish to stage a whole directory instead, use the `-r` switch to cp:
 
-<pre class="cmd-line">
-login1$ <b>cp -r /corral-repl/utexas/myproject/job_directory $SCRATCH/</b></pre>
+``` cmd-line
+login1$ cp -r /corral-repl/utexas/myproject/job_directory $SCRATCH/
+```
 
 When the job is completed, you may wish to copy the output data back to Corral:
 
-<pre class="cmd-line">
-login1$ <b>cp -r $SCRATCH/job_directory/output_files /corral-repl/utexas/myproject/job_directory</b></pre>
+``` cmd-line
+login1$ cp -r $SCRATCH/job_directory/output_files /corral-repl/utexas/myproject/job_directory
+```
 
 You can also include these staging commands as part of your job script itself; however, if you do so, be sure to account for the time required to copy data in your requested job time.
 
@@ -143,11 +151,15 @@ With this in mind, it is a good practice to explicitly set the permissions on ne
 
 Permissions on files and directories have 3 important categories, for each of which there are 3 levels of access that can be provided. The 3 categories are the owner, the group, and "other" meaning all users of the system. The 3 levels of access are read, write, and "execute" which allows a program to be run in the case of files or allows a directory's contents to be accessed in the case of directories or folders. Typically, users outside of your project group will not be able to access your files unless you explicitly allow them to do so. You can view the permissions for each file in a given directory by typing:
 
-<pre class="cmd-line">login1$ <b>ls -l</b></pre>
+``` cmd-line
+login1$ ls -l
+```
 
 within that directory, or 
 
-<pre class="cmd-line">login1$ <b>ls -l /full/path/of/directory</b></pre>
+``` cmd-line
+login1$ ls -l /full/path/of/directory
+```
 
 at any time  
 
@@ -170,8 +182,9 @@ File permissions can be managed using the `chmod` command from the command-line 
 
 where <i>permissions-to-change</i> can be any or all of `u` for user, `g` for group, and `o` for other, a `+` to add permissions or a minus, `-`, to remove permissions, and the initials of permissions to add or removed, `r` for read, `w` for write, and `x` for execution. For example, to add read access for all users of the system the command would be:
 
-<pre class="cmd-line">
-login1$ <b>chmod o+r <i>filename</i></b></pre>
+``` cmd-line
+login1$ chmod o+r filename
+```
 
 There are various shortcuts one can use to apply specific permissions, and the user is encouraged to read the documentation for the `chmod` command by typing `man chmod` at the command-line prompt. The `chown` command may also be of interest in understanding permissions, and full documentation can be read using `man chown`.
 

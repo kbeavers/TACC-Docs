@@ -23,10 +23,11 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a DCV job script (`/share/doc/slurm/job.dcv`), a VNC job script (`/share/doc/slurm/job.vnc`) and a combined job script that prefers DCV and fails over to VNC if a DCV license is not available (`/share/doc/slurm/job.dcv2vnc`). Each script requests one node in the development queue for two hours, creating a remote desktop session, either [DCV](https://aws.amazon.com/hpc/dcv) or [VNC](https://en.wikipedia.org/wiki/VNC).
 
-	<pre class="cmd-line">
-	login1$ <b>sbatch /share/doc/slurm/job.vnc</b>
-	login1$ <b>sbatch /share/doc/slurm/job.dcv</b>
-	login1$ <b>sbatch /share/doc/slurm/job.dcv2vnc</b></pre>
+	``` cmd-line
+	login1$ sbatch /share/doc/slurm/job.vnc
+	login1$ sbatch /share/doc/slurm/job.dcv
+	login1$ sbatch /share/doc/slurm/job.dcv2vnc
+	```
 
 	You may modify or overwrite script defaults with sbatch command-line options (note: the command options must come between `sbatch` and the script):
 
@@ -40,7 +41,9 @@ Follow the steps below to start an interactive session.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+	``` cmd-line
+	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
+	```
 
 	The `vnc.job` script starts a `vncserver` process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. 
 
@@ -48,9 +51,10 @@ Follow the steps below to start an interactive session.
 
 	Watch for the "To connect" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	<pre class="cmd-line">
-	login1$ <b>touch vncserver.out ; tail -f vncserver.out</b>
-	login1$ <b>touch dcvserver.out ; tail -f dcvserver.out</b></pre>
+	``` cmd-line
+	login1$ touch vncserver.out ; tail -f vncserver.out
+	login1$ touch dcvserver.out ; tail -f dcvserver.out
+	```
 
 	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
 
@@ -58,7 +62,9 @@ Follow the steps below to start an interactive session.
 
 	DCV connections are encrypted via TLS and are secure. For VNC connections, TACC requires users to create an SSH tunnel from the local system to the Frontera login node to assure that the connection is secure. The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Frontera hostname. On a Unix or Linux system, execute the following command once the port has been opened on the Frontera login node:
 
-	<pre class="cmd-line">localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@frontera.tacc.utexas.edu</b></pre>
+	``` cmd-line
+	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@frontera.tacc.utexas.edu
+	```
 
 	where:
 
@@ -89,7 +95,9 @@ From an interactive desktop, applications can be run from icons or from xterm co
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
-<pre class="cmd-line">c101-001$ <b>ibrun <i>ibrunoptions</i> application applicationoptions</b></pre>
+``` cmd-line
+c101-001$ ibrun ibrunoptions application applicationoptions
+```
 
 will run application on the associated nodes, as modified by the ibrun options.
 
@@ -99,9 +107,10 @@ Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At pres
 
 `swr`: To access the accelerated OpenSWR OpenGL library, it is necessary to use the `swr` module to point to the `swr` OpenGL implementation and configure the number of threads to allocate to rendering.
 
-<pre class="cmd-line">
-c101-001$ <b>module load swr</b>
-c101-001$ <b>swr <i>options</i> application application-args</b></pre>
+``` cmd-line
+c101-001$ module load swr
+c101-001$ swr options application application-args
+```
 
 ### [Parallel VisIt on Frontera](#vis)
 
@@ -109,9 +118,10 @@ c101-001$ <b>swr <i>options</i> application application-args</b></pre>
 
 After connecting to a VNC server on Frontera, as described above, load the VisIt module at the beginning of your interactive session before launching the VisIt application:
 
-<pre class="cmd-line">
-c101-001$ <b>module load swr visit</b>
-c101-001$ <b>swr visit</b></pre>
+``` cmd-line
+c101-001$ module load swr visit
+c101-001$ swr visit
+```
 
 VisIt first loads a dataset and presents a dialog allowing for selecting either a serial or parallel engine. Select the parallel engine. Note that this dialog will also present options for the number of processes to start and the number of nodes to use; these options are actually ignored in favor of the options specified when the VNC server job was started.
 
@@ -125,11 +135,15 @@ After connecting to a VNC server on Frontera, as described above, do the followi
 
 1. Set up your environment with the necessary modules. Load the `swr`, `qt5`, `ospray`, and `paraview` modules <b>in this order</b>:
 
-	<pre class="cmd-line">c101-001$ <b>module load swr qt5 ospray paraview</b></pre>
+	``` cmd-line
+	c101-001$ module load swr qt5 ospray paraview
+	```
 
 1. Launch ParaView:
 
-	<pre class="cmd-line">c101-001$ <b>swr -p 1 paraview [<i>paraview client options</i>]</b></pre>
+	``` cmd-line
+	c101-001$ swr -p 1 paraview [paraview client options]
+	```
 
 1. Click the "Connect" button, or select File -&gt; Connect
 

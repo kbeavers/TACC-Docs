@@ -169,11 +169,13 @@ A single user running computationally expensive or disk intensive task/s will ne
 	login1$ sbatch myjobscript
 	```
 
-	DO NOT DO THIS: invoke multiple build sessions, run an executable on a login node.
+!!! warning
+	DO NOT DO THIS: invoke multiple build sessions, or run an executable on a login node.
 
-	<pre class="cmd-line">
-	<s>login1$ <b>make -j 12</b>
-	login1$ <b>./myprogram</b></s></pre>
+	``` cmd-line
+	login1$ make -j 12
+	login1$ ./myprogram
+	```
 
 * **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 
