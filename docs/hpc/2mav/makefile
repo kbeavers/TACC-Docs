@@ -2,7 +2,6 @@ MAVERICK2_OBJS	=	\
 		notices.md \
 		overview.md \
 		access.md \
-		conduct-maverick2.md \
 		files.md \
 		running.md \
 		scripts.md \

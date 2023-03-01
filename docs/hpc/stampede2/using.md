@@ -1,10 +1,10 @@
-## [Using Stampede2](#conduct) { #conduct }
+## [Using Stampede2](#using) { #using }
 
 Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research workflow, **you’ll need to master Linux basics** and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. This user guide does not address these topics, however. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the [TACC](https://portal.tacc.utexas.edu/training/course-materials) training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
-### [Configuring Your Account](#conduct-account) { #conduct-account }
+### [Configuring Your Account](#using-account) { #using-account }
 
-#### [Linux Shell](#conduct-account-shell) { #conduct-account-shell }
+#### [Linux Shell](#using-account-shell) { #using-account-shell }
 
 The default login shell for your user account is Bash.  To determine your current login shell, execute: 
 
@@ -18,9 +18,9 @@ Before editing your startup files, however, it's worth taking the time to unders
 
 For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
 
-#### [Environment Variables](#conduct-account-envvars) { #conduct-account-envvars }
+#### [Environment Variables](#using-account-envvars) { #using-account-envvars }
 
-Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the [modules](#conduct-modules) that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
+Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the [modules](#using-modules) that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
 
 Execute the `env` command to see the environment variables that define the way your shell and child shells behave. 
 
@@ -30,7 +30,7 @@ Pipe the results of `env` into `grep` to focus on specific environment variables
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
-#### [Account-Level Diagnostics](#conduct-account-diagnostics) { #conduct-account-diagnostics }
+#### [Account-Level Diagnostics](#using-account-diagnostics) { #using-account-diagnostics }
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
@@ -40,9 +40,9 @@ login1$ <b>sanitycheck</b></pre>
 
 Execute `module help sanitytool` for more information.
 
-### [Accessing the Compute Nodes](#conduct-computenodes) { #conduct-computenodes }
+### [Accessing the Compute Nodes](#using-computenodes) { #using-computenodes }
 
-You connect to Stampede2 through one of four "front-end" login nodes. The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes ([Figure 2. Login and Compute Nodes](#figure2)). What you do on the login nodes affects other users directly because you are competing for the same memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](#conduct-conduct) for more information. 
+You connect to Stampede2 through one of four "front-end" login nodes. The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes ([Figure 2. Login and Compute Nodes](#figure2)). What you do on the login nodes affects other users directly because you are competing for the same memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](#using-using) for more information. 
 
 **You can use your command-line prompt, or the `hostname` command, to tell you whether you are on a login node or a compute node**. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname (e.g. `c401-064`). The hostname for a Stampede2 login node begins with the string `login` (e.g. `login2.stampede2.tacc.utexas.edu`), while compute node hostnames begin with the character `c` (e.g. `c401-064.stampede2.tacc.utexas.edu`). Note that the default prompts on the compute nodes include the node type (`knl`, `skx` or `icx`) as well. The environment variable `TACC_NODE_TYPE`, defined only on the compute nodes, also displays the node type. The simplified prompts in the User Guide examples are shorter than Stampede2's actual default prompts.
 
@@ -67,9 +67,9 @@ $ <b>module help launcher</b></pre>
 <img alt="Stampede2" src="../../imgs/stampede2/Stampede2.jpg">
 <figcaption>Figure 2. Login and compute nodes</figcaption></figure>
 
-### [Using Modules to Manage your Environment](#conduct-modules) { #conduct-modules }
+### [Using Modules to Manage your Environment](#using-modules) { #using-modules }
 
-Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Stampede2 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
+Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to using your research. This is especially important on a system like Stampede2 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
 <pre class="cmd-line">
 $ <b>module load intel</b>          # load the default Intel compiler

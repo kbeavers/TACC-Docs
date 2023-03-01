@@ -34,7 +34,7 @@ nav:
     - Getting Started: basics/gettingstarted.md
     - New User Information: basics/newuserinfo.md
     - Data Transfer Guide: basics/datatransferguide.md
-    - Conduct on HPC: basics/conduct.md
+    - Good Conduct on HPC Resources: basics/conduct.md
     - Help: basics/help.md
   - HPC :
     - Chameleon: https://chameleoncloud.readthedocs.io/en/latest

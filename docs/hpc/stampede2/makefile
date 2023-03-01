@@ -2,6 +2,7 @@ SRC =   \
         notices.md \
         intro.md \
         access.md \
+		using.md \
         files.md \
         building.md \
         running.md \
