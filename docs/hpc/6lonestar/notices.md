@@ -1,14 +1,14 @@
 # Lonestar6 User Guide
-<span style="font-size:90%;"><i>Last update: January 13, 2023</i></span></p>
+Last update: January 13, 2023
 
 
 ## [Notices](#notices) { #notices }
 
 * **Lonestar6 has a [new queue, `vm-small`](#queues), for jobs requiring only a subset of a node's cores.** (11/11/2022) 
 * **Lonestar6 will transition from the early user phase into production on Tuesday, January 11, 2022.** For our researchers who currently have access to Lonestar6, we will start charging usage against your allocation. (01/06/2002)
-* TACC has transitioned to a new allocations management system for Lonestar6, and there are new Project Names. See [Sharing Project Files on TACC Systems](https://portal.tacc.utexas.edu/tutorials/sharing-project-files) to learn about managing file permissions across projects. 
+* TACC has transitioned to a new allocations management system for Lonestar6, and there are new Project Names. See [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles) to learn about managing file permissions across projects. 
 * **All users: read the [Good Conduct](#conduct) section.** Lonestar6 is a shared resource and your actions can impact other users. (10/18/2021) 
-* You may now **[subscribe](https://portal.tacc.utexas.edu/news/subscribe) to [Lonestar6 User News](https://portal.tacc.utexas.edu/user-news/-/news/Lonestar6)**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications. (10/14/2021) 
+* **[Subscribe](https://portal.tacc.utexas.edu/news/subscribe) to [Lonestar6 User News](https://portal.tacc.utexas.edu/user-news/-/news/Lonestar6)**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
 
 
 ## [Introduction to Lonestar6](#intro) { #intro }

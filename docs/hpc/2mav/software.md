@@ -2,7 +2,8 @@
 
 As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
 
-<pre class="cmd-line">login1$ <b>module avail</b>
+``` cmd-line
+login1$ module avail
 
 -------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
    boost/1.66                     phdf5/1.10.4   (D)
@@ -34,7 +35,8 @@ As of January 17, 2023, the following software modules are currently installed o
   Where:
    D:  Default Module
    L:  Module is loaded
-   g:  built for GPU</pre>
+   g:  built for GPU
+```
 
 At this time, with the limited size of the local disks on Maverick2, we are keeping the number of packages supported to a reduced size to accommodate the work done on this system that is not possible or practical on other TACC systems.
 
@@ -53,5 +55,5 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 
 Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands `mpicc`, `mpicxx`, `mpif90` and `mpif77` are available. Also, the compilers `icc`, `icpc`, and `ifort` are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](S2UG#building).  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](../stampede2#building).  
 

@@ -10,9 +10,9 @@ Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler
 
 The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the following sections for detailed information:
 
-* [Submitting Jobs with `sbatch`](S2UG#running-sbatch)
-* [Common `sbatch` options](S2UG#table6)
-* [Launching Applications](S2UG#launching-applications)
+* [Submitting Jobs with `sbatch`](../stampede2#running-sbatch)
+* [Common `sbatch` options](../stampede2#table6)
+* [Launching Applications](../stampede2#launching-applications)
 
 ### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
@@ -20,7 +20,7 @@ The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the fo
 
 Execute `qlimits` on Maverick2 for real-time information regarding limits on available queues.
 
-See Stampede2's [Monitoring Jobs and Queues](S2UG#monitoring) section for additional information.
+See Stampede2's [Monitoring Jobs and Queues](../stampede2#monitoring) section for additional information.
 
 #### [Table 6. Maverick2 Production Queues](#table6) { #table6 }
 

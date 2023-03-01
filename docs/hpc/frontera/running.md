@@ -19,7 +19,7 @@ The Slurm scheduler tracks and charges for usage to a granularity of a few secon
 Principal Investigators can monitor allocation usage via the [TACC User Portal](https://portal.tacc.utexas.edu) under ["Allocations->Projects and Allocations"](https://portal.tacc.utexas.edu/projects-and-allocations). Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
 
 !!! tip
-	To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ <b>/usr/local/etc/taccinfo</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre>
+	To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ /usr/local/etc/taccinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre>
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 
@@ -30,10 +30,10 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
 * A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
-<pre class="cmd-line">
-$ <b>module load launcher</b>
-$ <b>module help launcher</b>
-</pre>
+``` cmd-line
+$ module load launcher
+$ module help launcher
+```
 
 ### [Frontera Production Queues](#running-queues)  { #running-queues } { #queues }
 
@@ -95,9 +95,9 @@ While some workflows, tools, and applications hide the details, there are three 
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Frontera queues:
 
-<pre class="cmd-line">
-login1$ <b>sbatch myjobscript</b>
-</pre>
+``` cmd-line
+login1$ sbatch myjobscript
+```
 
 Here `myjobscript` is the name of a text file containing `#SBATCH` directives and shell commands that describe the particulars of the job you are submitting. The details of your job script's contents depend on the type of job you intend to run. 
 
@@ -144,13 +144,13 @@ TACC's own `idev` utility is the best way to begin an interactive session on one
 
 To launch a thirty-minute session on a single node in the `development` queue, simply execute:
 
-<pre class="cmd-line">
-login1$ <b>idev</b>
-</pre>
+``` cmd-line
+login1$ idev
+```
 
 You'll then see output that includes the following excerpts:
 
-<pre class="cmd-line">
+``` cmd-line
 ...
 -----------------------------------------------------------------
 		Welcome to the Frontera Supercomputer          
@@ -165,21 +165,21 @@ You'll then see output that includes the following excerpts:
 ->job status:  PD
 ...
 c123-456$
-</pre>
+```
 
 The `job status` messages indicate that your interactive session is waiting in the queue. When your session begins, you'll see a command prompt on a compute node (in this case, the node with hostname `c449-001`). If this is the first time you launch `idev`, you may be prompted to choose a default project and a default number of tasks per node for future `idev` sessions.
 
 For command-line options and other information, execute `idev --help`. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
-<pre class="cmd-line">
-login1$ <b>idev -p normal -N 2 -n 8 -m 150</b> # normal queue, 2 nodes, 8 total tasks, 150 minutes
-</pre>
+``` cmd-line
+login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
+```
 
 You can also launch an interactive session with Slurm's srun command, though there's no clear reason to prefer srun to idev. A typical launch line would look like this:
 
-<pre class="cmd-line">
-login1$ <b>srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l</b> # same conditions as above
-</pre>
+``` cmd-line
+login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
+```
 
 Consult the [`idev`](http://portal.tacc.utexas.edu/software/idev) documentation for further details.
 
@@ -190,27 +190,27 @@ If you have a batch job or interactive session running on a compute node, you "o
 There are many ways to determine the nodes on which you are running a job, including feedback messages following your `sbatch` submission, the compute node command prompt in an `idev` session, and the `squeue` or `showq` utilities. The sequence of identifying your compute node then connecting to it would look like this:
 
 
-<pre class="cmd-line">
-login1$ <b>squeue -u bjones</b>
+``` cmd-line
+login1$ squeue -u bjones
  JOBID       PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 858811     development idv46796   bjones  R       0:39      1 c448-004
 1ogin1$ ssh c448-004
 ...
 C448-004$
-</pre>
+```
 
 
 ### [Slurm Environment Variables](#running-slurmenvvars) { #running-slurmenvvars } 
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-``` { .bash .job-script }
-<s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect
+``` job-script
+#SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
 ```
 
 Instead, use the following directive:
 
-``` { .bash .job-script }
+``` job-script
 #SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
 ```
 

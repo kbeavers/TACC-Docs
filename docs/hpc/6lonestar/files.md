@@ -13,14 +13,7 @@ File System | Quota | Key Features
 
 &#42;The operating system updates a file's access time when that file is modified on a login or compute node. Reading or executing a file/script on a login node does not update the access time, but reading or executing on a compute node does update the access time. This approach helps us distinguish between routine management tasks <span style="white-space: nowrap;">(e.g. `tar`, `scp`)</span> and production use. Use the command <span style="white-space: nowrap;">`ls -ul`</span> to view access times.
 
-#### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy }
-
-!!! caution
-	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
-
-<!--- SDL --- make this an include -->
-
-
+{% include 'include/scratchpolicy.md' %}
 
 ### [Navigating the Shared File Systems](#files-navigating) { #files-navigating }
 
@@ -57,50 +50,56 @@ You can transfer files between Lonestar6 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Lonestar6 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Lonestar6 `$HOME` would look like this:
 
-<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon after net address</b></pre>
+``` cmd-line
+localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon after net address
+```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Lonestar6:
 
-<pre class="cmd-line">localhost$ <b>scp &#42;.txt bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6</b></pre>
+``` cmd-line
+localhost$ scp &#42;.txt bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6
+```
 
 To delay wildcard expansion until reaching Lonestar6, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Lonestar6 to the current directory on your local system:
 
-<pre class="cmd-line">localhost$ <b>scp bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6/\*.txt .</b></pre>
+``` cmd-line
+localhost$ scp bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6/\*.txt .
+```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-<pre class="cmd-line">
-localhost$ <b>destdir="/work/01234/bjones/ls6/data"</b>
-localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:$destdir</b></pre>
+``` cmd-line
+localhost$ destdir="/work/01234/bjones/ls6/data"
+localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:$destdir
+```
 
 You can also issue `scp` commands on your local client that use Lonestar6 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Lonestar6:
 
-<!-- pre class="cmd-line">localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:\$WORK/data   # Note backslash</b></pre -->
-<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data   # Note backslash</b></pre>
+``` cmd-line
+localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data   # Note backslash
+```
 
 Avoid using `scp` for recursive transfers of directories that contain nested directories of many small files:
 
-<!-- pre class="cmd-line">localhost$ <s>scp -r ./mydata     bjones@ls6.tacc.utexas.edu:\$WORK</s>  # DON'T DO THIS</pre -->
-<pre class="cmd-line">localhost$ <s>scp -r ./mydata     bjones@ls6.tacc.utexas.edu:\$SCRATCH</s>  # DON'T DO THIS</pre>
+``` cmd-line
+localhost$ scp -r ./mydata     bjones@ls6.tacc.utexas.edu:\$SCRATCH  # DON'T DO THIS
+```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-<pre class="cmd-line">
-localhost$ <b>tar cvf ./mydata.tar mydata                                  # create archive</b>
-<!--localhost$ <b>scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$SCRATCH  # transfer archive</b></pre>-->
-localhost$ <b>scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive</b></pre>
+``` cmd-line
+localhost$ tar cvf ./mydata.tar mydata                                  # create archive
+localhost$ scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive
+```
 
 #### [Transferring Files with `rsync`](#files-transferring-rsync) { #files-transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-<!-- pre class="cmd-line">
-localhost$ <b>rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$WORK/data</b>
-localhost$ <b>rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$WORK/data</b></pre -->
-
-<pre class="cmd-line">
-localhost$ <b>rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data</b>
-localhost$ <b>rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$SCRATCH/data</b></pre>
+``` cmd-line
+localhost$ rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
+localhost$ rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
+```
 
 The options on the second transfer are typical and appropriate when synching a directory: this is a <span style="white-space: nowrap;">recursive update (`-r`)</span> with verbose (`-v`) feedback; the synchronization preserves <span style="white-space: nowrap;">time stamps (`-t`)</span> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 

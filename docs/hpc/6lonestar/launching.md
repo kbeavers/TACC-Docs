@@ -42,8 +42,8 @@ ibrun ./myprogram
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
 ``` { .bash .job-script }
-login1$ <b>idev -N 2 -n 100 </b>				
-c309-005$ <b>ibrun ./myprogram</b>
+login1$ idev -N 2 -n 100
+c309-005$ ibrun ./myprogram
 ```
 
 ### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
@@ -106,20 +106,25 @@ The sequence of proc-ids on socket 0 and socket 1 are sequentially numbered.
 
 On socket 0:
 
-<pre class="syntax">0,1,2,...,62,63 </pre>
+``` syntax
+0,1,2,...,62,63 
+```
 
 and on socket 1:
 
-<pre class="syntax">64,65,...,126,127</pre>
+``` syntax
+64,65,...,126,127
+```
 
 Note, hardware threads are not enabled on Lonestar6.  So, there are no core ids greater than 127.
 
 The proc-id mapping to the cores for Milan is:
 
-<pre class="syntax">
+``` syntax
 |------- Socket 0 ------------|-------- Socket 1 -------------|
 #   0   1   2,..., 61, 62, 63 |  0   1   2,...,  61,  62,  63 |
-0   0   1   2,..., 61, 62, 63 | 64  65  66,..., 125, 126, 127 |</pre>
+0   0   1   2,..., 61, 62, 63 | 64  65  66,..., 125, 126, 127 |
+```
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on each socket, the places would be:
 

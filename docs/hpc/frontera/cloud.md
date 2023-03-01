@@ -21,19 +21,24 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 
 1. Download and extract
 
-	<pre class="cmd-line">
-	login1$ <b>curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-335.0.0-linux-x86_64.tar.gz</b>
-	login1$ <b>tar -xzf google-cloud-sdk-335.0.0-linux-x86_64.tar.gz</b></pre>
+	``` cmd-line
+	login1$ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-335.0.0-linux-x86_64.tar.gz
+	login1$ tar -xzf google-cloud-sdk-335.0.0-linux-x86_64.tar.gz
+	```
 
 1. Authenticate and configure
 
-	<pre class="cmd-line">login1$ <b>./google-cloud-sdk/bin/gcloud auth login</b></pre>
+	``` cmd-line
+	login1$ ./google-cloud-sdk/bin/gcloud auth login
+	```
 
 	* You'll be presented a URL to paste into a browser; Log in using the appropriate Google account. 
 	* You'll then be presented an authentication string. Copy and paste this string when promped with: "Enter verification code:".  
 	* Configure the CLI for the correct project. For Frontera, use `ut-tacc-np-sandbox-1`.
 
-		<pre class="cmd-line">login1$ <b>./google-cloud-sdk/bin/gcloud config set project ut-tacc-np-sandbox-1</b></pre>
+	``` cmd-line
+	login1$ ./google-cloud-sdk/bin/gcloud config set project ut-tacc-np-sandbox-1
+	```
 
 #### [Storage basics](#cloudservices-google-storage) { #cloudservices-google-storage }
 
@@ -41,7 +46,9 @@ Learn the basic `gsutil` commands: [Quickstart: Using the `gsutil` tool](https:/
 
 **Example: list storage elements:**
 
-<pre class="cmd-line">login1$ <b>./google-cloud-sdk/bin/gsutil ls</b></pre>
+``` cmd-line
+login1$ ./google-cloud-sdk/bin/gsutil ls
+```
 
 ### [Amazon Web Services (AWS)](#cloudservices-amazon) { #cloudservices-amazon }
 
@@ -67,7 +74,7 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 
 Follow these instructions to enable MFA on your account. **Do not navigate away from the MFA window during the pairing process, or else your account may be left in an unstable state.** 
 
-1. From the top menu "<i>username</i>@2034-1686-6386", select "My Security Credentials"  
+1. From the top menu "username@2034-1686-6386", select "My Security Credentials"  
 	<figure id="securitycredentials"><img alt="AWS-securitycredentials" src="../../imgs/frontera/AWS-securitycredentials.png"> 
 	<figcaption></figcaption></figure>
 
@@ -83,7 +90,8 @@ Follow these instructions to enable MFA on your account. **Do not navigate away 
 
 #### [Add CLI and API access key](#cloudservices-amazon-keys) { #cloudservices-amazon-keys }
 
-<p class="msg-alert"><i>NOTE:</i> You must set up MFA and use it to log in to the AWS console prior to viewing or editing your access keys.</p>
+!!! important
+	You must set up MFA and use it to log in to the AWS console prior to viewing or editing your access keys.
 
 1. Once again, select "My Security Credentials" from the top menu, then click the "Create access key" button in the "Access keys for CLI, SDK, & API access" section.  
 	<figure id="accesskeyavailable"><img alt="AWS-accesskeyavailable" src="../../imgs/frontera/AWS-accesskeyavailable.png"> 
@@ -108,7 +116,6 @@ Please [submit a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 #### [Create a Storage Group and Account](#cloudservices-azure-storage) { #cloudservices-azure-storage }
 
 Once you've been given access, and before uploading files to Azure, you must first create a storage group and storage account. These are one time steps.
-
 
 1. Navigate to the [Microsoft Azure Portal](https://portal.azure.com) and login with your TACC User Portal account.  
 	<figure id="figure1"><img border="1" alt="Azure Portal Home" src="../../imgs/frontera/image01.png"> 
@@ -168,15 +175,19 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 To install on Frontera in your home directory using Python, this should be sufficient:
 
-<p class="cmd-line">login1$ <b>curl -L https://aka.ms/InstallAzureCli | bash</b></p>
+``` cmd-line
+login1$ curl -L https://aka.ms/InstallAzureCli | bash
+```
 
 We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
-<pre class="cmd-line">===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
-<b>/home1/01983/mpackard/azure/lib/azurecli</b>
+``` cmd-line
+===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
+/home1/01983/mpackard/azure/lib/azurecli
 
 ===&gt; In what directory would you like to place the &#39;az&#39; executable? (leave blank to use &#39;/home1/01983/mpackard/bin&#39;): 
-<b>/home1/01983/mpackard/azure/bin</b></pre>
+/home1/01983/mpackard/azure/bin
+```
 
 More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>
 
@@ -185,11 +196,14 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 1. Login with the Azure CLI and follow the steps to open a web browser and enter the access code from above.
 
-	<pre class="cmd-line">login1$ <b>az login</b></pre>
+	``` cmd-line
+	login1$ az login
+	```
 
 1. List your storage accounts:
 
-	<pre class="cmd-line">login1$ <b>az storage account list</b>
+	``` cmd-line
+	login1$ az storage account list
 	[
   	  {
 		"accessTier": "Hot",
@@ -263,12 +277,14 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 		"tags": {},
 		"type": "Microsoft.Storage/storageAccounts"
   	  }
-	]</pre>
+	]
+	```
 	
 	
 1. List your storage containers within the account
 	
-	<pre class="cmd-line">login1$ <b>az storage container list --account-name slindsey \<br>--account-key eSwqAlwh9kSxj07Stz9YKws9GWecICkLE9OUMm/kA2YAlKBCn2AzoBOOdL+7EbLNX+OEBqNjpGKsyo04p4Jmrwsl</b>
+	``` cmd-line
+	login1$ az storage container list --account-name slindsey \--account-key eSwqAlwh9kSxj07Stz9YKws9GWecICkLE9OUMm/kA2YAlKBCn2AzoBOOdL+7EbLNX+OEBqNjpGKsyo04p4Jmrwsl
 	
 	[
   	  {
@@ -290,53 +306,64 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 	  	  "publicAccess": null
 		}
   	  }
-	]</pre>
+	]
+	```
 	
 2. Create a new container (if needed) for your file
 
-	<pre class="cmd-line">login1$ <b>az storage container create --name container1 \
-		--account-name <i>slindsey</i> --account-key <i>reallylongstringofrandomcharacters</i></b>
+	``` cmd-line
+	login1$ az storage container create --name container1 \
+		--account-name slindsey --account-key reallylongstringofrandomcharacters
 	{
 		"created": true
-	}</pre>
+	}
+	```
 
 3. Upload a file
 
-	<pre class="cmd-line">
-	login1$ <b>az storage blob upload --container-name container1 --file foo.txt --name foo.txt \
-		--account-name <i>slindsey</i> --account-key <i>reallylongstringofrandomcharacters</i></b>
+	``` cmd-line
+	
+	login1$ az storage blob upload --container-name container1 --file foo.txt --name foo.txt \
+		--account-name slindsey --account-key reallylongstringofrandomcharacters
 	Alive[################################################################]  100.000
 	Finished[#############################################################]  100.0000%
 	{
 	"etag": "\"0x8D783FFAD095DE0\"",
 	"lastModified": "2019-12-18T21:17:23+00:00"
-	}</pre>
+	}
+	```
 
 4. List your "blobs"
 
-	<pre class="cmd-line">
-	login1$ <b>az storage blob list --container-name container1 --output table \
-		--account-name <i>slindsey</i> --account-key <i>reallylongstringofrandomcharacters</i></b>
+	``` cmd-line
+	
+	login1$ az storage blob list --container-name container1 --output table \
+		--account-name slindsey --account-key reallylongstringofrandomcharacters
 	Name	 Blob Type	  Blob Tier	   Length	 Content Type	 Last Modified			  Snapshot
 	-------  -----------  -----------  --------  --------------  -------------------------  ----------
-	foo.txt  BlockBlob	  Hot		   10		 text/plain	     2019-12-18T21:17:23+00:00</pre>
+	foo.txt  BlockBlob	  Hot		   10		 text/plain	     2019-12-18T21:17:23+00:00
+	```
 
 5. Download your file:
 
-	<pre class="cmd-line">
-	login1$ <b>az storage blob download --container-name container1 --name foo.txt --file a_new_foo.txt --output table \
-		--account-name <i>slindsey</i> --account-key <i>reallylongstringofrandomcharacters</i></b>
+	``` cmd-line
+	
+	login1$ az storage blob download --container-name container1 --name foo.txt --file a_new_foo.txt --output table \
+		--account-name slindsey --account-key reallylongstringofrandomcharacters
 	Alive[################################################################]  100.000
 	Finished[#############################################################]  100.0000%
 	Name	 Blob Type	  Blob Tier	   Length	 Content Type	 Last Modified			  Snapshot
 	-------  -----------  -----------  --------  --------------  -------------------------  ----------  
-	foo.txt  BlockBlob	               10		 text/plain	     2019-12-18T21:17:23</pre>
+	foo.txt  BlockBlob	               10		 text/plain	     2019-12-18T21:17:23
+	```
 
 6. The file shows up with the new name:
 
-	<pre class="cmd-line">bash-5.0# <b>ls -l </b>
+	``` cmd-line
+	bash-5.0# ls -l 
 	total 64
 	-rw-r--r--	1 root	 root			10 Dec 18 21:20 a_new_foo.txt
-	bash-5.0# <b>cat a_new_foo.txt </b>
-	Hi Azure!</pre>
+	bash-5.0# cat a_new_foo.txt 
+	Hi Azure!
+	```
 

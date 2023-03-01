@@ -1,10 +1,8 @@
 # Maverick2 User Guide
-<i>Last update: August 24, 2022</i> editing 01/18/2023
+Last update: August 24, 2022
 
 ## [Notices](#notices) { #notices }
 
-* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/20/2021)
-* All users: read [Managing I/O on TACC Resources][TACCMANAGINGIO]. TACC Staff have put forth new file system and job submission guidelines. (01/09/21)
 * Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
 * Maverick2 does not support any Visualization applications. 
 * Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.

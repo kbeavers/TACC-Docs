@@ -14,15 +14,15 @@ Currently available queues include those in [Stampede2 Production Queues](#table
 
 Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Duration | Max Jobs in Queue &#42; | Charge Rate<br /> (per node-hour) 
 --- | --- | --- | --- | --- | ---
-<code>development</code> | KNL cache-quadrant | 16 nodes<br /> (1,088 cores)&#42; | 2 hrs | 1&#42; | 0.8 Service Unit (SU)
-<code>normal</code> | KNL cache-quadrant | 256 nodes<br /> (17,408 cores) &#42; | 48 hrs | 50 &#42; | 0.8 SU
-<code>large</code> &#42;&#42; | KNL cache-quadrant | 2048 nodes<br /> (139,264 cores) &#42;&#42; | 48 hrs | 5 &#42;&#42; | 0.8 SU
-<code>long</code> | KNL cache-quadrant | 32 nodes<br>(2,176 cores) &#42; | 120 hrs | 2  &#42; | 0.8 SU
-<code>flat-quadrant</code> | KNL flat-quadrant | 32 nodes<br /> (2,176 cores)  &#42; | 48 hrs | 5  &#42; | 0.8 SU
-<code>skx-dev</code> | SKX | 4 nodes<br>(192 cores) &#42; | 2 hrs | 1 &#42; | 1 SU
-<code>skx-normal</code> | SKX | 128 nodes<br>(6,144 cores) &#42; | 48 hrs | 20 &#42; | 1 SU
-<code>skx-large</code> &#42; &#42; | SKX | 868 nodes<br>(41,664 cores) &#42; | 48 hrs | 3 &#42; | 1 SU
-<code>icx-normal</code> | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
+development | KNL cache-quadrant | 16 nodes<br /> (1,088 cores)&#42; | 2 hrs | 1&#42; | 0.8 Service Unit (SU)
+normal | KNL cache-quadrant | 256 nodes<br /> (17,408 cores) &#42; | 48 hrs | 50 &#42; | 0.8 SU
+large &#42;&#42; | KNL cache-quadrant | 2048 nodes<br /> (139,264 cores) &#42;&#42; | 48 hrs | 5 &#42;&#42; | 0.8 SU
+long | KNL cache-quadrant | 32 nodes<br>(2,176 cores) &#42; | 120 hrs | 2  &#42; | 0.8 SU
+flat-quadrant | KNL flat-quadrant | 32 nodes<br /> (2,176 cores)  &#42; | 48 hrs | 5  &#42; | 0.8 SU
+skx-dev | SKX | 4 nodes<br>(192 cores) &#42; | 2 hrs | 1 &#42; | 1 SU
+skx-normal | SKX | 128 nodes<br>(6,144 cores) &#42; | 48 hrs | 20 &#42; | 1 SU
+skx-large &#42; &#42; | SKX | 868 nodes<br>(41,664 cores) &#42; | 48 hrs | 3 &#42; | 1 SU
+icx-normal | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
 
 &#42; Queue status as of March 7, 2022. **Queues and limits are subject to change without notice.** Execute `qlimits` on Stampede2 for real-time information regarding limits on available queues. See [Monitoring Jobs and Queues](#monitoring) for additional information.
 
@@ -34,7 +34,9 @@ Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Dura
 
 Use Slurm's `sbatch` command to [submit a batch job](#using-computenodes) to one of the Stampede2 queues:
 
-<pre class="cmd-line">login1$ <b>sbatch myjobscript</b></pre>
+``` cmd-line
+login1$ sbatch myjobscript
+```
 
 Here `myjobscript` is the name of a text file containing `#SBATCH` directives and shell commands that describe the particulars of the job you are submitting. The details of your job script's contents depend on the type of job you intend to run. 
 
@@ -45,25 +47,25 @@ Your job will run in the environment it inherits at submission time; this enviro
 The [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. <span style="white-space: nowrap;">`-N`</span>) and a long form (e.g. <span style="white-space: nowrap;">`--nodes`</span>). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases <span style="white-space: nowrap;">`#!/bin/bash`</span> or <span style="white-space: nowrap;">`#!/bin/csh`</span> is the right choice. Avoid <span style="white-space: nowrap;">`#!/bin/sh`</span> (its startup behavior can lead to subtle problems on Stampede2), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede2.
 
 
-#### [Table 6. Common <code>sbatch</code> Options](#table6)
+#### [Table 6. Common sbatch Options](#table6)
 
 Option | Argument | Comments
 --- | --- | ---
-<code>-p</code> | <i>queue_name</i> | Submits to queue (partition) designated by <i>queue_name</i>
-<code>-J</code> |  <i>job_name</i> |  Job Name
-<code>-N</code> | <i>total_nodes</i> | Required. Define the resources you need by specifying either:<br>(1) <code>-N</code> and <code>-n</code>; or<br>(2) <code>-N</code> and <code>--ntasks-per-node</code>. 
-<code>-n</code> | <i>total_tasks</i> | This is total MPI tasks in this job. See <code><span style="white-space: nowrap;">-N</span></code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as <code>-N</code>.
-<code><span style="white-space: nowrap;">--ntasks-per-node</span></code><br>or<br><code>--tasks-per-node</code> | <i>tasks_per_node</i> | This is MPI tasks per node. See <code>-N</code> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set <code>--ntasks-per-node</code> to 1.
-<code>-t</code> | <i>hh:mm:ss</i> | Required. Wall clock time for job.
-<code>--mail-user=</code> | <i>email_address</i> | Specify the email address to use for notifications. Use with the <code>--mail-type=</code> flag below.
-<code>--mail-type=</code> | <code>begin</code>, <code>end</code>, <code>fail</code>, or  <code>all</code> | Specify when user notifications are to be sent (one option per line).
-<code>-o</code> | <i>output_file</i> | Direct job standard output to <i>output_file</i> (without <code>-e</code> option error goes to this file)
-<code>-e</code> | <i>error_file</i> | Direct job error output to <i>error_file</i>
-<code>-d=</code> | afterok:<i>jobid</i> | Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
-<code>-A</code> | <i>projectnumber</i> | Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
-<code>-a</code><br>or<br><code>--array</code> | N/A | Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
-<code>--mem</code> | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
-<code>--export=</code> | N/A | Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
+-p | queue_name | Submits to queue (partition) designated by queue_name
+-J |  job_name |  Job Name
+-N | total_nodes | Required. Define the resources you need by specifying either:<br>(1) -N and -n; or<br>(2) -N and --ntasks-per-node. 
+-n | total_tasks | This is total MPI tasks in this job. See <span style="white-space: nowrap;">-N</span> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as -N.
+<span style="white-space: nowrap;">--ntasks-per-node</span><br>or<br>--tasks-per-node | tasks_per_node | This is MPI tasks per node. See -N above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set --ntasks-per-node to 1.
+-t | hh:mm:ss | Required. Wall clock time for job.
+--mail-user= | email_address | Specify the email address to use for notifications. Use with the --mail-type= flag below.
+--mail-type= | begin, end, fail, or  all | Specify when user notifications are to be sent (one option per line).
+-o | output_file | Direct job standard output to output_file (without -e option error goes to this file)
+-e | error_file | Direct job error output to error_file
+-d= | afterok:jobid | Specifies a dependency: this run will start only after the specified job (jobid) successfully finishes
+-A | projectnumber | Charge job to the specified project/allocation number.  This option is only necessary for logins associated with multiple projects.   
+-a<br>or<br>--array | N/A | Not available. Use the launcher module for parameter sweeps and other collections of related serial jobs.
+--mem | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
+--export= | N/A | Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
 By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">`slurm-%j.out`</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">`-o`</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">`-o`</span> and <span style="white-space: nowrap;">`-e`</span>.
 
@@ -113,10 +115,12 @@ ibrun ./myprogram              # ibrun uses the $SBATCH directives to properly a
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
-<pre class="cmd-line">
-login1$ <b>idev -N 2 -n 80 </b>
-c123-456$ <b>ibrun ./myprogram</b>    # ibrun uses idev's arguments to properly allocate nodes and tasks
-</pre>
+``` cmd-line
+
+login1$ idev -N 2 -n 80 
+c123-456$ ibrun ./myprogram    # ibrun uses idev's arguments to properly allocate nodes and tasks
+
+```
 
 ### [Launching One Hybrid (MPI+Threads) Application](#running-launching-hybrid) { #running-launching-hybrid }
 
@@ -186,11 +190,14 @@ wait
 
 TACC's own `idev` utility is the best way to begin an interactive session on one or more compute nodes. To launch a thirty-minute session on a single node in the development queue, simply execute:
 
-<pre class="cmd-line">login1$ <b>idev</b></pre>
+``` cmd-line
+login1$ idev
+```
 
 You'll then see output that includes the following excerpts:
 
-<pre class="cmd-line">
+``` cmd-line
+
 ...
 -----------------------------------------------------------------
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to the Stampede2 Supercomputer          
@@ -204,20 +211,25 @@ You'll then see output that includes the following excerpts:
 ->job status:  PD
 ->job status:  PD
 ...
-c449-001$</pre>
+c449-001$
+```
 
 
 The `job status` messages indicate that your interactive session is waiting in the queue. When your session begins, you'll see a command prompt on a compute node (in this case, the node with hostname c449-001). If this is the first time you launch `idev`, the prompts may invite you to choose a default project and a default number of tasks per node for future `idev` sessions.
 
 For command line options and other information, execute <span style="white-space: nowrap;">`idev --help`</span>. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
-<pre class="cmd-line">login1$ <b>idev -p normal -N 2 -n 8 -m 150</b> # normal queue, 2 nodes, 8 total tasks, 150 minutes</pre>
+``` cmd-line
+login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
+```
 
 For more information see the [`idev` documentation](http://portal.tacc.utexas.edu/software/idev).
 
 You can also launch an interactive session with Slurm's `srun` command, though there's no clear reason to prefer `srun` to `idev`. A typical launch line would look like this:
 
-<pre class="cmd-line">login1$ <b>srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l </b># same conditions as above</pre>
+``` cmd-line
+login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
+```
 
 
 ### [Interactive Sessions using `ssh`](#running-ssh) { #running-ssh }
@@ -227,20 +239,25 @@ If you have a batch job or interactive session running on a compute node, you "o
 There are many ways to determine the nodes on which you are running a job, including feedback messages following your `sbatch` submission, the compute node command prompt in an `idev` session, and the `squeue` or `showq` utilities. The sequence of identifying your compute node then connecting to it would look like this:
 
 
-<pre class="cmd-line">
-login1$ <b>squeue -u bjones</b>
+``` cmd-line
+
+login1$ squeue -u bjones
  JOBID       PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 858811     development idv46796   bjones  R       0:39      1 c448-004
-1ogin1$ <b>ssh c448-004</b>
+1ogin1$ ssh c448-004
 ...
-C448-004$</pre>
+C448-004$
+```
 
 
 ### [SLURM Environment Variables](#running-slurmenvvars) { #running-slurmenvvars }
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-<pre class="cmd-line"><s>#SBATCH -o myMPI.o${SLURM_JOB_ID}</s>   # incorrect</pre>
+!!! warning
+	``` cmd-line
+	#SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
+	```
 
 Instead, use the following directive:
 

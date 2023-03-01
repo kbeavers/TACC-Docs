@@ -34,9 +34,9 @@ Previously, the Ranch system was based on Oracle's HSM software, with two SL8500
 
 Direct login via Secure Shell's `ssh` command to Ranch is allowed so you can create directories and manage files. The Ranch archive file systems cannot be mounted on any remote system.
 
-<pre class="cmd-line">stampede2$ <b>ssh <i>taccusername</i>@HOSTNAME</b></pre>
-
-
+``` cmd-line
+stampede2$ ssh taccusername@HOSTNAME
+```
 
 ### [Ranch Environment Variables](#access-envvars) { #access-envvars }
 
@@ -64,9 +64,6 @@ Users should be using `tar` or `gtar` to achieve file sizes in this range before
 The new Quantum-based environment is designed to meet the demand of retrieving multi-TB to PB-sized data sets in hours or days, rather than in weeks, which is possible only when the data set is stored into files with an average file size set optimally as described above.
 
 
-
-
-
 ### [Ranch Quotas](#organizing-quotas)  { #organizing-quotas }
 
 !!! note
@@ -76,11 +73,15 @@ The new Quantum-based environment is designed to meet the demand of retrieving m
 
 You can display your current Ranch on-disk **file space usage** by executing the following UNIX command while the current directory is either the user or Project directory:
 
-<pre class="cmd-line">ranch$ <b>du -sh</b></pre>
+``` cmd-line
+ranch$ du -sh
+```
 
 Keep in mind the above commands only display file **space** used, not a total file **count**.  File count can be found using the UNIX `find` and `wc` commands, again while the current directory is either the user or Project directory:
 
-<pre class="cmd-line">ranch$ <b>find . -type f | wc</b></pre>
+``` cmd-line
+ranch$ find . -type f | wc
+```
 
 It is your responsibility to keep the file count below the 50,000 quota by using the UNIX `tar` command or some other methodology to bundle files when necessary. Both the file space and file count quotas apply to all data copied from the Oracle archive and all new incoming data.
 
@@ -90,7 +91,9 @@ It is your responsibility to keep the file count below the 50,000 quota by using
 
 Users can check their current and historical Ranch usage by looking at the contents of the `HSM_usage` file in their Ranch user directory. Note that this file contains quota, on-disk, and on-tape, usage information for the directory it is in and all those beneath it.
 
-<pre class="cmd-line">ranch$ <b>tail ~/HSM_usage</b></pre>
+``` cmd-line
+ranch$ tail ~/HSM_usage
+```
 
 This file is updated nightly as a convenience to the user.  Each entry also shows the date and time of its update. **Do not delete or edit this file.**  Note that the format of the file has changed over time, and may again as necessary, to provide better information and improved readability for users.
 
@@ -126,7 +129,9 @@ Ranch also has two endpoints, one running Globus gridftp v5.4 software available
 
 The simplest way to transfer files to and from Ranch is to use the Secure Shell `scp` command:
 
-<pre class="cmd-line">stampede2$ <b>scp myfile ${ARCHIVER}:${ARCHIVE}/myfilepath</b></pre>
+``` cmd-line
+stampede2$ scp myfile ${ARCHIVER}:${ARCHIVE}/myfilepath
+```
 
 where `myfile` is the name of the file to copy and `myfilepath` is either the new name you want the file to have in Ranch, or is a directory into which you want to place `myfile`.
 
@@ -136,7 +141,9 @@ Alternatively, sometimes you can actually do this in one step as part of the tra
 
 To use `tar`, `ssh`, and `cat` to create a good tarfile in Ranch from a source directory on your compute resource, all in one command line:
 
-<pre class="cmd-line">stampede2$ <b>tar cf - dirname/ | ssh ${ARCHIVER} "cat &gt; ${ARCHIVE}/dirname.tar"</b></pre>
+``` cmd-line
+stampede2$ tar cf - dirname/ | ssh ${ARCHIVER} "cat &gt; ${ARCHIVE}/dirname.tar"
+```
 
 where `dirname/` is the path to the directory you want to archive, and `dirname.tar` is the name of the tarfile to be created on Ranch.
 
@@ -151,17 +158,21 @@ And in one simple command line, you have created a single tar file, `dirname.tar
 
 Note that when transferring to Ranch, any destination directory specified must already exist. If not, `scp` will respond with:
 
-<pre class="cmd-line">No such file or directory</pre>
+``` cmd-line
+No such file or directory
+```
 
 The following command-line examples also demonstrate how to transfer files to and from Ranch using `scp`, and renaming in the process:
 
 * Copy a tarfile from Stampede2 to Ranch:
 
-	<pre class="cmd-line">stampede2$ <b>scp data_2020.tar \  ${ARCHIVER}:${ARCHIVE}/final_2020.tar</b>
+	``` cmd-line
+stampede2$ scp data_2020.tar \  ${ARCHIVER}:${ARCHIVE}/final_2020.tar
 
 * Copy a tarfile from Ranch to my computer, retaining the file modification time
 
-	<pre class="cmd-line">stampede2$ <b>scp -p \ ${ARCHIVER}:${ARCHIVE}/final_data_2017.tar \ ./ranch_data_2017.tar</b>
+	``` cmd-line
+stampede2$ scp -p \ ${ARCHIVER}:${ARCHIVE}/final_data_2017.tar \ ./ranch_data_2017.tar
 
 
 #### [Remote Sync with `rsync` command](#transferring-methods-rsync)  { #transferring-methods-rsync }
@@ -187,32 +198,42 @@ Again, use the `du -sh .` and `find . -type f | wc` commands to see how much dat
 
 1. Archive a large directory with `tar`, send the `tar` data stream to Ranch, splitting it into optimally sized tarfiles upon its arrival on the Ranch node:
 
-	<pre class="cmd-line">stampede2$ <b>tar cf - directory/ | ssh ranch.tacc.utexas.edu \
-		'split -b 300G - files.tar.'</b></pre>
+	``` cmd-line
+	stampede2$ tar cf - directory/ | ssh ranch.tacc.utexas.edu \
+		'split -b 300G - files.tar.'
+	```
 
 	Ideally, you would create, then split large, output files, or `tar` files, on the Stampede2 side, then move them to Ranch.  Large files, of more than a few TB in size, should be split into chunks, ideally between 300GB and 2TB in size.
 
 1. Use the `split` command on Stampede2 to accomplish this:
 
-	<pre class="cmd-line">stampede2$ <b>split -b 300G bigfile.tar bigfile_tar_part_</b></pre>
+	``` cmd-line
+	stampede2$ split -b 300G bigfile.tar bigfile_tar_part_
+	```
 
 	The above example will create several 300GB files, with the filenames: `bigfile_tar_part_aa`, `bigfile_tar_part_ab`, `bigfile_tar_part_ac`, etc.
 
 1. Then use `scp` to copy the files into Ranch:
 
-	<pre class="cmd-line">stampede2$ <b>scp -p bigfile_tar_part_* ${ARCHIVER}:${ARCHIVE}/</b></pre>
+	``` cmd-line
+	stampede2$ scp -p bigfile_tar_part_* ${ARCHIVER}:${ARCHIVE}/
+	```
 
 1. After ensuring that you are satisfied with the transfer, and the viability of the data over on Ranch, the split parts of the original data could then be carefully deleted on stampede2
 
 	The split parts of a file can be always be joined together again with the `cat` command.  See the `split` man page for more options.
 
-	<pre class="cmd-line">stampede2$ <b>cat bigfile_tar_part_?? &gt; bigfile.tar</b></pre>
+	``` cmd-line
+	stampede2$ cat bigfile_tar_part_?? &gt; bigfile.tar
+	```
 
 1. A subsequent `tar tvf bigfile.tar` should be used immediately to ensure `bigfile.tar` contains all the data you expect, and `tar` generates no errors.
 
 	Or, if you don’t want to wait to actually create `bigfile.tar`, you just want to validate your data, just throw the stream of bytes from the `cat` at `tar`, and you’ll achieve the same result without actually putting anything new on disk:
 
-	<pre class="cmd-line">stampede2$ <b>cat bigfile_tar_part_?? | tar tvf -</b></pre>
+	``` cmd-line
+	stampede2$ cat bigfile_tar_part_?? | tar tvf -
+	```
 
 1. If you like what you see, and `tar` returns no errors, you will have validated you have good data after having split it into manageable pieces.
 

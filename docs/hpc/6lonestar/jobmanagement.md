@@ -14,15 +14,19 @@ To display resource limits for the Lonestar queues, execute: `qlimits`. The resu
 
 Slurm's `sinfo` command allows you to monitor the status of the queues. If you execute `sinfo` without arguments, you'll see a list of every node in the system together with its status. To skip the node list and produce a tight, alphabetized summary of the available queues and their status, execute:
 
-<pre class="cmd-line">login1$ <b>sinfo -S+P -o "%18P %8a %20F"</b>    # compact summary of queue status</pre>
+``` cmd-line
+login1$ sinfo -S+P -o "%18P %8a %20F"    # compact summary of queue status
+```
 
 An excerpt from this command's output might look like this:
 
-<pre class="cmd-line">login1$ <b>sinfo -S+P -o "%18P %8a %20F"</b>
+``` cmd-line
+login1$ sinfo -S+P -o "%18P %8a %20F"
 PARTITION          AVAIL    NODES(A/I/O/T)    
 development        up       0/8/0/8
 v100               up       44/43/1/96          
-v100-lm            up       0/8/0/8</pre>
+v100-lm            up       0/8/0/8
+```
 	
 The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled `NODES(A/I/O/T)` shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute `man sinfo` for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Lonestar6 (e.g. `TIMELIMIT`, displayed using the `%l` option).
 
@@ -32,14 +36,15 @@ The `AVAIL` column displays the overall status of each queue (up or down), while
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
-<pre class="cmd-line">
-login1$ <b>squeue</b>             # show all jobs in all queues
-login1$ <b>squeue -u bjones</b>   # show all jobs owned by bjones
-login1$ <b>man squeue</b>         # more info</pre>
+``` cmd-line
+login1$ squeue             # show all jobs in all queues
+login1$ squeue -u bjones   # show all jobs owned by bjones
+login1$ man squeue         # more info
+```
 
 An excerpt from the default output might look like this:
 
-<pre class="cmd-line">
+``` cmd-line
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 25781 development idv72397   bjones CG       9:36      2 c001-011,012
 25918 development ppm_4828   bjones PD       0:00     20 (Resources)
@@ -50,7 +55,7 @@ An excerpt from the default output might look like this:
 25944        v100  MoTi_hi   wchung  R      35:13      1 c005-003
 25945        v100 WTi_hi_e   wchung  R      27:11      1 c006-001
 25606        v100   trainA   jackhu  R   23:28:28      1 c008-012
-</pre>
+```
 
 The column labeled `ST` displays each job's status: 
 
@@ -64,21 +69,26 @@ The default format for `squeue` now reports total nodes associated with a job ra
 
 The default format lists all nodes assigned to displayed jobs; this can make the output difficult to read. A handy variation that suppresses the nodelist is:
 
-<pre class="cmd-line">login1$ <b>squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"</b>  # suppress nodelist</pre>
+``` cmd-line
+login1$ squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"  # suppress nodelist
+```
 
 The `--start` option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
 
-<pre class="cmd-line">login1$ <b>squeue --start -j 167635</b>     # display estimated start time for job 167635</pre>
+``` cmd-line
+login1$ squeue --start -j 167635     # display estimated start time for job 167635
+```
 
 #### [TACC's `showq` utility](#jobs-monitoring-showq) { #jobs-monitoring-showq }
 
 TACC's `showq` utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm `squeue` command:
 
-<pre class="cmd-line">
-login1$ <b>showq</b>                 # show all jobs; default format
-login1$ <b>showq -u</b>              # show your own jobs
-login1$ <b>showq -U bjones</b>       # show jobs associated with user bjones
-login1$ <b>showq -h</b>              # more info</pre>
+``` cmd-line
+login1$ showq                 # show all jobs; default format
+login1$ showq -u              # show your own jobs
+login1$ showq -U bjones       # show jobs associated with user bjones
+login1$ showq -h              # more info
+```
 
 The output groups jobs in four categories: `ACTIVE`, `WAITING`, `BLOCKED`, and `COMPLETING/ERRORED`. A `BLOCKED` job is one that cannot yet run due to temporary circumstances (e.g. a pending maintenance or other large reservation.).
 
@@ -95,25 +105,32 @@ The default format for `showq` now reports total nodes associated with a job rat
 
 To **cancel** a pending or running job, first determine its jobid, then use `scancel`:
 
-<pre class="cmd-line">
-login1$ <b>squeue -u bjones</b>    # one way to determine jobid
+``` cmd-line
+login1$ squeue -u bjones    # one way to determine jobid
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 170361        v100   spec12   bjones PD       0:00     32 (Resources)
-login1$ <b>scancel 170361</b>      # cancel job</pre>
+login1$ scancel 170361      # cancel job
+```
 
 For **detailed information** about the configuration of a specific job, use `scontrol`:
 
-<pre class="cmd-line">login1$ <b>scontrol show job=170361</b></pre>
+``` cmd-line
+login1$ scontrol show job=170361
+```
 
 To view some **accounting data** associated with your own jobs, use `sacct`:
 
-<pre class="cmd-line">login1$ <b>sacct --starttime 2019-06-01</b>  # show jobs that started on or after this date</pre>
+``` cmd-line
+login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this date
+```
 
 ### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
-<pre class="cmd-line">login1$ <b>sbatch --dependency=afterok:173210 myjobscript</b></pre>
+``` cmd-line
+login1$ sbatch --dependency=afterok:173210 myjobscript
+```
 
 For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
 

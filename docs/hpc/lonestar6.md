@@ -1,14 +1,14 @@
 # Lonestar6 User Guide
-<span style="font-size:90%;"><i>Last update: January 13, 2023</i></span></p>
+Last update: January 13, 2023
 
 
 ## [Notices](#notices) { #notices }
 
 * **Lonestar6 has a [new queue, `vm-small`](#queues), for jobs requiring only a subset of a node's cores.** (11/11/2022) 
 * **Lonestar6 will transition from the early user phase into production on Tuesday, January 11, 2022.** For our researchers who currently have access to Lonestar6, we will start charging usage against your allocation. (01/06/2002)
-* TACC has transitioned to a new allocations management system for Lonestar6, and there are new Project Names. See [Sharing Project Files on TACC Systems](https://portal.tacc.utexas.edu/tutorials/sharing-project-files) to learn about managing file permissions across projects. 
+* TACC has transitioned to a new allocations management system for Lonestar6, and there are new Project Names. See [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles) to learn about managing file permissions across projects. 
 * **All users: read the [Good Conduct](#conduct) section.** Lonestar6 is a shared resource and your actions can impact other users. (10/18/2021) 
-* You may now **[subscribe](https://portal.tacc.utexas.edu/news/subscribe) to [Lonestar6 User News](https://portal.tacc.utexas.edu/user-news/-/news/Lonestar6)**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications. (10/14/2021) 
+* **[Subscribe](https://portal.tacc.utexas.edu/news/subscribe) to [Lonestar6 User News](https://portal.tacc.utexas.edu/user-news/-/news/Lonestar6)**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
 
 
 ## [Introduction to Lonestar6](#intro) { #intro }
@@ -116,14 +116,7 @@ File System | Quota | Key Features
 
 &#42;The operating system updates a file's access time when that file is modified on a login or compute node. Reading or executing a file/script on a login node does not update the access time, but reading or executing on a compute node does update the access time. This approach helps us distinguish between routine management tasks <span style="white-space: nowrap;">(e.g. `tar`, `scp`)</span> and production use. Use the command <span style="white-space: nowrap;">`ls -ul`</span> to view access times.
 
-#### [Scratch Purge Policy](#scratchpurgepolicy) { #scratchpurgepolicy }
-
-!!! caution
-	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.</p>
-
-<!--- SDL --- make this an include -->
-
-
+{% include 'include/scratchpolicy.md' %}
 
 ### [Navigating the Shared File Systems](#files-navigating) { #files-navigating }
 
@@ -160,50 +153,56 @@ You can transfer files between Lonestar6 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Lonestar6 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Lonestar6 `$HOME` would look like this:
 
-<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon after net address</b></pre>
+``` cmd-line
+localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon after net address
+```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Lonestar6:
 
-<pre class="cmd-line">localhost$ <b>scp &#42;.txt bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6</b></pre>
+``` cmd-line
+localhost$ scp &#42;.txt bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6
+```
 
 To delay wildcard expansion until reaching Lonestar6, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Lonestar6 to the current directory on your local system:
 
-<pre class="cmd-line">localhost$ <b>scp bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6/\*.txt .</b></pre>
+``` cmd-line
+localhost$ scp bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6/\*.txt .
+```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-<pre class="cmd-line">
-localhost$ <b>destdir="/work/01234/bjones/ls6/data"</b>
-localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:$destdir</b></pre>
+``` cmd-line
+localhost$ destdir="/work/01234/bjones/ls6/data"
+localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:$destdir
+```
 
 You can also issue `scp` commands on your local client that use Lonestar6 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Lonestar6:
 
-<!-- pre class="cmd-line">localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:\$WORK/data   # Note backslash</b></pre -->
-<pre class="cmd-line">localhost$ <b>scp ./myfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data   # Note backslash</b></pre>
+``` cmd-line
+localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data   # Note backslash
+```
 
 Avoid using `scp` for recursive transfers of directories that contain nested directories of many small files:
 
-<!-- pre class="cmd-line">localhost$ <s>scp -r ./mydata     bjones@ls6.tacc.utexas.edu:\$WORK</s>  # DON'T DO THIS</pre -->
-<pre class="cmd-line">localhost$ <s>scp -r ./mydata     bjones@ls6.tacc.utexas.edu:\$SCRATCH</s>  # DON'T DO THIS</pre>
+``` cmd-line
+localhost$ scp -r ./mydata     bjones@ls6.tacc.utexas.edu:\$SCRATCH  # DON'T DO THIS
+```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-<pre class="cmd-line">
-localhost$ <b>tar cvf ./mydata.tar mydata                                  # create archive</b>
-<!--localhost$ <b>scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$SCRATCH  # transfer archive</b></pre>-->
-localhost$ <b>scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive</b></pre>
+``` cmd-line
+localhost$ tar cvf ./mydata.tar mydata                                  # create archive
+localhost$ scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive
+```
 
 #### [Transferring Files with `rsync`](#files-transferring-rsync) { #files-transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-<!-- pre class="cmd-line">
-localhost$ <b>rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$WORK/data</b>
-localhost$ <b>rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$WORK/data</b></pre -->
-
-<pre class="cmd-line">
-localhost$ <b>rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data</b>
-localhost$ <b>rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$SCRATCH/data</b></pre>
+``` cmd-line
+localhost$ rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
+localhost$ rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
+```
 
 The options on the second transfer are typical and appropriate when synching a directory: this is a <span style="white-space: nowrap;">recursive update (`-r`)</span> with verbose (`-v`) feedback; the synchronization preserves <span style="white-space: nowrap;">time stamps (`-t`)</span> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 
@@ -219,15 +218,21 @@ If you wish to share files and data with collaborators in your project, see [Sha
 
 The `ssh` command (SSH protocol) is the standard way to connect to Lonestar6 (**`ls6.tacc.utexas.edu`**). SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@ls6.tacc.utexas.edu</b></pre>
+``` cmd-line
+localhost$ ssh username@ls6.tacc.utexas.edu
+```
 
 The above command will rotate connections across all available login nodes, `login1-login3`, and route your connection to one of them. To connect to a specific login node, use its full domain name:
 
-<pre class="cmd-line">localhost$ <b>ssh <i>username</i>@login2.ls6.tacc.utexas.edu</b></pre>
+``` cmd-line
+localhost$ ssh username@login2.ls6.tacc.utexas.edu
+```
 
 To connect with X11 support on Lonestar6 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
-<pre class="cmd-line">localhost$ <b>ssh -X <i>username</i>@ls6.tacc.utexas.edu</b></pre>
+``` cmd-line
+localhost$ ssh -X username@ls6.tacc.utexas.edu
+```
 
 To report a connection problem, execute the `ssh` command with the `-vvv` option and include the verbose output when submitting a help ticket.
 **Do not run the `ssh-keygen` command on Lonestar6.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Lonestar6.
@@ -259,7 +264,9 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 The default login shell for your user account is Bash. To determine your current login shell, execute: 
 
-<pre class="cmd-line">$ <b>echo $SHELL</b></pre>
+``` cmd-line
+$ echo $SHELL
+```
 
 If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC](http://portal.tacc.utexas.edu/) portal. The `chsh` ("change shell") command will not work on TACC systems. 
 
@@ -277,16 +284,20 @@ Execute the `env` command to see the environment variables that define the way y
 
 Pipe the results of `env` into `grep` to focus on specific environment variables. For example, to see all environment variables that contain the string GIT (in all caps), execute:
 
-<pre class="cmd-line">$ <b>env | grep GIT</b></pre>
+``` cmd-line
+$ env | grep GIT
+```
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
-<!-- ## [Account-Level Diagnostics](#admin-diagnostics)
+{% include './include/sanitytool.md' %}
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
-<pre class="cmd-line">login1$ <b>module load sanitytool</b>
-login1$ <b>sanitycheck</b></pre>
+``` cmd-line
+login1$ module load sanitytool
+login1$ sanitycheck
+```
 
 Execute `module help sanitytool` for more information. -->
 
@@ -294,22 +305,25 @@ Execute `module help sanitytool` for more information. -->
 
 [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod), a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Lonestar6 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>          # load the default Intel compiler v19.1.14
-$ <b>module load intel/19.1.1</b>   # load a specific version of the Intel compiler</pre>
-</pre>
+``` cmd-line
+$ module load intel          # load the default Intel compiler v19.1.14
+$ module load intel/19.1.1   # load a specific version of the Intel compiler</pre>
+```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
-<pre class="cmd-line">$ <b>module load   netcdf</b>  # defines DDT-related env vars; modifies others
-$ <b>module unload netcdf</b>  # undoes changes made by load</pre>
+``` cmd-line
+$ module load   netcdf  # defines DDT-related env vars; modifies others
+$ module unload netcdf  # undoes changes made by load</pre>
+```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and FFTW3 with versions compatible with gcc:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>  # load default version of Intel compiler
-$ <b>module load fftw3</b>  # load default version of fftw3
-$ <b>module load gcc</b>    # change compiler
+``` cmd-line
+$ module load intel  # load default version of Intel compiler
+$ module load fftw3  # load default version of fftw3
+$ module load gcc    # change compiler
+```
 
 Lmod is automatically replacing "intel/19.0.4" with "gcc/9.1.0".
 
@@ -321,46 +335,64 @@ Due to MODULEPATH changes, the following have been reloaded:
 
 On Lonestar6, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
-<pre class="cmd-line">$ <b>module show netcdf</b>   # see what this module does to your environment
-$ <b>env | grep NETCDF</b>    # see env vars that contain the string PAPI
-$ <b>env | grep -i netcdf</b> # case-insensitive search for 'papi' in environment</pre>
+``` cmd-line
+$ module show netcdf   # see what this module does to your environment
+$ env | grep NETCDF    # see env vars that contain the string PAPI
+$ env | grep -i netcdf # case-insensitive search for 'papi' in environment
+```
 
 To see the modules you currently have loaded:
 
-<pre class="cmd-line">$ <b>module list</b></pre>
+``` cmd-line
+$ module list
+```
 
 To see all modules that you can load right now because they are compatible with the currently loaded modules:
 
-<pre class="cmd-line">$ <b>module avail</b></pre>
+``` cmd-line
+$ module avail
+```
 
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
-<pre class="cmd-line">$ <b>module spider</b>   # list all modules, even those not available to load</pre>
+``` cmd-line
+$ module spider   # list all modules, even those not available to load</pre>
+```
 
 To filter your search:
 
-<pre class="cmd-line">
-$ <b>module spider netcdf</b>             # all modules with names containing 'slep'
-$ <b>module spider netcdf/3.6.3</b>       # additional details on a specific module</pre>
+``` cmd-line
+$ module spider netcdf             # all modules with names containing 'slep'
+$ module spider netcdf/3.6.3       # additional details on a specific module</pre>
+```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
-<pre class="cmd-line">$ <b>module keyword performance</b></pre>
+
+``` cmd-line
+$ module keyword performance
+```
 
 You can save a collection of modules as a personal default collection that will load every time you log into Lonestar6. To do so, load the modules you want in your collection, then execute:
 
-<pre class="cmd-line">$ <b>module save</b>    # save the currently loaded collection of modules </pre>
+``` cmd-line
+$ module save    # save the currently loaded collection of modules 
+```
 
 Two commands make it easy to return to a known, reproducible state:
 
-<pre class="cmd-line">$ <b>module reset</b>   # load the system default collection of modules
-$ <b>module restore</b> # load your personal default collection of modules</pre>
+``` cmd-line
+$ module reset   # load the system default collection of modules
+$ module restore # load your personal default collection of modules
+```
 
 On TACC systems, the command `module reset` is equivalent to `module purge; module load TACC`. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 
-<pre class="cmd-line">$ <b>module help swr</b>     # show help text for software package swr
-$ <b>module help</b>         # show help text for the module system itself</pre>
+``` cmd-line
+$ module help swr     # show help text for software package swr
+$ module help         # show help text for the module system itself</pre>
+```
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
@@ -396,30 +428,40 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	DO THIS: Start an interactive session on a compute node and run Matlab.
 
-	<pre class="cmd-line">
-	login1$ <b>idev</b>
-	nid00181$ <b>matlab</b></pre>
+	``` cmd-line
+	login1$ idev
+	nid00181$ matlab
+	```
 
+
+!!! warning
 	DO NOT DO THIS: Run Matlab or other software packages on a login node
 
-	<pre class="cmd-line"><s>login1$ <b>matlab</b></s></pre>
+	``` cmd-line
+	login1$ matlab
+	```
 
 * **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">`make -j 16`</span> (which compiles on 16 cores) may impact other users.
 
 	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 
-	<pre class="cmd-line">
-	login1$ <b>make <i>mytarget</i></b>
-	login1$ <b>sbatch <i>myjobscript</i></b></pre>
+	``` cmd-line
+	login1$ make mytarget
+	login1$ sbatch myjobscript
+	```
 
+!!! warning
 	DO NOT DO THIS: Invoke multiple build sessions.
 
-	<pre class="cmd-line">login1$ <s><b>make -j 12</b></s></pre>
+	``` cmd-line
+	login1$ make -j 12
+	```
 
 	DO NOT DO THIS: Run an executable on a login node.
 
-	<pre class="cmd-line">
-	login1$ <s><b>./myprogram</b></s></pre>
+	``` cmd-line
+	login1$ ./myprogram
+	```
 
 * **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
 
@@ -508,8 +550,9 @@ Intel is the recommended and default compiler suite on Lonestar6. Each Intel mod
 
 Compiling a code that uses OpenMP would look like this:
 
-<pre class="cmd-line">
-$ <b>icc -qopenmp mycode.c -o myexe</b>  # OpenMP</pre>
+``` cmd-line
+$ icc -qopenmp mycode.c -o myexe  # OpenMP
+```
 
 See the published Intel documentation, available both [online](http://software.intel.com/en-us/intel-software-technical-documentation) and in `${TACC_INTEL_DIR}/documentation`, for information on optimization flags and other Intel compiler options.
 
@@ -521,13 +564,13 @@ Load a `gcc` module to access a recent version of the GNU compiler suite. Avoid 
 
 Here are simple examples that use the GNU compilers to produce an executable from source code:
 
-<pre class="cmd-line">
-$ <b>gcc mycode.c</b>                    # C source file; executable a.out
-$ <b>gcc mycode.c          -o myexe</b>  # C source file; executable myexe
-$ <b>g++ mycode.cpp        -o myexe</b>  # C++ source file
-$ <b>gfortran mycode.f90   -o myexe</b>  # Fortran90 source file
-$ <b>gcc -fopenmp mycode.c -o myexe</b>  # OpenMP; GNU flag is different than Intel
-</pre>
+``` cmd-line
+$ gcc mycode.c                    # C source file; executable a.out
+$ gcc mycode.c          -o myexe  # C source file; executable myexe
+$ g++ mycode.cpp        -o myexe  # C++ source file
+$ gfortran mycode.f90   -o myexe  # Fortran90 source file
+$ gcc -fopenmp mycode.c -o myexe  # OpenMP; GNU flag is different than Intel
+```
 
 Note that some compiler options are the same for both Intel and GNU <span style="white-space: nowrap;">(e.g. `-o`)</span>, while others are different (e.g. `-qopenmp` vs `-fopenmp`). Many options are available in one compiler suite but not the other. See the [online GNU documentation](https://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
 
@@ -537,16 +580,17 @@ Building an executable requires two separate steps: (1) compiling (generating a 
 
 Use the `-c` ("compile") flag to produce object files from source files:
 
-<pre class="cmd-line">
-$ <b>icc -c main.c calc.c results.c</b>
-</pre>
+``` cmd-line
+$ icc -c main.c calc.c results.c
+```
 
 Barring errors, this command will produce object files `main.o`, `calc.o`, and `results.o`. Syntax for other compilers Intel and GNU compilers is similar.
 
 You can now link the object files to produce an executable file:
 
-<pre class="cmd-line">
-$ <b>icc main.o calc.o results.o -o myexe</b></pre>
+``` cmd-line
+$ icc main.o calc.o results.o -o myexe
+```
 
 The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task. Again, syntax for other compilers is similar.
 
@@ -554,10 +598,10 @@ The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task.
 
 Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the `-I` option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the `-L` option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
 
-<pre class="cmd-line">
-$ <b>icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}</b>                  # compile
-$ <b>icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5</b>   # link
-</pre>
+``` cmd-line
+$ icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}                  # compile
+$ icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5   # link
+```
 
 On Lonestar6, both the `hdf5` and `phdf5` modules define the environment variables `$TACC_HDF5_INC` and `$TACC_HDF5_LIB`. Other module files define similar environment variables; see [Using Modules](#admin-modules) for more information.
 
@@ -569,18 +613,18 @@ A separate section below addresses the [Intel Math Kernel Library](#the-intel-ma
 
 Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Lonestar6. After loading an `impi` or `mvapich2` module, compile and/or link using an mpi wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
-<pre class="cmd-line">
-$ <b>mpicc    mycode.c   -o myexe</b>   # C source, full build
-$ <b>mpicc -c mycode.c</b>              # C source, compile without linking
-$ <b>mpicxx   mycode.cpp -o myexe</b>   # C++ source, full build
-$ <b>mpif90   mycode.f90 -o myexe</b>   # Fortran source, full build
-</pre>
+``` cmd-line
+$ mpicc    mycode.c   -o myexe   # C source, full build
+$ mpicc -c mycode.c              # C source, compile without linking
+$ mpicxx   mycode.cpp -o myexe   # C++ source, full build
+$ mpif90   mycode.f90 -o myexe   # Fortran source, full build
+```
 
 These wrappers call the compiler with the options, include paths, and libraries necessary to produce an MPI executable using the MPI module you're using. To see the effect of a given wrapper, call it with the `-show` option:
 
-<pre class="cmd-line">
-$ <b>mpicc -show</b>  # Show compile line generated by call to mpicc; similarly for other wrappers
-</pre>
+``` cmd-line
+$ mpicc -show  # Show compile line generated by call to mpicc; similarly for other wrappers
+```
 
 
 ### [Building Third-Party Software](#building-thirdparty) { #building-thirdparty }
@@ -589,30 +633,30 @@ You can discover already installed software using TACC's [Software Search](https
 
 You're welcome to download third-party research software and install it in your own account. In most cases you'll want to download the source code and build the software so it's compatible with the Lonestar6 software environment. You can't use yum or any other installation process that requires elevated privileges, but this is almost never necessary. The key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. When using the famous [three-step autotools](http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) build process, the standard approach is to use the `PREFIX` environment variable to specify a non-default, user-owned installation directory at the time you execute `configure` or `make`:
 
-<pre class="cmd-line">
-$ <b>export INSTALLDIR=$WORK/apps/t3pio</b>
-$ <b>./configure --prefix=$INSTALLDIR</b>
-$ <b>make</b>
-$ <b>make install</b>
-</pre>
+``` cmd-line
+$ export INSTALLDIR=$WORK/apps/t3pio
+$ ./configure --prefix=$INSTALLDIR
+$ make
+$ make install
+```
 
 Other languages, frameworks, and build systems generally have equivalent mechanisms for installing software in user space. In most cases a web search like "Python Linux install local" will get you the information you need.
 
 In Python, a local install will resemble one of the following examples:
 
-<pre class="cmd-line">
-$ <b>pip3 install netCDF4      --user</b>                  # install netCDF4 package to $HOME/.local
-$ <b>python3 setup.py install --user</b>                   # install to $HOME/.local
-$ <b>pip3 install netCDF4     --prefix=$INSTALLDIR</b>     # custom location; add to PYTHONPATH
-</pre>
+``` cmd-line
+$ pip3 install netCDF4      --user                  # install netCDF4 package to $HOME/.local
+$ python3 setup.py install --user                   # install to $HOME/.local
+$ pip3 install netCDF4     --prefix=$INSTALLDIR     # custom location; add to PYTHONPATH
+```
 
 Similarly in R:
 
-<pre class="cmd-line">
-$ <b>module load Rstats</b>            # load TACC's default R
-$ <b>R</b>                             # launch R
-> <b>install.packages('devtools')</b>  # R will prompt for install location
-</pre>
+``` cmd-line
+$ module load Rstats            # load TACC's default R
+$ R                             # launch R
+> install.packages('devtools')  # R will prompt for install location
+```
 
 You may, of course, need to customize the build process in other ways. It's likely, for example, that you'll need to edit a `makefile` or other build artifacts to specify Lonestar6-specific [include and library paths](#include-and-library-paths) or other compiler settings. A good way to proceed is to write a shell script that implements the entire process: definitions of environment variables, module commands, and calls to the build utilities. Include `echo` statements with appropriate diagnostics. Run the script until you encounter an error. Research and fix the current problem. Document your experience in the script itself; including dead-ends, alternatives, and lessons learned. Re-run the script to get to the next error, then repeat until done. When you're finished, you'll have a repeatable process that you can archive until it's time to update the software or move to a new machine.
 
@@ -664,8 +708,8 @@ ibrun ./myprogram
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
 ``` { .bash .job-script }
-login1$ <b>idev -N 2 -n 100 </b>				
-c309-005$ <b>ibrun ./myprogram</b>
+login1$ idev -N 2 -n 100
+c309-005$ ibrun ./myprogram
 ```
 
 ### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
@@ -728,20 +772,25 @@ The sequence of proc-ids on socket 0 and socket 1 are sequentially numbered.
 
 On socket 0:
 
-<pre class="syntax">0,1,2,...,62,63 </pre>
+``` syntax
+0,1,2,...,62,63 
+```
 
 and on socket 1:
 
-<pre class="syntax">64,65,...,126,127</pre>
+``` syntax
+64,65,...,126,127
+```
 
 Note, hardware threads are not enabled on Lonestar6.  So, there are no core ids greater than 127.
 
 The proc-id mapping to the cores for Milan is:
 
-<pre class="syntax">
+``` syntax
 |------- Socket 0 ------------|-------- Socket 1 -------------|
 #   0   1   2,..., 61, 62, 63 |  0   1   2,...,  61,  62,  63 |
-0   0   1   2,..., 61, 62, 63 | 64  65  66,..., 125, 126, 127 |</pre>
+0   0   1   2,..., 61, 62, 63 | 64  65  66,..., 125, 126, 127 |
+```
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on each socket, the places would be:
 
@@ -807,11 +856,14 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 
 ## [Sample Job Scripts](#scripts) { #scripts }
 
+
+
 <details><summary>Serial Codes </summary>
   
-**Run all serial jobs in the `normal` queue.**  
+!!! important 
+	Run all serial jobs in the `normal` queue.
 
-Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
+Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the <a href="https://portal.tacc.utexas.edu/software/launcher">Launcher at TACC</a> documentation to run multiple serial executables at one time.
 
 ``` { .bash .job-script }
 #!/bin/bash
@@ -845,8 +897,8 @@ Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -898,8 +950,8 @@ This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`)
 #SBATCH -n 32              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -959,8 +1011,8 @@ This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -1015,8 +1067,8 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
 #SBATCH --mail-type=all    # Send email at begin and end of job
-#SBATCH --mail-user=<i>username</i>@tacc.utexas.edu
-#SBATCH -A <i>myproject</i>       # Project/Allocation name (req'd if you have more than 1)
+#SBATCH --mail-user=username@tacc.utexas.edu
+#SBATCH -A myproject       # Project/Allocation name (req'd if you have more than 1)
 
 # Any other commands must follow all #SBATCH directives...
 module list
@@ -1032,7 +1084,7 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 </details>
 
 
-## [Customizing your Job Script ](#scripts-customizations)
+### [Customizing your Job Script ](#scripts-customizations)
 
 Copy and customize the following scripts to specify and refine your job's requirements.</p>
 
@@ -1043,7 +1095,7 @@ Copy and customize the following scripts to specify and refine your job's requir
 
 In general, the fewer resources (nodes) you specify in your batch script, the less time your job will wait in the queue. See [4. Request Only the Resources You Need](#conduct-resources) in the [Good Conduct](#conduct) section. 
 
-Consult [Table 6](STAMPEDE2UG#table6) in the [Stampede2 User Guide](STAMPEDE2UG) for a listing of common Slurm `#SBATCH` options.
+Consult [Table 6](../stampede2#table6) in the [Stampede2 User Guide](../stampede2) for a listing of common Slurm `#SBATCH` options.
 
 ## [Job Management](#jobs) { #jobs }
 
@@ -1061,15 +1113,19 @@ To display resource limits for the Lonestar queues, execute: `qlimits`. The resu
 
 Slurm's `sinfo` command allows you to monitor the status of the queues. If you execute `sinfo` without arguments, you'll see a list of every node in the system together with its status. To skip the node list and produce a tight, alphabetized summary of the available queues and their status, execute:
 
-<pre class="cmd-line">login1$ <b>sinfo -S+P -o "%18P %8a %20F"</b>    # compact summary of queue status</pre>
+``` cmd-line
+login1$ sinfo -S+P -o "%18P %8a %20F"    # compact summary of queue status
+```
 
 An excerpt from this command's output might look like this:
 
-<pre class="cmd-line">login1$ <b>sinfo -S+P -o "%18P %8a %20F"</b>
+``` cmd-line
+login1$ sinfo -S+P -o "%18P %8a %20F"
 PARTITION          AVAIL    NODES(A/I/O/T)    
 development        up       0/8/0/8
 v100               up       44/43/1/96          
-v100-lm            up       0/8/0/8</pre>
+v100-lm            up       0/8/0/8
+```
 	
 The `AVAIL` column displays the overall status of each queue (up or down), while the column labeled `NODES(A/I/O/T)` shows the number of nodes in each of several states ("**A**llocated", "**I**dle", "**O**ffline", and "**T**otal"). Execute `man sinfo` for more information. Use caution when reading the generic documentation, however: some available fields are not meaningful or are misleading on Lonestar6 (e.g. `TIMELIMIT`, displayed using the `%l` option).
 
@@ -1079,14 +1135,15 @@ The `AVAIL` column displays the overall status of each queue (up or down), while
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
-<pre class="cmd-line">
-login1$ <b>squeue</b>             # show all jobs in all queues
-login1$ <b>squeue -u bjones</b>   # show all jobs owned by bjones
-login1$ <b>man squeue</b>         # more info</pre>
+``` cmd-line
+login1$ squeue             # show all jobs in all queues
+login1$ squeue -u bjones   # show all jobs owned by bjones
+login1$ man squeue         # more info
+```
 
 An excerpt from the default output might look like this:
 
-<pre class="cmd-line">
+``` cmd-line
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 25781 development idv72397   bjones CG       9:36      2 c001-011,012
 25918 development ppm_4828   bjones PD       0:00     20 (Resources)
@@ -1097,7 +1154,7 @@ An excerpt from the default output might look like this:
 25944        v100  MoTi_hi   wchung  R      35:13      1 c005-003
 25945        v100 WTi_hi_e   wchung  R      27:11      1 c006-001
 25606        v100   trainA   jackhu  R   23:28:28      1 c008-012
-</pre>
+```
 
 The column labeled `ST` displays each job's status: 
 
@@ -1111,21 +1168,26 @@ The default format for `squeue` now reports total nodes associated with a job ra
 
 The default format lists all nodes assigned to displayed jobs; this can make the output difficult to read. A handy variation that suppresses the nodelist is:
 
-<pre class="cmd-line">login1$ <b>squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"</b>  # suppress nodelist</pre>
+``` cmd-line
+login1$ squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"  # suppress nodelist
+```
 
 The `--start` option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
 
-<pre class="cmd-line">login1$ <b>squeue --start -j 167635</b>     # display estimated start time for job 167635</pre>
+``` cmd-line
+login1$ squeue --start -j 167635     # display estimated start time for job 167635
+```
 
 #### [TACC's `showq` utility](#jobs-monitoring-showq) { #jobs-monitoring-showq }
 
 TACC's `showq` utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm `squeue` command:
 
-<pre class="cmd-line">
-login1$ <b>showq</b>                 # show all jobs; default format
-login1$ <b>showq -u</b>              # show your own jobs
-login1$ <b>showq -U bjones</b>       # show jobs associated with user bjones
-login1$ <b>showq -h</b>              # more info</pre>
+``` cmd-line
+login1$ showq                 # show all jobs; default format
+login1$ showq -u              # show your own jobs
+login1$ showq -U bjones       # show jobs associated with user bjones
+login1$ showq -h              # more info
+```
 
 The output groups jobs in four categories: `ACTIVE`, `WAITING`, `BLOCKED`, and `COMPLETING/ERRORED`. A `BLOCKED` job is one that cannot yet run due to temporary circumstances (e.g. a pending maintenance or other large reservation.).
 
@@ -1142,25 +1204,32 @@ The default format for `showq` now reports total nodes associated with a job rat
 
 To **cancel** a pending or running job, first determine its jobid, then use `scancel`:
 
-<pre class="cmd-line">
-login1$ <b>squeue -u bjones</b>    # one way to determine jobid
+``` cmd-line
+login1$ squeue -u bjones    # one way to determine jobid
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 170361        v100   spec12   bjones PD       0:00     32 (Resources)
-login1$ <b>scancel 170361</b>      # cancel job</pre>
+login1$ scancel 170361      # cancel job
+```
 
 For **detailed information** about the configuration of a specific job, use `scontrol`:
 
-<pre class="cmd-line">login1$ <b>scontrol show job=170361</b></pre>
+``` cmd-line
+login1$ scontrol show job=170361
+```
 
 To view some **accounting data** associated with your own jobs, use `sacct`:
 
-<pre class="cmd-line">login1$ <b>sacct --starttime 2019-06-01</b>  # show jobs that started on or after this date</pre>
+``` cmd-line
+login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this date
+```
 
 ### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
-<pre class="cmd-line">login1$ <b>sbatch --dependency=afterok:173210 myjobscript</b></pre>
+``` cmd-line
+login1$ sbatch --dependency=afterok:173210 myjobscript
+```
 
 For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
 
@@ -1188,10 +1257,11 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a DCV job script (`/share/doc/slurm/job.dcv`), a VNC job script (`/share/doc/slurm/job.vnc`) and a combined job script that prefers DCV and fails over to VNC if a DCV license is not available (`/share/doc/slurm/job.dcv2vnc`). Each script requests one node in the development queue for two hours, creating a remote desktop session, either [DCV](https://aws.amazon.com/hpc/dcv) or [VNC](https://en.wikipedia.org/wiki/VNC).
 
-	<pre class="cmd-line">
-	login1$ <b>sbatch /share/doc/slurm/job.vnc</b>
-	login1$ <b>sbatch /share/doc/slurm/job.dcv</b>
-	login1$ <b>sbatch /share/doc/slurm/job.dcv2vnc</b></pre>
+	``` cmd-line
+	login1$ sbatch /share/doc/slurm/job.vnc
+	login1$ sbatch /share/doc/slurm/job.dcv
+	login1$ sbatch /share/doc/slurm/job.dcv2vnc
+	```
 
 	You may modify or overwrite script defaults with sbatch command-line options (note: the command options must come between `sbatch` and the script):
 
@@ -1201,11 +1271,13 @@ Follow the steps below to start an interactive session.
 	* <code>-p <i>partition</i></code> specify an alternate queue   
 
 
-	Consult [Table 6](STAMPEDE2UG#table6) in the [Stampede2 User Guide](STAMPEDE2UG) for a listing of common Slurm `#SBATCH` options.
+	Consult [Table 6](../stampede2#table6) in the [Stampede2 User Guide](../stampede2) for a listing of common Slurm `#SBATCH` options.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	<pre class="cmd-line">login1$ <b>sbatch /share/doc/slurm/job.vnc -geometry 1440x900</b></pre>
+	``` cmd-line
+	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
+	```
 
 	The `vnc.job` script starts a `vncserver` process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. 
 
@@ -1213,9 +1285,10 @@ Follow the steps below to start an interactive session.
 
 	Watch for the "To connect" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	<pre class="cmd-line">
-	login1$ <b>touch vncserver.out ; tail -f vncserver.out</b>
-	login1$ <b>touch dcvserver.out ; tail -f dcvserver.out</b></pre>
+	``` cmd-line
+	login1$ touch vncserver.out ; tail -f vncserver.out
+	login1$ touch dcvserver.out ; tail -f dcvserver.out
+	```
 
 	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
 
@@ -1223,12 +1296,14 @@ Follow the steps below to start an interactive session.
 
 	DCV connections are encrypted via TLS and are secure. For VNC connections, TACC requires users to create an SSH tunnel from the local system to the Lonestar6 login node to assure that the connection is secure. The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Lonestar6 hostname. On a Unix or Linux system, execute the following command once the port has been opened on the Lonestar6 login node:
 
-	<pre class="cmd-line">localhost$ <b>ssh -f -N -L <i>xxxx</i>:localhost:<i>yyyy</i> <i>username</i>@ls6.tacc.utexas.edu</b></pre>
+	``` cmd-line
+	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@ls6.tacc.utexas.edu
+	```
 
 	where:
 
-	* <code><i>yyyy</i></code> is the port number given by the vncserver batch job
-	* <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Lonestar6 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well
+	* `<i>yyyy</i>` is the port number given by the vncserver batch job
+	* `<i>xxxx</i>` is a port on the remote system. Generally, the port number specified on the Lonestar6 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well
 	* `-f` instructs SSH to only forward ports, not to execute a remote command
 	* `-N` puts the ssh command into the background after connecting
 	* `-L` forwards the port   
@@ -1254,7 +1329,9 @@ From an interactive desktop, applications can be run from icons or from xterm co
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
-<pre class="cmd-line">c301-001$ <b>ibrun <i>ibrunoptions</i> application applicationoptions</b></pre>
+``` cmd-line
+c301-001$ ibrun ibrunoptions application applicationoptions
+```
 
 will run application on the associated nodes, as modified by the ibrun options.
 
@@ -1264,9 +1341,10 @@ Lonestar6 uses the OpenSWR OpenGL library to perform efficient rendering. At pre
 
 `swr`: To access the accelerated OpenSWR OpenGL library, it is necessary to use the `swr` module to point to the `swr` OpenGL implementation and configure the number of threads to allocate to rendering.
 
-<pre class="cmd-line">
-c301-001$ <b>module load swr</b>
-c301-001$ <b>swr <i>options</i> application application-args</b></pre>
+``` cmd-line
+c301-001$ module load swr
+c301-001$ swr options application application-args
+```
 
 ### [Parallel VisIt on Lonestar6](#vis-visit) { #vis-visit }
 
@@ -1274,9 +1352,10 @@ c301-001$ <b>swr <i>options</i> application application-args</b></pre>
 
 After connecting to a VNC server on Lonestar6, as described above, load the VisIt module at the beginning of your interactive session before launching the VisIt application:
 
-<pre class="cmd-line">
-c301-001$ <b>module load swr visit</b>
-c301-001$ <b>swr visit</b></pre>
+``` cmd-line
+c301-001$ module load swr visit
+c301-001$ swr visit
+```
 
 VisIt first loads a dataset and presents a dialog allowing for selecting either a serial or parallel engine. Select the parallel engine. Note that this dialog will also present options for the number of processes to start and the number of nodes to use; these options are actually ignored in favor of the options specified when the VNC server job was started.
 
@@ -1290,11 +1369,15 @@ After connecting to a VNC server on Lonestar6, as described above, do the follow
 
 1. Set up your environment with the necessary modules. Load the `swr`, `qt5`, `ospray`, and `paraview` modules <b>in this order</b>:
 
-	<pre class="cmd-line">c301-001$ <b>module load swr qt5 ospray paraview</b></pre>
+	``` cmd-line
+	c301-001$ module load swr qt5 ospray paraview
+	```
 
 1. Launch ParaView:
 
-	<pre class="cmd-line">c301-001$ <b>swr -p 1 paraview [<i>paraview client options</i>]</b></pre>
+	``` cmd-line
+	c301-001$ swr -p 1 paraview [paraview client options]
+	```
 
 1. Click the "Connect" button, or select File -&gt; Connect
 

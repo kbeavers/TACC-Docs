@@ -10,16 +10,19 @@ This section of the user guide does nothing more than introduce the big ideas wi
 
 Intel is the recommended and default compiler suite on Stampede2. Each Intel module also gives you direct access to `mkl` without loading an `mkl` module; see [Intel MKL](#intel-math-kernel-library-mkl) for more information. Here are simple examples that use the Intel compiler to build an executable from source code:
 
-<pre class="cmd-line">
-$ <b>icc mycode.c</b>                    # C source file; executable a.out
-$ <b>icc main.c calc.c analyze.c</b>     # multiple source files
-$ <b>icc mycode.c     -o myexe</b>       # C source file; executable myexe
-$ <b>icpc mycode.cpp  -o myexe</b>       # C++ source file
-$ <b>ifort mycode.f90 -o myexe</b>       # Fortran90 source file</pre>
+``` cmd-line
+$ icc mycode.c                    # C source file; executable a.out
+$ icc main.c calc.c analyze.c     # multiple source files
+$ icc mycode.c     -o myexe       # C source file; executable myexe
+$ icpc mycode.cpp  -o myexe       # C++ source file
+$ ifort mycode.f90 -o myexe       # Fortran90 source file
+```
 
 Compiling a code that uses OpenMP would look like this:
 
-<pre class="cmd-line">$ <b>icc -qopenmp mycode.c -o myexe</b>  # OpenMP</pre>
+``` cmd-line
+$ icc -qopenmp mycode.c -o myexe  # OpenMP
+```
 
 See the published Intel documentation, available both [online](http://software.intel.com/en-us/intel-software-technical-documentation) and in `${TACC_INTEL_DIR}/documentation`, for information on optimization flags and other Intel compiler options.
 
@@ -31,12 +34,13 @@ Load a `gcc` module to access a recent version of the GNU compiler suite. Avoid 
 
 Here are simple examples that use the GNU compilers to produce an executable from source code:
 
-<pre class="cmd-line">
-$ <b>gcc mycode.c</b>                    # C source file; executable a.out
-$ <b>gcc mycode.c          -o myexe</b>  # C source file; executable myexe
-$ <b>g++ mycode.cpp        -o myexe</b>  # C++ source file
-$ <b>gfortran mycode.f90   -o myexe</b>  # Fortran90 source file
-$ <b>gcc -fopenmp mycode.c -o myexe</b>  # OpenMP; GNU flag is different than Intel</pre>
+``` cmd-line
+$ gcc mycode.c                    # C source file; executable a.out
+$ gcc mycode.c          -o myexe  # C source file; executable myexe
+$ g++ mycode.cpp        -o myexe  # C++ source file
+$ gfortran mycode.f90   -o myexe  # Fortran90 source file
+$ gcc -fopenmp mycode.c -o myexe  # OpenMP; GNU flag is different than Intel
+```
 
 Note that some compiler options are the same for both Intel and GNU (e.g. `-o`), while others are different (e.g. `-qopenmp` vs `-fopenmp`). Many options are available in one compiler suite but not the other. See the [online GNU documentation](http://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
 
@@ -46,13 +50,17 @@ Building an executable requires two separate steps: (1) compiling (generating a 
 
 Use the `-c` ("compile") flag to produce object files from source files:
 
-<pre class="cmd-line">$ <b>icc -c main.c calc.c results.c</b></pre>
+``` cmd-line
+$ icc -c main.c calc.c results.c
+```
 
 Barring errors, this command will produce object files `main.o`, `calc.o`, and `results.o`. Syntax for other compilers Intel and GNU compilers is similar.
 
 You can now link the object files to produce an executable file:
 
-<pre class="cmd-line">$ <b>icc main.o calc.o results.o -o myexe</b></pre>
+``` cmd-line
+$ icc main.o calc.o results.o -o myexe
+```
 
 The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task. Again, syntax for other compilers is similar.
 
@@ -60,9 +68,10 @@ The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task.
 
 Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the `-I` option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the `-L` option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
 
-<pre class="cmd-line">
-$ <b>icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}</b>                  # compile
-$ <b>icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5</b>   # link</pre>
+``` cmd-line
+$ icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}                  # compile
+$ icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5   # link
+```
 
 On Stampede2, both the `hdf5` and `phdf5` modules define the environment variables `$TACC_HDF5_INC` and `$TACC_HDF5_LIB`. Other module files define similar environment variables; see [Using Modules to Manage Your Environment](#using-modules) for more information.
 
@@ -74,42 +83,50 @@ A separate section below addresses the [Intel Math Kernel Library](#intel-math-k
 
 Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Stampede2. After loading an `impi` or `mvapich2` module, compile and/or link using an mpi wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
-<pre class="cmd-line">
-$ <b>mpicc    mycode.c   -o myexe</b>   # C source, full build
-$ <b>mpicc -c mycode.c</b>              # C source, compile without linking
-$ <b>mpicxx   mycode.cpp -o myexe</b>   # C++ source, full build
-$ <b>mpif90   mycode.f90 -o myexe</b>   # Fortran source, full build</pre>
+``` cmd-line
+$ mpicc    mycode.c   -o myexe   # C source, full build
+$ mpicc -c mycode.c              # C source, compile without linking
+$ mpicxx   mycode.cpp -o myexe   # C++ source, full build
+$ mpif90   mycode.f90 -o myexe   # Fortran source, full build
+```
 
 These wrappers call the compiler with the options, include paths, and libraries necessary to produce an MPI executable using the MPI module you're using. To see the effect of a given wrapper, call it with the `-show` option:
 
-<pre class="cmd-line">$ <b>mpicc -show</b>  # Show compile line generated by call to mpicc; similarly for other wrappers</pre>
+``` cmd-line
+$ mpicc -show  # Show compile line generated by call to mpicc; similarly for other wrappers
+```
 
 
 #### [Building Third-Party Software in Your Own Account](#building-basics-thirdparty) { #building-basics-thirdparty }
 
 You're welcome to download third-party research software and install it in your own account. In most cases you'll want to download the source code and build the software so it's compatible with the Stampede2 software environment. You can't use yum or any other installation process that requires elevated privileges, but this is almost never necessary. The key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. When using the famous [three-step autotools](http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) build process, the standard approach is to use the `PREFIX` environment variable to specify a non-default, user-owned installation directory at the time you execute `configure` or `make`:
 
-<pre class="cmd-line">
-$ <b>export INSTALLDIR=$WORK/apps/t3pio</b>
-$ <b>./configure --prefix=$INSTALLDIR</b>
-$ <b>make</b>
-$ <b>make install</b></pre>
+``` cmd-line
+
+$ export INSTALLDIR=$WORK/apps/t3pio
+$ ./configure --prefix=$INSTALLDIR
+$ make
+$ make install
+```
 
 Other languages, frameworks, and build systems generally have equivalent mechanisms for installing software in user space. In most cases a web search like "Python Linux install local" will get you the information you need.
 
 In Python, a local install will resemble one of the following examples:
 
-<pre class="cmd-line">
-$ <b>pip install netCDF4     --user</b>                    # install netCDF4 package to $HOME/.local
-$ <b>python setup.py install --user</b>                    # install to $HOME/.local
-$ <b>pip install netCDF4     --prefix=$INSTALLDIR</b>      # custom location; add to PYTHONPATH</pre>
+``` cmd-line
+
+$ pip install netCDF4     --user                    # install netCDF4 package to $HOME/.local
+$ python setup.py install --user                    # install to $HOME/.local
+$ pip install netCDF4     --prefix=$INSTALLDIR      # custom location; add to PYTHONPATH
+```
 
 Similarly in R:
 
-<pre class="cmd-line">
-$ <b>module load Rstats</b>            # load TACC's default R
-$ <b>R</b>                             # launch R
-> <b>install.packages('devtools')</b>  # R will prompt for install location</pre>
+``` cmd-line
+$ module load Rstats            # load TACC's default R
+$ R                             # launch R
+> install.packages('devtools')  # R will prompt for install location
+```
 
 You may, of course, need to customize the build process in other ways. It's likely, for example, that you'll need to edit a `makefile` or other build artifacts to specify Stampede2-specific [include and library paths](#building-basics-inclib) or other compiler settings. A good way to proceed is to write a shell script that implements the entire process: definitions of environment variables, module commands, and calls to the build utilities. Include `echo` statements with appropriate diagnostics. Run the script until you encounter an error. Research and fix the current problem. Document your experience in the script itself; including dead-ends, alternatives, and lessons learned. Re-run the script to get to the next error, then repeat until done. When you're finished, you'll have a repeatable process that you can archive until it's time to update the software or move to a new machine.
 
@@ -129,11 +146,15 @@ When building software on Stampede2, we recommend using the most recent Intel co
 
 To compile for KNL only, include `-xMIC-AVX512` as a build option. The `-x` switch allows you to specify a [target architecture](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-x-qx), while `MIC-AVX512` is the KNL-specific subset of Intel's Advanced Vector Extensions 512-bit [instruction set](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).  Besides all other appropriate compiler options, you should also consider specifying an [optimization level](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-o) using the `-O` flag:
 
-<pre class="cmd-line">$ <b>icc   -xMIC-AVX512  -O3 mycode.c   -o myexe</b>         # will run only on KNL</pre>
+``` cmd-line
+$ icc   -xMIC-AVX512  -O3 mycode.c   -o myexe         # will run only on KNL
+```
 
 Similarly, to build for SKX or ICX, specify the `CORE-AVX512` instruction set, which is native to SKX and ICX:
 
-<pre class="cmd-line">$ <b>ifort -xCORE-AVX512 -O3 mycode.f90 -o myexe</b>         # will run on SKX or ICX</pre>
+``` cmd-line
+$ ifort -xCORE-AVX512 -O3 mycode.f90 -o myexe         # will run on SKX or ICX
+```
 
 Because Stampede2 has two kinds of compute nodes, however, we recommend a more flexible approach when building with the Intel compiler: use [CPU dispatch](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-sse-generation-and-processor-specific-optimizations-continue#1) to build a multi-architecture ("fat") binary that contains alternate code paths with optimized vector code for each type of Stampede2 node. To produce a multi-architecture binary for Stampede2, build with the following options:	
 
@@ -141,7 +162,9 @@ Because Stampede2 has two kinds of compute nodes, however, we recommend a more f
 
 These particular choices allow you to build on any Stampede2 node (KNL, SKX and ICX nodes), and use [CPU dispatch](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-sse-generation-and-processor-specific-optimizations-continue#1) to produce a multi-architecture binary. We recommend that you specify these flags in both the compile and link steps. Specify an optimization level (e.g. `-O3`) along with any other appropriate compiler switches:
 
-<pre class="cmd-line">$ <b>icc -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512 -O3 mycode.c -o myexe</b></pre>
+``` cmd-line
+$ icc -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512 -O3 mycode.c -o myexe
+```
 
 The `-x` option is the target base architecture (instruction set). The base instruction set must run on all targeted processors. Here we specify <span style="white-space: nowrap;">`CORE-AVX2`</span>, which is native for older Broadwell processors and supported on all KNL, SKX and ICX nodex. This option allows configure scripts and similar build systems to run test executables on any Stampede2 login or compute node. The `-ax` option is a comma-separated list of alternate instruction sets: <span style="white-space: nowrap;">`CORE-AVX512`</span> for SKX and ICX, and <span style="white-space: nowrap;">`MIC-AVX512`</span> for KNL. 
 
@@ -151,12 +174,16 @@ Now that we have replaced the original Broadwell login nodes with newer Skylake 
 
 Don't skip the `-x` flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either <span style="white-space: nowrap;">`-xMIC-AVX512`</span> (native on KNL) or <span style="white-space: nowrap;">`-xCORE-AVX512`</span> (native on SKX/ICX);** there are no meaningful, compatible alternate (`-ax`) instruction sets:
 
-<pre class="cmd-line">$ <b>icc <s>-xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe</s></b>       # NO! Base incompatible with alternate</pre>
+``` cmd-line
+$ icc -xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe       # NO! Base incompatible with alternate
+```
 On Stampede2, the module files for newer Intel compilers (Intel 18.0.0 and later) define the environment variable `TACC_VEC_FLAGS` that stores the recommended architecture flags described above. This can simplify your builds:
 
-<pre class="cmd-line">$ <b>echo $TACC_VEC_FLAGS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# env variable available only for intel/18.0.0 and later
+``` cmd-line
+$ echo $TACC_VEC_FLAGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# env variable available only for intel/18.0.0 and later
 -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512
-$ <b>icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe</b></pre> 
+$ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
+``` 
 
 Simplicity is a major advantage of this multi-architecture approach: it allows you to build and run anywhere on Stampede2, and performance is generally comparable to single-architecture builds. There are some trade-offs to consider, however. This approach will take a little longer to compile than single-architecture builds, and will produce a larger binary. In some cases, you might also pay a small performance penalty over single-architecture approaches. For more information see the [Intel documentation](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).	
 
