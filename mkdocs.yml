@@ -11,11 +11,14 @@ theme:
     hljs_languages:
         - bash
         - ruby
+        - plaintext
     hljs_aliases:
         - name: cmd-line
           lang: ruby
         - name: job-script
           lang: bash
+        - name: syntax
+          lang: plaintext
     custom_dir: themes/readthedocs
 
 extra_css:
