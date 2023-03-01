@@ -62,7 +62,18 @@ table {
 
 
 
-/* Re-color navigation */
+/* To set automatic size for an SVG logo */
+
+/* FAQ: The `img` in selectors is removed so `svg` is also supported */
+/* NOTE: Selectors from theme.css */
+.wy-side-nav-search .wy-dropdown > a /*img*/.logo,
+.wy-side-nav-search > a /*img*/.logo {
+  width: 100%;
+}
+
+
+
+/* To re-color navigation */
 
 .wy-nav-side {
   color: unset;

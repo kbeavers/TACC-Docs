@@ -68,6 +68,21 @@
     {# /TACC #}
   {%- endblock %}
 
+  {%- block extrahead %}
+  {# TACC (replace img svg with inline svg): #}
+    <script src="{{ 'js/svg-inject.min.js'|url }}"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      SVGInject(document.querySelectorAll('img[src$=".svg"]'), {
+        onAllFinish: function() {
+          console.info('Image SVGs replaced with inline SVGs.');
+        }
+      });
+    });
+    </script>
+  {# /TACC #}
+  {% endblock %}
+
   {%- block scripts %}
     <script>var base_url = '{{ base_url }}';</script>
     {# TACC: #}{# To remove `docutils` class from tables #}
