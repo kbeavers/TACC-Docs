@@ -101,7 +101,7 @@ See: <https://docs.tacc.utexas.edu/hpcugs/stampede2/stampede2/#jobscripts>
 
 ### Images
 
-I use image tags < figure > and < figcaption >.  
+I use image tags `<figure>` and `<figcaption>`.
 
 See real life example here: <https://portal.tacc.utexas.edu/user-guides/stampede2#programming-knl-memorymodes>
 
