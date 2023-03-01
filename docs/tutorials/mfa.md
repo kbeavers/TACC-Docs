@@ -86,7 +86,7 @@ Begin by pressing the "Use Your Preferred Authenticator App to Pair" button on t
 
 A typical login session will look something like this:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh bjones@maverick2.tacc.utexas.edu
 To access the system:
 

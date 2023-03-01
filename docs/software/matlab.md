@@ -16,13 +16,13 @@ MATLAB is normally launched with the MATLAB Desktop UI and used in interactive m
 
 MATLAB is managed under modules on the TACC resources. Before you launch MATLAB load the MATLAB module with the following command:
 
-``` cmd-line
+```cmd-line
 login1$ module load matlab
 ```
 
 You can always get the MATLAB help information by typing the following module help command.
 
-``` cmd-line
+```cmd-line
 login1$ module help matlab
 ```
 
@@ -40,7 +40,7 @@ You can also submit your MATLAB job to the batch nodes (compute nodes) on the TA
 
 ### [Example 1. Sample MATLAB job script to run on Stampede2](#example1)
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #SBATCH -J matlabjob              # job name
 #SBATCH -e matlabjob.%j.err       # error file name 

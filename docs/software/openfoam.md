@@ -13,13 +13,13 @@ TACC staff has built and installed OpenFOAM 7.0 on both [Stampede2][STAMPEDE2UG]
 
 Set up the proper computing environment by loading the latest OpenFoam module:
 
-``` cmd-line
+```cmd-line
 login1$ module load openfoam/7.0
 ```
 
 OpenFOAM places its [cases](https://cfd.direct/openfoam/user-guide/cases/) in the directory defined by the `$FOAM_RUN` environment variable.  TACC staff suggests using your `$SCRATCH` file space to run OpenFOAM cases.  The following commands set this environment variable and create the `$FOAM_RUN` directory in the user's `$SCRATCH` directory.
 
-``` cmd-line
+```cmd-line
 login1$ export FOAM_RUN=$SCRATCH/My_OpenFOAM/7.0/run
 login1$ mkdir -p $FOAM_RUN
 ```
@@ -33,7 +33,7 @@ The following demonstrates running the OpenFOAM's [Lid-driven Cavity Flow](https
 
 * Copy OpenFOAM's tutorials into the OpenFOAM work directory created above, then change to the cavity case directory:
 
-	``` cmd-line
+	```cmd-line
 	login1$ idev
 	...
 	c557-804$ cp -r $FOAM_TUTORIALS $FOAM_RUN 
@@ -42,7 +42,7 @@ The following demonstrates running the OpenFOAM's [Lid-driven Cavity Flow](https
 
 * Use the pre-processing tool, **`blockMesh`**, to generate the mesh.  Then run the **`icoFoam`** solver.  
 
-	``` cmd-line
+	```cmd-line
 	c557-804$ blockMesh
 	c557-804$ icoFoam
 	c557-804$ exit

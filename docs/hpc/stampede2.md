@@ -101,19 +101,19 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 The `ssh` command (SSH protocol) is the standard way to connect to Stampede2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh myusername@stampede2.tacc.utexas.edu
 ```
 
 The above command will rotate connections across all available login nodes and route your connection to one of them. To connect to a specific login node, use its full domain name:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh myusername@login2.stampede2.tacc.utexas.edu
 ```
 
 To connect with X11 support on Stampede2 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh -X myusername@stampede2.tacc.utexas.edu
 ```
 
@@ -322,7 +322,7 @@ Lustre can **stripe** (distribute) large files over several physical disks, maki
 
 To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 
-``` cmd-line 
+```cmd-line 
 $ lfs setstripe -c 30 $PWD
 ```
 
@@ -332,7 +332,7 @@ Remember that it's not possible to change the striping on a file that already ex
 
 You can check the stripe count of a file using the `lfs getstripe` command:
 
-``` cmd-line 
+```cmd-line 
 $ lfs getstripe myfile
 ```
 
@@ -345,44 +345,44 @@ You can transfer files between Stampede2 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Stampede2 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Stampede2 `$HOME` would look like this:
 
-``` cmd-line 
+```cmd-line 
 localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:  # note colon after net address
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Stampede2:
 
-``` cmd-line 
+```cmd-line 
 localhost$ scp *.txt bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2
 ```
 
 To delay wildcard expansion until reaching Stampede2, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Stampede2 to the current directory on your local system:
 
-``` cmd-line 
+```cmd-line 
 localhost$ scp bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2/\*.txt .
 ```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-``` cmd-line
+```cmd-line
 localhost$ destdir="/work/01234/bjones/stampede2/data"
 localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:$destdir
 ```
 
 You can also issue `scp` commands on your local client that use Stampede2 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Stampede2:
 
-``` cmd-line 
+```cmd-line 
 localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
 
 Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
-``` cmd-line 
+```cmd-line 
 localhost$ <s>scp -r  ./mydata     bjones@stampede2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 ```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-``` cmd-line
+```cmd-line
 localhost$ tar cvf ./mydata.tar mydata</b>                                   # create archive
 localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # transfer archive
 ```
@@ -391,7 +391,7 @@ localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # trans
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-``` cmd-line
+```cmd-line
 localhost$ rsync       mybigfile bjones@stampede2.tacc.utexas.edu:\$WORK/data
 localhost$ rsync -avtr mybigdir  bjones@stampede2.tacc.utexas.edu:\$WORK/data
 ```
@@ -424,7 +424,7 @@ This section of the user guide does nothing more than introduce the big ideas wi
 
 Intel is the recommended and default compiler suite on Stampede2. Each Intel module also gives you direct access to `mkl` without loading an `mkl` module; see [Intel MKL](#intel-math-kernel-library-mkl) for more information. Here are simple examples that use the Intel compiler to build an executable from source code:
 
-``` cmd-line
+```cmd-line
 $ icc mycode.c                    # C source file; executable a.out
 $ icc main.c calc.c analyze.c     # multiple source files
 $ icc mycode.c     -o myexe       # C source file; executable myexe
@@ -434,7 +434,7 @@ $ ifort mycode.f90 -o myexe       # Fortran90 source file
 
 Compiling a code that uses OpenMP would look like this:
 
-``` cmd-line
+```cmd-line
 $ icc -qopenmp mycode.c -o myexe  # OpenMP
 ```
 
@@ -448,7 +448,7 @@ Load a `gcc` module to access a recent version of the GNU compiler suite. Avoid 
 
 Here are simple examples that use the GNU compilers to produce an executable from source code:
 
-``` cmd-line
+```cmd-line
 $ gcc mycode.c                    # C source file; executable a.out
 $ gcc mycode.c          -o myexe  # C source file; executable myexe
 $ g++ mycode.cpp        -o myexe  # C++ source file
@@ -464,7 +464,7 @@ Building an executable requires two separate steps: (1) compiling (generating a 
 
 Use the `-c` ("compile") flag to produce object files from source files:
 
-``` cmd-line
+```cmd-line
 $ icc -c main.c calc.c results.c
 ```
 
@@ -472,7 +472,7 @@ Barring errors, this command will produce object files `main.o`, `calc.o`, and `
 
 You can now link the object files to produce an executable file:
 
-``` cmd-line
+```cmd-line
 $ icc main.o calc.o results.o -o myexe
 ```
 
@@ -482,7 +482,7 @@ The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task.
 
 Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the `-I` option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the `-L` option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
 
-``` cmd-line
+```cmd-line
 $ icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}                  # compile
 $ icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5   # link
 ```
@@ -497,7 +497,7 @@ A separate section below addresses the [Intel Math Kernel Library](#intel-math-k
 
 Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Stampede2. After loading an `impi` or `mvapich2` module, compile and/or link using an mpi wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
-``` cmd-line
+```cmd-line
 $ mpicc    mycode.c   -o myexe   # C source, full build
 $ mpicc -c mycode.c              # C source, compile without linking
 $ mpicxx   mycode.cpp -o myexe   # C++ source, full build
@@ -506,7 +506,7 @@ $ mpif90   mycode.f90 -o myexe   # Fortran source, full build
 
 These wrappers call the compiler with the options, include paths, and libraries necessary to produce an MPI executable using the MPI module you're using. To see the effect of a given wrapper, call it with the `-show` option:
 
-``` cmd-line
+```cmd-line
 $ mpicc -show  # Show compile line generated by call to mpicc; similarly for other wrappers
 ```
 
@@ -515,7 +515,7 @@ $ mpicc -show  # Show compile line generated by call to mpicc; similarly for oth
 
 You're welcome to download third-party research software and install it in your own account. In most cases you'll want to download the source code and build the software so it's compatible with the Stampede2 software environment. You can't use yum or any other installation process that requires elevated privileges, but this is almost never necessary. The key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. When using the famous [three-step autotools](http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) build process, the standard approach is to use the `PREFIX` environment variable to specify a non-default, user-owned installation directory at the time you execute `configure` or `make`:
 
-``` cmd-line
+```cmd-line
 
 $ export INSTALLDIR=$WORK/apps/t3pio
 $ ./configure --prefix=$INSTALLDIR
@@ -527,7 +527,7 @@ Other languages, frameworks, and build systems generally have equivalent mechani
 
 In Python, a local install will resemble one of the following examples:
 
-``` cmd-line
+```cmd-line
 
 $ pip install netCDF4     --user                    # install netCDF4 package to $HOME/.local
 $ python setup.py install --user                    # install to $HOME/.local
@@ -536,7 +536,7 @@ $ pip install netCDF4     --prefix=$INSTALLDIR      # custom location; add to PY
 
 Similarly in R:
 
-``` cmd-line
+```cmd-line
 $ module load Rstats            # load TACC's default R
 $ R                             # launch R
 > install.packages('devtools')  # R will prompt for install location
@@ -560,13 +560,13 @@ When building software on Stampede2, we recommend using the most recent Intel co
 
 To compile for KNL only, include `-xMIC-AVX512` as a build option. The `-x` switch allows you to specify a [target architecture](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-x-qx), while `MIC-AVX512` is the KNL-specific subset of Intel's Advanced Vector Extensions 512-bit [instruction set](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).  Besides all other appropriate compiler options, you should also consider specifying an [optimization level](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-o) using the `-O` flag:
 
-``` cmd-line
+```cmd-line
 $ icc   -xMIC-AVX512  -O3 mycode.c   -o myexe         # will run only on KNL
 ```
 
 Similarly, to build for SKX or ICX, specify the `CORE-AVX512` instruction set, which is native to SKX and ICX:
 
-``` cmd-line
+```cmd-line
 $ ifort -xCORE-AVX512 -O3 mycode.f90 -o myexe         # will run on SKX or ICX
 ```
 
@@ -576,7 +576,7 @@ Because Stampede2 has two kinds of compute nodes, however, we recommend a more f
 
 These particular choices allow you to build on any Stampede2 node (KNL, SKX and ICX nodes), and use [CPU dispatch](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-sse-generation-and-processor-specific-optimizations-continue#1) to produce a multi-architecture binary. We recommend that you specify these flags in both the compile and link steps. Specify an optimization level (e.g. `-O3`) along with any other appropriate compiler switches:
 
-``` cmd-line
+```cmd-line
 $ icc -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512 -O3 mycode.c -o myexe
 ```
 
@@ -588,12 +588,12 @@ Now that we have replaced the original Broadwell login nodes with newer Skylake 
 
 Don't skip the `-x` flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either <span style="white-space: nowrap;">`-xMIC-AVX512`</span> (native on KNL) or <span style="white-space: nowrap;">`-xCORE-AVX512`</span> (native on SKX/ICX);** there are no meaningful, compatible alternate (`-ax`) instruction sets:
 
-``` cmd-line
+```cmd-line
 $ icc -xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe       # NO! Base incompatible with alternate
 ```
 On Stampede2, the module files for newer Intel compilers (Intel 18.0.0 and later) define the environment variable `TACC_VEC_FLAGS` that stores the recommended architecture flags described above. This can simplify your builds:
 
-``` cmd-line
+```cmd-line
 $ echo $TACC_VEC_FLAGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# env variable available only for intel/18.0.0 and later
 -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512
 $ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
@@ -642,7 +642,7 @@ icx-normal | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
 
 Use Slurm's `sbatch` command to [submit a batch job](#using-computenodes) to one of the Stampede2 queues:
 
-``` cmd-line
+```cmd-line
 login1$ sbatch myjobscript
 ```
 
@@ -694,7 +694,7 @@ The primary purpose of your job script is to launch your research application. H
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
-``` { .bash .job-script }
+```job-script
 myprogram                   # executable in a directory listed in $PATH
 $WORK/apps/myprov/myprogram # explicit full path to executable
 ./myprogram                 # executable in current directory
@@ -705,7 +705,7 @@ $WORK/apps/myprov/myprogram # explicit full path to executable
 
 Launch a threaded application the same way. Be sure to specify the number of threads. **Note that the default OpenMP thread count is 1**.
 
-``` { .bash .job-script }
+```job-script
 export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
 ./myprogram
 ```
@@ -714,7 +714,7 @@ export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Stampede2-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
-``` { .bash .job-script }
+```job-script
 #SBATCH -N 5
 #SBATCH -n 200
 ibrun ./myprogram              # ibrun uses the $SBATCH directives to properly allocate nodes and tasks
@@ -723,7 +723,7 @@ ibrun ./myprogram              # ibrun uses the $SBATCH directives to properly a
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
-``` cmd-line
+```cmd-line
 
 login1$ idev -N 2 -n 80 
 c123-456$ ibrun ./myprogram    # ibrun uses idev's arguments to properly allocate nodes and tasks
@@ -734,7 +734,7 @@ c123-456$ ibrun ./myprogram    # ibrun uses idev's arguments to properly allocat
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
-``` { .bash .job-script }
+```job-script
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
 ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
 ```
@@ -749,7 +749,7 @@ TACC's `launcher` utility provides an easy way to launch more than one serial ap
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
-``` { .bash .job-script }
+```job-script
 module load git
 module list
 ./preprocess.sh
@@ -768,7 +768,7 @@ To run more than one MPI application simultaneously in the same job, you need to
 
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute <span style="white-space: nowrap;">`ibrun --help`</span> for more information. **Don't forget the ampersands (`&`)** to launch the jobs in the background, **and the `wait` command** to pause the script until the background tasks complete:
 
-``` { .bash .job-script }
+```job-script
 ibrun -n 64 -o  0 task_affinity ./myprogram input1 &amp;   # 64 tasks; offset by  0 entries in hostfile.
 ibrun -n 64 -o 64 task_affinity ./myprogram input2 &amp;   # 64 tasks; offset by 64 entries in hostfile.
 wait                                                       # Required; else script will exit immediately.
@@ -785,7 +785,7 @@ The `task_affinity` script does two things:
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, <span style="white-space: nowrap;">`numactl -C`</span> specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
-``` { .bash .job-script }
+```job-script
 export OMP_NUM_THREADS=2
 numactl -C 0-1 ./myprogram inputfile1 &amp;  # HW threads (hence cores) 0-1. Note ampersand.
 numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Note ampersand.
@@ -798,13 +798,13 @@ wait
 
 TACC's own `idev` utility is the best way to begin an interactive session on one or more compute nodes. To launch a thirty-minute session on a single node in the development queue, simply execute:
 
-``` cmd-line
+```cmd-line
 login1$ idev
 ```
 
 You'll then see output that includes the following excerpts:
 
-``` cmd-line
+```cmd-line
 
 ...
 -----------------------------------------------------------------
@@ -827,7 +827,7 @@ The `job status` messages indicate that your interactive session is waiting in t
 
 For command line options and other information, execute <span style="white-space: nowrap;">`idev --help`</span>. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
-``` cmd-line
+```cmd-line
 login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
 ```
 
@@ -835,7 +835,7 @@ For more information see the [`idev` documentation](http://portal.tacc.utexas.ed
 
 You can also launch an interactive session with Slurm's `srun` command, though there's no clear reason to prefer `srun` to `idev`. A typical launch line would look like this:
 
-``` cmd-line
+```cmd-line
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
 ```
 
@@ -847,7 +847,7 @@ If you have a batch job or interactive session running on a compute node, you "o
 There are many ways to determine the nodes on which you are running a job, including feedback messages following your `sbatch` submission, the compute node command prompt in an `idev` session, and the `squeue` or `showq` utilities. The sequence of identifying your compute node then connecting to it would look like this:
 
 
-``` cmd-line
+```cmd-line
 
 login1$ squeue -u bjones
  JOBID       PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -863,13 +863,13 @@ C448-004$
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
 !!! warning
-	``` cmd-line
+	```cmd-line
 	#SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
 	```
 
 Instead, use the following directive:
 
-``` { .bash .job-script }
+```job-script
 #SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
 ```
 
@@ -934,7 +934,7 @@ date
 </details>
 
 <details><summary>SKX Serial Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -985,7 +985,7 @@ date
 </details>
 
 <details><summary>KNL MPI Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1037,7 +1037,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>SKX MPI Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1089,7 +1089,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>ICX MPI Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1156,7 +1156,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>KNL OpenMP Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1214,7 +1214,7 @@ export OMP_NUM_THREADS=34
 </details>
 
 <details><summary>SKX OpenMP Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1273,7 +1273,7 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 
 
 <details><summary>ICX OpenMP Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1344,7 +1344,7 @@ cd $SCRATCH
 
 
 <details><summary>KNL Hybrid Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1409,7 +1409,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>SKX Hybrid Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1474,7 +1474,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>ICX Hybrid Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1567,13 +1567,13 @@ To display resource limits for the Stampede2 queues, execute "**`qlimits`**". Th
 
 Slurm's "**`sinfo`**" command allows you to monitor the status of the queues. If you execute `sinfo` without arguments, you'll see a list of every node in the system together with its status. To skip the node list and produce a tight, alphabetized summary of the available queues and their status, execute:
 
-``` cmd-line
+```cmd-line
 login1$ sinfo -S+P -o "%18P %8a %20F"    # compact summary of queue status
 ```
 
 An excerpt from this command's output looks like this:
 
-``` cmd-line
+```cmd-line
 
 PARTITION          AVAIL    NODES(A/I/O/T)
 development*       up       41/70/1/112
@@ -1587,7 +1587,7 @@ The `AVAIL` column displays the overall status of each queue (up or down), while
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
-``` cmd-line
+```cmd-line
 
 login1$ squeue             # show all jobs in all queues
 login1$ squeue -u bjones   # show all jobs owned by bjones
@@ -1597,7 +1597,7 @@ login1$ man squeue         # more info
 An excerpt from the default output looks like this:
 
 
-``` cmd-line
+```cmd-line
 
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 170361      normal   spec12   bjones PD       0:00     32 (Resources)
@@ -1619,13 +1619,13 @@ The default format for `squeue` now reports total nodes associated with a job ra
 
 The default format lists all nodes assigned to displayed jobs; this can make the output difficult to read. A handy variation that suppresses the nodelist is:
 
-``` cmd-line
+```cmd-line
 login1$ squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"  # suppress nodelist
 ```
 
 The `--start` option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
 
-``` cmd-line
+```cmd-line
 login1$ squeue --start -j 167635     # display estimated start time for job 167635
 ```
 
@@ -1634,7 +1634,7 @@ login1$ squeue --start -j 167635     # display estimated start time for job 1676
 
 TACC's `showq` utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm `squeue` command:
 
-``` cmd-line
+```cmd-line
 
 login1$ showq            # show all jobs; default format
 login1$ showq -u         # show your own jobs
@@ -1655,7 +1655,7 @@ The default format for `showq` now reports total nodes associated with a job rat
 
 To **cancel** a pending or running job, first determine its jobid, then use `scancel`:
 
-``` cmd-line
+```cmd-line
 
 login1$ squeue -u bjones    # one way to determine jobid
    JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -1665,13 +1665,13 @@ login1$ scancel 170361      # cancel job
 
 For **detailed information** about the configuration of a specific job, use `scontrol`:
 
-``` cmd-line
+```cmd-line
 login1$ scontrol show job=170361
 ```
 
 To view some **accounting data** associated with your own jobs, use `sacct`:
 
-``` cmd-line
+```cmd-line
 login1$ sacct --starttime 2017-08-01  # show jobs that started on or after this date
 ```
 
@@ -1680,7 +1680,7 @@ login1$ sacct --starttime 2017-08-01  # show jobs that started on or after this 
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
-``` cmd-line
+```cmd-line
 login1$ sbatch --dependency=afterok:173210 myjobscript
 ```
 
@@ -1712,7 +1712,7 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc
 	```
 
@@ -1727,13 +1727,13 @@ Follow the steps below to start an interactive session.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
 	```
 
 	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	``` cmd-line
+	```cmd-line
 	login1$ touch vncserver.out ; tail -f vncserver.out
 	```
 
@@ -1743,7 +1743,7 @@ Follow the steps below to start an interactive session.
 
 	TACC requires users to create an SSH tunnel from the local system to the Stampede2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Stampede2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Stampede2 login node:
 
-	``` cmd-line
+	```cmd-line
 	
 	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@STAMPEDEHOSTNAME
 	```
@@ -1776,7 +1776,7 @@ From an interactive desktop, applications can be run from icons or from xterm co
 
 Parallel applications are run on the desktop using the same `ibrun` wrapper described above (see [Running](#running)). The command:
 
-``` cmd-line
+```cmd-line
 c442-001$ ibrun ibrunoptions application applicationoptions
 ```
 
@@ -1788,7 +1788,7 @@ Stampede2 uses the OpenSWR OpenGL library to perform efficient rendering. At pre
 
 swr: To access the accelerated OpenSWR OpenGL library, it is necessary to use the swr module to point to the swr OpenGL implementation and configure the number of threads to allocate to rendering.  
 
-``` cmd-line
+```cmd-line
 c442-001$ module load swr
 c442-001$ swr options application application-args
 ```
@@ -1799,7 +1799,7 @@ c442-001$ swr options application application-args
 
 After connecting to a VNC server on Stampede2, as described above, load the VisIt module at the beginning of your interactive session before launching the Visit application:
 
-``` cmd-line
+```cmd-line
 c442-001$ module load swr visit
 c442-001$ swr visit
 ```
@@ -1816,13 +1816,13 @@ After connecting to a VNC server on Stampede2, as described above, do the follow
 
 1. Set up your environment with the necessary modules. Load the `swr`, `qt5`, `ospray`, and `paraview` modules **in this order**:
 
-	``` cmd-line
+	```cmd-line
 	c442-001$ module load swr qt5 ospray paraview
 	```
 
 1. Launch ParaView: 
 
-	``` cmd-line
+	```cmd-line
 	c442-001$ swr -p 1 paraview [paraview client options]
 	```
 
@@ -1843,7 +1843,7 @@ Programming for performance is a broad and rich topic. While there are no shortc
 
 Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
 
-``` cmd-line
+```cmd-line
 perf stat ./a.out    # report basic performance stats for a.out
 time ./a.out         # report the time required to execute a.out
 time ibrun ./a.out   # time an MPI code
@@ -1946,7 +1946,7 @@ By design, any application can run in any memory and cluster mode, and applicati
 
 When running in flat-quadrant mode, launch your code with [simple `numactl` settings](#example) to specify whether memory allocations occur in DDR or MCDRAM. See [TACC Training Materials](/training) for additional information.
 
-``` job-script
+```job-script
 numactl       --membind=0    ./a.out    # launch a.out (non-MPI); use DDR (default)
 ibrun numactl --membind=0    ./a.out    # launch a.out (MPI-based); use DDR (default)
 

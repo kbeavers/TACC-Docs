@@ -6,19 +6,19 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 The `ssh` command (SSH protocol) is the standard way to connect to Stampede2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh myusername@stampede2.tacc.utexas.edu
 ```
 
 The above command will rotate connections across all available login nodes and route your connection to one of them. To connect to a specific login node, use its full domain name:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh myusername@login2.stampede2.tacc.utexas.edu
 ```
 
 To connect with X11 support on Stampede2 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh -X myusername@stampede2.tacc.utexas.edu
 ```
 

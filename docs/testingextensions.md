@@ -23,7 +23,7 @@ login1$ { .bash }
 login1$ module load kitten
 ```
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ { .bash .cmd-line}
 login1$ module load kitten
 ```
@@ -62,7 +62,7 @@ ibrun -np 4 -N 2 -p small myexecutable
 </pre>
 
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script

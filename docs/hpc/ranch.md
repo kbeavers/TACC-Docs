@@ -34,7 +34,7 @@ Previously, the Ranch system was based on Oracle's HSM software, with two SL8500
 
 Direct login via Secure Shell's `ssh` command to Ranch is allowed so you can create directories and manage files. The Ranch archive file systems cannot be mounted on any remote system.
 
-``` cmd-line
+```cmd-line
 stampede2$ ssh taccusername@HOSTNAME
 ```
 
@@ -73,13 +73,13 @@ The new Quantum-based environment is designed to meet the demand of retrieving m
 
 You can display your current Ranch on-disk **file space usage** by executing the following UNIX command while the current directory is either the user or Project directory:
 
-``` cmd-line
+```cmd-line
 ranch$ du -sh
 ```
 
 Keep in mind the above commands only display file **space** used, not a total file **count**.  File count can be found using the UNIX `find` and `wc` commands, again while the current directory is either the user or Project directory:
 
-``` cmd-line
+```cmd-line
 ranch$ find . -type f | wc
 ```
 
@@ -91,7 +91,7 @@ It is your responsibility to keep the file count below the 50,000 quota by using
 
 Users can check their current and historical Ranch usage by looking at the contents of the `HSM_usage` file in their Ranch user directory. Note that this file contains quota, on-disk, and on-tape, usage information for the directory it is in and all those beneath it.
 
-``` cmd-line
+```cmd-line
 ranch$ tail ~/HSM_usage
 ```
 
@@ -129,7 +129,7 @@ Ranch also has two endpoints, one running Globus gridftp v5.4 software available
 
 The simplest way to transfer files to and from Ranch is to use the Secure Shell `scp` command:
 
-``` cmd-line
+```cmd-line
 stampede2$ scp myfile ${ARCHIVER}:${ARCHIVE}/myfilepath
 ```
 
@@ -141,7 +141,7 @@ Alternatively, sometimes you can actually do this in one step as part of the tra
 
 To use `tar`, `ssh`, and `cat` to create a good tarfile in Ranch from a source directory on your compute resource, all in one command line:
 
-``` cmd-line
+```cmd-line
 stampede2$ tar cf - dirname/ | ssh ${ARCHIVER} "cat &gt; ${ARCHIVE}/dirname.tar"
 ```
 
@@ -158,7 +158,7 @@ And in one simple command line, you have created a single tar file, `dirname.tar
 
 Note that when transferring to Ranch, any destination directory specified must already exist. If not, `scp` will respond with:
 
-``` cmd-line
+```cmd-line
 No such file or directory
 ```
 
@@ -166,12 +166,12 @@ The following command-line examples also demonstrate how to transfer files to an
 
 * Copy a tarfile from Stampede2 to Ranch:
 
-	``` cmd-line
+	```cmd-line
 stampede2$ scp data_2020.tar \  ${ARCHIVER}:${ARCHIVE}/final_2020.tar
 
 * Copy a tarfile from Ranch to my computer, retaining the file modification time
 
-	``` cmd-line
+	```cmd-line
 stampede2$ scp -p \ ${ARCHIVER}:${ARCHIVE}/final_data_2017.tar \ ./ranch_data_2017.tar
 
 
@@ -198,7 +198,7 @@ Again, use the `du -sh .` and `find . -type f | wc` commands to see how much dat
 
 1. Archive a large directory with `tar`, send the `tar` data stream to Ranch, splitting it into optimally sized tarfiles upon its arrival on the Ranch node:
 
-	``` cmd-line
+	```cmd-line
 	stampede2$ tar cf - directory/ | ssh ranch.tacc.utexas.edu \
 		'split -b 300G - files.tar.'
 	```
@@ -207,7 +207,7 @@ Again, use the `du -sh .` and `find . -type f | wc` commands to see how much dat
 
 1. Use the `split` command on Stampede2 to accomplish this:
 
-	``` cmd-line
+	```cmd-line
 	stampede2$ split -b 300G bigfile.tar bigfile_tar_part_
 	```
 
@@ -215,7 +215,7 @@ Again, use the `du -sh .` and `find . -type f | wc` commands to see how much dat
 
 1. Then use `scp` to copy the files into Ranch:
 
-	``` cmd-line
+	```cmd-line
 	stampede2$ scp -p bigfile_tar_part_* ${ARCHIVER}:${ARCHIVE}/
 	```
 
@@ -223,7 +223,7 @@ Again, use the `du -sh .` and `find . -type f | wc` commands to see how much dat
 
 	The split parts of a file can be always be joined together again with the `cat` command.  See the `split` man page for more options.
 
-	``` cmd-line
+	```cmd-line
 	stampede2$ cat bigfile_tar_part_?? &gt; bigfile.tar
 	```
 
@@ -231,7 +231,7 @@ Again, use the `du -sh .` and `find . -type f | wc` commands to see how much dat
 
 	Or, if you don’t want to wait to actually create `bigfile.tar`, you just want to validate your data, just throw the stream of bytes from the `cat` at `tar`, and you’ll achieve the same result without actually putting anything new on disk:
 
-	``` cmd-line
+	```cmd-line
 	stampede2$ cat bigfile_tar_part_?? | tar tvf -
 	```
 

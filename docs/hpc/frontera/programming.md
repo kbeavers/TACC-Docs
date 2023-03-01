@@ -10,7 +10,7 @@
 
 Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
 
-``` cmd-line
+```cmd-line
 $ perf stat ./a.out    # report basic performance stats for a.out
 $ time ./a.out         # report the time required to execute a.out
 $ time ibrun ./a.out   # time an MPI code

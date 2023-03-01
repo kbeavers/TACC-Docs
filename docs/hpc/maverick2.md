@@ -109,7 +109,7 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 The `ssh` command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh username@maverick2.tacc.utexas.edu
 ```
 
@@ -158,52 +158,52 @@ You can transfer files between Maverick2 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Maverick2 `$HOME` would look like this:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@maverick2.tacc.utexas.edu:  # note colon after net address
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
 
-``` cmd-line
+```cmd-line
 localhost$ scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2
 ```
 
 To delay wildcard expansion until reaching Maverick2, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
 
-``` cmd-line
+```cmd-line
 localhost$ scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .
 ```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-``` cmd-line
+```cmd-line
 localhost$ destdir="/work/01234/bjones/maverick2/data"
 localhost$ scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir
 ```
 
 You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Maverick2:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
 
 !!! warning
 	Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 	```
 
 	Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ tar cvf ./mydata.tar mydata                                   # create archive
 	localhost$ scp     ./mydata.tar bjones@maverick2.tacc.utexas.edu:\$WORK  # transfer archive
 	```
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-``` cmd-line
+```cmd-line
 localhost$ rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data
 localhost$ rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data
 ```
@@ -227,7 +227,7 @@ Lustre can **stripe** (distribute) large files over several physical disks, maki
 
 Before transferring large files to Maverick2, or creating new large files, be sure to set an appropriate default stripe count on the receiving directory. To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 
-``` cmd-line
+```cmd-line
 $ lfs setstripe -c 30 $PWD
 ```
 
@@ -274,7 +274,7 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 
 <details><summary>Serial Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -325,7 +325,7 @@ date
 
 <details><summary>MPI Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -378,7 +378,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 <details><summary>OpenMP Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -436,7 +436,7 @@ export OMP_NUM_THREADS=34
 
 <details><summary>Hybrid Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script for TACC MACHINENAME nodes
@@ -521,7 +521,7 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc
 	```
 
@@ -536,13 +536,13 @@ Follow the steps below to start an interactive session.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
 	```
 
 	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	``` cmd-line
+	```cmd-line
 	login1$ touch vncserver.out ; tail -f vncserver.out
 	```
 
@@ -552,7 +552,7 @@ Follow the steps below to start an interactive session.
 
 	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@maverick2.tacc.utexas.edu
 	```
 
@@ -581,7 +581,7 @@ Follow the steps below to start an interactive session.
 
 As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
 
-``` cmd-line
+```cmd-line
 login1$ module avail
 
 -------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------

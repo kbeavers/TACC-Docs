@@ -4,19 +4,19 @@
 
 The `ssh` command (SSH protocol) is the standard way to connect to Lonestar6 (**`ls6.tacc.utexas.edu`**). SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh username@ls6.tacc.utexas.edu
 ```
 
 The above command will rotate connections across all available login nodes, `login1-login3`, and route your connection to one of them. To connect to a specific login node, use its full domain name:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh username@login2.ls6.tacc.utexas.edu
 ```
 
 To connect with X11 support on Lonestar6 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh -X username@ls6.tacc.utexas.edu
 ```
 
@@ -50,7 +50,7 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 The default login shell for your user account is Bash. To determine your current login shell, execute: 
 
-``` cmd-line
+```cmd-line
 $ echo $SHELL
 ```
 
@@ -70,7 +70,7 @@ Execute the `env` command to see the environment variables that define the way y
 
 Pipe the results of `env` into `grep` to focus on specific environment variables. For example, to see all environment variables that contain the string GIT (in all caps), execute:
 
-``` cmd-line
+```cmd-line
 $ env | grep GIT
 ```
 
@@ -80,7 +80,7 @@ The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important.
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
-``` cmd-line
+```cmd-line
 login1$ module load sanitytool
 login1$ sanitycheck
 ```
@@ -91,21 +91,21 @@ Execute `module help sanitytool` for more information. -->
 
 [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod), a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Lonestar6 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
-``` cmd-line
+```cmd-line
 $ module load intel          # load the default Intel compiler v19.1.14
 $ module load intel/19.1.1   # load a specific version of the Intel compiler</pre>
 ```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
-``` cmd-line
+```cmd-line
 $ module load   netcdf  # defines DDT-related env vars; modifies others
 $ module unload netcdf  # undoes changes made by load</pre>
 ```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and FFTW3 with versions compatible with gcc:
 
-``` cmd-line
+```cmd-line
 $ module load intel  # load default version of Intel compiler
 $ module load fftw3  # load default version of fftw3
 $ module load gcc    # change compiler
@@ -121,7 +121,7 @@ Due to MODULEPATH changes, the following have been reloaded:
 
 On Lonestar6, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
-``` cmd-line
+```cmd-line
 $ module show netcdf   # see what this module does to your environment
 $ env | grep NETCDF    # see env vars that contain the string PAPI
 $ env | grep -i netcdf # case-insensitive search for 'papi' in environment
@@ -129,44 +129,44 @@ $ env | grep -i netcdf # case-insensitive search for 'papi' in environment
 
 To see the modules you currently have loaded:
 
-``` cmd-line
+```cmd-line
 $ module list
 ```
 
 To see all modules that you can load right now because they are compatible with the currently loaded modules:
 
-``` cmd-line
+```cmd-line
 $ module avail
 ```
 
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
-``` cmd-line
+```cmd-line
 $ module spider   # list all modules, even those not available to load</pre>
 ```
 
 To filter your search:
 
-``` cmd-line
+```cmd-line
 $ module spider netcdf             # all modules with names containing 'slep'
 $ module spider netcdf/3.6.3       # additional details on a specific module</pre>
 ```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
 
-``` cmd-line
+```cmd-line
 $ module keyword performance
 ```
 
 You can save a collection of modules as a personal default collection that will load every time you log into Lonestar6. To do so, load the modules you want in your collection, then execute:
 
-``` cmd-line
+```cmd-line
 $ module save    # save the currently loaded collection of modules 
 ```
 
 Two commands make it easy to return to a known, reproducible state:
 
-``` cmd-line
+```cmd-line
 $ module reset   # load the system default collection of modules
 $ module restore # load your personal default collection of modules
 ```
@@ -175,7 +175,7 @@ On TACC systems, the command `module reset` is equivalent to `module purge; modu
 
 Help text is available for both individual modules and the module system itself:
 
-``` cmd-line
+```cmd-line
 $ module help swr     # show help text for software package swr
 $ module help         # show help text for the module system itself</pre>
 ```

@@ -10,13 +10,13 @@ Access Control Lists (ACLs) are a very powerful tool for managing permissions wi
 
 The two important command-line tools for managing ACLs are `setfacl` and `getfacl`. These commands are used to create or change ACLs, and to read the contents of an ACL, respectively. The man pages provide detailed documentation on both these commands. 
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ man setfacl
 ```
 
 and
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ man getfacl
 ```
 
@@ -24,7 +24,7 @@ login1$ man getfacl
 
 Viewing ACLs for a specific file or directory is quite simple, and can be accomplished using the `getfacl` command:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ getfacl <i>myfile</i>
 ```
 
@@ -45,19 +45,19 @@ Note that the command's output is in a specialized format that can also be used 
 
 The `setfacl` command is the simplest way to manage ACLs. The example below modifies (with the -m) option an ACL to add read access for the username "testuser". 
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ setfacl -m u:<i>testuser</i>:r <i>file</i>
 ```
 
 The `-w` and `-x` flags can also be added to give read, write, and execute permissions:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ setfacl -m u:<i>testuser</i>:rwx <i>file</i>
 ```
 
 The `-x` option can be used to remove permissions from the ACL. The following command removes the permissions granted in the previous example:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ setfacl -x u:<i>testuser</i>:rwx <i>file</i>
 ```
 
@@ -66,26 +66,26 @@ login1$ setfacl -x u:<i>testuser</i>:rwx <i>file</i>
 
 You can use a named file, or a pipe with the `getfacl` command, to set complex ACLs or to copy ACLs from one file to another. The following commands save the output of the `getfacl` command to a file named `myfile.acl`, and then reads that ACL to set the permissions on a second file:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ getfacl <i>file</i> > <i>myfile.acl</i>
 login1$ setfacl -M <i>myfile.acl</i> <i>file2</i>
 ```
 
 You can also use the `-R` flag for recursion and/or the wildcard character to set permissions for all files in a given directory tree.  The following command sets permissions using the specification in `myfile.acl` set in the above example on all files in the current directory:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ setfacl -M <i>file.acl</i> *
 ```
 
 This command  recursively sets permissions on all files and subdirectories of the named directory:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ setfacl -R -M <i>file.acl</i> <i>directory</i>/
 ```
 
 There are a large number of possibilities with the use of ACLs, including setting and managing default ACLs. Explore the man pages for more details on all the available options.
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ man getfacl
 login1$ man setfacl
 ```
@@ -94,7 +94,7 @@ login1$ man setfacl
 
 Default ACLs can be set on a directory, and once set, are assigned automatically to all new files created within that directory. Default ACLs are useful when you have a specific and/or complex set of permissions you wish to apply uniformly to all new data in a project directory. Setting default ACLs follows the same format as regular ACLs, with a `d:` prefix in the ACL specification. For example, to assign a default ACL granting user `thomas` full permissions to all NEW data in mydirectory, use the following command:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ setfacl -m d:u:thomas:rwX mydirectory
 ```
 

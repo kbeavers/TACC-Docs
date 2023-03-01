@@ -14,7 +14,7 @@ Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). **Run all serial jobs in the `small` queue.**  Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
 
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -62,7 +62,7 @@ date
 
 This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -114,7 +114,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->
 **Run all OpenMP jobs in the `small` queue.**  
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -171,7 +171,7 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script

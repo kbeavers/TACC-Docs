@@ -72,7 +72,7 @@ Compute nodes should not reference the `$WORK` file system unless it's to stage 
 
 Your job script should also direct the job's output to the local scratch directory:
 
-``` job-script
+```job-script
 # stage executable and data
 cd $SCRATCH
 mkdir testrunA
@@ -109,7 +109,7 @@ If you are close to file quota on either the `$WORK` or `$HOME` file system, you
 Monitor your file system's quotas and usage using the `taccinfo` command. This output displays whenever you log on to a TACC resource.
 {% include "include/tinfo.md" %}
 
-``` { .bash .cmd-line }
+```cmd-line
 ---------------------- Project balances for user <user> ----------------------
 | Name           Avail SUs     Expires | Name           Avail SUs     Expires |
 | Allocation             1             | Alloc                100             |
@@ -155,7 +155,7 @@ These functions instruct the system to modulate your job's I/O activity, thus re
 !!! note
 	These indices are subject to change. See each command's `help` option to ensure correct parameters:
 
-``` { .bash .cmd-line }
+```cmd-line
 c123-456$ set_io_param -h
 ```
 
@@ -170,7 +170,7 @@ First, load the `ooops` module in your job script or `idev` session to deploy OO
 <table border="1">
 <tr><th>Job Script Example</th><th>Interactive Session Example</th></tr>
 <tr><td>
-``` job-script
+```job-script
 #SBATCH -N 1
 #SBATCH -J myjob.%j
 ...
@@ -181,7 +181,7 @@ ibrun myprogram
 
 </td>
 <td width="450" valign="top">
-``` job-script
+```job-script
 login1$ idev -N 1
 ...
 c123-456$ module load ooops
@@ -192,7 +192,7 @@ c123-456$ ibrun myprogram
 		
 To turn off throttling on the `$SCRATCH` file system for a submitted job, run the following command on a login node or within an `idev` session while the job is running:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ set_io_param 0 unlimited
 ```
 
@@ -204,7 +204,7 @@ login1$ set_io_param 0 unlimited
 <th>Interactive Session Example</th></tr>
 <tr>
 <td width="450" valign="top"> 
-	``` job-script
+	```job-script
 	#SBATCH -N 4<br>#SBATCH -n 64<br>#SBATCH -J myjob.%j
 	...
 	module load ooops
@@ -214,7 +214,7 @@ login1$ set_io_param 0 unlimited
 
 </td>
 <td width="450" valign="top">
-	``` job-script
+	```job-script
 	login1$ idev -N 4
 	...
 	c123-456$ module load ooops
@@ -226,7 +226,7 @@ login1$ set_io_param 0 unlimited
 
 To turn off throttling on the `$SCRATCH` file system for a submitted job, you can run the following command (on a login node) after the job is submitted:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ set_io_param_batch [jobid] 0 unlimited
 ```
 
@@ -245,7 +245,7 @@ For jobs that make use of large numbers of Python modules or use local installat
 
 **On Stampede2 and Frontera**: Load the `python_cacher` module in your job script:
 
-``` { .bash .job-script }
+```job-script
 module load python_cacher
 ```
 
@@ -258,7 +258,7 @@ In case `python_cacher` does not work, you can copy your Python/Anaconda/MiniCon
 
 **Stampede2 and Frontera**: To track the full extent of your I/O activity over the course of your job, you can employ another TACC tool, `iomonitor` that will report on `open()` and `stat()` calls during your job's run. Place the following lines in your job submission script after your Slurm commands, to wrap your executable:
 
-``` { .bash .job-script }
+```job-script
 export LD_PRELOAD=/home1/apps/tacc-patches/io_monitor/io_monitor.so:\
 	/home1/apps/tacc-patches/io_monitor/hook.so
 ibrun my_executable

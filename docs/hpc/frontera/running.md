@@ -30,7 +30,7 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
 * A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
-``` cmd-line
+```cmd-line
 $ module load launcher
 $ module help launcher
 ```
@@ -95,7 +95,7 @@ While some workflows, tools, and applications hide the details, there are three 
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Frontera queues:
 
-``` cmd-line
+```cmd-line
 login1$ sbatch myjobscript
 ```
 
@@ -144,13 +144,13 @@ TACC's own `idev` utility is the best way to begin an interactive session on one
 
 To launch a thirty-minute session on a single node in the `development` queue, simply execute:
 
-``` cmd-line
+```cmd-line
 login1$ idev
 ```
 
 You'll then see output that includes the following excerpts:
 
-``` cmd-line
+```cmd-line
 ...
 -----------------------------------------------------------------
 		Welcome to the Frontera Supercomputer          
@@ -171,13 +171,13 @@ The `job status` messages indicate that your interactive session is waiting in t
 
 For command-line options and other information, execute `idev --help`. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
-``` cmd-line
+```cmd-line
 login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
 ```
 
 You can also launch an interactive session with Slurm's srun command, though there's no clear reason to prefer srun to idev. A typical launch line would look like this:
 
-``` cmd-line
+```cmd-line
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
 ```
 
@@ -190,7 +190,7 @@ If you have a batch job or interactive session running on a compute node, you "o
 There are many ways to determine the nodes on which you are running a job, including feedback messages following your `sbatch` submission, the compute node command prompt in an `idev` session, and the `squeue` or `showq` utilities. The sequence of identifying your compute node then connecting to it would look like this:
 
 
-``` cmd-line
+```cmd-line
 login1$ squeue -u bjones
  JOBID       PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 858811     development idv46796   bjones  R       0:39      1 c448-004
@@ -204,13 +204,13 @@ C448-004$
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-``` job-script
+```job-script
 #SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
 ```
 
 Instead, use the following directive:
 
-``` job-script
+```job-script
 #SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
 ```
 

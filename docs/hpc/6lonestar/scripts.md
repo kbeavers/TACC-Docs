@@ -9,7 +9,7 @@
 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). Consult the <a href="https://portal.tacc.utexas.edu/software/launcher">Launcher at TACC</a> documentation to run multiple serial executables at one time.
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -60,7 +60,7 @@ date
 
 This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -112,7 +112,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -176,7 +176,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 **Run all OpenMP jobs in the `normal` queue.**  
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script

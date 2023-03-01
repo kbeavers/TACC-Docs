@@ -7,7 +7,7 @@ Use TAU to gain insight into the performance and behaviour of your code: what ro
 
 TAU is installed on all TACC's HPC systems and is controlled through the [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod)/module system.  To set up and examine your TAU environment:
 
-``` cmd-line
+```cmd-line
 login1$ module load tau
 login1$ env | grep TAU	#display package-specific environment variables
 login1$ module help tau	#basic operations & features
@@ -23,7 +23,7 @@ login1$ module help tau	#basic operations & features
 
 To use TAU, you need to recompile your code using some TAU compiler wrappers (scripts). Behind the scenes these scripts do a source-to-source instrumentation phase, followed by a regular compilation. The TAU compilation scripts are:
 
-``` cmd-line
+```cmd-line
 login1$ tau_f90.sh
 login1$ tau_cc.sh
 login1$ tau_cxx.sh
@@ -31,7 +31,7 @@ login1$ tau_cxx.sh
 
 These compiler wrappers can be used directly on a command line or within a makefile:
 
-``` cmd-line
+```cmd-line
 login1$ tau_cc.sh -o myprogram myprogramfile.c
 ```
 
@@ -72,7 +72,7 @@ Environment Variable | Description
 
 Set up your environment in a batch script or `idev` session: 
 
-``` cmd-line
+```cmd-line
 
 login1$ idev
 ...
@@ -88,7 +88,7 @@ c455-073[knl]$ ibrun myprogram
 </pre>
 ```
 
-``` { .bash .job-script }
+```job-script
 &#35;SBATCH directives
 ...
 export PROFILEDIR=mytaudir/profiles
@@ -109,7 +109,7 @@ After your program runs you can process TAU's output to do two things: view stat
 
 * Display global statistics with TAU's 3D profile browser, ParaProf ([Figure 1.](#figure1)):
 
-	``` cmd-line
+	```cmd-line
 	xterm$ paraprof ${PROFILEDIR}
 	```
 
@@ -122,7 +122,7 @@ After your program runs you can process TAU's output to do two things: view stat
 
 	1. First, generate the trace data: 
 
-		``` cmd-line
+		```cmd-line
 		login1$ cd ${TRACEDIR}									# change to the directory containing trace files
 		login1$ rm -f tau.trc tau.edf							# remove any previous output files
 		login1$ tau_treemerge.pl									# merge all the trace files into one directory	
@@ -131,7 +131,7 @@ After your program runs you can process TAU's output to do two things: view stat
 
 	1. then visualize that data using another TAU package, Jumpshot ([Figure 2.](#figure2)): 
 
-		``` cmd-line
+		```cmd-line
 		xterm$ jumpshot yourprogram.slog2
 		```
 

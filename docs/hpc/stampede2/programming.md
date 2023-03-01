@@ -10,7 +10,7 @@ Programming for performance is a broad and rich topic. While there are no shortc
 
 Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
 
-``` cmd-line
+```cmd-line
 perf stat ./a.out    # report basic performance stats for a.out
 time ./a.out         # report the time required to execute a.out
 time ibrun ./a.out   # time an MPI code
@@ -113,7 +113,7 @@ By design, any application can run in any memory and cluster mode, and applicati
 
 When running in flat-quadrant mode, launch your code with [simple `numactl` settings](#example) to specify whether memory allocations occur in DDR or MCDRAM. See [TACC Training Materials](/training) for additional information.
 
-``` job-script
+```job-script
 numactl       --membind=0    ./a.out    # launch a.out (non-MPI); use DDR (default)
 ibrun numactl --membind=0    ./a.out    # launch a.out (MPI-based); use DDR (default)
 

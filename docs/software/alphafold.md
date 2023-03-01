@@ -43,7 +43,7 @@ Next, prepare a batch job submission script for running AlphaFold. Two different
 
 See the AlphaFold documentation for more information on the speed / quality tradeoff of each preset. The example templates each need to be customized before they can be used. Copy the desired template to your `$WORK` or `$SCRATCH` space along with the input fasta file. After necessary customizations, a batch script for running the full databases on Frontera may contain:
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 # -----------------------------------------------------------------
 #SBATCH -J my_af2_job                 # Job name
@@ -105,7 +105,7 @@ To perform 3-D protein structure prediction with AlphaFold for many protein sequ
 
 Fasta formatted sequences should be uniquely identifiable either by giving each a unique name or by putting each sequence in its own uniquely-named directory. The simplest way to achieve this is to have one sub directory (e.g. `$SCRATCH/inputs/`) with all uniquely named fasta sequences in it:
 
-``` cmd-line
+```cmd-line
 login1$ ls $SCRATCH/inputs/
 seq1.fasta
 seq2.fasta
@@ -128,7 +128,7 @@ NOTE: Due to the way `launcher_gpu` distributes tasks to individual GPUs, the fu
 
 Prepare a batch job submission script by merging the AlphaFold template with a launcher template. Adjust the number of nodes, number of tasks, and the wall clock time appropriately for the number of jobs in the `jobfile`:
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 # -----------------------------------------------------------------
 #SBATCH -J my_af2_launcher_job          # Job name
