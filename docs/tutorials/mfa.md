@@ -86,8 +86,8 @@ Begin by pressing the "Use Your Preferred Authenticator App to Pair" button on t
 
 A typical login session will look something like this:
 
-<pre class="cmd-line">
-localhost$ <b>ssh bjones@maverick2.tacc.utexas.edu</b>
+``` cmd-line
+localhost$ ssh bjones@maverick2.tacc.utexas.edu
 To access the system:
 
 1) If not using ssh-keys, please enter your TACC password at the password prompt
@@ -102,7 +102,8 @@ Last login: Mon Nov  1 18:42:37 2021 from 76.167.191.93
 ------------------------------------------------------------------------------
 &nbsp;...
 
-login1.maverick2(399)$ </pre>
+login1.maverick2(399)$ 
+```
 
 
 After typing in your password, you'll be prompted for "**`TACC Token Code:`**".  At this point, turn to your mobile device/phone.  

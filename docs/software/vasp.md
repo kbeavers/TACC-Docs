@@ -18,13 +18,16 @@ The latest stable release of VASP is installed on [Stampede2](../../hpc/stampede
 
 Use the "[`module`](https://lmod.readthedocs.io/en/latest/)" commands to explore other VASP installations, for example: 
 
-<pre class="cmd-line">
-login1$ <b>module spider vasp</b>
-login1$ <b>module spider vasp/6.3.0</b></pre>
+``` cmd-line
+login1$ module spider vasp
+login1$ module spider vasp/6.3.0
+```
 
 Then, either interactively or via a batch script, load the appropriate module: 
 
-<pre class="cmd-line">login1$ <b>module load vasp/6.3.0</b></pre>
+``` cmd-line
+login1$ module load vasp/6.3.0
+```
 
 ## [Running VASP Jobs](#running-interactive) { #running-interactive }
 

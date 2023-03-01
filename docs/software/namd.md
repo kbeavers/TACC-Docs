@@ -13,7 +13,9 @@ NAMD is currently installed on TACC's [Frontera][FRONTERAUG], [Stampede2][STAMPE
 
 The recommended and latest installed NAMD version is 2.14 on Frontera. Users are welcome to install different NAMD versions in their own directories.
 
-<pre class="cmd-line">login1$ module load namd/2.14</pre>
+``` cmd-line
+login1$ module load namd/2.14
+```
 
 ### [Job Scripts: NAMD on Frontera](#running-frontera-jobscript) { #running-frontera-jobscript }
 
@@ -162,8 +164,9 @@ ibrun namd2_skx +ppn 47 \
 
 NAMD ver2.14 is installed on Lonestar6 as this version provides best performance. Feel free to install your own newer version locally. 
 
-<pre class="cmd-line">
-login1$ <b>module load namd/2.14</b></pre>
+``` cmd-line
+login1$ module load namd/2.14
+```
 
 ### [Job Script: NAMD on Lonestar6](#running-lonestar6-jobscript) { #running-lonestar6-jobscript }
 

@@ -33,7 +33,9 @@ ${LAUNCHER_DIR}/paramrun
 
 Then submit the job script:
 
-<pre class="cmd-line">login1$ <b>sbatch runserial.bash</b></pre>
+``` cmd-line
+login1$ sbatch runserial.bash
+```
 
 This job will run 32 tasks in parallel (`-n 32`) on 1 compute node (`-N 1`).  
 
@@ -141,7 +143,10 @@ ${LAUNCHER_DIR}/paramrun
 ```
 
 Then submit the job script:
-<pre class="cmd-line">login1$ <b>sbatch rungpu.bash</b></pre>
+
+``` cmd-line
+login1$ sbatch rungpu.bash
+```
 
 This job will run 16 tasks in parallel (`-n 16`) on 4 GPU nodes (`-N 4`).  
 

@@ -19,13 +19,15 @@ For all ABAQUS technical questions, contact the customer care for Dassault Syste
 
 **TACC has a limited number of ABAQUS license tokens available.** Please submit a support ticket requesting the license server name.  In this document we'll refer to the license server as <span style="white-space: nowrap;">`port-number@license-server`</span>. In order to use this license server, the ABAQUS users should add the following line to their job script: 
 
-<pre class="cmd-line">$ <b>export ABAQUSLM_LICENSE_FILE=port-number@license-server</b></pre>
+``` cmd-line
+$ export ABAQUSLM_LICENSE_FILE=port-number@license-server
+```
 
 Setting this environment variable on the login node before submitting the job will also work.
 
 Users can also set the information about the license server by setting the value of `abaquslm_license_file` in the `abaqus_v6.env` file. For example: 
 
-``` { .bash .job-script }
+``` .job-script
 abaquslm_license_file="port-number@license-server"
 ```
 
@@ -37,7 +39,9 @@ Since the number of ABAQUS licenses are linited, we encourage you to bring your 
 
 The ABAQUS 2019 and 2020 executables are available using the TACC's module system. After users are granted access to ABAQUS, they will be able to load the abaqus module.
 
-<pre class="cmd-line">login1$ <b>module load abaqus</b></pre>
+``` cmd-line
+login1$ module load abaqus
+```
 
 ## [Running ABAQUS](#running) { #running }
 
@@ -53,9 +57,10 @@ The ABAQUS 2019 and 2020 executables are available using the TACC's module syste
 
 On a compute node obtained through an `idev` session, the users can run the following command to test their access to ABAQUS and also check the available number of license tokens:
 
-<pre class="cmd-line">
-ml abaqus 
-$TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt</pre>
+``` cmd-line
+c123-456$ ml abaqus 
+c123-456$ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt
+```
 
 ### [Run in Batch Mode](#running-batch) { #running-batch }
 
@@ -65,16 +70,19 @@ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt</pre>
 
 1. To run a test job, run the following commands on a compute node after replacing `myinputfile` with the actual name of your input file:
 
-	<pre class="cmd-line">
+	``` cmd-line
 	$ unset SLURM_GTIDS
 	$ ml abaqus
-	$ $TACC_ABAQUS_BIN/abaqus input=myinputfile job=test interactive</pre>
+	$ $TACC_ABAQUS_BIN/abaqus input=myinputfile job=test interactive
+	```
 
 	This command will block until completion or give an error. Check the log file (`jobname.log`). If no error, it should say the job checked out licenses and completed successfully.
 
 1. Compile user modules on the login nodes:
 
-	<pre class="cmd-line">login1$ <b>$TACC_ABAQUS_BIN/abaqus make library=<sourcefile></b></pre>
+	``` cmd-line
+	login1$ <b>$TACC_ABAQUS_BIN/abaqus make library=<sourcefile></b>
+	```
 
 1. Place resulting files (`sourcefile-basename.o`, `sourcefile-basename.so`) into a directory: `/path-to-the-directory/abaqus_libs`
 
@@ -84,9 +92,10 @@ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt</pre>
 
 1. In order to debug the ABAQUS errors, users might find it useful to run the ABAQUS commands with the `verbose` option. Set verbose to "3" to retrieve all run details:
 
-	<pre class="cmd-line">
+	``` cmd-line
 	c123-456$ <b>$TACC_ABAQUS_BIN/abaqus cpus=1 input=myinputfile job=test2 \
-		interactive scratch="." verbose=3</b></pre>
+		interactive scratch="." verbose=3</b>
+	```
 
 ## [Job Script](#jobscript) { #jobscript }
 

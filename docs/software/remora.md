@@ -13,10 +13,11 @@ Remora is installed on all TACC compute resources. You can use remora interative
 ### [Interactively](#running-interactively) { #running-interactively }
 
 <!-- get an copute node -->
-<pre class="cmd-line">
-login1$ <b>idev</b>
-c123-456$ <b>module load remora</b>
-c123-456$ <b>remora myserialcode <i>args</i></b></pre>
+``` cmd-line
+login1$ idev
+c123-456$ module load remora
+c123-456$ remora myserialcode args
+```
 
 ### [Remora in Job Scripts](#running-batch) { #running-batch }
 

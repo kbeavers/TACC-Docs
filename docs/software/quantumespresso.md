@@ -9,14 +9,16 @@ Quantum Espresso (QE) is an integrated suite of open-source codes for electronic
 
 The latest QE stable release is installed on TACC's [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG] and [Frontera][FRONTERAUG] systems. Use `module` commands to load the latest installed version by default, and to list all installed versions.  
 
-<pre class="cmd-line">
-$ <b>module load qe</b>
-$ <b>module spider qe</b></pre>
+``` cmd-line
+$ module load qe
+$ module spider qe
+```
 
 You can find extensive documentation for each QE component in the respective Doc directory, for example:
 
-<pre class="cmd-line">
-$ <b>cd $TACC_QE_DIR/PW/Doc</b>		# explore PWscf documentation</pre>
+``` cmd-line
+$ cd $TACC_QE_DIR/PW/Doc		# explore PWscf documentation
+```
 
 ## [Running Quantum Espresso Jobs](#running) { #running }
 

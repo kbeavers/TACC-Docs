@@ -9,13 +9,16 @@ LAMMPS is installed on the [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG] an
 
 As of this date, the default versions are 9Jan20 (Stampede2), 20Sep21 (Lonestar6) and 15Apr20 (Frontera). Users are welcome to install different versions of LAMMPS in their own directories (see [Building Third Party Software][STAMPEDE2UGBUILDING] in the Stampede2 User Guide). <!-- Sample build scripts for each system can be found in the `/work/apps/lammps/shared/` directory. -->
 
-<pre class="cmd-line">
-$ <b>module spider lammps</b>		# list installed LAMMPS versions
-$ <b>module load lammps</b>			# load default version</pre>
+``` cmd-line
+$ module spider lammps		# list installed LAMMPS versions
+$ module load lammps			# load default version
+```
 
 The LAMMPS module defines a set of environment variables for the locations of the LAMMPS home, binaries and more with the prefix `TACC_LAMMPS`. Use the `env` command to display the variables:
 
-<pre class="cmd-line">$ <b>env | grep "TACC_LAMMPS"</b></pre>
+``` cmd-line
+$ env | grep "TACC_LAMMPS"
+```
 
 Note that each installation's executable name differs. The name of the executable is in the format of `lmp_machine`, where `machine` can be either `stampede`, `lonestar`, or `frontera` depending on the system. The Stampede2 versions 9Jan20 and 16Mar18, use `lmp_knl` and must be submitted to the Stampede2's KNL (not SKX) queues. The LAMMPS GPU executables, `lmp_gpu`, can only be submitted to Frontera's GPU queues.
 
@@ -85,15 +88,18 @@ ibrun lmp_knl -in lammps_input
 
 You can also run LAMMPS within an [`idev`][TACCIDEV] session as demonstrated below:
 
-<pre class="cmd-line">
-login1$ <b>idev</b>
+``` cmd-line
+login1$ idev
 ...
-c123-456$ <b>module load lammps </b>
-c123-456$ <b>lmp_stampede &lt; lammps_input</b></pre>
+c123-456$ module load lammps
+c123-456$ lmp_stampede &lt; lammps_input
+```
 
 Use the `-h` option to print out a list of all supported functions and packages: 
 
-<pre class="cmd-line">c123-456$ <b>lmp_stampede -h</b></pre>
+``` cmd-line
+c123-456$ lmp_stampede -h
+```
 
 ## [References](#refs) { #refs } 
 

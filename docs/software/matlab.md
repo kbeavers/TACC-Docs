@@ -15,9 +15,16 @@ MATLAB is normally launched with the MATLAB Desktop UI and used in interactive m
 
 
 MATLAB is managed under modules on the TACC resources. Before you launch MATLAB load the MATLAB module with the following command:
-<pre class="cmd-line">login1$ <b>module load matlab</b></pre>
+
+``` cmd-line
+login1$ module load matlab
+```
+
 You can always get the MATLAB help information by typing the following module help command.
-<pre class="cmd-line">login1$ <b>module help matlab</b></pre>
+
+``` cmd-line
+login1$ module help matlab
+```
 
 The following figure shows how MATLAB is launched inside the VNC session.
 

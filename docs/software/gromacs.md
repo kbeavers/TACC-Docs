@@ -8,11 +8,15 @@
 
 GROMACS is currently installed on TACC's [Stampede2][STAMPEDE2UG], [Frontera][FRONTERAUG], and [Lonestar6][LONESTAR6UG] systems. GROMACS is managed under the [Modules][TACCMODULES] system on TACC resources. To run simulations, simply load the module with the following command:
 
-<pre class="cmd-line">login1$ <b>module load gromacs</b></pre>
+``` cmd-line
+login1$ module load gromacs
+```
 
 As of this date, the GROMACS versions are 2022.1 on Stampede2, 2019.6 on Frontera, and 2021.3 on Lonestar6. Users are welcome to install different versions of GROMACS in their own directories. See [Building Third Party Software][STAMPEDE2UGBUILDING] in the Stampede2 User Guide. The module file defines the environment variables listed below. Learn more from the module's help file:
 
-<pre class="cmd-line">login1$ <b>module help gromacs</b></pre>
+``` cmd-line
+login1$ module help gromacs
+```
 
 ### [Table 1. GROMACS Environment Variables](#table1) { #table1 }
 
@@ -42,13 +46,17 @@ On Frontera and Lonestar6, you may use `gmx_mpi_gpu` instead of `gmx_mpi` to run
 
 You can also compile and link your own source code with the GROMACS libraries:
 
-<pre class="cmd-line">login1$ <b>icc -I$TACC_GROMACS_INC test.c -L$TACC_GROMACS_LIB –lgromacs</b></pre>
+``` cmd-line
+login1$ icc -I$TACC_GROMACS_INC test.c -L$TACC_GROMACS_LIB –lgromacs
+```
 
 ### [Running GROMACS in Batch Mode](#running-batch) { #running-sbatch }
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Stampede2 queues:
 
-<pre class="cmd-line"> login1$ <b>sbatch myjobscript</b></pre>
+``` cmd-line
+login1$ sbatch myjobscript
+```
 
 Here `myjobscript` is the name of a text file containing `#SBATCH` directives and shell commands that describe the particulars of the job you are submitting. 
 

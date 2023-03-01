@@ -37,15 +37,21 @@ ANSYS can be launched with the ANSYS GUI used in interactive mode. Use the [TACC
 
 ANSYS is managed under [Lmod](https://lmod.readthedocs.io/en/latest/) Environmental Module System on TACC resources. Within the VNC session, load the ANSYS module with the following command:
 
-<pre class="cmd-line">$ <b>module load ansys</b></pre>
+``` cmd-line
+$ module load ansys
+```
 
 You can always get the help information using the module's &quot;<b>`help`</b>&quot; command:
 
-<pre class="cmd-line">$ <b>module help ansys</b></pre>
+``` cmd-line
+$ module help ansys
+```
 
 Launch the ANSYS GUI within the VNC session:
 
-<pre class="cmd-line">$ <b>/home1/apps/ANSYS/2021R2/v212/ansys/bin/launcher212</b></pre>
+``` cmd-line
+$ /home1/apps/ANSYS/2021R2/v212/ansys/bin/launcher212
+```
 
 <figure id="figure1">>
 	<img alt="ANSYS1" src="../../../imgs/software/ansys-1.png"/>
@@ -56,7 +62,7 @@ Launch the ANSYS GUI within the VNC session:
 
 You can also submit your ANSYS job to the batch nodes (compute nodes) on TACC resources. To do so, first make sure that the ANSYS module has been loaded, and then launch your ANSYS programs as shown in the sample Frontera job script below.
 
-``` { .bash .job-script }
+``` job-script
 #!/bin/bash
 #SBATCH -J ansysjob              # job name
 #SBATCH -e ansysjob.%j.err       # error file name 
@@ -68,7 +74,7 @@ You can also submit your ANSYS job to the batch nodes (compute nodes) on TACC re
 #SBATCH -p normal                # designate queue 
 
 module load ansys
-# <span style="color:blue;font-style:bold">Your-ANSYS-COMMAND-HERE</span>
+# Your-ANSYS-COMMAND-HERE
 # Define your working directory
 MY_JOB_DIR = /scratch1/01234/joe/Ansys_test
 
