@@ -56,19 +56,19 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 The `ssh` command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh username@frontera.tacc.utexas.edu
 ```
 
 The above command will rotate connections across all available login nodes, `login1-login4`, and route your connection to one of them. To connect to a specific login node, use its full domain name:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh username@login2.frontera.tacc.utexas.edu
 ```
 
 To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh -X username@frontera.tacc.utexas.edu
 ```
 
@@ -90,7 +90,7 @@ Regardless of your research workflow, <b>you’ll need to master Linux basics</b
 
 The default login shell for your user account is Bash. To determine your current login shell, execute: 
 
-``` cmd-line
+```cmd-line
 $ echo $SHELL
 ```
 
@@ -110,7 +110,7 @@ Execute the `env` command to see the environment variables that define the way y
 
 Pipe the results of `env` into `grep` to focus on specific environment variables. For example, to see all environment variables that contain the string GIT (in all caps), execute:
 
-``` cmd-line
+```cmd-line
 $ env | grep GIT
 ```
 
@@ -120,7 +120,7 @@ The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important.
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
-``` cmd-line
+```cmd-line
 login1$ module load sanitytool
 login1$ sanitycheck
 ```
@@ -131,21 +131,21 @@ Execute `module help sanitytool` for more information.
 
 [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod), a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to conduct your research. This is especially important on a system like Frontera that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
-``` cmd-line
+```cmd-line
 $ module load intel          # load the default Intel compiler v19.0.4
 $ module load intel/18.0.5   # load a specific version of the Intel compiler
 ```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
-``` cmd-line
+```cmd-line
 $ module load   ddt  # defines DDT-related env vars; modifies others
 $ module unload ddt  # undoes changes made by load
 ```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and FFTW3 with versions compatible with gcc:
 
-``` cmd-line
+```cmd-line
 $ module load intel  # load default version of Intel compiler
 $ module load fftw3  # load default version of fftw3
 $ module load gcc    # change compiler
@@ -161,7 +161,7 @@ Due to MODULEPATH changes, the following have been reloaded:
 
 On Frontera, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
-``` cmd-line
+```cmd-line
 $ module show papi   # see what this module does to your environment
 $ env | grep PAPI    # see env vars that contain the string PAPI
 $ env | grep -i papi # case-insensitive search for 'papi' in environment
@@ -169,44 +169,44 @@ $ env | grep -i papi # case-insensitive search for 'papi' in environment
 
 To see the modules you currently have loaded:
 
-``` cmd-line
+```cmd-line
 $ module list
 ```
 
 To see all modules that you can load right now because they are compatible with the currently loaded modules:
 
-``` cmd-line
+```cmd-line
 $ module avail
 ```
 
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
-``` cmd-line
+```cmd-line
 $ module spider   # list all modules, even those not available to load
 ```
 
 To filter your search:
 
-``` cmd-line
+```cmd-line
 $ module spider slep             # all modules with names containing 'slep'
 $ module spider sundials/2.5.1   # additional details on a specific module
 ```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
 
-``` cmd-line
+```cmd-line
 $ module keyword performance
 ```
 
 You can save a collection of modules as a personal default collection that will load every time you log into Frontera. To do so, load the modules you want in your collection, then execute:
 
-``` cmd-line
+```cmd-line
 $ module save    # save the currently loaded collection of modules 
 ```
 
 Two commands make it easy to return to a known, reproducible state:
 
-``` cmd-line
+```cmd-line
 $ module reset   # load the system default collection of modules
 $ module restore # load your personal default collection of modules
 ```
@@ -215,7 +215,7 @@ On TACC systems, the command `module reset` is equivalent to `module purge; modu
 
 Help text is available for both individual modules and the module system itself:
 
-``` cmd-line
+```cmd-line
 $ module help swr     # show help text for software package swr
 $ module help         # show help text for the module system itself
 ```
@@ -384,13 +384,13 @@ While the `$WORK` file system has hundreds of OSTs, Frontera's scratch system ha
 
 * **Transferring to `$WORK`**: A good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 
-	``` cmd-line
+	```cmd-line
 	$ lfs setstripe -c 30 $PWD
 	```
 
 * **Transferring to Frontera's `$SCRATCH` file system**: The rule of thumb still applies, but limit the stripe count to no more than 16 since Frontera's `$SCRATCH` file system is served by far fewer OSTs. 
 
-	``` cmd-line
+	```cmd-line
 	$ lfs setstripe -c 16 $PWD
 	```
 
@@ -400,7 +400,7 @@ Remember that it's not possible to change the striping on a file that already ex
 
 You can check the stripe count of a file using the `lfs getstripe` command:
 
-``` cmd-line
+```cmd-line
 $ lfs getstripe myfile
 ```
 
@@ -436,58 +436,58 @@ You can transfer files between Frontera and Linux-based systems using either [`s
 
 Data transfer from any Linux system can be accomplished using the `scp` utility to copy data to and from the login node. A file can be copied from your local system to the remote server by using the command:
 
-``` cmd-line
+```cmd-line
 localhost% scp filename \
 TACC-username@frontera.tacc.utexas.edu:/path/to/project/directory
 ```
 
 Consult the `scp` man pages for more information:
 
-``` cmd-line
+```cmd-line
 login1$ man scp
 ```
 
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Frontera username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Frontera `$HOME` would look like this:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@frontera.tacc.utexas.edu:  # note colon after net address
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Frontera:
 
-``` cmd-line
+```cmd-line
 localhost$ scp &#42;.txt bjones@frontera.tacc.utexas.edu:/work/01234/bjones/frontera
 ```
 
 To delay wildcard expansion until reaching Frontera, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Frontera to the current directory on your local system:
 
-``` cmd-line
+```cmd-line
 localhost$ scp bjones@frontera.tacc.utexas.edu:/work/01234/bjones/frontera/\*.txt .
 ```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-``` cmd-line
+```cmd-line
 localhost$ destdir="/work/01234/bjones/frontera/data"
 localhost$ scp ./myfile bjones@frontera.tacc.utexas.edu:$destdir
 ```
 
 You can also issue `scp` commands on your local client that use Frontera environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Frontera:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@frontera.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
 
 Avoid using `scp` for recursive transfers of directories that contain nested directories of many small files:
 
-``` cmd-line
+```cmd-line
 localhost$ scp -r ./mydata     bjones@frontera.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 ```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-``` cmd-line
+```cmd-line
 localhost$ tar cvf ./mydata.tar mydata                                  # create archive
 localhost$ scp     ./mydata.tar bjones@frontera.tacc.utexas.edu:\$WORK  # transfer archive
 ```
@@ -496,7 +496,7 @@ localhost$ scp     ./mydata.tar bjones@frontera.tacc.utexas.edu:\$WORK  # transf
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-``` cmd-line
+```cmd-line
 localhost$ rsync       mybigfile bjones@frontera.tacc.utexas.edu:\$WORK/data
 localhost$ rsync -avtr mybigdir  bjones@frontera.tacc.utexas.edu:\$WORK/data
 ```
@@ -507,21 +507,21 @@ See [Good Conduct](../conduct) for additional important advice about striping th
 
 The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
 
-``` cmd-line
+```cmd-line
 login1$ rsync myfile.c \
 TACC-username@frontera.tacc.utexas.edu:/data/01698/TACC-username/data
 ```
 
 An entire directory can be transferred from source to destination by using `rsync` as well. For directory transfers the options `-avtr` will transfer the files recursively (`-r` option) along with the modification times (`-t` option) and in the archive mode (`-a` option) to preserve symbolic links, devices, attributes, permissions, ownerships, etc. The `-v` option (verbose) increases the amount of information displayed during any transfer. The following example demonstrates the usage of the `-avtr` options for transferring a directory named `gauss` from the present working directory on Stampede to a directory named `data` in the $WORK file system on Frontera.
 
-``` cmd-line
+```cmd-line
 login1$ rsync -avtr ./gauss \
 TACC-username@frontera.tacc.utexas.edu:/data/01698/TACC-username/data
 ```
 
 For more `rsync` options and command details, run the command `rsync -h` or:
 
-``` cmd-line
+```cmd-line
 login1$ man rsync
 ```
 
@@ -539,7 +539,7 @@ The primary purpose of your job script is to launch your research application. H
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 	
-``` job-script 
+```job-script 
 myprogram                   			# executable in a directory listed in $PATH
 $SCRATCH/apps/myprov/myprogram 			# explicit full path to executable
 ./myprogram                 			# executable in current directory
@@ -550,7 +550,7 @@ $SCRATCH/apps/myprov/myprogram 			# explicit full path to executable
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
-``` job-script
+```job-script
 export OMP_NUM_THREADS=56   	# 56 total OpenMP threads (1 per CLX core)
 ./myprogram
 ```
@@ -559,7 +559,7 @@ export OMP_NUM_THREADS=56   	# 56 total OpenMP threads (1 per CLX core)
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Frontera-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
-``` job-script
+```job-script
 #SBATCH -N 5				
 #SBATCH -n 200
 ibrun ./myprogram				# ibrun uses the $SBATCH directives to properly allocate nodes and tasks
@@ -567,7 +567,7 @@ ibrun ./myprogram				# ibrun uses the $SBATCH directives to properly allocate no
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
-``` cmd-line
+```cmd-line
 login1$ idev -N 2 -n 100 				
 c123-456$ ibrun ./myprogram	   # ibrun uses idev's arguments to properly allocate nodes and tasks
 ```
@@ -578,7 +578,7 @@ c123-456$ ibrun ./myprogram	   # ibrun uses idev's arguments to properly allocat
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
-``` job-script 
+```job-script 
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
 ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
 ```
@@ -594,7 +594,7 @@ TACC's `launcher` utility provides an easy way to launch more than one serial ap
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
-``` job-script
+```job-script
 module load git
 module list
 ./preprocess.sh
@@ -613,7 +613,7 @@ To run more than one MPI application simultaneously in the same job, you need to
 
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=112 total MPI tasks, Slurm will generate a hostfile with 112 entries (28 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute `ibrun --help` for more information. Don't forget the ampersands ("&") to launch the jobs in the background, and the `wait` command to pause the script until the background tasks complete:
 
-``` job-script 
+```job-script 
 ibrun -n 56 -o  0 task_affinity ./myprogram input1 &    # 56 tasks; offset by  0 entries in hostfile.
 ibrun -n 56 -o 56 task_affinity ./myprogram input2 &    # 56 tasks; offset by 56 entries in hostfile.
 wait                                                    # Required; else script will exit immediately.
@@ -649,21 +649,21 @@ Specifically, the proc-id mapping to the cores for CLX is:
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on these systems, the places would be:
  
-``` job-script 
+```job-script 
 CLX socket 0:  export OMP_PLACES="{0,56},{2,58},{4,60}"
 CLX socket 1:  export OMP_PLACES="{1,57},{3,59},{5,61}"
 ```
  
 Interval notation can be used to express a sequences of places.  The syntax is: {proc-ids},N,S, where N is the number of places to create from the base place ({proc-ids}) with a stride of S.  Hence the above sequences could have been written:
  
-``` job-script 
+```job-script 
 CLX socket 0:  export OMP_PLACES="{0,56},3,2"
 CLX socket 1:  export OMP_PLACES="{1,57},3,2"
 ```
  
 In the example below two OpenMP programs are executed on a single node, each using 28 threads. The first program uses the cores on socket 0.  It is put in the background, using the ampersand (&) character at the end of the line, so that the job script execution can continue to the second OpenMP program execution, which uses the cores on socket 1.  It, too, is put in the background, and the job execution waits for both to finish with the wait command at the end.
  
-``` job-script 
+```job-script 
 export OMP_NUM_THREADS=28
 env OMP_PLACES="{0,56},28,2" ./omp.exe &   #execution on socket 0 cores
 env OMP_PLACES="{1,57},28,2" ./omp.exe &   #execution on socket 1 cores
@@ -702,7 +702,7 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
 * A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
-``` cmd-line
+```cmd-line
 $ module load launcher
 $ module help launcher
 ```
@@ -767,7 +767,7 @@ While some workflows, tools, and applications hide the details, there are three 
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Frontera queues:
 
-``` cmd-line
+```cmd-line
 login1$ sbatch myjobscript
 ```
 
@@ -816,13 +816,13 @@ TACC's own `idev` utility is the best way to begin an interactive session on one
 
 To launch a thirty-minute session on a single node in the `development` queue, simply execute:
 
-``` cmd-line
+```cmd-line
 login1$ idev
 ```
 
 You'll then see output that includes the following excerpts:
 
-``` cmd-line
+```cmd-line
 ...
 -----------------------------------------------------------------
 		Welcome to the Frontera Supercomputer          
@@ -843,13 +843,13 @@ The `job status` messages indicate that your interactive session is waiting in t
 
 For command-line options and other information, execute `idev --help`. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
-``` cmd-line
+```cmd-line
 login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
 ```
 
 You can also launch an interactive session with Slurm's srun command, though there's no clear reason to prefer srun to idev. A typical launch line would look like this:
 
-``` cmd-line
+```cmd-line
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
 ```
 
@@ -862,7 +862,7 @@ If you have a batch job or interactive session running on a compute node, you "o
 There are many ways to determine the nodes on which you are running a job, including feedback messages following your `sbatch` submission, the compute node command prompt in an `idev` session, and the `squeue` or `showq` utilities. The sequence of identifying your compute node then connecting to it would look like this:
 
 
-``` cmd-line
+```cmd-line
 login1$ squeue -u bjones
  JOBID       PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 858811     development idv46796   bjones  R       0:39      1 c448-004
@@ -876,13 +876,13 @@ C448-004$
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-``` job-script
+```job-script
 #SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
 ```
 
 Instead, use the following directive:
 
-``` job-script
+```job-script
 #SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
 ```
 
@@ -907,7 +907,7 @@ Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm 
 Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). **Run all serial jobs in the `small` queue.**  Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
 
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -955,7 +955,7 @@ date
 
 This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1007,7 +1007,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->
 **Run all OpenMP jobs in the `small` queue.**  
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -1064,7 +1064,7 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-``` job-script
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -1143,13 +1143,13 @@ To display resource limits for the Frontera queues, execute: `qlimits`. The resu
 
 Slurm's `sinfo` command allows you to monitor the status of the queues. If you execute `sinfo` without arguments, you'll see a list of every node in the system together with its status. To skip the node list and produce a tight, alphabetized summary of the available queues and their status, execute:
 
-``` cmd-line
+```cmd-line
 login1$ sinfo -S+P -o "%18P %8a %20F"    # compact summary of queue status
 ```
 
 An excerpt from this command's output might look like this:
 
-``` cmd-line
+```cmd-line
 login1$ sinfo -S+P -o "%18P %8a %20F"
 PARTITION          AVAIL    NODES(A/I/O/T)
 debug              up       1757/4419/776/6952
@@ -1166,7 +1166,7 @@ The `AVAIL` column displays the overall status of each queue (up or down), while
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
-``` cmd-line
+```cmd-line
 login1$ squeue             # show all jobs in all queues
 login1$ squeue -u bjones   # show all jobs owned by bjones
 login1$ man squeue         # more info
@@ -1174,7 +1174,7 @@ login1$ man squeue         # more info
 
 An excerpt from the default output might look like this:
 
-``` cmd-line
+```cmd-line
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 25781       debug idv72397   bjones CG       9:36      2 c190-131,c191-092
 25918       debug ppm_4828   bjones PD       0:00   4828 (Resources)
@@ -1202,13 +1202,13 @@ The default format for `squeue` now reports total nodes associated with a job ra
 
 The default format lists all nodes assigned to displayed jobs; this can make the output difficult to read. A handy variation that suppresses the nodelist is:
 
-``` cmd-line
+```cmd-line
 login1$ squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"  # suppress nodelist
 ```
 
 The `--start` option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
 
-``` cmd-line
+```cmd-line
 login1$ squeue --start -j 167635     # display estimated start time for job 167635
 ```
 
@@ -1216,7 +1216,7 @@ login1$ squeue --start -j 167635     # display estimated start time for job 1676
 
 TACC's `showq` utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm `squeue` command:
 
-``` cmd-line
+```cmd-line
 login1$ showq                 # show all jobs; default format
 login1$ showq -u              # show your own jobs
 login1$ showq -U bjones       # show jobs associated with user bjones
@@ -1233,7 +1233,7 @@ The default format for `showq` now reports total nodes associated with a job rat
 
 To **cancel** a pending or running job, first determine its jobid, then use `scancel`:
 
-``` cmd-line
+```cmd-line
 login1$ squeue -u bjones    # one way to determine jobid
    JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
   170361      normal   spec12   bjones PD       0:00     32 (Resources)
@@ -1242,13 +1242,13 @@ login1$ scancel 170361      # cancel job
 
 For **detailed information** about the configuration of a specific job, use `scontrol`:
 
-``` cmd-line
+```cmd-line
 login1$ scontrol show job=170361
 ```
 
 To view some **accounting data** associated with your own jobs, use `sacct`:
 
-``` cmd-line
+```cmd-line
 login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this date
 ```
 
@@ -1256,7 +1256,7 @@ login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this 
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
-``` cmd-line
+```cmd-line
 login1$ sbatch --dependency=afterok:173210 myjobscript
 ```
 
@@ -1277,7 +1277,7 @@ Intel is the recommended and default compiler suite on Frontera. Each Intel modu
 
 Compiling a code that uses OpenMP would look like this:
 
-``` cmd-line
+```cmd-line
  $ icc -qopenmp mycode.c -o myexe  # OpenMP 
 ```
 
@@ -1291,7 +1291,7 @@ Load a `gcc` module to access a recent version of the GNU compiler suite. Avoid 
 
 Here are simple examples that use the GNU compilers to produce an executable from source code:
 
-``` cmd-line
+```cmd-line
 $ gcc mycode.c                    # C source file; executable a.out
 $ gcc mycode.c          -o myexe  # C source file; executable myexe
 $ g++ mycode.cpp        -o myexe  # C++ source file
@@ -1307,7 +1307,7 @@ Building an executable requires two separate steps: (1) compiling (generating a 
 
 Use the `-c` ("compile") flag to produce object files from source files:
 
-``` cmd-line
+```cmd-line
 $ icc -c main.c calc.c results.c
 ```
 
@@ -1315,7 +1315,7 @@ Barring errors, this command will produce object files `main.o`, `calc.o`, and `
 
 You can now link the object files to produce an executable file:
 
-``` cmd-line
+```cmd-line
 $ icc main.o calc.o results.o -o myexe
 ```
 
@@ -1325,7 +1325,7 @@ The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task.
 
 Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the `-I` option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the `-L` option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
 
-``` cmd-line
+```cmd-line
 $ icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}                  # compile
 $ icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5   # link
 ```
@@ -1340,7 +1340,7 @@ A separate section below addresses the [Intel Math Kernel Library](#the-intel-ma
 
 Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Frontera. After loading an `impi` or `mvapich2` module, compile and/or link using an mpi wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
-``` cmd-line
+```cmd-line
 $ mpicc    mycode.c   -o myexe   # C source, full build
 $ mpicc -c mycode.c              # C source, compile without linking
 $ mpicxx   mycode.cpp -o myexe   # C++ source, full build
@@ -1349,7 +1349,7 @@ $ mpif90   mycode.f90 -o myexe   # Fortran source, full build
 
 These wrappers call the compiler with the options, include paths, and libraries necessary to produce an MPI executable using the MPI module you're using. To see the effect of a given wrapper, call it with the `-show` option:
 
-``` cmd-line
+```cmd-line
 $ mpicc -show  # Show compile line generated by call to mpicc; similarly for other wrappers
 ```
 
@@ -1360,7 +1360,7 @@ You can discover already installed software using TACC's [Software Search](https
 
 You're welcome to download third-party research software and install it in your own account. In most cases you'll want to download the source code and build the software so it's compatible with the Frontera software environment. You can't use yum or any other installation process that requires elevated privileges, but this is almost never necessary. The key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. When using the famous [three-step autotools](http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) build process, the standard approach is to use the `PREFIX` environment variable to specify a non-default, user-owned installation directory at the time you execute `configure` or `make`:
 
-``` cmd-line
+```cmd-line
 $ export INSTALLDIR=$WORK/apps/t3pio
 $ ./configure --prefix=$INSTALLDIR
 $ make
@@ -1371,7 +1371,7 @@ Other languages, frameworks, and build systems generally have equivalent mechani
 
 In Python, a local install will resemble one of the following examples:
 
-``` cmd-line
+```cmd-line
 $ pip install netCDF4      --user                   # install netCDF4 package to $HOME/.local
 $ python3 setup.py install --user                   # install to $HOME/.local
 $ pip3 install netCDF4     --prefix=$INSTALLDIR     # custom location; add to PYTHONPATH
@@ -1379,7 +1379,7 @@ $ pip3 install netCDF4     --prefix=$INSTALLDIR     # custom location; add to PY
 
 Similarly in R:
 
-``` cmd-line
+```cmd-line
 $ module load Rstats            # load TACC's default R
 $ R                             # launch R
 > install.packages('devtools')  # R will prompt for install location
@@ -1403,7 +1403,7 @@ The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a 
 
 There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the <span style="white-space: nowrap;">`-mkl`</span> option.; e.g.
 
-``` cmd-line
+```cmd-line
 $ icc   -mkl mycode.c
 $ ifort -mkl mycode.c
 ```
@@ -1415,7 +1415,7 @@ The `-mkl` switch is an abbreviated form of <span style="white-space: nowrap;">`
 
 When using a GNU compiler, load the MKL module before compiling or running your code, then specify explicitly the MKL libraries, library paths, and include paths your application needs. Consult the [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor) for details. A typical compile/link process on a TACC system will look like this:
 
-``` cmd-line
+```cmd-line
 $ module load gcc
 $ module load mkl                         # available/needed only for GNU compilers
 $ gcc -fopenmp -I$MKLROOT/include         \
@@ -1455,7 +1455,7 @@ When building software on Frontera, we recommend using the Intel compiler and In
 
 To compile for CLX only, include `-xCORE-AVX512` as a build option. The `-x` switch allows you to specify a target architecture. The CLX chips, as well as the Skylake chips (SKX) on Stampede2, support Intel's latest instruction set, CORE-AVX512. You should also consider specifying an optimization level using the `-O` flag:
 
-``` cmd-line
+```cmd-line
 $ icc   -xCORE-AVX512  -O3 mycode.c   -o myexe         # will run only on CLX/SKX
 $ ifort  -xCORE-AVX512 -O3 mycode.f90 -o myexe         # will run only on CLX/SKX
 ```
@@ -1484,7 +1484,7 @@ If you use GNU compilers, see GNU x86 Options for information regarding support 
 
 Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
 
-``` cmd-line
+```cmd-line
 $ perf stat ./a.out    # report basic performance stats for a.out
 $ time ./a.out         # report the time required to execute a.out
 $ time ibrun ./a.out   # time an MPI code
@@ -1582,25 +1582,25 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
 
-	``` cmd-line
+	```cmd-line
 	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
 	```
 
 1. Create a Python virtual environment
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ python3 -m venv /path/to/virtual-env  # (e.g., $SCRATCH/python-envs/test)
 	```
 
 1. Activate the Python virtual environment
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ source /path/to/virtual-env/bin/activate
 	```
 
 1. Install PyTorch 
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
 	```
 
@@ -1608,7 +1608,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Download the benchmark:
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ cd $SCRATCH
 	c123-456$ git clone https://github.com/gpauloski/kfac-pytorch.git
 	c123-456$ cd kfac-pytorch
@@ -1620,7 +1620,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Run the benchmark on one node (4 GPUs):
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ python3 -m torch.distributed.launch --nproc_per_node=4 examples/torch_cifar10_resnet.py --kfac-update-freq 0
 	```
 
@@ -1628,19 +1628,19 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Request two nodes in the `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
 
-	``` cmd-line
+	```cmd-line
 	login2.frontera$ idev -N 2 -n 2 -p rtx-dev -t 02:00:00
 	```
 
 1. Go to the benchmark directory:
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ cd $SCRATCH/kfac-pytorch
 	```
 
 1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
-	``` job-script
+	```job-script
 	&#35;!/bin/bash
 
 	HOST=$1
@@ -1654,7 +1654,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 1. Run multi-gpu training:
 	
-	``` cmd-line
+	```cmd-line
 	c123-456$ ibrun -np 2 ./run.sh c123-456 2
 	```
 
@@ -1665,32 +1665,32 @@ Follow these instructions to install and run TensorFlow benchmarks on Frontera R
 
 1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
 
-	``` cmd-line
+	```cmd-line
 	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
 	```
 
 1. Create a Python virtual environment:
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ python3 -m venv /path/to/virtual-env # e.g., $SCRATCH/python-envs/test
 	```
 
 1. Activate the Python virtual environment:
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ source /path/to/virtual-env/bin/activate
 	```
 
 1. Install TensorFlow and Horovod
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ module load cuda/11.3 cudnn nccl
 	c123-456$ pip3 install tensorflow-gpu==2.8.2
 	```
 
 	We suggest installing Horovod version 0.25.0. If you wish to install other versions of Horovod, please submit a support ticket with the subject "Request for Horovod" and TACC staff will provide special instructions.
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=gcc \
     	HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install horovod==0.25.0
 	```
@@ -1699,7 +1699,7 @@ Follow these instructions to install and run TensorFlow benchmarks on Frontera R
 
 1. Download the tensorflow benchmark to your $SCRATCH directory, then check out the branch that matches your tensorflow version.
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ cds; git clone https://github.com/tensorflow/benchmarks.git
 	c123-456$ cd benchmarks 
 	c123-456$ git checkout 51d647f     # master head as of 08/18/2022
@@ -1707,20 +1707,20 @@ Follow these instructions to install and run TensorFlow benchmarks on Frontera R
 
 1. Activate the Python virtual environment
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ source /path/to/virtual-env/bin/activate
 	```
 
 1. Benchmark the performance with synthetic dataset on 1 GPU
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ cd scripts/tf_cnn_benchmarks
 	c123-456$ python3 tf_cnn_benchmarks.py --num_gpus=1 --model resnet50 --batch_size 32 --num_batches 200
 	```
 
 1. Benchmark the performance with synthetic dataset on 4 GPUs
 
-	``` cmd-line
+	```cmd-line
 	c123-456$ cd scripts/tf_cnn_benchmarks
 	c123-456$ ibrun -np 4 python3 tf_cnn_benchmarks.py --variable_update=horovod --num_gpus=1 \
     	--model resnet50 --batch_size 32 --num_batches 200 --allow_growth=True
@@ -1754,7 +1754,7 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a DCV job script (`/share/doc/slurm/job.dcv`), a VNC job script (`/share/doc/slurm/job.vnc`) and a combined job script that prefers DCV and fails over to VNC if a DCV license is not available (`/share/doc/slurm/job.dcv2vnc`). Each script requests one node in the development queue for two hours, creating a remote desktop session, either [DCV](https://aws.amazon.com/hpc/dcv) or [VNC](https://en.wikipedia.org/wiki/VNC).
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc
 	login1$ sbatch /share/doc/slurm/job.dcv
 	login1$ sbatch /share/doc/slurm/job.dcv2vnc
@@ -1772,7 +1772,7 @@ Follow the steps below to start an interactive session.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
 	```
 
@@ -1782,7 +1782,7 @@ Follow the steps below to start an interactive session.
 
 	Watch for the "To connect" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	``` cmd-line
+	```cmd-line
 	login1$ touch vncserver.out ; tail -f vncserver.out
 	login1$ touch dcvserver.out ; tail -f dcvserver.out
 	```
@@ -1793,7 +1793,7 @@ Follow the steps below to start an interactive session.
 
 	DCV connections are encrypted via TLS and are secure. For VNC connections, TACC requires users to create an SSH tunnel from the local system to the Frontera login node to assure that the connection is secure. The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Frontera hostname. On a Unix or Linux system, execute the following command once the port has been opened on the Frontera login node:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@frontera.tacc.utexas.edu
 	```
 
@@ -1826,7 +1826,7 @@ From an interactive desktop, applications can be run from icons or from xterm co
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
-``` cmd-line
+```cmd-line
 c101-001$ ibrun ibrunoptions application applicationoptions
 ```
 
@@ -1838,7 +1838,7 @@ Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At pres
 
 `swr`: To access the accelerated OpenSWR OpenGL library, it is necessary to use the `swr` module to point to the `swr` OpenGL implementation and configure the number of threads to allocate to rendering.
 
-``` cmd-line
+```cmd-line
 c101-001$ module load swr
 c101-001$ swr options application application-args
 ```
@@ -1849,7 +1849,7 @@ c101-001$ swr options application application-args
 
 After connecting to a VNC server on Frontera, as described above, load the VisIt module at the beginning of your interactive session before launching the VisIt application:
 
-``` cmd-line
+```cmd-line
 c101-001$ module load swr visit
 c101-001$ swr visit
 ```
@@ -1866,13 +1866,13 @@ After connecting to a VNC server on Frontera, as described above, do the followi
 
 1. Set up your environment with the necessary modules. Load the `swr`, `qt5`, `ospray`, and `paraview` modules <b>in this order</b>:
 
-	``` cmd-line
+	```cmd-line
 	c101-001$ module load swr qt5 ospray paraview
 	```
 
 1. Launch ParaView:
 
-	``` cmd-line
+	```cmd-line
 	c101-001$ swr -p 1 paraview [paraview client options]
 	```
 
@@ -1950,14 +1950,14 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 
 1. Download and extract
 
-	``` cmd-line
+	```cmd-line
 	login1$ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-335.0.0-linux-x86_64.tar.gz
 	login1$ tar -xzf google-cloud-sdk-335.0.0-linux-x86_64.tar.gz
 	```
 
 1. Authenticate and configure
 
-	``` cmd-line
+	```cmd-line
 	login1$ ./google-cloud-sdk/bin/gcloud auth login
 	```
 
@@ -1965,7 +1965,7 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 	* You'll then be presented an authentication string. Copy and paste this string when promped with: "Enter verification code:".  
 	* Configure the CLI for the correct project. For Frontera, use `ut-tacc-np-sandbox-1`.
 
-	``` cmd-line
+	```cmd-line
 	login1$ ./google-cloud-sdk/bin/gcloud config set project ut-tacc-np-sandbox-1
 	```
 
@@ -1975,7 +1975,7 @@ Learn the basic `gsutil` commands: [Quickstart: Using the `gsutil` tool](https:/
 
 **Example: list storage elements:**
 
-``` cmd-line
+```cmd-line
 login1$ ./google-cloud-sdk/bin/gsutil ls
 ```
 
@@ -2104,13 +2104,13 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 To install on Frontera in your home directory using Python, this should be sufficient:
 
-``` cmd-line
+```cmd-line
 login1$ curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
 We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
-``` cmd-line
+```cmd-line
 ===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
 /home1/01983/mpackard/azure/lib/azurecli
 
@@ -2125,13 +2125,13 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 1. Login with the Azure CLI and follow the steps to open a web browser and enter the access code from above.
 
-	``` cmd-line
+	```cmd-line
 	login1$ az login
 	```
 
 1. List your storage accounts:
 
-	``` cmd-line
+	```cmd-line
 	login1$ az storage account list
 	[
   	  {
@@ -2212,7 +2212,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 	
 1. List your storage containers within the account
 	
-	``` cmd-line
+	```cmd-line
 	login1$ az storage container list --account-name slindsey \--account-key eSwqAlwh9kSxj07Stz9YKws9GWecICkLE9OUMm/kA2YAlKBCn2AzoBOOdL+7EbLNX+OEBqNjpGKsyo04p4Jmrwsl
 	
 	[
@@ -2240,7 +2240,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 	
 2. Create a new container (if needed) for your file
 
-	``` cmd-line
+	```cmd-line
 	login1$ az storage container create --name container1 \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
 	{
@@ -2250,7 +2250,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 3. Upload a file
 
-	``` cmd-line
+	```cmd-line
 	
 	login1$ az storage blob upload --container-name container1 --file foo.txt --name foo.txt \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
@@ -2264,7 +2264,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 4. List your "blobs"
 
-	``` cmd-line
+	```cmd-line
 	
 	login1$ az storage blob list --container-name container1 --output table \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
@@ -2275,7 +2275,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 5. Download your file:
 
-	``` cmd-line
+	```cmd-line
 	
 	login1$ az storage blob download --container-name container1 --name foo.txt --file a_new_foo.txt --output table \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
@@ -2288,7 +2288,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 6. The file shows up with the new name:
 
-	``` cmd-line
+	```cmd-line
 	bash-5.0# ls -l 
 	total 64
 	-rw-r--r--	1 root	 root			10 Dec 18 21:20 a_new_foo.txt

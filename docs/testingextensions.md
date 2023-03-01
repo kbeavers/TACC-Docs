@@ -23,7 +23,7 @@ login1$ { .bash }
 login1$ module load kitten
 ```
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ { .bash .cmd-line}
 login1$ module load kitten
 ```
@@ -62,7 +62,7 @@ ibrun -np 4 -N 2 -p small myexecutable
 </pre>
 
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -92,16 +92,16 @@ ibrun -N 6 -n 12 myexecutable
 
 See: <https://docs.tacc.utexas.edu/hpcugs/stampede2/stampede2/#jobscripts>
 
-<details><summary>Cheesy example - click on arrow to expand</summary>
-I'm not a big fan of this arrow. <br> 
-Can we add some margin/whitespace at the bottom?  <br>
-Also, markdown doesn't work within these tags?
-</details>
+??? "Cheesy example - click on arrow to expand"
+
+    I'm not a big fan of this arrow. <br>
+    Can we add some margin/whitespace at the bottom? <br>
+    Also, markdown __now works__ within these tags.
 
 
 ### Images
 
-I use image tags < figure > and < figcaption >.  
+I use image tags `<figure>` and `<figcaption>`.
 
 See real life example here: <https://portal.tacc.utexas.edu/user-guides/stampede2#programming-knl-memorymodes>
 

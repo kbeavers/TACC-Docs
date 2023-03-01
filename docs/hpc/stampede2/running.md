@@ -34,7 +34,7 @@ icx-normal | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
 
 Use Slurm's `sbatch` command to [submit a batch job](#using-computenodes) to one of the Stampede2 queues:
 
-``` cmd-line
+```cmd-line
 login1$ sbatch myjobscript
 ```
 
@@ -86,7 +86,7 @@ The primary purpose of your job script is to launch your research application. H
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
-``` { .bash .job-script }
+```job-script
 myprogram                   # executable in a directory listed in $PATH
 $WORK/apps/myprov/myprogram # explicit full path to executable
 ./myprogram                 # executable in current directory
@@ -97,7 +97,7 @@ $WORK/apps/myprov/myprogram # explicit full path to executable
 
 Launch a threaded application the same way. Be sure to specify the number of threads. **Note that the default OpenMP thread count is 1**.
 
-``` { .bash .job-script }
+```job-script
 export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
 ./myprogram
 ```
@@ -106,7 +106,7 @@ export OMP_NUM_THREADS=68    # 68 total OpenMP threads (1 per KNL core)
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Stampede2-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
-``` { .bash .job-script }
+```job-script
 #SBATCH -N 5
 #SBATCH -n 200
 ibrun ./myprogram              # ibrun uses the $SBATCH directives to properly allocate nodes and tasks
@@ -115,7 +115,7 @@ ibrun ./myprogram              # ibrun uses the $SBATCH directives to properly a
 
 To use `ibrun` interactively, say within an `idev` session, you can specify:
 
-``` cmd-line
+```cmd-line
 
 login1$ idev -N 2 -n 80 
 c123-456$ ibrun ./myprogram    # ibrun uses idev's arguments to properly allocate nodes and tasks
@@ -126,7 +126,7 @@ c123-456$ ibrun ./myprogram    # ibrun uses idev's arguments to properly allocat
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
-``` { .bash .job-script }
+```job-script
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
 ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
 ```
@@ -141,7 +141,7 @@ TACC's `launcher` utility provides an easy way to launch more than one serial ap
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
-``` { .bash .job-script }
+```job-script
 module load git
 module list
 ./preprocess.sh
@@ -160,7 +160,7 @@ To run more than one MPI application simultaneously in the same job, you need to
 
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute <span style="white-space: nowrap;">`ibrun --help`</span> for more information. **Don't forget the ampersands (`&`)** to launch the jobs in the background, **and the `wait` command** to pause the script until the background tasks complete:
 
-``` { .bash .job-script }
+```job-script
 ibrun -n 64 -o  0 task_affinity ./myprogram input1 &amp;   # 64 tasks; offset by  0 entries in hostfile.
 ibrun -n 64 -o 64 task_affinity ./myprogram input2 &amp;   # 64 tasks; offset by 64 entries in hostfile.
 wait                                                       # Required; else script will exit immediately.
@@ -177,7 +177,7 @@ The `task_affinity` script does two things:
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, <span style="white-space: nowrap;">`numactl -C`</span> specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
-``` { .bash .job-script }
+```job-script
 export OMP_NUM_THREADS=2
 numactl -C 0-1 ./myprogram inputfile1 &amp;  # HW threads (hence cores) 0-1. Note ampersand.
 numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Note ampersand.
@@ -190,13 +190,13 @@ wait
 
 TACC's own `idev` utility is the best way to begin an interactive session on one or more compute nodes. To launch a thirty-minute session on a single node in the development queue, simply execute:
 
-``` cmd-line
+```cmd-line
 login1$ idev
 ```
 
 You'll then see output that includes the following excerpts:
 
-``` cmd-line
+```cmd-line
 
 ...
 -----------------------------------------------------------------
@@ -219,7 +219,7 @@ The `job status` messages indicate that your interactive session is waiting in t
 
 For command line options and other information, execute <span style="white-space: nowrap;">`idev --help`</span>. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
-``` cmd-line
+```cmd-line
 login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
 ```
 
@@ -227,7 +227,7 @@ For more information see the [`idev` documentation](http://portal.tacc.utexas.ed
 
 You can also launch an interactive session with Slurm's `srun` command, though there's no clear reason to prefer `srun` to `idev`. A typical launch line would look like this:
 
-``` cmd-line
+```cmd-line
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
 ```
 
@@ -239,7 +239,7 @@ If you have a batch job or interactive session running on a compute node, you "o
 There are many ways to determine the nodes on which you are running a job, including feedback messages following your `sbatch` submission, the compute node command prompt in an `idev` session, and the `squeue` or `showq` utilities. The sequence of identifying your compute node then connecting to it would look like this:
 
 
-``` cmd-line
+```cmd-line
 
 login1$ squeue -u bjones
  JOBID       PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -255,13 +255,13 @@ C448-004$
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
 !!! warning
-	``` cmd-line
+	```cmd-line
 	#SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
 	```
 
 Instead, use the following directive:
 
-``` { .bash .job-script }
+```job-script
 #SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
 ```
 

@@ -10,13 +10,13 @@ To display resource limits for the Stampede2 queues, execute "**`qlimits`**". Th
 
 Slurm's "**`sinfo`**" command allows you to monitor the status of the queues. If you execute `sinfo` without arguments, you'll see a list of every node in the system together with its status. To skip the node list and produce a tight, alphabetized summary of the available queues and their status, execute:
 
-``` cmd-line
+```cmd-line
 login1$ sinfo -S+P -o "%18P %8a %20F"    # compact summary of queue status
 ```
 
 An excerpt from this command's output looks like this:
 
-``` cmd-line
+```cmd-line
 
 PARTITION          AVAIL    NODES(A/I/O/T)
 development*       up       41/70/1/112
@@ -30,7 +30,7 @@ The `AVAIL` column displays the overall status of each queue (up or down), while
 
 Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
 
-``` cmd-line
+```cmd-line
 
 login1$ squeue             # show all jobs in all queues
 login1$ squeue -u bjones   # show all jobs owned by bjones
@@ -40,7 +40,7 @@ login1$ man squeue         # more info
 An excerpt from the default output looks like this:
 
 
-``` cmd-line
+```cmd-line
 
  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 170361      normal   spec12   bjones PD       0:00     32 (Resources)
@@ -62,13 +62,13 @@ The default format for `squeue` now reports total nodes associated with a job ra
 
 The default format lists all nodes assigned to displayed jobs; this can make the output difficult to read. A handy variation that suppresses the nodelist is:
 
-``` cmd-line
+```cmd-line
 login1$ squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"  # suppress nodelist
 ```
 
 The `--start` option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
 
-``` cmd-line
+```cmd-line
 login1$ squeue --start -j 167635     # display estimated start time for job 167635
 ```
 
@@ -77,7 +77,7 @@ login1$ squeue --start -j 167635     # display estimated start time for job 1676
 
 TACC's `showq` utility mimics a tool that originated in the PBS project, and serves as a popular alternative to the Slurm `squeue` command:
 
-``` cmd-line
+```cmd-line
 
 login1$ showq            # show all jobs; default format
 login1$ showq -u         # show your own jobs
@@ -98,7 +98,7 @@ The default format for `showq` now reports total nodes associated with a job rat
 
 To **cancel** a pending or running job, first determine its jobid, then use `scancel`:
 
-``` cmd-line
+```cmd-line
 
 login1$ squeue -u bjones    # one way to determine jobid
    JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -108,13 +108,13 @@ login1$ scancel 170361      # cancel job
 
 For **detailed information** about the configuration of a specific job, use `scontrol`:
 
-``` cmd-line
+```cmd-line
 login1$ scontrol show job=170361
 ```
 
 To view some **accounting data** associated with your own jobs, use `sacct`:
 
-``` cmd-line
+```cmd-line
 login1$ sacct --starttime 2017-08-01  # show jobs that started on or after this date
 ```
 
@@ -123,7 +123,7 @@ login1$ sacct --starttime 2017-08-01  # show jobs that started on or after this 
 
 You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
 
-``` cmd-line
+```cmd-line
 login1$ sbatch --dependency=afterok:173210 myjobscript
 ```
 

@@ -17,7 +17,7 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc
 	```
 
@@ -32,13 +32,13 @@ Follow the steps below to start an interactive session.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
 	```
 
 	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	``` cmd-line
+	```cmd-line
 	login1$ touch vncserver.out ; tail -f vncserver.out
 	```
 
@@ -48,7 +48,7 @@ Follow the steps below to start an interactive session.
 
 	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@maverick2.tacc.utexas.edu
 	```
 

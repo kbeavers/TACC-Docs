@@ -12,7 +12,7 @@ The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a 
 
 There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the <span style="white-space: nowrap;">`-mkl`</span> option.; e.g.
 
-``` cmd-line
+```cmd-line
 $ icc   -mkl mycode.c
 $ ifort -mkl mycode.c
 ```
@@ -24,7 +24,7 @@ The `-mkl` switch is an abbreviated form of <span style="white-space: nowrap;">`
 
 When using a GNU compiler, load the MKL module before compiling or running your code, then specify explicitly the MKL libraries, library paths, and include paths your application needs. Consult the [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor) for details. A typical compile/link process on a TACC system will look like this:
 
-``` cmd-line
+```cmd-line
 $ module load gcc
 $ module load mkl                         # available/needed only for GNU compilers
 $ gcc -fopenmp -I$MKLROOT/include         \

@@ -13,13 +13,16 @@ TACC staff has built and installed OpenFOAM 7.0 on both [Stampede2][STAMPEDE2UG]
 
 Set up the proper computing environment by loading the latest OpenFoam module:
 
-<pre class="cmd-line">login1$ <b>module load openfoam/7.0</b></pre>
+```cmd-line
+login1$ module load openfoam/7.0
+```
 
 OpenFOAM places its [cases](https://cfd.direct/openfoam/user-guide/cases/) in the directory defined by the `$FOAM_RUN` environment variable.  TACC staff suggests using your `$SCRATCH` file space to run OpenFOAM cases.  The following commands set this environment variable and create the `$FOAM_RUN` directory in the user's `$SCRATCH` directory.
 
-<pre class="cmd-line">
-login1$ <b>export FOAM_RUN=$SCRATCH/My_OpenFOAM/7.0/run</b>
-login1$ <b>mkdir -p $FOAM_RUN</b></pre>
+```cmd-line
+login1$ export FOAM_RUN=$SCRATCH/My_OpenFOAM/7.0/run
+login1$ mkdir -p $FOAM_RUN
+```
 
 ## [Run Tutorials](#tutorials) { #tutorials }
 
@@ -30,19 +33,21 @@ The following demonstrates running the OpenFOAM's [Lid-driven Cavity Flow](https
 
 * Copy OpenFOAM's tutorials into the OpenFOAM work directory created above, then change to the cavity case directory:
 
-	<pre class="cmd-line">
-	login1$ <b>idev</b>
+	```cmd-line
+	login1$ idev
 	...
-	c557-804$ <b>cp -r $FOAM_TUTORIALS $FOAM_RUN </b>
-	c557-804$ <b>cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavity/cavity</b></pre>
+	c557-804$ cp -r $FOAM_TUTORIALS $FOAM_RUN 
+	c557-804$ cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavity/cavity
+	```
 
 * Use the pre-processing tool, **`blockMesh`**, to generate the mesh.  Then run the **`icoFoam`** solver.  
 
-	<pre class="cmd-line">
-	c557-804$ <b>blockMesh</b>
-	c557-804$ <b>icoFoam</b>
-	c557-804$ <b>exit</b>
+	```cmd-line
+	c557-804$ blockMesh
+	c557-804$ icoFoam
+	c557-804$ exit
 	login1$</pre>
+	```
 
 ## [References](#refs) { #refs }
 

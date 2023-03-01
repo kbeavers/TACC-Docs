@@ -27,7 +27,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	DO THIS: Start an interactive session on a compute node and run Matlab.
 
-	``` cmd-line
+	```cmd-line
 	login1$ idev
 	nid00181$ matlab
 	```
@@ -36,7 +36,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 !!! warning
 	DO NOT DO THIS: Run Matlab or other software packages on a login node
 
-	``` cmd-line
+	```cmd-line
 	login1$ matlab
 	```
 
@@ -44,7 +44,7 @@ A single user running computationally expensive or disk intensive task/s will ne
 
 	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
 
-	``` cmd-line
+	```cmd-line
 	login1$ make mytarget
 	login1$ sbatch myjobscript
 	```
@@ -52,13 +52,13 @@ A single user running computationally expensive or disk intensive task/s will ne
 !!! warning
 	DO NOT DO THIS: Invoke multiple build sessions.
 
-	``` cmd-line
+	```cmd-line
 	login1$ make -j 12
 	```
 
 	DO NOT DO THIS: Run an executable on a login node.
 
-	``` cmd-line
+	```cmd-line
 	login1$ ./myprogram
 	```
 

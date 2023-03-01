@@ -13,7 +13,9 @@ NAMD is currently installed on TACC's [Frontera][FRONTERAUG], [Stampede2][STAMPE
 
 The recommended and latest installed NAMD version is 2.14 on Frontera. Users are welcome to install different NAMD versions in their own directories.
 
-<pre class="cmd-line">login1$ module load namd/2.14</pre>
+```cmd-line
+login1$ module load namd/2.14
+```
 
 ### [Job Scripts: NAMD on Frontera](#running-frontera-jobscript) { #running-frontera-jobscript }
 
@@ -21,7 +23,7 @@ The recommended and latest installed NAMD version is 2.14 on Frontera. Users are
 	TACC staff recommends that users attempt runs with 4 tasks per node and 8 tasks per node (scales better at large number of nodes) and then pick the configuration that provides the best performance.
 
 4 tasks per node:
-``` { .bash .job-script }
+```job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 2            # Total number of nodes
@@ -37,7 +39,7 @@ ibrun namd2 +ppn 13 \
 
 
 8 tasks per node:
-``` { .bash .job-script }
+```job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 12           # Total number of nodes
@@ -54,7 +56,7 @@ ibrun namd2 +ppn 6 \
 For very large simulations, users may want to use compressed structures. See the [NAMD wiki: NamdMemoryReduction](https://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?NamdMemoryReduction) to prepare your compressed input files and set up your input files. In this case use the `namd2_memopt` executable instead of `namd2`: 
 
 compressed input files
-``` { .bash .job-script }
+```job-script
 	ibrun namd2_memopt +ppn 6 \
 	 			+pemap 2-12:2,16-26:2,30-40:2,44-54:2,3-13:2,17-27:2,31-41:2,45-55:2 \
 	 			+commap 0,14,28,42,1,15,29,43 input &amp;&gt; output
@@ -72,7 +74,7 @@ As of this date, the recommended and latest version is 2.14 . Users are welcome 
 
 This job script requests 1 node and 4 MPI tasks: 4 tasks/node. 
 
-``` { .bash .job-script }
+```job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 1            # Request 1 node
@@ -89,7 +91,7 @@ ibrun namd2_knl +ppn 32 \
 
 To run the same job on more than one node, vary the `-N` and `n` `#SBATCH` directives. This job script requests 3 nodes and 39 MPI tasks: 13 tasks/node. 
 
-``` { .bash .job-script }
+```job-script
 #SBATCH -J mynamd       # Set job name
 #SBATCH -o mynamd.o%j
 #SBATCH -N 3            # Request 3 nodes
@@ -106,12 +108,12 @@ ibrun namd2_knl +ppn 8 \
 As well as the Slurm `#SBATCH` directives (`-N` and `-n`), try varying the [affinity](http://www.ks.uiuc.edu/Research/namd/2.12/ug/node89.html) settings to determine the optimal performance of your job. You can try both settings then use the optimal one. If your system is small or the number of nodes are large, you can try:
 
 4 tasks per node:
-``` { .bash .job-script }
+```job-script
 ibrun namd2_knl +ppn 16 +pemap 0-63 +commap 64-67
 ```
 
 13 tasks per node:
-``` { .bash .job-script }
+```job-script
 ibrun namd2_knl +ppn 4 +pemap 0-51 +commap 52-67
 ```
 
@@ -120,7 +122,7 @@ ibrun namd2_knl +ppn 4 +pemap 0-51 +commap 52-67
 !!! tip
 	TACC staff recommends assigning 4 tasks per node for jobs running on Stampede2's SKX compute nodes. 
 
-``` { .bash .job-script }
+```job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 2            # Total number of nodes
@@ -137,21 +139,21 @@ ibrun namd2_skx +ppn 11 \
 You may also try other [affinity](http://www.ks.uiuc.edu/Research/namd/2.14/ug/node88.html) settings as in these examples for varying number of tasks per node.
 
 6 tasks per node:
-``` { .bash .job-script }
+```job-script
 ibrun namd2_skx +ppn 7 \
 				+pemap 2-14:2,18-30:2,34-46:2,3-15:2,19-31:2,35-47:2 \
 				+commap 0,16,32,1,17,33 input &amp;&gt; output  
 ```
 
 2 tasks per node:
-``` { .bash .job-script }
+```job-script
 ibrun namd2_skx +ppn 23 \
 				+pemap 2-47:2,3-47:2 \
 				+commap 0,1 input &amp;&gt; output
 ```
 
 1 task per node:
-``` { .bash .job-script }
+```job-script
 ibrun namd2_skx +ppn 47 \
 				+pemap 2-47:2,1-47:2 \
 				+commap 0 input &amp;&gt; output
@@ -162,8 +164,9 @@ ibrun namd2_skx +ppn 47 \
 
 NAMD ver2.14 is installed on Lonestar6 as this version provides best performance. Feel free to install your own newer version locally. 
 
-<pre class="cmd-line">
-login1$ <b>module load namd/2.14</b></pre>
+```cmd-line
+login1$ module load namd/2.14
+```
 
 ### [Job Script: NAMD on Lonestar6](#running-lonestar6-jobscript) { #running-lonestar6-jobscript }
 
@@ -172,7 +175,7 @@ login1$ <b>module load namd/2.14</b></pre>
 
 The following Lonestar6 job script requests 2 node and 8 MPI tasks. To run the same job on more nodes, vary the `-N` and `-n` Slurm directives, **ensuring the value of `n` is four times the value of `N`**.  
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #SBATCH -J test   		# Job Name
 #SBATCH -o test.o%j

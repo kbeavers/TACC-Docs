@@ -50,44 +50,44 @@ You can transfer files between Lonestar6 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Lonestar6 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Lonestar6 `$HOME` would look like this:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon after net address
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Lonestar6:
 
-``` cmd-line
+```cmd-line
 localhost$ scp &#42;.txt bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6
 ```
 
 To delay wildcard expansion until reaching Lonestar6, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Lonestar6 to the current directory on your local system:
 
-``` cmd-line
+```cmd-line
 localhost$ scp bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6/\*.txt .
 ```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-``` cmd-line
+```cmd-line
 localhost$ destdir="/work/01234/bjones/ls6/data"
 localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:$destdir
 ```
 
 You can also issue `scp` commands on your local client that use Lonestar6 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Lonestar6:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data   # Note backslash
 ```
 
 Avoid using `scp` for recursive transfers of directories that contain nested directories of many small files:
 
-``` cmd-line
+```cmd-line
 localhost$ scp -r ./mydata     bjones@ls6.tacc.utexas.edu:\$SCRATCH  # DON'T DO THIS
 ```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-``` cmd-line
+```cmd-line
 localhost$ tar cvf ./mydata.tar mydata                                  # create archive
 localhost$ scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive
 ```
@@ -96,7 +96,7 @@ localhost$ scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer ar
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-``` cmd-line
+```cmd-line
 localhost$ rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
 localhost$ rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
 ```

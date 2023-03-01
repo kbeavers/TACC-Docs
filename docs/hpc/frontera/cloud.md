@@ -21,14 +21,14 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 
 1. Download and extract
 
-	``` cmd-line
+	```cmd-line
 	login1$ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-335.0.0-linux-x86_64.tar.gz
 	login1$ tar -xzf google-cloud-sdk-335.0.0-linux-x86_64.tar.gz
 	```
 
 1. Authenticate and configure
 
-	``` cmd-line
+	```cmd-line
 	login1$ ./google-cloud-sdk/bin/gcloud auth login
 	```
 
@@ -36,7 +36,7 @@ Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/
 	* You'll then be presented an authentication string. Copy and paste this string when promped with: "Enter verification code:".  
 	* Configure the CLI for the correct project. For Frontera, use `ut-tacc-np-sandbox-1`.
 
-	``` cmd-line
+	```cmd-line
 	login1$ ./google-cloud-sdk/bin/gcloud config set project ut-tacc-np-sandbox-1
 	```
 
@@ -46,7 +46,7 @@ Learn the basic `gsutil` commands: [Quickstart: Using the `gsutil` tool](https:/
 
 **Example: list storage elements:**
 
-``` cmd-line
+```cmd-line
 login1$ ./google-cloud-sdk/bin/gsutil ls
 ```
 
@@ -175,13 +175,13 @@ Once you've been given access, and before uploading files to Azure, you must fir
 
 To install on Frontera in your home directory using Python, this should be sufficient:
 
-``` cmd-line
+```cmd-line
 login1$ curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
 We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
-``` cmd-line
+```cmd-line
 ===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
 /home1/01983/mpackard/azure/lib/azurecli
 
@@ -196,13 +196,13 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 1. Login with the Azure CLI and follow the steps to open a web browser and enter the access code from above.
 
-	``` cmd-line
+	```cmd-line
 	login1$ az login
 	```
 
 1. List your storage accounts:
 
-	``` cmd-line
+	```cmd-line
 	login1$ az storage account list
 	[
   	  {
@@ -283,7 +283,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 	
 1. List your storage containers within the account
 	
-	``` cmd-line
+	```cmd-line
 	login1$ az storage container list --account-name slindsey \--account-key eSwqAlwh9kSxj07Stz9YKws9GWecICkLE9OUMm/kA2YAlKBCn2AzoBOOdL+7EbLNX+OEBqNjpGKsyo04p4Jmrwsl
 	
 	[
@@ -311,7 +311,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 	
 2. Create a new container (if needed) for your file
 
-	``` cmd-line
+	```cmd-line
 	login1$ az storage container create --name container1 \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
 	{
@@ -321,7 +321,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 3. Upload a file
 
-	``` cmd-line
+	```cmd-line
 	
 	login1$ az storage blob upload --container-name container1 --file foo.txt --name foo.txt \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
@@ -335,7 +335,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 4. List your "blobs"
 
-	``` cmd-line
+	```cmd-line
 	
 	login1$ az storage blob list --container-name container1 --output table \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
@@ -346,7 +346,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 5. Download your file:
 
-	``` cmd-line
+	```cmd-line
 	
 	login1$ az storage blob download --container-name container1 --name foo.txt --file a_new_foo.txt --output table \
 		--account-name slindsey --account-key reallylongstringofrandomcharacters
@@ -359,7 +359,7 @@ More client options here: <https://docs.microsoft.com/en-us/cli/azure/install-az
 
 6. The file shows up with the new name:
 
-	``` cmd-line
+	```cmd-line
 	bash-5.0# ls -l 
 	total 64
 	-rw-r--r--	1 root	 root			10 Dec 18 21:20 a_new_foo.txt

@@ -15,9 +15,16 @@ MATLAB is normally launched with the MATLAB Desktop UI and used in interactive m
 
 
 MATLAB is managed under modules on the TACC resources. Before you launch MATLAB load the MATLAB module with the following command:
-<pre class="cmd-line">login1$ <b>module load matlab</b></pre>
+
+```cmd-line
+login1$ module load matlab
+```
+
 You can always get the MATLAB help information by typing the following module help command.
-<pre class="cmd-line">login1$ <b>module help matlab</b></pre>
+
+```cmd-line
+login1$ module help matlab
+```
 
 The following figure shows how MATLAB is launched inside the VNC session.
 
@@ -33,7 +40,7 @@ You can also submit your MATLAB job to the batch nodes (compute nodes) on the TA
 
 ### [Example 1. Sample MATLAB job script to run on Stampede2](#example1)
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #SBATCH -J matlabjob              # job name
 #SBATCH -e matlabjob.%j.err       # error file name 
@@ -49,12 +56,12 @@ matlab -nodesktop -nodisplay -nosplash &lt; mymatlabprog.m
 ```
 
 Then submit the job to the scheduler in the standard way. See the Running Jobs section in the respective user guides
+
 Resource | Submit a batch job
 --- | ---
-Frontera | <code>login1$ <b>sbatch myjobscript</b></code>
-| <a href="https://fronteraweb.tacc.utexas.edu/user-guide/running/">Running jobs on Frontera</a>
+Frontera | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://fronteraweb.tacc.utexas.edu/user-guide/running/">Running jobs on Frontera</a>
 Stampede2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/stampede2#running">Running jobs on Stampede2</a>
-Lonestar5 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/lonestar5#running">Running jobs on Lonestar5</a>
+Lonestar6 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/lonestar6#running">Running jobs on Lonestar6</a>
 Maverick2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/maverick2#running">Running jobs on Maverick2</a>
 
 ## [Parallel MATLAB](#parallelmatlab) { #parallelmatlab }

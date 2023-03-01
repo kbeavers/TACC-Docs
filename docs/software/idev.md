@@ -15,14 +15,17 @@ The `idev` command submits a batch job that creates a copy of the batch environm
 
 ## [How to use `idev`](#how) { #how }
 On any TACC system execute:
-<pre class="cmd-line">
-login4.stampede(5)$ <b>idev <i>options</i></b></pre>
+
+```cmd-line
+login4.stampede(5)$ idev options
+```
 
 If this is your first time launching `idev` and you have multiple accounts, `idev` will prompt you for the account and then save your selection as the default interactive account; otherwise, it will automatically use your only account. It will then begin to initiate your first `idev` session. Enjoy.
 
 It is necessary for `idev` to gain access to compute nodes through the batch system; that is the normal mode for acquiring resources on a supercomputer (and at TACC). Hence the user must wait for the `idev` request to be accepted through the batch system. Fortunately, at TACC there is a &quot;development&quot; queue on each TACC system; `idev`&#39;s default setting uses this queue, and it is often a short wait for `idev` to acquire the nodes and allow interactive input. `idev` reports its progress every 4 seconds. Below is an example of `idev`&#39;s progress in setting up a session:
-<pre class="cmd-line">
-login1$ <b>idev</b>
+
+```cmd-line
+login1$ idev
 
 Defaults file    : ~/.idevrc
 Default  queue   : development
@@ -47,8 +50,8 @@ Note the prompt, `c301-202%`, in the above session. It is your interactive compu
 
 By default only a single node is requested for 30 minutes. However, you can change the limits with command line options, using syntax similar to the request specifications used in a job script. The syntax is conveniently described in the `idev` help display:
 
-<pre class="cmd-line">
-login1$ <b>idev -help</b>
+```cmd-line
+login1$ idev -help
 ...
 OPTION ARGUMENTS         DESCRIPTION
 -A     account_name      sets account name (default: in .idevrc)

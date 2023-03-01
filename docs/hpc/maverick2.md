@@ -109,7 +109,7 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 
 The `ssh` command (SSH protocol) is the standard way to connect to Maverick2. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](https://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](https://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 
-``` cmd-line
+```cmd-line
 localhost$ ssh username@maverick2.tacc.utexas.edu
 ```
 
@@ -117,134 +117,6 @@ Use your TUP password for direct logins to Maverick2. **Only users with an alloc
 
 To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">`-vvv`</span> option and include the verbose output when submitting a help ticket.
 
-
-## [Good Conduct](#conduct) { #conduct }
-
-**You share Maverick2 with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it. 
-
-TACC staff has developed the following guidelines to good conduct on Maverick2. Please familiarize yourself especially with the first two mandates:
-
-* [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes)
-* [Do Not Stress the File Systems](#conduct-filesystems)
-
-
-The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
-
-### [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes) { #conduct-loginnodes }
-
-Maverick2's login node is shared among all users. Numerous users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
-
-Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
-
-The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
-
-A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by submitting a batch job.
-
-!!! important
-	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.  Your account may be suspended if your jobs are impacting other users.
-
-* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
-
-	DO THIS: Start an interactive session on a compute node and run Matlab.
-
-	``` cmd-line
-	login1$ idev
-	nid00181$ matlab
-	```
-
-!!! warning
-	DO NOT DO THIS: Run Matlab or other software packages on a login node
-
-	``` cmd-line
-	login1$ matlab
-	```
-
-
-* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
-
-	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
-
-	``` cmd-line
-	login1$ make mytarget
-	login1$ sbatch myjobscript
-	```
-
-!!! warning
-	DO NOT DO THIS: invoke multiple build sessions, or run an executable on a login node.
-
-	``` cmd-line
-	login1$ make -j 12
-	login1$ ./myprogram
-	```
-
-* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
-
-
-
-### [Do Not Stress the Shared File Systems](#conduct-filesystems) { #conduct-filesystems }
-
-TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
-
-#### [File System Usage Recommendations](#table-file-system-usage-recommendations) { #table-file-system-usage-recommendations }
-
-File System | Best Storage Practices | Best Activities
---- | --- | ---
-<code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
-<code>$WORK</code> | software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
-
-
-<!-- The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. -->
-
-<!-- TACC staff now recommends that you run your jobs out of your resource's `$SCRATCH` file system instead of the global `$WORK` file system. To run your jobs out `$SCRATCH` -->
-
-<!-- * Copy or move all job input files to `$SCRATCH` -->
-<!-- * Make sure your job script directs all output to `$SCRATCH`  -->
-
-<!-- Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table 1.](#table1). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.  -->
-
-<!-- * **Run I/O intensive jobs in `$SCRATCH` rather than `$WORK`.** If you stress `$WORK`, you affect every user on every TACC system. Significant I/O might include reading/writing 100+ GBs to checkpoint/restart files, running with 4096+ MPI tasks all reading/writing individual files, but is not limited to just those two cases. **If you stress `$WORK`, you affect every user on every TACC system.** -->
-
-<!-- <p class="portlet-msg-alert">Compute nodes should not reference `$WORK` unless it's to stage data in/out only before/after jobs.</p> -->
-
-A few other file system tips:
-
-* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
-
-* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
-
-* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
-
-
-### [Limit Input/Output (I/O) Activity](#conduct-io) { #conduct-io }
-
-In addition to the file system tips above, it's important that your jobs limit all I/O activity. This section focuses on ways to avoid causing problems on each resources' shared file systems. 
-
-* **Limit I/O intensive sessions** (lots of reads and writes to disk, rapidly opening or closing many files)
-
-* **Avoid opening and closing files repeatedly** in tight loops. Every open/close operation on the file system requires interaction with the MetaData Service (MDS). The MDS acts as a gatekeeper for access to files on Lustre's parallel file system. Overloading the MDS will affect other users on the system. If possible, open files once at the beginning of your program/workflow, then close them at the end.
-
-* **Don't get greedy.** If you know or suspect your workflow is I/O intensive, don't submit a pile of simultaneous jobs. Writing restart/snapshot files can stress the file system; avoid doing so too frequently. Also, use the `hdf5` or `netcdf` libraries to generate a single restart file in parallel, rather than generating files from each process separately.
-
-!!! important
-	If you know your jobs will require significant I/O, please submit a support ticket and an HPC consultant will work with you. See also [Managing I/O on TACC Resources][TACCMANAGINGIO] for additional information.
-
-### [Limit File Transfers](#conduct-filetransfers) { #conduct-filetransfers }
-
-In order to not stress both internal and external networks:
-
-* **Avoid too many simultaneous file transfers**. You share the network bandwidth with other users; don't use more than your fair share. Two or three concurrent `scp` sessions is probably fine. Twenty is probably not.
-
-* **Avoid recursive file transfers**, especially those involving many small files. Create a tar archive before transfers. This is especially true when transferring files to or from [Ranch](../../hpc/ranch).
-
-* When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
-
-### [Job Submission Tips](#conduct-jobs) { #conduct-jobs }
-
-* **Request Only the Resources You Need** Make sure your job scripts request only the resources that are needed for that job. Don't ask for more time or more nodes than you really need. The scheduler will have an easier time finding a slot for a job requesting 2 nodes for 2 hours, than for a job requesting 4 nodes for 24 hours. This means shorter queue waits times for you and everybody else.
-
-* **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; <span style="white-space: nowrap;">`hello world`</span> codes; one-liners like <span style="white-space: nowrap;">`ibrun hostname`</span>; or an `ldd` on your executable.
-
-* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora][TACCREMORA] tool to monitor your application's needs. 
 
 ## [Managing Your Files](#files) { #files }
 
@@ -286,52 +158,52 @@ You can transfer files between Maverick2 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Maverick2 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Maverick2 `$HOME` would look like this:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@maverick2.tacc.utexas.edu:  # note colon after net address
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Maverick2:
 
-``` cmd-line
+```cmd-line
 localhost$ scp *.txt bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2
 ```
 
 To delay wildcard expansion until reaching Maverick2, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Maverick2 to the current directory on your local system:
 
-``` cmd-line
+```cmd-line
 localhost$ scp bjones@maverick2.tacc.utexas.edu:/work/01234/bjones/maverick2/\*.txt .
 ```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-``` cmd-line
+```cmd-line
 localhost$ destdir="/work/01234/bjones/maverick2/data"
 localhost$ scp ./myfile bjones@maverick2.tacc.utexas.edu:$destdir
 ```
 
 You can also issue `scp` commands on your local client that use Maverick2 environment variables like `$HOME` and `$WORK`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Maverick2:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
 
 !!! warning
 	Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 	```
 
 	Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ tar cvf ./mydata.tar mydata                                   # create archive
 	localhost$ scp     ./mydata.tar bjones@maverick2.tacc.utexas.edu:\$WORK  # transfer archive
 	```
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-``` cmd-line
+```cmd-line
 localhost$ rsync       mybigfile bjones@maverick2.tacc.utexas.edu:\$WORK/data
 localhost$ rsync -avtr mybigdir  bjones@maverick2.tacc.utexas.edu:\$WORK/data
 ```
@@ -355,7 +227,7 @@ Lustre can **stripe** (distribute) large files over several physical disks, maki
 
 Before transferring large files to Maverick2, or creating new large files, be sure to set an appropriate default stripe count on the receiving directory. To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 
-``` cmd-line
+```cmd-line
 $ lfs setstripe -c 30 $PWD
 ```
 
@@ -402,7 +274,7 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 
 <details><summary>Serial Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -453,7 +325,7 @@ date
 
 <details><summary>MPI Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -506,7 +378,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 <details><summary>OpenMP Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
@@ -564,7 +436,7 @@ export OMP_NUM_THREADS=34
 
 <details><summary>Hybrid Job in Normal Queue</summary>
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script for TACC MACHINENAME nodes
@@ -649,7 +521,7 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc
 	```
 
@@ -664,13 +536,13 @@ Follow the steps below to start an interactive session.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
 	```
 
 	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	``` cmd-line
+	```cmd-line
 	login1$ touch vncserver.out ; tail -f vncserver.out
 	```
 
@@ -680,7 +552,7 @@ Follow the steps below to start an interactive session.
 
 	TACC requires users to create an SSH tunnel from the local system to the Maverick2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Maverick2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Maverick2 login node:
 
-	``` cmd-line
+	```cmd-line
 	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@maverick2.tacc.utexas.edu
 	```
 
@@ -709,7 +581,7 @@ Follow the steps below to start an interactive session.
 
 As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
 
-``` cmd-line
+```cmd-line
 login1$ module avail
 
 -------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------

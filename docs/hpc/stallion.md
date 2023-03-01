@@ -91,7 +91,7 @@ Stallion&rsquo;s televisions&rsquo; settings: (please only adjust settings with 
 
 1. Login to the Stallion head node console.  In a terminal, run the following:
 
-	``` cmd-line
+	```cmd-line
 	$ module load sage
 	$ startsage
 	```
@@ -106,7 +106,7 @@ Stallion&rsquo;s televisions&rsquo; settings: (please only adjust settings with 
 
 The SAGE image viewer is ideal for viewing medium- to high-resolution static imagery. For extremely large images (those greater than 100 megapixels), see the Magic Carpet section. To use the image viewer, run the following in a terminal:
 
-``` cmd-line
+```cmd-line
 $ module load sage
 $ imageviewer
 ```
@@ -114,7 +114,7 @@ $ imageviewer
 #### Playing animations with SAGE
 MPlayer has been compiled with SAGE support. Users can thus play most kinds of video content to the tiled display. To use the SAGE-enabled MPlayer, run the following in a terminal:
 
-``` cmd-line
+```cmd-line
 $ module load sage
 $ mplayer
 ```

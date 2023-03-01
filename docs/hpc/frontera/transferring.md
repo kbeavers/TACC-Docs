@@ -30,58 +30,58 @@ You can transfer files between Frontera and Linux-based systems using either [`s
 
 Data transfer from any Linux system can be accomplished using the `scp` utility to copy data to and from the login node. A file can be copied from your local system to the remote server by using the command:
 
-``` cmd-line
+```cmd-line
 localhost% scp filename \
 TACC-username@frontera.tacc.utexas.edu:/path/to/project/directory
 ```
 
 Consult the `scp` man pages for more information:
 
-``` cmd-line
+```cmd-line
 login1$ man scp
 ```
 
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Frontera username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Frontera `$HOME` would look like this:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@frontera.tacc.utexas.edu:  # note colon after net address
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Frontera:
 
-``` cmd-line
+```cmd-line
 localhost$ scp &#42;.txt bjones@frontera.tacc.utexas.edu:/work/01234/bjones/frontera
 ```
 
 To delay wildcard expansion until reaching Frontera, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Frontera to the current directory on your local system:
 
-``` cmd-line
+```cmd-line
 localhost$ scp bjones@frontera.tacc.utexas.edu:/work/01234/bjones/frontera/\*.txt .
 ```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-``` cmd-line
+```cmd-line
 localhost$ destdir="/work/01234/bjones/frontera/data"
 localhost$ scp ./myfile bjones@frontera.tacc.utexas.edu:$destdir
 ```
 
 You can also issue `scp` commands on your local client that use Frontera environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Frontera:
 
-``` cmd-line
+```cmd-line
 localhost$ scp ./myfile bjones@frontera.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
 
 Avoid using `scp` for recursive transfers of directories that contain nested directories of many small files:
 
-``` cmd-line
+```cmd-line
 localhost$ scp -r ./mydata     bjones@frontera.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 ```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-``` cmd-line
+```cmd-line
 localhost$ tar cvf ./mydata.tar mydata                                  # create archive
 localhost$ scp     ./mydata.tar bjones@frontera.tacc.utexas.edu:\$WORK  # transfer archive
 ```
@@ -90,7 +90,7 @@ localhost$ scp     ./mydata.tar bjones@frontera.tacc.utexas.edu:\$WORK  # transf
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-``` cmd-line
+```cmd-line
 localhost$ rsync       mybigfile bjones@frontera.tacc.utexas.edu:\$WORK/data
 localhost$ rsync -avtr mybigdir  bjones@frontera.tacc.utexas.edu:\$WORK/data
 ```
@@ -101,21 +101,21 @@ See [Good Conduct](../conduct) for additional important advice about striping th
 
 The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
 
-``` cmd-line
+```cmd-line
 login1$ rsync myfile.c \
 TACC-username@frontera.tacc.utexas.edu:/data/01698/TACC-username/data
 ```
 
 An entire directory can be transferred from source to destination by using `rsync` as well. For directory transfers the options `-avtr` will transfer the files recursively (`-r` option) along with the modification times (`-t` option) and in the archive mode (`-a` option) to preserve symbolic links, devices, attributes, permissions, ownerships, etc. The `-v` option (verbose) increases the amount of information displayed during any transfer. The following example demonstrates the usage of the `-avtr` options for transferring a directory named `gauss` from the present working directory on Stampede to a directory named `data` in the $WORK file system on Frontera.
 
-``` cmd-line
+```cmd-line
 login1$ rsync -avtr ./gauss \
 TACC-username@frontera.tacc.utexas.edu:/data/01698/TACC-username/data
 ```
 
 For more `rsync` options and command details, run the command `rsync -h` or:
 
-``` cmd-line
+```cmd-line
 login1$ man rsync
 ```
 

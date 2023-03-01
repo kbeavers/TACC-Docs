@@ -26,13 +26,15 @@ Please fill out the [Usage Agreement](../taccdocs/UT_gaussian_user_agreement.pdf
 
 Gaussian 16 is currently installed on TACC's Stampede2, Frontera and Lonestar5 compute resources. Gaussian is accessed via TACC's Lmod module system. Use `module spider gaussian` and `module help gaussian` to list and explore installed versions. Then, either interactively or via a batch script, load the appropriate module:
 
-<pre class="cmd-line">login1$ <b>module load gaussian</b></pre>
+```cmd-line
+login1$ module load gaussian
+```
 
 ## [Sample Job Script](#script) { #script }
 
 The Linda MPI addon is not part of TACC's Gaussian module, so each Gaussian execution cannot use more than one node. In the Gaussian input file, (`input.conf` in the example below), set the `%NProcShared` variable to the number of CPU cores you wish to use. Do not use the `ibrun` invocation. Gaussian job submission scripts should look something like the following: 
 
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #SBATCH -J my_job_name # Job Name
 #SBATCH -o output.%j # Output file name (%j expands to jobID)
@@ -51,4 +53,3 @@ g16 < input.conf > output.log
 
 * [Gaussian site](https://gaussian.com)
 * [Gaussian manual](https://gaussian.com/man/)
-<!-- SDL * [TACC Software page](https://www.tacc.utexas.edu/systems/software) -->

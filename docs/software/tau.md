@@ -7,10 +7,11 @@ Use TAU to gain insight into the performance and behaviour of your code: what ro
 
 TAU is installed on all TACC's HPC systems and is controlled through the [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod)/module system.  To set up and examine your TAU environment:
 
-<pre class="cmd-line">
-login1$ <b>module load tau</b>
-login1$ <b>env | grep TAU</b>	#display package-specific environment variables
-login1$ <b>module help tau</b>	#basic operations & features</pre>
+```cmd-line
+login1$ module load tau
+login1$ env | grep TAU	#display package-specific environment variables
+login1$ module help tau	#basic operations & features
+```
 
 ## [Using TAU](#tacc) { #tacc }
 
@@ -22,14 +23,17 @@ login1$ <b>module help tau</b>	#basic operations & features</pre>
 
 To use TAU, you need to recompile your code using some TAU compiler wrappers (scripts). Behind the scenes these scripts do a source-to-source instrumentation phase, followed by a regular compilation. The TAU compilation scripts are:
 
-<pre class="cmd-line">
-login1$ <b>tau_f90.sh</b>
-login1$ <b>tau_cc.sh</b>
-login1$ <b>tau_cxx.sh</b></pre>
+```cmd-line
+login1$ tau_f90.sh
+login1$ tau_cc.sh
+login1$ tau_cxx.sh
+```
 
 These compiler wrappers can be used directly on a command line or within a makefile:
 
-<pre class="cmd-line">login1$ <b>tau_cc.sh -o myprogram myprogramfile.c</b></pre>
+```cmd-line
+login1$ tau_cc.sh -o myprogram myprogramfile.c
+```
 
 Use the `-tau:help` option after the compiler wrapper command to see useful TAU options.
 
@@ -68,21 +72,23 @@ Environment Variable | Description
 
 Set up your environment in a batch script or `idev` session: 
 
-<pre class="cmd-line">
-login1$ <b>idev</b>
-...
-c455-073[knl]$ <b>cd mytaudir; mkdir -p profiles</b>
-c455-073[knl]$ <b>export PROFILEDIR=`pwd`/profiles</b>
-c455-073[knl]$ <b>ibrun myprogram</b>					#profiling is on by default
-...
-c455-073[knl]$ <b>mkdir -p traces</b>
-c455-073[knl]$ <b>export TRACEDIR=`pwd`/traces</b>
-c455-073[knl]$ <b>export TAU_PROFILE=0 TAU_TRACE=1</b>
-...
-c455-073[knl]$ <b>ibrun myprogram</b>
-</pre>
+```cmd-line
 
-``` { .bash .job-script }
+login1$ idev
+...
+c455-073[knl]$ cd mytaudir; mkdir -p profiles
+c455-073[knl]$ export PROFILEDIR=`pwd`/profiles
+c455-073[knl]$ ibrun myprogram					#profiling is on by default
+...
+c455-073[knl]$ mkdir -p traces
+c455-073[knl]$ export TRACEDIR=`pwd`/traces
+c455-073[knl]$ export TAU_PROFILE=0 TAU_TRACE=1
+...
+c455-073[knl]$ ibrun myprogram
+</pre>
+```
+
+```job-script
 &#35;SBATCH directives
 ...
 export PROFILEDIR=mytaudir/profiles
@@ -103,8 +109,9 @@ After your program runs you can process TAU's output to do two things: view stat
 
 * Display global statistics with TAU's 3D profile browser, ParaProf ([Figure 1.](#figure1)):
 
-	<pre class="cmd-line">
-	xterm$ <b>paraprof ${PROFILEDIR}</b></pre>
+	```cmd-line
+	xterm$ paraprof ${PROFILEDIR}
+	```
 
 	<figure id="figure1">
 	<img alt="" src="../../imgs/software/TAU-1.gif">
@@ -115,16 +122,18 @@ After your program runs you can process TAU's output to do two things: view stat
 
 	1. First, generate the trace data: 
 
-		<pre class="cmd-line">
-		login1$ <b>cd ${TRACEDIR}</b>									# change to the directory containing trace files
-		login1$ <b>rm -f tau.trc tau.edf</b>							# remove any previous output files
-		login1$ <b>tau_treemerge.pl</b>									# merge all the trace files into one directory	
-		login1$ <b>tau2slog2 tau.trc tau.edf -o yourprogram.slog2</b>	# create viewable files</pre>
+		```cmd-line
+		login1$ cd ${TRACEDIR}									# change to the directory containing trace files
+		login1$ rm -f tau.trc tau.edf							# remove any previous output files
+		login1$ tau_treemerge.pl									# merge all the trace files into one directory	
+		login1$ tau2slog2 tau.trc tau.edf -o yourprogram.slog2	# create viewable files</pre>
+		```
 
 	1. then visualize that data using another TAU package, Jumpshot ([Figure 2.](#figure2)): 
 
-		<pre class="cmd-line">
-		xterm$ <b>jumpshot yourprogram.slog2</b></pre>
+		```cmd-line
+		xterm$ jumpshot yourprogram.slog2
+		```
 
 		<figure id="figure2"><img alt="" src="../../imgs/software/TAU-2.png">
 		<figcaption>Figure 2. Sample tracing output courtesy of <a href="http://www.mcs.anl.gov/research/projects/perfvis/pic/js4_timeline_preview_zoomed.png">Argonne National Laboratory</a></figcaption></figure>

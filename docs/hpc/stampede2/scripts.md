@@ -54,7 +54,7 @@ date
 </details>
 
 <details><summary>SKX Serial Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -105,7 +105,7 @@ date
 </details>
 
 <details><summary>KNL MPI Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -157,7 +157,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>SKX MPI Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -209,7 +209,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>ICX MPI Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -276,7 +276,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>KNL OpenMP Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -334,7 +334,7 @@ export OMP_NUM_THREADS=34
 </details>
 
 <details><summary>SKX OpenMP Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -393,7 +393,7 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 
 
 <details><summary>ICX OpenMP Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -464,7 +464,7 @@ cd $SCRATCH
 
 
 <details><summary>KNL Hybrid Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -529,7 +529,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>SKX Hybrid Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -594,7 +594,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 </details>
 
 <details><summary>ICX Hybrid Job in Normal Queue</summary>
-``` { .bash .job-script }
+```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script

@@ -24,7 +24,7 @@ Follow the steps below to start an interactive session.
 
 	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours, creating a [VNC](https://en.wikipedia.org/wiki/VNC) session.
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc
 	```
 
@@ -39,13 +39,13 @@ Follow the steps below to start an interactive session.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
-	``` cmd-line
+	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc -geometry 1440x900
 	```
 
 	The `vnc.job` script starts a vncserver process and writes to the output file, `vncserver.out` in the job submission directory, with the connect port for the vncviewer. Watch for the "To connect via VNC client" message at the end of the output file, or watch the output stream in a separate window with the commands:
 
-	``` cmd-line
+	```cmd-line
 	login1$ touch vncserver.out ; tail -f vncserver.out
 	```
 
@@ -55,7 +55,7 @@ Follow the steps below to start an interactive session.
 
 	TACC requires users to create an SSH tunnel from the local system to the Stampede2 login node to assure that the connection is secure.   The tunnels created for the VNC job operate only on the `localhost` interface, so you must use `localhost` in the port forward argument, not the Stampede2 hostname.  On a Unix or Linux system, execute the following command once the port has been opened on the Stampede2 login node:
 
-	``` cmd-line
+	```cmd-line
 	
 	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@STAMPEDEHOSTNAME
 	```
@@ -88,7 +88,7 @@ From an interactive desktop, applications can be run from icons or from xterm co
 
 Parallel applications are run on the desktop using the same `ibrun` wrapper described above (see [Running](#running)). The command:
 
-``` cmd-line
+```cmd-line
 c442-001$ ibrun ibrunoptions application applicationoptions
 ```
 
@@ -100,7 +100,7 @@ Stampede2 uses the OpenSWR OpenGL library to perform efficient rendering. At pre
 
 swr: To access the accelerated OpenSWR OpenGL library, it is necessary to use the swr module to point to the swr OpenGL implementation and configure the number of threads to allocate to rendering.  
 
-``` cmd-line
+```cmd-line
 c442-001$ module load swr
 c442-001$ swr options application application-args
 ```
@@ -111,7 +111,7 @@ c442-001$ swr options application application-args
 
 After connecting to a VNC server on Stampede2, as described above, load the VisIt module at the beginning of your interactive session before launching the Visit application:
 
-``` cmd-line
+```cmd-line
 c442-001$ module load swr visit
 c442-001$ swr visit
 ```
@@ -128,13 +128,13 @@ After connecting to a VNC server on Stampede2, as described above, do the follow
 
 1. Set up your environment with the necessary modules. Load the `swr`, `qt5`, `ospray`, and `paraview` modules **in this order**:
 
-	``` cmd-line
+	```cmd-line
 	c442-001$ module load swr qt5 ospray paraview
 	```
 
 1. Launch ParaView: 
 
-	``` cmd-line
+	```cmd-line
 	c442-001$ swr -p 1 paraview [paraview client options]
 	```
 

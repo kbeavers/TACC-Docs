@@ -7,13 +7,13 @@
 
 Before running MAP, the application code must be compiled with the `-g` option as shown below:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ <b>mpif90 -g mycode.f90</b>
 ```
 
 or
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ <b>mpiCC -g mycode.c</b>
 ```
 
@@ -23,26 +23,26 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 
 1. **Enable X11 forwarding**. To use the MAP GUI, ensure that X11 forwarding is enabled when you ssh to the TACC system. Use the `-X` option on the ssh command line if X11 forwarding is not enabled in your ssh client by default.
 
-	``` { .bash .cmd-line }
+	```cmd-line
 	localhost$ <b>ssh -X <i>username</i>@stampede2.tacc.utexas.edu</b>
 	```
 
 1. **Load the appropriate MAP module on the remote system** along with any other modules needed to run the application:
 
-	``` { .bash .cmd-line }
+	```cmd-line
 	$ <b>module load map_skx <i>mymodule1 mymodule2</i></b>	# on Stampede2 load "map_skx"
 	$ <b>module load map <i>mymodule1 mymodule2</i></b>       # on all other resources load "map"
 	```
 
 1. **Start the profiler.**
 
-	``` { .bash .cmd-line }
+	```cmd-line
 	$ <b>map myprogram</b>
 	```
 
 	If this error message appears...
 
-	``` { .bash .cmd-line }
+	```cmd-line
 	map: cannot connect to X server
 	```
 
@@ -134,7 +134,7 @@ By starting MAP from a login node you let it use X11 graphics, which can be slow
 
 1. **From any login node, submit a batch job where the ibrun line is replaced by**:
 
-	``` { .bash .cmd-line }
+	```cmd-line
 	login1$ <b>map --connect -n 123 ./yourprogram</b>
 	```
 

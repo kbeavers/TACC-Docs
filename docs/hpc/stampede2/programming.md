@@ -10,7 +10,7 @@ Programming for performance is a broad and rich topic. While there are no shortc
 
 Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
 
-``` cmd-line
+```cmd-line
 perf stat ./a.out    # report basic performance stats for a.out
 time ./a.out         # report the time required to execute a.out
 time ibrun ./a.out   # time an MPI code
@@ -113,14 +113,16 @@ By design, any application can run in any memory and cluster mode, and applicati
 
 When running in flat-quadrant mode, launch your code with [simple `numactl` settings](#example) to specify whether memory allocations occur in DDR or MCDRAM. See [TACC Training Materials](/training) for additional information.
 
-<pre class="job-sript">
+```job-script
 numactl       --membind=0    ./a.out    # launch a.out (non-MPI); use DDR (default)
 ibrun numactl --membind=0    ./a.out    # launch a.out (MPI-based); use DDR (default)
 
 numactl       --membind=1    ./a.out    # use only MCDRAM
 numactl       --preferred=1  ./a.out    # (<b>RECOMMENDED</b>) MCDRAM if possible; else DDR
 numactl       --hardware                # show numactl settings
-numactl       --help                    # list available numactl options</pre>
+numactl       --help                    # list available numactl options
+```
+
 Examples. Controlling memory in flat-quadrant mode: `numactl` options  
 
 Intel's new `memkind` library adds the ability to manage memory in source code with a special memory allocator for C code and a corresponding attribute for Fortran. This makes possible a level of control over memory allocation down to the level of the individual data element. As this library matures it will likely become an important tool for those who need fine-grained control of memory.

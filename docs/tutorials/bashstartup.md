@@ -3,7 +3,7 @@
 
 While the startup behavior of the bash shell can seem to require a Ph.D in Shellology, here we try to simplify the discussion to the minimum required to get you started. In general, every time you interactively access a TACC resource, Bash will source either your `~/.profile` or `~/.bashrc` file.  Which one is sourced is complicated and not really important; see the troubleshooting notes below for some additional fine print.  In either case, to get the same behavior in all of the interactive shells, you'll need to have your `~/.profile` source the `~/.bashrc` and put all the important statements in your `~/.bashrc`.
 
-``` { .bash .job-script }
+```job-script
 # ~/.profile
 
 if [ -f ~/.bashrc ]; then
@@ -13,7 +13,7 @@ fi
 
 One important idea is that every interactive sub-shell will source your `~/.bashrc`.  This means that if you wish to add personal directories to your `$PATH`, you'll only want do it once.  An environment variable (called `MYPATH` in the example) can be used to enforce this behavior:
 
-``` { .bash .job-script }
+```job-script
 # ~/.bashrc            
 
 if [ -z "$MYPATH" ]; then
@@ -36,7 +36,7 @@ Rather than describe all these steps here we have sample startup scripts that yo
 
 Your account may already have these files, but if not run the following script:
 
-``` { .bash .cmd-line }
+```cmd-line
 login1$ <b>/usr/local/startup_scripts/install_default_scripts</b>
 ```
 

@@ -12,11 +12,14 @@ theme:
     hljs_languages:
         - bash
         - ruby
+        - plaintext
     hljs_aliases:
         - name: cmd-line
           lang: ruby
         - name: job-script
           lang: bash
+        - name: syntax
+          lang: plaintext
     custom_dir: themes/readthedocs
 
 extra_css:
@@ -35,7 +38,7 @@ nav:
     - Getting Started: basics/gettingstarted.md
     - New User Information: basics/newuserinfo.md
     - Data Transfer Guide: basics/datatransferguide.md
-    - Conduct on HPC: basics/conduct.md
+    - Good Conduct on HPC Resources: basics/conduct.md
     - Help: basics/help.md
   - HPC :
     - Chameleon: https://chameleoncloud.readthedocs.io/en/latest
@@ -104,6 +107,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.saneheaders
+  - pymdownx.details
   # FAQ: The `pymdownx.highlight` is useful only if Pygments is installed
   #      because Pygments would offer:
   #      - build-time syntax highlight markup
