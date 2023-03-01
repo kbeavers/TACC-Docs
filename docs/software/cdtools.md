@@ -29,6 +29,7 @@ or
 
 ``` cmd-line
 $ distribute.bash ${SCRATCH}/inputdir #put the full path of the directory of your input files here
+```
 
 If you `ssh` to those compute nodes after running the above command, you would find an identical copy of your input file or directory in the `/tmp` directory on each node.
 

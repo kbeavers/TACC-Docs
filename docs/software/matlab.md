@@ -56,12 +56,12 @@ matlab -nodesktop -nodisplay -nosplash &lt; mymatlabprog.m
 ```
 
 Then submit the job to the scheduler in the standard way. See the Running Jobs section in the respective user guides
+
 Resource | Submit a batch job
 --- | ---
-Frontera | <code>login1$ <b>sbatch myjobscript</b></code>
-| <a href="https://fronteraweb.tacc.utexas.edu/user-guide/running/">Running jobs on Frontera</a>
+Frontera | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://fronteraweb.tacc.utexas.edu/user-guide/running/">Running jobs on Frontera</a>
 Stampede2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/stampede2#running">Running jobs on Stampede2</a>
-Lonestar5 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/lonestar5#running">Running jobs on Lonestar5</a>
+Lonestar6 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/lonestar6#running">Running jobs on Lonestar6</a>
 Maverick2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/maverick2#running">Running jobs on Maverick2</a>
 
 ## [Parallel MATLAB](#parallelmatlab) { #parallelmatlab }

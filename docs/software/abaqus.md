@@ -81,7 +81,7 @@ c123-456$ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt
 1. Compile user modules on the login nodes:
 
 	``` cmd-line
-	login1$ <b>$TACC_ABAQUS_BIN/abaqus make library=<sourcefile></b>
+	login1$ $TACC_ABAQUS_BIN/abaqus make library=<sourcefile>
 	```
 
 1. Place resulting files (`sourcefile-basename.o`, `sourcefile-basename.so`) into a directory: `/path-to-the-directory/abaqus_libs`
@@ -93,8 +93,8 @@ c123-456$ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt
 1. In order to debug the ABAQUS errors, users might find it useful to run the ABAQUS commands with the `verbose` option. Set verbose to "3" to retrieve all run details:
 
 	``` cmd-line
-	c123-456$ <b>$TACC_ABAQUS_BIN/abaqus cpus=1 input=myinputfile job=test2 \
-		interactive scratch="." verbose=3</b>
+	c123-456$ $TACC_ABAQUS_BIN/abaqus cpus=1 input=myinputfile job=test2 \
+		interactive scratch="." verbose=3
 	```
 
 ## [Job Script](#jobscript) { #jobscript }

@@ -41,7 +41,7 @@ ANSYS is managed under [Lmod](https://lmod.readthedocs.io/en/latest/) Environmen
 $ module load ansys
 ```
 
-You can always get the help information using the module's &quot;<b>`help`</b>&quot; command:
+You can always get the help information using the module's &quot;`help`&quot; command:
 
 ``` cmd-line
 $ module help ansys
@@ -79,11 +79,11 @@ module load ansys
 MY_JOB_DIR = /scratch1/01234/joe/Ansys_test
 
 # Run ANSYS Job
-&quot;/home1/apps/ANSYS/v201/ansys/bin/mapdl&quot; \
+"/home1/apps/ANSYS/v201/ansys/bin/mapdl" \
 		-p ansys -dis -mpi INTELMPI -np 56 -lch    \
-		-dir &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR</span>&quot; \
-		-j &quot;Ansys_test&quot; -s read -l en-us -b \
-		&lt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_input.txt</span>&quot; &gt; &quot;<span style="color:blue;font-style:bold">$MY_JOB_DIR/Ansys_test_output.out</span>&quot;
+		-dir "$MY_JOB_DIR" \
+		-j "Ansys_test" -s read -l en-us -b \
+		&lt; "$MY_JOB_DIR/Ansys_test_input.txt" &gt; "$MY_JOB_DIR/Ansys_test_output.out"
 ```
 
 To obtain the correct <span style="color:blue;font-style:bold">`Your-ANSYS-COMMAND-HERE`</span>, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No `ibrun` or `mpirun` command is needed for running ANSYS jobs.

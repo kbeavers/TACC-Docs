@@ -158,7 +158,7 @@ ${LAUNCHER_DIR}/paramrun
 Once the input sequences, the `jobfile`, and the batch job submission script are all prepared, submit the job to the queue with:
 
 ``` syntax
-sbatch <i>name_of_job_script</i>
+sbatch name_of_job_script
 ```
 
 ``` bash
