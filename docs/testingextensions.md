@@ -94,9 +94,9 @@ See: <https://docs.tacc.utexas.edu/hpcugs/stampede2/stampede2/#jobscripts>
 
 ??? "Cheesy example - click on arrow to expand"
 
-    I'm not a big fan of this arrow. <br> 
-    Can we add some margin/whitespace at the bottom?  <br>
-    Also, markdown doesn't __work__ within these tags?
+    I'm not a big fan of this arrow. <br>
+    Can we add some margin/whitespace at the bottom? <br>
+    Also, markdown __now works__ within these tags.
 
 
 ### Images
