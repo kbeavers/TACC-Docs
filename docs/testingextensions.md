@@ -92,11 +92,11 @@ ibrun -N 6 -n 12 myexecutable
 
 See: <https://docs.tacc.utexas.edu/hpcugs/stampede2/stampede2/#jobscripts>
 
-<details><summary>Cheesy example - click on arrow to expand</summary>
-I'm not a big fan of this arrow. <br> 
-Can we add some margin/whitespace at the bottom?  <br>
-Also, markdown doesn't work within these tags?
-</details>
+??? "Cheesy example - click on arrow to expand"
+
+    I'm not a big fan of this arrow. <br> 
+    Can we add some margin/whitespace at the bottom?  <br>
+    Also, markdown doesn't __work__ within these tags?
 
 
 ### Images
