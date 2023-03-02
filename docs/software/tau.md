@@ -90,7 +90,7 @@ c455-073[knl]$ ibrun myprogram
 ```
 
 ```job-script
-&#35;SBATCH directives
+#SBATCH directives
 ...
 export PROFILEDIR=mytaudir/profiles
 export TRACEDIR=mytaudir/traces

@@ -121,7 +121,7 @@ Next, prepare a launcher `jobfile` that contains each command that needs to be r
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq1.fasta</span> --output_dir=$SCRATCH/BLUEoutput1</span> --model_preset=monomer --use_gpu_relax=True
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq2.fasta</span> --output_dir=$SCRATCH/BLUEoutput2</span> --model_preset=monomer --use_gpu_relax=True
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq3.fasta</span> --output_dir=$SCRATCH/BLUEoutput3</span> --model_preset=monomer --use_gpu_relax=True
-&#46;&#46;&#46;
+...
 ```
 </details>
 

@@ -1,16 +1,14 @@
 ## [Programming and Performance](#programming) { #programming }
 
-### [Programming and Performance: General](#programming-general) { #programming-general }
-
 Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
-#### [Timing and Profiling](#programming-general-timingprofiling) { #programming-general-timingprofiling }
+### [Timing and Profiling](#programming-general-timingprofiling) { #programming-general-timingprofiling }
 
 **Measure performance and experiment with both compiler and runtime options.** This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
 
 Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
 
-```cmd-line
+``` cmd-line
 perf stat ./a.out    # report basic performance stats for a.out
 time ./a.out         # report the time required to execute a.out
 time ibrun ./a.out   # time an MPI code
@@ -21,7 +19,7 @@ As your needs evolve you can add timing intrinsics to your source code to time s
 
 It can be helpful to compare results with different compiler and runtime options: e.g. with and without [vectorization](http://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-vec-qvec), [threading](#running-launching-multi), or [Lustre striping](#files-striping). You may also want to learn to use profiling tools like [Intel VTune Amplifier](http://software.intel.com/en-us/intel-vtune-amplifier-xe) <span style="white-space: nowrap;">(`module load vtune`)</span> or GNU [`gprof`](http://sourceware.org/binutils/docs/gprof/).
 
-#### [Data Locality](#programming-general-datalocality) { #programming-general-datalocality }
+### [Data Locality](#programming-general-datalocality) { #programming-general-datalocality }
 
 **Appreciate the high cost (performance penalty) of moving data from one node to another**, from disk to RAM, and even from RAM to cache. Write your code to keep data as close to the computation as possible: e.g. in RAM when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. A simple KNL-specific example illustrates the point: all things being equal, there's a good chance you'll see better performance when you keep your data in the KNL's [fast MCDRAM](#programming-knl-memorymodes) instead of the slower DDR4.
 
@@ -33,38 +31,38 @@ To achieve stride 1 access you need to understand how your program stores its da
 <tr><th>Fortran example</th><th>C example</th></tr>
 <tr><td>
 ``` syntax
-real&#42;8 :: a(m,n), b(m,n), c(m,n)
-&nbsp;...
-&#33; inner loop strides through col i
+real*8 :: a(m,n), b(m,n), c(m,n)
+ ...
+! inner loop strides through col i
 do i=1,n
-&nbsp;&nbsp;do j=1,m
-&nbsp;&nbsp;&nbsp;&nbsp;a(j,i)=b(j,i)+c(j,i)
-&nbsp;&nbsp;end do
+  do j=1,m
+    a(j,i)=b(j,i)+c(j,i)
+  end do
 end do
 ```
 </td>
 <td>
 ``` syntax
 double a[m][n], b[m][n], c[m][n];
-&nbsp;...
-&#47;&#47; inner loop strides through row i
-for (i=0;i&lt;m;i++){
-&nbsp;&nbsp;for (j=0;j&lt;n;j++){
-&nbsp;&nbsp;&nbsp;&nbsp;a[i][j]=b[i][j]+c[i][j];
-&nbsp;&nbsp;}
+ ...
+// inner loop strides through row i
+for (i=0;i<m;i++){
+  for (j=0;j<n;j++){
+    a[i][j]=b[i][j]+c[i][j];
+  }
 }
 ```
 </td></tr>
 </table>
 
 
-#### [Vectorization](#programming-general-vectorization) { #programming-general-vectorization }
+### [Vectorization](#programming-general-vectorization) { #programming-general-vectorization }
 
 **Give the compiler a chance to produce efficient, [vectorized](http://software.intel.com/en-us/articles/vectorization-essential) code**. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on [Programming Guidelines for Vectorization](http://software.intel.com/en-us/node/522571) for a nice summary of the factors that affect the compiler's ability to vectorize loops.
 
 It's often worthwhile to generate [optimization and vectorization reports](http://software.intel.com/en-us/articles/getting-the-most-out-of-your-intel-compiler-with-the-new-optimization-reports) when using the Intel compiler. This will allow you to see exactly what the compiler did and did not do with each loop, together with reasons why.
 
-#### [Learning More](#programming-general-more) { #programming-general-more }
+### [Learning More](#programming-general-more) { #programming-general-more }
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64).
 

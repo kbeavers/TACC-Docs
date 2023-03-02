@@ -26,14 +26,14 @@ Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Me
 
 Specification | Value
 --- | ---
-Model:&nbsp; | Intel Xeon Phi 7250 ("Knights Landing")
-Total cores per KNL node:&nbsp; | 68 cores on a single socket
-Hardware threads per core:&nbsp; | 4
-Hardware threads per node:&nbsp; | 68 x 4 = 272
-Clock rate:&nbsp; | 1.4GHz
-RAM:&nbsp; | 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
-Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
-Local storage:&nbsp; | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
+Model:  | Intel Xeon Phi 7250 ("Knights Landing")
+Total cores per KNL node:  | 68 cores on a single socket
+Hardware threads per core:  | 4
+Hardware threads per node:  | 68 x 4 = 272
+Clock rate:  | 1.4GHz
+RAM:  | 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
+Cache:  | 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
+Local storage:  | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
 	
 	
 ### [SKX Compute Nodes](#overview-skxcomputenodes) { #overview-skxcomputenodes }
@@ -44,14 +44,14 @@ Stampede2 hosts 1,736 SKX compute nodes.
 
 Specification | Value
 --- | ---
-Model:&nbsp; | Intel Xeon Platinum 8160 ("Skylake")
-Total cores per SKX node:&nbsp; | 48 cores on two sockets (24 cores/socket)
-Hardware threads per core:&nbsp; | 2
-Hardware threads per node:&nbsp; | 48 x 2 = 96
-Clock rate:&nbsp; | 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
-RAM:&nbsp; | 192GB (2.67GHz) DDR4
-Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
-Local storage:&nbsp; | 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
+Model:  | Intel Xeon Platinum 8160 ("Skylake")
+Total cores per SKX node:  | 48 cores on two sockets (24 cores/socket)
+Hardware threads per core:  | 2
+Hardware threads per node:  | 48 x 2 = 96
+Clock rate:  | 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
+RAM:  | 192GB (2.67GHz) DDR4
+Cache:  | 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
+Local storage:  | 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
 
 ### [ICX Compute Nodes](#overview-icxcomputenodes) { #overview-icxcomputenodes }
 
@@ -59,14 +59,14 @@ Stampede2 hosts 224 ICX compute nodes.
 
 #### [Table 2a. Stampede2 ICX Compute Node Specifications](#table2a) { #table2a }
 
-Model:&nbsp; | Intel Xeon Platinum 8380 ("Ice Lake")
-Total cores per ICX node:&nbsp; | 80 cores on two sockets (40 cores/socket)
-Hardware threads per core:&nbsp; | 2
-Hardware threads per node:&nbsp; | 80 x 2 = 160
-Clock rate:&nbsp; | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
-RAM:&nbsp; | 256GB (3.2 GHz) DDR4
-Cache:&nbsp; | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
-Local storage:&nbsp; | 342 GB <code>/tmp</code> partition
+Model:  | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores per ICX node:  | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core:  | 2
+Hardware threads per node:  | 80 x 2 = 160
+Clock rate:  | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
+RAM:  | 256GB (3.2 GHz) DDR4
+Cache:  | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage:  | 342 GB <code>/tmp</code> partition
 
 ### [Login Nodes](#overview-loginnodes) { #overview-loginnodes }
 
@@ -139,7 +139,9 @@ Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research work
 
 The default login shell for your user account is Bash.  To determine your current login shell, execute: 
 
-<pre class="cmd-line">$ <b>echo $SHELL</b></pre>
+``` cmd-line
+$ echo $SHELL
+```
 
 If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC User Portal][TACCUSERPORTAL]. The `chsh` ("change shell") command will not work on TACC systems. 
 
@@ -157,7 +159,9 @@ Execute the `env` command to see the environment variables that define the way y
 
 Pipe the results of `env` into `grep` to focus on specific environment variables. For example, to see all environment variables that contain the string GIT (in all caps), execute:
 
-<pre class="cmd-line">$ <b>env | grep GIT</b></pre>
+``` cmd-line
+$ env | grep GIT
+```
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
@@ -165,9 +169,11 @@ The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important.
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
-<pre class="cmd-line">
-login1$ <b>module load sanitytool</b>
-login1$ <b>sanitycheck</b></pre>
+``` cmd-line
+
+login1$ module load sanitytool
+login1$ sanitycheck
+```
 
 Execute `module help sanitytool` for more information.
 
@@ -190,9 +196,11 @@ Be sure to request computing resources that are consistent with the type of appl
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try  launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
 * A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
-<pre class="cmd-line">
-$ <b>module load launcher</b>
-$ <b>module help launcher</b></pre>
+``` cmd-line
+
+$ module load launcher
+$ module help launcher
+```
 
 <figure id="figure-logincomputenodes">
 <img alt="Stampede2" src="../../imgs/stampede2/Stampede2.jpg">
@@ -202,79 +210,93 @@ $ <b>module help launcher</b></pre>
 
 Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to using your research. This is especially important on a system like Stampede2 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>          # load the default Intel compiler
-$ <b>module load intel/17.0.4</b>   # load a specific version of Intel compiler</pre>
+``` cmd-line
+
+$ module load intel          # load the default Intel compiler
+$ module load intel/17.0.4   # load a specific version of Intel compiler
+```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
-<pre class="cmd-line">
-$ <b>module load   ddt</b>  # defines DDT-related env vars; modifies others
-$ <b>module unload ddt</b>  # undoes changes made by load</pre>
+``` cmd-line
+
+$ module load   ddt  # defines DDT-related env vars; modifies others
+$ module unload ddt  # undoes changes made by load
+```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and PETSc with versions compatible with gcc:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>  # load default version of Intel compiler
-$ <b>module load petsc</b>  # load default version of PETSc
-$ <b>module load gcc</b>    # change compiler
+``` cmd-line
+$ module load intel  # load default version of Intel compiler
+$ module load petsc  # load default version of PETSc
+$ module load gcc    # change compiler
 
 Lmod is automatically replacing "intel/17.0.4" with "gcc/7.1.0".
 
 Due to MODULEPATH changes, the following have been reloaded:
-1) impi/17.0.3     2) petsc/3.7</pre>
+1) impi/17.0.3     2) petsc/3.7
+```
 
 On Stampede2, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
-<pre class="cmd-line">
-$ <b>module show papi</b>   # see what this module does to your environment
-$ <b>env | grep PAPI</b>    # see env vars that contain the string PAPI
-$ <b>env | grep -i papi</b> # case-insensitive search for 'papi' in environment</pre>
+``` cmd-line
+$ module show papi   # see what this module does to your environment
+$ env | grep PAPI    # see env vars that contain the string PAPI
+$ env | grep -i papi # case-insensitive search for 'papi' in environment
+```
 
 To see the modules you currently have loaded:
 
-<pre class="cmd-line">
-$ <b>module list</b></pre>
+``` cmd-line
+$ module list
+```
 
 To see all modules that you can load right now because they are compatible with the currently loaded modules:
 
-<pre class="cmd-line">
-$ <b>module avail</b></pre>
+``` cmd-line
+$ module avail
+```
 
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
-<pre class="cmd-line">
-$ <b>module spider</b>   # list all modules, even those not available to load</pre>
+``` cmd-line
+$ module spider   # list all modules, even those not available to load
+```
 
 To filter your search:
 
-<pre class="cmd-line">
-$ <b>module spider slep</b>             # all modules with names containing 'slep'
-$ <b>module spider sundials/2.5.0</b>   # additional details on a specific module</pre>
+``` cmd-line
+$ module spider slep             # all modules with names containing 'slep'
+$ module spider sundials/2.5.0   # additional details on a specific module
+```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
 
-<pre class="cmd-line">
-$ <b>module keyword performance</b></pre>
+``` cmd-line
+$ module keyword performance
+```
 
 You can save a collection of modules as a personal default collection that will load every time you log into Stampede2. To do so, load the modules you want in your collection, then execute:
 
-<pre class="cmd-line">
-$ <b>module save</b>    # save the currently loaded collection of modules </pre>
+``` cmd-line
+$ module save    # save the currently loaded collection of modules 
+```
 
 Two commands make it easy to return to a known, reproducible state:
 
-<pre class="cmd-line">
-$ <b>module reset</b>   # load the system default collection of modules
-$ <b>module restore</b> # load your personal default collection of modules</pre>
+``` cmd-line
+$ module reset   # load the system default collection of modules
+$ module restore # load your personal default collection of modules
+```
 
 On TACC systems, the command `module reset` is equivalent to `module purge; module load TACC`. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 
-<pre class="cmd-line">
-$ <b>module help swr</b>     # show help text for software package swr
-$ <b>module help</b>         # show help text for the module system itself</pre>
+``` cmd-line
+$ module help swr     # show help text for software package swr
+$ module help         # show help text for the module system itself
+```
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
@@ -296,11 +318,11 @@ Your account-specific `$WORK` environment variable varies from system to system 
 !!! note
 	Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
-See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.
+See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.  Figure 3 illustrates account-level directories on the `$WORK` file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.
 
-<figure id="figure3"><img alt="Stockyard 2022" src="../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure id="figure3"><img border="1" alt="Stockyard 2022" src="../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.</figcaption></figure>
 
-Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/stampede2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+Note that resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/stampede2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
 [Table 4. Built-in Account Level Aliases](#table4)
 
@@ -336,10 +358,9 @@ You can check the stripe count of a file using the `lfs getstripe` command:
 $ lfs getstripe myfile
 ```
 
-
 ## [Transferring Files](#transferring) { #transferring }
 
-### [Transfer Using `scp`](#transferring-scp) { #transferring-scp }
+### [with `scp`](#transferring-scp) { #transferring-scp }
 
 You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](#access-ssh) typically include `scp`-based file transfer capabilities.
 
@@ -387,7 +408,7 @@ localhost$ tar cvf ./mydata.tar mydata</b>                                   # c
 localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # transfer archive
 ```
 
-### [Transfer Using `rsync`](#transferring-rsync) { #transferring-rsync }
+### [with `rsync`](#transferring-rsync) { #transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
@@ -594,7 +615,7 @@ $ icc -xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe       # NO! Base incompa
 On Stampede2, the module files for newer Intel compilers (Intel 18.0.0 and later) define the environment variable `TACC_VEC_FLAGS` that stores the recommended architecture flags described above. This can simplify your builds:
 
 ```cmd-line
-$ echo $TACC_VEC_FLAGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# env variable available only for intel/18.0.0 and later
+$ echo $TACC_VEC_FLAGS                         # env variable available only for intel/18.0.0 and later
 -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512
 $ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 ``` 
@@ -769,8 +790,8 @@ To run more than one MPI application simultaneously in the same job, you need to
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute <span style="white-space: nowrap;">`ibrun --help`</span> for more information. **Don't forget the ampersands (`&`)** to launch the jobs in the background, **and the `wait` command** to pause the script until the background tasks complete:
 
 ```job-script
-ibrun -n 64 -o  0 task_affinity ./myprogram input1 &amp;   # 64 tasks; offset by  0 entries in hostfile.
-ibrun -n 64 -o 64 task_affinity ./myprogram input2 &amp;   # 64 tasks; offset by 64 entries in hostfile.
+ibrun -n 64 -o  0 task_affinity ./myprogram input1 &   # 64 tasks; offset by  0 entries in hostfile.
+ibrun -n 64 -o 64 task_affinity ./myprogram input2 &   # 64 tasks; offset by 64 entries in hostfile.
 wait                                                       # Required; else script will exit immediately.
 ```
 
@@ -787,8 +808,8 @@ You can also run more than one OpenMP application simultaneously on a single nod
 
 ```job-script
 export OMP_NUM_THREADS=2
-numactl -C 0-1 ./myprogram inputfile1 &amp;  # HW threads (hence cores) 0-1. Note ampersand.
-numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Note ampersand.
+numactl -C 0-1 ./myprogram inputfile1 &  # HW threads (hence cores) 0-1. Note ampersand.
+numactl -C 2-3 ./myprogram inputfile2 &  # HW threads (hence cores) 2-3. Note ampersand.
 
 wait
 ```
@@ -805,10 +826,9 @@ login1$ idev
 You'll then see output that includes the following excerpts:
 
 ```cmd-line
-
 ...
 -----------------------------------------------------------------
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to the Stampede2 Supercomputer          
+      Welcome to the Stampede2 Supercomputer          
 -----------------------------------------------------------------
 ...
 
@@ -1833,17 +1853,15 @@ After connecting to a VNC server on Stampede2, as described above, do the follow
 
 ## [Programming and Performance](#programming) { #programming }
 
-### [Programming and Performance: General](#programming-general) { #programming-general }
-
 Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
-#### [Timing and Profiling](#programming-general-timingprofiling) { #programming-general-timingprofiling }
+### [Timing and Profiling](#programming-general-timingprofiling) { #programming-general-timingprofiling }
 
 **Measure performance and experiment with both compiler and runtime options.** This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
 
 Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
 
-```cmd-line
+``` cmd-line
 perf stat ./a.out    # report basic performance stats for a.out
 time ./a.out         # report the time required to execute a.out
 time ibrun ./a.out   # time an MPI code
@@ -1854,7 +1872,7 @@ As your needs evolve you can add timing intrinsics to your source code to time s
 
 It can be helpful to compare results with different compiler and runtime options: e.g. with and without [vectorization](http://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-vec-qvec), [threading](#running-launching-multi), or [Lustre striping](#files-striping). You may also want to learn to use profiling tools like [Intel VTune Amplifier](http://software.intel.com/en-us/intel-vtune-amplifier-xe) <span style="white-space: nowrap;">(`module load vtune`)</span> or GNU [`gprof`](http://sourceware.org/binutils/docs/gprof/).
 
-#### [Data Locality](#programming-general-datalocality) { #programming-general-datalocality }
+### [Data Locality](#programming-general-datalocality) { #programming-general-datalocality }
 
 **Appreciate the high cost (performance penalty) of moving data from one node to another**, from disk to RAM, and even from RAM to cache. Write your code to keep data as close to the computation as possible: e.g. in RAM when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. A simple KNL-specific example illustrates the point: all things being equal, there's a good chance you'll see better performance when you keep your data in the KNL's [fast MCDRAM](#programming-knl-memorymodes) instead of the slower DDR4.
 
@@ -1865,36 +1883,39 @@ To achieve stride 1 access you need to understand how your program stores its da
 <table border="1" cellspacing="3" cellpadding="3">
 <tr><th>Fortran example</th><th>C example</th></tr>
 <tr><td>
-<pre>
-real&#42;8 :: a(m,n), b(m,n), c(m,n)
-&nbsp;...
-&#33; inner loop strides through col i
+``` syntax
+real*8 :: a(m,n), b(m,n), c(m,n)
+ ...
+! inner loop strides through col i
 do i=1,n
-&nbsp;&nbsp;do j=1,m
-&nbsp;&nbsp;&nbsp;&nbsp;a(j,i)=b(j,i)+c(j,i)
-&nbsp;&nbsp;end do
-end do</pre>
+  do j=1,m
+    a(j,i)=b(j,i)+c(j,i)
+  end do
+end do
+```
 </td>
-<td><pre>
+<td>
+``` syntax
 double a[m][n], b[m][n], c[m][n];
-&nbsp;...
-&#47;&#47; inner loop strides through row i
-for (i=0;i&lt;m;i++){
-&nbsp;&nbsp;for (j=0;j&lt;n;j++){
-&nbsp;&nbsp;&nbsp;&nbsp;a[i][j]=b[i][j]+c[i][j];
-&nbsp;&nbsp;}
-}</pre>
+ ...
+// inner loop strides through row i
+for (i=0;i<m;i++){
+  for (j=0;j<n;j++){
+    a[i][j]=b[i][j]+c[i][j];
+  }
+}
+```
 </td></tr>
 </table>
 
 
-#### [Vectorization](#programming-general-vectorization) { #programming-general-vectorization }
+### [Vectorization](#programming-general-vectorization) { #programming-general-vectorization }
 
 **Give the compiler a chance to produce efficient, [vectorized](http://software.intel.com/en-us/articles/vectorization-essential) code**. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on [Programming Guidelines for Vectorization](http://software.intel.com/en-us/node/522571) for a nice summary of the factors that affect the compiler's ability to vectorize loops.
 
 It's often worthwhile to generate [optimization and vectorization reports](http://software.intel.com/en-us/articles/getting-the-most-out-of-your-intel-compiler-with-the-new-optimization-reports) when using the Intel compiler. This will allow you to see exactly what the compiler did and did not do with each loop, together with reasons why.
 
-#### [Learning More](#programming-general-more) { #programming-general-more }
+### [Learning More](#programming-general-more) { #programming-general-more }
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64).
 

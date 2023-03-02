@@ -24,7 +24,7 @@ An excerpt from this command's output might look like this:
 login1$ sinfo -S+P -o "%18P %8a %20F"
 PARTITION          AVAIL    NODES(A/I/O/T)
 debug              up       1757/4419/776/6952
-development&#42;       up       85/153/114/352
+development*       up       85/153/114/352
 large              up       1691/112/485/2288
 normal             up       1691/112/485/2288
 ```

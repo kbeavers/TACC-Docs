@@ -25,16 +25,16 @@ Modify your batch script and include 'remora' before your script, executable, or
 
 ```job-script
 #!/bin/bash
-&#35;SBATCH -J myjob           		# Job name
-&#35;SBATCH -oe myjob.o%j      		# Name of stdout/stderr output file
-&#35;SBATCH -p normal          		# Queue (partition) name
-&#35;SBATCH -N 1               		# Total # of nodes (must be 1 for serial)
-&#35;SBATCH -n 16              		# Total # of mpi tasks (should be 1 for serial)
-&#35;SBATCH -t 01:00:00        		# Run time (hh:mm:ss)
-&#35;SBATCH -A <i>myproject</i>     		# Allocation name (req'd if you have more than 1)
+#SBATCH -J myjob           		# Job name
+#SBATCH -oe myjob.o%j      		# Name of stdout/stderr output file
+#SBATCH -p normal          		# Queue (partition) name
+#SBATCH -N 1               		# Total # of nodes (must be 1 for serial)
+#SBATCH -n 16              		# Total # of mpi tasks (should be 1 for serial)
+#SBATCH -t 01:00:00        		# Run time (hh:mm:ss)
+#SBATCH -A <i>myproject</i>     		# Allocation name (req'd if you have more than 1)
 
-<b>module load remora 
-remora ibrun ./my_parallel_job	# or "remora ./serial_job" if running a serial job</b>
+module load remora 
+remora ibrun ./my_parallel_job	# or "remora ./serial_job" if running a serial job
 ```
 
 

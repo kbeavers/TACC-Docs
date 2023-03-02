@@ -40,15 +40,15 @@ Modify the following sample job scripts for VASP jobs on Stampede2, Lonestar6 an
 The script below submits a VASP job to Lonestar6's normal queue ( Milan compute nodes), requesting 2 nodes and 256 tasks for a maximum of 4 hours. Refer to lonestar6's Running Jobs section for more Slurm options.
 
 ```job-script
-&#35;!/bin/bash 
-&#35;SBATCH -J vasp          
-&#35;SBATCH -o vasp.%j.out     
-&#35;SBATCH -e vasp.%j.err 
-&#35;SBATCH -n 256         
-&#35;SBATCH -N 2 
-&#35;SBATCH -p normal      
-&#35;SBATCH -t 4:00:00        
-&#35;SBATCH -A projectnumber
+#!/bin/bash 
+#SBATCH -J vasp          
+#SBATCH -o vasp.%j.out     
+#SBATCH -e vasp.%j.err 
+#SBATCH -n 256         
+#SBATCH -N 2 
+#SBATCH -p normal      
+#SBATCH -t 4:00:00        
+#SBATCH -A projectnumber
 
 module load vasp/5.4.4.pl2
 ibrun vasp_std > vasp_test.out
@@ -59,15 +59,15 @@ ibrun vasp_std > vasp_test.out
 The script below submits a VASP job to [Frontera's normal queue](https://frontera-portal.tacc.utexas.edu/user-guide/running/#table-5-frontera-production-queues) (CLX compute nodes), requesting 4 nodes and 224 tasks for a maximum of 4 hours. Refer to Frontera's [Running Jobs](https://frontera-portal.tacc.utexas.edu/user-guide#running) section for more Slurm options.
 
 ```job-script
-&#35;!bin/bash 
-&#35;SBATCH -J vasp          
-&#35;SBATCH -o vasp.%j.out     
-&#35;SBATCH -e vasp.%j.err 
-&#35;SBATCH -n 224         
-&#35;SBATCH -N 4 
-&#35;SBATCH -p normal      
-&#35;SBATCH -t 4:00:00        
-&#35;SBATCH -A <i>projectnumber</i>
+#!bin/bash 
+#SBATCH -J vasp          
+#SBATCH -o vasp.%j.out     
+#SBATCH -e vasp.%j.err 
+#SBATCH -n 224         
+#SBATCH -N 4 
+#SBATCH -p normal      
+#SBATCH -t 4:00:00        
+#SBATCH -A <i>projectnumber</i>
 
 module load vasp/5.4.4.pl2
 ibrun vasp_std > vasp_test.out
@@ -79,15 +79,15 @@ ibrun vasp_std > vasp_test.out
 The script below requests 4 nodes and 256 tasks, for a maximum of four hours in Stampede2's `normal` queue (KNL compute nodes). See the [Stampede2 User Guide: Common `sbatch` Options](../../hpc/stampede2#running-sbatch) for more about job options.  
 
 ```job-script
-&#35;!/bin/bash 
-&#35;SBATCH -J vasp          
-&#35;SBATCH -o vasp.%j.out     
-&#35;SBATCH -e vasp.%j.err 
-&#35;SBATCH -n 256         
-&#35;SBATCH -N 4 
-&#35;SBATCH -p normal      
-&#35;SBATCH -t 4:00:00        
-&#35;SBATCH -A <i>projectnumber</i>
+#!/bin/bash 
+#SBATCH -J vasp          
+#SBATCH -o vasp.%j.out     
+#SBATCH -e vasp.%j.err 
+#SBATCH -n 256         
+#SBATCH -N 4 
+#SBATCH -p normal      
+#SBATCH -t 4:00:00        
+#SBATCH -A <i>projectnumber</i>
 
 module load vasp/5.4.4.p12
 ibrun vasp_std > vasp_test.out

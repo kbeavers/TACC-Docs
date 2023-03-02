@@ -14,11 +14,11 @@ Your account-specific `$WORK` environment variable varies from system to system 
 !!! note
 	Your quota and reported usage on the Global Shared File System reflects all files that you own on Stockyard, regardless of their actual location on the file system.
 
-See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.
+See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `frontera`) will exist **only** if you have an allocation on that system.  Figure 3 illustrates account-level directories on the `$WORK` file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.
 
-<figure id="figure3"><img alt="Stockyard 2022" src="../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.<br>Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
+<figure id="figure3"><img border="1" alt="Stockyard 2022" src="../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.</figcaption></figure>
 
-Note that resource-specific <span style="white-space: nowrap;">sub-directories</span> of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/stampede2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+Note that resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/stampede2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
 [Table 4. Built-in Account Level Aliases](#table4)
 
@@ -54,10 +54,9 @@ You can check the stripe count of a file using the `lfs getstripe` command:
 $ lfs getstripe myfile
 ```
 
-
 ## [Transferring Files](#transferring) { #transferring }
 
-### [Transfer Using `scp`](#transferring-scp) { #transferring-scp }
+### [with `scp`](#transferring-scp) { #transferring-scp }
 
 You can transfer files between Stampede2 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows [ssh clients](#access-ssh) typically include `scp`-based file transfer capabilities.
 
@@ -105,7 +104,7 @@ localhost$ tar cvf ./mydata.tar mydata</b>                                   # c
 localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # transfer archive
 ```
 
-### [Transfer Using `rsync`](#transferring-rsync) { #transferring-rsync }
+### [with `rsync`](#transferring-rsync) { #transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 

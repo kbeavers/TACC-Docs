@@ -182,10 +182,10 @@ login1$ curl -L https://aka.ms/InstallAzureCli | bash
 We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
 ```cmd-line
-===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
+===> In what directory would you like to place the install? (leave blank to use '/home1/01983/mpackard/lib/azure-cli'): 
 /home1/01983/mpackard/azure/lib/azurecli
 
-===&gt; In what directory would you like to place the &#39;az&#39; executable? (leave blank to use &#39;/home1/01983/mpackard/bin&#39;): 
+===> In what directory would you like to place the 'az' executable? (leave blank to use '/home1/01983/mpackard/bin'): 
 /home1/01983/mpackard/azure/bin
 ```
 

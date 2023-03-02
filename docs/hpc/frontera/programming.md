@@ -34,25 +34,25 @@ To achieve stride 1 access you need to understand how your program stores its da
 <tr><th>Fortran example</th><th>C example</th></tr>
 <tr><td>
 ``` syntax
-real&42;8 :: a(m,n), b(m,n), c(m,n)
-&nbsp;...
-&#33; inner loop strides through col i
+real*8 :: a(m,n), b(m,n), c(m,n)
+...
+! inner loop strides through col i
 do i=1,n
-&nbsp;&nbsp;do j=1,m
-&nbsp;&nbsp;&nbsp;&nbsp;a(j,i)=b(j,i)+c(j,i)
-&nbsp;&nbsp;end do
+  do j=1,m
+    a(j,i)=b(j,i)+c(j,i)
+  end do
 end do
 ```
 </td>
 <td>
 ``` syntax
 double a[m][n], b[m][n], c[m][n];
-&nbsp;...
-&#47;&#47; inner loop strides through row i
+ ...
+// inner loop strides through row i
 for (i=0;i&lt;m;i++){
-&nbsp;&nbsp;for (j=0;j&lt;n;j++){
-&nbsp;&nbsp;&nbsp;&nbsp;a[i][j]=b[i][j]+c[i][j];
-&nbsp;&nbsp;}
+  for (j=0;j&lt;n;j++){
+    a[i][j]=b[i][j]+c[i][j];
+  }
 }
 ```
 </td></tr>

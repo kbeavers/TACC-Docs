@@ -38,15 +38,15 @@ LAMMPS uses spatial-decomposition techniques to partition the simulation domain 
 Refer to Stampede2's [Running Jobs][STAMPEDE2UGRUNNING] section for more Slurm options. To configure this script for Lonestar6 and Frontera, vary the `-p`, `-N` and `-n` directives.
 
 ```job-script
-&#x23!/bin/bash
-&#x23#SBATCH -J test                    # Job Name
-&#x23#SBATCH -A <i>myProject</i>               # Your project name 
-&#x23#SBATCH -o test.o%j                # Output file name (%j expands to jobID)
-&#x23#SBATCH -e test.e%j                # Error file name (%j expands to jobID)
-&#x23#SBATCH -N 1                       # Requesting 1 node
-&#x23#SBATCH -n 16                      # and 16 tasks
-&#x23#SBATCH -p normal                  # Queue name (normal, skx-normal, etc.)
-&#x23#SBATCH -t 24:00:00                # Specify 24 hour run time
+#!/bin/bash
+##SBATCH -J test                    # Job Name
+##SBATCH -A <i>myProject</i>               # Your project name 
+##SBATCH -o test.o%j                # Output file name (%j expands to jobID)
+##SBATCH -e test.e%j                # Error file name (%j expands to jobID)
+##SBATCH -N 1                       # Requesting 1 node
+##SBATCH -n 16                      # and 16 tasks
+##SBATCH -p normal                  # Queue name (normal, skx-normal, etc.)
+##SBATCH -t 24:00:00                # Specify 24 hour run time
 
 module load   intel/18.0.2
 module load   impi/18.0.2
@@ -76,11 +76,11 @@ ibrun lmp_knl -in lammps_input
 	The GPU `lammps` executable is `lmp_gpu`.  On Frontera GPU nodes, you could set `-pk gpu 4` to utilize all four RTX GPUs available on each node. Set the `-n` directive to a value &gt; 1 to let more than one MPI task share one GPU.
 
 	```job-script
-	&#x23SBATCH -N 1                      # Requesting 1 node
-	&#x23SBATCH -n 16                     # and 16 tasks that share 4 GPU
-	&#x23SBATCH -p rtx                    # Frontera rtx queue
+	#SBATCH -N 1                      # Requesting 1 node
+	#SBATCH -n 16                     # and 16 tasks that share 4 GPU
+	#SBATCH -p rtx                    # Frontera rtx queue
 
-	&#x23 Use all 4 GPUs
+	# Use all 4 GPUs
 	ibrun lmp_gpu -sf gpu -pk gpu 4 -in lammps_input
 	```
 

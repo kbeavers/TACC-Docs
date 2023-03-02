@@ -3,7 +3,6 @@ LONESTAR6_OBJS	=	\
 	system.md \
 	files.md \
 	admin.md \
-	../../include/lonestar6-conduct.md \
 	building.md \
 	launching.md \
 	running.md \

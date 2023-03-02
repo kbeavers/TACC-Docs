@@ -47,8 +47,8 @@ Download and install your preferred MFA App on your Apple IOS or Android device,
 
 Operating System | MFA Authentication Apps
 --- | ---
-IOS / Apple devices<br>Apple App Store | <a href="https://apps.apple.com/us/app/duo-mobile/id422663827" target="_blank">Duo</a><sup>&#8663;</sup>&nbsp;&nbsp; <a href="https://apps.apple.com/us/app/1password-password-manager/id568903335" target="_blank">1Password</a><sup>&#8663;</sup>&nbsp;&nbsp; <a href="https://apps.apple.com/us/app/google-authenticator/id388497605" target="_blank">Google Authenticator</a><sup>&#8663;</sup>
-Android<br>Google Play | <a href="https://play.google.com/store/apps/details?id=com.duosecurity.duomobile&hl=en_US&gl=US" target="_blank">Duo</a><sup>&#8663;</sup>&nbsp;&nbsp; <a href="https://play.google.com/store/apps/details?id=com.onepassword.android&hl=en_US&gl=US" target="_blank">1Password</a><sup>&#8663;</sup>&nbsp;&nbsp; <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en_US&gl=US" target="_blank">Google Authenticator</a><sup>&#8663;</sup>
+IOS / Apple devices<br>Apple App Store | <a href="https://apps.apple.com/us/app/duo-mobile/id422663827" target="_blank">Duo</a><sup>&#8663;</sup>   <a href="https://apps.apple.com/us/app/1password-password-manager/id568903335" target="_blank">1Password</a><sup>&#8663;</sup>   <a href="https://apps.apple.com/us/app/google-authenticator/id388497605" target="_blank">Google Authenticator</a><sup>&#8663;</sup>
+Android<br>Google Play | <a href="https://play.google.com/store/apps/details?id=com.duosecurity.duomobile&hl=en_US&gl=US" target="_blank">Duo</a><sup>&#8663;</sup>   <a href="https://play.google.com/store/apps/details?id=com.onepassword.android&hl=en_US&gl=US" target="_blank">1Password</a><sup>&#8663;</sup>   <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en_US&gl=US" target="_blank">Google Authenticator</a><sup>&#8663;</sup>
 
 
 #### [SMS (text) Messaging](#sms) { #sms }
@@ -86,7 +86,7 @@ Begin by pressing the "Use Your Preferred Authenticator App to Pair" button on t
 
 A typical login session will look something like this:
 
-```cmd-line
+``` cmd-line
 localhost$ ssh bjones@maverick2.tacc.utexas.edu
 To access the system:
 
@@ -97,10 +97,10 @@ To access the system:
 <span style="color: blue;">TACC Token Code:</span></span>
 Last login: Mon Nov  1 18:42:37 2021 from 76.167.191.93
 ------------------------------------------------------------------------------
-&nbsp;           		Welcome to the Maverick2 Supercomputer
-&nbsp;	Texas Advanced Computing Center, The University of Texas at Austin
+            		Welcome to the Maverick2 Supercomputer
+ 	Texas Advanced Computing Center, The University of Texas at Austin
 ------------------------------------------------------------------------------
-&nbsp;...
+...
 
 login1.maverick2(399)$ 
 ```

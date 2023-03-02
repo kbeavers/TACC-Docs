@@ -34,7 +34,7 @@ login1$ module load namd/2.14
 module load namd/2.14
 ibrun namd2 +ppn 13 \
 			+pemap 2-26:2,30-54:2,3-27:2,31-55:2 \
-			+commap 0,28,1,29 input &amp;&gt; output
+			+commap 0,28,1,29 input &> output
 ```
 
 
@@ -50,7 +50,7 @@ ibrun namd2 +ppn 13 \
 module load namd/2.14
 ibrun namd2 +ppn 6 \
 			+pemap 2-12:2,16-26:2,30-40:2,44-54:2,3-13:2,17-27:2,31-41:2,45-55:2\
-			+commap 0,14,28,42,1,15,29,43 input &amp;&gt; output
+			+commap 0,14,28,42,1,15,29,43 input &> output
 ```
 
 For very large simulations, users may want to use compressed structures. See the [NAMD wiki: NamdMemoryReduction](https://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?NamdMemoryReduction) to prepare your compressed input files and set up your input files. In this case use the `namd2_memopt` executable instead of `namd2`: 
@@ -59,7 +59,7 @@ compressed input files
 ```job-script
 	ibrun namd2_memopt +ppn 6 \
 	 			+pemap 2-12:2,16-26:2,30-40:2,44-54:2,3-13:2,17-27:2,31-41:2,45-55:2 \
-	 			+commap 0,14,28,42,1,15,29,43 input &amp;&gt; output
+	 			+commap 0,14,28,42,1,15,29,43 input &> output
 ```
 
 
@@ -85,7 +85,7 @@ This job script requests 1 node and 4 MPI tasks: 4 tasks/node.
 module load namd/2.14
 ibrun namd2_knl +ppn 32 \
 				+pemap 0-63+68 \
-				+commap 64-67 input &amp;&gt; output
+				+commap 64-67 input &> output
 ```
 
 
@@ -102,7 +102,7 @@ To run the same job on more than one node, vary the `-N` and `n` `#SBATCH` direc
 module load namd/2.14
 ibrun namd2_knl +ppn 8 \
 				+pemap 0-51+68 \
-				+commap 52-67 input &amp;&gt; output
+				+commap 52-67 input &> output
 ```
 
 As well as the Slurm `#SBATCH` directives (`-N` and `-n`), try varying the [affinity](http://www.ks.uiuc.edu/Research/namd/2.12/ug/node89.html) settings to determine the optimal performance of your job. You can try both settings then use the optimal one. If your system is small or the number of nodes are large, you can try:
@@ -133,7 +133,7 @@ ibrun namd2_knl +ppn 4 +pemap 0-51 +commap 52-67
 module load namd/2.14
 ibrun namd2_skx +ppn 11 \
 				+pemap 2-22:2,26-46:2,3-23:2,27-47:2 \
-				+commap 0,24,1,25 input &amp;&gt; output
+				+commap 0,24,1,25 input &> output
 ```
 
 You may also try other [affinity](http://www.ks.uiuc.edu/Research/namd/2.14/ug/node88.html) settings as in these examples for varying number of tasks per node.
@@ -142,21 +142,21 @@ You may also try other [affinity](http://www.ks.uiuc.edu/Research/namd/2.14/ug/n
 ```job-script
 ibrun namd2_skx +ppn 7 \
 				+pemap 2-14:2,18-30:2,34-46:2,3-15:2,19-31:2,35-47:2 \
-				+commap 0,16,32,1,17,33 input &amp;&gt; output  
+				+commap 0,16,32,1,17,33 input &> output  
 ```
 
 2 tasks per node:
 ```job-script
 ibrun namd2_skx +ppn 23 \
 				+pemap 2-47:2,3-47:2 \
-				+commap 0,1 input &amp;&gt; output
+				+commap 0,1 input &> output
 ```
 
 1 task per node:
 ```job-script
 ibrun namd2_skx +ppn 47 \
 				+pemap 2-47:2,1-47:2 \
-				+commap 0 input &amp;&gt; output
+				+commap 0 input &> output
 ```
 
 
@@ -187,7 +187,7 @@ The following Lonestar6 job script requests 2 node and 8 MPI tasks. To run the s
 module load namd/2.14
 ibrun namd2 +ppn 31 \
 			+pemap 1-31,33-63,65-95,97-127 \
-			+commap 0,32,64,96 input &amp;> output
+			+commap 0,32,64,96 input &> output
 ```
 
 ## [References](#refs) { #refs }

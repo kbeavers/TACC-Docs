@@ -11,7 +11,7 @@ What most users need for development is interactive access to a set of compute n
 The `idev` utility creates an interactive development environment from the user's login window. In the `idev` window the user is connected directly to a compute node from which the user can launch MPI-compiled executables directly (with the `ibrun` command). 
 
 ## [How it works](#works) { #works }
-The `idev` command submits a batch job that creates a copy of the batch environment and then goes to sleep. After the job begins, `idev` acquires a copy of the batch environment, SSH&#39;s to the master node, and then re-creates the batch environment. The SSH command allows X11 tunneling for setting up a display back to the user&#39;s laptop for debugging.
+The `idev` command submits a batch job that creates a copy of the batch environment and then goes to sleep. After the job begins, `idev` acquires a copy of the batch environment, SSH's to the master node, and then re-creates the batch environment. The SSH command allows X11 tunneling for setting up a display back to the user's laptop for debugging.
 
 ## [How to use `idev`](#how) { #how }
 On any TACC system execute:
@@ -22,7 +22,7 @@ login4.stampede(5)$ idev options
 
 If this is your first time launching `idev` and you have multiple accounts, `idev` will prompt you for the account and then save your selection as the default interactive account; otherwise, it will automatically use your only account. It will then begin to initiate your first `idev` session. Enjoy.
 
-It is necessary for `idev` to gain access to compute nodes through the batch system; that is the normal mode for acquiring resources on a supercomputer (and at TACC). Hence the user must wait for the `idev` request to be accepted through the batch system. Fortunately, at TACC there is a &quot;development&quot; queue on each TACC system; `idev`&#39;s default setting uses this queue, and it is often a short wait for `idev` to acquire the nodes and allow interactive input. `idev` reports its progress every 4 seconds. Below is an example of `idev`&#39;s progress in setting up a session:
+It is necessary for `idev` to gain access to compute nodes through the batch system; that is the normal mode for acquiring resources on a supercomputer (and at TACC). Hence the user must wait for the `idev` request to be accepted through the batch system. Fortunately, at TACC there is a &quot;development&quot; queue on each TACC system; `idev`'s default setting uses this queue, and it is often a short wait for `idev` to acquire the nodes and allow interactive input. `idev` reports its progress every 4 seconds. Below is an example of `idev`'s progress in setting up a session:
 
 ```cmd-line
 login1$ idev
