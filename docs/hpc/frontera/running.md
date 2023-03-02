@@ -18,7 +18,7 @@ The Slurm scheduler tracks and charges for usage to a granularity of a few secon
 
 Principal Investigators can monitor allocation usage via the [TACC User Portal](https://portal.tacc.utexas.edu) under ["Allocations->Projects and Allocations"](https://portal.tacc.utexas.edu/projects-and-allocations). Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
 
-{% include 'include/tinfo' %}
+{% include 'include/tinfo.md' %}
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 
