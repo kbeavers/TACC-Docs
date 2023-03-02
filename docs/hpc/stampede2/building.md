@@ -180,7 +180,7 @@ $ icc -xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe       # NO! Base incompa
 On Stampede2, the module files for newer Intel compilers (Intel 18.0.0 and later) define the environment variable `TACC_VEC_FLAGS` that stores the recommended architecture flags described above. This can simplify your builds:
 
 ```cmd-line
-$ echo $TACC_VEC_FLAGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# env variable available only for intel/18.0.0 and later
+$ echo $TACC_VEC_FLAGS                         # env variable available only for intel/18.0.0 and later
 -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512
 $ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 ``` 

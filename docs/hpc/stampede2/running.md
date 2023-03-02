@@ -197,10 +197,9 @@ login1$ idev
 You'll then see output that includes the following excerpts:
 
 ```cmd-line
-
 ...
 -----------------------------------------------------------------
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to the Stampede2 Supercomputer          
+      Welcome to the Stampede2 Supercomputer          
 -----------------------------------------------------------------
 ...
 

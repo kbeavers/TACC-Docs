@@ -47,30 +47,33 @@ Users may also want to use fewer cores than what can be provided on each node du
 
 Prepare a Launcher job file that contains all the serial jobs you plan to run simultaneously. In the simple example of `helloworld`, each command line is a serial job, and the same job will run 5 times.
 
-<pre class="file">
+``` syntax
 echo "Hello, World!"
 echo "Hello, World!"
 echo "Hello, World!"
 echo "Hello, World!"
-echo "Hello, World!"</pre>
+echo "Hello, World!"
+```
 
 Users can connect several command lines into one job using Unix's `&&` or `;` operators. For example,
 
-<pre class="file">
+``` syntax
 hostname && date && echo "Hello, World!" 
 hostname && date && echo "Hello, World!" 
 hostname && date && echo "Hello, World!" 
 hostname && date && echo "Hello, World!" 
-hostname && date && echo "Hello, World!"</pre>
+hostname && date && echo "Hello, World!"
+```
 
 Two useful parameters of Launcher are `$LAUNCHER_JID` and `$LAUNCHER_TSK_ID`. `$LAUNCHER_JID` is the rank of the jobs listed in the job file. `$LAUNCHER_TSK_ID` is the rank of the tasks (`-n`) running simultaneously. These two parameters will help users identify their jobs from results and where the jobs were running.  For example, users can incorporate them into their command lines:
 
-<pre class="file">
+``` syntax
 echo "Hello, World! from job $LAUNCHER_JID running on task $LAUNCHER_TSK_ID" >> output-$LAUNCHER_TSK_ID
 echo "Hello, World! from job $LAUNCHER_JID running on task $LAUNCHER_TSK_ID" >> output-$LAUNCHER_TSK_ID
 echo "Hello, World! from job $LAUNCHER_JID running on task $LAUNCHER_TSK_ID" >> output-$LAUNCHER_TSK_ID
 echo "Hello, World! from job $LAUNCHER_JID running on task $LAUNCHER_TSK_ID" >> output-$LAUNCHER_TSK_ID
-echo "Hello, World! from job $LAUNCHER_JID running on task $LAUNCHER_TSK_ID" >> output-$LAUNCHER_TSK_ID</pre>
+echo "Hello, World! from job $LAUNCHER_JID running on task $LAUNCHER_TSK_ID" >> output-$LAUNCHER_TSK_ID
+```
 
 
 ## [Multithreaded Jobs](#multithreaded) { #multithreaded }
@@ -103,13 +106,13 @@ ${LAUNCHER_DIR}/paramrun
 
 `hello_openmp` is the job file that contains all the OpenMP jobs you plan to run simultaneously. 
 
-<pre class="file">
+``` syntax
 ./openMP1.exe
 ./openMP2.exe
 ./openMP3.exe
 ./openMP4.exe
 ./openMP5.exe
-./openMP6.exe</pre>
+./openMP6.exe
 
 In this example, users can use Launcher to run 16 tasks in parallel (`-n 16`) on 2 nodes (`-N 2`), that is, 16 tasks/2 nodes= 8 tasks per node. For each single OpenMP run, `$OMP_NUM_THREADS` sets the maximum number of threads to be 6.
 
@@ -157,13 +160,15 @@ When assigning the value of `N` and `n`, note that `n/N` must equal the number o
 Prepare a Launcher-GPU job file that lists all the jobs you plan to run on the GPU nodes simultaneously. In the simple example of `helloworld-gpu`, each command line runs with a dedicated GPU, and the similar jobs will run 10 times.
 
 <u>Job file: `hello_openmp`</u>
-<pre class="file">
+
+``` syntax
 ./ProgGPU1
 ./ProgGPU2
 ./ProgGPU3
 ...
 ./ProgGPU9
-./ProgGPU10</pre>
+./ProgGPU10
+```
 
 ## [Notes](#notes) { #notes }
 

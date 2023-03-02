@@ -56,7 +56,7 @@ The IRODS command-line utilities, collectively referred to as "i-commands", use 
 
 iRODS can be accessed via a Desktop GUI through the native support in the cross-platform Cyberduck file transfer client. Cyberduck is free, works on all major desktop platforms, and supports drag-and-drop operations from your desktop using the native iRODS protocol for high-performance network transfers. 
 
-<pre>https://web.corral.tacc.utexas.edu/irods-webdav/<i>PATH</i></pre>
+	https://web.corral.tacc.utexas.edu/irods-webdav/<i>PATH</i>
 
 where "*`PATH`*" is replaced with the path to your data in iRODS e.g. `/corralZ/home/username`.
 

@@ -168,7 +168,7 @@ Once you've been given access, and before uploading files to Azure, you must fir
 	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image09.png"> 
 	<figcaption></figcaption></figure>
 
-1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)  <p>&nbsp;</p> 1. --> Copy the key to your clipboard.
+1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)   1. --> Copy the key to your clipboard.
 
 
 #### [Install the Azure Client for CLI Access](#cloudservices-azure-cli) { #cloudservices-azure-cli }

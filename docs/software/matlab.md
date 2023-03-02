@@ -71,21 +71,23 @@ The parallel computing toolbox is available on the TACC resources as well.  Our 
 The following two examples demonstrate parallel operations using the `parfor` and `matlabpool` functions. Here are the basic examples.
 
 ### [Example 2. MATLAB `parfor`](#example2)
-<pre>
+``` syntax
 Mat=zeros(100,1);
 parfor i = 1:100
-&nbsp;&nbsp;&nbsp;&nbsp;Mat(i) = i*i;
-end</pre>
+    Mat(i) = i*i;
+end
+```
 
 ### [Example 3. MATLAB `matlabpool`](#example3)
 
-<pre>
+``` syntax
 if (matlabpool('size') ) == 0 
-&nbsp;&nbsp;&nbsp;&nbsp;matlabpool(12);
+    matlabpool(12);
 else
-&nbsp;&nbsp;&nbsp;&nbsp;matlabpool close;
-&nbsp;&nbsp;&nbsp;&nbsp;matlabpool(12);
-end</pre>
+    matlabpool close;
+    matlabpool(12);
+end
+```
 
 Consult the [MATLAB Parallel Toolbox](https://www.mathworks.com/products/parallel-computing.html) documentation for detailed descriptions and advanced features.
 
@@ -105,7 +107,9 @@ MATLAB, Simulink, and a lot of MATLAB toolboxes are available on the TACC resour
 
 To see a complete list of MATLAB, Simulink, and MATLAB Toolboxes and their version information, type the `ver` command at the MATLAB prompt
 
-<pre>>> ver</pre>
+``` syntax
+>> ver
+```
 
 ## [Mathworks References](#refs) { #refs }
 
