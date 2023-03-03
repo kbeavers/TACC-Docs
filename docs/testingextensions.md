@@ -139,27 +139,33 @@ See <a href="/code-examples">Fiddling: Code Examples</a>.
 
 I use "attention", "note", "warning" the most
 
-!!! important
-	Admonition type: important  
-	See example: <https://portal.tacc.utexas.edu/user-guides/stampede2#files-striping>
-
-!!! attention "pay attention"
-	attention box
-
 !!! caution
-    Caution box the title will be automatically capitalized.
+    ````caution` Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems. Your account may be __suspended__ and you will lose access to the queues if your jobs are impacting other users.
+
+!!! important
+    ````important` Example: <https://portal.tacc.utexas.edu/user-guides/stampede2#files-striping>
 
 !!! error
-	Admonition type: error
-
-!!! note
-	Admonition type: note
-
-!!! tip
-	Admonition type: tip
+    ````error`
 
 !!! warning
-	Admonition type: warning
+    ````warning` Your account may be __suspended__ and you will lose access to the queues if your jobs are impacting other users.
+
+!!! tip
+    ````tip` This box should hold a useful bit of info for a user, not a general message. We can use the notes for that.
+
+!!! note
+    ````note` TACC does not implement node-sharing on any compute resource.
+
+!!! attention "Pay Attention"
+    ````attention "Pay Attention"`
+
+!!! danger "Do This"
+    ````danger "Do This"`
+
+!!! hint "Don't Do This"
+    ````hint "Don't Do This"`
+
 
 
 
