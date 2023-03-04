@@ -160,11 +160,11 @@ I use "attention", "note", "warning" the most
 !!! attention "Pay Attention"
     ````attention "Pay Attention"`
 
-!!! hint "Don't Do This"
-    ````danger "Do This"`
+!!! hint "Do This"
+    ````hint "Do This"`
 
 !!! danger "Don't Do This"
-    ````hint "Don't Do This"`
+    ````danger "Don't Do This"`
 
 
 
