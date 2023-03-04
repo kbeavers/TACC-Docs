@@ -26,7 +26,7 @@
 
 #### Command Line
 
-!!! tip "Preferred"
+!!! hint "Preferred"
 
             ```cmd-line
             module load kitten
@@ -56,7 +56,7 @@
 
 #### Job Script
 
-!!! tip "Preferred"
+!!! hint "Preferred"
 
             ```job-script
             #!/bin/bash
