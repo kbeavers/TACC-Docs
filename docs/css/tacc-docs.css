@@ -236,9 +236,23 @@ svg.logo [fill]:not([fill="none"]) {
 /* To adapt search to design */
 
 .wy-side-nav-search {
-  padding: calc( var(--pad-horz) + var(--link-pad-horz) ); /* NOTE: design is 38px 38px 30px 37px */
+  padding-block: calc( var(--pad-horz) + var(--link-pad-horz) );
+  padding-inline: unset; /* undo theme.css */
+
   margin-bottom: unset; /* undo theme.css */
   background-color: unset; /* undo theme.css */
+}
+.wy-side-nav-search a,
+.wy-side-nav-search form {
+  padding-inline: calc( var(--pad-horz) + var(--link-pad-horz) );
+}
+.wy-side-nav-search a {
+  padding-top: unset; /* undo theme.css */
+
+  /* To add border and space bewteen logo and search */
+  padding-bottom: 15px; /* NOTE: design is 15.5px */
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--x-dark);
+  margin-bottom: 25px; /* NOTE: design is 22.5px */
 }
 .wy-side-nav-search .icon-home {
   display: none;
