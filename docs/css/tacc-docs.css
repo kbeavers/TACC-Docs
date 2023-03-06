@@ -456,10 +456,6 @@ figcaption {
 /* CODE */
 
 /* TODO: Integrate into Core Styles */
-:root {
-  --global-color-accent--xx-light: #FAF4FF;
-}
-/* TODO: Integrate into Core Styles */
 :where([role=main],main) pre>code, :where([role=main],main) pre>samp {
   /* To remove */
   /* FAQ: Replaces inline-block with more intuitive shrink wrap style */
@@ -474,7 +470,11 @@ code.language-cmd-line {
 }
 pre.job-script code,
 code.language-job-script {
-  background: var(--global-color-accent--xx-light);
+  background: var(--global-color-accent--xxx-light);
+}
+pre.syntax code,
+code.language-syntax {
+  background: var(--global-color-tertiary--xx-light);
 }
 @supports selector(:has(*)) {
   /* To support code blocks that are not using <code> (yet) */
@@ -482,7 +482,10 @@ code.language-job-script {
     background: var(--global-color-primary--x-light);
   }
   pre.job-script:not(:has(code)) {
-    background: var(--global-color-accent--xx-light);
+    background: var(--global-color-accent--xxx-light);
+  }
+  pre.syntax:not(:has(code)) {
+    background: var(--global-color-tertiary--xx-light);
   }
 }
 
