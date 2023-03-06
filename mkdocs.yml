@@ -37,6 +37,7 @@ extra_css:
 # These are not loaded automatically (TACC/TACC-Docs#3)
 # SEE: /themes/readthedocs/main.html @ "block scripts"
 extra_javascript:
+    - js/styleLinksOutsideMainContent.js
     - js/setTargetForExternalLinks.js
 
 nav:
