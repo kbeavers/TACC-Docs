@@ -168,7 +168,7 @@ Once you've been given access, and before uploading files to Azure, you must fir
 	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image09.png"> 
 	<figcaption></figcaption></figure>
 
-1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)  <p>&nbsp;</p> 1. --> Copy the key to your clipboard.
+1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)   1. --> Copy the key to your clipboard.
 
 
 #### [Install the Azure Client for CLI Access](#cloudservices-azure-cli) { #cloudservices-azure-cli }
@@ -182,10 +182,10 @@ login1$ curl -L https://aka.ms/InstallAzureCli | bash
 We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
 ```cmd-line
-===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
+===> In what directory would you like to place the install? (leave blank to use '/home1/01983/mpackard/lib/azure-cli'): 
 /home1/01983/mpackard/azure/lib/azurecli
 
-===&gt; In what directory would you like to place the &#39;az&#39; executable? (leave blank to use &#39;/home1/01983/mpackard/bin&#39;): 
+===> In what directory would you like to place the 'az' executable? (leave blank to use '/home1/01983/mpackard/bin'): 
 /home1/01983/mpackard/azure/bin
 ```
 

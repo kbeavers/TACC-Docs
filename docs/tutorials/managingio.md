@@ -107,6 +107,7 @@ If you anticipate the need for multiple nodes or processes to write to a single 
 If you are close to file quota on either the `$WORK` or `$HOME` file system, your job may fail due to being unable to write output, and this will cause stress to the file systems when attempting to write beyond quota. It's important to monitor your disk and file usage on all TACC resources where you have an allocation.
 
 Monitor your file system's quotas and usage using the `taccinfo` command. This output displays whenever you log on to a TACC resource.
+
 {% include "include/tinfo.md" %}
 
 ```cmd-line

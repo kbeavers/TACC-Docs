@@ -63,10 +63,10 @@ module load alphafold/2.2.0-ctr
 
 # Run AlphaFold
 run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--fasta_paths=$SCRATCH/sample.fasta \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--output_dir=$SCRATCH/output \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--model_preset=monomer \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--use_gpu_relax=True
+                 --fasta_paths=$SCRATCH/sample.fasta \
+                 --output_dir=$SCRATCH/output \
+                 --model_preset=monomer \
+                 --use_gpu_relax=True
 ```
 
 In the batch script, make sure to use a batch queue (`#SBATCH -p`), node / wallclock limits, and allocation name (`#SBATCH -A`) appropriate to the machine you are running on. Also, make sure the path shown in the module use line matches the machine-specific "Module" path listed in the table above.
@@ -117,11 +117,13 @@ Next, prepare a launcher `jobfile` that contains each command that needs to be r
 
 <details><summary>Sample Alphafold Launcher Job File</summary>
 
-<pre>
+``` syntax
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq1.fasta</span> --output_dir=$SCRATCH/BLUEoutput1</span> --model_preset=monomer --use_gpu_relax=True
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq2.fasta</span> --output_dir=$SCRATCH/BLUEoutput2</span> --model_preset=monomer --use_gpu_relax=True
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq3.fasta</span> --output_dir=$SCRATCH/BLUEoutput3</span> --model_preset=monomer --use_gpu_relax=True
-&#46;&#46;&#46;</pre></details>
+...
+```
+</details>
 
 NOTE: Due to the way `launcher_gpu` distributes tasks to individual GPUs, the full `singularity` command must be used in the `jobfile` as shown above. 
 

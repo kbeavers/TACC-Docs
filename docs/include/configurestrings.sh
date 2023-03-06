@@ -14,7 +14,7 @@ then
 	echo "building includes for Lonestar6 user guide"
 	machinename="Lonestar6"
 	helpoutputfile="lonestar6-help.md"
-	conductoutputfile="lonestar6-conduct.md"
+	# conductoutputfile="lonestar6-conduct.md"
 	jobaccountingoutputfile="lonestar6-jobaccounting.md"
 	hwthreads="128 on AMD Milan"
 	mkloutputfile="lonestar6-mkl.md"
@@ -23,8 +23,8 @@ then
 		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
 	sed	-e "s/HWTHREADS/$hwthreads/g" < mklsrc.md > $mkloutputfile
 	sed	-e "s/MACHINENAME/$machinename/g" < helpsrc.md > $helpoutputfile
-	sed	-e "s/MACHINENAME/$machinename/g" \
-		-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
+	# sed	-e "s/MACHINENAME/$machinename/g" \
+	# 	-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
 
 ### Maverick2 
 elif [ "$1" = "maverick2" ] 
@@ -48,15 +48,15 @@ then
 	hwthreads="272 on KNL, 96 on SKX, 160 on ICX"
 	striping="<a\ href=\"#files-striping\">Striping\ Large\ Files<\/a>"
 	helpoutputfile="stampede2-help.md"
-	conductoutputfile="stampede2-conduct.md"
+	# conductoutputfile="stampede2-conduct.md"
 	jobaccountingoutputfile="stampede2-jobaccounting.md"
 
 	sed	-e "s/MACHINENAME/$machinename/g" \
 		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
 	sed	-e "s/HWTHREADS/$hwthreads/g" < mklsrc.md > $mkloutputfile
 	sed	-e "s/MACHINENAME/$machinename/g" < helpsrc.md > $helpoutputfile
-	sed	-e "s/MACHINENAME/$machinename/g" \
-		-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
+	# sed	-e "s/MACHINENAME/$machinename/g" \
+	# 	-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
 
 ### Ranch
 # no conduct section for Ranch

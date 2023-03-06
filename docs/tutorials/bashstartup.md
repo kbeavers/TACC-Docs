@@ -1,4 +1,4 @@
-# Bash Users' Startup Files: Quick Start Guide</span><br>
+# Bash Users' Startup Files: Quick Start Guide
 *Last update: May 29, 2019*
 
 While the startup behavior of the bash shell can seem to require a Ph.D in Shellology, here we try to simplify the discussion to the minimum required to get you started. In general, every time you interactively access a TACC resource, Bash will source either your `~/.profile` or `~/.bashrc` file.  Which one is sourced is complicated and not really important; see the troubleshooting notes below for some additional fine print.  In either case, to get the same behavior in all of the interactive shells, you'll need to have your `~/.profile` source the `~/.bashrc` and put all the important statements in your `~/.bashrc`.
@@ -37,7 +37,7 @@ Rather than describe all these steps here we have sample startup scripts that yo
 Your account may already have these files, but if not run the following script:
 
 ```cmd-line
-login1$ <b>/usr/local/startup_scripts/install_default_scripts</b>
+login1$ /usr/local/startup_scripts/install_default_scripts
 ```
 
 Then edit your new `~/.bashrc` to suit yourself.

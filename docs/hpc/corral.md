@@ -165,7 +165,9 @@ at any time
 
 Permissions are shown as a set of three letters for each group, as in the following example line of output from `ls -l`:
 
-<pre>drwxrwxr-x 3 ctjordan G-802037 4096 Mar 6 10:08 mydirectory</pre>
+``` syntax
+drwxrwxr-x 3 ctjordan G-802037 4096 Mar 6 10:08 mydirectory
+```
 
 In this example, the `d` at the front indicates that this is a directory, and it is **r**eadable and **w**ritable by the user and anyone in the user's group. Other users on the system can list the directory's contents but cannot write to it.
 
@@ -178,7 +180,9 @@ For a more fine-grained approach to files and permissions, use **A**ccess **C**o
 
 File permissions can be managed using the `chmod` command from the command-line prompt, and from the permissions window in [Cyberduck](#cyberduck). The permissions window is shown below, and can be accessed by right-clicking on a file or folder in Cyberduck and selecting "Info ..." from the menu. Other graphical fie transfer utilities may have a similar window or panel used to control permissions. The `chmod` command has a straightforward syntax:
 
-<pre>chmod <i>permissions-to-change</i> <i>filename</i></pre>
+``` syntax
+chmod <i>permissions-to-change</i> <i>filename</i>
+```
 
 where <i>permissions-to-change</i> can be any or all of `u` for user, `g` for group, and `o` for other, a `+` to add permissions or a minus, `-`, to remove permissions, and the initials of permissions to add or removed, `r` for read, `w` for write, and `x` for execution. For example, to add read access for all users of the system the command would be:
 

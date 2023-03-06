@@ -18,8 +18,7 @@ The Slurm scheduler tracks and charges for usage to a granularity of a few secon
 
 Principal Investigators can monitor allocation usage via the [TACC User Portal](https://portal.tacc.utexas.edu) under ["Allocations->Projects and Allocations"](https://portal.tacc.utexas.edu/projects-and-allocations). Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
 
-!!! tip
-	To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ /usr/local/etc/taccinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre>
+{% include 'include/tinfo.md' %}
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 
@@ -66,7 +65,6 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 
 
    
-<p>&nbsp;</p>
 &#42; **Jobs in the `flex` queue are charged less than jobs in other queues but are eligible for preemption after running for more than one hour.**  
 &#42;&#42; **Access to the large queue is restricted**. To request more nodes than are available in the `normal` queue, submit a consulting (help desk) ticket through the [TACC User Portal](http://portal.tacc.utexas.edu/). Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Frontera.
 

@@ -98,21 +98,26 @@ An OpenMP executable sequentially assigns its N forked threads (thread number 0,
  
 On CLX nodes the sequence of proc-ids on socket 0 are even:
 
-<pre>0,2,4,...,108, 110 </pre>
+``` syntax
+0,2,4,...,108, 110 
+```
 
 and on socket 1 they are oddly numbered:
 
-<pre>1,3,5,...,109,111 </pre>
+``` syntax
+1,3,5,...,109,111 
+```
 
 Note, there are 56 cores on CLX, and since hyperthreading is turned on, the list of processors (proc-ids) goes from 0 to 111.  
  
 Specifically, the proc-id mapping to the cores for CLX is:
 
-<pre>
+``` syntax
 |------- Socket 0 ------------|-------- Socket 1 ---------|
 #   0   1   2,..., 25, 26, 27 |  0   1   2,..., 25, 26, 27
 0   0   2   4,..., 50, 52, 54 |  1   3   5,..., 51, 53, 55
-1  56  58  60,...,106,108,110 | 57  59  61,...,107,109,111</pre>
+1  56  58  60,...,106,108,110 | 57  59  61,...,107,109,111
+```
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on these systems, the places would be:
  

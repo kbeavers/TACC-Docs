@@ -15,14 +15,14 @@ Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Me
 
 Specification | Value
 --- | ---
-Model:&nbsp; | Intel Xeon Phi 7250 ("Knights Landing")
-Total cores per KNL node:&nbsp; | 68 cores on a single socket
-Hardware threads per core:&nbsp; | 4
-Hardware threads per node:&nbsp; | 68 x 4 = 272
-Clock rate:&nbsp; | 1.4GHz
-RAM:&nbsp; | 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
-Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
-Local storage:&nbsp; | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
+Model:  | Intel Xeon Phi 7250 ("Knights Landing")
+Total cores per KNL node:  | 68 cores on a single socket
+Hardware threads per core:  | 4
+Hardware threads per node:  | 68 x 4 = 272
+Clock rate:  | 1.4GHz
+RAM:  | 96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways; see "<a href="#programming-knl">Programming and Performance: KNL</a>" for more info.
+Cache:  | 32KB L1 data cache per core; 1MB L2 per two-core tile. In default config, <a href="#programming-knl-memorymodes">MCDRAM</a> operates as 16GB direct-mapped L3.
+Local storage:  | All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the <code>development</code>, <code>long</code> and <span style="white-space: nowrap;"><code>flat-quadrant</code></span> <a href="#running-queues">queues</a>. Size of <code>/tmp</code> partitions as of 24 Apr 2018.
 	
 	
 ### [SKX Compute Nodes](#overview-skxcomputenodes) { #overview-skxcomputenodes }
@@ -33,14 +33,14 @@ Stampede2 hosts 1,736 SKX compute nodes.
 
 Specification | Value
 --- | ---
-Model:&nbsp; | Intel Xeon Platinum 8160 ("Skylake")
-Total cores per SKX node:&nbsp; | 48 cores on two sockets (24 cores/socket)
-Hardware threads per core:&nbsp; | 2
-Hardware threads per node:&nbsp; | 48 x 2 = 96
-Clock rate:&nbsp; | 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
-RAM:&nbsp; | 192GB (2.67GHz) DDR4
-Cache:&nbsp; | 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
-Local storage:&nbsp; | 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
+Model:  | Intel Xeon Platinum 8160 ("Skylake")
+Total cores per SKX node:  | 48 cores on two sockets (24 cores/socket)
+Hardware threads per core:  | 2
+Hardware threads per node:  | 48 x 2 = 96
+Clock rate:  | 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
+RAM:  | 192GB (2.67GHz) DDR4
+Cache:  | 32KB L1 data cache per core; 1MB L2 per core; 33MB L3 per socket. Each socket can cache up to 57MB (sum of L2 and L3 capacity).
+Local storage:  | 144GB <code>/tmp</code> partition on a 200GB SSD. Size of <code>/tmp</code> partition as of 14 Nov 2017.
 
 ### [ICX Compute Nodes](#overview-icxcomputenodes) { #overview-icxcomputenodes }
 
@@ -48,14 +48,14 @@ Stampede2 hosts 224 ICX compute nodes.
 
 #### [Table 2a. Stampede2 ICX Compute Node Specifications](#table2a) { #table2a }
 
-Model:&nbsp; | Intel Xeon Platinum 8380 ("Ice Lake")
-Total cores per ICX node:&nbsp; | 80 cores on two sockets (40 cores/socket)
-Hardware threads per core:&nbsp; | 2
-Hardware threads per node:&nbsp; | 80 x 2 = 160
-Clock rate:&nbsp; | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
-RAM:&nbsp; | 256GB (3.2 GHz) DDR4
-Cache:&nbsp; | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
-Local storage:&nbsp; | 342 GB <code>/tmp</code> partition
+Model:  | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores per ICX node:  | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core:  | 2
+Hardware threads per node:  | 80 x 2 = 160
+Clock rate:  | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
+RAM:  | 256GB (3.2 GHz) DDR4
+Cache:  | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage:  | 342 GB <code>/tmp</code> partition
 
 ### [Login Nodes](#overview-loginnodes) { #overview-loginnodes }
 

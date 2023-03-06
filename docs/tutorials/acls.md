@@ -31,8 +31,8 @@ login1$ getfacl <i>myfile</i>
 The output will be in the format shown below.  This example shows that the owner (root) has read and write access, while the user "testuser" has read-only access:
 
 	# file: xwfs/projects/example/myfile
-	&#35; owner: root
-	&#35; group: root
+	# owner: root
+	# group: root
 	user::rw-
 	user:testuser:r--
 	group::---

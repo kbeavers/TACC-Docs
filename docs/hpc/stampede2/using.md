@@ -8,7 +8,9 @@ Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research work
 
 The default login shell for your user account is Bash.  To determine your current login shell, execute: 
 
-<pre class="cmd-line">$ <b>echo $SHELL</b></pre>
+``` cmd-line
+$ echo $SHELL
+```
 
 If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC User Portal][TACCUSERPORTAL]. The `chsh` ("change shell") command will not work on TACC systems. 
 
@@ -26,7 +28,9 @@ Execute the `env` command to see the environment variables that define the way y
 
 Pipe the results of `env` into `grep` to focus on specific environment variables. For example, to see all environment variables that contain the string GIT (in all caps), execute:
 
-<pre class="cmd-line">$ <b>env | grep GIT</b></pre>
+``` cmd-line
+$ env | grep GIT
+```
 
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables. `LD_LIBRARY_PATH` is a similar list that determines where the system looks for shared libraries.
 
@@ -34,9 +38,11 @@ The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important.
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
-<pre class="cmd-line">
-login1$ <b>module load sanitytool</b>
-login1$ <b>sanitycheck</b></pre>
+``` cmd-line
+
+login1$ module load sanitytool
+login1$ sanitycheck
+```
 
 Execute `module help sanitytool` for more information.
 
@@ -59,9 +65,11 @@ Be sure to request computing resources that are consistent with the type of appl
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try  launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
 * A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
-<pre class="cmd-line">
-$ <b>module load launcher</b>
-$ <b>module help launcher</b></pre>
+``` cmd-line
+
+$ module load launcher
+$ module help launcher
+```
 
 <figure id="figure-logincomputenodes">
 <img alt="Stampede2" src="../../imgs/stampede2/Stampede2.jpg">
@@ -71,79 +79,93 @@ $ <b>module help launcher</b></pre>
 
 Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to using your research. This is especially important on a system like Stampede2 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>          # load the default Intel compiler
-$ <b>module load intel/17.0.4</b>   # load a specific version of Intel compiler</pre>
+``` cmd-line
+
+$ module load intel          # load the default Intel compiler
+$ module load intel/17.0.4   # load a specific version of Intel compiler
+```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
-<pre class="cmd-line">
-$ <b>module load   ddt</b>  # defines DDT-related env vars; modifies others
-$ <b>module unload ddt</b>  # undoes changes made by load</pre>
+``` cmd-line
+
+$ module load   ddt  # defines DDT-related env vars; modifies others
+$ module unload ddt  # undoes changes made by load
+```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and PETSc with versions compatible with gcc:
 
-<pre class="cmd-line">
-$ <b>module load intel</b>  # load default version of Intel compiler
-$ <b>module load petsc</b>  # load default version of PETSc
-$ <b>module load gcc</b>    # change compiler
+``` cmd-line
+$ module load intel  # load default version of Intel compiler
+$ module load petsc  # load default version of PETSc
+$ module load gcc    # change compiler
 
 Lmod is automatically replacing "intel/17.0.4" with "gcc/7.1.0".
 
 Due to MODULEPATH changes, the following have been reloaded:
-1) impi/17.0.3     2) petsc/3.7</pre>
+1) impi/17.0.3     2) petsc/3.7
+```
 
 On Stampede2, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
-<pre class="cmd-line">
-$ <b>module show papi</b>   # see what this module does to your environment
-$ <b>env | grep PAPI</b>    # see env vars that contain the string PAPI
-$ <b>env | grep -i papi</b> # case-insensitive search for 'papi' in environment</pre>
+``` cmd-line
+$ module show papi   # see what this module does to your environment
+$ env | grep PAPI    # see env vars that contain the string PAPI
+$ env | grep -i papi # case-insensitive search for 'papi' in environment
+```
 
 To see the modules you currently have loaded:
 
-<pre class="cmd-line">
-$ <b>module list</b></pre>
+``` cmd-line
+$ module list
+```
 
 To see all modules that you can load right now because they are compatible with the currently loaded modules:
 
-<pre class="cmd-line">
-$ <b>module avail</b></pre>
+``` cmd-line
+$ module avail
+```
 
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
-<pre class="cmd-line">
-$ <b>module spider</b>   # list all modules, even those not available to load</pre>
+``` cmd-line
+$ module spider   # list all modules, even those not available to load
+```
 
 To filter your search:
 
-<pre class="cmd-line">
-$ <b>module spider slep</b>             # all modules with names containing 'slep'
-$ <b>module spider sundials/2.5.0</b>   # additional details on a specific module</pre>
+``` cmd-line
+$ module spider slep             # all modules with names containing 'slep'
+$ module spider sundials/2.5.0   # additional details on a specific module
+```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
 
-<pre class="cmd-line">
-$ <b>module keyword performance</b></pre>
+``` cmd-line
+$ module keyword performance
+```
 
 You can save a collection of modules as a personal default collection that will load every time you log into Stampede2. To do so, load the modules you want in your collection, then execute:
 
-<pre class="cmd-line">
-$ <b>module save</b>    # save the currently loaded collection of modules </pre>
+``` cmd-line
+$ module save    # save the currently loaded collection of modules 
+```
 
 Two commands make it easy to return to a known, reproducible state:
 
-<pre class="cmd-line">
-$ <b>module reset</b>   # load the system default collection of modules
-$ <b>module restore</b> # load your personal default collection of modules</pre>
+``` cmd-line
+$ module reset   # load the system default collection of modules
+$ module restore # load your personal default collection of modules
+```
 
 On TACC systems, the command `module reset` is equivalent to `module purge; module load TACC`. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 
-<pre class="cmd-line">
-$ <b>module help swr</b>     # show help text for software package swr
-$ <b>module help</b>         # show help text for the module system itself</pre>
+``` cmd-line
+$ module help swr     # show help text for software package swr
+$ module help         # show help text for the module system itself
+```
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 

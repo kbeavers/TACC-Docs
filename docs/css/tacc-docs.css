@@ -339,6 +339,36 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+/* To add admonition icons */
+.admonition::before {
+  /* copied from .fa (only the active rules not overwritten by TACC) */
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.admonition:is(.caution)::before { content: "\f071"; }
+.admonition:is(.important, .attention)::before { content: "\f12a"; }
+.admonition:is(.warning)::before { content: "\f00d"; }
+.admonition:is(.tip)::before { content: "\f0eb"; }
+.admonition:is(.note)::before { content: "\f040"; }
+.admonition:is(.hint)::before { content: "\f00c"; }
+.admonition:is(.error, .danger)::before { content: "\f00d"; }
+.admonition:is(.warning)::before {
+  color: transparent;
+  -webkit-text-stroke: var(--global-color-primary--xx-light) 2px;
+}
+
+
+
+/* To remove admonition title icon */
+.admonition-title:before { display: none; }
+
+
+
 /* To prevent figure image overflow */
 .rst-content figure {
   max-width: 100%; /* mimics theme.css `.rst-content img` */

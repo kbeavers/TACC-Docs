@@ -13,14 +13,14 @@ Lonestar6 hosts 560 compute nodes with 5 TFlops of peak performance per node and
 
 Specification | Value
 --- | ---
-CPU: &nbsp; | 2x AMD EPYC 7763 64-Core Processor ("Milan")
-Total cores per node: &nbsp; | 128 cores on two sockets (64 cores / socket )
-Hardware threads per core: &nbsp; | 1 per core 
-Hardware threads per node: &nbsp; | 128 x 1 = 128
-Clock rate: &nbsp; | 2.45 GHz (Boost up to 3.5 GHz)
-RAM: &nbsp; | 256 GB (3200 MT/s) DDR4
-Cache: &nbsp; | 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
-Local storage:&nbsp; | 144GB /tmp partition on a 288GB SSD.
+CPU:   | 2x AMD EPYC 7763 64-Core Processor ("Milan")
+Total cores per node:   | 128 cores on two sockets (64 cores / socket )
+Hardware threads per core:   | 1 per core 
+Hardware threads per node:   | 128 x 1 = 128
+Clock rate:   | 2.45 GHz (Boost up to 3.5 GHz)
+RAM:   | 256 GB (3200 MT/s) DDR4
+Cache:   | 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
+Local storage:  | 144GB /tmp partition on a 288GB SSD.
 
 ### [Login Nodes](#system-login) { #system-login }
 
@@ -34,14 +34,14 @@ Lonestar6 hosts 28 `vm-small` compute nodes running on 4 physical hosts.
 
 Specification | Value
 --- | ---
-CPU: &nbsp; | <b>1/4th</b> of an AMD EPYC 7763 64-Core Processor ("Milan")
-Total cores per VM: &nbsp; | 16 cores
-Hardware threads per core: &nbsp; | 1 per core 
-Hardware threads per VM: &nbsp; | 16 x 1 = 16
-Clock rate: &nbsp; | 2.45 GHz (Boost up to 3.5 GHz)
-RAM: &nbsp; | 32 GB (3200 <b>shared</b> MT/s) DDR4
-Cache: &nbsp; | <b>Shared caches with all other VMs.</b><br>32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>64 MB L3 total (2 core complexes)
-Local storage:&nbsp; | 112G <code>/tmp</code> partition
+CPU:   | <b>1/4th</b> of an AMD EPYC 7763 64-Core Processor ("Milan")
+Total cores per VM:   | 16 cores
+Hardware threads per core:   | 1 per core 
+Hardware threads per VM:   | 16 x 1 = 16
+Clock rate:   | 2.45 GHz (Boost up to 3.5 GHz)
+RAM:   | 32 GB (3200 <b>shared</b> MT/s) DDR4
+Cache:   | <b>Shared caches with all other VMs.</b><br>32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>64 MB L3 total (2 core complexes)
+Local storage:  | 112G <code>/tmp</code> partition
 
 
 ### [GPU Nodes](#system-gpu) { #system-gpu }
@@ -53,16 +53,16 @@ Lonestar6 hosts **32** GPU nodes that are configured identically to the compute 
 
 Specification | Value
 --- | ---
-GPU:&nbsp; | 3x NVIDIA A100 PCIE 40GB<br>(1 per socket )<br>gpu0:   socket 0<br>gpu1:   socket1<br>gpu2:   socket1
-GPU Memory:&nbsp; | 40 GB HBM2
-CPU: &nbsp; | 2x AMD EPYC 7763 64-Core Processor ("Milan")
-Total cores per node: &nbsp; | 128 cores on two sockets (64 cores / socket )
-Hardware threads per core: &nbsp; | 1 per core 
-Hardware threads per node: &nbsp; | 128 x 1 = 128
-Clock rate: &nbsp; | 2.45 GHz
-RAM: &nbsp; | 256 GB
-Cache: &nbsp; | 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
-Local storage: &nbsp; | 144GB /tmp partition on a 288GB SSD.
+GPU:  | 3x NVIDIA A100 PCIE 40GB<br>(1 per socket )<br>gpu0:   socket 0<br>gpu1:   socket1<br>gpu2:   socket1
+GPU Memory:  | 40 GB HBM2
+CPU:   | 2x AMD EPYC 7763 64-Core Processor ("Milan")
+Total cores per node:   | 128 cores on two sockets (64 cores / socket )
+Hardware threads per core:   | 1 per core 
+Hardware threads per node:   | 128 x 1 = 128
+Clock rate:   | 2.45 GHz
+RAM:   | 256 GB
+Cache:   | 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
+Local storage:   | 144GB /tmp partition on a 288GB SSD.
 
 ### [Network](#system-network) { #system-network }
 

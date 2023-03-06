@@ -457,7 +457,7 @@ localhost$ scp ./myfile bjones@frontera.tacc.utexas.edu:  # note colon after net
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Frontera:
 
 ```cmd-line
-localhost$ scp &#42;.txt bjones@frontera.tacc.utexas.edu:/work/01234/bjones/frontera
+localhost$ scp *.txt bjones@frontera.tacc.utexas.edu:/work/01234/bjones/frontera
 ```
 
 To delay wildcard expansion until reaching Frontera, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Frontera to the current directory on your local system:
@@ -631,21 +631,26 @@ An OpenMP executable sequentially assigns its N forked threads (thread number 0,
  
 On CLX nodes the sequence of proc-ids on socket 0 are even:
 
-<pre>0,2,4,...,108, 110 </pre>
+``` syntax
+0,2,4,...,108, 110 
+```
 
 and on socket 1 they are oddly numbered:
 
-<pre>1,3,5,...,109,111 </pre>
+``` syntax
+1,3,5,...,109,111 
+```
 
 Note, there are 56 cores on CLX, and since hyperthreading is turned on, the list of processors (proc-ids) goes from 0 to 111.  
  
 Specifically, the proc-id mapping to the cores for CLX is:
 
-<pre>
+``` syntax
 |------- Socket 0 ------------|-------- Socket 1 ---------|
 #   0   1   2,..., 25, 26, 27 |  0   1   2,..., 25, 26, 27
 0   0   2   4,..., 50, 52, 54 |  1   3   5,..., 51, 53, 55
-1  56  58  60,...,106,108,110 | 57  59  61,...,107,109,111</pre>
+1  56  58  60,...,106,108,110 | 57  59  61,...,107,109,111
+```
 
 Hence, to bind OpenMP threads to a sequence of 3 cores on these systems, the places would be:
  
@@ -690,8 +695,7 @@ The Slurm scheduler tracks and charges for usage to a granularity of a few secon
 
 Principal Investigators can monitor allocation usage via the [TACC User Portal](https://portal.tacc.utexas.edu) under ["Allocations->Projects and Allocations"](https://portal.tacc.utexas.edu/projects-and-allocations). Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
 
-!!! tip
-	To display a summary of your TACC project balances and disk quotas at any time, execute:<br><br><code>login1$ /usr/local/etc/taccinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Generally more current than balances displayed on the portals.</code></pre>
+{% include 'include/tinfo.md' %}
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 
@@ -738,7 +742,6 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 
 
    
-<p>&nbsp;</p>
 &#42; **Jobs in the `flex` queue are charged less than jobs in other queues but are eligible for preemption after running for more than one hour.**  
 &#42;&#42; **Access to the large queue is restricted**. To request more nodes than are available in the `normal` queue, submit a consulting (help desk) ticket through the [TACC User Portal](http://portal.tacc.utexas.edu/). Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Frontera.
 
@@ -1153,7 +1156,7 @@ An excerpt from this command's output might look like this:
 login1$ sinfo -S+P -o "%18P %8a %20F"
 PARTITION          AVAIL    NODES(A/I/O/T)
 debug              up       1757/4419/776/6952
-development&#42;       up       85/153/114/352
+development*       up       85/153/114/352
 large              up       1691/112/485/2288
 normal             up       1691/112/485/2288
 ```
@@ -1475,7 +1478,8 @@ If you use GNU compilers, see GNU x86 Options for information regarding support 
 ## [Programming and Performance](#programming) { #programming } 
 
 ### [Programming and Performance: General](#programming-general) { #programming-general } 
-<p class="introtext">Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.</p>
+
+Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
 
 #### [Timing and Profiling](#programming-general-profiling) { #programming-general-profiling } 
@@ -1506,25 +1510,28 @@ To achieve stride 1 access you need to understand how your program stores its da
 <table border="1" cellspacing="3" cellpadding="3">
 <tr><th>Fortran example</th><th>C example</th></tr>
 <tr><td>
-<pre class="syntax">
-real&42;8 :: a(m,n), b(m,n), c(m,n)
-&nbsp;...
-&#33; inner loop strides through col i
+``` syntax
+real*8 :: a(m,n), b(m,n), c(m,n)
+...
+! inner loop strides through col i
 do i=1,n
-&nbsp;&nbsp;do j=1,m
-&nbsp;&nbsp;&nbsp;&nbsp;a(j,i)=b(j,i)+c(j,i)
-&nbsp;&nbsp;end do
-end do</pre>
+  do j=1,m
+    a(j,i)=b(j,i)+c(j,i)
+  end do
+end do
+```
 </td>
-<td><pre class="syntax">
+<td>
+``` syntax
 double a[m][n], b[m][n], c[m][n];
-&nbsp;...
-&#47;&#47; inner loop strides through row i
+ ...
+// inner loop strides through row i
 for (i=0;i&lt;m;i++){
-&nbsp;&nbsp;for (j=0;j&lt;n;j++){
-&nbsp;&nbsp;&nbsp;&nbsp;a[i][j]=b[i][j]+c[i][j];
-&nbsp;&nbsp;}
-}</pre>
+  for (j=0;j&lt;n;j++){
+    a[i][j]=b[i][j]+c[i][j];
+  }
+}
+```
 </td></tr>
 </table>
 
@@ -1549,7 +1556,9 @@ The literature on optimization is vast. Some places to begin a systematic study 
 
 **Vector Optimization and 512-Bit ZMM Registers.** If your code can take advantage of wide 512-bit vector registers, you may want to try [compiling for CLX](../building#recommended-compiler) with (for example):
 
-<pre class="syntax">-xCORE-AVX512 -qopt-zmm-usage=high</pre>
+``` syntax
+-xCORE-AVX512 -qopt-zmm-usage=high
+```
 
 The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with 512 intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to <span style="white-space: nowrap;">`-qopt-zmm-usage=low`</span> (the default when compiling for the CLX using <span style="white-space: nowrap;">`CORE-AVX512`)</span>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](../building#architecture-specific-flags) when specifying <span style="white-space: nowrap;">`qopt-zmm-usage`</span>. This is because `$TACC_VEC_FLAGS` specifies <span style="white-space: nowrap;">`CORE-AVX2`</span> as the base architecture, and the compiler will ignore <span style="white-space: nowrap;">`qopt-zmm-usage`</span> unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
 
@@ -1641,7 +1650,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
 	```job-script
-	&#35;!/bin/bash
+	#!/bin/bash
 
 	HOST=$1
 	NODES=$2
@@ -1787,7 +1796,7 @@ Follow the steps below to start an interactive session.
 	login1$ touch dcvserver.out ; tail -f dcvserver.out
 	```
 
-	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
+	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.
 
 1. Create an SSH Tunnel to Frontera
 
@@ -2097,7 +2106,7 @@ Once you've been given access, and before uploading files to Azure, you must fir
 	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image09.png"> 
 	<figcaption></figcaption></figure>
 
-1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)  <p>&nbsp;</p> 1. --> Copy the key to your clipboard.
+1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)   1. --> Copy the key to your clipboard.
 
 
 #### [Install the Azure Client for CLI Access](#cloudservices-azure-cli) { #cloudservices-azure-cli }
@@ -2111,10 +2120,10 @@ login1$ curl -L https://aka.ms/InstallAzureCli | bash
 We recommend creating a `~/azure` subdirectory to put everything in. It will ask where to install. Change to this new subdirectory. For example:
 
 ```cmd-line
-===&gt; In what directory would you like to place the install? (leave blank to use &#39;/home1/01983/mpackard/lib/azure-cli&#39;): 
+===> In what directory would you like to place the install? (leave blank to use '/home1/01983/mpackard/lib/azure-cli'): 
 /home1/01983/mpackard/azure/lib/azurecli
 
-===&gt; In what directory would you like to place the &#39;az&#39; executable? (leave blank to use &#39;/home1/01983/mpackard/bin&#39;): 
+===> In what directory would you like to place the 'az' executable? (leave blank to use '/home1/01983/mpackard/bin'): 
 /home1/01983/mpackard/azure/bin
 ```
 

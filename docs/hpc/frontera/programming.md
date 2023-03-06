@@ -1,7 +1,8 @@
 ## [Programming and Performance](#programming) { #programming } 
 
 ### [Programming and Performance: General](#programming-general) { #programming-general } 
-<p class="introtext">Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.</p>
+
+Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
 
 #### [Timing and Profiling](#programming-general-profiling) { #programming-general-profiling } 
@@ -32,25 +33,28 @@ To achieve stride 1 access you need to understand how your program stores its da
 <table border="1" cellspacing="3" cellpadding="3">
 <tr><th>Fortran example</th><th>C example</th></tr>
 <tr><td>
-<pre class="syntax">
-real&42;8 :: a(m,n), b(m,n), c(m,n)
-&nbsp;...
-&#33; inner loop strides through col i
+``` syntax
+real*8 :: a(m,n), b(m,n), c(m,n)
+...
+! inner loop strides through col i
 do i=1,n
-&nbsp;&nbsp;do j=1,m
-&nbsp;&nbsp;&nbsp;&nbsp;a(j,i)=b(j,i)+c(j,i)
-&nbsp;&nbsp;end do
-end do</pre>
+  do j=1,m
+    a(j,i)=b(j,i)+c(j,i)
+  end do
+end do
+```
 </td>
-<td><pre class="syntax">
+<td>
+``` syntax
 double a[m][n], b[m][n], c[m][n];
-&nbsp;...
-&#47;&#47; inner loop strides through row i
+ ...
+// inner loop strides through row i
 for (i=0;i&lt;m;i++){
-&nbsp;&nbsp;for (j=0;j&lt;n;j++){
-&nbsp;&nbsp;&nbsp;&nbsp;a[i][j]=b[i][j]+c[i][j];
-&nbsp;&nbsp;}
-}</pre>
+  for (j=0;j&lt;n;j++){
+    a[i][j]=b[i][j]+c[i][j];
+  }
+}
+```
 </td></tr>
 </table>
 
@@ -75,7 +79,9 @@ The literature on optimization is vast. Some places to begin a systematic study 
 
 **Vector Optimization and 512-Bit ZMM Registers.** If your code can take advantage of wide 512-bit vector registers, you may want to try [compiling for CLX](../building#recommended-compiler) with (for example):
 
-<pre class="syntax">-xCORE-AVX512 -qopt-zmm-usage=high</pre>
+``` syntax
+-xCORE-AVX512 -qopt-zmm-usage=high
+```
 
 The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with 512 intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to <span style="white-space: nowrap;">`-qopt-zmm-usage=low`</span> (the default when compiling for the CLX using <span style="white-space: nowrap;">`CORE-AVX512`)</span>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](../building#architecture-specific-flags) when specifying <span style="white-space: nowrap;">`qopt-zmm-usage`</span>. This is because `$TACC_VEC_FLAGS` specifies <span style="white-space: nowrap;">`CORE-AVX2`</span> as the base architecture, and the compiler will ignore <span style="white-space: nowrap;">`qopt-zmm-usage`</span> unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
 

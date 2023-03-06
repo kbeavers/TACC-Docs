@@ -161,8 +161,8 @@ To run more than one MPI application simultaneously in the same job, you need to
 If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute <span style="white-space: nowrap;">`ibrun --help`</span> for more information. **Don't forget the ampersands (`&`)** to launch the jobs in the background, **and the `wait` command** to pause the script until the background tasks complete:
 
 ```job-script
-ibrun -n 64 -o  0 task_affinity ./myprogram input1 &amp;   # 64 tasks; offset by  0 entries in hostfile.
-ibrun -n 64 -o 64 task_affinity ./myprogram input2 &amp;   # 64 tasks; offset by 64 entries in hostfile.
+ibrun -n 64 -o  0 task_affinity ./myprogram input1 &   # 64 tasks; offset by  0 entries in hostfile.
+ibrun -n 64 -o 64 task_affinity ./myprogram input2 &   # 64 tasks; offset by 64 entries in hostfile.
 wait                                                       # Required; else script will exit immediately.
 ```
 
@@ -179,8 +179,8 @@ You can also run more than one OpenMP application simultaneously on a single nod
 
 ```job-script
 export OMP_NUM_THREADS=2
-numactl -C 0-1 ./myprogram inputfile1 &amp;  # HW threads (hence cores) 0-1. Note ampersand.
-numactl -C 2-3 ./myprogram inputfile2 &amp;  # HW threads (hence cores) 2-3. Note ampersand.
+numactl -C 0-1 ./myprogram inputfile1 &  # HW threads (hence cores) 0-1. Note ampersand.
+numactl -C 2-3 ./myprogram inputfile2 &  # HW threads (hence cores) 2-3. Note ampersand.
 
 wait
 ```
@@ -197,10 +197,9 @@ login1$ idev
 You'll then see output that includes the following excerpts:
 
 ```cmd-line
-
 ...
 -----------------------------------------------------------------
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to the Stampede2 Supercomputer          
+      Welcome to the Stampede2 Supercomputer          
 -----------------------------------------------------------------
 ...
 

@@ -55,7 +55,7 @@ Follow the steps below to start an interactive session.
 	login1$ touch dcvserver.out ; tail -f dcvserver.out
 	```
 
-	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.<p>&nbsp;</p>
+	The lightweight window manager, `xfce`, is the default DCV and VNC desktop and is recommended for remote performance. Gnome is available; to use gnome, open the `~/.vnc/xstartup` file (created after your first VNC session) and replace `startxfce4` with `gnome-session`. Note that gnome may lag over slow internet connections.
 
 1. Create an SSH Tunnel to Lonestar6
 
@@ -73,7 +73,7 @@ Follow the steps below to start an interactive session.
 	* `-N` puts the ssh command into the background after connecting
 	* `-L` forwards the port   
 
-	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then ssh to Lonestar6.  <p>&nbsp;</p>
+	On Windows systems find the menu in the Windows SSH client where tunnels can be specified, and enter the local and remote ports as required, then ssh to Lonestar6.  
 
 
 1. Connecting the vncviewer

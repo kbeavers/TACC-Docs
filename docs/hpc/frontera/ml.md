@@ -65,7 +65,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 1. Create a script called `run.sh`. This script needs two parameters, the hostname of the master node and the number of nodes.
 
 	```job-script
-	&#35;!/bin/bash
+	#!/bin/bash
 
 	HOST=$1
 	NODES=$2

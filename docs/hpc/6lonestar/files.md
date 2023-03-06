@@ -57,7 +57,7 @@ localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon after net addr
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Lonestar6:
 
 ```cmd-line
-localhost$ scp &#42;.txt bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6
+localhost$ scp *.txt bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6
 ```
 
 To delay wildcard expansion until reaching Lonestar6, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Lonestar6 to the current directory on your local system:

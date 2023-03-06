@@ -30,7 +30,7 @@ In this case, Test Project XYZ's UNIX group ID (GID) is "G-816631". Therefore, a
 The UNIX command `groups` displays all groups a user belongs to:
 
 ```cmd-line
-login1$ <b>groups slindsey</b>
+login1$ groups slindsey
 G-40300 G-80748 G-80906 G-801508 G-803450 G-803454 G-813602 G-816631
 ```
 
@@ -45,7 +45,7 @@ Now all files created by this user will belong to the project's group. Note that
 To display a file's owner and group membership, use the `ls -l` command:
 
 ```cmd-line
-login1$ <b>ls -l myfile</b>
+login1$ ls -l myfile
 -rw------- 1 slindsey G-40300 983 Nov 13 10:40 myfile
 ``` 
 
@@ -54,8 +54,8 @@ In the above output the file `myfile` is owned by user `slindsey` and belongs to
 Please consult the UNIX man pages for more information on these commands:
 
 ```cmd-line
-login1$ <b>man groups</b>
-login1$ <b>man chgrp</b>
+login1$ man groups
+login1$ man chgrp
 ```
 
 ## [Create a Shared Project Workspace](#createworkspace) { #createworkspace }
@@ -71,26 +71,26 @@ Note that `$STOCKYARD` points to the highest level directory you own on Stockyar
 
 1. Make your `$STOCKYARD` directory accessible, though not readable, to the group members:  
 	```cmd-line
-	login1$ <b>chmod g+X $STOCKYARD</b>
+	login1$ chmod g+X $STOCKYARD
 	```
 
 1. Go to your work directory on Stockyard and create the sub-directory to be shared:
 	```cmd-line
-	login1$ <b>cd $STOCKYARD; mkdir mysharedirectory</b>
+	login1$ cd $STOCKYARD; mkdir mysharedirectory
 	```
 
 	<!-- // insert permissions and gid stuff here -->
 
 1. The directory with shared files then needs to belong to the group. This step may be redundant if the directory already belongs to the group:
 	```cmd-line
-	login1$ <b>chgrp -R G-816631 mysharedirectory</b>
+	login1$ chgrp -R G-816631 mysharedirectory
 	```
 
 1. Set the shared directory's ownership and permissions. In this example, permissions will be set to owner:read, write, execute; group:read, execute, and no access to any users outside the group.  
 
 	a. Set the group id bit. Any new files created in the shared directory will inherit the group ownership:
 		```cmd-line
-		login1$ <b>chmod g+s mysharedirectory</b>
+		login1$ chmod g+s mysharedirectory
 		```
 
 	a. Then edit your `.bashrc` and set the umask variable to "027". This ensures that all NEW files created will inherit the proper permissions.
@@ -100,12 +100,12 @@ Note that `$STOCKYARD` points to the highest level directory you own on Stockyar
 	a. Last, set permissions to readable and accessible to group members:
 
 		```cmd-line
-		login1$ <b>chmod g+rX mysharedirectory</b>
+		login1$ chmod g+rX mysharedirectory
 		```
 
 1. (optional) Grant write access to the directory. The project manager may wish to grant project collaborators write access to the directory or leave the directory as read-only.
 	```cmd-line
-	login1$ <b>chmod g+rwX mysharedirectory</b>
+	login1$ chmod g+rwX mysharedirectory
 	```
 
 Project members will now have read and write, or read-only access to this directory and its contents. 
@@ -113,15 +113,15 @@ Project members will now have read and write, or read-only access to this direct
 Project managers should remind their users to set their shell's [umask](http://en.wikipedia.org/wiki/Umask) variable allowing other users to see their created files.  
 
 ```cmd-line
-login1$ <b>set umask 027</b>
+login1$ set umask 027
 ```
 
 Many of these commands can be tricky. If you need assistance in setting up a shared project workspace, please submit a [help-desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create). See also the following man pages:
 
 ```cmd-line
-login1$ <b>man chmod</b>
-login1$ <b>man chgrp</b>
-login1$ <b>man umask</b>
+login1$ man chmod
+login1$ man chgrp
+login1$ man umask
 ```
 
 ## [Adding users to TACC Projects](#addusers) { #addusers }

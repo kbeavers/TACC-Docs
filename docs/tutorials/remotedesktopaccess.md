@@ -207,7 +207,7 @@ Follow the steps below to start an interactive session.
 
 	```cmd-line
 	login1$ squeue -u slindsey
-	&nbsp;&nbsp;JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+	  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 	1974882 development vncserve slindsey  STYLEBLUER</span>       0:16      1 c455-084
 	```
 
@@ -225,7 +225,7 @@ Follow the steps below to start an interactive session.
 
 	```cmd-line
 	localhost$ ssh -f -N -L xxxx:STAMPEDEHOSTNAME:yyyy \
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username@STAMPEDEHOSTNAME
+	      username@STAMPEDEHOSTNAME
 	```
 
 	where
@@ -275,15 +275,15 @@ Submit a VNC job for user `slindsey`.
 
 ```cmd-line
 localhost$ ssh slindsey@stampede2.tacc.utexas.edu
-&nbsp;...
+ ...
 login4(804)$ sbatch -A TG-123456 -t 01:00:00 /share/doc/slur m/job.vnc
-&nbsp;...
-&nbsp;--> Verifying access to desired queue (development)...OK
-&nbsp;--> Verifying job request is within current queue limits...OK
-&nbsp;--> Checking available allocation (UserServStaff)...OK
+ ...
+ --> Verifying access to desired queue (development)...OK
+ --> Verifying job request is within current queue limits...OK
+ --> Checking available allocation (UserServStaff)...OK
 Submitted batch job STYLEBLUE1974882</span>
 login4(805)$ squeue -u slindsey
-&nbsp;&nbsp;JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 1974882 development vncserve slindsey  R       0:16      1 c455-084
 login4(806)$ cat vncserver.out 
 job execution at: Wed Aug 22 15:43:46 CDT 2018
@@ -313,7 +313,7 @@ Create the SSH tunnel from your local machine to Stampede2
 
 ```cmd-line
 localhost$ ssh -f -N -L 18455:stampede2.tacc.utexas.edu:18455 slindsey@stampede2.tacc.utexas.edu
-&nbsp;...
+...
 Password:
 TACC Token Code:
 localhost$

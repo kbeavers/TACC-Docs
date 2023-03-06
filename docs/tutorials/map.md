@@ -8,13 +8,13 @@
 Before running MAP, the application code must be compiled with the `-g` option as shown below:
 
 ```cmd-line
-login1$ <b>mpif90 -g mycode.f90</b>
+login1$ mpif90 -g mycode.f90
 ```
 
 or
 
 ```cmd-line
-login1$ <b>mpiCC -g mycode.c</b>
+login1$ mpiCC -g mycode.c
 ```
 
 Leave in any optimization flags to ensure that optimization is still enabled.  If there were no other optimization flags, add the `-O2` flag.  Otherwise, the `-g` flag by itself will drop the default optimization from `-O2` to `-O0`.
@@ -24,20 +24,20 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 1. **Enable X11 forwarding**. To use the MAP GUI, ensure that X11 forwarding is enabled when you ssh to the TACC system. Use the `-X` option on the ssh command line if X11 forwarding is not enabled in your ssh client by default.
 
 	```cmd-line
-	localhost$ <b>ssh -X <i>username</i>@stampede2.tacc.utexas.edu</b>
+	localhost$ ssh -X username@stampede2.tacc.utexas.edu
 	```
 
 1. **Load the appropriate MAP module on the remote system** along with any other modules needed to run the application:
 
 	```cmd-line
-	$ <b>module load map_skx <i>mymodule1 mymodule2</i></b>	# on Stampede2 load "map_skx"
-	$ <b>module load map <i>mymodule1 mymodule2</i></b>       # on all other resources load "map"
+	$ module load map_skx mymodule1 mymodule2	# on Stampede2 load "map_skx"
+	$ module load map mymodule1 mymodule2       # on all other resources load "map"
 	```
 
 1. **Start the profiler.**
 
 	```cmd-line
-	$ <b>map myprogram</b>
+	$ map myprogram
 	```
 
 	If this error message appears...
@@ -135,7 +135,7 @@ By starting MAP from a login node you let it use X11 graphics, which can be slow
 1. **From any login node, submit a batch job where the ibrun line is replaced by**:
 
 	```cmd-line
-	login1$ <b>map --connect -n 123 ./yourprogram</b>
+	login1$ map --connect -n 123 ./yourprogram
 	```
 
 1. **When your batch job (and therefore your MAP execution) starts, the remote client will ask you to accept the connection**:

@@ -1,12 +1,101 @@
 # [Good Conduct on TACC's HPC Systems](#conduct) { #conduct }
-Last Update: 03/01/2023 in progress
+Last Update: 03/02/2023 in progress
 
 **You share Frontera with many, sometimes hundreds, of other users**, and what you do on the system affects others. All users must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the system and the research community with whom you share it.
 
 TACC staff has developed the following guidelines to good conduct on MACHINENAME. Please familiarize yourself especially with the first two mandates. The next sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
 
+## [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes) { #conduct-loginnodes }
+
+Each HPC resource's login nodes are shared among all users. Numerous users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
+
+MACHINENAME's few login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the "back-end" compute nodes. 
+
+Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
+
+The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
+
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by submitting a batch job.
+
+!!! important
+	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.  Your account may be suspended if your jobs are impacting other users.
+
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
+
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	```cmd-line
+	login1$ make mytarget
+	login1$ sbatch myjobscript
+	```
+
+	DO NOT DO THIS: invoke multiple build sessions, or run an executable on a login node.
+
+	```cmd-line
+	login1$ make -j 12		# do not run intense builds/compilations on a login node
+	login1$ ./myprogram		# do not run programs on a login node
+	```
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+
+
+
+The compute nodes are where actual computations occur and where research is done. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`][TACCIDEV] utility. 
+
+<figure id="figure-logincomputenodes">
+<img src="../../imgs/login-compute-nodes.jpg">
+<figcaption>Figure 2. Login and compute nodes</figcaption></figure>
+
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by [submitting a batch job](#running).
+
+!!! caution
+	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.
+
+
+### [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples) { #conduct-loginnodes-examples }
+
+* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
+
+	DO THIS: Start an interactive session on a compute node and run Matlab.
+
+	```cmd-line
+	login1$ idev
+	nid00181$ matlab
+	```
+
+	DO NOT DO THIS: Run Matlab or other software packages on a login node
+
+	```cmd-line
+	login1$ matlab
+	```
+
+* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">`make -j 16`</span> (which compiles on 16 cores) may impact other users.
+
+	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+
+	```cmd-line
+	login1$ make mytarget
+	login1$ sbatch myjobscript
+	```
+
+	DO NOT DO THIS: Invoke intense build/compilation sessions.
+
+	``` cmd-line
+	login1$ make -j 12
+	```
+
+	DO NOT DO THIS: Run an executable on a login node.
+
+	```cmd-line
+	login1$ ./myprogram
+	```
+
+* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
+
 
 ## [Do Not Stress the Shared File Systems](#conduct-filesystems) { #conduct-filesystems }
+
+TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
 
 The TACC Global Shared File System, Stockyard, is mounted on most TACC HPC resources as the `/work` (`$WORK`) directory. This file system is accessible to all TACC users, and therefore experiences a lot of I/O activity (reading and writing to disk, opening and closing files) as users run their jobs, read and generate data including intermediate and checkpointing files. As TACC adds more users, the stress on the `$WORK` file system is increasing to the extent that TACC staff is now recommending new job submission guidelines in order to reduce stress and I/O on Stockyard. 
 
@@ -24,17 +113,19 @@ To run your jobs out `$SCRATCH`:
 Consider that `$HOME` and `$WORK` are for storage and keeping track of important items. Actual job activity, reading and writing to disk, should be offloaded to your resource's `$SCRATCH` file system (see [Table. File System Usage Recommendations](#table-file-system-usage-recommendations). You can start a job from anywhere but the actual work of the job should occur only on the `$SCRATCH` partition. You can save original items to `$HOME` or `$WORK` so that you can copy them over to `$SCRATCH` if you need to re-generate results.
 
 
-<figure id="figure-logincomputenodes">
-<img src="../../imgs/login-compute-nodes.jpg">
-<figcaption>Figure 2. Login and compute nodes</figcaption></figure>
-
 The next two sections discuss best practices on [limiting and minimizing I/O activity](#conduct-io) and [file transfers](#conduct-filesystems). And finally, we provide [job submission tips](#conduct-jobs) when constructing job scripts to help minimize wait times in the queues.  
 
 
+### [More File System Tips](#conduct-filesystems-tips) { #conduct-filesystems-tips }
 
-## [Do Not Stress the Shared File Systems](#conduct-filesystems) { #conduct-filesystems }
+* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
 
-TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. Please follow each file system's recommended usage.
+* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
+
+* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
+
+* TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. **Please follow each file system's recommended usage.**
+
 
 
 ## [Limit File Transfers](#conduct-filetransfers) { #conduct-filetransfers }
@@ -48,119 +139,6 @@ In order to not stress both internal and external networks:
 * When creating or transferring large files to Stockyard (`$WORK`), be sure to stripe the receiving directories. See STRIPING for more information.
 
 
-## [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes) { #conduct-loginnodes }
-
-Maverick2's login node is shared among all users. Numerous users may be logged on at one time accessing the file systems. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. The login nodes provide an interface to the "back-end" compute nodes. 
-
-Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. 
-
-The compute nodes are where actual computations occur and where research is done. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`](#running-idev) utility. 
-
-A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by submitting a batch job.
-
-!!! important
-	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.  Your account may be suspended if your jobs are impacting other users.
-
-* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
-
-	DO THIS: Start an interactive session on a compute node and run Matlab.
-
-	```cmd-line
-	login1$ idev
-	nid00181$ matlab
-	```
-
-!!! warning
-	DO NOT DO THIS: Run Matlab or other software packages on a login node
-
-	```cmd-line
-	login1$ matlab
-	```
-
-
-* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "<span style="white-space: nowrap;">`make -j 16`</span>" (which compiles on 16 cores) may impact other users.
-
-	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
-
-	```cmd-line
-	login1$ make mytarget
-	login1$ sbatch myjobscript
-	```
-
-!!! warning
-	DO NOT DO THIS: invoke multiple build sessions, or run an executable on a login node.
-
-	```cmd-line
-	login1$ make -j 12
-	login1$ ./myprogram
-	```
-
-* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
-
-## [Do Not Run Jobs on the Login Nodes](#conduct-loginnodes) { #conduct-loginnodes }
-
-MACHINENAME's few login nodes are shared among all users. Dozens, (sometimes hundreds) of users may be logged on at one time accessing the file systems. Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the "back-end" compute nodes. 
-
-The compute nodes are where actual computations occur and where research is done. Hundreds of jobs may be running on all compute nodes, with hundreds more queued up to run. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on TACC resources, one must either [submit a job to a batch queue](#running-sbatch) or initiate an interactive session using the [`idev`][TACCIDEV] utility. 
-
-A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`][TACCIDEV]) or by [submitting a batch job](#running).
-
-!!! caution
-	Do not run jobs or perform intensive computational activity on the login nodes or the shared file systems.<br>Your account may be suspended and you will lose access to the queues if your jobs are impacting other users.
-
-
-## [Dos &amp; Don'ts on the Login Nodes](#conduct-loginnodes-examples) { #conduct-loginnodes-examples }
-
-* **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
-
-	DO THIS: Start an interactive session on a compute node and run Matlab.
-
-	```cmd-line
-	login1$ idev
-	nid00181$ matlab
-	```
-
-!!! warning
-	DO NOT DO THIS: Run Matlab or other software packages on a login node
-
-	```cmd-line
-	login1$ matlab
-	```
-
-* **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like <span style="white-space: nowrap;">`make -j 16`</span> (which compiles on 16 cores) may impact other users.
-
-	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
-
-	```cmd-line
-	login1$ make mytarget
-	login1$ sbatch myjobscript
-	```
-
-!!! warning
-	DO NOT DO THIS: Invoke multiple build sessions.
-
-	```cmd-line
-	login1$ make -j 12
-	```
-
-	DO NOT DO THIS: Run an executable on a login node.
-
-	```cmd-line
-	login1$ ./myprogram
-	```
-
-* **That script you wrote to poll job status should probably do so once every few minutes rather than several times a second.**
-
-
-### [More File System Tips](#conduct-filesystems-tips) { #conduct-filesystems-tips }
-
-* **Don't run jobs in your `$HOME` directory.** The `$HOME` file system is for routine file management, not parallel jobs.
-
-* **Watch all your [file system quotas](#files).** If you're near your quota in `$WORK` and your job is repeatedly trying (and failing) to write to `$WORK`, you will stress that file system. If you're near your quota in `$HOME`, jobs run on any file system may fail, because all jobs write some data to the hidden `$HOME/.slurm` directory.
-
-* **Avoid storing many small files in a single directory, and avoid workflows that require many small files**. A few hundred files in a single directory is probably fine; tens of thousands is almost certainly too many. If you must use many small files, group them in separate directories of manageable size.
-
-* TACC resources, with a few exceptions, mount three file systems: `/home`, `/work` and `/scratch`. **Please follow each file system's recommended usage.**
 
 
 

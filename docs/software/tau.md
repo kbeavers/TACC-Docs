@@ -39,7 +39,7 @@ Use the `-tau:help` option after the compiler wrapper command to see useful TAU 
 
 For a makefile that works both with and without TAU, use:
 
-<pre class="makefile">
+``` syntax
 ifdef TACC_TAU_DIR
   FC = tau_f90.sh
   CC = tau_cc.sh
@@ -51,7 +51,8 @@ else
 endif
 
 %.o : %.cxx
-	${CXX} -c $*.cxx</pre>
+	${CXX} -c $*.cxx
+```
 
 Behind the scenes, compiler wrappers create and execute a simple makefile that includes appropriate makefile options from an include makefile stored in the `$TAU_MAKEFILE` variable. Include makefiles are stored in the `$TACC_TAU_LIB` directory. The default `$TAU_MAKEFILE` value  will provide normal MPI and hybrid (MPI/OpenMP) instrumentation. Set the variable to `$TACC_TAU_LIB/Makefile.tau-intelomp-icpc-papi-ompt-pdt-openmp` for pure OpenMP codes.
 
@@ -89,7 +90,7 @@ c455-073[knl]$ ibrun myprogram
 ```
 
 ```job-script
-&#35;SBATCH directives
+#SBATCH directives
 ...
 export PROFILEDIR=mytaudir/profiles
 export TRACEDIR=mytaudir/traces
