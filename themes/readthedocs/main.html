@@ -83,6 +83,11 @@
   {# /TACC #}
   {% endblock %}
 
+  {%- block site_name %}
+    {{ super() }}
+    <a href="{{ config.cms_url }}" class="cms-link">{{ config.cms_name }}</a>
+  {%- endblock %}
+
   {%- block scripts %}
     <script>var base_url = '{{ base_url }}';</script>
     {# TACC: #}{# To remove `docutils` class from tables #}
