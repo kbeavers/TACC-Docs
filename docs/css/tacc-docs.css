@@ -149,8 +149,10 @@ svg.logo [fill]:not([fill="none"]) {
 
 /* To separate sections of navigation */
 
-.wy-menu-vertical p.caption:not(:first-child) {
+.wy-menu-vertical p.caption {
   color: var(--global-color-primary--xxx-dark);
+}
+.wy-menu-vertical p.caption:not(:first-child) {
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
   margin-top: 20px; /* NOTE: dsign is 18.75px */
   padding-top: 20px; /* NOTE: dsign is 19.5px */
