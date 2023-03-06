@@ -2,11 +2,14 @@ site_name: TACC HPC Documentation
 site_description: TACC Technical Documentation
 site_author: Susan Lindsey
 site_url: https://docs.tacc.utexas.edu
+cms_url: https://dev.tup.tacc.utexas.edu
+cms_name: tacc.utexas.edu
 repo_url: https://github.com/TACC/TACC-Docs
 edit_uri: edit/main/docs/
 
 theme:
     name: readthedocs
+    logo: /img/tacc-logo-with-words.svg
     highlightjs: true
     hljs_languages:
         - bash
@@ -36,6 +39,7 @@ extra_css:
 # These are not loaded automatically (TACC/TACC-Docs#3)
 # SEE: /themes/readthedocs/main.html @ "block scripts"
 extra_javascript:
+    - js/styleLinksOutsideMainContent.js
     - js/setTargetForExternalLinks.js
 
 nav:
