@@ -33,7 +33,7 @@ Faculty, staff and postdoctoral researchers at UT Austin, UT System, TACC partne
 
 Your account request will be reviewed by the TACC Accounting Coordinator within one business day. You will be notified via email when the account request process is complete. Users that are PI eligible may then log into the TACC User Portal to create a project and request an allocation. Users that are not PI eligible will need to contact the PI of their project to get added as a user of a TACC resource.
 
-!!! info
+!!! important
 	The creation of a TACC Portal Account and ability to log on to the TACC User Portal does NOT signify or allow access to any of TACC&#39;s compute resources, e.g. Frontera, Stampede2. **You must be added to an active project/allocation in order to log on to those resources**.
 
 ## [Training, Documentation &amp; Consulting](#training) { #training } 
