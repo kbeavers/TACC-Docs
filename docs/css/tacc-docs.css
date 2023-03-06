@@ -140,6 +140,10 @@ svg.logo [fill]:not([fill="none"]) {
   color: var(--global-color-primary--xxx-dark);
   font-weight: var(--bold);
 }
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.on a {
+    background: unset; /* undo theme.css */
+}
 
 
 
