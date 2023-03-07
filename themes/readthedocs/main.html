@@ -68,21 +68,6 @@
     {# /TACC #}
   {%- endblock %}
 
-  {%- block extrahead %}
-  {# TACC (replace img svg with inline svg): #}
-    <script src="{{ 'js/svg-inject.min.js'|url }}"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      SVGInject(document.querySelectorAll('img[src$=".svg"]'), {
-        onAllFinish: function() {
-          console.info('Image SVGs replaced with inline SVGs.');
-        }
-      });
-    });
-    </script>
-  {# /TACC #}
-  {% endblock %}
-
   {%- block site_name %}
     {{ super() }}
     <a href="{{ config.cms_url }}" class="cms-link">{{ config.cms_name }}</a>
@@ -94,20 +79,12 @@
     {# <script src="{{ 'js/theme_extra.js'|url }}" defer></script> #}
     {# /TACC #}
     <script src="{{ 'js/theme.js'|url }}" defer></script>
-    {# TACC: #}{# To suggest extra JavaScript be imported as modules #}
-    {#
     {%- for path in extra_javascript %}
-      <script src="{{ path }}" defer></script>
+      {# TACC: #}{# To force extra JavaScript to be imported as modules #}
+      {# <script src="{{ path }}" defer></script> #}
+      <script src="{{ path|url }}" type="module"></script>
+      {# /TACC #}
     {%- endfor %}
-    #}
-    <script type="module">
-      import findLinksAndSetTargets from '{{ "js/modules/setTargetForExternalLinks.js"|url }}';
-
-      findLinksAndSetTargets();
-    </script>
-    <script type="module" src="{{ 'js/modules/styleLinksOutsideMainContent.js'|url }}"></script>
-    <script type="module" src="{{ 'js/modules/removeThemeClasses.js'|url }}"></script>
-    {# /TACC #}
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable({{ 'true' if config.theme.sticky_navigation else 'false' }});
