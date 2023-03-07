@@ -5,3 +5,4 @@
 @import url("./core-styles/core-styles.base.css") layer(base);
 
 @import url("./core-styles/core-styles.docs.css") layer(base);
+@import url("./core-styles/core-styles.docs-candidates.css") layer(base);

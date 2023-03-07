@@ -1,0 +1,67 @@
+/* To support, in isolatation, patterns considered for core-styles.docs.css */
+@import url("./components/c-card.css");
+@import url("./objects/o-section.css");
+
+
+
+/* To add border to .o-section's */
+.section--has-border {
+  --border-width: var(--global-border-width--normal);
+  --border-width-neg: calc( -1 * var(--border-width) );
+  --border-color: var(--global-color-primary--dark);
+
+  --line-top:
+    0 var(--border-width-neg) var(--border-color);
+  --line-top-left:
+    -50vw var(--border-width-neg) var(--border-color);
+  --line-top-right:
+    50vw var(--border-width-neg) var(--border-color);
+
+  --line-bottom:
+    0 var(--border-width) var(--border-color);
+  --line-bottom-left:
+    -50vw var(--border-width) var(--border-color);
+  --line-bottom-right:
+    50vw var(--border-width) var(--border-color);
+
+  --fake-bkgd: var(--box-shadow--fake-bkgd); /* from core-styles o-section */
+
+  box-shadow:
+    var(--fake-bkgd),
+    var(--line-top),
+    var(--line-top-left),
+    var(--line-top-right),
+    var(--line-bottom),
+    var(--line-bottom-left),
+    var(--line-bottom-right);
+}
+
+
+
+/* To remove margin-bottom from all .o-section children */
+[class*="section--"] > * {
+  margin-bottom: unset;
+}
+
+
+
+/* To style a linked card */
+a[class*="card--"],
+a[class*="card--"]:hover /* overwrite core-styles.base.css */ {
+  color: inherit;
+}
+a[class*="card--"]:hover {
+  text-decoration: none;
+}
+a[class*="card--"]:hover :is( h1, h2, h3, h4, h5, h6 ) {
+  /* To mimic TACC/Core-Styles .x-link */
+  text-underline-offset: 0.2em;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: var(--global-border-width--normal);
+}
+a[class*="card--"]:active :is( h1, h2, h3, h4, h5, h6 ) {
+  /* To mimic TACC/Core-Styles .x-link */
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
