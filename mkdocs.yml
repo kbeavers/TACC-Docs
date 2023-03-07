@@ -42,6 +42,7 @@ extra_javascript:
     - js/modules/setTargetForExternalLinks.js
     - js/modules/styleLinksOutsideMainContent.js
     - js/modules/swapImgSvgWithRawSvg.js
+    - js/modules/removeThemeClasses.js
 
 nav:
   - TACC Basics :
@@ -94,6 +95,7 @@ nav:
     - Sharing Project Files: tutorials/sharingprojectfiles.md
     - TACC Analysis Portal: tutorials/TAP.md
   - Fiddling :
+    - Sample Index Page: index-sample.md
     - Testing Extensions: testingextensions.md
     - Code Examples: code-examples/index.md
 
@@ -118,6 +120,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.saneheaders
   - pymdownx.details
+  - pymdownx.blocks.html
   # FAQ: The `pymdownx.highlight` is useful only if Pygments is installed
   #      because Pygments would offer:
   #      - build-time syntax highlight markup
