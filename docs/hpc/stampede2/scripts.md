@@ -1,8 +1,6 @@
 ## [Job Scripts](#jobscripts) { #jobscripts }
 
-<details>
-<summary>KNL Serial Job in Normal Queue   
-</summary>
+<details><summary>KNL Serial Job in Normal Queue</summary>
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
