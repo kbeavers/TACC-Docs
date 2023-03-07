@@ -28,6 +28,13 @@ h4 {
 
 
 
+/* To not use accent color for headings */
+h2 {
+  color: unset; /* undo core-styles.cms */
+}
+
+
+
 /* To not use link style for a header link */
 /* TODO: Create a link icon that:
          - appears on hover over heading
