@@ -11,7 +11,7 @@ If you’re brand new to TACC and want to jump right in, check out our [Getting 
 # Essential Documentation
 
 /// html | section.section--muted.section--has-border.o-grid.o-grid--col-min-width
-//// html | a.card--plain[href="./basics/getting-started/"]
+//// html | a.card--plain[href="./basics/gettingstarted/"]
      markdown: block
 
 ## Getting Started
