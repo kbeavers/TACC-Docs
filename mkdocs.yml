@@ -36,11 +36,12 @@ extra_css:
     - css/tup-cms.css
     - css/tacc-docs.css
 
-# These are not loaded automatically (TACC/TACC-Docs#3)
+# These must be modules
 # SEE: /themes/readthedocs/main.html @ "block scripts"
 extra_javascript:
-    - js/styleLinksOutsideMainContent.js
-    - js/setTargetForExternalLinks.js
+    - js/modules/setTargetForExternalLinks.js
+    - js/modules/styleLinksOutsideMainContent.js
+    - js/modules/swapImgSvgWithRawSvg.js
 
 nav:
   - TACC Basics :
