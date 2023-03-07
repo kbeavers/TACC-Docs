@@ -67,13 +67,14 @@ You can also issue `scp` commands on your local client that use Maverick2 enviro
 localhost$ scp ./myfile bjones@maverick2.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
 
-!!! warning
+!!! danger
 	Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
 	```cmd-line
 	localhost$ scp -r  ./mydata     bjones@maverick2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 	```
 
+!!! hint
 	Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
 	```cmd-line

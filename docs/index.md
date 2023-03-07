@@ -1,62 +1,52 @@
 # Introduction
 
-## Welcome to the TACC documentation and User Guides. These documents teach you how to use and access our systems and software.
+Welcome to TACC Technical Documentation Land.  Learn how to access and use our High Performance Computing (HPC) resources.
 
-If you’re brand new to TACC and want to jump right in, check out our [Getting Started Guide](basics/gettingstarted). For additional HPC training, check out the following resources and contacts:
+## Start with TACC Basics
 
-- TACC Tutorials - A set of hands on classes with specific focus.
-- TACC Institute Series - Multi-day courses meant to enhance users knowledge of broad HPC topics.
-- Some External Resource - E.g. Cornell workshop.
-
-# Essential Documentation
-
-/// html | section.section--muted.section--has-border.o-grid.o-grid--col-min-width
+/// html | div.o-grid.o-grid--col-min-width
 //// html | a.card--plain[href="./basics/gettingstarted/"]
      markdown: block
 
-## Getting Started
+### Get Started with Getting Started
 
-All the getting. All the starting.
-
-////
-//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
-     markdown: block
-
-## Frontera User Guide
-
-All Frontera. All the Time. Get your guide.
+...
 
 ////
 //// html | a.card--plain[href="./basics/help/"]
      markdown: block
 
-## Help Me, Please
+### Help Me for I Know Not What I Know Not
 
-I know not what I do.
-
-////
-//// html | a.card--plain[href="https://lmod.readthedocs.io/en/latest/"]
-     markdown: block
-
-## LMOD
-
-"L" to the "M" to the "O" to the "D". **LMOD!**
-
-////
-//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
-     markdown: block
-
-## Frontera User Guide
-
-All Frontera. All the Time. Get your guide.
-
-////
-//// html | a.card--plain[href="./basics/help/"]
-     markdown: block
-
-## Help Me, Please
-
-I know not what I do.
+...
 
 ////
 ///
+
+### HPC User Guides
+
+Each of our HPC resources,  has a user guide, with extensive instructions and information 
+
+### TACC Tutorials
+
+/// html | section.o-grid.o-grid--col-min-width
+//// html | a.card--plain[href="./tutorials/mfa/"]
+     markdown: block
+
+### Setting Up MFA
+
+...
+
+////
+///
+
+### Software Packages at TACC
+
+We document standard and commonly used software packages, e.g, AlphaFold, VASP.  Each guide contains sample job scripts per resource where applicable and any special instructions needed to run on TACC resources.
+
+### Other Resources
+
+* Our Training Links
+* CI
+* Cornell
+* YouTube

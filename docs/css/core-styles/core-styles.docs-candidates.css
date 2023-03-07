@@ -41,13 +41,16 @@
 
 
 /* To remove margin-bottom from all .o-section children */
-[class*="section--"] > * {
+[class*="section--"].o-grid > * {
   margin-bottom: unset;
 }
 
 
 
 /* To style a linked card */
+a[class*="card--"] {
+  display: block;
+}
 a[class*="card--"],
 a[class*="card--"]:hover /* overwrite core-styles.base.css */ {
   color: inherit;
