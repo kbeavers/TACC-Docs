@@ -48,6 +48,8 @@ Stampede2 hosts 224 ICX compute nodes.
 
 #### [Table 2a. Stampede2 ICX Compute Node Specifications](#table2a) { #table2a }
 
+Specification | Value
+--- | ---
 Model:  | Intel Xeon Platinum 8380 ("Ice Lake")
 Total cores per ICX node:  | 80 cores on two sockets (40 cores/socket)
 Hardware threads per core:  | 2
@@ -72,7 +74,7 @@ Stampede2 mounts three shared Lustre file systems on which each user has corresp
 		
 #### [Table 3. Stampede2 File Systems](#table3) { #table3 }
 
-File System | Quota | Key Features
+<span style="white-space: nowrap;">File System</span> | Quota | Key Features
 --- | --- | ---
 <code>$HOME</code> | 10GB, 200,000 files | <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
 <code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside. | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>

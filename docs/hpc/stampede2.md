@@ -59,6 +59,8 @@ Stampede2 hosts 224 ICX compute nodes.
 
 #### [Table 2a. Stampede2 ICX Compute Node Specifications](#table2a) { #table2a }
 
+Specification | Value
+--- | ---
 Model:  | Intel Xeon Platinum 8380 ("Ice Lake")
 Total cores per ICX node:  | 80 cores on two sockets (40 cores/socket)
 Hardware threads per core:  | 2
@@ -83,7 +85,7 @@ Stampede2 mounts three shared Lustre file systems on which each user has corresp
 		
 #### [Table 3. Stampede2 File Systems](#table3) { #table3 }
 
-File System | Quota | Key Features
+<span style="white-space: nowrap;">File System</span> | Quota | Key Features
 --- | --- | ---
 <code>$HOME</code> | 10GB, 200,000 files | <b>Not intended for parallel or high-intensity file operations.</b><br>Backed up regularly.<br>Overall capacity ~1PB. Two Meta-Data Servers (MDS), four Object Storage Targets (OSTs).<br>Defaults: 1 stripe, 1MB stripe size.<br>Not purged.</br>
 <code>$WORK</code> | 1TB, 3,000,000 files across all TACC systems,<br>regardless of where on the file system the files reside. | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>On the Global Shared File System that is mounted on most TACC systems.<br>See <a href="https://www.tacc.utexas.edu/systems/stockyard">Stockyard system description</a> for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.</br>
@@ -324,7 +326,7 @@ See the example for fictitious user `bjones` in the figure below. All directorie
 
 Note that resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/stampede2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-[Table 4. Built-in Account Level Aliases](#table4)
+[Table 4. Built-in Account Level Aliases](#table4) { #table4 }
 
 Alias | Command
 --- | ---
@@ -333,7 +335,7 @@ Alias | Command
 <code>cds</code> | <code>cd $SCRATCH</code>
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 
-### [Striping Large Files](#files-striping)
+### [Striping Large Files](#files-striping) { #files-striping }
 
 Stampede2's Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives (dozens of physical drives for `$HOME`, hundreds for `$WORK` and `$SCRATCH`).
 
@@ -882,16 +884,17 @@ C448-004$
 
 Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
-!!! warning
+!!! danger
 	```cmd-line
 	#SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
 	```
 
-Instead, use the following directive:
+!!! hint
+	Instead, use the following directive:
 
-```job-script
-#SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
-```
+	``` job-script
+	#SBATCH -o myMPI.o%j     # "%j" expands to your job's numerical job ID
+	```
 
 Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` directive.
 

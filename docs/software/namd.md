@@ -2,28 +2,29 @@
 *Last update: November 30, 2021*
 
 	
-<img alt="NAMD logo" src="../../imgs/software/namd-logo.jpg" style="width:40%;">
+<img alt="NAMD logo" src="../../imgs/software/NAMD-logo.jpg" style="width:40%;">
 <a href="http://www.ks.uiuc.edu/Research/namd/">NAMD</a> <b>Na</b>noscale <b>M</b>olecular <b>D</b>ynamics program, is a parallel molecular dynamics code designed for high-performance simulation of large biomolecular systems. Based on Charm++ parallel objects, NAMD scales to hundreds of cores for typical simulations and beyond 500,000 cores for the largest simulations. NAMD uses the popular molecular graphics program VMD for simulation setup and trajectory analysis, but is also file-compatible with AMBER, CHARMM, and X-PLOR. NAMD can perform geometry optimization, molecular dynamics simulations, chemical and conformational free energy calculations, enhanced sampling via replica exchange. It also supports Tcl based scripting and steering forces.  
 
 ## [Installations](#installations) { #installations }
 
 NAMD is currently installed on TACC's [Frontera][FRONTERAUG], [Stampede2][STAMPEDE2UG], and [Lonestar6][LONESTAR6UG] compute resources.  NAMD is managed under the module system on TACC resources. Read the following instructions carefully. NAMD performance is particularly sensitive to its configuration.  Try running benchmarks with different configurations to find your optimal NAMD set up. You can initiate interactive [`idev`][TACCIDEV] debugging sessions on all systems.
 
-## [Running on Frontera](#running-frontera) { #running-frontera }
+## [NAMD on Frontera](#running-frontera) { #running-frontera }
 
 The recommended and latest installed NAMD version is 2.14 on Frontera. Users are welcome to install different NAMD versions in their own directories.
 
-```cmd-line
+``` cmd-line
 login1$ module load namd/2.14
 ```
 
-### [Job Scripts: NAMD on Frontera](#running-frontera-jobscript) { #running-frontera-jobscript }
+### [Job Script](#running-frontera-jobscript) { #running-frontera-jobscript }
 
-!!! note
+!!! tip
 	TACC staff recommends that users attempt runs with 4 tasks per node and 8 tasks per node (scales better at large number of nodes) and then pick the configuration that provides the best performance.
 
 4 tasks per node:
-```job-script
+
+``` job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 2            # Total number of nodes
@@ -39,7 +40,7 @@ ibrun namd2 +ppn 13 \
 
 
 8 tasks per node:
-```job-script
+``` job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 12           # Total number of nodes
@@ -56,25 +57,26 @@ ibrun namd2 +ppn 6 \
 For very large simulations, users may want to use compressed structures. See the [NAMD wiki: NamdMemoryReduction](https://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?NamdMemoryReduction) to prepare your compressed input files and set up your input files. In this case use the `namd2_memopt` executable instead of `namd2`: 
 
 compressed input files
-```job-script
+
+``` job-script
 	ibrun namd2_memopt +ppn 6 \
 	 			+pemap 2-12:2,16-26:2,30-40:2,44-54:2,3-13:2,17-27:2,31-41:2,45-55:2 \
 	 			+commap 0,14,28,42,1,15,29,43 input &> output
 ```
 
 
-## [Running on Stampede2](#running-stampede2) { #running-stampede2 }
+## [NAMD on Stampede2](#running-stampede2) { #running-stampede2 }
 
 As of this date, the recommended and latest version is 2.14 . Users are welcome to install different NAMD versions in their own directories. See [Building Third Party Software][STAMPEDE2UGBUILDING] in the Stampede2 User Guide. 
 
-### [Job Script: NAMD on Stampede2's KNL Nodes](#jobscript-stampede2-knl) { #jobscript-stampede2-knl }
+### [Job Script](#jobscript-stampede2-knl) { #jobscript-stampede2-knl }
 
 !!! tip
 	TACC staff recommends assigning 13 tasks per node for NAMD jobs running on Stampede2's KNL compute nodes. 
 
 This job script requests 1 node and 4 MPI tasks: 4 tasks/node. 
 
-```job-script
+``` job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 1            # Request 1 node
@@ -91,7 +93,7 @@ ibrun namd2_knl +ppn 32 \
 
 To run the same job on more than one node, vary the `-N` and `n` `#SBATCH` directives. This job script requests 3 nodes and 39 MPI tasks: 13 tasks/node. 
 
-```job-script
+``` job-script
 #SBATCH -J mynamd       # Set job name
 #SBATCH -o mynamd.o%j
 #SBATCH -N 3            # Request 3 nodes
@@ -108,12 +110,14 @@ ibrun namd2_knl +ppn 8 \
 As well as the Slurm `#SBATCH` directives (`-N` and `-n`), try varying the [affinity](http://www.ks.uiuc.edu/Research/namd/2.12/ug/node89.html) settings to determine the optimal performance of your job. You can try both settings then use the optimal one. If your system is small or the number of nodes are large, you can try:
 
 4 tasks per node:
-```job-script
+
+``` job-script
 ibrun namd2_knl +ppn 16 +pemap 0-63 +commap 64-67
 ```
 
 13 tasks per node:
-```job-script
+
+``` job-script
 ibrun namd2_knl +ppn 4 +pemap 0-51 +commap 52-67
 ```
 
@@ -122,7 +126,7 @@ ibrun namd2_knl +ppn 4 +pemap 0-51 +commap 52-67
 !!! tip
 	TACC staff recommends assigning 4 tasks per node for jobs running on Stampede2's SKX compute nodes. 
 
-```job-script
+``` job-script
 #SBATCH -J test         # Job Name
 #SBATCH -o test.o%j
 #SBATCH -N 2            # Total number of nodes
@@ -139,43 +143,44 @@ ibrun namd2_skx +ppn 11 \
 You may also try other [affinity](http://www.ks.uiuc.edu/Research/namd/2.14/ug/node88.html) settings as in these examples for varying number of tasks per node.
 
 6 tasks per node:
-```job-script
+
+``` job-script
 ibrun namd2_skx +ppn 7 \
 				+pemap 2-14:2,18-30:2,34-46:2,3-15:2,19-31:2,35-47:2 \
 				+commap 0,16,32,1,17,33 input &> output  
 ```
 
 2 tasks per node:
-```job-script
+
+``` job-script
 ibrun namd2_skx +ppn 23 \
 				+pemap 2-47:2,3-47:2 \
 				+commap 0,1 input &> output
 ```
 
 1 task per node:
-```job-script
+``` job-script
 ibrun namd2_skx +ppn 47 \
 				+pemap 2-47:2,1-47:2 \
 				+commap 0 input &> output
 ```
 
-
-## [Running NAMD on Lonestar6](#running-lonestar6) { #running-lonestar6 }
+## [NAMD on Lonestar6](#running-lonestar6) { #running-lonestar6 }
 
 NAMD ver2.14 is installed on Lonestar6 as this version provides best performance. Feel free to install your own newer version locally. 
 
-```cmd-line
+``` cmd-line
 login1$ module load namd/2.14
 ```
 
-### [Job Script: NAMD on Lonestar6](#running-lonestar6-jobscript) { #running-lonestar6-jobscript }
+### [Job Script](#running-lonestar6-jobscript) { #running-lonestar6-jobscript }
 
 !!! tip
 	TACC staff recommends assigning 4 tasks per node for NAMD jobs running on Lonestar6's compute nodes.
 
 The following Lonestar6 job script requests 2 node and 8 MPI tasks. To run the same job on more nodes, vary the `-N` and `-n` Slurm directives, **ensuring the value of `n` is four times the value of `N`**.  
 
-```job-script
+``` job-script
 #!/bin/bash
 #SBATCH -J test   		# Job Name
 #SBATCH -o test.o%j
