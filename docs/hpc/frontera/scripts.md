@@ -1,6 +1,6 @@
 ## [Sample Job Scripts](#jobscripts)
 
-<p class="introtext">Copy and customize the following jobs scripts by specifying and refining your job's requirements.</p>
+Copy and customize the following jobs scripts by specifying and refining your job's requirements.
 
 * specify the maximum run time with the `-t` option. 
 * specify number of nodes needed with the `-N` option
@@ -9,12 +9,19 @@
 
 Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm `#SBATCH` options.
 
-### [Serial Jobs](#jobscripts-serial)
+Click on a tab header below to display it's job script, then copy and customize to suit your own application.
 
-Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). **Run all serial jobs in the `small` queue.**  Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation to run multiple serial executables at one time.
+/// tab | Serial Jobs 
+Serial Jobs
 
+Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`). 
 
-```job-script
+!!! important
+	Run all serial jobs in the `small` queue.  
+
+Consult the [Launcher at TACC](../../software/launcher) documentation to run multiple serial executables at one time.
+
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -57,12 +64,15 @@ date
 # Launch serial code...
 ./myprogram         # Do not use ibrun or any other MPI launcher
 ```
+///
+/// tab | MPI Jobs
+MPI Jobs
 
-### [MPI Jobs](#jobscripts-mpi)
+This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
-This script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
+If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
 
-```job-script
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -108,13 +118,14 @@ date
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 ```
+///
+/// tab | OpenMP Jobs
+OpenMP Jobs
 
-### [OpenMP Jobs](#jobscripts-openmp)
+* **Hyperthreading is not currently enabled on Frontera**
+* **Run all OpenMP jobs in the `small` queue.**  
 
-<!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->
-**Run all OpenMP jobs in the `small` queue.**  
-
-```job-script
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
@@ -165,13 +176,16 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 ./myprogram         # Do not use ibrun or any other MPI launcher
 
 ```
-
-### [Hybrid (MPI + OpenMP) Job](#jobscripts-hybrid)
+///
+/// tab | Hybrid (MPI + OpenMP) Job
+Hybrid (MPI + OpenMP) Jobs
 
 <!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
-This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
+This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
-```job-script
+If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.
+
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
@@ -229,8 +243,10 @@ export OMP_NUM_THREADS=14
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 ```
+///
+/// tab | Parametric Sweep / HTC Jobs
+Parametric / HTC Jobs
 
-### [Parametric Sweep / HTC jobs](#jobscripts-htc)
-
-Consult the [Launcher at TACC](https://portal.tacc.utexas.edu/software/launcher) documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
+Consult the [Launcher at TACC](../../software/launcher) documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
+///
 

@@ -273,16 +273,20 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 
 ## [Job Scripts](#scripts)  { #scripts }
 
+This section provides sample Slurm job scripts for commond programming models: serial applications, MPI, OpenMP and hybrid (MPI + OpenMP) programming models. 
+
+Click on a tab for a job-script.  Copy and customize for your own applications.
+
 /// tab | Serial Job in Normal Queue
 
-```job-script
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
 #
 #   *** Serial Job in Normal Queue ***
 # 
-# Last revised: XX Oct 2018
+# Last revised: 01 Oct 2018
 #
 # Notes:
 #
@@ -326,14 +330,14 @@ date
 ///
 /// tab | MPI Job in Normal Queue
 
-```job-script
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
 #
 #   *** MPI Job in Normal Queue ***
 # 
-# Last revised: XX Oct 2018
+# Last revised: 01 Oct 2018
 #
 # Notes:
 #
@@ -378,14 +382,14 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 ///
 /// tab | OpenMP Job in Normal Queue
 
-```job-script
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script for TACC MACHINENAME nodes
 #
 #   *** OpenMP Job in Normal Queue ***
 # 
-# Last revised: XX Oct 2018
+# Last revised: 01 Oct 2018
 #
 # Notes:
 #
@@ -436,7 +440,7 @@ export OMP_NUM_THREADS=34
 ///
 /// tab | Hybrid Job in Normal Queue
 
-```job-script
+``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script for TACC MACHINENAME nodes
@@ -448,7 +452,7 @@ export OMP_NUM_THREADS=34
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
 #         16 OpenMP threads per MPI task (64 threads per node)
 #
-# Last revised: XX Oct 2018
+# Last revised: 01 Oct 2018
 #
 # Notes:
 #

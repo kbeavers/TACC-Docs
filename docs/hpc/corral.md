@@ -79,19 +79,19 @@ Data transfer mechanisms differ depending on whether you are using iRODS or basi
 
 Data transfer from any Unix/Linux system can be accomplished using the `scp` utility to copy data to and from the login node. A file can be copied from your local system to the remote server using the command:
 
-```cmd-line
+``` cmd-line
 login1$ scp filename username@data.tacc.utexas.edu:/path/to/project/directory
 ```
 
 Where <i>filename</i> is the path to the file on your local system, and the path is what was provided to you when your allocation was granted. While a whole directory can be copied recursively using the `-r` switch:
 
-```cmd-line
+``` cmd-line
 login1$ scp -r directory username@data.tacc.utexas.edu:/path/to/project/directory
 ```
 
 Copying data from the Corral system to your local machine is similar, but reverse the order of the arguments:
 
-```cmd-line
+``` cmd-line
 login1$ scp username@data.tacc.utexas.edu:/path/to/project/directory/filename \
 	 /path/to/local/directory
 ```
@@ -103,19 +103,19 @@ The `scp` utility has many options and allows you to provide many defaults and o
 
 If you are performing computational and analysis tasks on Lonestar6, and those tasks are I/O intensive, you may achieve improved performance by "staging" data to the Lonestar6 `$WORK` or `$SCRATCH` file systems before running a compute task. This is due to the use of the high-performance network of Lonestar6 for access to `$WORK` and `$SCRATCH`, as opposed to the slightly slower TCP/IP network used for access to Corral. The simplest way to stage a file is to copy it to your `$SCRATCH` directory before you submit your job:
 
-```cmd-line
+``` cmd-line
 login1$ cp /corral-repl/utexas/myproject/myfile $SCRATCH/job_directory/
 ```
 
 The above example stages a single file. If you wish to stage a whole directory instead, use the `-r` switch to cp:
 
-```cmd-line
+``` cmd-line
 login1$ cp -r /corral-repl/utexas/myproject/job_directory $SCRATCH/
 ```
 
 When the job is completed, you may wish to copy the output data back to Corral:
 
-```cmd-line
+``` cmd-line
 login1$ cp -r $SCRATCH/job_directory/output_files /corral-repl/utexas/myproject/job_directory
 ```
 
@@ -151,13 +151,13 @@ With this in mind, it is a good practice to explicitly set the permissions on ne
 
 Permissions on files and directories have 3 important categories, for each of which there are 3 levels of access that can be provided. The 3 categories are the owner, the group, and "other" meaning all users of the system. The 3 levels of access are read, write, and "execute" which allows a program to be run in the case of files or allows a directory's contents to be accessed in the case of directories or folders. Typically, users outside of your project group will not be able to access your files unless you explicitly allow them to do so. You can view the permissions for each file in a given directory by typing:
 
-```cmd-line
+``` cmd-line
 login1$ ls -l
 ```
 
 within that directory, or 
 
-```cmd-line
+``` cmd-line
 login1$ ls -l /full/path/of/directory
 ```
 
@@ -186,7 +186,7 @@ chmod <i>permissions-to-change</i> <i>filename</i>
 
 where <i>permissions-to-change</i> can be any or all of `u` for user, `g` for group, and `o` for other, a `+` to add permissions or a minus, `-`, to remove permissions, and the initials of permissions to add or removed, `r` for read, `w` for write, and `x` for execution. For example, to add read access for all users of the system the command would be:
 
-```cmd-line
+``` cmd-line
 login1$ chmod o+r filename
 ```
 
