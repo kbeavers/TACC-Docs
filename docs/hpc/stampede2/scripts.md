@@ -1,6 +1,6 @@
 ## [Job Scripts](#jobscripts) { #jobscripts }
 
-<details><summary>KNL Serial Job in Normal Queue</summary>
+/// tab | KNL Serial Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -49,9 +49,9 @@ date
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX Serial Job in Normal Queue</summary>
+///
+/// tab | SKX Serial Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -100,9 +100,9 @@ date
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>KNL MPI Job in Normal Queue</summary>
+///
+/// tab | KNL MPI Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -152,9 +152,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX MPI Job in Normal Queue</summary>
+///
+/// tab | SKX MPI Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -204,9 +204,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>ICX MPI Job in Normal Queue</summary>
+///
+/// tab | ICX MPI Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -271,9 +271,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 #---------------------------------------------------
 ```
-</details>
 
-<details><summary>KNL OpenMP Job in Normal Queue</summary>
+///
+/// tab | KNL OpenMP Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -329,9 +329,9 @@ export OMP_NUM_THREADS=34
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX OpenMP Job in Normal Queue</summary>
+///
+/// tab | SKX OpenMP Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -387,10 +387,9 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 
 # ---------------------------------------------------
 ```
-</details>
 
-
-<details><summary>ICX OpenMP Job in Normal Queue</summary>
+///
+/// tab | ICX OpenMP Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -458,10 +457,9 @@ cd $SCRATCH
 
 #---------------------------------------------------
 ```
-</details>
 
-
-<details><summary>KNL Hybrid Job in Normal Queue</summary>
+///
+/// tab | KNL Hybrid Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -524,9 +522,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX Hybrid Job in Normal Queue</summary>
+///
+/// tab | SKX Hybrid Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -589,9 +587,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>ICX Hybrid Job in Normal Queue</summary>
+///
+/// tab | ICX Hybrid Job in Normal Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -669,7 +667,5 @@ cd $SCRATCH
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #---------------------------------------------------
 ```
-</details>
 
-   
-   
+///

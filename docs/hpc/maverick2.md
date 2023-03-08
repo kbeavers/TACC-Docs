@@ -273,7 +273,7 @@ Queue Name<br>(available nodes) | Max Nodes per Job<br /> (assoc'd cores)  | Max
 
 ## [Job Scripts](#scripts)  { #scripts }
 
-<details><summary>Serial Job in Normal Queue</summary>
+/// tab | Serial Job in Normal Queue
 
 ```job-script
 #!/bin/bash
@@ -322,9 +322,9 @@ date
 
 # ---------------------------------------------------
 ```
- </details>
 
-<details><summary>MPI Job in Normal Queue</summary>
+///
+/// tab | MPI Job in Normal Queue
 
 ```job-script
 #!/bin/bash
@@ -374,10 +374,9 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
- </details>
 
-
-<details><summary>OpenMP Job in Normal Queue</summary>
+///
+/// tab | OpenMP Job in Normal Queue
 
 ```job-script
 #!/bin/bash
@@ -433,9 +432,9 @@ export OMP_NUM_THREADS=34
 
 # ---------------------------------------------------
 ```
- </details>
 
-<details><summary>Hybrid Job in Normal Queue</summary>
+///
+/// tab | Hybrid Job in Normal Queue
 
 ```job-script
 #!/bin/bash
@@ -499,7 +498,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 # ---------------------------------------------------
 ```
 
-</details>
+///
 
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm <span style="white-space: nowrap;">`--export`</span> option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 

@@ -903,9 +903,8 @@ For more information on this and other matters related to Slurm job submission, 
 
 ## [Job Scripts](#jobscripts) { #jobscripts }
 
-<details>
-<summary>KNL Serial Job in Normal Queue   
-</summary>
+/// tab | KNL Serial Job in Normal Queue
+
 ``` { .bash job-script }
 #!/bin/bash
 #----------------------------------------------------
@@ -954,9 +953,9 @@ date
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX Serial Job in Normal Queue</summary>
+///
+/// tab | SKX Serial Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1005,9 +1004,9 @@ date
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>KNL MPI Job in Normal Queue</summary>
+///
+/// tab | KNL MPI Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1057,9 +1056,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX MPI Job in Normal Queue</summary>
+///
+/// tab | SKX MPI Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1109,9 +1108,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>ICX MPI Job in Normal Queue</summary>
+///
+/// tab | ICX MPI Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1176,9 +1175,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 #---------------------------------------------------
 ```
-</details>
 
-<details><summary>KNL OpenMP Job in Normal Queue</summary>
+///
+/// tab | KNL OpenMP Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1234,9 +1233,9 @@ export OMP_NUM_THREADS=34
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX OpenMP Job in Normal Queue</summary>
+///
+/// tab | SKX OpenMP Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1292,10 +1291,9 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 
 # ---------------------------------------------------
 ```
-</details>
 
-
-<details><summary>ICX OpenMP Job in Normal Queue</summary>
+///
+/// tab | ICX OpenMP Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1363,10 +1361,9 @@ cd $SCRATCH
 
 #---------------------------------------------------
 ```
-</details>
 
-
-<details><summary>KNL Hybrid Job in Normal Queue</summary>
+///
+/// tab | KNL Hybrid Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1429,9 +1426,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>SKX Hybrid Job in Normal Queue</summary>
+///
+/// tab | SKX Hybrid Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1494,9 +1491,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 # ---------------------------------------------------
 ```
-</details>
 
-<details><summary>ICX Hybrid Job in Normal Queue</summary>
+///
+/// tab | ICX Hybrid Job in Normal Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1574,10 +1571,9 @@ cd $SCRATCH
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #---------------------------------------------------
 ```
-</details>
 
-   
-   
+///
+
 ## [Monitoring Jobs and Queues](#monitoring) { #monitoring }
 
 Several commands are available to help you plan and track your job submissions as well as check the status of the Slurm queues.
@@ -2080,7 +2076,7 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 
 "Last Update" at the top of this document is the date of the most recent change to this document. This revision history is a list of non-trivial updates; it excludes routine items such as corrected typos and minor format changes.
  
-<details><summary>Click to view</summary>
+/// tab | Click to view
 
 <li> 09/14/22 XSEDE project ends. Replace Globus with Grid Community Toolkit. </li>
 <li> 03/07/22 Intel Ice Lake nodes introduced.  New `icx-normal` queue. </li>
@@ -2092,4 +2088,4 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 <li> 08/02/17 Removed references and links to Stampede2 Transition Guide (now deprecated). </li>
 <li> 06/12/17 Initial public release. </li>
 
-</details>
+///

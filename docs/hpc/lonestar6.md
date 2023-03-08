@@ -720,8 +720,8 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 ## [Sample Job Scripts](#scripts) { #scripts }
 
 
+/// tab | Serial Codes
 
-<details><summary>Serial Codes </summary>
   
 !!! important 
 	Run all serial jobs in the `normal` queue.
@@ -771,11 +771,9 @@ date
 # Launch serial code...
 ./myprogram         # Do not use ibrun or any other MPI launcher
 ```
-</details>
 
-
-
-<details><summary>MPI Jobs</summary>
+///
+/// tab | MPI Jobs
 
 This job script requests 4 nodes (`#SBATCH -N 4`) and 32 tasks (`#SBATCH -n 32`), for 8 MPI rasks per node.  
 
@@ -824,10 +822,9 @@ date
 # Launch MPI code... 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 ```
-</details>
 
-
-<details><summary>Hybrid (MPI + OpenMP) Job</summary>
+///
+/// tab | Hybrid (MPI + OpenMP) Job
 
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
@@ -888,10 +885,9 @@ export OMP_NUM_THREADS=14
 # Launch MPI code... 
 ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 ```
-</details>
 
-
-<details><summary>OpenMP Jobs</summary>
+///
+/// tab | OpenMP Jobs
 
 **Run all OpenMP jobs in the `normal` queue.**  
 
@@ -944,7 +940,8 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 # Launch OpenMP code...
 ./myprogram         # Do not use ibrun or any other MPI launcher
 ```
-</details>
+
+///
 
 
 ### [Customizing your Job Script ](#scripts-customizations)

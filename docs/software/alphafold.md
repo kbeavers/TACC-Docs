@@ -115,7 +115,7 @@ seq3.fasta
 
 Next, prepare a launcher `jobfile` that contains each command that needs to be run. There should be one line in the `jobfile` for each input fasta sequence. Each line should refer to a unique input sequence and a unique output path:
 
-<details><summary>Sample Alphafold Launcher Job File</summary>
+/// tab | Sample Alphafold Launcher Job File
 
 ``` syntax
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq1.fasta</span> --output_dir=$SCRATCH/BLUEoutput1</span> --model_preset=monomer --use_gpu_relax=True
@@ -123,7 +123,8 @@ singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh
 singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq3.fasta</span> --output_dir=$SCRATCH/BLUEoutput3</span> --model_preset=monomer --use_gpu_relax=True
 ...
 ```
-</details>
+
+///
 
 NOTE: Due to the way `launcher_gpu` distributes tasks to individual GPUs, the full `singularity` command must be used in the `jobfile` as shown above. 
 
