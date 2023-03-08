@@ -13,7 +13,7 @@ Remora is installed on all TACC compute resources. You can use remora interative
 ### [Interactively](#running-interactively) { #running-interactively }
 
 <!-- get an copute node -->
-```cmd-line
+``` cmd-line
 login1$ idev
 c123-456$ module load remora
 c123-456$ remora myserialcode args
@@ -23,7 +23,7 @@ c123-456$ remora myserialcode args
 
 Modify your batch script and include 'remora' before your script, executable, or MPI launcher within your script as shown below:
 
-```job-script
+``` job-script
 #!/bin/bash
 #SBATCH -J myjob           		# Job name
 #SBATCH -oe myjob.o%j      		# Name of stdout/stderr output file

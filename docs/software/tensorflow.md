@@ -26,7 +26,7 @@ These instructions detail installing and running TensorFlow benchmarks on Lonest
 
 To install Horovod: 
 
-```cmd-line
+``` cmd-line
 login1$ module load cuda/11.4 cudnn/8.2.4 nccl/2.11.4
 login1$ pip3 install --user gast==0.4.0 keras==2.6.0 tensorflow-gpu==2.6.1 --no-cache-dir
 login1$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR \
@@ -39,13 +39,13 @@ login1$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR \
 
 To run a single-node job benchmark on one GPU, first create an `idev` session in LS6's [`gpu_a100`](../../hpc/lonestar6#queues) queue: 
 
-```cmd-line
+``` cmd-line
 login1$ idev -N 1 -n 2 -p gpu_a100
 ```
 
 Once the `idev` session is created, run the benchmark on a single node, using one GPU:
 
-```cmd-line
+``` cmd-line
 c307-001.ls6$ cds; git clone https://github.com/tensorflow/benchmarks.git
 c307-001.ls6$ cd benchmarks
 c307-001.ls6$ module load cuda/11.4 cudnn/8.2.4 nccl/2.11.4
@@ -55,7 +55,7 @@ c307-001.ls6$ python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py \
 
 Run the same benchmark using both GPUs:
 
-```cmd-line
+``` cmd-line
 c307-001.ls6$ python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py \
 				--num_gpus=2 --model resnet50 --batch_size 32 --num_batches 200
 ```
@@ -66,13 +66,13 @@ c307-001.ls6$ python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py \
 
 To run a multi-node job benchmark, first create a multi-node `idev` session in LS6's [`gpu_a100`](../../hpc/lonestar6#queues) queue: 
 
-```cmd-line
+``` cmd-line
 login1$ idev -N 2 -n 4 -p gpu_a100
 ```
 
 Once the `idev` session is created, run the benchmarks on two nodes, using four GPUs:
 
-```cmd-line
+``` cmd-line
 c305-000$ cds;git clone  https://github.com/tensorflow/benchmarks.git
 c305-000$ cd benchmarks
 c305-000$ module load cuda/11.4 cudnn/8.2.4 nccl/2.11.4
@@ -87,7 +87,7 @@ These instructions detail installing and running TensorFlow benchmarks on Maveri
 
 Maverick2 supports CUDA/10.0, and CUDA/10.1. Use the respective CUDA version for your TensorFlow installation with Python 3.7.
 
-```cmd-line
+``` cmd-line
 
 c123-456$ module load intel/18.0.2 python3/3.7.0
 c123-456$ module load cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -96,7 +96,7 @@ c123-456$ pip3 install --user grpcio==1.28.1 tensorflow-gpu==2.1.0 --no-cache-di
 
 We suggest installing Horovod version 0.19.2. If you wish to install other versions of Horovod, please [submit a support ticket][CREATETICKET] with the subject "Request for Horovod" and TACC staff will provide special instructions.
 
-```cmd-line
+``` cmd-line
 
 c123-456$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=gcc \
 	HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install \
@@ -107,7 +107,7 @@ c123-456$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=g
 
 Download the tensorflow benchmark to your `$WORK` directory, then check out the branch that matches your tensorflow version.
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cdw; git clone https://github.com/tensorflow/benchmarks.git
 c123-456$ cd benchmarks
@@ -116,7 +116,7 @@ c123-456$ git checkout cnn_tf_v2.1_compatible
 
 Benchmark the performance with the synthetic dataset on 1 GPU:
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd scripts/tf_cnn_benchmarks
 c123-456$ module load intel/18.0.2 python3/3.7.0 cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -125,7 +125,7 @@ c123-456$ python3 tf_cnn_benchmarks.py --num_gpus=1 --model resnet50 --batch_siz
 
 Benchmark the performance with the synthetic dataset on 4 GPUs:
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd scripts/tf_cnn_benchmarks
 c123-456$ module load intel/18.0.2 python3/3.7.0 cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -137,7 +137,7 @@ c123-456$ ibrun -np 4 python3 tf_cnn_benchmarks.py --variable_update=horovod \
 
 Download the TensorFlow benchmark to your `$WORK` directory. Check out the branch that matches your tensorflow version. This example runs on two nodes in Maverick2's `gtx` queue (8 GPUs).
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cdw; git clone https://github.com/tensorflow/benchmarks.git
 c123-456$ git checkout cnn_tf_v2.1_compatible
@@ -145,7 +145,7 @@ c123-456$ git checkout cnn_tf_v2.1_compatible
 
 Benchmark the performance with synthetic dataset on these two 2 nodes using 8 GPUs:
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd scripts/tf_cnn_benchmarks
 c123-456$ module load intel/18.0.2 python3/3.7.0 cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -157,7 +157,7 @@ c123-456$ ibrun -np 8 python3 tf_cnn_benchmarks.py --variable_update=horovod \
 
 These instructions detail installing and running TensorFlow benchmarks on Frontera RTX. Frontera RTX runs TensorFlow 2.1.0 with Python 3.7.0 and Intel 19. Frontera supports CUDA10.0 and CUDA/10.1. Use the appropriate CUDA version for your TensorFlow installation with Python 3.7.6.
 
-```cmd-line
+``` cmd-line
 
 c123-456$ module load python3 
 c123-456$ module load cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -166,7 +166,7 @@ c123-456$ pip3 install --user grpcio==1.28.1 tensorflow-gpu==2.1.0 --no-cache-di
 
 We suggest installing Horovod version 0.19.2. If you wish to install other versions of Horovod, please <a href="https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create">submit a support ticket</a> with the subject "Request for Horovod" and TACC staff will provide special instructions.
 
-```cmd-line
+``` cmd-line
 c123-456$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=gcc \
 	HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install \
 	--user horovod==0.19.2 --no-cache-dir
@@ -176,7 +176,7 @@ c123-456$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=g
 
 Download the tensorflow benchmark to your `$WORK` directory, then check out the branch that matches your tensorflow version.
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cds; git clone https://github.com/tensorflow/benchmarks.git
 c123-456$ cd benchmarks  
@@ -185,7 +185,7 @@ c123-456$ git checkout cnn_tf_v2.1_compatible
 
 Benchmark the performance with synthetic dataset on 1 GPU
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd scripts/tf_cnn_benchmarks
 c123-456$ module load python3/3.7.0 cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -194,7 +194,7 @@ c123-456$ python3 tf_cnn_benchmarks.py --num_gpus=1 --model resnet50 --batch_siz
 
 Benchmark the performance with synthetic dataset on 4 GPUs
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd scripts/tf_cnn_benchmarks
 c123-456$ module load python3/3.7.0 cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -206,7 +206,7 @@ c123-456$ ibrun -np 4 python3 tf_cnn_benchmarks.py --variable_update=horovod --n
 
 Download the TensorFlow benchmark to your `$WORK` directory. Check out the branch that matches your tensorflow version. This example runs on two nodes in the `rtx queue` (8 GPUs).
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cds; git clone https://github.com/tensorflow/benchmarks.git
 c123-456$ git checkout cnn_tf_v2.1_compatible
@@ -214,7 +214,7 @@ c123-456$ git checkout cnn_tf_v2.1_compatible
 
 Benchmark the performance with synthetic dataset on these two 2 nodes using 8 GPUs
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd scripts/tf_cnn_benchmarks
 c123-456$ module load python3/3.7.0 cuda/10.1 cudnn/7.6.5 nccl/2.5.6
@@ -228,13 +228,13 @@ These instructions detail installing and running TensorFlow benchmarks on Stampe
 
 Use TACC's `idev` utility to grab a single compute node for 1 hour in Stampede2's [skx-dev queue](../../hpc/stampede2#queues):
 
-```cmd-line
+``` cmd-line
 login1$ idev -p skx-dev -N 1 -n 1 -m 60
 ```
 
 Install TensorFlow 2.1 using the default intel/18.0.2 compiler and Python 3.7:
 
-```cmd-line
+``` cmd-line
 
 c123-456$ module load intel/18.0.2 python3/3.7.0
 c123-456$ pip3 install --user tensorflow==2.1.0 --no-cache-dir
@@ -242,7 +242,7 @@ c123-456$ pip3 install --user tensorflow==2.1.0 --no-cache-dir
 
 To install horovod v0.19.2:
 
-```cmd-line
+``` cmd-line
 
 c123-456$ CC=gcc HOROVOD_WITH_TENSORFLOW=1 pip3 install --user horovod==0.19.2 --no-cache-dir --no-cache-dir
 ```
@@ -250,14 +250,14 @@ c123-456$ CC=gcc HOROVOD_WITH_TENSORFLOW=1 pip3 install --user horovod==0.19.2 -
 ### [Single-Node](#stampede2-singlenode) { #stampede2-singlenode }
 
 If you're not already on a compute node, then use TACC's `idev` utility to grab a single compute node for 1 hour:
-```cmd-line
+``` cmd-line
 
 login1$ idev -p skx-dev -N 1 -n 1 -m 60
 ```
 
 Download the TensorFlow benchmark to your `$SCRATCH` directory. Check out the corresponding branch for your TensorFlow version. In this example we used `cnn_tf_v2.1_compatible`.
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd $SCRATCH
 c123-456$ git clone https://github.com/tensorflow/benchmarks.git
@@ -267,7 +267,7 @@ c123-456$ git checkout cnn_tf_v2.1_compatible
 
 Benchmark the performance with a synthetic dataset:
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd scripts/tf_cnn_benchmarks
 c123-456$ export KMP_BLOCKTIME=0
@@ -281,14 +281,14 @@ c123-456$ python3 tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --data_
 
 If you're not already on a compute node, then use TACC's `idev` utility to grab two compute nodes for 1 hour:
 
-```cmd-line
+``` cmd-line
 
 login1$ idev -p skx-dev -N 2 -n 2 -m 60
 ```
 
 Download the TensorFlow benchmark to your `$SCRATCH` directory. Check out the corresponding branch for your TensorFlow version. In this example, we used `cnn_tf_v2.1_compatible`.
 
-```cmd-line
+``` cmd-line
 
 c123-456$ cd $SCRATCH
 c123-456$ git clone https://github.com/tensorflow/benchmarks.git
@@ -297,7 +297,7 @@ c123-456$ git checkout cnn_tf_v2.1_compatible
 
 Benchmark the performance with a synthetic dataset on 4 nodes:
 
-```cmd-line
+``` cmd-line
 
 c123-456$ module load intel/18.0.2 python3/3.7.0 
 c123-456$ cd benchmarks/scripts/tf_cnn_benchmarks
@@ -326,7 +326,7 @@ Q: **I have missing Python packages when using TensorFlow. What shall I do?**
 
 A: Deep learning frameworks usually depend on many other packages. e.g., the [Caffe package dependency list](https://github.com/intel/caffe/blob/master/python/requirements.txt). On TACC resources, you can install these packages in user space by running:
 
-```cmd-line
+``` cmd-line
 $ pip install --user <i>package-name</i>
 ```
 

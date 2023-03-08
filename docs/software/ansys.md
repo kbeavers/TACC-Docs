@@ -37,19 +37,19 @@ ANSYS can be launched with the ANSYS GUI used in interactive mode. Use the [TACC
 
 ANSYS is managed under [Lmod](https://lmod.readthedocs.io/en/latest/) Environmental Module System on TACC resources. Within the VNC session, load the ANSYS module with the following command:
 
-```cmd-line
+``` cmd-line
 $ module load ansys
 ```
 
 You can always get the help information using the module's &quot;`help`&quot; command:
 
-```cmd-line
+``` cmd-line
 $ module help ansys
 ```
 
 Launch the ANSYS GUI within the VNC session:
 
-```cmd-line
+``` cmd-line
 $ /home1/apps/ANSYS/2021R2/v212/ansys/bin/launcher212
 ```
 
@@ -62,7 +62,7 @@ $ /home1/apps/ANSYS/2021R2/v212/ansys/bin/launcher212
 
 You can also submit your ANSYS job to the batch nodes (compute nodes) on TACC resources. To do so, first make sure that the ANSYS module has been loaded, and then launch your ANSYS programs as shown in the sample Frontera job script below.
 
-```job-script
+``` job-script
 #!/bin/bash
 #SBATCH -J ansysjob              # job name
 #SBATCH -e ansysjob.%j.err       # error file name 

@@ -27,7 +27,7 @@ Lonestar6 | AlphaFold: v2.2.0<br> Data: <code>/scratch/tacc/apps/bio/alphafold/d
 To perform 3-D protein structure prediction with AlphaFold, first upload a fasta-formatted protein primary sequence to your `$WORK` or `$SCRATCH` (recommended) space. Sample fasta sequences are provided in the machine-specific "**Examples**" paths listed in the table above. A valid fasta sequence might look like:
 
 ``` syntax
-&gt;sample sequence consisting of 350 residues
+>sample sequence consisting of 350 residues
 MTANHLESPNCDWKNNRMAIVHMVNVTPLRMMEEPRAAVEAAFEGIMEPAVVGDMVEYWN
 KMISTCCNYYQMGSSRSHLEEKAQMVDRFWFCPCIYYASGKWRNMFLNILHVWGHHHYPR
 NDLKPCSYLSCKLPDLRIFFNHMQTCCHFVTLLFLTEWPTYMIYNSVDLCPMTIPRRNTC
@@ -43,7 +43,7 @@ Next, prepare a batch job submission script for running AlphaFold. Two different
 
 See the AlphaFold documentation for more information on the speed / quality tradeoff of each preset. The example templates each need to be customized before they can be used. Copy the desired template to your `$WORK` or `$SCRATCH` space along with the input fasta file. After necessary customizations, a batch script for running the full databases on Frontera may contain:
 
-```job-script
+``` job-script
 #!/bin/bash
 # -----------------------------------------------------------------
 #SBATCH -J my_af2_job                 # Job name
@@ -105,7 +105,7 @@ To perform 3-D protein structure prediction with AlphaFold for many protein sequ
 
 Fasta formatted sequences should be uniquely identifiable either by giving each a unique name or by putting each sequence in its own uniquely-named directory. The simplest way to achieve this is to have one sub directory (e.g. `$SCRATCH/inputs/`) with all uniquely named fasta sequences in it:
 
-```cmd-line
+``` cmd-line
 login1$ ls $SCRATCH/inputs/
 seq1.fasta
 seq2.fasta
@@ -115,23 +115,20 @@ seq3.fasta
 
 Next, prepare a launcher `jobfile` that contains each command that needs to be run. There should be one line in the `jobfile` for each input fasta sequence. Each line should refer to a unique input sequence and a unique output path:
 
-/// tab | Sample Alphafold Launcher Job File
-
 ``` syntax
-singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq1.fasta</span> --output_dir=$SCRATCH/BLUEoutput1</span> --model_preset=monomer --use_gpu_relax=True
-singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq2.fasta</span> --output_dir=$SCRATCH/BLUEoutput2</span> --model_preset=monomer --use_gpu_relax=True
-singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq3.fasta</span> --output_dir=$SCRATCH/BLUEoutput3</span> --model_preset=monomer --use_gpu_relax=True
+singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq1.fasta --output_dir=$SCRATCH/BLUEoutput1 --model_preset=monomer --use_gpu_relax=True
+singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq2.fasta --output_dir=$SCRATCH/BLUEoutput2 --model_preset=monomer --use_gpu_relax=True
+singularity exec --nv $AF2_HOME/images/alphafold_2.2.0.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/test/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/BLUEseq3.fasta --output_dir=$SCRATCH/BLUEoutput3 --model_preset=monomer --use_gpu_relax=True
 ...
 ```
 
-///
-
-NOTE: Due to the way `launcher_gpu` distributes tasks to individual GPUs, the full `singularity` command must be used in the `jobfile` as shown above. 
+!!! Important
+	Due to the way `launcher_gpu` distributes tasks to individual GPUs, the full `singularity` command must be used in the `jobfile` as shown above. 
 
 
 Prepare a batch job submission script by merging the AlphaFold template with a launcher template. Adjust the number of nodes, number of tasks, and the wall clock time appropriately for the number of jobs in the `jobfile`:
 
-```job-script
+``` job-script
 #!/bin/bash
 # -----------------------------------------------------------------
 #SBATCH -J my_af2_launcher_job          # Job name

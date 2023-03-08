@@ -26,7 +26,7 @@ The IRODS command-line utilities, collectively referred to as "i-commands", use 
 
 #### [Example 1. iRODS Configuration Template](#example1) { #example1 }
 
-```job-script
+``` job-script
 {
 	"irods_host": "irods.corral.tacc.utexas.edu",
 	"irods_port": 1247,
@@ -85,13 +85,13 @@ Use the `irsync` command to synchronize a local directory with iRODS, similar to
 
 For example, if you have created a directory within iRODS called `/corralZ/home/joeuser/myproject`, and you wish to retrieve an exact copy of that directory on Stampede, run the command:
 
-```cmd-line
+``` cmd-line
 login1$ irsync -r i:/corralZ/home/joeuser/myproject /path/to/joeusers/workdir
 ```
 
 After editing the files on Stampede, you can then synchronize the data back into iRODS using the command:
 
-```cmd-line
+``` cmd-line
 login1$ irsync -r /path/to/joeusers/workdir i:/corralZ/home/joeuser/myproject
 ```
 
@@ -116,7 +116,7 @@ All users can see all other users' collections and files but cannot access, (rea
 
 * **Read Permission**
 
-	```cmd-line
+	``` cmd-line
 	login1$ ichmod read testuser testfile.txt 
 	login1$ ils -A testfile.txt
 	```
@@ -127,7 +127,7 @@ All users can see all other users' collections and files but cannot access, (rea
 
 	Giving another user ownership permission will enable them to change ACL for the file or folder. For example, to give `testuser` ownership permissions means `testuser` can then extend read/write/owner permissions to other users.
 
-	```cmd-line
+	``` cmd-line
 	login1$ ichmod own testuser testfile.txt
 	```
 
@@ -135,7 +135,7 @@ All users can see all other users' collections and files but cannot access, (rea
 
 	You can assign `null` to remove permissions from the ACL for a file or folder:
 
-	```cmd-line
+	``` cmd-line
 	login1$ ichmod null testuser testfile.txt
 	```
 
@@ -143,7 +143,7 @@ All users can see all other users' collections and files but cannot access, (rea
 
 	The "inherit" permission is a special type of permission you can assign to a directory, which causes all new files and folders created within that directory to have the same permissions as the parent. For example, you can grant read permissions to a specific user, add the inherit permission, then add a number of files to that directory, which will also have the read permissions assigned to the enclosing folder. This makes it easier to share files within a group or to copy complicated permissions structures to additional files.
 
-	```cmd-line
+	``` cmd-line
 	login1$ ichmod inherit testuser myfolder
 	```
 

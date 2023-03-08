@@ -13,7 +13,7 @@ CDTools is currently installed on TACC's Frontera and Stampede2 resources.
 
 To set up CDTools on Frontera or Stampede2 system, initialize these environment variables:
 
-```cmd-line
+``` cmd-line
 $ export CDTools=/home1/apps/CDTools/1.1  # for Frontera or Stampede2
 $ export PATH=${PATH}:${CDTools}/bin
 ```
@@ -22,12 +22,12 @@ $ export PATH=${PATH}:${CDTools}/bin
 
 Distribute your files/directories to the local `/tmp` space of each compute node allotted for your job:
 
-```cmd-line
+``` cmd-line
 $ distribute.bash ${SCRATCH}/inputfile #put the full path of your input file here
 ```
 or
 
-```cmd-line
+``` cmd-line
 $ distribute.bash ${SCRATCH}/inputdir #put the full path of the directory of your input files here
 ```
 
@@ -37,11 +37,11 @@ If you `ssh` to those compute nodes after running the above command, you would f
 
 Once your job completes, collect the job output files from the `/tmp` space of each node:
 
-```cmd-line
+``` cmd-line
 $ collect.bash /tmp/outputdir ${SCRATCH}/output_collected
 ```
 or                                        
-```cmd-line
+``` cmd-line
 $ collect.bash /tmp/outputfile ${SCRATCH}/output_collected
 ```
 

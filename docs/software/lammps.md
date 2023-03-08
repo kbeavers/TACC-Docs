@@ -9,14 +9,14 @@ LAMMPS is installed on the [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG] an
 
 As of this date, the default versions are 9Jan20 (Stampede2), 20Sep21 (Lonestar6) and 15Apr20 (Frontera). Users are welcome to install different versions of LAMMPS in their own directories (see [Building Third Party Software][STAMPEDE2UGBUILDING] in the Stampede2 User Guide). <!-- Sample build scripts for each system can be found in the `/work/apps/lammps/shared/` directory. -->
 
-```cmd-line
+``` cmd-line
 $ module spider lammps		# list installed LAMMPS versions
 $ module load lammps			# load default version
 ```
 
 The LAMMPS module defines a set of environment variables for the locations of the LAMMPS home, binaries and more with the prefix `TACC_LAMMPS`. Use the `env` command to display the variables:
 
-```cmd-line
+``` cmd-line
 $ env | grep "TACC_LAMMPS"
 ```
 
@@ -37,7 +37,7 @@ LAMMPS uses spatial-decomposition techniques to partition the simulation domain 
 
 Refer to Stampede2's [Running Jobs][STAMPEDE2UGRUNNING] section for more Slurm options. To configure this script for Lonestar6 and Frontera, vary the `-p`, `-N` and `-n` directives.
 
-```job-script
+``` job-script
 #!/bin/bash
 ##SBATCH -J test                    # Job Name
 ##SBATCH -A <i>myProject</i>               # Your project name 
@@ -61,13 +61,13 @@ ibrun lmp_knl -in lammps_input
 
 * LAMMPS with [USER-OMP](https://lammps.sandia.gov/doc/Packages_details.html#pkg-user-omp) package (e.g. using 2 threads)
 
-	```job-script
+	``` job-script
 	ibrun lmp_stampede -sf omp -pk omp 2 -in lammps_input
 	```
 
 * LAMMPS with [USER-INTEL](https://lammps.sandia.gov/doc/Speed_intel.html) package (e.g. using 2 threads)
 
-	```job-script
+	``` job-script
 	ibrun lmp_stampede -sf intel -pk intel 0 omp 2 -in lammps_input
 	```
 
@@ -75,7 +75,7 @@ ibrun lmp_knl -in lammps_input
 
 	The GPU `lammps` executable is `lmp_gpu`.  On Frontera GPU nodes, you could set `-pk gpu 4` to utilize all four RTX GPUs available on each node. Set the `-n` directive to a value &gt; 1 to let more than one MPI task share one GPU.
 
-	```job-script
+	``` job-script
 	#SBATCH -N 1                      # Requesting 1 node
 	#SBATCH -n 16                     # and 16 tasks that share 4 GPU
 	#SBATCH -p rtx                    # Frontera rtx queue
@@ -88,7 +88,7 @@ ibrun lmp_knl -in lammps_input
 
 You can also run LAMMPS within an [`idev`][TACCIDEV] session as demonstrated below:
 
-```cmd-line
+``` cmd-line
 login1$ idev
 ...
 c123-456$ module load lammps
@@ -97,7 +97,7 @@ c123-456$ lmp_stampede &lt; lammps_input
 
 Use the `-h` option to print out a list of all supported functions and packages: 
 
-```cmd-line
+``` cmd-line
 c123-456$ lmp_stampede -h
 ```
 
