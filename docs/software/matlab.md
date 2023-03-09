@@ -1,6 +1,11 @@
 # MATLAB at TACC
 *Last update: January 15, 2020* 
 
+<table cellpadding="5" cellspacing="5"><tr>
+<td><img src="../../imgs/software/matlab-logo.png" style="width:50%"></td>
+<td>Matlab desc here SDL lorem ipusum kitten blixen</td>
+</tr></table>
+
 [Mathwork's](https://www.mathworks.com/) MATLAB is installed and supported at TACC and is available on the following TACC resources: [Frontera][FRONTERAUG], [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG], and [Maverick2][MAVERICK2UG].  
 
 ## [MATLAB Licenses](#license) { #license }
@@ -32,7 +37,8 @@ The following figure shows how MATLAB is launched inside the VNC session.
 
 <figure id="figure1"> <img alt="MATLAB-1" src="../../imgs/software/MATLAB-1.png"><figcaption></figcaption></figure>
 
-**IMPORTANT**: Do NOT launch MATLAB on the login nodes. This may fail and, more importantly, it will prevent other users from doing their work, as your execution will take up too many cycles on the shared login node. Using MATLAB on the login nodes is considered system abuse, and will be treated as such.  See TACC [usage policies][TACCUSAGEPOLICY].
+!!! important
+	Do NOT launch MATLAB on the login nodes. This may fail and, more importantly, it will prevent other users from doing their work, as your execution will take up too many cycles on the shared login node. Using MATLAB on the login nodes is considered system abuse, and will be treated as such.  See TACC [usage policies][TACCUSAGEPOLICY].
 
 ## [Running MATLAB in Batch Mode](#batch) { #batch }
 

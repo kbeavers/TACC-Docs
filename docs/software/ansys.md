@@ -1,11 +1,12 @@
 # ANSYS at TACC
 *Last update: March 8, 2022*
 
+<table cellpadding="5" cellspacing="5"><tr>
+<td><img alt="ANSYS logo" src="../../../imgs/software/ansys-logo.png"> </td>
+<td>ANSYS offers a comprehensive software suite that spans the entire range of physics, providing access to virtually any field of engineering simulation that a design process requires. ANSYS sofware is used to simulate computer models of structures, electronics, or machine components for analyzing strength, toughness, elasticity, temperature distribution, electromagnetism, fluid flow, and other attributes.</td>
+</tr></table>
 
-<img alt="ANSYS logo" src="../../../imgs/software/ansys-logo.png" style="width:25%" /> 
-ANSYS offers a comprehensive software suite that spans the entire range of physics, providing access to virtually any field of engineering simulation that a design process requires. ANSYS sofware is used to simulate computer models of structures, electronics, or machine components for analyzing strength, toughness, elasticity, temperature distribution, electromagnetism, fluid flow, and other attributes.
-
-ANSYS is installed at TACC and is currently installed on TACC's [Frontera][FRONTERAUG], [Lonestar6][LONESTAR6UG] and [Stampede2][STAMPEDE2UG] resources. 
+ANSYS is currently installed on TACC's [Frontera][FRONTERAUG], [Lonestar6][LONESTAR6UG] and [Stampede2][STAMPEDE2UG] resources. 
 
 ## [ANSYS Licenses](#licenses)
 
