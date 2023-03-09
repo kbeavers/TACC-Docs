@@ -1,6 +1,5 @@
 /* Styles specific to TACC-Docs */
 /* NOTE: Some of this could be migrated to core-styles.docs.css */
-@import url('./pymdownx/tabbed.css') layer(base);
 
 @layer project {
 
@@ -485,39 +484,11 @@ figcaption {
 
 
 /* TABBED */
-/* ./pymdownx/tabbed.css */
+/* @tacc/core-styles@2.3.1/dist/components/pymdownx--tabbed.css */
 
-/* To skin labels */
+/* To fix conflicts */
 .tabbed-set label {
-  padding: 1em;
   margin-bottom: unset; /* overwrite core-style.docs */
-
-  border-bottom: var(--global-border-width--normal) solid transparent;
-
-  font-size: var(--global-font-size--large); /* overwrite core-style.docs */
-  font-weight: var(--regular); /* overwrite core-style.docs */
-}
-
-/* To skin content */
-.tabbed-set .tabbed-content {
-  border-top: var(--global-border--normal);
-
-  /* To move content label underneath active label */
-  margin-top: calc( -1 * var(--global-border-width--normal) );
-}
-
-/* To color labels, active and inactive */
-.tabbed-set input:checked:nth-child(n+1) + label {
-  color: var(--global-color-primary--xxx-dark);
-  border-color: var(--global-color-primary--xxx-dark);
-}
-.tabbed-set input:not(:checked):nth-child(n+1) + label {
-  color: var(--global-color-primary--dark);
-}
-
-/* To place active label border atop content border */
-.tabbed-set input:nth-child(n+1):checked + label {
-  z-index: 1;
 }
 
 
