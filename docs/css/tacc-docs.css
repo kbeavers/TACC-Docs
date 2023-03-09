@@ -25,6 +25,14 @@ table {
 
 
 
+/* To give more space above anchor e.g. heading with id matching url hash */
+/* TODO: Consider this for Core-Styles (base, docs, cms, portal?) */
+:target {
+  scroll-margin-top: 20px;
+}
+
+
+
 /* To not use accent color for headings */
 h2 {
   color: unset; /* undo core-styles.cms */
