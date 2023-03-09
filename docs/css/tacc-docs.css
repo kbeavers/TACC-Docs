@@ -491,6 +491,20 @@ figcaption {
   margin-bottom: unset; /* overwrite core-style.docs */
 }
 
+/* To add Docs-specific styles */
+.tabbed-set {
+  border: var(--global-border-width--thick) solid var(--global-color-primary--dark);
+}
+
+/* To stretch tabs that just have a script */
+.tabbed-content > pre:only-child {
+  margin-inline: calc( -1 * var(--buffer) );
+  margin-block: unset; /* overwrite core-style.docs */
+}
+.tabbed-content > pre:only-child > code {
+  border: unset; /* overwrite core-style.docs */
+  padding: var(--buffer); /* overwrite core-style.docs */
+}
 
 
 
@@ -523,6 +537,12 @@ figcaption {
   /* FAQ: Replaces inline-block with more intuitive shrink wrap style */
   display: block; /* overwrite core-styles.base.css */
   width: min-content;
+}
+/* TODO: Integrate back into project layer with other TABBED styles */
+/* FAQ: Selector must be more specific than core-style.docs */
+:where([role=main],main) .tabbed-content > pre:only-child > code {
+  width: 100%; /* overwrite core-style.docs */
+  box-sizing: border-box; /* so `width: 100%` does not overflow */
 }
 
 /* To change style for each type of code block (HighlightJS or TACC) */
