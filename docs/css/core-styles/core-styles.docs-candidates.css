@@ -1,8 +1,8 @@
 /*
  * To support, in isolatation, patterns considered for core-styles.docs.css
  */
-@import url('https://unpkg.com/@tacc/core-styles@2.3.1/dist/components/c-card.css');
-@import url('https://unpkg.com/@tacc/core-styles@2.3.1/dist/objects/o-section.css');
+@import url('https://unpkg.com/@tacc/core-styles@2.4.0/dist/components/c-card.css');
+@import url('https://unpkg.com/@tacc/core-styles@2.4.0/dist/objects/o-section.css');
 
 
 

@@ -481,7 +481,7 @@ figcaption {
 
 
 /* TABBED */
-/* @tacc/core-styles@2.3.1/dist/components/pymdownx--tabbed.css */
+/* https://github.com/TACC/Core-Styles/blob/main/src/lib/_imports/components/pymdownx--tabbed.css */
 
 /* To fix conflicts */
 .tabbed-set label {
