@@ -12,34 +12,6 @@
 
 
 
-/* To increase global font size */
-body {
-  font-size: var(--global-font-size--medium); /* overwrite core-styles.base */
-}
-p {
-  font-size: inherit; /* overwrite theme.css */
-}
-table {
-  font-size: var(--global-font-size--medium); /* overwrite core-styles.base */
-}
-
-
-
-/* To give more space above anchor e.g. heading with id matching url hash */
-/* TODO: Consider this for Core-Styles (base, docs, cms, portal?) */
-:target {
-  scroll-margin-top: 20px;
-}
-
-
-
-/* To not use accent color for headings */
-h2 {
-  color: unset; /* undo core-styles.cms */
-}
-
-
-
 /* To not use link style for a header link */
 /* TODO: Create a link icon that:
          - appears on hover over heading
@@ -367,6 +339,13 @@ svg.logo [fill]:not([fill="none"]) {
 
 
 
+/* To increase pargarph font size */
+p {
+  font-size: inherit; /* overwrite theme.css */
+}
+
+
+
 /* To increase content width */
 .wy-nav-content {
   max-width: 1200px;
@@ -429,14 +408,6 @@ svg.logo [fill]:not([fill="none"]) {
 /* To prevent figure image overflow */
 .rst-content figure {
   max-width: 100%; /* mimics theme.css `.rst-content img` */
-}
-
-
-
-/* To add minimal hover state for <details> */
-/* TODO: Remove this after COr-Styles are loaded (task/tup-297-styles) */
-details > summary {
-  cursor: pointer;
 }
 
 
@@ -509,6 +480,9 @@ figcaption {
 .tabbed-content > pre:only-child > code {
   border: unset; /* overwrite core-style.docs */
   padding: var(--buffer); /* overwrite core-style.docs */
+
+  width: 100%; /* overwrite core-style.docs */
+  box-sizing: border-box; /* so `width: 100%` does not overflow */
 }
 
 
@@ -535,20 +509,6 @@ figcaption {
 
 
 /* CODE */
-
-/* TODO: Integrate into Core Styles */
-:where([role=main],main) pre>code, :where([role=main],main) pre>samp {
-  /* To remove */
-  /* FAQ: Replaces inline-block with more intuitive shrink wrap style */
-  display: block; /* overwrite core-styles.base.css */
-  width: min-content;
-}
-/* TODO: Integrate back into project layer with other TABBED styles */
-/* FAQ: Selector must be more specific than core-style.docs */
-:where([role=main],main) .tabbed-content > pre:only-child > code {
-  width: 100%; /* overwrite core-style.docs */
-  box-sizing: border-box; /* so `width: 100%` does not overflow */
-}
 
 /* To change style for each type of code block (HighlightJS or TACC) */
 pre.cmd-line code,
