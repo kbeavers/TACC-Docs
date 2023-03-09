@@ -105,6 +105,6 @@ Note that default ACLs do not alter the permissions for any currently existing f
 
 ## [References](#refs) { #refs }
 
-* [iRODS at TACC][TACCIRODS]
+* [iRODS at TACC](../irods)
 
 {% include 'aliases.md' %}

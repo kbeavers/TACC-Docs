@@ -97,7 +97,7 @@ Stampede2 mounts three shared Lustre file systems on which each user has corresp
 
 ## [Accessing the System](#access) { #access }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../tutorials/mfa) for further information. 
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
@@ -346,7 +346,7 @@ Lustre can **stripe** (distribute) large files over several physical disks, maki
 
 To avoid exceeding your fair share of any given OST, a good rule of thumb is to allow at least one stripe for each 100GB in the file. For example, to set the default stripe count on the current directory to 30 (a plausible stripe count for a directory receiving a file approaching 3TB in size), execute:
 
-```cmd-line 
+``` cmd-line 
 $ lfs setstripe -c 30 $PWD
 ```
 
@@ -356,7 +356,7 @@ Remember that it's not possible to change the striping on a file that already ex
 
 You can check the stripe count of a file using the `lfs getstripe` command:
 
-```cmd-line 
+``` cmd-line 
 $ lfs getstripe myfile
 ```
 
@@ -368,44 +368,44 @@ You can transfer files between Stampede2 and Linux-based systems using either [`
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Stampede2 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Stampede2 `$HOME` would look like this:
 
-```cmd-line 
+``` cmd-line 
 localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:  # note colon after net address
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Stampede2:
 
-```cmd-line 
+``` cmd-line 
 localhost$ scp *.txt bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2
 ```
 
 To delay wildcard expansion until reaching Stampede2, use a backslash (`\`) as an escape character before the wildcard. For example, to pull all files ending in `.txt` from `/work/01234/bjones/scripts` on Stampede2 to the current directory on your local system:
 
-```cmd-line 
+``` cmd-line 
 localhost$ scp bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2/\*.txt .
 ```
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
-```cmd-line
+``` cmd-line
 localhost$ destdir="/work/01234/bjones/stampede2/data"
 localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:$destdir
 ```
 
 You can also issue `scp` commands on your local client that use Stampede2 environment variables like `$HOME`, `$WORK`, and `$SCRATCH`. To do so, use a backslash (`\`) as an escape character before the `$`; this ensures that expansion occurs after establishing the connection to Stampede2:
 
-```cmd-line 
+``` cmd-line 
 localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
 
 Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
-```cmd-line 
+``` cmd-line 
 localhost$ <s>scp -r  ./mydata     bjones@stampede2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 ```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
-```cmd-line
+``` cmd-line
 localhost$ tar cvf ./mydata.tar mydata</b>                                   # create archive
 localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # transfer archive
 ```
@@ -414,7 +414,7 @@ localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # trans
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
-```cmd-line
+``` cmd-line
 localhost$ rsync       mybigfile bjones@stampede2.tacc.utexas.edu:\$WORK/data
 localhost$ rsync -avtr mybigdir  bjones@stampede2.tacc.utexas.edu:\$WORK/data
 ```
@@ -2058,11 +2058,11 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 ## [References](#refs) { #refs }
 
 * [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
-* [`idev` documentation][TACCIDEV]
+* [`idev` documentation](../../software/idev)
 * [GNU documentation](https://www.gnu.org/doc/doc.en.html)
 * [Intel software documentation](http://software.intel.com/en-us/intel-software-technical-documentation)
 * [Lmod's online documentation](http://lmod.readthedocs.org)
-* [Multi-Factor Authentication at TACC][TACCMFA]
+* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
 * [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
 * [Slurm online documentation](http://www.schedmd.com)
 <!-- * [TACC training materials](https://portal.tacc.utexas.edu/training#/guest?training=upcoming) -->

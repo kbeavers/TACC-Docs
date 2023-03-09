@@ -43,7 +43,7 @@ Experienced HPC/TACC users will be very familiar with many of the topics present
 
 #### [Multi-Factor Authentication](#admin-account-mfa) { #admin-account-mfa }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../tutorials/mfa) for further information. 
 
 #### [Password Management](#admin-account-password) { #admin-account-password }
 
@@ -905,7 +905,7 @@ Copy and customize the following jobs scripts by specifying and refining your jo
 
 Consult [Table 6](#table-6-common-sbatch-options) for a listing of common Slurm `#SBATCH` options.
 
-Click on a tab header below to display it's job script.
+Click on a tab header below to display it's job script, then copy and customize to suit your own application.
 
 /// tab | Serial Jobs 
 Serial Jobs
@@ -1760,7 +1760,7 @@ Follow these instructions to install and run TensorFlow benchmarks on Frontera R
 
 Frontera currently has no separate visualization queue. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Visualization Portal](https://vis.tacc.utexas.edu/). We recommend submitting to Frontera's `development` queue for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket through the Frontera Portal.
 
-### [emote Desktop Access](#vis)
+### [Remote Desktop Access](#vis)
 
 Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](../admin/#access-the-system) and submit a special interactive batch job that:
 
@@ -1771,9 +1771,10 @@ Remote desktop access to Frontera is formed through a DCV or VNC connection to o
 
 Once the remote desktop process is running on the compute node and a tunnel through the login node is created, an output message identifies the access port for connecting a remote desktop viewer. A remote desktop viewer application is run on the user's remote system and presents the desktop to the user.
 
-**Note**: If this is your first time connecting to Frontera using VNC, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+!!!	important
+	If this is your first time connecting to Frontera using VNC, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. 
 
-Follow the steps below to start an interactive session.
+All VNC connections are tunneled through SSH for extra security.  Follow the steps below to start an interactive session.
 
 1. Start a Remote Desktop
 
@@ -1785,7 +1786,7 @@ Follow the steps below to start an interactive session.
 	login1$ sbatch /share/doc/slurm/job.dcv2vnc
 	```
 
-	You may modify or overwrite script defaults with sbatch command-line options (note: the command options must come between `sbatch` and the script):
+	You may modify or overwrite script defaults with sbatch command-line options. Note that the command options must be placed between `sbatch` and the script:
 
 	* <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime
 	* <code>-A <i>projectnumber</i></code> specify the project/allocation to be charged
@@ -2351,10 +2352,10 @@ You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulti
 ## [References](#rfs) { #refs }
 
 
-* [Multi-Factor Authentication at TACC][TACCMFA]
+* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
 * [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
 * [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
-* [`idev` documentation][TACCIDEV]
+* [`idev` documentation](../../software/idev)
 * [Lmod's online documentation](http://lmod.readthedocs.org)
 * [TACC Usage Policy](http://portal.tacc.utexas.edu/tacc-usage-policy)
 

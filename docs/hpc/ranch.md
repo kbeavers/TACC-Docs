@@ -12,7 +12,7 @@ TACC's High Performance Computing (HPC) systems are used primarily for scientifi
 
 Ranch (**`HOSTNAME`**), is a Quantum StorNext-based system, with a DDN- provided front-end disk system (30PB raw), and a 5000 slot Quantum Scalar i6000 library for its back-end tape archive.
 
-Ranch is an allocated resource, meaning that Ranch is available only to users with an allocation on one of TACC's computational resources such as [Frontera][FRONTERAUG], [Stampede2][STAMPEDE2UG], or [Lonestar6][LONESTAR6UG]. ACCESS PIs will be prompted automatically for the companion storage allocation as part of the proposal submission process and should include a justification of the storage needs in their proposal.  UT and UT system PIs should also make a request and justify the storage requested when applying for a Ranch shared "Project" (non-user) allocation. The default allocation on Ranch for users is 2TB. To request a [shared Ranch project space](#projects) for your team’s use, please submit a TACC user portal ticket.
+Ranch is an allocated resource, meaning that Ranch is available only to users with an allocation on one of TACC's computational resources such as [Frontera]../frontera), [Stampede2](../stampede2), or [Lonestar6](../lonestar6). ACCESS PIs will be prompted automatically for the companion storage allocation as part of the proposal submission process and should include a justification of the storage needs in their proposal.  UT and UT system PIs should also make a request and justify the storage requested when applying for a Ranch shared "Project" (non-user) allocation. The default allocation on Ranch for users is 2TB. To request a [shared Ranch project space](#projects) for your team’s use, please submit a TACC user portal ticket.
 
 
 ### [Intended Use](#intro-use) { #intro-use }
@@ -252,7 +252,7 @@ Again, use the `du -sh .` and `find . -type f | wc` commands to see how much dat
 
 ## [References](#refs) { #refs }
 
-* [Stampede2 User Guide][STAMPEDE2UG]
+* [Stampede2 User Guide](../stampede2)
 
 {% include 'aliases.md' %}
 

@@ -146,7 +146,7 @@ After your program runs you can process TAU's output to do two things: view stat
 * [TAU beginner's tutorial](http://tau.uoregon.edu/tau.ppt)
 * [ParaProf User's Manual](https://www.cs.uoregon.edu/research/tau/docs/paraprof/)
 * [Jumpshot](https://www.cs.uoregon.edu/research/tau/docs/newguide/bk01ch04s03.html)
-* [`idev`][TACCIDEV]
+* [`idev`](../../software/idev)
 * [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS]
 
 {% include 'aliases.md' %}

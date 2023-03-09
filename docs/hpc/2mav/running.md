@@ -8,7 +8,7 @@
 
 Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
 
-The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the following sections for detailed information:
+The [Stampede2 User Guide](../stampede2) discusses Slurm extensively.  See the following sections for detailed information:
 
 * [Submitting Jobs with `sbatch`](../stampede2#running-sbatch)
 * [Common `sbatch` options](../stampede2#table6)

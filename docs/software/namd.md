@@ -7,7 +7,7 @@
 
 ## [Installations](#installations) { #installations }
 
-NAMD is currently installed on TACC's [Frontera][FRONTERAUG], [Stampede2][STAMPEDE2UG], and [Lonestar6][LONESTAR6UG] compute resources.  NAMD is managed under the module system on TACC resources. Read the following instructions carefully. NAMD performance is particularly sensitive to its configuration.  Try running benchmarks with different configurations to find your optimal NAMD set up. You can initiate interactive [`idev`][TACCIDEV] debugging sessions on all systems.
+NAMD is currently installed on TACC's [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), and [Lonestar6](../../hpc/lonestar6) compute resources.  NAMD is managed under the module system on TACC resources. Read the following instructions carefully. NAMD performance is particularly sensitive to its configuration.  Try running benchmarks with different configurations to find your optimal NAMD set up. You can initiate interactive [`idev`](../../software/idev) debugging sessions on all systems.
 
 ## [NAMD on Frontera](#running-frontera) { #running-frontera }
 
@@ -67,7 +67,7 @@ compressed input files
 
 ## [NAMD on Stampede2](#running-stampede2) { #running-stampede2 }
 
-As of this date, the recommended and latest version is 2.14 . Users are welcome to install different NAMD versions in their own directories. See [Building Third Party Software][STAMPEDE2UGBUILDING] in the Stampede2 User Guide. 
+As of this date, the recommended and latest version is 2.14 . Users are welcome to install different NAMD versions in their own directories. See [Building Third Party Software](../../hpc/stampede2#building) in the Stampede2 User Guide. 
 
 ### [Job Script](#jobscript-stampede2-knl) { #jobscript-stampede2-knl }
 

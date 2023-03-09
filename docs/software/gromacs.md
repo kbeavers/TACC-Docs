@@ -6,13 +6,13 @@
 
 ## [Installations](#installations) { #installations }
 
-GROMACS is currently installed on TACC's [Stampede2][STAMPEDE2UG], [Frontera][FRONTERAUG], and [Lonestar6][LONESTAR6UG] systems. GROMACS is managed under the [Modules][TACCMODULES] system on TACC resources. To run simulations, simply load the module with the following command:
+GROMACS is currently installed on TACC's [Stampede2](../../hpc/stampede2), [Frontera](../../hpc/frontera), and [Lonestar6](../../hpc/lonestar6) systems. GROMACS is managed under the [Modules][TACCLMOD] system on TACC resources. To run simulations, simply load the module with the following command:
 
 ``` cmd-line
 login1$ module load gromacs
 ```
 
-As of this date, the GROMACS versions are 2022.1 on Stampede2, 2019.6 on Frontera, and 2021.3 on Lonestar6. Users are welcome to install different versions of GROMACS in their own directories. See [Building Third Party Software][STAMPEDE2UGBUILDING] in the Stampede2 User Guide. The module file defines the environment variables listed below. Learn more from the module's help file:
+As of this date, the GROMACS versions are 2022.1 on Stampede2, 2019.6 on Frontera, and 2021.3 on Lonestar6. Users are welcome to install different versions of GROMACS in their own directories. See [Building Third Party Software](../../hpc/stampede2#building) in the Stampede2 User Guide. The module file defines the environment variables listed below. Learn more from the module's help file:
 
 ``` cmd-line
 login1$ module help gromacs
@@ -127,7 +127,8 @@ module load gromacs/2022.1
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
 ```
  
-NOTE: To run on Stampede2's KNL nodes, substitute `gmx_mpi` with one of the following executables: `gmx_mpi_knl`, `gmx_tmpi_knl`, or `gmx_mpi_d_knl`.
+!!! tip
+	To run on Stampede2's KNL nodes, substitute `gmx_mpi` with one of the following executables: `gmx_mpi_knl`, `gmx_tmpi_knl`, or `gmx_mpi_d_knl`.
 
 
 ### [Lonestar6 Job Scripts](#running-lonestar6) { #jobscript-lonestar6 }

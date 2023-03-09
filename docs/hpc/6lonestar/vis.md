@@ -6,7 +6,7 @@ Lonestar6 currently has no separate visualization queue. All visualization apps 
 
 ### [Remote Desktop Access](#vis-remote) { #vis-remote }
 
-Remote desktop access to Lonestar6 is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Lonestar6 login node (see [Accessing the System](#access) and submit a special interactive batch job that:
+Remote desktop access to Lonestar6 is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Lonestar6 login node (see [Accessing the System](#access)) and submit a special interactive batch job that:
 
 * allocates a set of Lonestar6 compute nodes
 * starts a `dcvserver` or `vncserver` remote desktop process on the first allocated node
@@ -14,7 +14,10 @@ Remote desktop access to Lonestar6 is formed through a DCV or VNC connection to 
 
 Once the remote desktop process is running on the compute node and a tunnel through the login node is created, an output message identifies the access port for connecting a remote desktop viewer. A remote desktop viewer application is run on the user's remote system and presents the desktop to the user.
 
-**Note**: If this is your first time connecting to Lonestar6 using VNC, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. All VNC connections are tunneled through SSH for extra security, as described below.
+!!!	important
+	If this is your first time connecting to Lonestar6 using VNC, you must run `vncpasswd` to create a password for your VNC servers. This should NOT be your login password! This mechanism only deters unauthorized connections; it is not fully secure, as only the first eight characters of the password are saved. 
+
+All VNC connections are tunneled through SSH for extra security, as described below.
 
 Follow the steps below to start an interactive session.
 
@@ -28,7 +31,7 @@ Follow the steps below to start an interactive session.
 	login1$ sbatch /share/doc/slurm/job.dcv2vnc
 	```
 
-	You may modify or overwrite script defaults with sbatch command-line options (note: the command options must come between `sbatch` and the script):
+	You may modify or overwrite script defaults with sbatch command-line options. Note that the command options must be placed between `sbatch` and the script:
 
 	* <code>-t <i>hours:minutes:seconds</i></code> modify the job runtime
 	* <code>-A <i>projectnumber</i></code> specify the project/allocation to be charged

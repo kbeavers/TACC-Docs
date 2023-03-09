@@ -1,10 +1,10 @@
 ## [References](#rfs) { #refs }
 
 
-* [Multi-Factor Authentication at TACC][TACCMFA]
+* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
 * [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
 * [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
-* [`idev` documentation][TACCIDEV]
+* [`idev` documentation](../../software/idev)
 * [Lmod's online documentation](http://lmod.readthedocs.org)
 * [TACC Usage Policy](http://portal.tacc.utexas.edu/tacc-usage-policy)
 

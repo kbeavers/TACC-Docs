@@ -7,7 +7,7 @@ The <a href="https://www.openfoam.org">OpenFOAM</a> (**O**pen **F**ield **O**per
 
 ## [Running OpenFOAM on Frontera and Stampede2](#running) { #running }
 
-TACC staff has built and installed OpenFOAM 7.0 on both [Stampede2][STAMPEDE2UG] and [Frontera][FRONTERAUG] compute resources. The Stampede2 executable is built with intel/18.0.2 and impi/18.0.2, while the Frontera executable is built with intel/19.0.5 and impi/19.0.5. Follow the steps below to set up the environment and run an OpenFOAM tutorial example.
+TACC staff has built and installed OpenFOAM 7.0 on both [Stampede2](../../hpc/stampede2) and [Frontera](../../hpc/frontera) compute resources. The Stampede2 executable is built with intel/18.0.2 and impi/18.0.2, while the Frontera executable is built with intel/19.0.5 and impi/19.0.5. Follow the steps below to set up the environment and run an OpenFOAM tutorial example.
 
 ### [Set Up the Computing Environment](#running-compenv) { #running-compenv }
 
@@ -27,7 +27,7 @@ login1$ mkdir -p $FOAM_RUN
 ## [Run Tutorials](#tutorials) { #tutorials }
 
 **Do NOT run the following commands on the login nodes.**
-You may either [submit a batch job][STAMPEDE2UGRUNNING], or start an interactive session using TACC's [`idev`][TACCIDEV] utility.
+You may either [submit a batch job](../../hpc/stampede2#running), or start an interactive session using TACC's [`idev`](../../software/idev) utility.
 
 The following demonstrates running the OpenFOAM's [Lid-driven Cavity Flow](https://cfd.direct/openfoam/user-guide/v7-cavity/#x5-40002.1) test case involving isothermal, incompressible flow in a two-dimensional square domain.
 
@@ -52,7 +52,7 @@ The following demonstrates running the OpenFOAM's [Lid-driven Cavity Flow](https
 ## [References](#refs) { #refs }
 
 * [OpenFOAM user guide](https://www.openfoam.org/resources/)
-* [Working with Modules][TACCMODULES]
+* [Working with Modules][TACCLMOD]
 * [OpenFOAM and ParaView](https://cfd.direct/openfoam/features/)
 
 

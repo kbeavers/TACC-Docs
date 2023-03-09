@@ -9,7 +9,7 @@ This document details how to install TensorFlow, then download and run benchmark
 
 ## [Installations at TACC](#installations) { #installations }
 
-TensorFlow is installed on TACC's [Lonestar6][LONESTAR6UG], [Frontera][FRONTERAUG], [Stampede2][STAMPEDE2UG], and [Maverick2][MAVERICK2UG] resources.
+TensorFlow is installed on TACC's [Lonestar6](../../hpc/lonestar6), [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), and [Maverick2](../../hpc/maverick2) resources.
 
 * Parallel Training with TensorFlow and Horovod is available on both Stampede2 and Maverick2.
 * TensorFlow v2.1 is available on Stampede2.
@@ -94,7 +94,7 @@ c123-456$ module load cuda/10.1 cudnn/7.6.5 nccl/2.5.6
 c123-456$ pip3 install --user grpcio==1.28.1 tensorflow-gpu==2.1.0 --no-cache-dir
 ```
 
-We suggest installing Horovod version 0.19.2. If you wish to install other versions of Horovod, please [submit a support ticket][CREATETICKET] with the subject "Request for Horovod" and TACC staff will provide special instructions.
+We suggest installing Horovod version 0.19.2. If you wish to install other versions of Horovod, please [submit a support ticket][HELPDESK] with the subject "Request for Horovod" and TACC staff will provide special instructions.
 
 ``` cmd-line
 
@@ -332,8 +332,8 @@ $ pip install --user <i>package-name</i>
 
 ## [References](#refs) { #refs }
 
-* [Maverick2 User Guide][MAVERICK2UG]
+* [Maverick2 User Guide](../../hpc/maverick2)
 * [Github: TensorFlow](https://github.com/tensorflow/tensorflow)
-* [Stampede2 User Guide][STAMPEDE2UG]
+* [Stampede2 User Guide](../../hpc/stampede2)
 
 {% include 'aliases.md' %}

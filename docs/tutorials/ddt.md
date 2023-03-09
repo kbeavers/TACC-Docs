@@ -31,7 +31,8 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 	$ module load ddt mymodule1 mymodule2
 	```
 
-	NOTE: On Stampede2, there are 2 DDT modules, `ddt_skx` and `ddt_knl`, because the KNL's require a different license.
+	!!! note
+		On Stampede2, there are 2 DDT modules, `ddt_skx` and `ddt_knl`, because the KNL's require a different license.
 
 	```cmd-line
 	$ module load ddt_knl mymodule1 mymodule2 # for KNL nodes
@@ -54,7 +55,7 @@ Follow these steps to set up your debugging environment on Frontera, Stampede2, 
 	ddt: cannot connect to X server
 	```
 
-	...then X11 forwarding was not enabled (Step 1.) or the system may not have local X11 support. If logging in with the `-X` flag doesn't fix the problem, please [create a help ticket][CREATETICKET] for assistance.
+	...then X11 forwarding was not enabled (Step 1.) or the system may not have local X11 support. If logging in with the `-X` flag doesn't fix the problem, please [create a help ticket][HELPDESK] for assistance.
 
 1. **Click the "Run and Debug a Program" button in the "DDT - Welcome" window**:
 

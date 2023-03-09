@@ -5,9 +5,9 @@ LAMMPS is a classical molecular dynamics code developed at Sandia National Labor
 
 ## [LAMMPS Installations](#installations) { #installations } 
 
-LAMMPS is installed on the [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG] and [Frontera][FRONTERAUG] systems.
+LAMMPS is installed on the [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/lonestar6) and [Frontera](../../hpc/frontera) systems.
 
-As of this date, the default versions are 9Jan20 (Stampede2), 20Sep21 (Lonestar6) and 15Apr20 (Frontera). Users are welcome to install different versions of LAMMPS in their own directories (see [Building Third Party Software][STAMPEDE2UGBUILDING] in the Stampede2 User Guide). <!-- Sample build scripts for each system can be found in the `/work/apps/lammps/shared/` directory. -->
+As of this date, the default versions are 9Jan20 (Stampede2), 20Sep21 (Lonestar6) and 15Apr20 (Frontera). Users are welcome to install different versions of LAMMPS in their own directories (see [Building Third Party Software](../../hpc/stampede2#building) in the Stampede2 User Guide). <!-- Sample build scripts for each system can be found in the `/work/apps/lammps/shared/` directory. -->
 
 ``` cmd-line
 $ module spider lammps		# list installed LAMMPS versions
@@ -35,7 +35,7 @@ LAMMPS uses spatial-decomposition techniques to partition the simulation domain 
 
 ### [Sample Job Script: LAMMPS on Stampede2](#running-batch-jobscript) { #running-batch-jobscript } 
 
-Refer to Stampede2's [Running Jobs][STAMPEDE2UGRUNNING] section for more Slurm options. To configure this script for Lonestar6 and Frontera, vary the `-p`, `-N` and `-n` directives.
+Refer to Stampede2's [Running Jobs](../../hpc/stampede2#running) section for more Slurm options. To configure this script for Lonestar6 and Frontera, vary the `-p`, `-N` and `-n` directives.
 
 ``` job-script
 #!/bin/bash
@@ -86,7 +86,7 @@ ibrun lmp_knl -in lammps_input
 
 ## [Running LAMMPS within `idev`](#running-interactive) { #running-interactive } 
 
-You can also run LAMMPS within an [`idev`][TACCIDEV] session as demonstrated below:
+You can also run LAMMPS within an [`idev`](../../software/idev) session as demonstrated below:
 
 ``` cmd-line
 login1$ idev

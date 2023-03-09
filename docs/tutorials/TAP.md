@@ -94,7 +94,7 @@ In VNC, open the control bar on the left side of the screen, then click the Full
 
 ### [No Allocation Available](#troubleshooting-noallocation) { #troubleshooting-noallocation }
 
-If TAP cannot find an allocation for your account on a supported system, you will see the message below. If the issue persists, [create a ticket][CREATETICKET] in the TACC Consulting System.
+If TAP cannot find an allocation for your account on a supported system, you will see the message below. If the issue persists, [create a ticket][HELPDESK] in the TACC Consulting System.
 
 <figure id="figure7"><img alt="" src="../../imgs/tutorials/7TAP.png"><br />
 <figcaption>Figure 7. TAP Error: No Allocation</figcaption></figure>

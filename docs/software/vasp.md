@@ -10,7 +10,7 @@
 
 VASP requires an individual license. TACC's HPC support license allows us to install only the compiled VASP executables and grant the access to licensed users who have accounts on our systems. We are not allowed to share source code.  
 
-If you have your own license and want to use your own compilation, you may [install it in your own account](../../hpc/stampede2#building-basics-thirdparty). If you wish to use TACC's installed version, then TACC will have to verify your license. [Submit a support ticket][CREATETICKET] and include the following information: your **full** name, affiliated institution, and your TACC user name along with the license number or a scanned PDF of the license. TACC will notify you once the license is confirmed. 
+If you have your own license and want to use your own compilation, you may [install it in your own account](../../hpc/stampede2#building-basics-thirdparty). If you wish to use TACC's installed version, then TACC will have to verify your license. [Submit a support ticket][HELPDESK] and include the following information: your **full** name, affiliated institution, and your TACC user name along with the license number or a scanned PDF of the license. TACC will notify you once the license is confirmed. 
 
 ### [Installations](#installations) { #installations }
 

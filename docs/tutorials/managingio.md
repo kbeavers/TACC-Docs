@@ -144,7 +144,7 @@ TACC staff has developed OOOPS, **O**ptimal **O**verloaded I/O **P**rotection **
 !!! note
 	Employing OOOPS may slow down your job significantly if your job has a lot of I/O.
 
-The OOOPS module is currently installed on TACC's [Frontera][FRONTERAUG] and [Stampede2][STAMPEDE2UG] resources.
+The OOOPS module is currently installed on TACC's [Frontera](../../hpc/frontera) and [Stampede2](../../hpc/stampede2) resources.
 
 
 ### [Functions](#ooops-functions) { #ooops-functions }
@@ -270,7 +270,7 @@ Log files will be generated during the job run in the working directory with pre
 
 **Note**: Since the `iomonitor` tool may itself generate a lot of files, we highly recommend you profile your job beginning with trivial cases, then ramping up to the desired number of nodes/tasks.
 
-Please feel free to [submit a support ticket][CREATETICKET] if you need any further assistance.
+Please feel free to [submit a support ticket][HELPDESK] if you need any further assistance.
 
 ## [I/O Do's and Don'ts](#table3) { #table3 }
  

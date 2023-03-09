@@ -46,7 +46,7 @@ You are welcome to install packages in your own `$HOME` or `$WORK` directories. 
 
 ### [Deep Learning Packages](#software-ml) { #software-ml }
 
-See: [Tensorflow at TACC][TACCTENSORFLOW]
+See: [Tensorflow at TACC](../../software)
 
 
 See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set up a VNC or DCV connection.
@@ -55,5 +55,5 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 
 Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands `mpicc`, `mpicxx`, `mpif90` and `mpif77` are available. Also, the compilers `icc`, `icpc`, and `ifort` are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](../stampede2#building).  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide](../stampede2) for detailed information on [building software](../stampede2#building).  
 

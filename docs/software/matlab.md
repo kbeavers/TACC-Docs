@@ -6,7 +6,7 @@
 <td>Matlab desc here SDL lorem ipusum kitten blixen</td>
 </tr></table>
 
-[Mathwork's](https://www.mathworks.com/) MATLAB is installed and supported at TACC and is available on the following TACC resources: [Frontera][FRONTERAUG], [Stampede2][STAMPEDE2UG], [Lonestar6][LONESTAR6UG], and [Maverick2][MAVERICK2UG].  
+[Mathwork's](https://www.mathworks.com/) MATLAB is installed and supported at TACC and is available on the following TACC resources: [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/lonestar6), and [Maverick2](../../hpc/maverick2).  
 
 ## [MATLAB Licenses](#license) { #license }
 

@@ -132,7 +132,7 @@ A wide variety of graphical tools are available that support the secure copy (SC
 
 Click on the "Open Connection" button in the top right corner of the Cyberduck window to open a connection configuration window (as shown below) transfer mechanism, and type in the server name `data.tacc.utexas.edu`. Add your username and password in the spaces provided, and if the "more options" area is not shown click the small triangle or button to expand the window; this will allow you to enter the path to your project area so that when Cyberduck opens the connection you will immediately see your data. Then click the "Connect" button to open your connection.
 
-**Note that in addition to your account password, you will be prompted for your TACC token value and will need to have the [MFA pairing][TACCMFA] step completed to connect to the system.
+**Note that in addition to your account password, you will be prompted for your TACC token value and will need to have the [MFA pairing](../../tutorials/mfa) step completed to connect to the system.
 
 Once connected, you can navigate through your remote file hierarchy using familiar graphical navigation techniques. You may also drag-and-drop files into and out of the Cyberduck window to transfer files to and from Corral.
 
@@ -205,7 +205,7 @@ This policy applies to both the main and "protected" areas of Corral4.
 ## [References](#refs) { #refs }
 
 * [Manage Permissions with Access Control Lists][TACCACLS]
-* [Lonestar6 User Guide][LONESTAR6UG]  
+* [Lonestar6 User Guide](../lonestar6)  
 * [iRODS](http://irods.org/)  
 * [Cyberduck home page](http://cyberduck.io/)  
 * [UNIX man pages](https://www.freebsd.org/cgi/man.cgi)

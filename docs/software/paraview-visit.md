@@ -207,7 +207,7 @@ VisIt reads <a href="https://github.com/visit-dav/visit/tree/develop/src/databas
 
 ## Help 
 
-To get answers to questions about using Paraview or VisIt on TACC resources please [create a support ticket][CREATETICKET] with TACC consulting via the [TACC User Portal][TACCUSERPORTAL].
+To get answers to questions about using Paraview or VisIt on TACC resources please [create a support ticket][HELPDESK] with TACC consulting via the [TACC User Portal][TACCUSERPORTAL].
 
 
 {% include 'aliases.md' %}

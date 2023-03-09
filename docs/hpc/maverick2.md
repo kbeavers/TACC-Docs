@@ -103,7 +103,7 @@ Maverick2 mounts two shared Lustre file systems on which each user has correspon
 
 ## [Accessing the System](#access) { #access }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../tutorials/mfa) for further information. 
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
@@ -248,7 +248,7 @@ Remember that it's not possible to change the striping on a file that already ex
 
 Maverick2 employs the [Slurm Workload Manager](http://schedmd.com) job scheduler.  Slurm commands enable you to submit, manage, monitor, and control your jobs.  
 
-The [Stampede2 User Guide][STAMPEDE2UG] discusses Slurm extensively.  See the following sections for detailed information:
+The [Stampede2 User Guide](../stampede2) discusses Slurm extensively.  See the following sections for detailed information:
 
 * [Submitting Jobs with `sbatch`](../stampede2#running-sbatch)
 * [Common `sbatch` options](../stampede2#table6)
@@ -282,7 +282,7 @@ Click on a tab for a job-script.  Copy and customize for your own applications.
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Sample Slurm job script for TACC MACHINENAME nodes
+# Sample Slurm job script for TACC Maverick2 nodes
 #
 #   *** Serial Job in Normal Queue ***
 # 
@@ -291,7 +291,7 @@ Click on a tab for a job-script.  Copy and customize for your own applications.
 # Notes:
 #
 #   -- Copy/edit this script as desired.  Launch by executing
-#      "sbatch maverick2.serial.slurm" on a MACHINENAME login node.
+#      "sbatch maverick2.serial.slurm" on a Maverick2 login node.
 #
 #   -- Serial codes run on a single node (upper case N = 1).
 #        A serial code ignores the value of lower case n,
@@ -333,7 +333,7 @@ date
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Sample Slurm job script for TACC MACHINENAME nodes
+# Sample Slurm job script for TACC Maverick2 nodes
 #
 #   *** MPI Job in Normal Queue ***
 # 
@@ -342,7 +342,7 @@ date
 # Notes:
 #
 #   -- Launch this script by executing
-#      "sbatch maverick2.mpi.slurm" on MACHINENAME login node.
+#      "sbatch maverick2.mpi.slurm" on Maverick2 login node.
 #
 #   -- Use ibrun to launch MPI codes on TACC systems.
 #      Do not use mpirun or mpiexec.
@@ -385,7 +385,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Sample Slurm job script for TACC MACHINENAME nodes
+# Sample Slurm job script for TACC Maverick2 nodes
 #
 #   *** OpenMP Job in Normal Queue ***
 # 
@@ -395,7 +395,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 #
 #   -- Launch this script by executing
 #   -- Copy/edit this script as desired.  Launch by executing
-#      "sbatch maverick2.openmp.slurm" on a MACHINENAME login node.
+#      "sbatch maverick2.openmp.slurm" on a Maverick2 login node.
 #
 #   -- OpenMP codes run on a single node (upper case N = 1).
 #        OpenMP ignores the value of lower case n,
@@ -443,7 +443,7 @@ export OMP_NUM_THREADS=34
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Example Slurm job script for TACC MACHINENAME nodes
+# Example Slurm job script for TACC Maverick2 nodes
 #
 #   *** Hybrid Job in Normal Queue ***
 # 
@@ -457,7 +457,7 @@ export OMP_NUM_THREADS=34
 # Notes:
 #
 #   -- Launch this script by executing
-#      "sbatch maverick2.hybrid.slurm" on MACHINENAME login node.
+#      "sbatch maverick2.hybrid.slurm" on Maverick2 login node.
 #
 #   -- Use ibrun to launch MPI codes on TACC systems.
 #      Do not use mpirun or mpiexec.
@@ -585,7 +585,7 @@ Follow the steps below to start an interactive session.
 
 As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
 
-```cmd-line
+``` cmd-line
 login1$ module avail
 
 -------------------- /opt/apps/intel18/impi18_0/modulefiles --------------------
@@ -629,7 +629,7 @@ You are welcome to install packages in your own `$HOME` or `$WORK` directories. 
 
 ### [Deep Learning Packages](#software-ml) { #software-ml }
 
-See: [Tensorflow at TACC][TACCTENSORFLOW]
+See: [Tensorflow at TACC](../../software)
 
 
 See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set up a VNC or DCV connection.
@@ -638,7 +638,7 @@ See the [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS] tutorial to set
 
 Like Stampede2, Maverick2's default programming environment is based on the Intel compiler and Intel MPI library.  For compiling MPI codes, the familiar commands `mpicc`, `mpicxx`, `mpif90` and `mpif77` are available. Also, the compilers `icc`, `icpc`, and `ifort` are directly accessible. To access the most recent versions of GCC, load the `gcc` module.
 
-You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide][STAMPEDE2UG] for detailed information on [building software](../stampede2#building).  
+You're welcome to download third-party research software and install it in your own account. Consult the [Stampede2 User Guide](../stampede2) for detailed information on [building software](../stampede2#building).  
 
 ## [Help Desk](#help) { #help }
 
@@ -657,9 +657,9 @@ You're welcome to download third-party research software and install it in your 
 
 ## [References](#refs) { #refs }
 
-* [`idev` documentation][TACCIDEV]
-* [Tensorflow at TACC][TACCTENSORFLOW]
+* [`idev` documentation](../../software/idev)
+* [Tensorflow at TACC](../../software)
 * [TACC Analysis Portal][TACCANALYSISPORTAL]
-* [Multi-Factor Authentication at TACC][TACCMFA]
+* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
 
 {% include 'aliases.md' %}

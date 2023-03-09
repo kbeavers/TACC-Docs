@@ -11,7 +11,7 @@
 
 TACC's ABAQUS license agreement allows access to the software installation and license tokens only to UT Austin students and staff. 
 
-* **UT Austin users**  will need to [submit a ticket][CREATETICKET] requesting to be added to the "ABAQUS" group. Potential ABAQUS users must agree to use ABAQUS for purely academic purposes. 
+* **UT Austin users**  will need to [submit a ticket][HELPDESK] requesting to be added to the "ABAQUS" group. Potential ABAQUS users must agree to use ABAQUS for purely academic purposes. 
 
 * **Non-UT Austin users** are welcome to install ABAQUS in their own accounts on TACC systems using their local license server.
 

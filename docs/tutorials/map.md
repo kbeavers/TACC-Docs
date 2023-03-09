@@ -46,7 +46,7 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 	map: cannot connect to X server
 	```
 
-	...then X11 forwarding was not enabled or the system may not have local X11 support. If logging in with the `-X` flag doesn't fix the problem, please contact the [help desk][CREATETICKET] for assistance.
+	...then X11 forwarding was not enabled or the system may not have local X11 support. If logging in with the `-X` flag doesn't fix the problem, please contact the [help desk][HELPDESK] for assistance.
 
 1. **Click the "Profile a Program" button in the "arm FORGE" window if the "Run" window did not open**.
 

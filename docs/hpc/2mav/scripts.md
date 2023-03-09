@@ -9,7 +9,7 @@ Click on a tab for a job-script.  Copy and customize for your own applications.
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Sample Slurm job script for TACC MACHINENAME nodes
+# Sample Slurm job script for TACC Maverick2 nodes
 #
 #   *** Serial Job in Normal Queue ***
 # 
@@ -18,7 +18,7 @@ Click on a tab for a job-script.  Copy and customize for your own applications.
 # Notes:
 #
 #   -- Copy/edit this script as desired.  Launch by executing
-#      "sbatch maverick2.serial.slurm" on a MACHINENAME login node.
+#      "sbatch maverick2.serial.slurm" on a Maverick2 login node.
 #
 #   -- Serial codes run on a single node (upper case N = 1).
 #        A serial code ignores the value of lower case n,
@@ -60,7 +60,7 @@ date
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Sample Slurm job script for TACC MACHINENAME nodes
+# Sample Slurm job script for TACC Maverick2 nodes
 #
 #   *** MPI Job in Normal Queue ***
 # 
@@ -69,7 +69,7 @@ date
 # Notes:
 #
 #   -- Launch this script by executing
-#      "sbatch maverick2.mpi.slurm" on MACHINENAME login node.
+#      "sbatch maverick2.mpi.slurm" on Maverick2 login node.
 #
 #   -- Use ibrun to launch MPI codes on TACC systems.
 #      Do not use mpirun or mpiexec.
@@ -112,7 +112,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Sample Slurm job script for TACC MACHINENAME nodes
+# Sample Slurm job script for TACC Maverick2 nodes
 #
 #   *** OpenMP Job in Normal Queue ***
 # 
@@ -122,7 +122,7 @@ ibrun ./mycode.exe         # Use ibrun instead of mpirun or mpiexec
 #
 #   -- Launch this script by executing
 #   -- Copy/edit this script as desired.  Launch by executing
-#      "sbatch maverick2.openmp.slurm" on a MACHINENAME login node.
+#      "sbatch maverick2.openmp.slurm" on a Maverick2 login node.
 #
 #   -- OpenMP codes run on a single node (upper case N = 1).
 #        OpenMP ignores the value of lower case n,
@@ -170,7 +170,7 @@ export OMP_NUM_THREADS=34
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
-# Example Slurm job script for TACC MACHINENAME nodes
+# Example Slurm job script for TACC Maverick2 nodes
 #
 #   *** Hybrid Job in Normal Queue ***
 # 
@@ -184,7 +184,7 @@ export OMP_NUM_THREADS=34
 # Notes:
 #
 #   -- Launch this script by executing
-#      "sbatch maverick2.hybrid.slurm" on MACHINENAME login node.
+#      "sbatch maverick2.hybrid.slurm" on Maverick2 login node.
 #
 #   -- Use ibrun to launch MPI codes on TACC systems.
 #      Do not use mpirun or mpiexec.

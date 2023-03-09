@@ -1,9 +1,9 @@
 
 ## [References](#refs) { #refs }
 
-* [`idev` documentation][TACCIDEV]
-* [Tensorflow at TACC][TACCTENSORFLOW]
+* [`idev` documentation](../../software/idev)
+* [Tensorflow at TACC](../../software)
 * [TACC Analysis Portal][TACCANALYSISPORTAL]
-* [Multi-Factor Authentication at TACC][TACCMFA]
+* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
 
 {% include 'aliases.md' %}
