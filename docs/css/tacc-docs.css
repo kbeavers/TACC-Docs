@@ -14,16 +14,13 @@
 
 /* To increase global font size */
 body {
-  font-size: var(--global-font-size--large); /* overwrite core-styles.base */
+  font-size: var(--global-font-size--medium); /* overwrite core-styles.base */
 }
 p {
   font-size: inherit; /* overwrite theme.css */
 }
 table {
-  font-size: var(--global-font-size--large); /* overwrite core-styles.base */
-}
-h4 {
-  font-size: var(--global-font-size--large); /* overwrite core-styles.cms */
+  font-size: var(--global-font-size--medium); /* overwrite core-styles.base */
 }
 
 
@@ -63,7 +60,7 @@ h2 {
   font-size: unset;
 }
 .wy-menu-vertical a:not(li.toctree-l1 > *) {
-  font-size: var(--global-font-size--medium);
+  font-size: var(--global-font-size--small);
 }
 .wy-menu-vertical p.caption {
   text-transform: unset;
@@ -270,7 +267,7 @@ svg.logo [fill]:not([fill="none"]) {
 
 /* To demarcate link to CMS */
 .wy-side-nav-search .cms-link {
-  font-size: var(--global-font-size--medium);
+  font-size: var(--global-font-size--small);
 
   padding-top: unset; /* undo theme.css */
 
