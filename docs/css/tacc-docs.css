@@ -462,11 +462,6 @@ figcaption {
 /* TABBED */
 /* https://github.com/TACC/Core-Styles/blob/main/src/lib/_imports/components/pymdownx--tabbed.css */
 
-/* To fix conflicts */
-.tabbed-set label {
-  margin-bottom: unset; /* overwrite core-style.docs */
-}
-
 /* To add Docs-specific styles */
 .tabbed-set {
   border: var(--global-border-width--thick) solid var(--global-color-primary--dark);
