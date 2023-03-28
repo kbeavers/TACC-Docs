@@ -5,7 +5,7 @@
 //// html | a.card--plain[href="./basics/gettingstarted/"]
      markdown: block
 ## Getting Started
-
+Let's party! 
 
 //// html | a.card--plain[href="./basics/help/"]
      markdown: block
