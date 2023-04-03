@@ -1,80 +1,82 @@
-# Essential Documentation
-*03/09/2023 in progress*
-
-/// html | section.section--muted.section--has-border.o-grid.o-grid--col-min-width
-//// html | a.card--plain[href="./basics/gettingstarted/"]
-     markdown: block
-## Getting Started
-Let's party! 
-
-//// html | a.card--plain[href="./basics/help/"]
-     markdown: block
-
-## Help Me, Please
-
-I know not what I do.
-
-////
-//// html | a.card--plain[href="./basics/help/"]
-     markdown: block
-
-## Help Me, Please
-
-I kinda know what I do.
-
-////
-
-////
-
-//// html | a.card--plain[href="https://lmod.readthedocs.io/en/latest/"]
-     markdown: block
-
-## LMOD
-
-"L" to the "M" to the "O" to the "D". **LMOD!**
-
-////
-//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
-     markdown: block
-
-## Visualization Resource User Guides
-
-All about Stallion
-
-////
-//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
-     markdown: block
-
-## Storage Resource User Guides
-
-All about Ranch
-
-////
-//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
-     markdown: block
-
-## HPC Resource  User Guides
-
-All Frontera. All the Time. Get your guide.
-
-////
-///
-# Introduction
-*Last update: 03/09/2023 in progress*
+# Documentation
 
 Welcome to TACC Technical Documentation site.  Learn how to access and use our High Performance Computing (HPC) resources.
 
-If you're brand new to TACC and want to jump right in, check out our [Getting Started Guide](basics/gettingstarted). For additional HPC training, check out the following resources and contacts:
+If you're brand new to TACC and want to jump right in, check out our [Getting Started Guide](basics/gettingstarted). 
+
+For additional HPC training, check out the following resources and contacts:
 
 Quickstart for those with TUP accounts
 	Get an allocation already
 
-Quickstart for those with Allocations (VTRUE)
+Quickstart for those with Allocations/Experienced Users (VTRUE)
 
-* Transfer any files
-* monitor your allocation
+* transfer any files
+* manage and monitor your allocation
 * establish DN's
-* what else?
+
+
+Experienced vs Inexperienced Users
+
+- TACC Tutorials - A set of hands on classes with specific focus.
+- TACC Institute Series - Multi-day courses meant to enhance users knowledge of broad HPC topics.
+- Some External Resource - E.g. Cornell workshop.
+
+
+/// html | section.section--muted.section--has-border.o-grid.o-grid--col-min-width
+
+//// html | a.card--plain[href="./basics/gettingstarted/"]
+     markdown: block
+## Getting Started
+Let's party! 
+////
+
+//// html | a.card--plain[href="./basics/help/"]
+     markdown: block
+## Help
+Support Ticket Tips
+Help Desk
+////
+
+//// html | a.card--plain[href="./basics/faq/"]
+     markdown: block
+## FAQ
+Frequently Asked Questions
+////
+///
+
+# H1HEADER
+
+lorem ipsum kitten
+
+/// html | section.section--muted.section--has-border.o-grid.o-grid--col-min-width
+
+//// html | a.card--plain[href="https://lmod.readthedocs.io/en/latest/"]
+     markdown: block
+## LMOD
+"L" to the "M" to the "O" to the "D". **LMOD!**
+////
+
+//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
+     markdown: block
+## Visualization Resource User Guides
+All about Stallion
+////
+
+//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
+     markdown: block
+## Storage Resource User Guides
+All about Ranch
+////
+
+//// html | a.card--plain[href="https://frontera-portal.tacc.utexas.edu/user-guide/"]
+     markdown: block
+## HPC Resource  User Guides
+All Frontera. All the Time. Get your guide.
+////
+
+///
+
 
 Experienced vs Unexperienced Users ?
 
@@ -89,22 +91,18 @@ Experienced vs Unexperienced Users ?
 
 //// html | a.card--plain[href="./basics/gettingstarted/"]
      markdown: block
-
 ### Get Started with Getting Started
 
 which getting started - main website?
-
 ////
 
 
 //// html | a.card--plain[href="./basics/help/"]
      markdown: block
-
 ### Help Me for I Know Not What I Know Not
-	how does this work?
 ...
-
 ////
+
 ///
 
 ### HPC User Guides
