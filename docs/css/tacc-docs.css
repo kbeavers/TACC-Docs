@@ -269,7 +269,7 @@ svg.logo [fill]:not([fill="none"]) {
 
 /* To change icons */
 
-.wy-menu-vertical li:not(.on, .current) button.toctree-expand:before {
+.wy-menu-vertical li:not(.on, .current) button.toctree-expand::before {
   content: "\f0da";
 }
 .wy-menu-vertical li.current > a button.toctree-expand::before,
