@@ -68,7 +68,7 @@ svg.logo [fill]:not([fill="none"]) {
 .wy-nav-side {
   --pad-horz: 25px; /* NOTE: design is 24.5px (left) and 11.5px (right) */
   --link-pad-vert: 0.375em; /* NOTE: design is 25px */
-  --link-pad-horz: 15px; /* NOTE: design is 13.5px */
+  --link-pad-horz: 20px; /* NOTE: design is 13.5px, but fat icon needs room */
 }
 
 
@@ -181,6 +181,7 @@ svg.logo [fill]:not([fill="none"]) {
 .wy-menu-vertical li:not(.has-list) a button.toctree-expand {
   display: none;
 }
+.wy-menu-vertical li a .fa,
 .wy-menu-vertical li.has-list a button.toctree-expand {
   margin-left: unset; /* undo theme.css */
 
@@ -192,10 +193,20 @@ svg.logo [fill]:not([fill="none"]) {
   width: 100%;
   text-align: left; /* to prevent width: 100% from moving ::before to center */
 }
+.wy-menu-vertical li a .fa::before,
 .wy-menu-vertical li button.toctree-expand::before {
-  /* To move button icon */
-  text-indent: calc( -1 * var(--link-pad-horz) ); /* leftward, outside text */
+  /* To move icon */
+  text-indent: calc(
+    -1 * var(--link-pad-horz) * var(--mod, 1)
+  ); /* leftward, outside text */
   height: 100%; /* upward, inline with first line of mult-line text */
+}
+.wy-menu-vertical li a .fa::before {
+  --mod: 0.8;
+  vertical-align: sub;
+}
+.wy-menu-vertical li button.toctree-expand::before {
+  --mod: 0.65;
 }
 
 
