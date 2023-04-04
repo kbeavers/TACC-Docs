@@ -62,8 +62,8 @@ nav:
     - Stallion: hpc/stallion.md
   - Software :
     - ABAQUS: software/abaqus.md
-    - ANSYS: software/ansys.md
     - AlphaFold : software/alphafold.md
+    - ANSYS: software/ansys.md
     - CD Tools: software/cdtools.md
     - Gaussian: software/gaussian.md
     - GROMACS: software/gromacs.md

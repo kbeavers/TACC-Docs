@@ -1,7 +1,10 @@
 # Software Packages at TACC
+*Last update: April 4, 2023*
 
-<table border="0" cellpadding="5" cellspacing="3"> 
+<table border="1" cellpadding="5" cellspacing="3"> 
 <tr> <td align="center" width="160"> <img alt="ABABQUS logo" src="../imgs/abaqus-logo.png" style="height: 45px; width: 125px;border-width: 0px; border-style: solid;" /></td> <td valign="middle"> <a href="/software/abaqus">ABAQUS at TACC</a> <p> Using ABAQUS on TACC Resources.</p> </td> <td> Computer-Aided Engineering</td> </tr> 
+
+<tr> <td align="center" width="160"> <img alt="AlphaFold logo" src="../imgs/alphafold-logo.png" style="width: 25%;"/></td> <td valign="middle"> <a href="/software/alphafold">AlphaFold at TACC</a> <p> Using AlphaFold on TACC Resources.</p> </td> <td> </td> </tr> 
 
 <tr> <td align="center" width="160"> <img alt="ANSYS logo" src="../imgs/ansys-logo.png" style="border-width: 0px; border-style: solid; width: 100px; height: 40px;" /></td> <td valign="middle"> <a href="/software/ansys">ANSYS at TACC</a> <p> Using ANSYS on Frontera and Stampede2.</p> </td> <td> Physics and Engineering</td> </tr> 
 
@@ -28,6 +31,8 @@
 <tr> <td align="center" width="160"> <img alt="NAMD logo" src="../imgs/namd-logo.png" style="height: 28px; width: 75px;border-width: 0px; border-style: solid;" /></td> <td> <a href="/software/namd">NAMD at TACC</a><br /> <p> Using NAMD on TACC resources.</p> </td> <td> Classical MD Simulations</td> </tr> 
 
 <tr> <td align="center" width="160"> <img alt="OpenFOAM logo" src="../imgs/openfoam-logo.png" style="height: 75px; width: 75px; border-width: 0px; border-style: solid;" /></td> <td valign="middle"> <a href="/software/openfoam">OpenFOAM on Stampede2</a><br /> <p> How to build and run OpenFOAM on Stampede2.</p> </td> <td> Computational Fluid Dynamics</td> </tr> 
+
+<tr> <td align="center" width="160"> <img alt="TACC logo" src="../imgs/tacc-logo.jpg" style="height: 75px; width: 75px; border-width: 0px; border-style: solid;" /></td> <td> <a href="/software/remora">Remora at TACC</a><br /> <p> Using Remora an TACC resources.</p> </td> <td> </td> </tr> 
 
 <tr> <td align="center" width="160"> <img alt="Quantum Espresso logo" src="../imgs/qespresso-logo.png" style="height: 75px; width: 75px; border-width: 0px; border-style: solid;" /></td> <td> <a href="/software/quantumespresso">Quantum Espresso at TACC</a><br /> <p> Using Quantum Espresso on TACC resources.</p> </td> <td> Quantum Mechanical/Electronic Structure Calculations</td> </tr> 
 
