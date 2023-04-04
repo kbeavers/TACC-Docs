@@ -10,6 +10,7 @@ edit_uri: edit/main/docs/
 theme:
     name: readthedocs
     logo: /img/tacc-logo-with-words.svg
+    collapse_navigation: false
     highlightjs: true
     hljs_languages:
         - bash
@@ -42,6 +43,7 @@ extra_javascript:
     - js/modules/styleLinksOutsideMainContent.js
     - js/modules/swapImgSvgWithRawSvg.js
     - js/modules/removeThemeClasses.js
+    - js/modules/addNavClasses.js
 
 nav:
   - TACC Basics :
