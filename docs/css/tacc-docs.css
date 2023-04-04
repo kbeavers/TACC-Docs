@@ -333,7 +333,8 @@ svg.logo [fill]:not([fill="none"]) {
 
 
 
-/* To increase pargarph font size */
+/* To ensure paragraph font size matches core-styles.docs.css */
+/* FAQ: If ineffectual, theme.css font size may match core-styles.docs.css */
 p {
   font-size: inherit; /* overwrite theme.css */
 }
