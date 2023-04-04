@@ -192,7 +192,7 @@ svg.logo [fill]:not([fill="none"]) {
   width: 100%;
   text-align: left; /* to prevent width: 100% from moving ::before to center */
 }
-.wy-menu-vertical li button.toctree-expand:before {
+.wy-menu-vertical li button.toctree-expand::before {
   /* To move button icon */
   text-indent: calc( -1 * var(--link-pad-horz) ); /* leftward, outside text */
   height: 100%; /* upward, inline with first line of mult-line text */
@@ -392,7 +392,7 @@ p {
 
 
 /* To remove admonition title icon */
-.admonition-title:before { display: none; }
+.admonition-title::before { display: none; }
 
 
 
