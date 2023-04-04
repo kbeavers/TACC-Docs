@@ -189,6 +189,7 @@ svg.logo [fill]:not([fill="none"]) {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
   padding: var(--link-pad-vert) var(--link-pad-horz);
   width: 100%;
   text-align: left; /* to prevent width: 100% from moving ::before to center */
