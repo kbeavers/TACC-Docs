@@ -94,7 +94,9 @@ nav:
     - Sharing Project Files: tutorials/sharingprojectfiles.md
     - TACC Analysis Portal: tutorials/TAP.md
   - Fiddling :
-    - Sample Index Page: index-sample.md
+    - Sample Index Pages:
+      - Sample 1: index-sample/sample-1.md
+      - Sample 2: index-sample/sample-2.md
     - Testing Extensions: testingextensions.md
     - Code Examples: code-examples/index.md
 
