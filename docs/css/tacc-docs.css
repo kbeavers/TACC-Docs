@@ -30,21 +30,15 @@
 
 
 
-/* To remove decresing font size in nav */
-
-.wy-menu-vertical li.toctree-l3,
-.wy-menu-vertical li.toctree-l4 {
-  font-size: unset;
-}
-.wy-menu-vertical li.toctree-l1 > a {
-  font-size: unset;
-}
-.wy-menu-vertical a:not(li.toctree-l1 > *) {
+/* To prevent decresing font size in nav */
+.wy-menu-vertical a,
+.wy-menu-vertical p.caption {
   font-size: var(--global-font-size--small);
 }
+
+/* To undo capitalization on nav headers */
 .wy-menu-vertical p.caption {
   text-transform: unset;
-  font-size: unset;
 }
 
 
