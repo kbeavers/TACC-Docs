@@ -4,7 +4,7 @@
 
 <table cellpadding="5" cellspacing="5">
 <tr><td><img alt="ABAQUS logo" src="../imgs/abaqus-logo.png"></td>
-<td valign="top">The ABAQUS software suite from Dassault Systems is used for finite element analysis and computer-aided engineering.  The ABAQUS software is used on TACC resources for projects from a variety of domains, such as petroleum engineering, biomedical engineering, and aerospace engineering. </td>
+<td valign="middle">The ABAQUS software suite from Dassault Systems is used for finite element analysis and computer-aided engineering.  The ABAQUS software is used on TACC resources for projects from a variety of domains, such as petroleum engineering, biomedical engineering, and aerospace engineering. </td>
 </tr></table>
 
 ## [Request Access to ABAQUS](#access) { #access }
@@ -50,8 +50,8 @@ login1$ module load abaqus
 
 1. Familiarize yourself with the Stampede2 and/or Frontera user guide sections on "Running Applications".
 
-	* [Stampede2 - Running Jobs][STAMPEDE2RUNNING]
-	* [Frontera - Running Jobs][FRONTERARUNNING]
+	* [Stampede2 - Running Jobs](../../hpc/stampede2#running)
+	* [Frontera - Running Jobs](../../hpc/frontera#running)
 
 	As with all other software packages, do not run ABAQUS on the login nodes. All ABAQUS invocations must occur within an `idev` session or submitted to the compute nodes as a batch job using the [job script](#job-script) below.
 

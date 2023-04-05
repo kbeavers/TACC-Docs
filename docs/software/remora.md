@@ -57,12 +57,12 @@ Users can configure REMORA to achieve the amount of detail that they want and pe
 Remora will generate a summary report as shown below at the end of each job.
 
 <figure id="figure1">
-<img alt="" src="../../imgs/software/remora-1.png"><figcaption></figcaption></figure>
+<img alt="" src="../imgs/remora-1.png"><figcaption></figcaption></figure>
 
 Remora will generate a series of files in the running directory like this.  
 
 <figure id="figure2">
-<img alt="" src="../../imgs/software/remora-2.png"><figcaption></figcaption></figure>
+<img alt="" src="../imgs/remora-2.png"><figcaption></figcaption></figure>
 
 
 ## [References](#refs) { #refs }

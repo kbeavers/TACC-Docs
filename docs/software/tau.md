@@ -115,7 +115,7 @@ After your program runs you can process TAU's output to do two things: view stat
 	```
 
 	<figure id="figure1">
-	<img alt="" src="../../imgs/software/TAU-1.gif">
+	<img alt="" src="../imgs/TAU-1.gif">
 	<figcaption>Figure 1. Sample profile output courtesy of Livermore Computing Center</figcaption></figure>
 
 
@@ -136,7 +136,7 @@ After your program runs you can process TAU's output to do two things: view stat
 		xterm$ jumpshot yourprogram.slog2
 		```
 
-		<figure id="figure2"><img alt="" src="../../imgs/software/TAU-2.png">
+		<figure id="figure2"><img alt="" src="../imgs/TAU-2.png">
 		<figcaption>Figure 2. Sample tracing output courtesy of <a href="http://www.mcs.anl.gov/research/projects/perfvis/pic/js4_timeline_preview_zoomed.png">Argonne National Laboratory</a></figcaption></figure>
 
 

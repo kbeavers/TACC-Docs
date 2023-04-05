@@ -161,8 +161,7 @@ You may also use the iRODS i-Commands to view and manipulate your data, as well 
 
 See also:
 
-* [Access Control Lists][TACCACCESSCONTROLLISTS]
-* [ACLs on the Web][TACCACLS]
+* [Access Control Lists](../../tutorials/acls)
 
 
 {% include 'aliases.md' %}
