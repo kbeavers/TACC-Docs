@@ -3,7 +3,7 @@
 
 
 <table cellpadding="5" cellspacing="5">
-<tr><td><img alt="ABAQUS logo" src="../../../imgs/software/abaqus-logo.png"></td>
+<tr><td><img alt="ABAQUS logo" src="../imgs/abaqus-logo.png"></td>
 <td valign="top">The ABAQUS software suite from Dassault Systems is used for finite element analysis and computer-aided engineering.  The ABAQUS software is used on TACC resources for projects from a variety of domains, such as petroleum engineering, biomedical engineering, and aerospace engineering. </td>
 </tr></table>
 

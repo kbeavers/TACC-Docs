@@ -1,7 +1,7 @@
 # OpenFOAM at TACC
 *Last update: April 14, 2020*
 
-<img alt="OpenFOAM logo" src="../../imgs/software/openfoam-logo.png" style="width: 75px;" />
+<img alt="OpenFOAM logo" src="../imgs/openfoam-logo.png" style="width: 75px;" />
 The <a href="https://www.openfoam.org">OpenFOAM</a> (**O**pen **F**ield **O**peration and **M**anipulation) Toolbox is a free, open source Computational Fluid Dynamics (CFD) software package providing an extensive range of features, from solving complex fluid flows involving chemical reactions, turbulence and heat transfer, to solid dynamics and electromagnetics.
 
 

@@ -2,7 +2,7 @@
 *Last update: May 31, 2022* xx
 
 
-<img alt="AlphaFold logo" src="../../../imgs/software/alphafold-logo.png" style="width:25%;">
+<img alt="AlphaFold logo" src="../imgs/alphafold-logo.png" style="width:25%;">
 AlphaFold is a protein structure prediction tool developed by DeepMind (Google). It uses a novel machine learning approach to predict 3D protein structures from primary sequences alone. In July 2021, the developers made the <a href="https://github.com/deepmind/alphafold">source code available on Github</a> and published a <a href="https://www.nature.com/articles/s41586-021-03819-2">Nature paper</a> (<a href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">supplementary information</a>) describing the method. In addition to the software, AlphaFold depends on ~2.5 TB of databases and model parameters. Researchers interested in making protein structure predictions with AlphaFold are encouraged to follow the guide below, and use the databases and model parameters that have been prepared.
 
 ## [Installations at TACC](#installations) { #installations }

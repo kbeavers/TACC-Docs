@@ -2,7 +2,7 @@
 *Last update: January 15, 2020* 
 
 <table cellpadding="5" cellspacing="5"><tr>
-<td><img src="../../imgs/software/matlab-logo.png" style="width:50%"></td>
+<td><img src="../imgs/matlab-logo.png" style="width:50%"></td>
 <td>Matlab desc here SDL lorem ipusum kitten blixen</td>
 </tr></table>
 

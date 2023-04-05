@@ -4,7 +4,7 @@
 
 <p class="introtext">Gaussian is a quantum mechanics package for calculating molecular properties from first principles. From the Gaussian website:</p>
 
-<img alt="Gaussian logo" src="../../../imgs/software/gaussian-logo.jpg">
+<img alt="Gaussian logo" src="../imgs/aussian-logo.jpg">
 Starting from the fundamental laws of quantum mechanics, Gaussian 16 predicts the energies, molecular structures, vibrational frequencies and molecular properties of compounds and reactions in a wide variety of chemical environments. Gaussian 16’s models can be applied to both stable species and compounds which are difficult or impossible to observe experimentally, whether due to their nature (e.g., toxicity, combustibility, radioactivity) or their inherent fleeting nature (e.g., short-lived intermediates and transition structures).
 
 

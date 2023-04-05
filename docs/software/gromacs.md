@@ -1,7 +1,7 @@
 # GROMACS at TACC
 *Last update: December 7, 2022*
 
-<img alt="GROMACS logo" src="../../../imgs/software/gromacs-logo.png" style="width:25%;">
+<img alt="GROMACS logo" src="../imgs/gromacs-logo.png" style="width:25%;">
 <b>GRO</b>ningen <b>MA</b>chine for <b>C</b>hemical <b>S</b>imulations (GROMACS) is a free, open-source, molecular dynamics package. GROMACS can simulate the Newtonian equations of motion for systems with hundreds to millions of particles. GROMACS is primarily designed for biochemical molecules like proteins, lipids and nucleic acids that have a lot of complicated bonded interactions, but since GROMACS is extremely fast at calculating the nonbonded interactions (that usually dominate simulations), many groups are also using it for research on non-biological systems, e.g. polymers.
 
 ## [Installations](#installations) { #installations }
