@@ -420,13 +420,6 @@ details > summary > :is(h1, h2, h3, h4, h5, h6) {
 
 
 
-
-
-/* TUP-CMS */
-/* ./tup-cms.css */
-
-
-
 /* To add border around figures */
 figure {
   border: var(--global-border--normal);
