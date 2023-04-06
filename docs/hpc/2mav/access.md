@@ -12,6 +12,6 @@ localhost$ ssh username@maverick2.tacc.utexas.edu
 
 Use your TUP password for direct logins to Maverick2. **Only users with an allocation on Maverick2 may log on.** You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal][TACCUSERPORTAL] home page and select "Password Reset" under the Home tab.
 
-To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">`-vvv`</span> option and include the verbose output when submitting a help ticket.
+To report a connection problem, execute the `ssh` command with the `-vvv` option and include the verbose output when submitting a help ticket.
 
 

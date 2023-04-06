@@ -427,6 +427,13 @@ figure {
 
 
 
+/* To prevent wrap of `inline code` */
+code {
+  white-space: nowrap;
+}
+
+
+
 
 
 /* TABBED */

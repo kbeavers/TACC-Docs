@@ -139,7 +139,7 @@ If you wish to share a software package with collaborators, you may need to modi
 
 #### [Compiler](#building-performance-compiler) { #building-performance-compiler }
 
-When building software on Stampede2, we recommend using the most recent Intel compiler and Intel MPI library available on Stampede2. The most recent versions may be newer than the defaults. Execute <span style="white-space: nowrap;">`module spider intel`</span> and <span style="white-space: nowrap;">`module spider impi`</span> to see what's installed. When loading these modules you may need to specify version numbers explicitly (e.g. <span style="white-space: nowrap;">`module load intel/18.0.0`</span> and <span style="white-space: nowrap;">`module load impi/18.0.0`</span>).
+When building software on Stampede2, we recommend using the most recent Intel compiler and Intel MPI library available on Stampede2. The most recent versions may be newer than the defaults. Execute `module spider intel` and `module spider impi` to see what's installed. When loading these modules you may need to specify version numbers explicitly (e.g. `module load intel/18.0.0` and `module load impi/18.0.0`).
 
 
 #### [Architecture-Specific Flags](#building-performance-architecture) { #building-performance-architecture }
@@ -166,13 +166,13 @@ These particular choices allow you to build on any Stampede2 node (KNL, SKX and 
 $ icc -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512 -O3 mycode.c -o myexe
 ```
 
-The `-x` option is the target base architecture (instruction set). The base instruction set must run on all targeted processors. Here we specify <span style="white-space: nowrap;">`CORE-AVX2`</span>, which is native for older Broadwell processors and supported on all KNL, SKX and ICX nodex. This option allows configure scripts and similar build systems to run test executables on any Stampede2 login or compute node. The `-ax` option is a comma-separated list of alternate instruction sets: <span style="white-space: nowrap;">`CORE-AVX512`</span> for SKX and ICX, and <span style="white-space: nowrap;">`MIC-AVX512`</span> for KNL. 
+The `-x` option is the target base architecture (instruction set). The base instruction set must run on all targeted processors. Here we specify `CORE-AVX2`, which is native for older Broadwell processors and supported on all KNL, SKX and ICX nodex. This option allows configure scripts and similar build systems to run test executables on any Stampede2 login or compute node. The `-ax` option is a comma-separated list of alternate instruction sets: `CORE-AVX512` for SKX and ICX, and `MIC-AVX512` for KNL. 
 
-Now that we have replaced the original Broadwell login nodes with newer Skylake login nodes, <span style="white-space: nowrap;">`-xCORE-AVX2`</span> remains a reasonable (though conservative) base option. Another plausible, more aggressive base option is <span style="white-space: nowrap;">`-xCOMMON-AVX512`</span>, which is a subset of `AVX512` that runs on all KNL, SKX and ICX nodex. 
+Now that we have replaced the original Broadwell login nodes with newer Skylake login nodes, `-xCORE-AVX2` remains a reasonable (though conservative) base option. Another plausible, more aggressive base option is `-xCOMMON-AVX512`, which is a subset of `AVX512` that runs on all KNL, SKX and ICX nodex. 
 
 **It's best to avoid building with `-xHost`** (a flag that means "optimize for the architecture on which I'm compiling now"). Using `-xHost` on a SKX login node, for example, will result in a binary that won't run on KNL.
 
-Don't skip the `-x` flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either <span style="white-space: nowrap;">`-xMIC-AVX512`</span> (native on KNL) or <span style="white-space: nowrap;">`-xCORE-AVX512`</span> (native on SKX/ICX);** there are no meaningful, compatible alternate (`-ax`) instruction sets:
+Don't skip the `-x` flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either `-xMIC-AVX512` (native on KNL) or `-xCORE-AVX512` (native on SKX/ICX);** there are no meaningful, compatible alternate (`-ax`) instruction sets:
 
 ```cmd-line
 $ icc -xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe       # NO! Base incompatible with alternate

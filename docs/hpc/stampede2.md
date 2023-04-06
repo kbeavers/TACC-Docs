@@ -113,7 +113,7 @@ The above command will rotate connections across all available login nodes and r
 localhost$ ssh myusername@login2.stampede2.tacc.utexas.edu
 ```
 
-To connect with X11 support on Stampede2 (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
+To connect with X11 support on Stampede2 (usually required for applications with graphical user interfaces), use the `-X` or `-Y` switch:
 
 ``` cmd-line
 localhost$ ssh -X myusername@stampede2.tacc.utexas.edu
@@ -121,7 +121,7 @@ localhost$ ssh -X myusername@stampede2.tacc.utexas.edu
 
 Use your TACC password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal][TACCUSERPORTAL] home page and select "Password Reset" under the Home tab.
 
-To report a connection problem, execute the `ssh` command with the <span style="white-space: nowrap;">`-vvv`</span> option and include the verbose output when submitting a help ticket.
+To report a connection problem, execute the `ssh` command with the `-vvv` option and include the verbose output when submitting a help ticket.
 
 **Do not run the `ssh-keygen` command on Stampede2.** This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system. If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new one for you when you next log into Stampede2.
 
@@ -147,11 +147,11 @@ $ echo $SHELL
 
 If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC User Portal][TACCUSERPORTAL]. The `chsh` ("change shell") command will not work on TACC systems. 
 
-When you start a shell on Stampede2, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: <span style="white-space: nowrap;">`ls -a`</span>.
+When you start a shell on Stampede2, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: `ls -a`.
 
-Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the `bash` command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using  `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute <span style="white-space: nowrap;">`source ~/.bashrc`</span> from your `.profile`, then put all your customizations in `.bashrc`.  The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
+Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the `bash` command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using  `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute `source ~/.bashrc` from your `.profile`, then put all your customizations in `.bashrc`.  The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
 
-For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
+For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute `/usr/local/startup_scripts/install_default_scripts`.
 
 #### [Environment Variables](#using-account-envvars) { #using-account-envvars }
 
@@ -302,7 +302,7 @@ $ module help         # show help text for the module system itself
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
-It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">`module save`</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede2's default startup scripts for a safe way to do so.
+It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use `module save` to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede2's default startup scripts for a safe way to do so.
 
 ## [Managing Your Files](#files) { #files }
 
@@ -324,7 +324,7 @@ See the example for fictitious user `bjones` in the figure below. All directorie
 
 <figure id="figure3"><img border="1" alt="Stockyard 2022" src="../../imgs/stockyard-2022.jpg"<figcaption>Figure 3.</figcaption></figure>
 
-Note that resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/stampede2`</span>. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
+Note that resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your <span style="white-space: nowrap;">resource-specific</span> files. You have access to any such <span style="white-space: nowrap;">sub-directory</span> from any TACC resources. If you are logged into Stampede2, for example, executing the alias `cdw` (equivalent to `cd $WORK`) will take you to the <span style="white-space: nowrap;">resource-specific</span> <span style="white-space: nowrap;">sub-directory</span> `$STOCKYARD/stampede2`. But you can access this directory from other TACC systems as well by executing `cd $STOCKYARD/stampede2`. These commands allow you to share files across TACC systems. In fact, several convenient <span style="white-space: nowrap;">account-level</span> aliases make it even easier to navigate across the directories you own in the shared file systems:
 
 [Table 4. Built-in Account Level Aliases](#table4) { #table4 }
 
@@ -576,7 +576,7 @@ If you wish to share a software package with collaborators, you may need to modi
 
 #### [Compiler](#building-performance-compiler) { #building-performance-compiler }
 
-When building software on Stampede2, we recommend using the most recent Intel compiler and Intel MPI library available on Stampede2. The most recent versions may be newer than the defaults. Execute <span style="white-space: nowrap;">`module spider intel`</span> and <span style="white-space: nowrap;">`module spider impi`</span> to see what's installed. When loading these modules you may need to specify version numbers explicitly (e.g. <span style="white-space: nowrap;">`module load intel/18.0.0`</span> and <span style="white-space: nowrap;">`module load impi/18.0.0`</span>).
+When building software on Stampede2, we recommend using the most recent Intel compiler and Intel MPI library available on Stampede2. The most recent versions may be newer than the defaults. Execute `module spider intel` and `module spider impi` to see what's installed. When loading these modules you may need to specify version numbers explicitly (e.g. `module load intel/18.0.0` and `module load impi/18.0.0`).
 
 
 #### [Architecture-Specific Flags](#building-performance-architecture) { #building-performance-architecture }
@@ -603,13 +603,13 @@ These particular choices allow you to build on any Stampede2 node (KNL, SKX and 
 $ icc -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512 -O3 mycode.c -o myexe
 ```
 
-The `-x` option is the target base architecture (instruction set). The base instruction set must run on all targeted processors. Here we specify <span style="white-space: nowrap;">`CORE-AVX2`</span>, which is native for older Broadwell processors and supported on all KNL, SKX and ICX nodex. This option allows configure scripts and similar build systems to run test executables on any Stampede2 login or compute node. The `-ax` option is a comma-separated list of alternate instruction sets: <span style="white-space: nowrap;">`CORE-AVX512`</span> for SKX and ICX, and <span style="white-space: nowrap;">`MIC-AVX512`</span> for KNL. 
+The `-x` option is the target base architecture (instruction set). The base instruction set must run on all targeted processors. Here we specify `CORE-AVX2`, which is native for older Broadwell processors and supported on all KNL, SKX and ICX nodex. This option allows configure scripts and similar build systems to run test executables on any Stampede2 login or compute node. The `-ax` option is a comma-separated list of alternate instruction sets: `CORE-AVX512` for SKX and ICX, and `MIC-AVX512` for KNL. 
 
-Now that we have replaced the original Broadwell login nodes with newer Skylake login nodes, <span style="white-space: nowrap;">`-xCORE-AVX2`</span> remains a reasonable (though conservative) base option. Another plausible, more aggressive base option is <span style="white-space: nowrap;">`-xCOMMON-AVX512`</span>, which is a subset of `AVX512` that runs on all KNL, SKX and ICX nodex. 
+Now that we have replaced the original Broadwell login nodes with newer Skylake login nodes, `-xCORE-AVX2` remains a reasonable (though conservative) base option. Another plausible, more aggressive base option is `-xCOMMON-AVX512`, which is a subset of `AVX512` that runs on all KNL, SKX and ICX nodex. 
 
 **It's best to avoid building with `-xHost`** (a flag that means "optimize for the architecture on which I'm compiling now"). Using `-xHost` on a SKX login node, for example, will result in a binary that won't run on KNL.
 
-Don't skip the `-x` flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either <span style="white-space: nowrap;">`-xMIC-AVX512`</span> (native on KNL) or <span style="white-space: nowrap;">`-xCORE-AVX512`</span> (native on SKX/ICX);** there are no meaningful, compatible alternate (`-ax`) instruction sets:
+Don't skip the `-x` flag in a multi-architecture build: the default is the very old SSE2 (Pentium 4) instruction set. **Don't create a multi-architecture build with a base option of either `-xMIC-AVX512` (native on KNL) or `-xCORE-AVX512` (native on SKX/ICX);** there are no meaningful, compatible alternate (`-ax`) instruction sets:
 
 ```cmd-line
 $ icc -xCORE-AVX512 -axMIC-AVX512 -O3 mycode.c -o myexe       # NO! Base incompatible with alternate
@@ -673,9 +673,9 @@ Here `myjobscript` is the name of a text file containing `#SBATCH` directives an
 
 In your job script you (1) use `#SBATCH` directives to request computing resources (e.g. 10 nodes for 2 hrs); and then (2) use shell commands to specify what work you're going to do once your job begins. There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
 
-Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm <span style="white-space: nowrap;">`--export`</span> option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
+Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your applications(s) after loading the same modules that you used to build them**.  You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm `--export` option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
-The [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. <span style="white-space: nowrap;">`-N`</span>) and a long form (e.g. <span style="white-space: nowrap;">`--nodes`</span>). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases <span style="white-space: nowrap;">`#!/bin/bash`</span> or <span style="white-space: nowrap;">`#!/bin/csh`</span> is the right choice. Avoid <span style="white-space: nowrap;">`#!/bin/sh`</span> (its startup behavior can lead to subtle problems on Stampede2), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede2.
+The [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Stampede2), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede2.
 
 
 #### [Table 6. Common sbatch Options](#table6) { #table6 }
@@ -698,7 +698,7 @@ Option | Argument | Comments
 --mem | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
 --export= | N/A | Avoid this option on Stampede2. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
-By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">`slurm-%j.out`</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">`-o`</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">`-o`</span> and <span style="white-space: nowrap;">`-e`</span>.
+By default, Slurm writes all console output to a file named `slurm-%j.out`, where `%j` is the numerical job ID. To specify a different filename use the `-o` option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both `-o` and `-e`.
 
 
 ### [Launching Applications](#running-launching) { #running-launching }
@@ -789,7 +789,7 @@ To run more than one MPI application simultaneously in the same job, you need to
 * use the `ibrun "-n` and `-o` switches to specify task counts and hostlist offsets respectively; and
 * include a call to the `task_affinity` script in your `ibrun` launch line.
 
-If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute <span style="white-space: nowrap;">`ibrun --help`</span> for more information. **Don't forget the ampersands (`&`)** to launch the jobs in the background, **and the `wait` command** to pause the script until the background tasks complete:
+If, for example, you use `#SBATCH` directives to request N=4 nodes and n=128 total MPI tasks, Slurm will generate a hostfile with 128 entries (32 entries for each of 4 nodes). The `-n` and `-o` switches, which must be used together, determine which hostfile entries ibrun uses to launch a given application; execute `ibrun --help` for more information. **Don't forget the ampersands (`&`)** to launch the jobs in the background, **and the `wait` command** to pause the script until the background tasks complete:
 
 ``` job-script
 ibrun -n 64 -o  0 task_affinity ./myprogram input1 &   # 64 tasks; offset by  0 entries in hostfile.
@@ -806,7 +806,7 @@ The `task_affinity` script does two things:
 
 #### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous) { #running-launching-openmpsimultaneous }
 
-You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, <span style="white-space: nowrap;">`numactl -C`</span> specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
+You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, `numactl -C` specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
 
 ``` job-script
 export OMP_NUM_THREADS=2
@@ -847,7 +847,7 @@ c449-001$
 
 The `job status` messages indicate that your interactive session is waiting in the queue. When your session begins, you'll see a command prompt on a compute node (in this case, the node with hostname c449-001). If this is the first time you launch `idev`, the prompts may invite you to choose a default project and a default number of tasks per node for future `idev` sessions.
 
-For command line options and other information, execute <span style="white-space: nowrap;">`idev --help`</span>. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
+For command line options and other information, execute `idev --help`. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
 ``` cmd-line
 login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
@@ -881,7 +881,7 @@ C448-004$
 
 ### [SLURM Environment Variables](#running-slurmenvvars) { #running-slurmenvvars }
 
-Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. 
+Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute `env | grep SLURM` from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. 
 
 !!! danger
 	For example, the following directive will not work the way you might think:
@@ -899,7 +899,7 @@ Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` des
 
 Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` directive.
 
-For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (<span style="white-space: nowrap;">`man slurm`</span>) and its individual command (e.g. <span style="white-space: nowrap;">`man sbatch`</span>); as well as numerous other online resources.
+For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (`man slurm`) and its individual command (e.g. `man sbatch`); as well as numerous other online resources.
 
 
 ## [Job Scripts](#jobscripts) { #jobscripts }
@@ -1935,13 +1935,13 @@ The literature on optimization is vast. Some places to begin a systematic study 
 
 KNL cores are grouped in pairs; each pair of cores occupies a tile. Since there are 68 cores on each Stampede2 KNL node, each node has 34 active tiles. These 34 active tiles are connected by a two-dimensional mesh interconnect. Each KNL has 2 DDR memory controllers on opposite sides of the chip, each with 3 channels. There are 8 controllers for the fast, on-package MCDRAM, two in each quadrant.
 
-Each core has its own local L1 cache (32KB, data, 32KB instruction) and two 512-bit vector units. Both vector units can execute `AVX512` instructions, but only one can execute legacy vector instructions (`SSE`, `AVX`, and `AVX2`). Therefore, to use both vector units, you must compile with <span style="white-space: nowrap;">`-xMIC-AVX512`</span>.
+Each core has its own local L1 cache (32KB, data, 32KB instruction) and two 512-bit vector units. Both vector units can execute `AVX512` instructions, but only one can execute legacy vector instructions (`SSE`, `AVX`, and `AVX2`). Therefore, to use both vector units, you must compile with `-xMIC-AVX512`.
 
 Each core can run up to 4 hardware threads. The two cores on a tile share a 1MB L2 cache. Different [cluster modes](#programming-knl-clustermodes) specify the L2 cache coherence mechanism at the node level.
 
 #### [Memory Modes](#programming-knl-memorymodes) { #programming-knl-memorymodes }
 
-The processor's memory mode determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The output of commands like `top`, `free`, and <span style="white-space: nowrap;">`ps -v`</span> reflect the consequences of memory mode. Such commands will show the amount of RAM available to the operating system, not the hardware (DDR + MCDRAM) installed.
+The processor's memory mode determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The output of commands like `top`, `free`, and `ps -v` reflect the consequences of memory mode. Such commands will show the amount of RAM available to the operating system, not the hardware (DDR + MCDRAM) installed.
 
 
 <figure id="figure-knlmemorymodes"><img src="../../imgs/stampede2/KNL-Memory-Modes.png"><figcaption>Figure 4. KNL Memory Modes</figcaption></figure>
@@ -2007,11 +2007,11 @@ On Stampede2 the keyword `tacc_affinity` was originally an older name for what i
 
 **General Expectations**. From a pure hardware perspective, a single Stampede2 KNL node could outperform Stampede1's dual socket Sandy Bridge nodes by as much as 6x; this is true for both memory bandwidth-bound and compute-bound codes. This assumes the code is running out of (fast) MCDRAM on nodes configured in flat mode (450 GB/s bandwidth vs 75 GB/s on Sandy Bridge) or using cache-contained workloads on nodes configured in cache mode (memory footprint &lt; 16GB). It also assumes perfect scalability and no latency issues. In practice we have observed application improvements between 1.3x and 5x for several HPC workloads typically run in TACC systems. Codes with poor vectorization or scalability could see much smaller improvements. In terms of network performance, the Omni-Path network provides 100 Gbits per second peak bandwidth, with point-to-point exchange performance measured at over 11 GBytes per second for a single task pair across nodes. Latency values will be higher than those for the Sandy Bridge FDR Infiniband network: on the order of 2-4 microseconds for exchanges across nodes.
 
-**MCDRAM in Flat-Quadrant Mode**. Unless you have specialized needs, we recommend using `mem_affinity` or launching your application with <span style="white-space: nowrap;">`numactl --preferred=1`</span> when running in flat-quadrant mode (see [Managing Memory](#knl-programming-managingmemory) above). If you mistakenly use <span style="white-space: nowrap;">`--membind=1`</span>, only the 16GB of fast MCDRAM will be available. If you mistakenly use <span style="white-space: nowrap;">`--membind=0`</span>, you will not be able to access fast MCDRAM at all.
+**MCDRAM in Flat-Quadrant Mode**. Unless you have specialized needs, we recommend using `mem_affinity` or launching your application with `numactl --preferred=1` when running in flat-quadrant mode (see [Managing Memory](#knl-programming-managingmemory) above). If you mistakenly use `--membind=1`, only the 16GB of fast MCDRAM will be available. If you mistakenly use `--membind=0`, you will not be able to access fast MCDRAM at all.
 
 **Task Affinity**. If you're running one threaded, MPI, or hybrid application at a time, default affinity settings are usually sensible and often optimal. See [TACC training materials](https://portal.tacc.utexas.edu/training#/session/41) for more information. If you run more than one threaded, MPI, or hybrid application at a time, you'll want to pay attention to affinity. For more information see the appropriate sub-sections under [Launching Applications](#running-launching). 
 
-**MPI Initialization**. Our preliminary scaling tests with Intel MPI on Stampede2 suggest that the time required to complete MPI initialization scales quadratically with the number of MPI tasks (lower case `-n` in your Slurm submission script) and linearly with the number of nodes (upper case <span style="white-space: nowrap;">`-N`</span>).
+**MPI Initialization**. Our preliminary scaling tests with Intel MPI on Stampede2 suggest that the time required to complete MPI initialization scales quadratically with the number of MPI tasks (lower case `-n` in your Slurm submission script) and linearly with the number of nodes (upper case `-N`).
 
 **Tuning the Performance Scaled Messaging (PSM2) Library**. When running on KNL with MVAPICH2, set the environment variable `PSM2_KASSIST_MODE` to the value `none` per the [MVAPICH2 User Guide](http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.3b-userguide.html#x1-890006.19). Do not use this environment variable with IMPI; doing so may degrade performance. <!-- The `ibrun` launcher will eventually control this environment variable automatically. -->
 
@@ -2028,7 +2028,7 @@ On Stampede2 the keyword `tacc_affinity` was originally an older name for what i
 
 	-xCORE-AVX512 -qopt-zmm-usage=high
 
-The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with `AVX51` intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to <span style="white-space: nowrap;">`-qopt-zmm-usage=low`</span> (the default when compiling for SKX and ICX using <span style="white-space: nowrap;">`CORE-AVX512`)</span>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](#building-performance-architecture) when specifying <span style="white-space: nowrap;">`qopt-zmm-usage`</span>. This is because `$TACC_VEC_FLAGS` specifies <span style="white-space: nowrap;">`AVX2-CORE`</span> as the base architecture, and the compiler will ignore <span style="white-space: nowrap;">`qopt-zmm-usage`</span> unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
+The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with `AVX51` intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to `-qopt-zmm-usage=low` (the default when compiling for SKX and ICX using <span style="white-space: nowrap;">`CORE-AVX512`)</span>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The `qopt-zmm-usage` flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](#building-performance-architecture) when specifying `qopt-zmm-usage`. This is because `$TACC_VEC_FLAGS` specifies `AVX2-CORE` as the base architecture, and the compiler will ignore `qopt-zmm-usage` unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
 
 **Vector Optimization and `COMMON-AVX512`.** We have encountered a few complex packages that currently fail to build or run when compiled with [`CORE-AVX512`](#building-performance-architecture) (native SKX or ICX). In all cases so far, these packages build and run well on all KNL, SNL and ICX when compiled as a single-architecture binary with [`-xCOMMON-AVX512`](#building-performance-architecture).
 

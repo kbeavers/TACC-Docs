@@ -19,7 +19,7 @@ For all ABAQUS technical questions, contact the customer care for Dassault Syste
 
 ### [License Tokens](#access-license) { #access-license }
 
-**TACC has a limited number of ABAQUS license tokens available.** Please submit a support ticket requesting the license server name.  In this document we'll refer to the license server as <span style="white-space: nowrap;">`port-number@license-server`</span>. In order to use this license server, the ABAQUS users should add the following line to their job script: 
+**TACC has a limited number of ABAQUS license tokens available.** Please submit a support ticket requesting the license server name.  In this document we'll refer to the license server as `port-number@license-server`. In order to use this license server, the ABAQUS users should add the following line to their job script: 
 
 ``` cmd-line
 $ export ABAQUSLM_LICENSE_FILE=port-number@license-server

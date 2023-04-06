@@ -66,7 +66,7 @@ The above command will rotate connections across all available login nodes, `log
 localhost$ ssh username@login2.frontera.tacc.utexas.edu
 ```
 
-To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the <span style="white-space: nowrap;">`-X`</span> or <span style="white-space: nowrap;">`-Y`</span> switch:
+To connect with X11 support on Frontera (usually required for applications with graphical user interfaces), use the `-X` or `-Y` switch:
 
 ```cmd-line
 localhost$ ssh -X username@frontera.tacc.utexas.edu
@@ -96,11 +96,11 @@ $ echo $SHELL
 
 If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC](http://portal.tacc.utexas.edu/) portal. The `chsh` ("change shell") command will not work on TACC systems. 
 
-When you start a shell on Frontera, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: <span style="white-space: nowrap;">`ls -a`</span>.
+When you start a shell on Frontera, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: `ls -a`.
 
-Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the `bash` command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute <span style="white-space: nowrap;">`source ~/.bashrc`</span> from your `.profile`, then put all your customizations in `.bashrc`. The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
+Before editing your startup files, however, it's worth taking the time to understand the basics of how your shell manages startup. Bash startup behavior is very different from the simpler `csh` behavior, for example. The Bash startup sequence varies depending on how you start the shell (e.g. using `ssh` to open a login shell, executing the `bash` command to begin an interactive shell, or launching a script to start a non-interactive shell). Moreover, Bash does not automatically source your `.bashrc` when you start a login shell by using `ssh` to connect to a node. Unless you have specialized needs, however, this is undoubtedly more flexibility than you want: you will probably want your environment to be the same regardless of how you start the shell. The easiest way to achieve this is to execute `source ~/.bashrc` from your `.profile`, then put all your customizations in `.bashrc`. The system-generated default startup scripts demonstrate this approach. We recommend that you use these default files as templates.
 
-For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute <span style="white-space: nowrap;">`/usr/local/startup_scripts/install_default_scripts`</span>.
+For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute `/usr/local/startup_scripts/install_default_scripts`.
 
 #### [Environment Variables](#admin-configuring-envvars) { #admin-configuring-envvars }
 
@@ -222,7 +222,7 @@ $ module help         # show help text for the module system itself
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
-It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use <span style="white-space: nowrap;">`module save`</span> to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Frontera's default startup scripts for a safe way to do so.
+It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use `module save` to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Frontera's default startup scripts for a safe way to do so.
 
 ## [Frontera User Portal](#portal) { #portal }
 
@@ -339,7 +339,7 @@ File System | Characteristics	| Purpose |
 !!! caution
 	The <code>$SCRATCH</code> file system, as its name indicates, is a temporary storage space.  Files that have not been accessed&#42; in ten days are subject to purge.  Deliberately modifying file access time (using any method, tool, or program) for the purpose of circumventing purge policies is prohibited.
 
-&#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the <span style="white-space: nowrap;">`ls -ul`</span> command to view access times.
+&#42;The operating system updates a file's access time when that file is modified on a login or compute node or any time that file is read. Reading or executing a file/script will update the access time.  Use the `ls -ul` command to view access times.
 
 
 
@@ -362,7 +362,7 @@ See the example for fictitious user `bjones` in the figure below. All directorie
 
 **Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar5`, `stampede2`) exist only if you have allocations on the associated system.
 
-Note that resource-specific subdirectories of `$STOCKYARD` are simply convenient ways to manage your resource-specific files. You have access to any such subdirectory from any TACC resources. If you are logged into Frontera, for example, executing the alias `cdw` (equivalent to <span style="white-space: nowrap;">`cd $WORK`</span>) will take you to the resource-specific subdirectory `$STOCKYARD/frontera`. But you can access this directory from other TACC systems as well by executing <span style="white-space: nowrap;">`cd $STOCKYARD/frontera`</span>. These commands allow you to share files across TACC systems. In fact, several convenient account-level aliases make it even easier to navigate across the directories you own in the shared file systems:
+Note that resource-specific subdirectories of `$STOCKYARD` are simply convenient ways to manage your resource-specific files. You have access to any such subdirectory from any TACC resources. If you are logged into Frontera, for example, executing the alias `cdw` (equivalent to `cd $WORK`) will take you to the resource-specific subdirectory `$STOCKYARD/frontera`. But you can access this directory from other TACC systems as well by executing `cd $STOCKYARD/frontera`. These commands allow you to share files across TACC systems. In fact, several convenient account-level aliases make it even easier to navigate across the directories you own in the shared file systems:
 
 #### [Table 3. Built-in Account Level Aliases](#table3) { #table3 } 
 
@@ -588,7 +588,7 @@ As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum numb
 
 ### [More Than One Serial Application in the Same Job](#launching-multiserial)
 
-TACC's `launcher` utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The launcher utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute <span style="white-space: nowrap;">`module load launcher`</span> followed by <span style="white-space: nowrap;">`module help launcher`</span> for more information.
+TACC's `launcher` utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The launcher utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute `module load launcher` followed by `module help launcher` for more information.
 
 ### [MPI Applications One at a Time](#launching-mpisequential)
 
@@ -785,9 +785,9 @@ There are many possibilities: you might elect to launch a single application, or
 
 <p class="msg-info"><a href="../scripts">See the customizable job script examples</a>.</p>
 
-Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your application(s) after loading the same modules that you used to build them**. You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm <span style="white-space: nowrap;">`--export`</span> option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
+Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your application(s) after loading the same modules that you used to build them**. You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm `--export` option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
-Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. <span style="white-space: nowrap;">`-N`</span>) and a long form (e.g. <span style="white-space: nowrap;">`--nodes`</span>). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases <span style="white-space: nowrap;">`#!/bin/bash`</span> or <span style="white-space: nowrap;">`#!/bin/csh`</span> is the right choice. Avoid <span style="white-space: nowrap;">`#!/bin/sh`</span> (its startup behavior can lead to subtle problems on Frontera), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Frontera.
+Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Frontera), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Frontera.
 
 
 #### [Table 6. Common <code>sbatch</code> Options](#-table6) { #table6 } 
@@ -810,7 +810,7 @@ Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) belo
 <code>--mem</code> | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
 <code>--export=</code> | N/A | Avoid this option on Frontera. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
-By default, Slurm writes all console output to a file named <span style="white-space: nowrap;">`slurm-%j.out`</span>, where `%j` is the numerical job ID. To specify a different filename use the <span style="white-space: nowrap;">`-o`</span> option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both <span style="white-space: nowrap;">`-o`</span> and <span style="white-space: nowrap;">`-e`</span>.
+By default, Slurm writes all console output to a file named `slurm-%j.out`, where `%j` is the numerical job ID. To specify a different filename use the `-o` option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both `-o` and `-e`.
 
 
 ### [Interactive Sessions with `idev` and `srun`](#running-interactive) { #running-interactive } 
@@ -877,7 +877,7 @@ C448-004$
 
 ### [Slurm Environment Variables](#running-slurmenvvars) { #running-slurmenvvars } 
 
-Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute <span style="white-space: nowrap;">`env | grep SLURM`</span> from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
+Be sure to distinguish between internal Slurm replacement symbols (e.g. `%j` described above) and Linux environment variables defined by Slurm (e.g. `SLURM_JOBID`). Execute `env | grep SLURM` from within your job script to see the full list of Slurm environment variables and their values. You can use Slurm replacement symbols like `%j` only to construct a Slurm filename pattern; they are not meaningful to your Linux shell. Conversely, you can use Slurm environment variables in the shell portion of your job script but not in an `#SBATCH` directive. For example, the following directive will not work the way you might think:
 
 ```job-script
 #SBATCH -o myMPI.o${SLURM_JOB_ID}   # incorrect
@@ -891,7 +891,7 @@ Instead, use the following directive:
 
 Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` directive.
 
-For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (<span style="white-space: nowrap;">`man slurm`</span>) and its individual commands (e.g. <span style="white-space: nowrap;">`man sbatch`</span>); as well as numerous other online resources.
+For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (`man slurm`) and its individual commands (e.g. `man sbatch`); as well as numerous other online resources.
 
 
 ## [Sample Job Scripts](#jobscripts)
@@ -1420,14 +1420,14 @@ The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a 
 
 #### [MKL with Intel Compilers](#building-mkl-intel)
 
-There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the <span style="white-space: nowrap;">`-mkl`</span> option.; e.g.
+There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the `-mkl` option.; e.g.
 
 ```cmd-line
 $ icc   -mkl mycode.c
 $ ifort -mkl mycode.c
 ```
 
-The `-mkl` switch is an abbreviated form of <span style="white-space: nowrap;">`-mkl=parallel`</span>, which links your code to the threaded version of MKL. To link to the unthreaded version, use <span style="white-space: nowrap;">`-mkl=sequential`</span>. A third option, <span style="white-space: nowrap;">`-mkl=cluster`</span>, which also links to the unthreaded libraries, is necessary and appropriate only when using ScaLAPACK or other distributed memory packages. For additional information, including advanced linking options, see Intel's [MKL documentation](http://software.intel.com/intel-mkl) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor).
+The `-mkl` switch is an abbreviated form of `-mkl=parallel`, which links your code to the threaded version of MKL. To link to the unthreaded version, use `-mkl=sequential`. A third option, `-mkl=cluster`, which also links to the unthreaded libraries, is necessary and appropriate only when using ScaLAPACK or other distributed memory packages. For additional information, including advanced linking options, see Intel's [MKL documentation](http://software.intel.com/intel-mkl) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor).
 
 
 #### [MKL with GNU Compilers](#building-mkl-gnu)
@@ -1448,7 +1448,7 @@ For your convenience the `mkl` module file also provides alternative TACC-define
 
 #### [MKL with BLAS/LAPACK and Third-Party Software](#building-mkl-thirdparty)
 
-When your third-party software requires BLAS or LAPACK, you can use MKL to supply this functionality. Replace generic instructions that include link options like <span style="white-space: nowrap;">`-lblas`</span> or <span style="white-space: nowrap;">`-llapack`</span> with the simpler MKL approach described above. There is no need to download and install alternatives like OpenBLAS.
+When your third-party software requires BLAS or LAPACK, you can use MKL to supply this functionality. Replace generic instructions that include link options like `-lblas` or `-llapack` with the simpler MKL approach described above. There is no need to download and install alternatives like OpenBLAS.
 
 #### [MKL with BLAS/LAPACK and TACC's MATLAB, Python, and R Modules](#building-mkl-blas)
 
@@ -1456,7 +1456,7 @@ TACC's MATLAB, Python, and R modules all use threaded (parallel) MKL as their un
 
 #### [Controlling Threading in MKL](#building-mkl-threading)
 
-Any code that calls MKL functions can potentially benefit from MKL's thread-based parallelism; this is true even if your code is not otherwise a parallel application. If you are linking to the threaded MKL (using <span style="white-space: nowrap;">`-mkl`</span>, <span style="white-space: nowrap;">`-mkl=parallel`</span>, or the equivalent explicit link line), you need only specify an appropriate value for the max number of threads available to MKL. You can do this with either of the two environment variables `MKL_NUM_THREADS` or `OMP_NUM_THREADS`. The environment variable `MKL_NUM_THREADS` specifies the max number of threads available to each instance of MKL, and has no effect on non-MKL code. If `MKL_NUM_THREADS` is undefined, MKL uses `OMP_NUM_THREADS` to determine the max number of threads available to MKL functions. In either case, MKL will attempt to choose an optimal thread count less than or equal to the specified value. Note that `OMP_NUM_THREADS` defaults to 1 on TACC systems; if you use the default value you will get no thread-based parallelism from MKL.
+Any code that calls MKL functions can potentially benefit from MKL's thread-based parallelism; this is true even if your code is not otherwise a parallel application. If you are linking to the threaded MKL (using `-mkl`, `-mkl=parallel`, or the equivalent explicit link line), you need only specify an appropriate value for the max number of threads available to MKL. You can do this with either of the two environment variables `MKL_NUM_THREADS` or `OMP_NUM_THREADS`. The environment variable `MKL_NUM_THREADS` specifies the max number of threads available to each instance of MKL, and has no effect on non-MKL code. If `MKL_NUM_THREADS` is undefined, MKL uses `OMP_NUM_THREADS` to determine the max number of threads available to MKL functions. In either case, MKL will attempt to choose an optimal thread count less than or equal to the specified value. Note that `OMP_NUM_THREADS` defaults to 1 on TACC systems; if you use the default value you will get no thread-based parallelism from MKL.
 
 If you are running a single serial, unthreaded application (or an unthreaded MPI code involving a single MPI task per node) it is usually best to give MKL as much flexibility as possible by setting the max thread count to the total number of hardware threads on the node (56 on CLX). Of course things are more complicated if you are running more than one process on a node: e.g. multiple serial processes, threaded applications, hybrid MPI-threaded applications, or pure MPI codes running more than one MPI rank per node. See [Settings for Calling Intel® Math Kernel Library Routines from Multi-Threaded Applications](http://software.intel.com/en-us/articles/recommended-settings-for-calling-intel-mkl-routines-from-multi-threaded-applications) and related Intel resources for examples of how to manage threading when calling MKL from multiple processes. 
 
@@ -1568,7 +1568,7 @@ The literature on optimization is vast. Some places to begin a systematic study 
 
 **Clock Speed.** The published nominal clock speed of the Frontera CLX processors is 2.7GHz. But [actual clock speed varies widely](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html): it depends on the vector instruction set, number of active cores, and other factors affecting power requirements and temperature limits. At one extreme, a single serial application using the `AVX2` instruction set may run at frequencies approaching 3.7GHz, because it's running on a single core (in fact a single hardware thread). At the other extreme, a large, fully-threaded MKL `dgemm` (a highly vectorized routine in which all cores operate at nearly full throttle) may run at 2.4GHz.
 
-**Vector Optimization and `AVX2`.** In some cases, using the `AVX2` instruction set may produce better performance than `AVX512`. This is largely because cores can run at higher clock speeds when executing `AVX2` code. To compile for `AVX2`, replace the [multi-architecture flags](../building/#architecture-specific-flags) described above with the single flag <span style="white-space: nowrap;">`-xCORE-AVX2`</span>. When you use this flag you will be able to build and run on any Frontera node.
+**Vector Optimization and `AVX2`.** In some cases, using the `AVX2` instruction set may produce better performance than `AVX512`. This is largely because cores can run at higher clock speeds when executing `AVX2` code. To compile for `AVX2`, replace the [multi-architecture flags](../building/#architecture-specific-flags) described above with the single flag `-xCORE-AVX2`. When you use this flag you will be able to build and run on any Frontera node.
 
 **Vector Optimization and 512-Bit ZMM Registers.** If your code can take advantage of wide 512-bit vector registers, you may want to try [compiling for CLX](../building#recommended-compiler) with (for example):
 
@@ -1576,7 +1576,7 @@ The literature on optimization is vast. Some places to begin a systematic study 
 -xCORE-AVX512 -qopt-zmm-usage=high
 ```
 
-The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with 512 intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to <span style="white-space: nowrap;">`-qopt-zmm-usage=low`</span> (the default when compiling for the CLX using <span style="white-space: nowrap;">`CORE-AVX512`)</span>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The <span style="white-space: nowrap;">`qopt-zmm-usage`</span> flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](../building#architecture-specific-flags) when specifying <span style="white-space: nowrap;">`qopt-zmm-usage`</span>. This is because `$TACC_VEC_FLAGS` specifies <span style="white-space: nowrap;">`CORE-AVX2`</span> as the base architecture, and the compiler will ignore <span style="white-space: nowrap;">`qopt-zmm-usage`</span> unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
+The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with 512 intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to `-qopt-zmm-usage=low` (the default when compiling for the CLX using <span style="white-space: nowrap;">`CORE-AVX512`)</span>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The `qopt-zmm-usage` flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](../building#architecture-specific-flags) when specifying `qopt-zmm-usage`. This is because `$TACC_VEC_FLAGS` specifies `CORE-AVX2` as the base architecture, and the compiler will ignore `qopt-zmm-usage` unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
 
 **Task Affinity.** If you run one MPI application at a time, the `ibrun` MPI launcher will spread each node's tasks evenly across an CLX node's two sockets, with consecutive tasks occupying the same socket when possible.
 
