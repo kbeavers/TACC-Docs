@@ -185,29 +185,22 @@ svg.logo [fill]:not([fill="none"]) {
 .wy-menu-vertical li.has-list a button.toctree-expand {
   margin-left: unset; /* undo theme.css */
 
-  /* To expand button over entire link */
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  padding: var(--link-pad-vert) var(--link-pad-horz);
-  width: 100%;
-  text-align: left; /* to prevent width: 100% from moving ::before to center */
+  padding-block: var(--link-pad-vert);
+  width: var(--link-pad-horz);
+  text-align: center;
 }
 .wy-menu-vertical li a .fa::before,
 .wy-menu-vertical li button.toctree-expand::before {
-  /* To move icon */
-  text-indent: calc(
-    -1 * var(--link-pad-horz) * var(--mod, 1)
-  ); /* leftward, outside text */
-  height: 100%; /* upward, inline with first line of mult-line text */
+  /* To move icon upward, inline with first line of mult-line text */
+  height: 100%;
 }
 .wy-menu-vertical li a .fa::before {
-  --mod: 0.8;
+  /* To move icon downward, vertically-aligned center with first line of text */
   transform: translateY(0.125em);
-}
-.wy-menu-vertical li button.toctree-expand::before {
-  --mod: 0.65;
 }
 
 
