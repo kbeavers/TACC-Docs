@@ -47,6 +47,7 @@ extra_javascript:
 
 nav:
   - TACC Basics :
+    - Documentation Overview: index.md
 #    - Data Transfer Guide: basics/datatransferguide.md
     - Good Conduct on HPC Resources: basics/conduct.md
     - Help: basics/help.md
