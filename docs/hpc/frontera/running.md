@@ -78,7 +78,7 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 <figure id="figure2"><img alt="[Figure 2. Login and Compute Nodes" src="../../imgs/login-compute-nodes.jpg">
 <figcaption></figcaption></figure>
 
-You can use your command-line prompt, or the `hostname` command, to discern whether you are on a login node or a compute node. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname <span style="white-space: nowrap;">(e.g. `c401-064`)</span>. The hostname for a Frontera login node begins with the string `login` (e.g. `login2.frontera.tacc.utexas.edu`), while compute node hostnames begin with the character `c` <span style="white-space: nowrap;">(e.g. `c401-064.frontera.tacc.utexas.edu`)</span>. 
+You can use your command-line prompt, or the `hostname` command, to discern whether you are on a login node or a compute node. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname <u>(e.g. `c401-064`)</u>. The hostname for a Frontera login node begins with the string `login` (e.g. `login2.frontera.tacc.utexas.edu`), while compute node hostnames begin with the character `c` <u>(e.g. `c401-064.frontera.tacc.utexas.edu`)</u>. 
 
 While some workflows, tools, and applications hide the details, there are three basic ways to access the compute nodes:
 

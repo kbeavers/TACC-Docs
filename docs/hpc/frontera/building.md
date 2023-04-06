@@ -35,7 +35,7 @@ $ gfortran mycode.f90   -o myexe  # Fortran90 source file
 $ gcc -fopenmp mycode.c -o myexe  # OpenMP; GNU flag is different than Intel
 ```
 
-Note that some compiler options are the same for both Intel and GNU <span style="white-space: nowrap;">(e.g. `-o`)</span>, while others are different (e.g. `-qopenmp` vs `-fopenmp`). Many options are available in one compiler suite but not the other. See the [online GNU documentation](https://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
+Note that some compiler options are the same for both Intel and GNU <u>(e.g. `-o`)</u>, while others are different (e.g. `-qopenmp` vs `-fopenmp`). Many options are available in one compiler suite but not the other. See the [online GNU documentation](https://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
 
 #### [Compiling and Linking as Separate Steps](#building-basics-steps)
 

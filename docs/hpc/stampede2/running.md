@@ -54,8 +54,8 @@ Option | Argument | Comments
 -p | queue_name | Submits to queue (partition) designated by queue_name
 -J |  job_name |  Job Name
 -N | total_nodes | Required. Define the resources you need by specifying either:<br>(1) -N and -n; or<br>(2) -N and --ntasks-per-node. 
--n | total_tasks | This is total MPI tasks in this job. See <span style="white-space: nowrap;">-N</span> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as -N.
-<span style="white-space: nowrap;">--ntasks-per-node</span><br>or<br>--tasks-per-node | tasks_per_node | This is MPI tasks per node. See -N above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set --ntasks-per-node to 1.
+-n | total_tasks | This is total MPI tasks in this job. See <u>-N</u> above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as -N.
+<u>--ntasks-per-node</u><br>or<br>--tasks-per-node | tasks_per_node | This is MPI tasks per node. See -N above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set --ntasks-per-node to 1.
 -t | hh:mm:ss | Required. Wall clock time for job.
 --mail-user= | email_address | Specify the email address to use for notifications. Use with the --mail-type= flag below.
 --mail-type= | begin, end, fail, or  all | Specify when user notifications are to be sent (one option per line).
