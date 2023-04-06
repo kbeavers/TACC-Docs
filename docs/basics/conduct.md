@@ -9,7 +9,7 @@ TACC staff has developed the following guidelines to good conduct on all TACC re
 ## [1. Do Not Run Jobs on the Login Nodes](#conduct-loginnodes) { #conduct-loginnodes }
 
 Each HPC resource's login nodes are shared amongst all users. Depending on the resource, dozens of users may be logged on at one time accessing the shared file systems. 
-A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session ([`idev`](../../software/idev)) or by submitting a batch job.
+A single user running computationally expensive or disk intensive task/s will negatively impact performance for other users. Running jobs on the login nodes is one of the fastest routes to account suspension. Instead, run on the compute nodes via an interactive session <span style="white-space: nowrap">([`idev`](../../software/idev))</span> or by submitting a batch job.
 
 Think of the login nodes as a prep area, where users may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the "back-end" compute nodes. 
 
