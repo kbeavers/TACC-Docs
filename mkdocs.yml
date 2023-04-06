@@ -4,8 +4,10 @@ site_author: Susan Lindsey
 site_url: https://docs.tacc.utexas.edu
 cms_url: https://dev.tup.tacc.utexas.edu # TACC Feature
 cms_name: tacc.utexas.edu # TACC Feature
-repo_url: https://github.com/TACC/TACC-Docs
-edit_uri: edit/main/docs/
+# To suppport "Edit on Github" link
+# SEE: https://www.mkdocs.org/user-guide/configuration/#repo_name
+# repo_url: https://github.com/TACC/TACC-Docs
+# edit_uri: edit/main/docs/
 
 theme:
     name: readthedocs
