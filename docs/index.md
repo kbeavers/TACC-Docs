@@ -7,6 +7,7 @@
 </style>
 
 # TACC Documentation
+
 *April 5, 2023*
 
 ## Welcome to TACC's Technical Documentation and User Guides.  
@@ -30,13 +31,17 @@ Susan writes a blurb. Something about you gotta read this especially the Good Co
 
 ///// html | a.card--plain[href="./basics/conduct/"]
      markdown: block
-### Good Conduct
+
+## Good Conduct
+
 Good conduct by all users on an HPC system is essential to its smooth operation.
 /////
 
 ///// html | a.card--plain[href="./tutorials/help/"]
      markdown: block
-### Help
+
+## Help
+
 Contact the help desk.  
 Tips when submitting a support ticket.  
 FAQ 
@@ -46,6 +51,7 @@ FAQ
 
 
 /// html | section.section--light.section--has-border
+
 # HPC User Guides
 
 //// html | div.grid
@@ -56,13 +62,17 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 
 ///// html | a.card--plain[href="./hpc/frontera/"]
      markdown: block
+
 ## Frontera User Guide
+
 One liner description of Frontera
 /////
 
 ///// html | a.card--plain[href="./hpc/lonestar6/"]
      markdown: block
+
 ## Lonestar6 User Guide
+
 One liner description of Lonestar6
 /////
 ////
@@ -81,20 +91,24 @@ Each guide contains sample job scripts per resource where applicable and any spe
 
 ///// html | a.card--plain[href="./software/idev/"]
      markdown: block
+
 ## idev
+
 /////
 
 ///// html | a.card--plain[href="./software/vasp/"]
      markdown: block
+
 ## VASP
+
 /////
 ////
 ///
 
 /// html | section.section--light.section--has-border
 
-
 # TACC Tutorials
+
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
@@ -103,11 +117,15 @@ Our tutorials cover a wide range of topics from configuring your account to debu
 
 ///// html | a.card--plain[href="./tutorials/sharingprojectfiles/"]
      markdown: block
+
 ## Sharing Project Files
+
 /////
 ///// html | a.card--plain[href="./tutorials/remotedesktopaccess/"]
      markdown: block
+
 ## Remote Desktop Access
+
 /////
 ////
 ///
@@ -125,17 +143,23 @@ Some text here
 
 ///// html | a.card--plain[href="./xxx"]
      markdown: block
-### Training
+
+## Training
+
 /////
 
 ///// html | a.card--plain[href="./xxx"]
      markdown: block
-### TACC YouTube
+
+## TACC YouTube
+
 /////
 
 ///// html | a.card--plain[href="./xxx"]
      markdown: block
-### Cornell Videos
+
+## Cornell Videos
+
 /////
 ////
 ///
@@ -162,4 +186,3 @@ For additional HPC training, check out the following resources and contacts:
 - TACC Institute Series - Multi-day courses meant to enhance users knowledge of broad HPC topics.
 - Some External Resource - E.g. Cornell workshop.
 -->
-
