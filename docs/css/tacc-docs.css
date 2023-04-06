@@ -432,6 +432,9 @@ u, /* "unarticulated" demarkation of phrases that should not wrap */
 code /* snippets of code should never(?) wrap */ {
   white-space: nowrap;
 }
+u {
+  text-decoration: none; /* undo browser default */
+}
 
 
 
