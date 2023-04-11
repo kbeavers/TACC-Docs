@@ -6,22 +6,21 @@
 }
 </style>
 
-# TACC Documentation
+# Documentation Overview
+*April 7, 2023*
 
-*April 5, 2023*
+**Welcome to TACC's Technical Documentation and User Guides.**
 
-## Welcome to TACC's Technical Documentation and User Guides.  
+TACC's technical documentation is broadly divided into three categories: HPC User Guides, Software Packages at TACC, and Tutorials. 
 
-TACC's technical documentation is broadly divided into three categories: HPC User Guides, Software Packages at TACC and Tutorials. 
+All documentation is accessible via the left-hand navigation. Continue reading for an overview of each section, along with a few links to get you started.
 
-All documentation is accessible via the left-hand navigation. Continue reading for an overview of each section, along with a couple links to get you started.
-
-If you're brand new to TACC and want to jump right in, check out our Getting Started and Allocations pages.  See Additional Training below for additional HPC training resources. 
+If you're brand new to TACC and want to jump right in, check out our Getting Started and Allocations pages.  See Additional Training below for more  HPC training resources. 
 
 
 /// html | section.section--muted.section--has-border
 
-# TACC HPC Essentials
+# TACC Essentials
 
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
@@ -42,9 +41,9 @@ Good conduct by all users on an HPC system is essential to its smooth operation.
 
 ## Help
 
-Contact the help desk.  
-Tips when submitting a support ticket.  
-FAQ 
+* Our support team
+* Contact the help desk
+* Tips when submitting a support ticket  
 /////
 ////
 ///
@@ -175,7 +174,6 @@ For additional HPC training, check out the following resources and contacts:
 * software search
 * allocation managers
 
-### Training Resources
 
 * Our Training Links
 * CI

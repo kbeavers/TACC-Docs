@@ -1,7 +1,7 @@
 # Multifactor Authentication at TACC 
-*Last update: January 14, 2022*
+*Last update: April 11, 2023 in progress*
 
-TACC requires Multi-Factor Authentication (MFA) as an additional security measure when accessing all compute and storage resources.  To set up MFA pairing at TACC on your approved account, proceed directly to the [TACC pairing page](http://portal.tacc.utexas.edu/account-profile/-/mfa/pairing).
+TACC requires Multi-Factor Authentication (MFA) as an additional security measure when accessing all compute and storage resources.  To set up MFA pairing at TACC on your approved account, proceed directly to the [TACC pairing page](https://tacc.utexas.edu/portal/mfa).
 
 ## [What is Multi-Factor Authentication?](#whatismfa) { #whatismfa }
 
@@ -9,37 +9,40 @@ Authentication is the process of determining if you are you. Traditional methods
 
 ## [Setting up MFA at TACC](#setupmfa) { #setupmfa }
 
-!!! note
-	If you are trying to set up MFA on a new account, you will not be able to generate a QR Code until after your account request is accepted by TACC Staff. Account requests are usually approved within 24 hours.
+!!! important
+	You will not be able to pair a new device or generate a QR Code if you are trying to set up MFA on a new account until after your account request is accepted by TACC Staff. Account requests are usually approved within 24 hours.
 
 ### [1. Manage Profile](#setupmfa-step1) { #setupmfa-step1 }
 
-To pair a new device, sign in to the TACC User Portal and click on the "Manage Profile" link in the right corner. Users who've not set up MFA before will see a message similar to Figure 1.
+To pair a new device, click on the "Manage Profile" link of the right corner and sign in to the TACC Portal.  
 
+<table border="1"><tr>
+<td><figure id="figure1a"><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-manage-account-2.png"> 
+<figcaption>Figure 1a.</figcaption></figure></td>
+<td><figure id="figure1b"><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-manage-account-1.png"> 
+<figcaption>Figure 1b.</figcaption></figure></td>
+</tr></table>
+
+<!-- Users who've not set up MFA before will see a message similar to Figure 1.
 <figure id="figure1"><img border="1" alt="" src="../../imgs/tutorials/MFA-1.png" style="width:50%">
-<figcaption>Figure 1. Profile with no MFA enabled</figcaption></figure>
+<figcaption>Figure 1. Profile with no MFA enabled</figcaption></figure> -->
 
-Click "Pair a Device" to get to the TACC device pairing page. Here you'll be presented with two different pairing methods. Users may authenticate with one and only one method. It's easy to pair and unpair using either of the first two methods. 
+From the "Manage Account" page, click "Pair a Device" to get to the TACC device pairing page. Here you'll be presented with two different pairing methods. Users may authenticate with one and only one method. It's easy to pair and unpair using either of the first two methods. 
 
-<figure id="figure2"><img alt="" src="../../imgs/tutorials/MFA-2.png" style="width:50%"> 
-<figcaption>Figure 2. Select Pairing Method</figcaption></figure>
+<figure><img border="1" alt="Pair Device" src="../../imgs/tutorials/mfa-pairdevice.png" style="size:50%"> <figcaption></figcaption></figure>
 	
 ### [2. Select Pairing Method](#setupmfa-step2) { #setupmfa-step2 }
 
-TACC offers two mutually exclusive authentication (pairing) methods.  
+TACC offers two mutually-exclusive authentication (pairing) methods: 
+* authenticator applications such as Google Authenticator, Duo
+* standard SMS text messaging.
 
-* [Multi-Factor Authentication Apps](#mfaapps)
+!!! important
+	Users located outside the U.S. **must** pair using a [Multi-Factor Authentication app](#mfaapps) method. Because the cost associated with sending multiple international text messages is prohibitive, international users may NOT set up multi-factor authentication with SMS.
 
-	Users with Apple iOS and Android devices may set up device pairing using a variety of authentication applications, as well as the TACC Token app, available for both <a href="https://itunes.apple.com/us/app/tacc-token/id1081516137?mt=8">Android</a> and <a href="https://itunes.apple.com/us/app/tacc-token/id1081516137?mt=8">iPhone</a> devices.
+####  [Authentication Apps](#mfaapps) { #mfaapps }
 
-* [SMS Text Messaging](#sms)
-
-	Users may instead enable multi-factor authentication with SMS, standard text messaging.”
-
-!!! note
-	Users located outside the U.S. **must** pair using a [Multi-Factor Authentication app](#mfaapps) of your choice. Because the cost associated with sending multiple international text messages is prohibitive, international users may NOT set up multi-factor authentication with SMS.
-
-####  [MFA Authentication Apps](#mfaapps) { #mfaapps }
+Users with Apple iOS and Android devices may set up device pairing using a variety of authentication applications available for both <a href="https://itunes.apple.com/us/app/tacc-token/id1081516137?mt=8">Android</a> and <a href="https://itunes.apple.com/us/app/tacc-token/id1081516137?mt=8">iPhone</a> devices.
 
 Download and install your preferred MFA App on your Apple IOS or Android device, then follow the app instructions to pair your mobile device.  Table 1. features a few of the more popular applications along with links to the respective Apple App and Google Play stores.
 
@@ -59,52 +62,61 @@ When logging into a TACC resource you'll be prompted for your standard password,
 
 **This token code is valid for this login session only and cannot be re-used.  It may take up to 60 seconds for the text to reach you.  We advise you to clear out your text messages in order to avoid confusion during future logins.**
 
-<table border="1"><tr>
+<!-- <table border="1"><tr>
 <td><figure id="figure3a"><img border="1" alt="" src="../../imgs/tutorials/MFA-3a.png" style="width:50%">
 <figcaption>Figure 3a. SMS pairing code</figcaption></figure></td>
 <td><figure id="figure3b"><img border="1" alt="" src="../../imgs/tutorials/MFA-3b.png" style="width:50%">
-<figcaption>Figure 3b. Pairing with SMS</figcaption></figure></td></tr></table>
+<figcaption>Figure 3b. Pairing with SMS</figcaption></figure></td></tr></table> -->
 
-## [Example: Pairing with TACC Token App](#tacctokenapp) { #tacctokenapp }
+## [Example: Pairing with an Authentication App](#authapp) { #authapp }
 
-Here we demonstrate pairing with the TACC Token App, though you may use any any MFA app you like.  
+This tutorial demonstrates pairing with the Duo App, though you may use any any MFA app you like. 
 
-Begin by pressing the "Use Your Preferred Authenticator App to Pair" button on the portal (Figure 2. above).  A personalized QR code will be generated on your computer screen as in Figure 4. below. 
+Begin by pressing the "Pair Device" button in the upper-right corner of "Manage Account" page.
 
-<figure id="figure4"><img alt="" src="../../imgs/tutorials/MFA-4.png" style="width:50%"> 
-<figcaption> Figure 4. Scan the generated QR code on your screen</figcaption></figure>
+<figure><img border="1" alt="Pair Device" src="../../imgs/tutorials/mfa-pairdevice.png" style="size:50%"> <figcaption></figcaption></figure>
 
-3. Open the TACC Token App on your device. Your mobile device screen should appear similar to Figure 5a. Tap the "+" in the lower right corner of the app to start the pairing process.  The app will launch the mobile device's camera.  Scan the generated QR code on your computer screen.  Do not scan the image on this tutorial's page. 
+Select "Token App" from the Authentication Pairing page, then click on the empty box to generate a personalized QR code:
 
-<table border="1"><tr>
-<td><figure id="figure5a"><img border="1" src="../../imgs/tutorials/MFA-5a.png" style="width:50%"> 
-<figcaption > Figure 5a.</figcaption></figure></td>
-<td><figure id="figure5b"><img border="1" alt="" src="../../imgs/tutorials/MFA-5b.png" style="width:50%">
-<figcaption> Figure 5b. TACC Token App<br>generating token code</figcaption></figure></td></tr></table>
+<table border="0"><tr>
+<td><figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-authenticationpairing-1.png" style="size:50%"> <figcaption></figcaption></figure>  </td>
+<td><figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-authenticationpairing-2.png" style="size:50%"> <figcaption></figcaption></figure>  </td>
+</tr></table>
+
+
+Open the Duo App on your device. Your mobile device screen should appear similar to Figure 5a. Tap the "+" in the lower right corner of the app to start the pairing process.  The app will launch the mobile device's camera.  Scan the generated QR code on your computer screen.  Do not scan the image on this tutorial's page. 
+
+<table border="2"><tr>
+<td><figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-duo-code.png"> <figcaption></figcaption></figure></td>
+<td><figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-authenticationpairing-3.png"> <figcaption></figcaption></figure></td>
+</tr></table>
+
+
+<figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-pairingsuccessful.png" style="size:50%"> <figcaption></figcaption></figure>
 
 ## [Logging into TACC Resources](#login) { #login }
 
 A typical login session will look something like this:
 
-``` cmd-line
-localhost$ ssh bjones@maverick2.tacc.utexas.edu
+``` 
+slindsey@TACCs-MacBook-Pro-2 ~ % ssh -l slindsey ls6.tacc.utexas.edu
 To access the system:
 
 1) If not using ssh-keys, please enter your TACC password at the password prompt
-2) At the TACC Token prompt, enter your 6-digit code followed by <return>.
+2) At the TACC Token prompt, enter your 6-digit code followed by <return>.  
 
-<span style="color: blue;">Password: </span></span>
-<span style="color: blue;">TACC Token Code:</span></span>
-Last login: Mon Nov  1 18:42:37 2021 from 76.167.191.93
+(slindsey@ls6.tacc.utexas.edu) Password: 
+(slindsey@ls6.tacc.utexas.edu) TACC Token Code:
+Last login: Fri Jan 13 11:01:11 2023 from 70.114.210.212
 ------------------------------------------------------------------------------
-            		Welcome to the Maverick2 Supercomputer
- 	Texas Advanced Computing Center, The University of Texas at Austin
+Welcome to the Lonestar6 Supercomputer
+Texas Advanced Computing Center, The University of Texas at Austin
 ------------------------------------------------------------------------------
-...
 
-login1.maverick2(399)$ 
+&#42;&#42;&#42;&#42;
+
+slindsey@login2.ls6:/home1/01158/slindseylogin2.ls6(413)$ .....
 ```
-
 
 After typing in your password, you'll be prompted for "**`TACC Token Code:`**".  At this point, turn to your mobile device/phone.  
 
@@ -113,10 +125,10 @@ After typing in your password, you'll be prompted for "**`TACC Token Code:`**". 
 * If you've paired with SMS, you'll receive a text message containing a six digit verification code (figure 9a).  Enter this code at the **`TACC Token Code:`** prompt.  Please note that it may take up to 60 seconds for the text containing the token code to reach you.  Each token code is valid for one login only and cannot be re-used.  
 
 
-<table border="1"><tr>
-<td><figure id="figure6a"><img alt="" src="../../imgs/tutorials/MFA-6a.png" style="width:50%">
+<table border="0"><tr>
+<td><figure id="figure6a"><img alt="" src="../../imgs/tutorials/MFA-6a.png">
 <figcaption> Figure 6a. SMS token code </figcaption></figure></td>
-<td><figure id="figure6b"><img border="1" alt="" src="../../imgs/tutorials/MFA-6b.png" style="width:50%">
+<td><figure id="figure6b"><img border="1" alt="" src="../../imgs/tutorials/MFA-6b.png">
 <figcaption> Figure 6b. TACC Token App token code</figcaption></figure></td></tr></table>
 
 ## [International Users and Travelers](#international) { #international }
@@ -135,4 +147,5 @@ On the next screen (Figure 8.) you'll be asked to to confirm the unpairing.  Sim
 
 <figure id="figure8"><img border="1" alt="SMS Unpairing" src="../../imgs/tutorials/MFA-8.png" style="width:50%">
 <figcaption> Figure 8. Unpairing TACC Token App or SMS pairings</figcaption></figure>
+
 
