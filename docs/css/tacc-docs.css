@@ -68,7 +68,7 @@ svg.logo [fill]:not([fill="none"]) {
 .wy-nav-side {
   --pad-horz: 25px; /* NOTE: design is 24.5px (left) and 11.5px (right) */
   --link-pad-vert: 0.375em; /* NOTE: design is 25px */
-  --link-pad-horz: 20px; /* NOTE: design is 13.5px, but fat icon needs room */
+  --link-pad-horz: 25px; /* NOTE: dev tweaked until everyone said ok */
 }
 
 
