@@ -154,7 +154,7 @@ svg.logo [fill]:not([fill="none"]) {
 }
 .wy-menu-vertical li.on ul,
 .wy-menu-vertical li.current ul {
-  padding-left: calc( var(--link-pad-horz) + var(--button-space) );
+  padding-left: var(--link-pad-horz);
   padding-bottom: 10px;
 }
 /* .wy-menu-vertical header, *//* NOTE: not seen in markup yet */
@@ -172,7 +172,8 @@ svg.logo [fill]:not([fill="none"]) {
 
 .wy-menu-vertical {
   --button-width: 1ch; /* estimate, based on icon (e.g. ▾, ▸) */
-  --button-buffer: 0.5em;
+  --button-margin: 0.5em;
+  --button-buffer: calc( var(--button-margin) * 2 );
   --button-space: calc( var(--button-width) + var(--button-buffer) );
 }
 .wy-menu-vertical li a {
@@ -189,9 +190,14 @@ svg.logo [fill]:not([fill="none"]) {
   top: 0;
   left: 0;
   bottom: 0;
+  margin-inline: var(--button-margin);
   padding-block: var(--link-pad-vert);
-  width: var(--link-pad-horz);
+  width: var(--button-width);
   text-align: center;
+}
+.wy-menu-vertical li.has-list a,
+.wy-menu-vertical li a:not(.internal) {
+  padding-left: var(--button-space);
 }
 .wy-menu-vertical li a .fa::before,
 .wy-menu-vertical li button.toctree-expand::before {
