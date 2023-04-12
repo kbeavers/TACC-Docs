@@ -1,4 +1,4 @@
-## [Running Jobs on the Compute Nodes](#running) { #running }
+## [Running Jobs](#running) { #running }
 
 {% include 'include/stampede2-jobaccounting.md' %}
 
@@ -10,7 +10,7 @@ Stampede2's job scheduler is the [Slurm Workload Manager](http://schedmd.com). S
 
 Currently available queues include those in [Stampede2 Production Queues](#table5). See [KNL Compute Nodes](#overview-phase1computenodes), [SKX Compute Nodes](#overview-skxcomputenodes), [Memory Modes](#programming-knl-memorymodes), and [Cluster Modes](#programming-knl-clustermodes) for more information on node types.
 
-#### [Table 5. Stampede2 Production Queues](#table5) { #table5 }
+#### [Table 5. Production Queues](#table5) { #table5 }
 
 Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Duration | Max Jobs in Queue &#42; | Charge Rate<br /> (per node-hour) 
 --- | --- | --- | --- | --- | ---

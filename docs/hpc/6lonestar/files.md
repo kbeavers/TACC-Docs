@@ -1,7 +1,7 @@
-## [Managing Files on Lonestar6](#files) { #files }
+## [Managing Files](#files) { #files }
 
 
-### [Table 3. Lonestar6 File Systems](#files-table3) { #table3 }
+### [Table 3. File Systems](#files-table3) { #table3 }
 
 File System | Quota | Key Features
 --- | --- | ---
@@ -44,7 +44,7 @@ Alias | Command
 
 ### [Transferring your Files](#files-transferring) { #files-transferring }
 
-#### [Transferring Files with `scp`](#files-transferring-scp) { #files-transferring-scp }
+#### [Transferring with `scp`](#files-transferring-scp) { #files-transferring-scp }
 
 You can transfer files between Lonestar6 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows SSH clients typically include `scp`-based file transfer capabilities.
 
@@ -92,7 +92,7 @@ localhost$ tar cvf ./mydata.tar mydata                                  # create
 localhost$ scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive
 ```
 
-#### [Transferring Files with `rsync`](#files-transferring-rsync) { #files-transferring-rsync }
+#### [Transferring with `rsync`](#files-transferring-rsync) { #files-transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 

@@ -1,4 +1,4 @@
-## [Machine Learning on Frontera](#ml) { #ml }
+## [Machine Learning](#ml) { #ml }
 
 Frontera is well equipped to provide researchers with the latest in Machine Learning frameworks, PyTorch and Tensorflow. We recommend using the Python virtual environment to manage machine learning packages.
 

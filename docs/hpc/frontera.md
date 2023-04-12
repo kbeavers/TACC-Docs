@@ -1,13 +1,12 @@
 # Frontera User Guide
 Last update: September 15, 2022
-<a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>
+<!--<a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
-## [Status Updates and Notices](#notices) { #notices }
+## [Notices](#notices) { #notices }
 
-* **All users: refer to updated [Remote Desktop Access](#remote-desktop-access) instructions.** (07/21/2021)
-* **New Queue: A new queue: `small` has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#frontera-production-queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues. (03-30-21) 
+* **New Queue: A new queue: `small` has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#frontera-production-queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues.
 
-## [Introduction to Frontera](#intro) { #intro } 
+## [Introduction](#intro) { #intro } 
 
 Frontera is funded by the National Science Foundation (NSF) through award #1818253, [Computing for the Endless Frontier](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1818253). It is the largest cluster dedicated to open science in the United States and is the Texas Advanced Computing Center's latest flagship system. Frontera enters production in early summer 2019, building on the successes of the Stampede1 and Stampede2 systems.  
 
@@ -21,7 +20,7 @@ Following the initial CPU-only rollout, the system will also provide users with 
 
 Frontera's design also includes a totally new integration with web services, and provides users with new options for data storage and access to emerging computer technologies. The award includes an innovative partnership with the three major commercial cloud providers, Google, Amazon and Microsoft, to provide users with additional high-integrity storage, sustainable archive options, and to keep the project regularly refreshed with novel computing technologies. 
 
-## [Quickstart for Experienced Users](#quickstart) { #quickstart }
+## [Quickstart](#quickstart) { #quickstart }
 
 Experienced HPC/TACC users will be very familiar with many of the topics presented in this guide. Here we'll highlight some sections for a quick start on Frontera.
 
@@ -307,7 +306,7 @@ Frontera's four login nodes are Intel Xeon Platinum 8280 ("Cascade Lake") nodes 
 The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) connectivity between the switches and HDR100 (100 Gb/s) connectivity to the compute nodes. A fat tree topology employing six core switches connects the compute nodes and the `$HOME` and `$SCRATCH` filesystems. There are two 40-port leaf switches in each rack. Half of the nodes in a rack (44) connect to 22 downlinks of a leaf switch as pairs of HDR100 (100 Gb/s) links into HDR200 (200 Gb/s) ports of the leaf switch. The other 18 ports are uplinks to the six cores switches. The disparity in the number of uplinks and downlinks creates an oversubscription of 22/18.
 
 
-## [Managing Files on Frontera](#files) { #files }
+## [Managing Files](#files) { #files }
 
 Frontera mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.
 
@@ -316,7 +315,7 @@ Frontera mounts three Lustre file systems that are shared across all nodes: the 
 
 Frontera's startup mechanisms define corresponding account-level environment variables <code>$HOME</code>, <code>$SCRATCH</code> and <code>$WORK</code><!--,and <code>$FASTIO</code>--> that store the paths to directories that you own on each of these file systems. Consult the <a href="#table-2-frontera-file-systems">Frontera File Systems</a> table below for the basic characteristics of these file systems, <!--"File Operations: I/O Performance" for advice on performance issues,--> and the <a href="../conduct">Good Conduct</a> sections for guidance on file system etiquette.</p>
 
-#### [Table 2. Frontera File Systems](#table2) { #table2 } 
+#### [Table 2. File Systems](#table2) { #table2 } 
 
 File System | Quota | Key Features
 -------     | ------- | -------
@@ -535,7 +534,7 @@ If you wish to share files and data with collaborators in your project, see [Sha
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section.
 
-### [Launching One Serial Application](#launching-serial)
+### [One Serial Application](#launching-serial)
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 	
@@ -546,7 +545,7 @@ $SCRATCH/apps/myprov/myprogram 			# explicit full path to executable
 ./myprogram -m -k 6 input1  			# executable with notional input options
 ```
 
-### [Launching One Multi-Threaded Application](#launching-multithreaded)
+### [One Multi-Threaded Application](#launching-multithreaded)
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
@@ -555,7 +554,7 @@ export OMP_NUM_THREADS=56   	# 56 total OpenMP threads (1 per CLX core)
 ./myprogram
 ```
 
-### [Launching One MPI Application](#launching-mpi)
+### [One MPI Application](#launching-mpi)
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Frontera-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -572,7 +571,7 @@ login1$ idev -N 2 -n 100
 c123-456$ ibrun ./myprogram	   # ibrun uses idev's arguments to properly allocate nodes and tasks
 ```
 
-### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid)
+### [One Hybrid (MPI+Threads) Application](#launching-hybrid)
 
 <!-- span style="color:red">Hyperthreading is not currently enabled on Frontera.</span> -->
 
@@ -675,7 +674,7 @@ env OMP_PLACES="{1,57},28,2" ./omp.exe &   #execution on socket 1 cores
 wait
 ```
 
-## [Running Jobs on the Compute Nodes](#running) { #running }
+## [Running Jobs](#running) { #running }
 
 <p class="introtext">Frontera's job scheduler is the <a href="http://schedmd.com">Slurm Workload Manager</a>. Slurm commands enable you to submit, manage, monitor, and control your jobs. Jobs submitted to the scheduler are queued, then run on the compute nodes. Each job consumes Service Units (SUs) which are then charged to your allocation.</p>
 
@@ -1285,7 +1284,7 @@ For more information see the [Slurm online documentation](http://www.schedmd.com
 
 <p class="introtext">The phrase "building software" is a common way to describe the process of producing a machine-readable executable file from source files written in C, Fortran, or some other programming language. In its simplest form, building software involves a simple, one-line call or short shell script that invokes a compiler. More typically, the process leverages the power of <a href="http://www.gnu.org/software/make/manual/make.html">makefiles</a>, so you can change a line or two in the source code, then rebuild in a systematic way only the components affected by the change. Increasingly, however, the build process is a sophisticated multi-step automated workflow managed by a special framework like <a href="http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html">autotools</a> or <a href="http://cmake.org"><code>cmake</code></a>, intended to achieve a repeatable, maintainable, portable mechanism for installing software across a wide range of target platforms.</p>
 
-### [The Basics of Building Software](#building-basics)
+### [Basics of Building Software](#building-basics)
 
 This section of the user guide does nothing more than introduce the big ideas with simple one-line examples. You will undoubtedly want to explore these concepts more deeply using online resources. You will quickly outgrow the examples here. We recommend that you master the basics of makefiles as quickly as possible: even the simplest computational research project will benefit enormously from the power and flexibility of a makefile-based build process.
 
@@ -1599,7 +1598,7 @@ This section includes general advice intended to help you achieve good performan
 
 When using the Intel Fortran compiler, **compile with [`-assume buffered_io`](https://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-assume)**. Equivalently, set the environment variable [`FORT_BUFFERED=TRUE`](https://software.intel.com/en-us/node/680054). Doing otherwise can dramatically slow down access to variable length unformatted files. More generally, direct access in Fortran is typically faster than sequential access, and accessing a binary file is faster than ASCII.
 
-## [Machine Learning on Frontera](#ml) { #ml }
+## [Machine Learning](#ml) { #ml }
 
 Frontera is well equipped to provide researchers with the latest in Machine Learning frameworks, PyTorch and Tensorflow. We recommend using the Python virtual environment to manage machine learning packages.
 
@@ -1754,7 +1753,7 @@ Follow these instructions to install and run TensorFlow benchmarks on Frontera R
 #### [Multi-Node](#ml-tensorflow-multi) { #ml-tensorflow-multi }
 
 *Coming Soon*
-## [Visualization and Virtual Network Computing (VNC) Sessions](#vis)
+## [Visualization and VNC Sessions](#vis)
 
 <p class="introtext">Frontera uses Intel's Cascade Lake (CLX) processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing <code>module load swr</code>.</p>
 
@@ -1909,7 +1908,7 @@ After connecting to a VNC server on Frontera, as described above, do the followi
 
 See the [Transferring Files](../transferring) section to learn how to transfer your datasets to Frontera, prior to starting a Jupyter session.
 
-### [Launch a Jupyter session](#jupyter-launch) { #jupyter-launch }
+### [Launch a Session](#jupyter-launch) { #jupyter-launch }
 
 You can launch a Jupyter session via the Frontera User Portal.
 
@@ -2349,7 +2348,7 @@ You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulti
 
 * **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
 
-## [References](#rfs) { #refs }
+## [References](#refs) { #refs }
 
 
 * [Multi-Factor Authentication at TACC](../../tutorials/mfa)

@@ -11,7 +11,9 @@ Stampede2 hosts 4,200 KNL compute nodes, including 504 KNL nodes that were forme
 
 Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Memory (RAM). They also feature an additional 16GB of high bandwidth, on-package memory known as Multi-Channel Dynamic Random Access Memory (**MCDRAM**) that is up to four times faster than DDR4. The KNL's memory is configurable in two important ways: there are BIOS settings that determine at boot time the processor's **memory mode** and **cluster mode**. The processor's **memory mode** determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The **cluster mode** determines the mechanisms for achieving cache coherency, which in turn determines latency: roughly speaking, this mode specifies the degree to which some memory addresses are "closer" to some cores than to others. See "[Programming and Performance: KNL](#programming-knl)" below for a top-level description of these and other available memory and cluster modes.
 
-#### [Table 1. Stampede2 KNL Compute Node Specifications](#table1)   { #table1 }
+#### [Table 1. KNL Compute Node Specifications](#table1)   { #table1 }
+
+Table 1. Stampede2 KNL Compute Node Specifications.
 
 Specification | Value
 --- | ---

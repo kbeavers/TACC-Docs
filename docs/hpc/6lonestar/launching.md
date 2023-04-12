@@ -2,7 +2,7 @@
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section.</p>
 
-### [Launching One Serial Application](#launching-serial) { #launching-serial }
+### [One Serial Application](#launching-serial) { #launching-serial }
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
@@ -18,7 +18,7 @@ $SCRATCH/apps/mydir/myprogram			# explicit full path to executable
 Consult the [Launcher at TACC](/software/launcher) documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
 
 
-### [Launching One Multi-Threaded Application](#launching-multithreaded) { #launching-multithreaded }
+### [One Multi-Threaded Application](#launching-multithreaded) { #launching-multithreaded }
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
@@ -27,7 +27,7 @@ export OMP_NUM_THREADS=128   	# 128 total OpenMP threads (1 per core)
 ./myprogram
 ```
 
-### [Launching One MPI Application](#launching-mpi) { #launching-mpi }
+### [One MPI Application](#launching-mpi) { #launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Lonestar6-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -46,7 +46,7 @@ login1$ idev -N 2 -n 100
 c309-005$ ibrun ./myprogram
 ```
 
-### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
+### [One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 

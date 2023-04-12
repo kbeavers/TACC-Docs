@@ -96,6 +96,16 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's 112 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
+### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
+
+You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
+
+``` cmd-line
+login1$ sbatch --dependency=afterok:173210 myjobscript
+```
+
+For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
+
 
 ### [Other Job Management Commands](#jobs-other) { #jobs-other }
 
@@ -123,14 +133,4 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 ```cmd-line
 login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this date
 ```
-
-### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
-
-You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
-
-```cmd-line
-login1$ sbatch --dependency=afterok:173210 myjobscript
-```
-
-For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
 

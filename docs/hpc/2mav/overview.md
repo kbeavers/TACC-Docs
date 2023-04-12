@@ -6,7 +6,7 @@ Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs
 
 Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
 
-#### [Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+#### [Table 1. GTX Compute Node Specifications](#table1)
 
 Specification | Value
 --- | ---
@@ -27,7 +27,7 @@ GPUs: | 4 x NVidia 1080-TI GPUs
 
 Maverick2 has 4 V100 compute nodes.
 
-#### [Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+#### [Table 2. V100 Compute Node Specifications](#table2)
 
 Specification | Value
 --- | ---
@@ -48,7 +48,7 @@ GPUs: | 2 NVidia  V100 adapters
 
 Maverick2 has 3 P100 nodes.
 
-#### [Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+#### [Table 3. P100 Compute Node Specifications](#table3)
 
 Specification | Value
 --- | ---

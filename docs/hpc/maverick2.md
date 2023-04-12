@@ -20,7 +20,7 @@ Maverick2 hosts the following GPUs: 24 nodes each with 4 NVidia GTX 1080 Ti GPUs
 
 Maverick2 hosts 24 GTX compute nodes. One GTX node is reserved for staff use, leaving 23 nodes available for general use.
 
-#### [Table 1. Maverick2 GTX Compute Node Specifications](#table1)
+#### [Table 1. GTX Compute Node Specifications](#table1)
 
 Specification | Value
 --- | ---
@@ -41,7 +41,7 @@ GPUs: | 4 x NVidia 1080-TI GPUs
 
 Maverick2 has 4 V100 compute nodes.
 
-#### [Table 2. Maverick2 V100 Compute Node Specifications](#table2)
+#### [Table 2. V100 Compute Node Specifications](#table2)
 
 Specification | Value
 --- | ---
@@ -62,7 +62,7 @@ GPUs: | 2 NVidia  V100 adapters
 
 Maverick2 has 3 P100 nodes.
 
-#### [Table 3. Maverick2 P100 Compute Node Specifications](#table3)
+#### [Table 3. P100 Compute Node Specifications](#table3)
 
 Specification | Value
 --- | ---
@@ -122,7 +122,7 @@ To report a connection problem, execute the `ssh` command with the `-vvv` option
 
 Maverick2 mounts two Lustre file systems that are shared across all nodes: the home and work file systems. Maverick2's startup mechanisms define corresponding account-level environment variables, `$HOME` and `$WORK`, that store the paths to directories that you own on each of these file systems. Maverick2's home file system is mounted only on Maverick2, but the work file system mounted on Maverick2 is the Global Shared File System hosted on [Stockyard](https://www.tacc.utexas.edu/systems/stockyard). This is the same work file system that is currently available on Stampede2, Frontera, Lonestar6, and several other TACC resources.
 
-### [Table 4. Maverick2 File Systems](#table4)
+### [Table 4. File Systems](#table4)
 
 File System | Quota | Key Features
 --- | --- | ---
@@ -238,7 +238,7 @@ Remember that it's not possible to change the striping on a file that already ex
 
 
 
-## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
+## [Running Jobs](#running) { #running}
 
 {% include 'include/tinfo.md' %}
 
@@ -581,7 +581,7 @@ Follow the steps below to start an interactive session.
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
 
-## [Software on Maverick2](#software) { #software }
+## [Software](#software) { #software }
 
 As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
 

@@ -1,4 +1,4 @@
-## [Running Jobs on the Maverick2 Compute Nodes](#running) { #running}
+## [Running Jobs](#running) { #running}
 
 {% include 'include/tinfo.md' %}
 

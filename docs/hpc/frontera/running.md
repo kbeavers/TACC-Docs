@@ -1,4 +1,4 @@
-## [Running Jobs on the Compute Nodes](#running) { #running }
+## [Running Jobs](#running) { #running }
 
 <p class="introtext">Frontera's job scheduler is the <a href="http://schedmd.com">Slurm Workload Manager</a>. Slurm commands enable you to submit, manage, monitor, and control your jobs. Jobs submitted to the scheduler are queued, then run on the compute nodes. Each job consumes Service Units (SUs) which are then charged to your allocation.</p>
 

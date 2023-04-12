@@ -119,7 +119,7 @@ See [Striping Large Files](#files-striping) for additional important advice abou
 
 As detailed in the [Conduct](#conduct) section above, it is important to monitor your quotas on the `$HOME` and `$WORK` file systems, and limit the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
 
-### [Transfer Using Grid Community Toolkit](#transferring-gct) { #transferring-gct }
+### [with  Grid Community Toolkit](#transferring-gct) { #transferring-gct }
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.
 

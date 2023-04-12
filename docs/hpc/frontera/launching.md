@@ -2,7 +2,7 @@
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section.
 
-### [Launching One Serial Application](#launching-serial)
+### [One Serial Application](#launching-serial)
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 	
@@ -13,7 +13,7 @@ $SCRATCH/apps/myprov/myprogram 			# explicit full path to executable
 ./myprogram -m -k 6 input1  			# executable with notional input options
 ```
 
-### [Launching One Multi-Threaded Application](#launching-multithreaded)
+### [One Multi-Threaded Application](#launching-multithreaded)
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
@@ -22,7 +22,7 @@ export OMP_NUM_THREADS=56   	# 56 total OpenMP threads (1 per CLX core)
 ./myprogram
 ```
 
-### [Launching One MPI Application](#launching-mpi)
+### [One MPI Application](#launching-mpi)
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Frontera-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -39,7 +39,7 @@ login1$ idev -N 2 -n 100
 c123-456$ ibrun ./myprogram	   # ibrun uses idev's arguments to properly allocate nodes and tasks
 ```
 
-### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid)
+### [One Hybrid (MPI+Threads) Application](#launching-hybrid)
 
 <!-- span style="color:red">Hyperthreading is not currently enabled on Frontera.</span> -->
 

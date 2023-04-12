@@ -2,7 +2,7 @@
 
 See the [Transferring Files](../transferring) section to learn how to transfer your datasets to Frontera, prior to starting a Jupyter session.
 
-### [Launch a Jupyter session](#jupyter-launch) { #jupyter-launch }
+### [Launch a Session](#jupyter-launch) { #jupyter-launch }
 
 You can launch a Jupyter session via the Frontera User Portal.
 

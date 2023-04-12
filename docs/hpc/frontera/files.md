@@ -1,4 +1,4 @@
-## [Managing Files on Frontera](#files) { #files }
+## [Managing Files](#files) { #files }
 
 Frontera mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.
 
@@ -7,7 +7,7 @@ Frontera mounts three Lustre file systems that are shared across all nodes: the 
 
 Frontera's startup mechanisms define corresponding account-level environment variables <code>$HOME</code>, <code>$SCRATCH</code> and <code>$WORK</code><!--,and <code>$FASTIO</code>--> that store the paths to directories that you own on each of these file systems. Consult the <a href="#table-2-frontera-file-systems">Frontera File Systems</a> table below for the basic characteristics of these file systems, <!--"File Operations: I/O Performance" for advice on performance issues,--> and the <a href="../conduct">Good Conduct</a> sections for guidance on file system etiquette.</p>
 
-#### [Table 2. Frontera File Systems](#table2) { #table2 } 
+#### [Table 2. File Systems](#table2) { #table2 } 
 
 File System | Quota | Key Features
 -------     | ------- | -------

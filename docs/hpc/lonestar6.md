@@ -11,13 +11,13 @@ Last update: January 13, 2023
 * **[Subscribe](https://portal.tacc.utexas.edu/news/subscribe) to [Lonestar6 User News](https://portal.tacc.utexas.edu/user-news/-/news/Lonestar6)**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
 
 
-## [Introduction to Lonestar6](#intro) { #intro }
+## [Introduction](#intro) { #intro }
 
 Lonestar6 provides a balanced set of resources to support simulation, data analysis, visualization, and machine learning.  It is the next system in TACC's Lonestar series of high performance computing systems that are deployed specifically to support Texas researchers. Lonestar6 is funded through collaboration with TACC, the University of Texas System, Texas A&amp;M University, Texas Tech University, and the University of North Texas, as well as a number of research centers and faculty at UT-Austin, including the Oden Institute for Computational Engineering &amp; Sciences and the Center for Space Research.
 
 The system employs Dell Servers with  AMD's highly performant Epyc Milan processor, Mellanox's HDR Infiniband technology, and 8 PB of BeeGFS based storage on Dell storage hardware.  Additionally, Lonestar6 supports GPU nodes utilizing NVIDIA's Ampere A100 GPUs to support machine learning workflows and other GPU-enabled applications.  Lonestar6 will continue to support the TACC HPC environment, providing numerical libraries, parallel applications, programming tools, and performance monitoring capabilities to the user community.
 
-### [Lonestar6 Allocations](#intro-allocations) { #intro-allocations }
+### [Allocations](#intro-allocations) { #intro-allocations }
 
 Lonestar6 is available to researchers from all University of Texas System institutions and to our partners, Texas A&amp;M University, Texas Tech University and University of North Texas.
 
@@ -101,10 +101,10 @@ Local storage:   | 144GB /tmp partition on a 288GB SSD.
 The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) connectivity between the switches and the compute nodes. A fat tree topology employing sixteen core switches connects the compute nodes and the `$SCRATCH` file systems. There is an oversubscription of 24/16.
 
 
-## [Managing Files on Lonestar6](#files) { #files }
+## [Managing Files](#files) { #files }
 
 
-### [Table 3. Lonestar6 File Systems](#files-table3) { #table3 }
+### [Table 3. File Systems](#files-table3) { #table3 }
 
 File System | Quota | Key Features
 --- | --- | ---
@@ -147,7 +147,7 @@ Alias | Command
 
 ### [Transferring your Files](#files-transferring) { #files-transferring }
 
-#### [Transferring Files with `scp`](#files-transferring-scp) { #files-transferring-scp }
+#### [Transferring with `scp`](#files-transferring-scp) { #files-transferring-scp }
 
 You can transfer files between Lonestar6 and Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows SSH clients typically include `scp`-based file transfer capabilities.
 
@@ -195,7 +195,7 @@ localhost$ tar cvf ./mydata.tar mydata                                  # create
 localhost$ scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive
 ```
 
-#### [Transferring Files with `rsync`](#files-transferring-rsync) { #files-transferring-rsync }
+#### [Transferring with `rsync`](#files-transferring-rsync) { #files-transferring-rsync }
 
 The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
@@ -403,7 +403,7 @@ It's safe to execute module commands in job scripts. In fact, this is a good way
 
 The phrase "building software" is a common way to describe the process of producing a machine-readable executable file from source files written in C, Fortran, or some other programming language. In its simplest form, building software involves a simple, one-line call or short shell script that invokes a compiler. More typically, the process leverages the power of <a href="http://www.gnu.org/software/make/manual/make.html">makefiles</a>, so you can change a line or two in the source code, then rebuild in a systematic way only the components affected by the change. Increasingly, however, the build process is a sophisticated multi-step automated workflow managed by a special framework like <a href="http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html">autotools</a> or <a href="http://cmake.org"><code>cmake</code></a>, intended to achieve a repeatable, maintainable, portable mechanism for installing software across a wide range of target platforms.</p>
 
-### [The Basics of Building Software](#building-basics) { #building-basics }
+### [Basics of Building Software](#building-basics) { #building-basics }
 
 This section of the user guide does nothing more than introduce the big ideas with simple one-line examples. You will undoubtedly want to explore these concepts more deeply using online resources. You will quickly outgrow the examples here. We recommend that you master the basics of makefiles as quickly as possible: even the simplest computational research project will benefit enormously from the power and flexibility of a makefile-based build process.
 
@@ -531,7 +531,7 @@ If you wish to share a software package with collaborators, you may need to modi
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section.</p>
 
-### [Launching One Serial Application](#launching-serial) { #launching-serial }
+### [One Serial Application](#launching-serial) { #launching-serial }
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 
@@ -547,7 +547,7 @@ $SCRATCH/apps/mydir/myprogram			# explicit full path to executable
 Consult the [Launcher at TACC](/software/launcher) documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
 
 
-### [Launching One Multi-Threaded Application](#launching-multithreaded) { #launching-multithreaded }
+### [One Multi-Threaded Application](#launching-multithreaded) { #launching-multithreaded }
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
@@ -556,7 +556,7 @@ export OMP_NUM_THREADS=128   	# 128 total OpenMP threads (1 per core)
 ./myprogram
 ```
 
-### [Launching One MPI Application](#launching-mpi) { #launching-mpi }
+### [One MPI Application](#launching-mpi) { #launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Lonestar6-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -575,7 +575,7 @@ login1$ idev -N 2 -n 100
 c309-005$ ibrun ./myprogram
 ```
 
-### [Launching One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
+### [One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
@@ -685,7 +685,7 @@ env OMP_PLACES="{64},64,1" ./omp.exe &   #execution on socket 1 cores
 wait
 ```
 
-## [Running Jobs on Lonestar6](#running) { #running }
+## [Running Jobs](#running) { #running }
 
 This section provides an overview of how compute jobs are charged to allocations and describes the **S**imple **L**inux **U**tility for **R**esource **M**anagement (Slurm) batch environment, Lonestar6 queue structure, lists basic Slurm job control and monitoring commands along with options.
 
@@ -697,7 +697,7 @@ Lonestar6's new queue, `vm-small` is designed for users who only need a subset o
 
 The jobs in this queue consume 1/7 the resources of a full node.  Jobs are charged accordingly at .143 SUs per node hour.
 
-#### [Table. Lonestar6 Production Queues](#tablex) { #tablex }
+#### [Table. Production Queues](#tablex) { #tablex }
 
 <!--- SDL --->
 
@@ -1060,6 +1060,16 @@ If your waiting job cannot complete before a maintenance/reservation begins, `sh
 
 The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's 112 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
+### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
+
+You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
+
+``` cmd-line
+login1$ sbatch --dependency=afterok:173210 myjobscript
+```
+
+For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
+
 
 ### [Other Job Management Commands](#jobs-other) { #jobs-other }
 
@@ -1088,17 +1098,7 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this date
 ```
 
-### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
-
-You can use `sbatch` to help manage workflows that involve multiple steps: the `--dependency` option allows you to launch jobs that depend on the completion (or successful completion) of another job. For example you could use this technique to split into three jobs a workflow that requires you to (1) compile on a single node; then (2) compute on 40 nodes; then finally (3) post-process your results using 4 nodes. 
-
-```cmd-line
-login1$ sbatch --dependency=afterok:173210 myjobscript
-```
-
-For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
-
-## [Visualization and Virtual Network Computing (VNC) Sessions](#vis) { #vis }
+## [Visualization and VNC Sessions](#vis) { #vis }
 
 Lonestar6 uses AMD's Milan processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing `module load swr`.
 
@@ -1189,11 +1189,11 @@ Follow the steps below to start an interactive session.
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
-### [Running Applications on the Remote Desktop](#vis-apps) { #vis-apps }
+### [Applications on the Remote Desktop](#vis-apps) { #vis-apps }
 
 From an interactive desktop, applications can be run from icons or from xterm command prompts. Two special cases arise: running parallel applications, and running applications that use OpenGL.
 
-### [Running Parallel Applications from the Desktop](#vis-parallelapps) { #vis-parallelapps }
+### [Parallel Applications from the Desktop](#vis-parallelapps) { #vis-parallelapps }
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
@@ -1203,7 +1203,7 @@ c301-001$ ibrun ibrunoptions application applicationoptions
 
 will run application on the associated nodes, as modified by the ibrun options.
 
-### [Running OpenGL/X Applications On The Desktop](#vis-opengl) { #vis-opengl }
+### [OpenGL/X Applications On The Desktop](#vis-opengl) { #vis-opengl }
 
 Lonestar6 uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Lonestar6 do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the TACC Vis portal.
 

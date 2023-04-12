@@ -22,7 +22,9 @@ Stampede2 hosts 4,200 KNL compute nodes, including 504 KNL nodes that were forme
 
 Each of Stampede2's KNL nodes includes 96GB of traditional DDR4 Random Access Memory (RAM). They also feature an additional 16GB of high bandwidth, on-package memory known as Multi-Channel Dynamic Random Access Memory (**MCDRAM**) that is up to four times faster than DDR4. The KNL's memory is configurable in two important ways: there are BIOS settings that determine at boot time the processor's **memory mode** and **cluster mode**. The processor's **memory mode** determines whether the fast MCDRAM operates as RAM, as direct-mapped L3 cache, or as a mixture of the two. The **cluster mode** determines the mechanisms for achieving cache coherency, which in turn determines latency: roughly speaking, this mode specifies the degree to which some memory addresses are "closer" to some cores than to others. See "[Programming and Performance: KNL](#programming-knl)" below for a top-level description of these and other available memory and cluster modes.
 
-#### [Table 1. Stampede2 KNL Compute Node Specifications](#table1)   { #table1 }
+#### [Table 1. KNL Compute Node Specifications](#table1)   { #table1 }
+
+Table 1. Stampede2 KNL Compute Node Specifications.
 
 Specification | Value
 --- | ---
@@ -425,7 +427,7 @@ See [Striping Large Files](#files-striping) for additional important advice abou
 
 As detailed in the [Conduct](#conduct) section above, it is important to monitor your quotas on the `$HOME` and `$WORK` file systems, and limit the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve sub-directories of `$STOCKYARD`. See [Managing Your Files](#files) for more information about transfers on `$STOCKYARD`.
 
-### [Transfer Using Grid Community Toolkit](#transferring-gct) { #transferring-gct }
+### [with  Grid Community Toolkit](#transferring-gct) { #transferring-gct }
 
 The Grid Community Toolkit (GCT) is an open-source fork of the [Globus Toolkit](http://toolkit.globus.org/toolkit) and was created in response to the [end-of-support](https://github.com/globus/globus-toolkit/blob/globus_6_branch/support-changes.md) of the Globus Toolkit in January 2018.
 
@@ -629,7 +631,7 @@ For information on the performance implications of your choice of build flags, s
 If you use GNU compilers, see [GNU x86 Options](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html) for information regarding support for KNL, SKX and ICX. Note that GNU compilers do not support multi-architecture binaries.
 
 
-## [Running Jobs on the Compute Nodes](#running) { #running }
+## [Running Jobs](#running) { #running }
 
 {% include 'include/stampede2-jobaccounting.md' %}
 
@@ -641,7 +643,7 @@ Stampede2's job scheduler is the [Slurm Workload Manager](http://schedmd.com). S
 
 Currently available queues include those in [Stampede2 Production Queues](#table5). See [KNL Compute Nodes](#overview-phase1computenodes), [SKX Compute Nodes](#overview-skxcomputenodes), [Memory Modes](#programming-knl-memorymodes), and [Cluster Modes](#programming-knl-clustermodes) for more information on node types.
 
-#### [Table 5. Stampede2 Production Queues](#table5) { #table5 }
+#### [Table 5. Production Queues](#table5) { #table5 }
 
 Queue Name | Node Type | Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Duration | Max Jobs in Queue &#42; | Charge Rate<br /> (per node-hour) 
 --- | --- | --- | --- | --- | ---
@@ -1716,7 +1718,7 @@ login1$ sbatch --dependency=afterok:173210 myjobscript
 
 For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
 
-## [Visualization and Virtual Network Computing (VNC) Sessions](#vis) { #vis }
+## [Visualization and VNC Sessions](#vis) { #vis }
 
 Stampede2 uses the SKX and KNL processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. **On Stampede2, `swr` replaces `vglrun` (e.g. `swr glxgears`) and uses similar syntax.** OpenSWR can be loaded by executing `module load swr`. We expect most users will notice little difference in visualization experience on KNL. MCDRAM may improve visualization performance for some users. SKX nodes may provide better interactivity for intensive rendering applications.
 
