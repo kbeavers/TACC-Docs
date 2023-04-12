@@ -435,7 +435,7 @@ figure {
 
 /* To prevent wrap of certain tags */
 u, /* "unarticulated" demarkation of phrases that should not wrap */
-code:not([class]) /* snippets of unspecified code should never wrap */ {
+code:not([class]):not(pre > *) /* free-form code lines should never wrap */ {
   white-space: nowrap;
 }
 u {
