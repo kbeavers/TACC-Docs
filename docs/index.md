@@ -7,15 +7,15 @@
 </style>
 
 # Documentation Overview
-*April 12, 2023*
+*April 13, 2023*
 
-**Welcome to TACC's Technical Documentation and User Guides.**
+**Welcome to TACC's Technical Documentation Site.**
 
-TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) User Guides, Software Packages at TACC, and Tutorials. First there's a few  along with a few auxiliary exxential readings.. 
+Beyond the prefaced Essential Readings, TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) User Guides, Software Packages at TACC, and Tutorials.  See Additional Training below for more TACC HPC training resources. 
 
-All documentation is accessible via the left-hand navigation. Continue reading for an overview of each section, along with a few links to get you started.
+All documentation is accessible via the left-hand navigation. 
 
-If you're brand new to TACC and want to jump right in, check out the [Getting Started](tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://dev.tup.tacc.utexas.edu/use-tacc/allocations/) pages.  See Additional Training below for more TACC HPC training resources. 
+If you're brand new to TACC and want to jump right in, check out the [Getting Started](tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://dev.tup.tacc.utexas.edu/use-tacc/allocations/) pages in the "Use TACC" section of our [main site](tacc.utexas.edu).
 
 
 /// html | section.section--muted.section--has-border
@@ -25,7 +25,7 @@ If you're brand new to TACC and want to jump right in, check out the [Getting St
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-Susan writes a blurb. Something about you gotta read this especially the Good Conduct.
+TACC's HPC, Storage and Visualization resources are shared among thousands of users.  Please familiarize yourself with the Good Conduct expectations.  
 /////
 
 ///// html | a.card--plain[href="./basics/conduct/"]
@@ -34,6 +34,7 @@ Susan writes a blurb. Something about you gotta read this especially the Good Co
 ## Good Conduct
 
 Good conduct by all users on an HPC system is essential to its smooth operation.
+
 /////
 
 ///// html | a.card--plain[href="./tutorials/help/"]
@@ -41,9 +42,11 @@ Good conduct by all users on an HPC system is essential to its smooth operation.
 
 ## Help
 
+TACC customer support operates via a ticket system. 
+
 * Our support team
-* Contact the help desk
 * Tips when submitting a support ticket  
+
 /////
 ////
 ///

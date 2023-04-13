@@ -96,9 +96,9 @@ nav:
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
     - Sharing Project Files: tutorials/sharingprojectfiles.md
     - TACC Analysis Portal: tutorials/TAP.md
-  - Fiddling :
-    - Testing Extensions: testingextensions.md
-    - Code Examples: code-examples/index.md
+#  - Fiddling :
+#    - Testing Extensions: testingextensions.md
+#    - Code Examples: code-examples/index.md
 
 
 # Python-Markdown extensions
