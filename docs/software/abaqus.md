@@ -7,7 +7,7 @@
 <td valign="middle">The ABAQUS software suite from Dassault Systems is used for finite element analysis and computer-aided engineering.  The ABAQUS software is used on TACC resources for projects from a variety of domains, such as petroleum engineering, biomedical engineering, and aerospace engineering. </td>
 </tr></table>
 
-## [Request Access to ABAQUS](#access) { #access }
+## [Request Access](#access) { #access }
 
 TACC's ABAQUS license agreement allows access to the software installation and license tokens only to UT Austin students and staff. 
 
@@ -38,7 +38,7 @@ abaquslm_license_file="port-number@license-server"
 
 Since the number of ABAQUS licenses are linited, we encourage you to bring your own license tokens (from your local license server) if you have the option to do so.  If using your own license, you may need to work with the license server's administrator to open the appropriate firewalls for accepting connections from TACC resources. The license server administrator will need the [IP addresses range](#ips) of the TACC systems (Stampede2 or Frontera).  Users will then use the port number and hostname of their license server to set the values of `ABAQUSLM_LICENSE_FILE` in either their job script or the value of `abaquslm_license_file` in the `abaqus_v6.env`.
 
-## [ABAQUS Installations at TACC](#installations) { #installations }
+## [Installations](#installations) { #installations }
 
 The ABAQUS 2019 and 2020 executables are available using the TACC's module system. After users are granted access to ABAQUS, they will be able to load the abaqus module.
 
@@ -56,7 +56,7 @@ login1$ module load abaqus
 	As with all other software packages, do not run ABAQUS on the login nodes. All ABAQUS invocations must occur within an `idev` session or submitted to the compute nodes as a batch job using the [job script](#job-script) below.
 
 
-### [Run Interactively](#running-interactive) { #running-interactive }
+### [Interactively](#running-interactive) { #running-interactive }
 
 On a compute node obtained through an `idev` session, the users can run the following command to test their access to ABAQUS and also check the available number of license tokens:
 
@@ -65,7 +65,7 @@ c123-456$ ml abaqus
 c123-456$ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt
 ```
 
-### [Run in Batch Mode](#running-batch) { #running-batch }
+### [Batch Mode](#running-batch) { #running-batch }
 
 1. ABAQUS jobs will continue polling for licensing tokens till the required number of tokens become available or the jobs time-out of the queue. In order to save SUs in the event the necessary tokens are not available, include the following line in the ABAQUS environment file. This will limit the ABAQUS waiting time to five minutes. 
 

@@ -8,18 +8,18 @@
 
 ANSYS is currently installed on TACC's [Frontera](../../hpc/frontera), [Lonestar6](../../hpc/lonestar6) and [Stampede2](../../hpc/stampede2) resources. 
 
-## [ANSYS Licenses](#licenses)
+## [Licenses](#licenses)
 
 TACC's current ANSYS license allows TACC users to access ANSYS for **non-commercial**, **academic** use. If you would like access to ANSYS, [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) through the [TACC User Portal](https://portal.tacc.utexas.edu/). Include in your ticket your institutional affiliation and a brief statement confirming that you will use ANSYS only for **non-commercial**, **academic** purposes. If you are affiliated with the University of Texas, include your academic department in your help desk ticket.
 
 If you have your own ANSYS licenses or would like to install your own copy, you are allowed to do so.
 
-## [ANSYS Installations](#installations)
+## [Installations](#installations)
 
 ANSYS is currently installed under `/home1/apps/ANSYS` on TACC's Frontera and Stampede2, and `/scratch/tacc/apps/ANSYS` on TACC's Lonestar6 resources. Installations on Frontera and Stampede2 include the main components: Structures, Fluids, Electronics and LS-Dyna. However, installations on Lonestar6 only include Structures, Fluids and LS-Dyna. Electronics is not included since it is not supported on LS6’s operating system. All packages are installed under the default locations based on the ANSYS naming convention. Table 
 
 
-### [Table 1. ANSYS Installations at TACC](#table1)
+### [Table 1. Installations at TACC](#table1)
 
 Resource | ANSYS Version |Components |Location
 --- | --- | --- | ---
@@ -76,6 +76,7 @@ You can also submit your ANSYS job to the batch nodes (compute nodes) on TACC re
 
 module load ansys
 # Your-ANSYS-COMMAND-HERE
+
 # Define your working directory
 MY_JOB_DIR = /scratch1/01234/joe/Ansys_test
 
@@ -87,11 +88,11 @@ MY_JOB_DIR = /scratch1/01234/joe/Ansys_test
 		&lt; "$MY_JOB_DIR/Ansys_test_input.txt" &gt; "$MY_JOB_DIR/Ansys_test_output.out"
 ```
 
-To obtain the correct <span style="color:blue;font-style:bold">`Your-ANSYS-COMMAND-HERE`</span>, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No `ibrun` or `mpirun` command is needed for running ANSYS jobs.
+To obtain the correct `Your-ANSYS-COMMAND-HERE`, launch the ANSYS GUI used in interactive mode. Here, we use the ANSYS Mechanical APDL as an example. After entering the correct *Working directory*, *Job Name*, *Input File*, *Output File*, and *Number of Processors*, you can click Tools and then Display Command Line to get the complete command to run ANSYS jobs in batch mode. No `ibrun` or `mpirun` command is needed for running ANSYS jobs.
 
 Other ANSYS binaries, e.g. Aqwa, CFX, Fluent, can be found at `/home1/apps/ANSYS/2021R2/v212`. 
 	
-#### [Table 2. ANSYS Binaries Location](#table2) { #table2 }
+#### [Table 2. Binaries Location](#table2) { #table2 }
 
 <table border="1" cellpadding="5" cellspacing="3">
 	<tr>

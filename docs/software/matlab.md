@@ -8,13 +8,13 @@
 
 [Mathwork's](https://www.mathworks.com/) MATLAB is installed and supported at TACC and is available on the following TACC resources: [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/lonestar6), and [Maverick2](../../hpc/maverick2).  
 
-## [MATLAB Licenses](#license) { #license }
+## [Licenses](#license) { #license }
 
 MathWork's agreement with the University of Texas now allows TACC and XSEDE users to access MATLAB for **non-commercial**, **academic** use. If you would like access to MATLAB submit a help desk ticket through the [TACC][TACCUSERPORTAL]  portal. Include in your ticket your institutional affiliation and a brief statement confirming that you will use MATLAB only for **non-commercial**, **academic** purposes. If you are affiliated with the University of Texas, include your academic department in your help desk ticket.
 
 If you have your own network licenses for toolboxes that are not available through the University of Texas, we can help you configure these licenses on TACC systems. Again, submit a help desk ticket for assistance.
 
-## [Running MATLAB in Interactive Mode](#interactive) { #interactive }
+## [Interactive Mode](#interactive) { #interactive }
 
 MATLAB is normally launched with the MATLAB Desktop UI and used in interactive mode. Create a VNC session following the directions in the [Remote Desktop Access][TACCREMOTEDESKTOPACCESS] section.  
 
@@ -40,7 +40,7 @@ The following figure shows how MATLAB is launched inside the VNC session.
 !!! important
 	Do NOT launch MATLAB on the login nodes. This may fail and, more importantly, it will prevent other users from doing their work, as your execution will take up too many cycles on the shared login node. Using MATLAB on the login nodes is considered system abuse, and will be treated as such.  See TACC [usage policies][TACCUSAGEPOLICY].
 
-## [Running MATLAB in Batch Mode](#batch) { #batch }
+## [Batch Mode](#batch) { #batch }
 
 You can also submit your MATLAB job to the batch nodes (compute nodes) on the TACC resources, e.g. Frontera, Stampede2, Lonestar5, or Maverick2. To do so, first make sure that the MATLAB module has been loaded, and then launch `matlab` with the `-nodesktop -nodisplay -nosplash` option as shown in the sample Stampede2 job script below.
 

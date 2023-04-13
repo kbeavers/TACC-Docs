@@ -5,11 +5,11 @@
 The <a href="https://www.openfoam.org">OpenFOAM</a> (**O**pen **F**ield **O**peration and **M**anipulation) Toolbox is a free, open source Computational Fluid Dynamics (CFD) software package providing an extensive range of features, from solving complex fluid flows involving chemical reactions, turbulence and heat transfer, to solid dynamics and electromagnetics.
 
 
-## [Running OpenFOAM on Frontera and Stampede2](#running) { #running }
+## [Running on Frontera and Stampede2](#running) { #running }
 
 TACC staff has built and installed OpenFOAM 7.0 on both [Stampede2](../../hpc/stampede2) and [Frontera](../../hpc/frontera) compute resources. The Stampede2 executable is built with intel/18.0.2 and impi/18.0.2, while the Frontera executable is built with intel/19.0.5 and impi/19.0.5. Follow the steps below to set up the environment and run an OpenFOAM tutorial example.
 
-### [Set Up the Computing Environment](#running-compenv) { #running-compenv }
+### [Set Up Computing Environment](#running-compenv) { #running-compenv }
 
 Set up the proper computing environment by loading the latest OpenFoam module:
 

@@ -7,7 +7,7 @@
 </style>
 
 # Documentation Overview
-*April 7, 2023*
+*April 12, 2023*
 
 **Welcome to TACC's Technical Documentation and User Guides.**
 
@@ -15,7 +15,7 @@ TACC's technical documentation is broadly divided into three categories: HPC Use
 
 All documentation is accessible via the left-hand navigation. Continue reading for an overview of each section, along with a few links to get you started.
 
-If you're brand new to TACC and want to jump right in, check out our Getting Started and Allocations pages.  See Additional Training below for more  HPC training resources. 
+If you're brand new to TACC and want to jump right in, check out the [Getting Started]() and [Allocations]() pages.  See Additional Training below for more  HPC training resources. 
 
 
 /// html | section.section--muted.section--has-border
@@ -147,10 +147,11 @@ Some text here
 
 /////
 
-///// html | a.card--plain[href="./xxx"]
+///// html | a.card--plain[href="https://www.youtube.com/watch?v=DWmAWT5e3iQ"]
      markdown: block
+## YouTube
 
-## TACC YouTube
+Visit TACC's new YouTube channel <a href="https://www.youtube.com/@TACC_training/videos">@TACC_training</a>.
 
 /////
 
@@ -163,6 +164,12 @@ Some text here
 ////
 ///
  
+Visit TACC's new YouTube channel, [@TACC_training](https://www.youtube.com/@TACC_training/videos), features past presentations such as:
+
+* [How to Submit and Cancel Jobs](https://www.youtube.com/watch?v=sQhxNT4eg8I) (5 mins)
+* [Containers at TACC](https://www.youtube.com/watch?v=Z9d1Wv9zDT0) (4 hrs) 
+* [C++ for C Programmers](https://www.youtube.com/watch?v=DWmAWT5e3iQ) (3 hrs)
+
 
 <!--
 For additional HPC training, check out the following resources and contacts:

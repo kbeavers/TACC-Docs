@@ -11,7 +11,7 @@
 </blockquote>
 
 
-## [TACC and Gaussian](#access) { #access }
+## [Licenses](#licenses) { #licenses }
 
 TACC's Gaussian license allows academic users who have signed a Usage Agreement to use the Gaussian software on TACC compute systems. Users do not need to bring their own individual licenses.  Depending on your home institution, gaining access to Gaussian requires that you sign and return one of the following forms:
 

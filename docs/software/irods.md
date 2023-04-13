@@ -7,7 +7,7 @@ iRODS is a data grid/data management tool. iRODS allows you to store data in a u
 
 Each storage system accessed through iRODS is referred to as a "resource". In TACC's current [Corral](../../hpc/corral) configuration, there are two disk-based resources accessible through iRODS, one for each of the Corral filesystems. The unreplicated GPFS filesystem is referred to within iRODS as `corral-tacc` and the replicated filesystem is referred to as `corral-repl`. By default all data will be stored in the `corral-repl` file system.
 
-### [Table 1. TACC iRODS Resource Names and Corresponding Filesystems](#table1) { #table1 }
+### [Table 1. iRODS Resource Names and Corresponding Filesystems](#table1) { #table1 }
 
 Resource Name | Storage System
 --- | ---

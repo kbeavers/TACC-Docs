@@ -6,7 +6,7 @@
 <b>V</b>ienna <b>A</b>b initio <b>S</b>imulation <b>P</b>ackage (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
 
 
-## [VASP Licenses](#licenses) { #licenses }
+## [Licenses](#licenses) { #licenses }
 
 VASP requires an individual license. TACC's HPC support license allows us to install only the compiled VASP executables and grant the access to licensed users who have accounts on our systems. We are not allowed to share source code.  
 
@@ -29,7 +29,7 @@ Then, either interactively or via a batch script, load the appropriate module:
 login1$ module load vasp/6.3.0
 ```
 
-## [Running VASP Jobs](#running-interactive) { #running-interactive }
+## [Running VASP](#running-interactive) { #running-interactive }
 
 TACC staff recently presented "[VASP on Frontera and Stampede2](https://learn.tacc.utexas.edu/mod/page/view.php?id=100)", detailing how to build and run VASP, and troubleshoot run time issues on TACC systems. Check out the recorded webinar and accompanying slides. 
 

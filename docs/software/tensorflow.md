@@ -7,7 +7,7 @@ TACC supports the TensorFlow+Horovod stack. This framework exposes high level in
 
 This document details how to install TensorFlow, then download and run benchmarks in both single- and multi-node modes. Due to variations in TensorFlow and Python versions, and their compatabilities with the Intel compilers and CUDA libraries, the installation instructions are quite specific. Pay careful attention to the installation instructions.
 
-## [Installations at TACC](#installations) { #installations }
+## [Installations](#installations) { #installations }
 
 TensorFlow is installed on TACC's [Lonestar6](../../hpc/lonestar6), [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), and [Maverick2](../../hpc/maverick2) resources.
 

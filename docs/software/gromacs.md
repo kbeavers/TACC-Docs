@@ -19,7 +19,7 @@ As of this date, the GROMACS versions are 2022.1 on Stampede2, 2019.6 on Fronter
 login1$ module help gromacs
 ```
 
-### [Table 1. GROMACS Environment Variables](#table1) { #table1 }
+### [Table 1. Environment Variables](#table1) { #table1 }
 
 Variable | Value
 --- | ---
@@ -51,7 +51,7 @@ You can also compile and link your own source code with the GROMACS libraries:
 login1$ icc -I$TACC_GROMACS_INC test.c -L$TACC_GROMACS_LIB –lgromacs
 ```
 
-### [Running GROMACS in Batch Mode](#running-batch) { #running-sbatch }
+### [Batch Mode](#running-batch) { #running-sbatch }
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Stampede2 queues:
 

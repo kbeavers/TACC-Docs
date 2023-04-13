@@ -3,7 +3,7 @@
 
 LAMMPS is a classical molecular dynamics code developed at Sandia National Laboratories and is available under the GPL license. LAMMPS (**L**arge-scale **A**tomic/**M**olecular **M**assively **P**arallel **S**imulator) makes use of spatial-decomposition techniques to partition the simulation domain and runs in serial or in parallel using MPI.  The code is capable of modeling systems with millions or even billions of particles on a large HPC machine.  A variety of force fields and boundary conditions are provided in LAMMPS which can be used to model atomic, polymeric, biological, metallic, granular, and coarse-grained systems.
 
-## [LAMMPS Installations](#installations) { #installations } 
+## [Installations](#installations) { #installations } 
 
 LAMMPS is installed on the [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/lonestar6) and [Frontera](../../hpc/frontera) systems.
 
@@ -29,7 +29,7 @@ Frontera | Stampede2 | Lonestar6
 <code>lmp_gpu</code> | <code>lmp_knl</code> | N/A
 
 
-## [Running LAMMPS in Batch Mode](#running-batch) { #running-batch } 
+## [Batch Mode](#running-batch) { #running-batch } 
 
 LAMMPS uses spatial-decomposition techniques to partition the simulation domain into small 3d sub-domains, one of which is assigned to each processor. You will need to set suitable values of `-N` (number of nodes), `-n` (total number of MPI tasks), and `OMP_NUM_THREADS` (number of threads to use in parallel regions) to optimize the performance of your simulation.
 
@@ -84,7 +84,7 @@ ibrun lmp_knl -in lammps_input
 	ibrun lmp_gpu -sf gpu -pk gpu 4 -in lammps_input
 	```
 
-## [Running LAMMPS within `idev`](#running-interactive) { #running-interactive } 
+## [Running within `idev`](#running-interactive) { #running-interactive } 
 
 You can also run LAMMPS within an [`idev`](../../software/idev) session as demonstrated below:
 

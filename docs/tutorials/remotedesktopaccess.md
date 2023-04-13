@@ -148,7 +148,7 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 	TACC: Created reverse ports on Stampede2 logins
 	TACC: Your DCV session is now running!
 	TACC: To connect to your DCV session, please point a modern web browser to:
-	TACC:          STYLEBLUEhttps://stampede2.tacc.utexas.edu:18606</span>
+	TACC:          https://stampede2.tacc.utexas.edu:18606
 	```
 
 

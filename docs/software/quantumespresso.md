@@ -20,13 +20,13 @@ You can find extensive documentation for each QE component in the respective Doc
 $ cd $TACC_QE_DIR/PW/Doc		# explore PWscf documentation
 ```
 
-## [Running Quantum Espresso Jobs](#running) { #running }
+## [Running QE](#running) { #running }
 
 Quantum Espresso executables have many optional command line arguments described in the [user manual](http://www.quantum-espresso.org/resources/users-manual). QE users may run with their default settings usually with no problem. QE contains many packages and executables and `pw.x` is the most popular. **We strongly recommend you refer to the [QE manual](http://www.quantum-espresso.org/resources/users-manual) to learn how to construct input files, and learn the correct and optimal way to run your codes**.
 
 Use the following job scripts for Quantum Espresso runs on Stampede2 and Frontera. To configure a script for Lonestar5, vary the `-N` and `-n` directives.
 
-### [Sample Job Script: QE on Frontera](#jobscript-frontera) { #jobscript-frontera }
+### [Sample Job Script: Frontera](#jobscript-frontera) { #jobscript-frontera }
 
 The script below submits a Quantum Espresso job to Frontera's normal queue (CLX compute nodes), requesting 4 nodes and 224 tasks for a maximum of 4 hours. Refer to Frontera's [Running Jobs](../../hpc/frontera#running) section for more Slurm options.
 
@@ -45,7 +45,7 @@ module load qe/6.4.1                        # setup environment
 ibrun pw.x -input qeinput > qe_test.out     # launch job
 ```
 
-### [Sample Job Script: QE on Stampede2](#jobscript-stampede2) { #jobscript-stampede2 }
+### [Sample Job Script: Stampede2](#jobscript-stampede2) { #jobscript-stampede2 }
 
 The script below submits a Quantum Espresso job to Stampede2's `normal` queue (KNL compute nodes), requesting 4 nodes and 256 tasks for a maximum of 4 hours. Refer to Stampede2's [Running Jobs](../stampede2#running) section for more Slurm options. 
 
