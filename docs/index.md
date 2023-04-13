@@ -11,11 +11,11 @@
 
 **Welcome to TACC's Technical Documentation and User Guides.**
 
-TACC's technical documentation is broadly divided into three categories: HPC User Guides, Software Packages at TACC, and Tutorials. 
+TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) User Guides, Software Packages at TACC, and Tutorials. First there's a few  along with a few auxiliary exxential readings.. 
 
 All documentation is accessible via the left-hand navigation. Continue reading for an overview of each section, along with a few links to get you started.
 
-If you're brand new to TACC and want to jump right in, check out the [Getting Started]() and [Allocations]() pages.  See Additional Training below for more  HPC training resources. 
+If you're brand new to TACC and want to jump right in, check out the [Getting Started](tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://dev.tup.tacc.utexas.edu/use-tacc/allocations/) pages.  See Additional Training below for more TACC HPC training resources. 
 
 
 /// html | section.section--muted.section--has-border
@@ -83,15 +83,19 @@ One liner description of Lonestar6
 
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
+
 Explore documentation for field-specific software packages and commonly used software packages, e.g, AlphaFold, VASP, MATLAB.  
 
-Each guide contains sample job scripts per resource where applicable and any special instructions needed to run that package on TACC resources.
+Each guide contains sample job scripts per resource where applicable and any special instructions needed to run that package on TACC resources. Explore the available documentation on the left under "Software".
+
 /////
 
 ///// html | a.card--plain[href="./software/idev/"]
      markdown: block
 
-## idev
+## `idev` (*i*nteractive *d*evelopment)
+
+This powerful utility allow interactive access to a compute node.
 
 /////
 
@@ -111,7 +115,8 @@ Each guide contains sample job scripts per resource where applicable and any spe
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-Our tutorials cover a wide range of topics from configuring your account to debugging tools and various TACC services.
+TACC tutorials cover a wide range of topics from configuring your account to debugging tools and various TACC services. Explore the available topics to the left under "Tutorials".
+
 /////
 
 ///// html | a.card--plain[href="./tutorials/sharingprojectfiles/"]
@@ -119,11 +124,15 @@ Our tutorials cover a wide range of topics from configuring your account to debu
 
 ## Sharing Project Files
 
+Learn how to set up a common workspace shared by, and accessible to, all collaborators on a project.  
+
 /////
 ///// html | a.card--plain[href="./tutorials/remotedesktopaccess/"]
      markdown: block
 
 ## Remote Desktop Access
+
+HPC Visualization applications can be viewed locally on your own desktop.  Learn how to set up a remote desktop via Virtual Network Computing (VNC) or Desktop Cloud Visualization connections, or through the TACC Analysis Portal.
 
 /////
 ////
@@ -136,39 +145,39 @@ Our tutorials cover a wide range of topics from configuring your account to debu
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-Some text here
-/////
-
-
-///// html | a.card--plain[href="./xxx"]
-     markdown: block
-
-## Training
+TACC offers a variety of training and education programs. You may search and register for events on the [Training](https://dev.tup.tacc.utexas.edu/use-tacc/training/) page as well as view past presentations.
 
 /////
 
-///// html | a.card--plain[href="https://www.youtube.com/watch?v=DWmAWT5e3iQ"]
+///// html | div.card--plain[href="./xxx"]
      markdown: block
+
+## TACC Institutes
+
+Experts at TACC offer in-person, multi-day, immersive [courses](https://tacc.utexas.edu/use-tacc/training/) meant to enhance users knowledge of broad HPC topics such as:
+
+* Machine Learning
+* Applied Parallel Programming
+* Scientific Visualization
+
+/////
+
+///// html | div.card--plain[href="https://www.youtube.com/watch?v=DWmAWT5e3iQ"]
+     markdown: block
+
 ## YouTube
 
-Visit TACC's new YouTube channel <a href="https://www.youtube.com/@TACC_training/videos">@TACC_training</a>.
-
-/////
-
-///// html | a.card--plain[href="./xxx"]
-     markdown: block
-
-## Cornell Videos
-
-/////
-////
-///
- 
-Visit TACC's new YouTube channel, [@TACC_training](https://www.youtube.com/@TACC_training/videos), features past presentations such as:
+TACC's new YouTube channel, [@TACC_training](https://www.youtube.com/@TACC_training/videos), features presentations such as:
 
 * [How to Submit and Cancel Jobs](https://www.youtube.com/watch?v=sQhxNT4eg8I) (5 mins)
 * [Containers at TACC](https://www.youtube.com/watch?v=Z9d1Wv9zDT0) (4 hrs) 
 * [C++ for C Programmers](https://www.youtube.com/watch?v=DWmAWT5e3iQ) (3 hrs)
+
+/////
+
+////
+///
+
 
 
 <!--
@@ -188,6 +197,6 @@ For additional HPC training, check out the following resources and contacts:
 * YouTube
 
 - TACC Tutorials - A set of hands on classes with specific focus.
-- TACC Institute Series - Multi-day courses meant to enhance users knowledge of broad HPC topics.
+- TACC Institute Series - 
 - Some External Resource - E.g. Cornell workshop.
 -->
