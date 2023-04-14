@@ -1,9 +1,9 @@
 ## [Help Desk](#help) { #help }
 
 
-<p class="introtext"> <a href="https://portal.tacc.utexas.edu/consulting/overview">TACC Consulting</a> operates from 8am to 5pm CST, Monday through Friday, except for holidays.</p>
+TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays.
 
-You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
 
 ### [Best Practices aka Help Us Help You](#help-bestpractices)
 
@@ -11,7 +11,7 @@ You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulti
 
 * **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. When appropriate, include the information a consultant would need to find your artifacts and understand your workflow: e.g. the directory containing your build and/or job script; the modules you were using; relevant job numbers; and recent changes in your workflow that could affect or explain the behavior you're observing.
 
-* **Subscribe to [Frontera User News](https://portal.tacc.utexas.edu/user-news/-/news/Frontera).** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+* **[Subscribe to Frontera User News][TACCSUBSCRIBE].** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
 
 * **Have realistic expectations.** Consultants can address system issues and answer questions about Frontera. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
 

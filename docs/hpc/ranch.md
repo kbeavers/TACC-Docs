@@ -123,7 +123,7 @@ Note that simply doing an `ls -l` to look at a file's attributes or an `mv` to r
 
 TACC supports two transfer mechanisms: `scp` (recommended) and `rsync` (avoid if at all possible).   
 
-Ranch also has two endpoints, one running Globus gridftp v5.4 software available for [ACCESS](http://access-ci.org) (formerly XSEDE) users, and the endpoint running Grid Community Toolkit with CILogon authentication available to all.  See [Grid Community Toolkit at TACC](https://portal.tacc.utexas.edu/tutorials/gridcommunitytoolkit) for more information.
+Ranch also has two endpoints, one running Globus gridftp v5.4 software available for [ACCESS](http://access-ci.org) (formerly XSEDE) users, and the endpoint running Grid Community Toolkit with CILogon authentication available to all.  See [Grid Community Toolkit at TACC](../../tutorials/gridcommunitytoolkit) for more information.
 
 #### [Secure Copy with `scp` Command](#transferring-methods-scp) { #transferring-methods-scp }
 

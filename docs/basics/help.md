@@ -1,7 +1,7 @@
 # [Help Desk](#help) { #help }
 
 
-[TACC Consulting](https://portal.tacc.utexas.edu/consulting/overview) operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with the computing resource name, e.g. Lonestar6, Frontera, in the "Resource" field. 
+<!-- SDL link to TACC Consulting --> TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with the computing resource name, e.g. Lonestar6, Frontera, in the "Resource" field. 
 
 When submitting a help-desk ticket, help the consulting staff help you by following these best practices when submitting tickets. 
 
@@ -9,7 +9,7 @@ When submitting a help-desk ticket, help the consulting staff help you by follow
 
 * **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. When appropriate, include the information a consultant would need to find your artifacts and understand your workflow: e.g. the directory containing your build and/or job script; the modules you were using; relevant job numbers; and recent changes in your workflow that could affect or explain the behavior you're observing.
 
-* **Subscribe to [User News](https://portal.tacc.utexas.edu/user-news/-/news).** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+* **[Subscribe to User News][TACCSUBSCRIBE].** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
 
 * **Have realistic expectations.** Consultants can address system issues and answer questions about MACHINENAME. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
 

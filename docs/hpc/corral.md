@@ -29,11 +29,11 @@ For consult the [S3 API](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.
 
 The S3 interface is most suitable for programmatic interaction from within custom applications. We recommend the minio client for command-line access and testing purposes. Documentation and download links for the minio client are available at: <https://docs.minio.io/docs/minio-client-complete-guide>. 
 
-Please direct any further questions you may have regarding the cloud storage interface to Corral through the [TACC ticket system](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create).
+Please direct any further questions you may have regarding the cloud storage interface to Corral through the [TACC ticket system][HELPDESK].
 
 
 ## [System Access](#access) { #access }
-Corral is available to researchers at all UT System campuses, including both academic and health institutions. Corral is intended to support research activities involving large quantities of data and/or complex data management requirements. There is no requirement that users have allocations on other TACC systems, and Corral can be utilized independently of TACC computational and visualization resources. All Corral users must have TACC accounts; if you do not yet have a TACC account you can create one on the [TACC user portal](https://portal.tacc.utexas.edu/).
+Corral is available to researchers at all UT System campuses, including both academic and health institutions. Corral is intended to support research activities involving large quantities of data and/or complex data management requirements. There is no requirement that users have allocations on other TACC systems, and Corral can be utilized independently of TACC computational and visualization resources. <!-- SDL All Corral users must have TACC accounts; if you do not yet have a TACC account you can create one on the [TACC user portal](https://xortal.tacc.utexas.edu/). -->
 
 You may request an allocation on Corral through the TACC User Portal. When requesting an allocation, indicate the quantity of storage you expect to utilize in terabytes, the nature of the research project that will be supported through the use of Corral, and the service or services you expect to utilize. It is also helpful if you provide a suggested name for the directory or a collection name under which your data will be stored on Corral.  Once your allocation has been granted, you will receive an e-mail indicating the location of your data within iRODS and/or directly in the file system accessible from the Corral login/data movement nodes.
 
@@ -173,7 +173,7 @@ In this example, the `d` at the front indicates that this is a directory, and it
 
 ### [Managing Files and Permissions using ACLs](#managing-acls) { #managing-acls }
 
-For a more fine-grained approach to files and permissions, use **A**ccess **C**ontrol **L**ists or ACLs. With ACLS you can create customized groups of users with customized permissions.  Please consult TACC's document "<a href="https://portal.tacc.utexas.edu/tutorials/acls">Manage Permissions with Access Control Lists</a>" for detailed information.
+For a more fine-grained approach to files and permissions, use **A**ccess **C**ontrol **L**ists or ACLs. With ACLS you can create customized groups of users with customized permissions.  Please consult TACC's document "<a href="../../tutorials/acls">Manage Permissions with Access Control Lists</a>" for detailed information.
 
 
 ### [Managing Permissions with `chmod`](#managing-chmod) { #managing-chmod }

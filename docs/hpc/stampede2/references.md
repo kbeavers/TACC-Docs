@@ -8,7 +8,7 @@
 * [Multi-Factor Authentication at TACC](../../tutorials/mfa)
 * [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
 * [Slurm online documentation](http://www.schedmd.com)
-<!-- * [TACC training materials](https://portal.tacc.utexas.edu/training#/guest?training=upcoming) -->
+<!-- * [TACC training materials](https://xortal.tacc.utexas.edu/training#/guest?training=upcoming) -->
 * [TACC Analysis Portal](https://tap.tacc.utexas.edu/)
 
 {% include 'aliases.md' %}

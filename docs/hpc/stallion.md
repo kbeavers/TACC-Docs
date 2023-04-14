@@ -5,7 +5,7 @@ Stallion (stallion.tacc.utexas.edu) is a Dell Linux visualization cluster and la
 
 Stallion is an ideal resource for users wishing to explore and present terascale datasets / geometries or ultra high-resolution imagery. Its resolution allows users to, in the same view, examine large-scale global features of their data from a distance and fine-scale local features close up. Users can also examine multiple views of their data (for example, different timesteps) simultaneously.  There is plenty of open standing room allowing large groups to view the display together.
 
-Stallion needs to be scheduled in advance  (<a href="https://portal.tacc.utexas.edu/vislab-reservations">https://portal.tacc.utexas.edu/vislab-reservations</a>,  512 475 9411) and is available for UT faculty, staff and students for educational and research purposes.  The VisLab is open Monday-Friday 9-5 and staff is on-site to help operate the system.  It&rsquo;s best to discuss display content with staff in advance to confirm appropriateness and format compatibility.
+Stallion needs to be scheduled in advance  (<a href="https://tacc.utexas.edu/use-tacc/visualization-services/reservations/">https://dev.tup.tacc.utexas.edu/use-tacc/visualization-services/reservations/</a>,  512 475 9411) and is available for UT faculty, staff and students for educational and research purposes.  The VisLab is open Monday-Friday 9-5 and staff is on-site to help operate the system.  It&rsquo;s best to discuss display content with staff in advance to confirm appropriateness and format compatibility.
 
 ## System Configuration
 

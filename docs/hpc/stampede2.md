@@ -135,7 +135,8 @@ After logging in again the system will generate a properly configured key pair.
 
 ## [Using Stampede2](#using) { #using }
 
-Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research workflow, **you’ll need to master Linux basics** and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. This user guide does not address these topics, however. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the [TACC](https://portal.tacc.utexas.edu/training/course-materials) training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research workflow, **you’ll need to master Linux basics** and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. <!-- SDL This user guide does not address these topics, however. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the [TACC](https://xortal.tacc.utexas.edu/training/course-materials) training sites. --> If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+
 
 ### [Configuring Your Account](#using-account) { #using-account }
 
@@ -808,7 +809,7 @@ The `task_affinity` script does two things:
 
 #### [More than One OpenMP Application Running Concurrently](#running-launching-openmpsimultaneous) { #running-launching-openmpsimultaneous }
 
-You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, `numactl -C` specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. See [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64) for more information.
+You can also run more than one OpenMP application simultaneously on a single node, but you will need to <!-- [distribute and pin tasks appropriately](http://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-affinity.html) --> distribute and pin tasks appropriately. In the example below, `numactl -C` specifies virtual CPUs (hardware threads). According to the numbering scheme for KNL hardware threads, CPU (hardware thread) numbers 0-67 are spread across the 68 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core. <!-- See [TACC training materials](http://xortal.tacc.utexas.edu/training#/session/64) for more information. -->
 
 ``` job-script
 export OMP_NUM_THREADS=2
@@ -855,7 +856,7 @@ For command line options and other information, execute `idev --help`. It's easy
 login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
 ```
 
-For more information see the [`idev` documentation](http://portal.tacc.utexas.edu/software/idev).
+For more information see the [`idev` documentation](../../software/idev).
 
 You can also launch an interactive session with Slurm's `srun` command, though there's no clear reason to prefer `srun` to `idev`. A typical launch line would look like this:
 
@@ -1816,7 +1817,7 @@ will run application on the associated nodes, as modified by the `ibrun` options
 
 ### [Running OpenGL/X Applications On The Desktop](#vis-opengl) { #vis-opengl }
 
-Stampede2 uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Stampede2 do not support native X instances. All windowing environments should use a VNC desktop launched via the job script in /share/doc/slurm/job.vnc or using the TACC Vis portal. 
+Stampede2 uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Stampede2 do not support native X instances. All windowing environments should use a VNC desktop launched via the job script in /share/doc/slurm/job.vnc or using the [TACC Analysis Portal][TACCANALYSISPORTAL]. 
 
 swr: To access the accelerated OpenSWR OpenGL library, it is necessary to use the swr module to point to the swr OpenGL implementation and configure the number of threads to allocate to rendering.  
 
@@ -1929,7 +1930,7 @@ It's often worthwhile to generate [optimization and vectorization reports](http:
 
 ### [Learning More](#programming-general-more) { #programming-general-more }
 
-The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64).
+The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; and the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual). <!-- SDL and [TACC training materials](http://xortal.tacc.utexas.edu/training#/session/64). -->
 
 ### [Programming and Performance: KNL](#programming-knl) { #programming-knl }
 
@@ -2011,7 +2012,7 @@ On Stampede2 the keyword `tacc_affinity` was originally an older name for what i
 
 **MCDRAM in Flat-Quadrant Mode**. Unless you have specialized needs, we recommend using `mem_affinity` or launching your application with `numactl --preferred=1` when running in flat-quadrant mode (see [Managing Memory](#knl-programming-managingmemory) above). If you mistakenly use `--membind=1`, only the 16GB of fast MCDRAM will be available. If you mistakenly use `--membind=0`, you will not be able to access fast MCDRAM at all.
 
-**Task Affinity**. If you're running one threaded, MPI, or hybrid application at a time, default affinity settings are usually sensible and often optimal. See [TACC training materials](https://portal.tacc.utexas.edu/training#/session/41) for more information. If you run more than one threaded, MPI, or hybrid application at a time, you'll want to pay attention to affinity. For more information see the appropriate sub-sections under [Launching Applications](#running-launching). 
+**Task Affinity**. If you're running one threaded, MPI, or hybrid application at a time, default affinity settings are usually sensible and often optimal. <!-- SDL See [TACC training materials](https://xortal.tacc.utexas.edu/training#/session/41) for more information.--> If you run more than one threaded, MPI, or hybrid application at a time, you'll want to pay attention to affinity. For more information see the appropriate sub-sections under [Launching Applications](#running-launching). 
 
 **MPI Initialization**. Our preliminary scaling tests with Intel MPI on Stampede2 suggest that the time required to complete MPI initialization scales quadratically with the number of MPI tasks (lower case `-n` in your Slurm submission script) and linearly with the number of nodes (upper case `-N`).
 
@@ -2067,19 +2068,19 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 * [Multi-Factor Authentication at TACC](../../tutorials/mfa)
 * [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
 * [Slurm online documentation](http://www.schedmd.com)
-<!-- * [TACC training materials](https://portal.tacc.utexas.edu/training#/guest?training=upcoming) -->
-* [TACC Visualization Portal](https://vis.tacc.utexas.edu/)
+<!-- * [TACC training materials](https://xortal.tacc.utexas.edu/training#/guest?training=upcoming) -->
+* [TACC Analysis Portal](https://tap.tacc.utexas.edu/)
 
 {% include 'aliases.md' %}
 ## [Help Desk](#help) { #help }
 
-[TACC Consulting](https://portal.tacc.utexas.edu/consulting/overview) operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with &quot;Stampede2&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Stampede2&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
 
 * **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
 
 * **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. When appropriate, include the information a consultant would need to find your artifacts and understand your workflow: e.g. the directory containing your build and/or job script; the modules you were using; relevant job numbers; and recent changes in your workflow that could affect or explain the behavior you're observing.
 
-* **Subscribe to [Stampede2 User News](https://portal.tacc.utexas.edu/user-news/-/news/Stampede2).** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+* **[Subscribe to Stampede2 User News][TACCSUBSCRIBE].** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
 
 * **Have realistic expectations.** Consultants can address system issues and answer questions about Stampede2. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
 

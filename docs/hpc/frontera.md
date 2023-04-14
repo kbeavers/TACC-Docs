@@ -1,6 +1,6 @@
 # Frontera User Guide
 Last update: September 15, 2022
-<!-- SDL <a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
+<!-- SDL <a href="https://frontera-xortal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
 ## [Notices](#notices) { #notices }
 
@@ -24,7 +24,7 @@ Frontera's design also includes a totally new integration with web services, and
 
 Experienced HPC/TACC users will be very familiar with many of the topics presented in this guide. Here we'll highlight some sections for a quick start on Frontera.
 
-* Log into your [TACC Dashboard][TACCPORTAL] to confirm that [you've been added to a Frontera allocation](https://portal.tacc.utexas.edu/projects-and-allocations#). Then, connect via SSH to `frontera.tacc.utexas.edu`.
+* Log into your [TACC Dashboard][TACCPORTAL] to confirm that [you've been added to a Frontera allocation][TACCALLOCATIONS]. Then, connect via SSH to `frontera.tacc.utexas.edu`.
 * Review the TACC info box displayed at login for your allocation availability and SU balances.
 * Read the [Good Conduct](../conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
 * Consult the [Frontera File Systems](../files) and [Frontera Production Queues](../running#frontera-production-queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
@@ -47,7 +47,7 @@ Access to all TACC systems now requires Multi-Factor Authentication (MFA). You c
 <!-- SDL
 #### [Password Management](#admin-account-password) { #admin-account-password }
 
-Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
+Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://xortal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
 -->
 
 ### [Access the System](#admin-access) { #admin-access }
@@ -82,7 +82,7 @@ To report a connection problem, execute the `ssh` command with the `-vvv` option
 
 After logging in again the system will generate a properly configured key pair.
 
-Regardless of your research workflow, <b>you’ll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux<!-- SDL , including some listed on the <a href="https://portal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites-->. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+Regardless of your research workflow, <b>you’ll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux<!-- SDL , including some listed on the <a href="https://xortal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites-->. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
 ### [Configuring Your Account](#admin-configuring) { #admin-configuring }
 
@@ -226,7 +226,7 @@ It's safe to execute module commands in job scripts. In fact, this is a good way
 
 ## [Frontera User Portal](#portal) { #portal }
 
-<!-- p class="introtext">The Frontera project team is pleased to announce the release of new <a href="https://frontera-portal.tacc.utexas.edu/workbench/dashboard">Dashboard</a> functionality within the Frontera User Portal. Upon login, click on your name in the upper right corner to access your Frontera dashboard and account settings. </p -->
+<!-- p class="introtext">The Frontera project team is pleased to announce the release of new <a href="https://frontera-xortal.tacc.utexas.edu/workbench/dashboard">Dashboard</a> functionality within the Frontera User Portal. Upon login, click on your name in the upper right corner to access your Frontera dashboard and account settings. </p -->
 
 <p class="introtext">Explore the Frontera User Portal's <a href="https://frontera-portal.tacc.utexas.edu/workbench/dashboard">Dashboard</a> functionality. Upon logging into the portal, click on your name in the upper right corner to access your Frontera dashboard and account settings. </p>
 
@@ -743,7 +743,7 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 
    
 &#42; **Jobs in the `flex` queue are charged less than jobs in other queues but are eligible for preemption after running for more than one hour.**  
-&#42;&#42; **Access to the large queue is restricted**. To request more nodes than are available in the `normal` queue, submit a consulting (help desk) ticket through the [TACC User Portal](http://portal.tacc.utexas.edu/). Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Frontera.
+&#42;&#42; **Access to the large queue is restricted**. To request more nodes than are available in the `normal` queue, [submit a consulting ticket][HELPDESK].  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Frontera.
 
 
 
@@ -2333,9 +2333,9 @@ Frontera supports application containers from any specification-compliant scienc
 ## [Help Desk](#help) { #help }
 
 
-<p class="introtext"> <a href="https://portal.tacc.utexas.edu/consulting/overview">TACC Consulting</a> operates from 8am to 5pm CST, Monday through Friday, except for holidays.</p>
+TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays.
 
-You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
 
 ### [Best Practices aka Help Us Help You](#help-bestpractices)
 
@@ -2343,7 +2343,7 @@ You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulti
 
 * **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. When appropriate, include the information a consultant would need to find your artifacts and understand your workflow: e.g. the directory containing your build and/or job script; the modules you were using; relevant job numbers; and recent changes in your workflow that could affect or explain the behavior you're observing.
 
-* **Subscribe to [Frontera User News](https://portal.tacc.utexas.edu/user-news/-/news/Frontera).** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+* **[Subscribe to Frontera User News][TACCSUBSCRIBE].** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
 
 * **Have realistic expectations.** Consultants can address system issues and answer questions about Frontera. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
 

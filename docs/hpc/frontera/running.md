@@ -66,7 +66,7 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 
    
 &#42; **Jobs in the `flex` queue are charged less than jobs in other queues but are eligible for preemption after running for more than one hour.**  
-&#42;&#42; **Access to the large queue is restricted**. To request more nodes than are available in the `normal` queue, submit a consulting (help desk) ticket through the [TACC User Portal](http://portal.tacc.utexas.edu/). Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Frontera.
+&#42;&#42; **Access to the large queue is restricted**. To request more nodes than are available in the `normal` queue, [submit a consulting ticket][HELPDESK].  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Frontera.
 
 
 
