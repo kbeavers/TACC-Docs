@@ -40,7 +40,7 @@ Refer to Stampede2's [Running Jobs](../../hpc/stampede2#running) section for mor
 ``` job-script
 #!/bin/bash
 ##SBATCH -J test                    # Job Name
-##SBATCH -A <i>myProject</i>               # Your project name 
+##SBATCH -A myProject               # Your project name 
 ##SBATCH -o test.o%j                # Output file name (%j expands to jobID)
 ##SBATCH -e test.e%j                # Error file name (%j expands to jobID)
 ##SBATCH -N 1                       # Requesting 1 node

@@ -180,7 +180,6 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 /// tab | Hybrid (MPI + OpenMP) Job
 Hybrid (MPI + OpenMP) Jobs
 
-<!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
 If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.

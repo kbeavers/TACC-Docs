@@ -204,7 +204,7 @@ This policy applies to both the main and "protected" areas of Corral4.
 
 ## [References](#refs) { #refs }
 
-* [Manage Permissions with Access Control Lists][TACCACLS]
+* [Manage Permissions with Access Control Lists](../../tutorials/acls)
 * [Lonestar6 User Guide](../lonestar6)  
 * [iRODS](http://irods.org/)  
 * [Cyberduck home page](http://cyberduck.io/)  

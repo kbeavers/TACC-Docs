@@ -57,7 +57,7 @@ Follow the steps below to start an interactive session.
 
 	```cmd-line
 	
-	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@STAMPEDEHOSTNAME
+	localhost$ ssh -f -N -L xxxx:localhost:yyyy username@stampede2.tacc.utexas.edu
 	```
 
 	where:

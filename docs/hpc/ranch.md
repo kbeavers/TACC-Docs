@@ -10,9 +10,9 @@
 
 TACC's High Performance Computing (HPC) systems are used primarily for scientific computing and while their disk systems are large, they are unable to store the long-term final data generated on these systems. The Ranch archive system fills this need for high capacity long-term storage, by providing a massive high performance file system and tape-based backing store designed, implemented, and supported specifically for archival purposes.
 
-Ranch (**`HOSTNAME`**), is a Quantum StorNext-based system, with a DDN- provided front-end disk system (30PB raw), and a 5000 slot Quantum Scalar i6000 library for its back-end tape archive.
+Ranch (**`ranch.tacc.utexas.edu`**), is a Quantum StorNext-based system, with a DDN- provided front-end disk system (30PB raw), and a 5000 slot Quantum Scalar i6000 library for its back-end tape archive.
 
-Ranch is an allocated resource, meaning that Ranch is available only to users with an allocation on one of TACC's computational resources such as [Frontera]../frontera), [Stampede2](../stampede2), or [Lonestar6](../lonestar6). ACCESS PIs will be prompted automatically for the companion storage allocation as part of the proposal submission process and should include a justification of the storage needs in their proposal.  UT and UT system PIs should also make a request and justify the storage requested when applying for a Ranch shared "Project" (non-user) allocation. The default allocation on Ranch for users is 2TB. To request a [shared Ranch project space](#projects) for your team’s use, please submit a TACC user portal ticket.
+Ranch is an allocated resource, meaning that Ranch is available only to users with an allocation on one of TACC's computational resources such as [Frontera](../frontera), [Stampede2](../stampede2), or [Lonestar6](../lonestar6). ACCESS PIs will be prompted automatically for the companion storage allocation as part of the proposal submission process and should include a justification of the storage needs in their proposal.  UT and UT system PIs should also make a request and justify the storage requested when applying for a Ranch shared "Project" (non-user) allocation. The default allocation on Ranch for users is 2TB. To request a [shared Ranch project space](#projects) for your team’s use, please submit a TACC user portal ticket.
 
 
 ### [Intended Use](#intro-use) { #intro-use }
@@ -35,7 +35,7 @@ Previously, the Ranch system was based on Oracle's HSM software, with two SL8500
 Direct login via Secure Shell's `ssh` command to Ranch is allowed so you can create directories and manage files. The Ranch archive file systems cannot be mounted on any remote system.
 
 ```cmd-line
-stampede2$ ssh taccusername@HOSTNAME
+stampede2$ ssh taccusername@ranch.tacc.utexas.edu
 ```
 
 ### [Ranch Environment Variables](#access-envvars) { #access-envvars }
@@ -101,7 +101,7 @@ This file is updated nightly as a convenience to the user.  Each entry also show
 
 ## [Ranch "Project" Storage](#projects) { #projects }
 
-Ranch has implemented new "Project" storage which is a separate directory structure designed to support both shared and over-size data directories for users and/or projects for whom the fixed standard storage for each user of 2TB is inadequate, or in the case of shared storage, inappropriate.  [Submit a support ticket][SUBMITTICKET] to request Project storage on Ranch.  Note that each Project directory will also contain an `HSM_usage` file as described above.
+Ranch has implemented new "Project" storage which is a separate directory structure designed to support both shared and over-size data directories for users and/or projects for whom the fixed standard storage for each user of 2TB is inadequate, or in the case of shared storage, inappropriate.  [Submit a support ticket][HELPDESK] to request Project storage on Ranch.  Note that each Project directory will also contain an `HSM_usage` file as described above.
 
 ## [Transferring Data](#transferring) { #transferring }
 

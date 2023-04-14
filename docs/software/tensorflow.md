@@ -327,7 +327,7 @@ Q: **I have missing Python packages when using TensorFlow. What shall I do?**
 A: Deep learning frameworks usually depend on many other packages. e.g., the [Caffe package dependency list](https://github.com/intel/caffe/blob/master/python/requirements.txt). On TACC resources, you can install these packages in user space by running:
 
 ``` cmd-line
-$ pip install --user <i>package-name</i>
+$ pip install --user package-name
 ```
 
 ## [References](#refs) { #refs }

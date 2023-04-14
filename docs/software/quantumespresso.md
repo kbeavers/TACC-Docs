@@ -2,7 +2,7 @@
 *Last update: May 19, 2020*
 
 
-<img alt="Quantum Espresso logo" src="../imgs/qe-logo.png" style="width: 75px;" />
+<img alt="Quantum Espresso logo" src="../imgs/qespresso-logo.png" style="width: 75px;" />
 Quantum Espresso (QE) is an integrated suite of open-source codes for electronic-structure calculations and materials modeling at the nanoscale. Quantum Espresso (op<b>E</b>n-<b>S</b>ource <b>P</b>ackage for <b>R</b>esearch in <b>E</b>lectronic <b>S</b>tructure, <b>S</b>imulation, and <b>O</b>ptimization) is based on density-functional theory, plane waves, and pseudopotentials.  
 
 ## [Installations](#installations) { #installations }
@@ -39,7 +39,7 @@ The script below submits a Quantum Espresso job to Frontera's normal queue (CLX 
 #SBATCH -n 224                              # 224 total tasks = 56 tasks/node
 #SBATCH -p normal                           # submit to "normal" queue 
 #SBATCH -t 4:00:00                          # run for 4 hours max 
-#SBATCH -A <i>projectname</i>
+#SBATCH -A projectname
 
 module load qe/6.4.1                        # setup environment
 ibrun pw.x -input qeinput > qe_test.out     # launch job
@@ -58,7 +58,7 @@ The script below submits a Quantum Espresso job to Stampede2's `normal` queue (K
 #SBATCH -n 256								# 256 total tasks = 64 tasks/node
 #SBATCH -p normal     						# submit to <code>normal</code> queue 
 #SBATCH -t 4:00:00       					# run for 4 hours max 
-#SBATCH -A <i>projectname</i>
+#SBATCH -A projectname
 
 module load qe/6.2.1						# setup environment
 ibrun pw.x -input qeinput > qe_test.out	    # launch job

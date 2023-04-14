@@ -3,7 +3,7 @@
 
 
 <img alt="VASP logo" src="../imgs/vasp-logo.png" style="width: 75px;" />
-<b>V</b>ienna <b>A</b>b initio <b>S</b>imulation <b>P</b>ackage (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
+**V**ienna **A**b initio **S**imulation **P**ackage (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
 
 
 ## [Licenses](#licenses) { #licenses }
@@ -67,7 +67,7 @@ The script below submits a VASP job to [Frontera's normal queue](../../hpc/front
 #SBATCH -N 4 
 #SBATCH -p normal      
 #SBATCH -t 4:00:00        
-#SBATCH -A <i>projectnumber</i>
+#SBATCH -A projectnumber
 
 module load vasp/5.4.4.pl2
 ibrun vasp_std > vasp_test.out
@@ -87,7 +87,7 @@ The script below requests 4 nodes and 256 tasks, for a maximum of four hours in 
 #SBATCH -N 4 
 #SBATCH -p normal      
 #SBATCH -t 4:00:00        
-#SBATCH -A <i>projectnumber</i>
+#SBATCH -A projectnumber
 
 module load vasp/5.4.4.p12
 ibrun vasp_std > vasp_test.out

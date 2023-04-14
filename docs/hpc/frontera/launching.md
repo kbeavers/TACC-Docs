@@ -41,7 +41,6 @@ c123-456$ ibrun ./myprogram	   # ibrun uses idev's arguments to properly allocat
 
 ### [One Hybrid (MPI+Threads) Application](#launching-hybrid)
 
-<!-- span style="color:red">Hyperthreading is not currently enabled on Frontera.</span> -->
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
@@ -90,7 +89,6 @@ The `task_affinity` script manages task placement and memory pinning when you ca
 
 ### [More than One OpenMP Application Running Concurrently](#launching-multimpiconcurrent)
 
-<!-- span style="color:red">Hyperthreading is not currently enabled on Frontera.</span> -->
  
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to distribute and pin OpenMP threads appropriately.  The most portable way to do this is with OpenMP Affinity.
  

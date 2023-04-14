@@ -310,14 +310,14 @@ Execute `module help sanitytool` for more information. -->
 
 ```cmd-line
 $ module load intel          # load the default Intel compiler v19.1.14
-$ module load intel/19.1.1   # load a specific version of the Intel compiler</pre>
+$ module load intel/19.1.1   # load a specific version of the Intel compiler
 ```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
 ```cmd-line
 $ module load   netcdf  # defines DDT-related env vars; modifies others
-$ module unload netcdf  # undoes changes made by load</pre>
+$ module unload netcdf  # undoes changes made by load
 ```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and FFTW3 with versions compatible with gcc:
@@ -334,7 +334,7 @@ Inactive Modules:
 1) python2
 
 Due to MODULEPATH changes, the following have been reloaded:
-1) fftw3/3.3.8     2) impi/19.0.4</pre>
+1) fftw3/3.3.8     2) impi/19.0.4
 
 On Lonestar6, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
@@ -359,14 +359,14 @@ $ module avail
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
 ```cmd-line
-$ module spider   # list all modules, even those not available to load</pre>
+$ module spider   # list all modules, even those not available to load
 ```
 
 To filter your search:
 
 ```cmd-line
 $ module spider netcdf             # all modules with names containing 'slep'
-$ module spider netcdf/3.6.3       # additional details on a specific module</pre>
+$ module spider netcdf/3.6.3       # additional details on a specific module
 ```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
@@ -394,7 +394,7 @@ Help text is available for both individual modules and the module system itself:
 
 ```cmd-line
 $ module help swr     # show help text for software package swr
-$ module help         # show help text for the module system itself</pre>
+$ module help         # show help text for the module system itself
 ```
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
@@ -1266,4 +1266,63 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 * **Have realistic expectations.** Consultants can address system issues and answer questions about Lonestar6. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
 
 * **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
+
+[HELPDESK]: https://dev.tup.tacc.utexas.edu/about/help/ "Help Desk"
+[CREATETICKET]: https://dev.tup.tacc.utexas.edu/about/help/ "Create Support Ticket"
+[TACCUSERPORTAL]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCPORTALLOGIN]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCUSAGEPOLICY]: https://dev.tup.tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
+[TACCALLOCATIONS]: https://dev.tup.tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
+[TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
+[TACCDASHBOARD]: https://dev.tup.tacc.utexas.edu/portal/dashboard "TACC Dashboard"
+
+[TACCANALYSISPORTAL]: http://tap.tacc.utexas.edu "TACC Analysis Portal"
+
+[TACCLMOD]: https://lmod.readthedocs.io/en/latest/ "Lmod"
+[DOWNLOADCYBERDUCK]: https://cyberduck.io/download/ "Download Cyberduck"
+
+
+
+
+<!--  hpc ug links 
+[STAMPEDE2UG]: http://portal.tacc.utexas.edu/user-guides/stampede2  "Stampede2 User Guide"
+[LONESTAR6UG]: http://portal.tacc.utexas.edu/user-guides/lonestar6  "Lonestar6 User Guide"
+[FRONTERAUG]: https://frontera-portal.tacc.utexas.edu/user-guide/  "Frontera User Guide"
+[CORRALUG]: http://portal.tacc.utexas.edu/user-guides/corral  "Corral User Guide" 
+[RANCHUG]: http://portal.tacc.utexas.edu/user-guides/ranch  "Ranch User Guide"
+[MAVERICK2UG]: http://portal.tacc.utexas.edu/user-guides/maverick2  "Maverick2 User Guide" -->
+
+<!-- common links -->
+<!--
+[STAMPEDE2UGRUNNING]: http://portal.tacc.utexas.edu/user-guides/stampede2#running  "Stampede2 User Guide - Running"
+[STAMPEDE2UGBUILDING]: http://portal.tacc.utexas.edu/user-guides/stampede2#building  "Stampede2 User Guide - Running"
+[FRONTERAUGRUNNING]: https://frontera-portal.tacc.utexas.edu/user-guide/#running  "Frontera User Guide - Running"
+[LONESTAR6UGRUNNING]:http://portal.utexas.edu/user-guide/lonestar6#running  "Lonestar6 User Guide - Running" -->
+
+
+
+
+<!-- software links -->
+<!--
+[TACCIDEV]: http://portal.tacc.utexas.edu/software/idev "idev User Guide"
+[TACCIRODS]: http://portal.tacc.utexas.edu/software/irods "IRODS at TACC"
+[TACCREMORA]: http://portal.tacc.utexas.edu/software/remora "REMORA at TACC"
+[TACCTENSORFLOW]: http://portal.tacc.utexas.edu/software/tensorflow "Tensorflow at TACC"
+-->
+
+<!-- tutorial links -->
+<!-- 
+[TACCACLS]: http://portal.tacc.utexas.edu/tutorials/acls "Manage Permissions with Access Control Lists"
+-->
+<!-- 
+[TACCMANAGINGIO]: http://portal.tacc.utexas.edu/tutorials/managingio "Managing I/O at TACC"
+[TACCMFA]: http://portal.tacc.utexas.edu/tutorials/multifactor-authentication "Multi-Factor Authentication at TACC"
+-->
+[TACCREMOTEDESKTOPACCESS]: http://portal.tacc.utexas.edu/tutorials/remote-desktop-access "TACC Remote Desktop Access"
+[TACCSHARINGPROJECTFILES]: http://portal.tacc.utexas.edu/tutorials/sharing-project-files "Sharing Project Files"
+[TACCBASHQUICKSTART]: http://portal.tacc.utexas.edu/tutorials/bashquickstart "Bash Quick Start Guide"
+[TACCACCESSCONTROLLISTS]: http://portal.tacc.utexas.edu/tutorials/acls "Access Control Lists"
+
+
+
 

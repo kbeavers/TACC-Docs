@@ -132,7 +132,7 @@ Submit the job to the Slurm scheduler in the standard way. Consult each resource
 
 Frontera | Stampede2 | Lonestar6
 --- | --- | ---
-<code>login1$ <b>sbatch myjobscript</b></code> | <code>login1$ <b>sbatch myjobscript</b><code> | <code>login1$ <b>sbatch myjobscript</b><code>
+<code>login1$ sbatch myjobscript</code> | <code>login1$ sbatch myjobscript<code> | <code>login1$ sbatch myjobscript<code>
 <a href="../../hpc/frontera#running/">Running Jobs on Frontera</a> | <a href="../../hpc/stampede2#running">Running Jobs on Stampede2</a> | <a href="../../hpc/lonestar6#running">Running Jobs on Lonestar6</a>
 
 ## [References](#refs)

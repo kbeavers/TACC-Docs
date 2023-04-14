@@ -68,7 +68,7 @@ Environment Variable | Description
 `TAU_PROFILE` 	| Set to 1 to turn on profiling (statistics) information.
 `PROFILEDIR` 		| Set to the name of a directory; otherwise output goes to the current directory.
 `TAU_TRACE` 		| Set to 1 to turn on tracing (timeline) information.
-`TRACEDIR` 		| Set to the name of a directory. You can safely use the `PROFILEDIR` value.</pre>
+`TRACEDIR` 		| Set to the name of a directory. You can safely use the `PROFILEDIR` value.
 
 
 Set up your environment in a batch script or `idev` session: 
@@ -86,7 +86,7 @@ c455-073[knl]$ export TRACEDIR=`pwd`/traces
 c455-073[knl]$ export TAU_PROFILE=0 TAU_TRACE=1
 ...
 c455-073[knl]$ ibrun myprogram
-</pre>
+
 ```
 
 ``` job-script
@@ -127,7 +127,7 @@ After your program runs you can process TAU's output to do two things: view stat
 		login1$ cd ${TRACEDIR}									# change to the directory containing trace files
 		login1$ rm -f tau.trc tau.edf							# remove any previous output files
 		login1$ tau_treemerge.pl									# merge all the trace files into one directory	
-		login1$ tau2slog2 tau.trc tau.edf -o yourprogram.slog2	# create viewable files</pre>
+		login1$ tau2slog2 tau.trc tau.edf -o yourprogram.slog2	# create viewable files
 		```
 
 	1. then visualize that data using another TAU package, Jumpshot ([Figure 2.](#figure2)): 

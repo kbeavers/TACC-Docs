@@ -5,6 +5,7 @@
 [TACCUSAGEPOLICY]: https://dev.tup.tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
 [TACCALLOCATIONS]: https://dev.tup.tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
 [TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
+[TACCDASHBOARD]: https://dev.tup.tacc.utexas.edu/portal/dashboard "TACC Dashboard"
 
 [TACCANALYSISPORTAL]: http://tap.tacc.utexas.edu "TACC Analysis Portal"
 

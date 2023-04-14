@@ -46,7 +46,7 @@ The following demonstrates running the OpenFOAM's [Lid-driven Cavity Flow](https
 	c557-804$ blockMesh
 	c557-804$ icoFoam
 	c557-804$ exit
-	login1$</pre>
+	login1$
 	```
 
 ## [References](#refs) { #refs }

@@ -31,7 +31,7 @@ Modify your batch script and include 'remora' before your script, executable, or
 #SBATCH -N 1               		# Total # of nodes (must be 1 for serial)
 #SBATCH -n 16              		# Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:00:00        		# Run time (hh:mm:ss)
-#SBATCH -A <i>myproject</i>     		# Allocation name (req'd if you have more than 1)
+#SBATCH -A myproject     		# Allocation name (req'd if you have more than 1)
 
 module load remora 
 remora ibrun ./my_parallel_job	# or "remora ./serial_job" if running a serial job

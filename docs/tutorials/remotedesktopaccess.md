@@ -120,7 +120,7 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 	--> Verifying access to desired queue (skx-dev)...OK
 	--> Verifying job request is within current queue limits...OK
 	--> Checking available allocation (TG-123456)...OK
-	Submitted batch job <span style="color: blue;">1965942</span>
+	Submitted batch job 1965942
 	```
 	
 1. **Poll the queue, waiting till the job runs...**
@@ -130,7 +130,7 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 	```cmd-line
 	login4(690)$ squeue -u slindsey
 	  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-	1965942     skx-dev dcvserve slindsey  <span style="color: blue;">R</span>       0:16      1 c506-082
+	1965942     skx-dev dcvserve slindsey  R       0:16      1 c506-082
 	```
 
 	If your job could not acquire a DCV license and launched a VNC session instead, jump to step 3 of the [VNC connection instructions](#vnc) below.
@@ -208,7 +208,7 @@ Follow the steps below to start an interactive session.
 	```cmd-line
 	login1$ squeue -u slindsey
 	  JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-	1974882 development vncserve slindsey  STYLEBLUER</span>       0:16      1 c455-084
+	1974882 development vncserve slindsey  STYLEBLUER       0:16      1 c455-084
 	```
 
 1. **Display the job's output file, `vncserver.out`, to extract the port connection number:**
@@ -224,8 +224,8 @@ Follow the steps below to start an interactive session.
 	In a new local terminal window, create the SSH tunnel:
 
 	```cmd-line
-	localhost$ ssh -f -N -L xxxx:STAMPEDEHOSTNAME:yyyy \
-	      username@STAMPEDEHOSTNAME
+	localhost$ ssh -f -N -L xxxx:stampede2.tacc.utexas.edu:yyyy \
+	      username@stampede2.tacc.utexas.edu
 	```
 
 	where
@@ -281,7 +281,7 @@ login4(804)$ sbatch -A TG-123456 -t 01:00:00 /share/doc/slur m/job.vnc
  --> Verifying access to desired queue (development)...OK
  --> Verifying job request is within current queue limits...OK
  --> Checking available allocation (UserServStaff)...OK
-Submitted batch job STYLEBLUE1974882</span>
+Submitted batch job STYLEBLUE1974882
 login4(805)$ squeue -u slindsey
   JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 1974882 development vncserve slindsey  R       0:16      1 c455-084
@@ -296,8 +296,8 @@ local (compute node) VNC port is 5901
 got login node VNC port 18455
 Created reverse ports on Stampede2 logins
 Your VNC server is now running!
-To connect via VNC client:  STYLEBLUESSH tunnel port 18455 to stampede2.tacc.utexas.edu:18455</span>
-<span style="color: blue;">Then connect to localhost::18455</span>
+To connect via VNC client:  STYLEBLUESSH tunnel port 18455 to stampede2.tacc.utexas.edu:18455
+Then connect to localhost::18455
 login4(807)$ scancel 1974882
 login4(808)$ squeue -u slindsey
 JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)

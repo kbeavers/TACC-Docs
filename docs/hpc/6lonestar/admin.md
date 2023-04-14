@@ -96,14 +96,14 @@ Execute `module help sanitytool` for more information. -->
 
 ```cmd-line
 $ module load intel          # load the default Intel compiler v19.1.14
-$ module load intel/19.1.1   # load a specific version of the Intel compiler</pre>
+$ module load intel/19.1.1   # load a specific version of the Intel compiler
 ```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
 ```cmd-line
 $ module load   netcdf  # defines DDT-related env vars; modifies others
-$ module unload netcdf  # undoes changes made by load</pre>
+$ module unload netcdf  # undoes changes made by load
 ```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and FFTW3 with versions compatible with gcc:
@@ -120,7 +120,7 @@ Inactive Modules:
 1) python2
 
 Due to MODULEPATH changes, the following have been reloaded:
-1) fftw3/3.3.8     2) impi/19.0.4</pre>
+1) fftw3/3.3.8     2) impi/19.0.4
 
 On Lonestar6, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the `papi` module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
@@ -145,14 +145,14 @@ $ module avail
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
 ```cmd-line
-$ module spider   # list all modules, even those not available to load</pre>
+$ module spider   # list all modules, even those not available to load
 ```
 
 To filter your search:
 
 ```cmd-line
 $ module spider netcdf             # all modules with names containing 'slep'
-$ module spider netcdf/3.6.3       # additional details on a specific module</pre>
+$ module spider netcdf/3.6.3       # additional details on a specific module
 ```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
@@ -180,7 +180,7 @@ Help text is available for both individual modules and the module system itself:
 
 ```cmd-line
 $ module help swr     # show help text for software package swr
-$ module help         # show help text for the module system itself</pre>
+$ module help         # show help text for the module system itself
 ```
 
 See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
