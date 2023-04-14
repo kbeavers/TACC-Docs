@@ -16,7 +16,7 @@ Examples of intensive I/O activity that could affect the system include, but are
 As TACC's user base continues to expand, the stress on the resources' shared file systems increases daily. TACC staff now recommends new file system and job submission guidelines in order to maintain file system stability. If a user's jobs or activities are stressing the file system, then every other user's jobs and activities are impacted, and the system admins may resort to cancelling the user's jobs and suspending access to the queues. 
 
 !!! note
-	If you know your jobs will generate significant I/O, please <a href="http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create">submit a support ticket</a> and an HPC consultant will work with you.
+	If you know your jobs will generate significant I/O, please [submit a support ticket][HELPDESK] and an HPC consultant will work with you.
 
 ## [Recommended File Systems Usage](#files) { #files }
 
@@ -99,7 +99,7 @@ Alternatively, you could write these per-process files to each compute node's `/
 
 Jobs that have multiple tasks that read and/or write to the same file will often suspend the file in question in an open state in order to accommodate the changes happening to it. Please make sure that your I/O activity is not being directed to a single file repeatedly. You can use `/tmp` on the node to store this file if the condition cannot be avoided. If you require shared file operations, then please ensure your I/O is optimized.
 
-If you anticipate the need for multiple nodes or processes to write to a single file in parallel (aka single file with multiple writers/collective writers), please <a href="https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create">submit a support ticket</a> for assistance.
+If you anticipate the need for multiple nodes or processes to write to a single file in parallel (aka single file with multiple writers/collective writers), please [submit a support ticket][HELPDESK] for assistance.
 
 
 ### [Monitor Your File System Quotas](#bestpractices-quotas) { #bestpractices-quotas }

@@ -2,7 +2,7 @@
 
 Experienced HPC/TACC users will be very familiar with many of the topics presented in this guide. Here we'll highlight some sections for a quick start on Frontera.
 
-* Log into the [TACC User Portal](http://portal.tacc.utexas.edu) to confirm that [you've been added to a Frontera allocation](https://portal.tacc.utexas.edu/projects-and-allocations#). Then, connect via SSH to `frontera.tacc.utexas.edu`.
+* Log into your [TACC Dashboard][TACCPORTAL] to confirm that [you've been added to a Frontera allocation](https://portal.tacc.utexas.edu/projects-and-allocations#). Then, connect via SSH to `frontera.tacc.utexas.edu`.
 * Review the TACC info box displayed at login for your allocation availability and SU balances.
 * Read the [Good Conduct](../conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
 * Consult the [Frontera File Systems](../files) and [Frontera Production Queues](../running#frontera-production-queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 

@@ -1,6 +1,18 @@
 [HELPDESK]: https://dev.tup.tacc.utexas.edu/about/help/ "Help Desk"
+[CREATETICKET]: https://dev.tup.tacc.utexas.edu/about/help/ "Create Support Ticket"
+[TACCUSERPORTAL]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCPORTALLOGIN]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCUSAGEPOLICY]: https://dev.tup.tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
+[TACCALLOCATIONS]: https://dev.tup.tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
+[TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
+
+[TACCANALYSISPORTAL]: http://tap.tacc.utexas.edu "TACC Analysis Portal"
+
 [TACCLMOD]: https://lmod.readthedocs.io/en/latest/ "Lmod"
 [DOWNLOADCYBERDUCK]: https://cyberduck.io/download/ "Download Cyberduck"
+
+
+
 
 <!--  hpc ug links 
 [STAMPEDE2UG]: http://portal.tacc.utexas.edu/user-guides/stampede2  "Stampede2 User Guide"
@@ -18,10 +30,6 @@
 [LONESTAR6UGRUNNING]:http://portal.utexas.edu/user-guide/lonestar6#running  "Lonestar6 User Guide - Running" -->
 
 
-<!-- consulting 
-[CREATETICKET]: http://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create "create support ticket"-->
-[TACCUSERPORTAL]: http://portal.tacc.utexas.edu "TACC User Portal"
-[TACCUSAGEPOLICY]: http://portal.tacc.utexas.edu/tacc-usage-policy "TACC Usage Policy"
 
 
 <!-- software links -->
@@ -36,7 +44,6 @@
 <!-- 
 [TACCACLS]: http://portal.tacc.utexas.edu/tutorials/acls "Manage Permissions with Access Control Lists"
 -->
-[TACCANALYSISPORTAL]: http://portal.tacc.utexas.edu/tutorials/tap "TACC Analysis Portal User Guide"
 <!-- 
 [TACCMANAGINGIO]: http://portal.tacc.utexas.edu/tutorials/managingio "Managing I/O at TACC"
 [TACCMFA]: http://portal.tacc.utexas.edu/tutorials/multifactor-authentication "Multi-Factor Authentication at TACC"

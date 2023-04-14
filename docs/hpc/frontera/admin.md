@@ -4,16 +4,17 @@
 
 #### [Check your Allocation Status](#admin-account-allocation) { #admin-account-allocation }
 
-**You must be added to a Frontera allocation in order to have access/login to Frontera.** The ability to log on to the TACC User Portal does NOT signify access to Frontera or any TACC resource. Submit Frontera allocations requests via [TACC's Resource Allocation System](https://tacc-submit.xras.org/). Continue to [manage your allocation's users](https://portal.tacc.utexas.edu/projects-and-allocations#) via the TACC User Portal. 
+**You must be added to a Frontera allocation in order to have access/login to Frontera.** The ability to log on to the TACC User Portal does NOT signify access to Frontera or any TACC resource. Submit Frontera allocations requests via [TACC's Resource Allocation System](https://tacc-submit.xras.org/). Continue to [manage your allocation's users][TACCALLOCATIONS] via the TACC User Portal. 
 
 #### [Multi-Factor Authentication](#admin-account-mfa) { #admin-account-mfa }
 
 Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../tutorials/mfa) for further information. 
 
+<!-- SDL
 #### [Password Management](#admin-account-password) { #admin-account-password }
 
 Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
-
+-->
 
 ### [Access the System](#admin-access) { #admin-access }
 
@@ -47,7 +48,7 @@ To report a connection problem, execute the `ssh` command with the `-vvv` option
 
 After logging in again the system will generate a properly configured key pair.
 
-Regardless of your research workflow, <b>you’ll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the <a href="https://portal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+Regardless of your research workflow, <b>you’ll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux<!-- SDL , including some listed on the <a href="https://portal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites-->. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
 ### [Configuring Your Account](#admin-configuring) { #admin-configuring }
 
@@ -59,7 +60,7 @@ The default login shell for your user account is Bash. To determine your current
 $ echo $SHELL
 ```
 
-If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC](http://portal.tacc.utexas.edu/) portal. The `chsh` ("change shell") command will not work on TACC systems. 
+If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, [submit a support ticket][HELPDESK]. The `chsh` ("change shell") command will not work on TACC systems. 
 
 When you start a shell on Frontera, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: `ls -a`.
 

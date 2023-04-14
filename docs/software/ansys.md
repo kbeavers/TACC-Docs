@@ -10,7 +10,7 @@ ANSYS is currently installed on TACC's [Frontera](../../hpc/frontera), [Lonestar
 
 ## [Licenses](#licenses)
 
-TACC's current ANSYS license allows TACC users to access ANSYS for **non-commercial**, **academic** use. If you would like access to ANSYS, [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) through the [TACC User Portal](https://portal.tacc.utexas.edu/). Include in your ticket your institutional affiliation and a brief statement confirming that you will use ANSYS only for **non-commercial**, **academic** purposes. If you are affiliated with the University of Texas, include your academic department in your help desk ticket.
+TACC's current ANSYS license allows TACC users to access ANSYS for **non-commercial**, **academic** use. If you would like access to ANSYS, [submit a help desk ticket][HELPDESK]. Include in your ticket your institutional affiliation and a brief statement confirming that you will use ANSYS only for **non-commercial**, **academic** purposes. If you are affiliated with the University of Texas, include your academic department in your help desk ticket.
 
 If you have your own ANSYS licenses or would like to install your own copy, you are allowed to do so.
 
@@ -31,7 +31,7 @@ Lonestar6 | 2022R1 | Structures, Fluids, LS-Dyna | <code>/scratch/tacc/apps/ANSY
 
 ### [Interactive Mode](#running-interactive)
 
-ANSYS can be launched with the ANSYS GUI used in interactive mode. Use the [TACC Vis Portal](https://vis.tacc.utexas.edu/) or create a VNC session following the directions in the [Remote Desktop Access](https://portal.tacc.utexas.edu/user-guides/stampede2#vis-remote) section.
+ANSYS can be launched with the ANSYS GUI used in interactive mode. Use the [TACC Vis Portal](https://vis.tacc.utexas.edu/) or create a VNC session following the directions in the [Remote Desktop Access](../../hpc/stampede2#vis-remote) section.
 
 !!! caution
 	Do NOT launch ANSYS, or any other codes, on the login nodes.
@@ -133,7 +133,7 @@ Submit the job to the Slurm scheduler in the standard way. Consult each resource
 Frontera | Stampede2 | Lonestar6
 --- | --- | ---
 <code>login1$ <b>sbatch myjobscript</b></code> | <code>login1$ <b>sbatch myjobscript</b><code> | <code>login1$ <b>sbatch myjobscript</b><code>
-<a href="https://fronteraweb.tacc.utexas.edu/user-guide/running/">Running Jobs on Frontera</a> | <a href="https://portal.tacc.utexas.edu/user-guides/stampede2#running">Running Jobs on Stampede2</a> | <a href="https://portal.tacc.utexas.edu/user-guides/lonestar6#running">Running Jobs on Lonestar6</a>
+<a href="../../hpc/frontera#running/">Running Jobs on Frontera</a> | <a href="../../hpc/stampede2#running">Running Jobs on Stampede2</a> | <a href="../../hpc/lonestar6#running">Running Jobs on Lonestar6</a>
 
 ## [References](#refs)
 

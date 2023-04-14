@@ -1,6 +1,6 @@
 # Frontera User Guide
 Last update: September 15, 2022
-<!--<a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
+<!-- SDL <a href="https://frontera-portal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
 ## [Notices](#notices) { #notices }
 
@@ -24,7 +24,7 @@ Frontera's design also includes a totally new integration with web services, and
 
 Experienced HPC/TACC users will be very familiar with many of the topics presented in this guide. Here we'll highlight some sections for a quick start on Frontera.
 
-* Log into the [TACC User Portal](http://portal.tacc.utexas.edu) to confirm that [you've been added to a Frontera allocation](https://portal.tacc.utexas.edu/projects-and-allocations#). Then, connect via SSH to `frontera.tacc.utexas.edu`.
+* Log into your [TACC Dashboard][TACCPORTAL] to confirm that [you've been added to a Frontera allocation](https://portal.tacc.utexas.edu/projects-and-allocations#). Then, connect via SSH to `frontera.tacc.utexas.edu`.
 * Review the TACC info box displayed at login for your allocation availability and SU balances.
 * Read the [Good Conduct](../conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
 * Consult the [Frontera File Systems](../files) and [Frontera Production Queues](../running#frontera-production-queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
@@ -38,16 +38,17 @@ Experienced HPC/TACC users will be very familiar with many of the topics present
 
 #### [Check your Allocation Status](#admin-account-allocation) { #admin-account-allocation }
 
-**You must be added to a Frontera allocation in order to have access/login to Frontera.** The ability to log on to the TACC User Portal does NOT signify access to Frontera or any TACC resource. Submit Frontera allocations requests via [TACC's Resource Allocation System](https://tacc-submit.xras.org/). Continue to [manage your allocation's users](https://portal.tacc.utexas.edu/projects-and-allocations#) via the TACC User Portal. 
+**You must be added to a Frontera allocation in order to have access/login to Frontera.** The ability to log on to the TACC User Portal does NOT signify access to Frontera or any TACC resource. Submit Frontera allocations requests via [TACC's Resource Allocation System](https://tacc-submit.xras.org/). Continue to [manage your allocation's users][TACCALLOCATIONS] via the TACC User Portal. 
 
 #### [Multi-Factor Authentication](#admin-account-mfa) { #admin-account-mfa }
 
 Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../tutorials/mfa) for further information. 
 
+<!-- SDL
 #### [Password Management](#admin-account-password) { #admin-account-password }
 
 Use your TACC User Portal password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal](http://portal.tacc.utexas.edu/) home page and select "Password Reset" under the Home tab.
-
+-->
 
 ### [Access the System](#admin-access) { #admin-access }
 
@@ -81,7 +82,7 @@ To report a connection problem, execute the `ssh` command with the `-vvv` option
 
 After logging in again the system will generate a properly configured key pair.
 
-Regardless of your research workflow, <b>you’ll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the <a href="https://portal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+Regardless of your research workflow, <b>you’ll need to master Linux basics</b> and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. However, this user guide does not address these topics. There are numerous resources in a variety of formats that are available to help you learn Linux<!-- SDL , including some listed on the <a href="https://portal.tacc.utexas.edu/training/course-materials">TACC</a> and training sites-->. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
 ### [Configuring Your Account](#admin-configuring) { #admin-configuring }
 
@@ -93,7 +94,7 @@ The default login shell for your user account is Bash. To determine your current
 $ echo $SHELL
 ```
 
-If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, submit a ticket through the [TACC](http://portal.tacc.utexas.edu/) portal. The `chsh` ("change shell") command will not work on TACC systems. 
+If you'd like to change your login shell to `csh`, `sh`, `tcsh`, or `zsh`, [submit a support ticket][HELPDESK]. The `chsh` ("change shell") command will not work on TACC systems. 
 
 When you start a shell on Frontera, system-level startup files initialize your account-level environment and aliases before the system sources your own user-level startup scripts. You can use these startup scripts to customize your shell by defining your own environment variables, aliases, and functions. These scripts (e.g. `.profile` and `.bashrc`) are generally hidden files: so-called dotfiles that begin with a period, visible when you execute: `ls -a`.
 
@@ -692,7 +693,7 @@ The Slurm scheduler tracks and charges for usage to a granularity of a few secon
 
 **Tip**: Your queue wait times will be less if you request only the time you need: the scheduler will have a much easier time finding a slot for the 2 hours you really need than say, for the 12 hours requested in your job script. 
 
-Principal Investigators can monitor allocation usage via the [TACC User Portal](https://portal.tacc.utexas.edu) under ["Allocations->Projects and Allocations"](https://portal.tacc.utexas.edu/projects-and-allocations). Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
+Principal Investigators can monitor allocation usage via the [TACC Portal][TACCPORTAL] under ["Allocations->Projects and Allocations"][TACCALLOCATIONS]. Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
 
 {% include 'include/tinfo.md' %}
 
@@ -855,7 +856,7 @@ You can also launch an interactive session with Slurm's srun command, though the
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
 ```
 
-Consult the [`idev`](http://portal.tacc.utexas.edu/software/idev) documentation for further details.
+Consult the [`idev`](../../software/idev) documentation for further details.
 
 ### [Interactive Sessions using SSH](#running-ssh) { #running-ssh } 
 
@@ -1604,7 +1605,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 ### [Running PyTorch ](#ml-pytorch) { #ml-pytorch }
 
-1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
+1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](../../software/idev) utility:
 
 	```cmd-line
 	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
@@ -1650,7 +1651,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 #### [Multi-Node](#ml-pytorch-multi) { #ml-pytorch-multi }
 
-1. Request two nodes in the `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
+1. Request two nodes in the `rtx-dev` queue using the [`idev`](../../software/idev) utility:
 
 	```cmd-line
 	login2.frontera$ idev -N 2 -n 2 -p rtx-dev -t 02:00:00
@@ -1687,7 +1688,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 Follow these instructions to install and run TensorFlow benchmarks on Frontera RTX. Frontera RTX runs TensorFlow 2.8.0 with Python 3.8.2. Frontera supports CUDA/10.1, CUDA/11.0, and CUDA/11.1. By default, we use CUDA/11.3. Select the appropriate CUDA version for your TensorFlow version.
 
-1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
+1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](../../software/idev) utility:
 
 	```cmd-line
 	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
@@ -1859,7 +1860,7 @@ will run application on the associated nodes, as modified by the ibrun options.
 
 ### [Running OpenGL/X Applications On The Desktop](#vis)
 
-Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Frontera do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the TACC Vis portal.
+Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Frontera do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the [TACC Analysis Portal][TACCANALYSISPORTAL].
 
 `swr`: To access the accelerated OpenSWR OpenGL library, it is necessary to use the `swr` module to point to the `swr` OpenGL implementation and configure the number of threads to allocate to rendering.
 
@@ -1966,7 +1967,7 @@ TACC now offers Frontera users access to Google Cloud Platform.
 
 #### [Request Access](#cloudservices-google-requestaccess) { #cloudservices-google-requestaccess }
 
-Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) requesting access to TACC Frontera's Google Cloud Platform. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
+Please [create a support ticket][HELPDESK] requesting access to TACC Frontera's Google Cloud Platform. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
 
 1. Install
@@ -2010,7 +2011,7 @@ TACC now offers Frontera users access to Amazon Web Services.
 
 #### [Request Access](#cloudservices-amazon-requestaccess) { #cloudservices-amazon-requestaccess }
 
-Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) requesting access to TACC Frontera's Amazon Web Services. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
+Please [create a support ticket][HELPDESK] requesting access to TACC Frontera's Amazon Web Services. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
 #### [Log In to the Console](#cloudservices-amazon-login) { #cloudservices-amazon-login }
 
@@ -2065,7 +2066,7 @@ Frontera's cloud service integration begins with Microsoft's Azure Service.
 
 #### [Request Access](#cloudservices-azure-requestaccess) { #cloudservices-azure-requestaccess }
 
-Please [submit a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) and a TACC admin will grant you access to the [Microsoft Azure Portal](http://portal.azure.com). Do not proceed with the following steps until an admin has responded and configured your account appropriately.
+Please [submit a support ticket][HELPDESK] and a TACC admin will grant you access to the [Microsoft Azure Portal](http://portal.azure.com). Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
 #### [Create a Storage Group and Account](#cloudservices-azure-storage) { #cloudservices-azure-storage }
 
@@ -2352,11 +2353,11 @@ You can [submit a help desk ticket](https://portal.tacc.utexas.edu/tacc-consulti
 
 
 * [Multi-Factor Authentication at TACC](../../tutorials/mfa)
-* [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
-* [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
+* [Bash Users' Startup Files: Quick Start Guide](../../tutorials/bashstartup)
+* [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles)
 * [`idev` documentation](../../software/idev)
-* [Lmod's online documentation](http://lmod.readthedocs.org)
-* [TACC Usage Policy](http://portal.tacc.utexas.edu/tacc-usage-policy)
+* [Lmod's online documentation][TACCLMOD]
+* [TACC Acceptable Use Policy][TACCUSAGEPOLICY]
 
 
 {% include 'aliases.md' %}

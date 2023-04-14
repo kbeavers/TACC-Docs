@@ -14,7 +14,7 @@ Resource Name | Storage System
 <code>corral-repl</code> | Replicated GPFS file system (<code>corral-repl</code>
 <code>corral-tacc</code> | TACC-only GPFS file system (<code>corral-tacc</code>
 
-Access to the iRODS system on Corral is available only to allocated users who have requested it. If you wish to utilize iRODS for accessing Corral, please indicate so in your Corral allocation request. Users with existing allocations who wish to make use of iRODS should submit a user support request through the user portal. You may also email <a href="mailto:data@tacc.utexas.edu">data@tacc.utexas.edu</a> to discuss your data needs and we will be happy to make a recommendation on the best tools for managing your data.
+Access to the iRODS system on Corral is available only to allocated users who have requested it. If you wish to utilize iRODS for accessing Corral, please indicate so in your Corral allocation request. Users with existing allocations who wish to make use of iRODS should [submit a user support request][HELPDESK]. You may also email <a href="mailto:data@tacc.utexas.edu">data@tacc.utexas.edu</a> to discuss your data needs and we will be happy to make a recommendation on the best tools for managing your data.
 
 Use of the Corral resource may be subject to allocation constraints.
 

@@ -22,7 +22,7 @@ Once the `vncserver` process is running on the compute node and a tunnel through
 
 ## [TACC Analysis Portal](#tap) { #tap }
 
-Connect to the TACC Analysis Portal at <https://tap.tacc.utexas.edu>. Everyone with a project allocation on Frontera or Stampede2 may use the portal.  
+Connect to the TACC Analysis Portal at <https://tap.tacc.utexas.edu>. Everyone with a project allocation on Frontera or Stampede2 may use the TACC Analysis Portal.  
 
 <figure id="figure1"><img alt="TACC Vis Portal" src="../../imgs/tutorials/RDA-1.png">  
 <figcaption>Figure 1. TACC Visualization Portal</figcaption></figure>

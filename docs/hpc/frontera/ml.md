@@ -4,7 +4,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 ### [Running PyTorch ](#ml-pytorch) { #ml-pytorch }
 
-1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
+1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](../../software/idev) utility:
 
 	```cmd-line
 	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
@@ -50,7 +50,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 #### [Multi-Node](#ml-pytorch-multi) { #ml-pytorch-multi }
 
-1. Request two nodes in the `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
+1. Request two nodes in the `rtx-dev` queue using the [`idev`](../../software/idev) utility:
 
 	```cmd-line
 	login2.frontera$ idev -N 2 -n 2 -p rtx-dev -t 02:00:00
@@ -87,7 +87,7 @@ Frontera is well equipped to provide researchers with the latest in Machine Lear
 
 Follow these instructions to install and run TensorFlow benchmarks on Frontera RTX. Frontera RTX runs TensorFlow 2.8.0 with Python 3.8.2. Frontera supports CUDA/10.1, CUDA/11.0, and CUDA/11.1. By default, we use CUDA/11.3. Select the appropriate CUDA version for your TensorFlow version.
 
-1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](https://portal.tacc.utexas.edu/software/idev) utility:
+1. Request a single compute node in Frontera's `rtx-dev` queue using the [`idev`](../../software/idev) utility:
 
 	```cmd-line
 	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00

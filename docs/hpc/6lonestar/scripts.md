@@ -21,7 +21,7 @@ Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`)
 !!! important 
 	Run all serial jobs in the `normal` queue.
 
-Consult the <a href="https://portal.tacc.utexas.edu/software/launcher">Launcher at TACC</a> documentation to run multiple serial executables at one time.
+Consult the <a href="../../tutorials/launcher">Launcher at TACC</a> documentation to run multiple serial executables at one time.
 
 ``` job-script
 #!/bin/bash

@@ -104,7 +104,7 @@ will run application on the associated nodes, as modified by the ibrun options.
 
 ### [Running OpenGL/X Applications On The Desktop](#vis)
 
-Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Frontera do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the TACC Vis portal.
+Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Frontera do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the [TACC Analysis Portal][TACCANALYSISPORTAL].
 
 `swr`: To access the accelerated OpenSWR OpenGL library, it is necessary to use the `swr` module to point to the `swr` OpenGL implementation and configure the number of threads to allocate to rendering.
 

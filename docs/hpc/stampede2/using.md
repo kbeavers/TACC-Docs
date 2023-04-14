@@ -1,6 +1,7 @@
 ## [Using Stampede2](#using) { #using }
 
-Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research workflow, **you’ll need to master Linux basics** and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. This user guide does not address these topics, however. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the [TACC](https://portal.tacc.utexas.edu/training/course-materials) training sites. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+Stampede2 nodes run Red Hat Enterprise Linux 7. Regardless of your research workflow, **you’ll need to master Linux basics** and a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi/vim`) to use the system properly. <!-- SDL This user guide does not address these topics, however. There are numerous resources in a variety of formats that are available to help you learn Linux, including some listed on the [TACC](https://portal.tacc.utexas.edu/training/course-materials) training sites. --> If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+
 
 ### [Configuring Your Account](#using-account) { #using-account }
 

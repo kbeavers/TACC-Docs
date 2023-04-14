@@ -1,6 +1,5 @@
 # <code>idev</code>: (Interactive Development) User Guide
-*Last update: August 12, 2018*
-
+*Last update: April 13, 2022*
 
 ## [Introduction](#intro) { #intro }
 
@@ -11,67 +10,90 @@ What most users need for development is interactive access to a set of compute n
 The `idev` utility creates an interactive development environment from the user's login window. In the `idev` window the user is connected directly to a compute node from which the user can launch MPI-compiled executables directly (with the `ibrun` command). 
 
 ## [How it works](#works) { #works }
+
 The `idev` command submits a batch job that creates a copy of the batch environment and then goes to sleep. After the job begins, `idev` acquires a copy of the batch environment, SSH's to the master node, and then re-creates the batch environment. The SSH command allows X11 tunneling for setting up a display back to the user's laptop for debugging.
 
-## [How to use `idev`](#how) { #how }
 On any TACC system execute:
 
 ``` cmd-line
-login4.stampede(5)$ idev options
+login2$ idev [options]
+
+   # command options:  -p partition_name
+   #                   -m number_of_minutes
+   #                   -N number_of_nodes
+   #                   -n number_of_tasks
+   #                   -A account_name
+   #  default values: -p development -m 30 -N 1 -n <max_for_node>
 ```
 
-If this is your first time launching `idev` and you have multiple accounts, `idev` will prompt you for the account and then save your selection as the default interactive account; otherwise, it will automatically use your only account. It will then begin to initiate your first `idev` session. Enjoy.
+If this is your first time launching `idev` and you have multiple projects/allocations, `idev` will prompt you for the allocation number and then save your selection as the default interactive account (in `~/.idevrc`); otherwise, it will automatically use your only account. 
 
-It is necessary for `idev` to gain access to compute nodes through the batch system; that is the normal mode for acquiring resources on a supercomputer (and at TACC). Hence the user must wait for the `idev` request to be accepted through the batch system. Fortunately, at TACC there is a &quot;development&quot; queue on each TACC system; `idev`'s default setting uses this queue, and it is often a short wait for `idev` to acquire the nodes and allow interactive input. `idev` reports its progress every 4 seconds. Below is an example of `idev`'s progress in setting up a session:
+By default only a single node is requested for 30 minutes in the development queue.  The limits can be changed with command line options, using syntax similar to the batch request specifications used in a job script.  Also, the common defaults can be changed in the ~/.idevrc file (See idev help.)
+
+##  [Accessing Nodes Interactively](#interactive) { #interactive }
+
+It is important to realize that idev acquires compute nodes through the batch system (this is the normal/only mode for acquiring resources on a supercomputer).  This often means there is a wait to acquire nodes in the normal (production) partitions.  Fortunately, at TACC there is a "development" queue on each TACC system (idev's default partition), and it is often a short wait for idev to acquire (one or a few) nodes and allow interactive input.  When you run idev, it reports back every 4 seconds the progress of accessing the nodes through the batch system.
+
+### [Examples](#examples) { #examples }
+
+Below is an example of idev's progress in creating a session on a skylake development node (in the skx-dev partition, the development default partition is for knl nodes):
 
 ``` cmd-line
-login1$ idev
+login1$ idev -p skx-dev
 
-Defaults file    : ~/.idevrc
-Default  queue   : development
-System           : Stampede
+ -> Checking on the status of development queue. OK
+
+ -> Defaults file    : ~/.idevrc    
+ -> System           : stampede2    
+ -> Queue            : skx-dev        (cmd line: -p        )
+ -> Nodes            : 1              (idev  default       )
+ -> Tasks per Node   : 68             (idev  default       )
+ -> Time (hh:mm:ss)  : 00:30:00       (idev  default       )
+ -> Project          : use_default    (SLURM default       )
+
 -----------------------------------------------------------------
---             Welcome to the Stampede Supercomputer
+          Welcome to the Stampede2 Supercomputer                 
 -----------------------------------------------------------------
-...
-After your idev job begins to run, a command prompt will appear,
-and you can begin your interactive development session.
-We will report the status every 4 seconds: (qw=queue wait, r=running).
+    ...
+ -> We will report the job status every 4 seconds: (PD=pending, R=running).
 
-job status: qw
-job status: qw (5 more times)
-job status: r
---> Job is now running on masternode= c301-202...OK
---> Sleeping for 7 seconds...OK
---> Checking to make sure your job has initialized an env for you....OK
---> Creating interactive terminal session (login) on master node c301-202.</pre>
 
-Note the prompt, `c301-202%`, in the above session. It is your interactive compute-node prompt. You can test the `ibrun` command by executing `ibrun date` which will return `date`'s output from each core of your session. You can begin immediately launching MPI applications with `ibrun myapp`. On the compute nodes in some queues, compiler access is not available.  In this case **compile on the login node in another window**.
+ -> job status:  PD
+    ...
+ -> job status:  R
 
-By default only a single node is requested for 30 minutes. However, you can change the limits with command line options, using syntax similar to the request specifications used in a job script. The syntax is conveniently described in the `idev` help display:
+ -> Creating interactive terminal session (login) on master node c506-053.
+
+c506-053[skx]$ 
+```
+
+Note the prompt, `c506-053[skx]$`, in the above session.  It is your interactive compute-node prompt: the (master) node name and the node type (skx = skylake).  You can test the 1ibrun1 command by executing 1ibrun date1 which will return the `date` command's output from each core of your session. Launch MPI applications with `ibrun myapp`.
+
+The syntax is conveniently described in the `idev -help` display as seen below.
 
 ``` cmd-line
 login1$ idev -help
 ...
-OPTION ARGUMENTS         DESCRIPTION
--A     account_name      sets account name (default: in .idevrc)
--m     minutes           sets time in minutes (default: 30)
--p     queue_name        sets queue to named queue (default: -p development)
--r     resource_name     sets hardware
--t     hh:mm:ss          sets time to hh:mm:ss (default: 00:30:00)
--help      [--help     ] displays (this) help message
--v         [--version  ] output version information and exit
-...  
-</pre>
+OPTION ARGUMENTS         DESCRIPTION  (only common options shown)
 
-Options may be used in any order. Only a subset of the options is presented above.  The `-r` option may be used on any system to request a specific resource (e.g. requesting a specific set of nodes).
 
-## [Compiling](#compiling) { #compiling }
+  -A   account_name       sets account name (default: Slurm default )
+  -m   minutes            sets time in minutes (default: 30)
+  -n   total_tasks        Total number of tasks
+  -N   nodes              Number of nodes
+  -tpn tpn                Tasks per node
+  -p   queue_name         sets queue to named queue (default: -p development)
+  -r   reservation_name   requests use of a specific reservation
+  -t   hh:mm:ss           sets time to hh:mm:ss (default: 00:30:00, 30 min.)
 
-On the old Stampede1 system, compiling on compute nodes is only supported on the development nodes. When using a queue other than `development`, we suggest opening two login windows, and using one for compilations and the other for starting an `idev` interaction session for running executions.
+  -queues                   lists queues for the system
+  -pselect                  presents slurm queue to select from
+  -- <other SLURM options>  MUST occur after ALL idev options (above and below)
+  ... 
+```
 
-## [Future](#future) { #future }
-If you have ideas for enhancing `idev` with new features, please submit a ticket at <https://portal.tacc.utexas.edu/>
+* Only a subset of the options is presented above. 
+* Options may be used in any order. 
+* The `-r` option may be used on any system to request a specific resource (e.g. requesting a specific set of nodes).
 
-*Last update: February 3, 2017*
 

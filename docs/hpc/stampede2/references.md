@@ -9,6 +9,6 @@
 * [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
 * [Slurm online documentation](http://www.schedmd.com)
 <!-- * [TACC training materials](https://portal.tacc.utexas.edu/training#/guest?training=upcoming) -->
-* [TACC Visualization Portal](https://vis.tacc.utexas.edu/)
+* [TACC Analysis Portal](https://tap.tacc.utexas.edu/)
 
 {% include 'aliases.md' %}

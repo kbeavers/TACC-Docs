@@ -164,7 +164,7 @@ c123-456$ module load cuda/10.1 cudnn/7.6.5 nccl/2.5.6
 c123-456$ pip3 install --user grpcio==1.28.1 tensorflow-gpu==2.1.0 --no-cache-dir
 ```
 
-We suggest installing Horovod version 0.19.2. If you wish to install other versions of Horovod, please <a href="https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create">submit a support ticket</a> with the subject "Request for Horovod" and TACC staff will provide special instructions.
+We suggest installing Horovod version 0.19.2. If you wish to install other versions of Horovod, please [submit a support ticket][HELPDESK] with the subject "Request for Horovod" and TACC staff will provide special instructions.
 
 ``` cmd-line
 c123-456$ HOROVOD_CUDA_HOME=$TACC_CUDA_DIR HOROVOD_NCCL_HOME=$TACC_NCCL_DIR CC=gcc \

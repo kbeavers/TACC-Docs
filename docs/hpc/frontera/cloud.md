@@ -12,7 +12,7 @@ TACC now offers Frontera users access to Google Cloud Platform.
 
 #### [Request Access](#cloudservices-google-requestaccess) { #cloudservices-google-requestaccess }
 
-Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) requesting access to TACC Frontera's Google Cloud Platform. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
+Please [create a support ticket][HELPDESK] requesting access to TACC Frontera's Google Cloud Platform. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
 
 1. Install
@@ -56,7 +56,7 @@ TACC now offers Frontera users access to Amazon Web Services.
 
 #### [Request Access](#cloudservices-amazon-requestaccess) { #cloudservices-amazon-requestaccess }
 
-Please [create a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) requesting access to TACC Frontera's Amazon Web Services. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
+Please [create a support ticket][HELPDESK] requesting access to TACC Frontera's Amazon Web Services. Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
 #### [Log In to the Console](#cloudservices-amazon-login) { #cloudservices-amazon-login }
 
@@ -111,7 +111,7 @@ Frontera's cloud service integration begins with Microsoft's Azure Service.
 
 #### [Request Access](#cloudservices-azure-requestaccess) { #cloudservices-azure-requestaccess }
 
-Please [submit a support ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create) and a TACC admin will grant you access to the [Microsoft Azure Portal](http://portal.azure.com). Do not proceed with the following steps until an admin has responded and configured your account appropriately.
+Please [submit a support ticket][HELPDESK] and a TACC admin will grant you access to the [Microsoft Azure Portal](http://portal.azure.com). Do not proceed with the following steps until an admin has responded and configured your account appropriately.
 
 #### [Create a Storage Group and Account](#cloudservices-azure-storage) { #cloudservices-azure-storage }
 

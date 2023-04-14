@@ -11,7 +11,7 @@ All TACC system users are organized into UNIX "groups", collections of users who
 1. Those users and files must belong to the same UNIX group
 2. The file or directory's permissions must allow group read or write access
 
-At TACC, users assigned to the same allocated project typically belong to the same UNIX group. This group number will (usually) correspond directly to the project/allocation number. To determine your project's UNIX group number, go to the "[Projects and Allocations](https://portal.tacc.utexas.edu/projects-and-allocations)" page in the [TACC User Portal](http://portal.tacc.utexas.edu) (TUP).
+At TACC, users assigned to the same allocated project typically belong to the same UNIX group. This group number will (usually) correspond directly to the project/allocation number. To determine your project's UNIX group number, go to [Projects and Allocations][TACCALLOCATIONS] via your TACC Dashboard.
 
 <figure id="figure1">
 <img alt="Project Detail" border="1" src="../../imgs/tutorials/sharingfiles-1.png" style="width: 600px; height: 201px;" />
@@ -116,7 +116,7 @@ Project managers should remind their users to set their shell's [umask](http://e
 login1$ set umask 027
 ```
 
-Many of these commands can be tricky. If you need assistance in setting up a shared project workspace, please submit a [help-desk ticket](https://portal.tacc.utexas.edu/tacc-consulting/-/consult/tickets/create). See also the following man pages:
+Many of these commands can be tricky. If you need assistance in setting up a shared project workspace, please [submit a help-desk ticket][HELPDESK]. See also the following man pages:
 
 ```cmd-line
 login1$ man chmod
@@ -133,8 +133,8 @@ Principal Investigators (PIs) or their delegates can manage project membership t
 
 ## [References](#refs) { #refs }
 
-* [TACC Allocations Overview](https://portal.tacc.utexas.edu/allocations-overview)
-* [How To: Manage Your Allocation](https://portal.tacc.utexas.edu/tutorials/managing-allocations)
+* [TACC Projects &amp; Allocations][TACCPROJECTS]
+<!-- * [How To: Manage Your Allocation](https://portal.tacc.utexas.edu/tutorials/managing-allocations) -->
 * [Manage Permissions with Access Control Lists](https://portal.tacc.utexas.edu/tutorials/acls)
 
 {% include 'aliases.md' %}

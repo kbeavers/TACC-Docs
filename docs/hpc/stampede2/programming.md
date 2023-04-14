@@ -64,7 +64,7 @@ It's often worthwhile to generate [optimization and vectorization reports](http:
 
 ### [Learning More](#programming-general-more) { #programming-general-more }
 
-The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual); and [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64).
+The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's [Modern Code](http://software.intel.com/en-us/modern-code) resources; and the [Intel Optimization Reference Manual](http://intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual). <!-- SDL and [TACC training materials](http://portal.tacc.utexas.edu/training#/session/64). -->
 
 ### [Programming and Performance: KNL](#programming-knl) { #programming-knl }
 
@@ -146,7 +146,7 @@ On Stampede2 the keyword `tacc_affinity` was originally an older name for what i
 
 **MCDRAM in Flat-Quadrant Mode**. Unless you have specialized needs, we recommend using `mem_affinity` or launching your application with `numactl --preferred=1` when running in flat-quadrant mode (see [Managing Memory](#knl-programming-managingmemory) above). If you mistakenly use `--membind=1`, only the 16GB of fast MCDRAM will be available. If you mistakenly use `--membind=0`, you will not be able to access fast MCDRAM at all.
 
-**Task Affinity**. If you're running one threaded, MPI, or hybrid application at a time, default affinity settings are usually sensible and often optimal. See [TACC training materials](https://portal.tacc.utexas.edu/training#/session/41) for more information. If you run more than one threaded, MPI, or hybrid application at a time, you'll want to pay attention to affinity. For more information see the appropriate sub-sections under [Launching Applications](#running-launching). 
+**Task Affinity**. If you're running one threaded, MPI, or hybrid application at a time, default affinity settings are usually sensible and often optimal. <!-- SDL See [TACC training materials](https://portal.tacc.utexas.edu/training#/session/41) for more information.--> If you run more than one threaded, MPI, or hybrid application at a time, you'll want to pay attention to affinity. For more information see the appropriate sub-sections under [Launching Applications](#running-launching). 
 
 **MPI Initialization**. Our preliminary scaling tests with Intel MPI on Stampede2 suggest that the time required to complete MPI initialization scales quadratically with the number of MPI tasks (lower case `-n` in your Slurm submission script) and linearly with the number of nodes (upper case `-N`).
 

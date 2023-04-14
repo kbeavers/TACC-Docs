@@ -10,7 +10,7 @@
 
 ## [Licenses](#license) { #license }
 
-MathWork's agreement with the University of Texas now allows TACC and XSEDE users to access MATLAB for **non-commercial**, **academic** use. If you would like access to MATLAB submit a help desk ticket through the [TACC][TACCUSERPORTAL]  portal. Include in your ticket your institutional affiliation and a brief statement confirming that you will use MATLAB only for **non-commercial**, **academic** purposes. If you are affiliated with the University of Texas, include your academic department in your help desk ticket.
+MathWork's agreement with the University of Texas now allows TACC users to access MATLAB for **non-commercial**, **academic** use. If you would like access to MATLAB [submit a help desk ticket][HELPDESK].  Include in your ticket your institutional affiliation and a brief statement confirming that you will use MATLAB only for **non-commercial**, **academic** purposes. If you are affiliated with the University of Texas, include your academic department in your help desk ticket.
 
 If you have your own network licenses for toolboxes that are not available through the University of Texas, we can help you configure these licenses on TACC systems. Again, submit a help desk ticket for assistance.
 
@@ -19,7 +19,7 @@ If you have your own network licenses for toolboxes that are not available throu
 MATLAB is normally launched with the MATLAB Desktop UI and used in interactive mode. Create a VNC session following the directions in the [Remote Desktop Access][TACCREMOTEDESKTOPACCESS] section.  
 
 
-MATLAB is managed under modules on the TACC resources. Before you launch MATLAB load the MATLAB module with the following command:
+MATLAB is managed under the modules system on the TACC resources. Before you launch MATLAB load the MATLAB module with the following command:
 
 ``` cmd-line
 login1$ module load matlab
@@ -65,10 +65,10 @@ Then submit the job to the scheduler in the standard way. See the Running Jobs s
 
 Resource | Submit a batch job
 --- | ---
-Frontera | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://fronteraweb.tacc.utexas.edu/user-guide/running/">Running jobs on Frontera</a>
-Stampede2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/stampede2#running">Running jobs on Stampede2</a>
-Lonestar6 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/lonestar6#running">Running jobs on Lonestar6</a>
-Maverick2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="https://portal.tacc.utexas.edu/user-guides/maverick2#running">Running jobs on Maverick2</a>
+Frontera | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="../../hpc/frontera#running/">Running jobs on Frontera</a>
+Stampede2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="../../hpc/stampede2#running">Running jobs on Stampede2</a>
+Lonestar6 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="../../hpc/lonestar6#running">Running jobs on Lonestar6</a>
+Maverick2 | <code>login1$ <b>sbatch myjobscript</b></code> | <a href="../../hpc/maverick2#running">Running jobs on Maverick2</a>
 
 ## [Parallel MATLAB](#parallelmatlab) { #parallelmatlab }
 

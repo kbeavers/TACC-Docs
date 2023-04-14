@@ -8,7 +8,7 @@ Last update: January 13, 2023
 * **Lonestar6 will transition from the early user phase into production on Tuesday, January 11, 2022.** For our researchers who currently have access to Lonestar6, we will start charging usage against your allocation. (01/06/2002)
 * TACC has transitioned to a new allocations management system for Lonestar6, and there are new Project Names. See [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles) to learn about managing file permissions across projects. 
 * **All users: read the [Good Conduct](#conduct) section.** Lonestar6 is a shared resource and your actions can impact other users. (10/18/2021) 
-* **[Subscribe](https://portal.tacc.utexas.edu/news/subscribe) to [Lonestar6 User News](https://portal.tacc.utexas.edu/user-news/-/news/Lonestar6)**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
+* **[Subscribe][TACCSUBSCRIBE] to Lonestar6 User News**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
 
 
 ## [Introduction](#intro) { #intro }
@@ -21,7 +21,7 @@ The system employs Dell Servers with  AMD's highly performant Epyc Milan process
 
 Lonestar6 is available to researchers from all University of Texas System institutions and to our partners, Texas A&amp;M University, Texas Tech University and University of North Texas.
 
-UT System Researchers may submit allocation requests for compute time on Lonestar6 via TACC's new [Texas Resource Allocation System](https://tacc-submit.xras.xsede.org) (TxRAS).  Consult the [TACC Allocations Overview](https://portal.tacc.utexas.edu/allocations-overview) page for details.  
+UT System Researchers may submit allocation requests for compute time on Lonestar6 via TACC's new [Texas Resource Allocation System](https://tacc-submit.xras.xsede.org) (TxRAS).  Consult the [Allocations](https://tacc.utexas.edu/use-tacc/allocations/) page for details.  
 
 Researchers at our partner institutions may submit allocation requests through the links below.
 
