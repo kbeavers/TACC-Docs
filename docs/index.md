@@ -7,7 +7,7 @@
 </style>
 
 # Documentation Overview
-*April 13, 2023*
+*April 14, 2023*
 
 **Welcome to TACC's Technical Documentation Site.**
 
@@ -23,6 +23,7 @@ If you're brand new to TACC and want to jump right in, check out the [Getting St
 # TACC Essentials
 
 //// html | div.grid
+
 ///// html | div[style="grid-column: span 2"]
 
 TACC's HPC, Storage and Visualization resources are shared among thousands of users.  Please familiarize yourself with the Good Conduct expectations.  
@@ -48,6 +49,27 @@ TACC customer support operates via a ticket system.
 * Tips when submitting a support ticket  
 
 /////
+///// html | div[style="grid-column: span 2"]
+
+/////
+
+///// html | a.card--plain[href="./basics/mfa/"]
+     markdown: block
+
+## Multi-Factor Authentication at TACC
+
+How to pair/unpair devices for access to TACC resources.
+
+/////
+
+///// html | a.card--plain[href="./tutorials/bashstartup/"]
+     markdown: block
+
+## Quickstart for Bash Users
+
+Learn how to configure your default shell for optimal performance. 
+
+/////
 ////
 ///
 
@@ -67,7 +89,7 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 
 ## Frontera User Guide
 
-One liner description of Frontera
+TACC's flagship system.
 /////
 
 ///// html | a.card--plain[href="./hpc/lonestar6/"]
@@ -75,7 +97,8 @@ One liner description of Frontera
 
 ## Lonestar6 User Guide
 
-One liner description of Lonestar6
+TACC's latest GPU-enabled system.
+
 /////
 ////
 ///
