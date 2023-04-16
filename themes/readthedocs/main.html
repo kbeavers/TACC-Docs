@@ -70,7 +70,7 @@
 
   {%- block site_name %}
     {{ super() }}
-    <a href="{{ config.cms_url }}" class="cms-link">{{ config.cms_name }}</a>
+    <a href="{{ config.theme.cms_url }}" class="cms-link">{{ config.theme.cms_name }}</a>
   {%- endblock %}
 
   {%- block scripts %}
