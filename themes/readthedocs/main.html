@@ -80,11 +80,13 @@
     {# /TACC #}
     <script src="{{ 'js/theme.js'|url }}" defer></script>
     {%- for path in extra_javascript %}
-      {# TACC: #}{# To force extra JavaScript to be imported as modules #}
-      {# <script src="{{ path }}" defer></script> #}
-      <script src="{{ path|url }}" type="module"></script>
-      {# /TACC #}
+      <script src="{{ path }}" defer></script>
     {%- endfor %}
+    {# TACC: #}{# To support extra JavaScript as modules #}
+    {%- for path in config.theme.tacc_javascript %}
+      <script src="{{ path|url }}" type="module"></script>
+    {%- endfor %}
+    {# /TACC #}
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable({{ 'true' if config.theme.sticky_navigation else 'false' }});
