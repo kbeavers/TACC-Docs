@@ -471,6 +471,18 @@ u {
 
 
 
+/* SEARCH */
+
+#mkdocs-search-results {
+  /* To mimic browser <h3> margin-block-start: 1em */
+  /* FAQ: 1em equals core-styles.docs h3 font size */
+  margin-top: var(--global-font-size--x-large);
+}
+
+
+
+
+
 /* FOOTER */
 
 .rst-content footer {
