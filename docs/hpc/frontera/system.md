@@ -23,7 +23,7 @@ Local storage: | 144GB /tmp partition on a 240GB SSD.
 
 ### [Large Memory Nodes](#system-largememory) { #system-largememory }
 
-Frontera hosts 16 large memory nodes featuring 2.1TB of Optane memory. Access these nodes via the [`nvdimm` queue](../running#frontera-production-queues).
+Frontera hosts 16 large memory nodes featuring 2.1TB of Optane memory. Access these nodes via the [`nvdimm` queue](#queues).
 
 #### [Table 5. Large Memory Nodes ](#table5) { #table5 }
 
@@ -38,7 +38,7 @@ Local storage: | 144GB /tmp partition on a 240GB SSD<br> 4x 833 GB /mnt/fsdax[0,
 
 ### [GPU Nodes](#system-gpu) { #system-gpu }
 
-Frontera hosts 90 GPU nodes contained in 4 Green Revolution Cooling ICEraQ racks. Access these nodes via the [`rtx` and `rtx-dev` queues](../running#frontera-production-queues).
+Frontera hosts 90 GPU nodes contained in 4 Green Revolution Cooling ICEraQ racks. Access these nodes via the [`rtx` and `rtx-dev` queues](#queues).
 
 #### [Table 6. Frontera GPU node specifications](#table6) { #table6 }
 

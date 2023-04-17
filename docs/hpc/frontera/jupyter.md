@@ -1,6 +1,6 @@
 ## [Jupyter](#jupyter) { #jupyter }
 
-See the [Transferring Files](../transferring) section to learn how to transfer your datasets to Frontera, prior to starting a Jupyter session.
+See the [Transferring Files](#transferring) section to learn how to transfer your datasets to Frontera, prior to starting a Jupyter session.
 
 ### [Launch a Session](#jupyter-launch) { #jupyter-launch }
 

@@ -26,10 +26,10 @@ Experienced HPC/TACC users will be very familiar with many of the topics present
 
 * Log into your [TACC Dashboard][TACCDASHBOARD] to confirm that [you've been added to a Frontera allocation][TACCALLOCATIONS]. Then, connect via SSH to `frontera.tacc.utexas.edu`.
 * Review the TACC info box displayed at login for your allocation availability and SU balances.
-* Read the [Good Conduct](../conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
-* Consult the [Frontera File Systems](../files) and [Frontera Production Queues](../running#frontera-production-queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
-* Copy and modify any of the [Sample Job Scripts](../scripts) for your own use. These scripts will also be helpful to show you how to modify any Jobs Scripts you are bringing over from other TACC systems so that they run efficiently on Frontera. 
-* Review the [default modules with `module list`](../admin/#using-modules-to-manage-your-environment). Make any changes needed for your code. 
+* Read the [Good Conduct](../../basics/conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
+* Consult the [Frontera File Systems](#files) and [Frontera Production Queues](#frontera-production-queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
+* Copy and modify any of the [Sample Job Scripts](#scripts) for your own use. These scripts will also be helpful to show you how to modify any Jobs Scripts you are bringing over from other TACC systems so that they run efficiently on Frontera. 
+* Review the [default modules with `module list`](#admin-configuring-modules). Make any changes needed for your code. 
 * Start small. Run any jobs from other systems on a smaller scale in order to test the performance of your code on Frontera. You may find your code needs to be altered or recompiled in order to perform well and at scale on the new system. 
 
 ## [Account Administration](#admin) { #admin }
@@ -574,7 +574,6 @@ c123-456$ ibrun ./myprogram	   # ibrun uses idev's arguments to properly allocat
 
 ### [One Hybrid (MPI+Threads) Application](#launching-hybrid)
 
-<!-- span style="color:red">Hyperthreading is not currently enabled on Frontera.</span> -->
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
 
@@ -623,7 +622,6 @@ The `task_affinity` script manages task placement and memory pinning when you ca
 
 ### [More than One OpenMP Application Running Concurrently](#launching-multimpiconcurrent)
 
-<!-- span style="color:red">Hyperthreading is not currently enabled on Frontera.</span> -->
  
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to distribute and pin OpenMP threads appropriately.  The most portable way to do this is with OpenMP Affinity.
  
@@ -684,7 +682,7 @@ wait
 
 Like all TACC systems, Frontera's accounting system is based on node-hours: one unadjusted Service Unit (SU) represents a single compute node used for one hour (a node-hour). For any given job, the total cost in SUs is the use of one compute node for one hour of wall clock time plus any additional charges for the use of specialized queues, e.g. Frontera's `flex` queue, Stampede2's `development` queue, and Longhorn's `v100` queue.  The [queue charge rates](#table-5-frontera-production-queues) are determined by the supply and demand for that particular queue or type of node used.  
 
-<span style="white-space: nowrap;"><b>Frontera SUs billed = (# nodes) x (job duration in wall clock hours) x (charge rate per node-hour)</b></span>
+**Frontera SUs billed = (# nodes) x (job duration in wall clock hours) x (charge rate per node-hour)**
 
 The Slurm scheduler tracks and charges for usage to a granularity of a few seconds of wall clock time. **The system charges only for the resources you actually use, not those you request.** If your job finishes early and exits properly, Slurm will release the nodes back into the pool of available nodes. Your job will only be charged for as long as you are using the nodes.
 
@@ -1076,7 +1074,6 @@ export OMP_NUM_THREADS=56   # this is 1 thread/core; may want to start lower
 /// tab | Hybrid (MPI + OpenMP) Job
 Hybrid (MPI + OpenMP) Jobs
 
-<!-- span style="color:red">**Hyperthreading is not currently enabled on Frontera**</span> -->  
 This script requests 10 nodes (`#SBATCH -N 10`) and 40 tasks (`#SBATCH -n 40`).  
 
 If your job requires only one or two nodes, submit the job to the `small` queue instead of the `normal` queue.

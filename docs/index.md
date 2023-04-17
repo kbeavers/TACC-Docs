@@ -14,9 +14,11 @@
 Welcome to TACC's Technical Documentation Site.
 ///
 
-Beyond the prefaced Essential Readings, TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) User Guides, Software Packages at TACC, and Tutorials.  See Additional Training below for more TACC HPC training resources. 
 
-All documentation is accessible via the left-hand navigation. 
+TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) Resource Guides, Software Packages at TACC, and Tutorials which can be accessed via the left-hand navigation. 
+
+Additional training opportunities such as the TACC Institute Series, can be found on the [Training Page](https://tacc.utexas.edu/use-tacc/training/) on our main site. 
+
 
 /// html | section.section--muted.section--has-border
 
@@ -64,7 +66,7 @@ Learn how to configure your default shell for optimal performance.
 
 /// html | section.section--light.section--has-border
 
-# HPC User Guides
+# HPC Resource Guides
 
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
@@ -75,7 +77,7 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 ///// html | a.card--plain[href="./hpc/frontera/"]
      markdown: block
 
-## Frontera User Guide
+## Frontera 
 
 The largest cluster dedicated to open science in the United States.
 /////
@@ -83,7 +85,7 @@ The largest cluster dedicated to open science in the United States.
 ///// html | a.card--plain[href="./hpc/lonestar6/"]
      markdown: block
 
-## Lonestar6 User Guide
+## Lonestar6
 
 A balanced set of resources to support simulation, data analysis, visualization and machine learning.
 
@@ -98,9 +100,9 @@ A balanced set of resources to support simulation, data analysis, visualization 
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-Explore documentation for field-specific and commonly used software packages, e.g, AlphaFold, VASP, MATLAB.  
+Explore documentation for field-specific and commonly used software packages. 
 
-Each guide contains sample job scripts per resource where applicable and any special instructions needed to run that package on TACC resources. Explore the available documentation on the left under "Software".
+Each guide contains sample job scripts per resource where applicable and any special instructions needed to run that package on TACC resources. 
 
 /////
 
@@ -143,12 +145,12 @@ Learn how to request access and run MATLAB, the popular numerical computing plat
 
 /// html | section.section--light.section--has-border
 
-# TACC Tutorials
+# Tutorials
 
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-TACC tutorials cover a wide range of topics from configuring your account to debugging tools and various TACC services. Explore the available topics to the left under "Tutorials".
+Tutorials cover a wide range of topics from configuring your account to debugging tools and various TACC services. 
 
 /////
 
@@ -165,7 +167,7 @@ Learn how to set up a common workspace shared by, and accessible to, all collabo
 
 ## Remote Desktop Access
 
-Run vis applications viewed locally via Virtual Network Computing (VNC), Desktop Cloud Visualization (DCV), or through the TACC Analysis Portal.
+Run visualization applications viewed locally via Virtual Network Computing (VNC), Desktop Cloud Visualization (DCV), or through the TACC Analysis Portal.
 
 /////
 ////

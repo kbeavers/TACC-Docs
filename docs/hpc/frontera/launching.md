@@ -49,7 +49,7 @@ export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
 ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
 ```
 
-As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (56 cores in the development/small/normal/large/flex [queues](../running#frontera-production-queues).
+As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (56 cores in the development/small/normal/large/flex [queues](#queues).
 
 
 ### [More Than One Serial Application in the Same Job](#launching-multiserial)

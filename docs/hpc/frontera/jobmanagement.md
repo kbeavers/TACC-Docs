@@ -8,7 +8,7 @@ When interpreting queue and job status, remember that **Frontera doesn't operate
 
 #### [TACC's `qlimits` command](#monitoring-queues-qlimits) { #monitoring-queues-qlimits }
 
-To display resource limits for the Frontera queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Frontera queues](../running#frontera-production-queues) may lag behind the actual configuration that the `qlimits` utility displays.
+To display resource limits for the Frontera queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Frontera queues](../#queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
 #### [Slurm's `sinfo` command](#monitoring-queues-sinfo) { #monitoring-queues-sinfo }
 
