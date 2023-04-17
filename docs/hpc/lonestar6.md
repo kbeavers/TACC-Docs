@@ -1267,14 +1267,14 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 
 * **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
 
-[HELPDESK]: https://dev.tup.tacc.utexas.edu/about/help/ "Help Desk"
-[CREATETICKET]: https://dev.tup.tacc.utexas.edu/about/help/ "Create Support Ticket"
-[TACCUSERPORTAL]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
-[TACCPORTALLOGIN]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
-[TACCUSAGEPOLICY]: https://dev.tup.tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
-[TACCALLOCATIONS]: https://dev.tup.tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
+[HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
+[CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
+[TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCPORTALLOGIN]: https://tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
+[TACCALLOCATIONS]: https://tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
 [TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
-[TACCDASHBOARD]: https://dev.tup.tacc.utexas.edu/portal/dashboard "TACC Dashboard"
+[TACCDASHBOARD]: https://tacc.utexas.edu/portal/dashboard "TACC Dashboard"
 
 [TACCANALYSISPORTAL]: http://tap.tacc.utexas.edu "TACC Analysis Portal"
 

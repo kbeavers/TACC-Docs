@@ -27,7 +27,7 @@ Additional training opportunities such as the TACC Institute Series, can be foun
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-If you're brand new to TACC and want to jump right in, check out the [Getting Started](tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://dev.tup.tacc.utexas.edu/use-tacc/allocations/) pages in the "Use TACC" section of our [main site](tacc.utexas.edu).
+If you're brand new to TACC and want to jump right in, check out the [Getting Started](tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://tacc.utexas.edu/use-tacc/allocations/) pages in the "Use TACC" section of our [main site](tacc.utexas.edu).
 
 /////
 
@@ -180,7 +180,7 @@ Run visualization applications viewed locally via Virtual Network Computing (VNC
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-TACC offers a variety of training and education programs. You may search and register for events on the [Training](https://dev.tup.tacc.utexas.edu/use-tacc/training/) page as well as view past presentations.
+TACC offers a variety of training and education programs. You may search and register for events on the [Training](https://tacc.utexas.edu/use-tacc/training/) page as well as view past presentations.
 
 /////
 

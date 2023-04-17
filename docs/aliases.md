@@ -1,11 +1,11 @@
-[HELPDESK]: https://dev.tup.tacc.utexas.edu/about/help/ "Help Desk"
-[CREATETICKET]: https://dev.tup.tacc.utexas.edu/about/help/ "Create Support Ticket"
-[TACCUSERPORTAL]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
-[TACCPORTALLOGIN]: https://dev.tup.tacc.utexas.edu/portal/login "TACC Portal login"
-[TACCUSAGEPOLICY]: https://dev.tup.tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
-[TACCALLOCATIONS]: https://dev.tup.tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
+[HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
+[CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
+[TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCPORTALLOGIN]: https://tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
+[TACCALLOCATIONS]: https://tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
 [TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
-[TACCDASHBOARD]: https://dev.tup.tacc.utexas.edu/portal/dashboard "TACC Dashboard"
+[TACCDASHBOARD]: https://tacc.utexas.edu/portal/dashboard "TACC Dashboard"
 
 [TACCANALYSISPORTAL]: http://tap.tacc.utexas.edu "TACC Analysis Portal"
 
