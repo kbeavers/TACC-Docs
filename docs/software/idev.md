@@ -1,5 +1,5 @@
 # <code>idev</code>: (Interactive Development) User Guide
-*Last update: April 13, 2022*
+*Last update: April 13, 2023*
 
 ## [Introduction](#intro) { #intro }
 
@@ -36,7 +36,7 @@ It is important to realize that idev acquires compute nodes through the batch sy
 
 ### [Examples](#examples) { #examples }
 
-Below is an example of idev's progress in creating a session on a skylake development node (in the skx-dev partition, the development default partition is for knl nodes):
+Below is an example of idev's progress in creating a session on a Skylake development node (in the skx-dev partition, the development default partition is for knl nodes):
 
 ``` cmd-line
 login1$ idev -p skx-dev
@@ -67,7 +67,7 @@ login1$ idev -p skx-dev
 c506-053[skx]$ 
 ```
 
-Note the prompt, `c506-053[skx]$`, in the above session.  It is your interactive compute-node prompt: the (master) node name and the node type (skx = skylake).  You can test the 1ibrun1 command by executing 1ibrun date1 which will return the `date` command's output from each core of your session. Launch MPI applications with `ibrun myapp`.
+Note the prompt, `c506-053[skx]$`, in the above session.  It is your interactive compute-node prompt: the (master) node name and the node type (skx = Skylake).  You can test the 1ibrun1 command by executing 1ibrun date1 which will return the `date` command's output from each core of your session. Launch MPI applications with `ibrun myapp`.
 
 The syntax is conveniently described in the `idev -help` display as seen below.
 

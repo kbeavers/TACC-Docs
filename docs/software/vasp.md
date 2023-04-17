@@ -3,7 +3,7 @@
 
 
 <img alt="VASP logo" src="../imgs/vasp-logo.png" style="width: 75px;" />
-**V**ienna **A**b initio **S**imulation **P**ackage (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
+**V**ienna **A**b initio **S**imulation **P**ackage (VASP) is a computer program for atomic scale materials modeling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
 
 
 ## [Licenses](#licenses) { #licenses }

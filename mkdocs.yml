@@ -56,7 +56,7 @@ nav:
 #    - Data Transfer Guide: basics/datatransferguide.md
     - Good Conduct: basics/conduct.md
     - Multi-Factor Authentication: tutorials/mfa.md
-    - Quickstart for BASH users: tutorials/bashstartup.md
+#    - Quickstart for BASH users: tutorials/bashstartup.md
     - Help: basics/help.md
   - HPC :
     - Chameleon: https://chameleoncloud.readthedocs.io/en/latest

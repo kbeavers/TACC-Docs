@@ -7,7 +7,7 @@
 </style>
 
 # Documentation Overview
-*April 14, 2023*
+*April 17, 2023*
 
 <!-- To not use <h2> so this heading does not show in nav -->
 /// html | span.h2
@@ -18,18 +18,15 @@ Beyond the prefaced Essential Readings, TACC's technical documentation is broadl
 
 All documentation is accessible via the left-hand navigation. 
 
-If you're brand new to TACC and want to jump right in, check out the [Getting Started](tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://dev.tup.tacc.utexas.edu/use-tacc/allocations/) pages in the "Use TACC" section of our [main site](tacc.utexas.edu).
-
-
 /// html | section.section--muted.section--has-border
 
 # TACC Essentials
 
 //// html | div.grid
-
 ///// html | div[style="grid-column: span 2"]
 
-TACC's HPC, Storage and Visualization resources are shared among thousands of users.  Please familiarize yourself with the Good Conduct expectations.  
+If you're brand new to TACC and want to jump right in, check out the [Getting Started](tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://dev.tup.tacc.utexas.edu/use-tacc/allocations/) pages in the "Use TACC" section of our [main site](tacc.utexas.edu).
+
 /////
 
 ///// html | a.card--plain[href="./basics/conduct/"]
@@ -37,34 +34,21 @@ TACC's HPC, Storage and Visualization resources are shared among thousands of us
 
 ## Good Conduct
 
-Good conduct by all users on an HPC system is essential to its smooth operation.
+Good conduct on the system ensures stability and helps TACC provide a reliable service to all users.
 
 /////
 
-///// html | a.card--plain[href="./tutorials/help/"]
-     markdown: block
-
-## Help
-
-TACC customer support operates via a ticket system. 
-
-* Our support team
-* Tips when submitting a support ticket  
-
-/////
-///// html | div[style="grid-column: span 2"]
-
-/////
 
 ///// html | a.card--plain[href="./basics/mfa/"]
      markdown: block
 
-## Multi-Factor Authentication at TACC
+## Multi-Factor Authentication
 
-How to pair/unpair devices for access to TACC resources.
+Learn how to pair/unpair your smart device for access to TACC resources.
 
 /////
 
+<!--
 ///// html | a.card--plain[href="./tutorials/bashstartup/"]
      markdown: block
 
@@ -73,6 +57,7 @@ How to pair/unpair devices for access to TACC resources.
 Learn how to configure your default shell for optimal performance. 
 
 /////
+-->
 ////
 ///
 
@@ -92,7 +77,7 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 
 ## Frontera User Guide
 
-TACC's flagship system.
+The largest cluster dedicated to open science in the United States.
 /////
 
 ///// html | a.card--plain[href="./hpc/lonestar6/"]
@@ -100,7 +85,7 @@ TACC's flagship system.
 
 ## Lonestar6 User Guide
 
-TACC's latest GPU-enabled system.
+A balanced set of resources to support simulation, data analysis, visualization and machine learning.
 
 /////
 ////
@@ -113,7 +98,7 @@ TACC's latest GPU-enabled system.
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-Explore documentation for field-specific software packages and commonly used software packages, e.g, AlphaFold, VASP, MATLAB.  
+Explore documentation for field-specific and commonly used software packages, e.g, AlphaFold, VASP, MATLAB.  
 
 Each guide contains sample job scripts per resource where applicable and any special instructions needed to run that package on TACC resources. Explore the available documentation on the left under "Software".
 
@@ -122,9 +107,9 @@ Each guide contains sample job scripts per resource where applicable and any spe
 ///// html | a.card--plain[href="./software/idev/"]
      markdown: block
 
-## `idev` (*i*nteractive *d*evelopment)
+## `idev` (interactive development)
 
-This powerful utility allow interactive access to a compute node.
+A powerful utility allowing interactive access to compute nodes.
 
 /////
 
@@ -132,6 +117,25 @@ This powerful utility allow interactive access to a compute node.
      markdown: block
 
 ## VASP
+
+How to run the Vienna Ab initio Simulation Package (VASP) for atomic-scale materials modeling.
+
+/////
+
+///// html | a.card--plain[href="./software/alphafold/"]
+     markdown: block
+
+## AlphaFold
+
+Run Google's powerful deep learning protein folding tool at TACC.
+
+/////
+///// html | a.card--plain[href="./software/matlab/"]
+     markdown: block
+
+## MATLAB
+
+Learn how to request access and run MATLAB, the popular numerical computing platform, at TACC
 
 /////
 ////
@@ -161,7 +165,7 @@ Learn how to set up a common workspace shared by, and accessible to, all collabo
 
 ## Remote Desktop Access
 
-HPC Visualization applications can be viewed locally on your own desktop.  Learn how to set up a remote desktop via Virtual Network Computing (VNC) or Desktop Cloud Visualization connections, or through the TACC Analysis Portal.
+Run vis applications viewed locally via Virtual Network Computing (VNC), Desktop Cloud Visualization (DCV), or through the TACC Analysis Portal.
 
 /////
 ////
@@ -183,24 +187,17 @@ TACC offers a variety of training and education programs. You may search and reg
 
 ## TACC Institutes
 
-Experts at TACC offer in-person, multi-day, immersive [courses](https://tacc.utexas.edu/use-tacc/training/) meant to enhance users knowledge of broad HPC topics such as:
-
-* Machine Learning
-* Applied Parallel Programming
-* Scientific Visualization
+In-person, multi-day, immersive, training opportunities meant to enhance users knowledge of broad HPC topics. 
 
 /////
 
 ///// html | div.card--plain[href="https://www.youtube.com/watch?v=DWmAWT5e3iQ"]
      markdown: block
 
-## YouTube
+## Training Videos
 
-TACC's new YouTube channel, [@TACC_training](https://www.youtube.com/@TACC_training/videos), features presentations such as:
+Self-guided training videos ranging from short how-to guides to detailed topical courses.
 
-* [How to Submit and Cancel Jobs](https://www.youtube.com/watch?v=sQhxNT4eg8I) (5 mins)
-* [Containers at TACC](https://www.youtube.com/watch?v=Z9d1Wv9zDT0) (4 hrs) 
-* [C++ for C Programmers](https://www.youtube.com/watch?v=DWmAWT5e3iQ) (3 hrs)
 
 /////
 
