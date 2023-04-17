@@ -9,7 +9,10 @@
 # Documentation Overview
 *April 14, 2023*
 
-**Welcome to TACC's Technical Documentation Site.**
+<!-- To not use <h2> so this heading does not show in nav -->
+/// html | span.h2
+Welcome to TACC's Technical Documentation Site.
+///
 
 Beyond the prefaced Essential Readings, TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) User Guides, Software Packages at TACC, and Tutorials.  See Additional Training below for more TACC HPC training resources. 
 

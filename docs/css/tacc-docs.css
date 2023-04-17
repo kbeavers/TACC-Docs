@@ -340,6 +340,25 @@ svg.logo [fill]:not([fill="none"]) {
 
 
 
+/* To style text like an <h2> */
+/* FAQ: Design wants <h2> on index page, but it should NOT show in nav */
+/* TODO: Either, find a solution that does not involve "fake header" class */
+/* TODO: Or, support fake headers in Core (must then define margins) */
+.h2 {
+  /* Mimic browser */
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+
+  /* Mimic core-styles.docs */
+  font-size: var(--global-font-size--xx-large);
+  font-weight: var(--bold);
+}
+
+
 /* To ensure paragraph font size matches core-styles.docs.css */
 /* FAQ: If ineffectual, theme.css font size may match core-styles.docs.css */
 p {
