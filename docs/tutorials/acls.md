@@ -25,7 +25,7 @@ login1$ man getfacl
 Viewing ACLs for a specific file or directory is quite simple, and can be accomplished using the `getfacl` command:
 
 ```cmd-line
-login1$ getfacl <i>myfile</i>
+login1$ getfacl myfile>
 ```
 
 The output will be in the format shown below.  This example shows that the owner (root) has read and write access, while the user "testuser" has read-only access:
@@ -46,19 +46,19 @@ Note that the command's output is in a specialized format that can also be used 
 The `setfacl` command is the simplest way to manage ACLs. The example below modifies (with the -m) option an ACL to add read access for the username "testuser". 
 
 ```cmd-line
-login1$ setfacl -m u:<i>testuser</i>:r <i>file</i>
+login1$ setfacl -m u:testuser:r file
 ```
 
 The `-w` and `-x` flags can also be added to give read, write, and execute permissions:
 
 ```cmd-line
-login1$ setfacl -m u:<i>testuser</i>:rwx <i>file</i>
+login1$ setfacl -m u:testuser:rwx file
 ```
 
 The `-x` option can be used to remove permissions from the ACL. The following command removes the permissions granted in the previous example:
 
 ```cmd-line
-login1$ setfacl -x u:<i>testuser</i>:rwx <i>file</i>
+login1$ setfacl -x u:testuser:rwx file
 ```
 
 
@@ -67,20 +67,20 @@ login1$ setfacl -x u:<i>testuser</i>:rwx <i>file</i>
 You can use a named file, or a pipe with the `getfacl` command, to set complex ACLs or to copy ACLs from one file to another. The following commands save the output of the `getfacl` command to a file named `myfile.acl`, and then reads that ACL to set the permissions on a second file:
 
 ```cmd-line
-login1$ getfacl <i>file</i> > <i>myfile.acl</i>
-login1$ setfacl -M <i>myfile.acl</i> <i>file2</i>
+login1$ getfacl file > myfile.acl
+login1$ setfacl -M myfile.acl file2
 ```
 
 You can also use the `-R` flag for recursion and/or the wildcard character to set permissions for all files in a given directory tree.  The following command sets permissions using the specification in `myfile.acl` set in the above example on all files in the current directory:
 
 ```cmd-line
-login1$ setfacl -M <i>file.acl</i> *
+login1$ setfacl -M file.acl *
 ```
 
 This command  recursively sets permissions on all files and subdirectories of the named directory:
 
 ```cmd-line
-login1$ setfacl -R -M <i>file.acl</i> <i>directory</i>/
+login1$ setfacl -R -M file.acl directory/
 ```
 
 There are a large number of possibilities with the use of ACLs, including setting and managing default ACLs. Explore the man pages for more details on all the available options.

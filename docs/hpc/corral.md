@@ -83,7 +83,7 @@ Data transfer from any Unix/Linux system can be accomplished using the `scp` uti
 login1$ scp filename username@data.tacc.utexas.edu:/path/to/project/directory
 ```
 
-Where <i>filename</i> is the path to the file on your local system, and the path is what was provided to you when your allocation was granted. While a whole directory can be copied recursively using the `-r` switch:
+Where *filename* is the path to the file on your local system, and the path is what was provided to you when your allocation was granted. While a whole directory can be copied recursively using the `-r` switch:
 
 ``` cmd-line
 login1$ scp -r directory username@data.tacc.utexas.edu:/path/to/project/directory

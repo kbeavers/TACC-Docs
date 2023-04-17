@@ -252,7 +252,7 @@ The [Stampede2 User Guide](../stampede2) discusses Slurm extensively.  See the f
 
 * [Submitting Jobs with `sbatch`](../stampede2#running-sbatch)
 * [Common `sbatch` options](../stampede2#table6)
-* [Launching Applications](../stampede2#launching-applications)
+* [Launching Applications](../stampede2#launching)
 
 ### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
@@ -536,7 +536,7 @@ Follow the steps below to start an interactive session.
 	*  <code>-N <i>nodes</i></code> specify number of nodes needed 
 	*  <code>-p <i>partition</i></code> specify an alternate queue. 
 
-	<!-- See more `sbatch` options in the [Common `sbatch` Options](#table6) -->
+	See more `sbatch` options in the [Common `sbatch` Options](../stampede2#table6) section of the Stampede2 resource guide.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 

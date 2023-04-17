@@ -269,7 +269,7 @@ Local storage: | 144GB /tmp partition on a 240GB SSD.
 
 ### [Large Memory Nodes](#system-largememory) { #system-largememory }
 
-Frontera hosts 16 large memory nodes featuring 2.1TB of Optane memory. Access these nodes via the [`nvdimm` queue](../running#frontera-production-queues).
+Frontera hosts 16 large memory nodes featuring 2.1TB of Optane memory. Access these nodes via the [`nvdimm` queue](#queues).
 
 #### [Table 5. Large Memory Nodes ](#table5) { #table5 }
 
@@ -284,7 +284,7 @@ Local storage: | 144GB /tmp partition on a 240GB SSD<br> 4x 833 GB /mnt/fsdax[0,
 
 ### [GPU Nodes](#system-gpu) { #system-gpu }
 
-Frontera hosts 90 GPU nodes contained in 4 Green Revolution Cooling ICEraQ racks. Access these nodes via the [`rtx` and `rtx-dev` queues](../running#frontera-production-queues).
+Frontera hosts 90 GPU nodes contained in 4 Green Revolution Cooling ICEraQ racks. Access these nodes via the [`rtx` and `rtx-dev` queues](#queues).
 
 #### [Table 6. Frontera GPU node specifications](#table6) { #table6 }
 
@@ -314,7 +314,7 @@ Frontera mounts three Lustre file systems that are shared across all nodes: the 
 
 ### [File Systems](#files-filesystems) { #files-filesystems } 
 
-Frontera's startup mechanisms define corresponding account-level environment variables <code>$HOME</code>, <code>$SCRATCH</code> and <code>$WORK</code><!--,and <code>$FASTIO</code>--> that store the paths to directories that you own on each of these file systems. Consult the <a href="#table-2-frontera-file-systems">Frontera File Systems</a> table below for the basic characteristics of these file systems, <!--"File Operations: I/O Performance" for advice on performance issues,--> and the <a href="../conduct">Good Conduct</a> sections for guidance on file system etiquette.</p>
+Frontera's startup mechanisms define corresponding account-level environment variables <code>$HOME</code>, <code>$SCRATCH</code> and <code>$WORK</code><!--,and <code>$FASTIO</code>--> that store the paths to directories that you own on each of these file systems. Consult the <a href="#table-2-frontera-file-systems">Frontera File Systems</a> table below for the basic characteristics of these file systems, <!--"File Operations: I/O Performance" for advice on performance issues,--> and the <a href="../../basics/conduct">Good Conduct</a> sections for guidance on file system etiquette.</p>
 
 #### [Table 2. File Systems](#table2) { #table2 } 
 
@@ -503,7 +503,7 @@ localhost$ rsync -avtr mybigdir  bjones@frontera.tacc.utexas.edu:\$WORK/data
 
 The options on the second transfer are typical and appropriate when synching a directory: this is a <u>recursive update (`-r`)</u> with verbose (`-v`) feedback; the synchronization preserves <u>time stamps (`-t`)</u> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 
-See [Good Conduct](../conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
+See [Good Conduct](../../basics/conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
 
 The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
 
@@ -582,7 +582,7 @@ export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
 ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
 ```
 
-As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (56 cores in the development/small/normal/large/flex [queues](../running#frontera-production-queues).
+As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (56 cores in the development/small/normal/large/flex [queues](#queues).
 
 
 ### [More Than One Serial Application in the Same Job](#launching-multiserial)
@@ -715,7 +715,7 @@ Frontera's Slurm partitions (queues), maximum node limits and charge rates are s
 
 Frontera's newest queue, `small`, has been created specifically for one and two node jobs. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new `small` queue. The `normal` queue now has a lower limit of three nodes for all jobs. 
 
-The `nvdimm` queue features 16 [large-memory (2.1TB) nodes](../system#large-memory-nodes). Access to this queue is not restricted, however jobs in this queue are charged at twice the rate of the `normal`, `development` and `large`  queues. 
+The `nvdimm` queue features 16 [large-memory (2.1TB) nodes](#system-largememory). Access to this queue is not restricted, however jobs in this queue are charged at twice the rate of the `normal`, `development` and `large`  queues. 
 
 Frontera's `flex` queue offers users a low cost queue for lower priority/node count jobs and jobs running software with checkpointing capabilities. Jobs in the `flex` queue are scheduled with lower priority and are also eligible for preemption after running for one hour.  That is, if other jobs in the other queues are currently waiting for nodes and there are jobs running in the `flex` queue, the Slurm scheduler will cancel any jobs in the `flex` queue that have run more than one hour in order to give resources back to the higher priority jobs. Any job started in the `flex` queue is guaranteed to run for at least an hour (assuming the requested wallclock time was >= 1 hour). If there remain no outstanding requests from other queues, then these jobs will continue to run until they hit their wallclock requested time. This flexibility in runtime is rewarded by a reduced charge rate of .8 SUs/hour. Also, the max total node count for one user with many jobs in the flex queue is 6400 nodes.
 
@@ -747,7 +747,7 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 
 ### [Accessing the Compute Nodes](#running-computenodes) { #running-computenodes } 
 
- The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../conduct) for more information.
+ The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../../basics/conduct) for more information.
 
 #### [Figure 2. Login and Compute Nodes](#figure2) { #figure2 } 
 <figure id="figure2"><img alt="[Figure 2. Login and Compute Nodes" src="../../imgs/login-compute-nodes.jpg">
@@ -781,14 +781,15 @@ In each job script:
 
 There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
 
-<p class="msg-info"><a href="../scripts">See the customizable job script examples</a>.</p>
+!!! info
+   <a href="#scripts">See the customizable job script examples</a>.
 
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should **run your application(s) after loading the same modules that you used to build them**. You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not use the Slurm `--export` option to manage your job's environment**: doing so can interfere with the way the system propagates the inherited environment.
 
-Consult the [Common `sbatch` Options table](#table-6-common-sbatch-options) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Frontera), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Frontera.
+Consult the [Common `sbatch` Options table](#table6) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Frontera), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Frontera.
 
 
-#### [Table 6. Common <code>sbatch</code> Options](#-table6) { #table6 } 
+#### [Table 6. Common <code>sbatch</code> Options](#table6) { #table6 } 
 
 | Option | Argument | Comments |
 | --- | --- | -- |
@@ -1153,7 +1154,7 @@ When interpreting queue and job status, remember that **Frontera doesn't operate
 
 #### [TACC's `qlimits` command](#monitoring-queues-qlimits) { #monitoring-queues-qlimits }
 
-To display resource limits for the Frontera queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Frontera queues](../running#frontera-production-queues) may lag behind the actual configuration that the `qlimits` utility displays.
+To display resource limits for the Frontera queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Frontera queues](../#queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
 #### [Slurm's `sinfo` command](#monitoring-queues-sinfo) { #monitoring-queues-sinfo }
 
@@ -1278,15 +1279,15 @@ login1$ sbatch --dependency=afterok:173210 myjobscript
 
 For more information see the [Slurm online documentation](http://www.schedmd.com). Note that you can use `$SLURM_JOBID` from one job to find the jobid you'll need to construct the `sbatch` launch line for a subsequent one. But also remember that you can't use `sbatch` to submit a job from a compute node.
 
-## [Building Software](#building)
+## [Building Software](#building) { #building }
 
 <p class="introtext">The phrase "building software" is a common way to describe the process of producing a machine-readable executable file from source files written in C, Fortran, or some other programming language. In its simplest form, building software involves a simple, one-line call or short shell script that invokes a compiler. More typically, the process leverages the power of <a href="http://www.gnu.org/software/make/manual/make.html">makefiles</a>, so you can change a line or two in the source code, then rebuild in a systematic way only the components affected by the change. Increasingly, however, the build process is a sophisticated multi-step automated workflow managed by a special framework like <a href="http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html">autotools</a> or <a href="http://cmake.org"><code>cmake</code></a>, intended to achieve a repeatable, maintainable, portable mechanism for installing software across a wide range of target platforms.</p>
 
-### [Basics of Building Software](#building-basics)
+### [Basics of Building Software](#building-basics) { #building-basics }
 
 This section of the user guide does nothing more than introduce the big ideas with simple one-line examples. You will undoubtedly want to explore these concepts more deeply using online resources. You will quickly outgrow the examples here. We recommend that you master the basics of makefiles as quickly as possible: even the simplest computational research project will benefit enormously from the power and flexibility of a makefile-based build process.
 
-#### [Intel Compilers](#building-basics-intel)
+#### [Intel Compilers](#building-basics-intel) { #building-basics-intel }
 
 Intel is the recommended and default compiler suite on Frontera. Each Intel module also gives you direct access to `mkl` without loading an `mkl` module; see [Intel MKL](#the-intel-math-kernel-library-mkl) for more information. Here are simple examples that use the Intel compiler to build an executable from source code:
 
@@ -1299,7 +1300,7 @@ Compiling a code that uses OpenMP would look like this:
 
 See the published Intel documentation, available both [online](http://software.intel.com/en-us/intel-software-technical-documentation) and in `${TACC_INTEL_DIR}/documentation`, for information on optimization flags and other Intel compiler options.
 
-#### [GNU Compilers](#building-basics-gnu)
+#### [GNU Compilers](#building-basics-gnu) { #building-basics-gnu }
 
 The GNU foundation maintains a number of high quality compilers, including a compiler for C (`gcc`), C++ (`g++`), and Fortran (`gfortran`). The `gcc` compiler is the foundation underneath all three, and the term `gcc` often means the suite of these three GNU compilers.
 
@@ -1317,7 +1318,7 @@ $ gcc -fopenmp mycode.c -o myexe  # OpenMP; GNU flag is different than Intel
 
 Note that some compiler options are the same for both Intel and GNU <u>(e.g. `-o`)</u>, while others are different (e.g. `-qopenmp` vs `-fopenmp`). Many options are available in one compiler suite but not the other. See the [online GNU documentation](https://gcc.gnu.org/onlinedocs/) for information on optimization flags and other GNU compiler options.
 
-#### [Compiling and Linking as Separate Steps](#building-basics-steps)
+#### [Compiling and Linking as Separate Steps](#building-basics-steps) { #building-basics-steps }
 
 Building an executable requires two separate steps: (1) compiling (generating a binary object file associated with each source file); and (2) linking (combining those object files into a single executable file that also specifies the libraries that executable needs). The examples in the previous section accomplish these two steps in a single call to the compiler. When building more sophisticated applications or libraries, however, it is often necessary or helpful to accomplish these two steps separately.
 
@@ -1337,7 +1338,7 @@ $ icc main.o calc.o results.o -o myexe
 
 The compiler calls a linker utility (usually `/bin/ld`) to accomplish this task. Again, syntax for other compilers is similar.
 
-#### [Include and Library Paths](#building-basics-paths)
+#### [Include and Library Paths](#building-basics-paths) { #building-basics-paths }
 
 Software often depends on pre-compiled binaries called libraries. When this is true, compiling usually requires using the `-I` option to specify paths to so-called header or include files that define interfaces to the procedures and data in those libraries. Similarly, linking often requires using the `-L` option to specify paths to the libraries themselves. Typical compile and link lines might look like this:
 
@@ -1346,13 +1347,13 @@ $ icc        -c main.c -I${WORK}/mylib/inc -I${TACC_HDF5_INC}                  #
 $ icc main.o -o myexe  -L${WORK}/mylib/lib -L${TACC_HDF5_LIB} -lmylib -lhdf5   # link
 ```
 
-On Frontera, both the `hdf5` and `phdf5` modules define the environment variables `$TACC_HDF5_INC` and `$TACC_HDF5_LIB`. Other module files define similar environment variables; see [Using Modules](../admin#using-modules-to-manage-your-environment) for more information.
+On Frontera, both the `hdf5` and `phdf5` modules define the environment variables `$TACC_HDF5_INC` and `$TACC_HDF5_LIB`. Other module files define similar environment variables; see [Using Modules](#admin-configuring-modules) for more information.
 
 The details of the linking process vary, and order sometimes matters. Much depends on the type of library: static (`.a` suffix; library's binary code becomes part of executable image at link time) versus dynamically-linked shared (.so suffix; library's binary code is not part of executable; it's located and loaded into memory at run time). The link line can use rpath to store in the executable an explicit path to a shared library. In general, however, the `LD_LIBRARY_PATH` environment variable specifies the search path for dynamic libraries. For software installed at the system-level, TACC's modules generally modify `LD_LIBRARY_PATH` automatically. To see whether and how an executable named `myexe` resolves dependencies on dynamically linked libraries, execute `ldd myexe`.
 
 A separate section below addresses the [Intel Math Kernel Library](#the-intel-math-kernel-library-mkl) (MKL).
 
-#### [Compiling and Linking MPI Programs](#building-basics-mpi)
+#### [Compiling and Linking MPI Programs](#building-basics-mpi) { #building-basics-mpi }
 
 Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Frontera. After loading an `impi` or `mvapich2` module, compile and/or link using an mpi wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
@@ -1370,7 +1371,7 @@ $ mpicc -show  # Show compile line generated by call to mpicc; similarly for oth
 ```
 
 
-#### [Building Third-Party Software](#building-basics-thirdparty)
+#### [Building Third-Party Software](#building-basics-thirdparty) { #building-basics-thirdparty }
 
 You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/systems/software) tool or execute `module spider` or `module avail` on the command-line.
 
@@ -1405,7 +1406,7 @@ You may, of course, need to customize the build process in other ways. It's like
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
-### [The Intel Math Kernel Library (MKL)](#building-mkl)
+### [The Intel Math Kernel Library (MKL)](#building-mkl) { #building-mkl }
 
 The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a collection of highly optimized functions implementing some of the most important mathematical kernels used in computational science, including standardized interfaces to:
 
@@ -1415,7 +1416,7 @@ The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a 
 * [ScaLAPACK](http://netlib.org/scalapack) (Scalable LAPACK), [BLACS](http://netlib.org/blacs) (Basic Linear Algebra Communication Subprograms), Cluster FFT, and other functionality that provide block-based distributed memory (multi-node) versions of selected [LAPACK](https://software.intel.com/en-us/mkl-developer-reference-c-lapack-routines), [BLAS](https://software.intel.com/en-us/mkl-developer-reference-c-blas-and-sparse-blas-routines), and [FFT](https://software.intel.com/en-us/mkl-developer-reference-c-fft-functions) algorithms;
 * [Vector Mathematics](http://software.intel.com/en-us/node/521751) (VM) functions that implement highly optimized and vectorized versions of special functions like sine and square root.
 
-#### [MKL with Intel Compilers](#building-mkl-intel)
+#### [MKL with Intel Compilers](#building-mkl-intel) { #building-mkl-intel }
 
 There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the `-mkl` option.; e.g.
 
@@ -1427,7 +1428,7 @@ $ ifort -mkl mycode.c
 The `-mkl` switch is an abbreviated form of `-mkl=parallel`, which links your code to the threaded version of MKL. To link to the unthreaded version, use `-mkl=sequential`. A third option, `-mkl=cluster`, which also links to the unthreaded libraries, is necessary and appropriate only when using ScaLAPACK or other distributed memory packages. For additional information, including advanced linking options, see Intel's [MKL documentation](http://software.intel.com/intel-mkl) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor).
 
 
-#### [MKL with GNU Compilers](#building-mkl-gnu)
+#### [MKL with GNU Compilers](#building-mkl-gnu) { #building-mkl-gnu }
 
 When using a GNU compiler, load the MKL module before compiling or running your code, then specify explicitly the MKL libraries, library paths, and include paths your application needs. Consult the [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor) for details. A typical compile/link process on a TACC system will look like this:
 
@@ -1443,31 +1444,31 @@ $ gcc -fopenmp -I$MKLROOT/include         \
 
 For your convenience the `mkl` module file also provides alternative TACC-defined variables like `$TACC_MKL_INCLUDE` (equivalent to `$MKLROOT/include`). Execute `module help mkl` for more information.
 
-#### [MKL with BLAS/LAPACK and Third-Party Software](#building-mkl-thirdparty)
+#### [MKL with BLAS/LAPACK and Third-Party Software](#building-mkl-thirdparty) { #building-mkl-thirdparty }
 
 When your third-party software requires BLAS or LAPACK, you can use MKL to supply this functionality. Replace generic instructions that include link options like `-lblas` or `-llapack` with the simpler MKL approach described above. There is no need to download and install alternatives like OpenBLAS.
 
-#### [MKL with BLAS/LAPACK and TACC's MATLAB, Python, and R Modules](#building-mkl-blas)
+#### [MKL with BLAS/LAPACK and TACC's MATLAB, Python, and R Modules](#building-mkl-blas) { #building-mkl-blas }
 
 TACC's MATLAB, Python, and R modules all use threaded (parallel) MKL as their underlying BLAS/LAPACK library. These means that even serial codes written in MATLAB, Python, or R may benefit from MKL's thread-based parallelism. This requires no action on your part other than specifying an appropriate max thread count for MKL. 
 
-#### [Controlling Threading in MKL](#building-mkl-threading)
+#### [Controlling Threading in MKL](#building-mkl-threading) { #building-mkl-threading }
 
 Any code that calls MKL functions can potentially benefit from MKL's thread-based parallelism; this is true even if your code is not otherwise a parallel application. If you are linking to the threaded MKL (using `-mkl`, `-mkl=parallel`, or the equivalent explicit link line), you need only specify an appropriate value for the max number of threads available to MKL. You can do this with either of the two environment variables `MKL_NUM_THREADS` or `OMP_NUM_THREADS`. The environment variable `MKL_NUM_THREADS` specifies the max number of threads available to each instance of MKL, and has no effect on non-MKL code. If `MKL_NUM_THREADS` is undefined, MKL uses `OMP_NUM_THREADS` to determine the max number of threads available to MKL functions. In either case, MKL will attempt to choose an optimal thread count less than or equal to the specified value. Note that `OMP_NUM_THREADS` defaults to 1 on TACC systems; if you use the default value you will get no thread-based parallelism from MKL.
 
 If you are running a single serial, unthreaded application (or an unthreaded MPI code involving a single MPI task per node) it is usually best to give MKL as much flexibility as possible by setting the max thread count to the total number of hardware threads on the node (56 on CLX). Of course things are more complicated if you are running more than one process on a node: e.g. multiple serial processes, threaded applications, hybrid MPI-threaded applications, or pure MPI codes running more than one MPI rank per node. See [Settings for Calling Intel® Math Kernel Library Routines from Multi-Threaded Applications](http://software.intel.com/en-us/articles/recommended-settings-for-calling-intel-mkl-routines-from-multi-threaded-applications) and related Intel resources for examples of how to manage threading when calling MKL from multiple processes. 
 
-#### [Using ScaLAPACK, Cluster FFT, and Other MKL Cluster Capabilities](#building-mkl-cluster)
+#### [Using ScaLAPACK, Cluster FFT, and Other MKL Cluster Capabilities](#building-mkl-cluster) { #building-mkl-cluster }
 
 See [Working with the Intel Math Kernel Library Cluster Software](https://software.intel.com/en-us/mkl-linux-developer-guide-working-with-the-intel-math-kernel-library-cluster-software) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor) for information on linking to the MKL cluster components.
 		
-### [Building for Performance on Frontera](#building-performance)
+### [Building for Performance on Frontera](#building-performance) { #building-performance }
 
-#### [Recommended Compiler](#building-performance-compiler)
+#### [Recommended Compiler](#building-performance-compiler) { #building-performance-compiler }
 
 When building software on Frontera, we recommend using the Intel compiler and Intel MPI stack. This will be the default in the early user period, but may change if we determine one of the other MPI stacks provides superior performance. 
 
-#### [Architecture-Specific Flags](#building-performance-flags)
+#### [Architecture-Specific Flags](#building-performance-flags) { #building-performance-flags }
 
 To compile for CLX only, include `-xCORE-AVX512` as a build option. The `-x` switch allows you to specify a target architecture. The CLX chips, as well as the Skylake chips (SKX) on Stampede2, support Intel's latest instruction set, CORE-AVX512. You should also consider specifying an optimization level using the `-O` flag:
 
@@ -1510,7 +1511,7 @@ $ ibrun time ./a.out   # crude timings for each MPI task (no rank info)
 
 As your needs evolve you can add timing intrinsics to your source code to time specific loops or other sections of code. There are many such intrinsics available; some popular choices include [`gettimeofday`](http://man7.org/linux/man-pages/man2/gettimeofday.2.html), [`MPI_Wtime`](https://www.mpich.org/static/docs/v3.2/www3/MPI_Wtime.html) and [`omp_get_wtime`](https://www.openmp.org/spec-html/5.0/openmpsu160.html). The resolution and overhead associated with each of these timers is on the order of a microsecond.
 
-It can be helpful to compare results with different compiler and runtime options: e.g. with and without [vectorization](http://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-vec-qvec), [threading](../launching#launching-one-multi-threaded-application), or [Lustre striping](../files#striping-large-files). You may also want to learn to use profiling tools like [Intel VTune Amplifier](http://software.intel.com/en-us/intel-vtune-amplifier-xe) <u>(`module load vtune`)</u> or GNU [`gprof`](http://sourceware.org/binutils/docs/gprof/).
+It can be helpful to compare results with different compiler and runtime options: e.g. with and without [vectorization](http://software.intel.com/en-us/fortran-compiler-18.0-developer-guide-and-reference-vec-qvec), [threading](#launching-multithreaded), or [Lustre striping](#files-striping). You may also want to learn to use profiling tools like [Intel VTune Amplifier](http://software.intel.com/en-us/intel-vtune-amplifier-xe) <u>(`module load vtune`)</u> or GNU [`gprof`](http://sourceware.org/binutils/docs/gprof/).
 
 #### [Data Locality](#programming-general-datalocality) { #programming-general-datalocality } 
 
@@ -1565,7 +1566,7 @@ The literature on optimization is vast. Some places to begin a systematic study 
 
 **Clock Speed.** The published nominal clock speed of the Frontera CLX processors is 2.7GHz. But [actual clock speed varies widely](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html): it depends on the vector instruction set, number of active cores, and other factors affecting power requirements and temperature limits. At one extreme, a single serial application using the `AVX2` instruction set may run at frequencies approaching 3.7GHz, because it's running on a single core (in fact a single hardware thread). At the other extreme, a large, fully-threaded MKL `dgemm` (a highly vectorized routine in which all cores operate at nearly full throttle) may run at 2.4GHz.
 
-**Vector Optimization and `AVX2`.** In some cases, using the `AVX2` instruction set may produce better performance than `AVX512`. This is largely because cores can run at higher clock speeds when executing `AVX2` code. To compile for `AVX2`, replace the [multi-architecture flags](../building/#architecture-specific-flags) described above with the single flag `-xCORE-AVX2`. When you use this flag you will be able to build and run on any Frontera node.
+**Vector Optimization and `AVX2`.** In some cases, using the `AVX2` instruction set may produce better performance than `AVX512`. This is largely because cores can run at higher clock speeds when executing `AVX2` code. To compile for `AVX2`, replace the [multi-architecture flags](#building-performance-flags) described above with the single flag `-xCORE-AVX2`. When you use this flag you will be able to build and run on any Frontera node.
 
 **Vector Optimization and 512-Bit ZMM Registers.** If your code can take advantage of wide 512-bit vector registers, you may want to try [compiling for CLX](../building#recommended-compiler) with (for example):
 
@@ -1573,7 +1574,7 @@ The literature on optimization is vast. Some places to begin a systematic study 
 -xCORE-AVX512 -qopt-zmm-usage=high
 ```
 
-The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with 512 intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to `-qopt-zmm-usage=low` (the default when compiling for the CLX using <u>`CORE-AVX512`)</u>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The `qopt-zmm-usage` flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](../building#architecture-specific-flags) when specifying `qopt-zmm-usage`. This is because `$TACC_VEC_FLAGS` specifies `CORE-AVX2` as the base architecture, and the compiler will ignore `qopt-zmm-usage` unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
+The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with 512 intrinsics (wide 512-bit registers) or `AVX2` code (256-bit registers). When the flag is set to `-qopt-zmm-usage=low` (the default when compiling for the CLX using <u>`CORE-AVX512`)</u>, the compiler will choose `AVX2` code more often; this may or may not be the optimal approach for your application. The `qopt-zmm-usage` flag is available only on Intel compilers newer than 17.0.4. Do not use [`$TACC_VEC_FLAGS`](#building-performance-flags) when specifying `qopt-zmm-usage`. This is because `$TACC_VEC_FLAGS` specifies `CORE-AVX2` as the base architecture, and the compiler will ignore `qopt-zmm-usage` unless the base target is a variant of `AVX512`. See the recent [Intel white paper](https://software.intel.com/en-us/articles/tuning-simd-vectorization-when-targeting-intel-xeon-processor-scalable-family), the [compiler documentation](https://software.intel.com/en-us/cpp-compiler-18.0-developer-guide-and-reference-qopt-zmm-usage-qopt-zmm-usage), the compiler man pages, and the notes above for more information.
 
 **Task Affinity.** If you run one MPI application at a time, the `ibrun` MPI launcher will spread each node's tasks evenly across an CLX node's two sockets, with consecutive tasks occupying the same socket when possible.
 
@@ -1582,9 +1583,9 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 ### [File Operations: I/O Performance](#programming-fileio) { #programming-fileio } 
 
-This section includes general advice intended to help you achieve good performance during file operations. See [Navigating the Shared File Systems](../files#navigating-the-shared-filesystems) for a brief overview of Frontera's Lustre file systems and the concept of striping. See [TACC Training material](https://learn.tacc.utexas.edu/) for additional information on I/O performance.
+This section includes general advice intended to help you achieve good performance during file operations. See [Navigating the Shared File Systems](#files-navigating) for a brief overview of Frontera's Lustre file systems and the concept of striping. See [TACC Training material](https://learn.tacc.utexas.edu/) for additional information on I/O performance.
 
-**Follow the advice in [Good Conduct](../conduct#do-not-stress-the-shared-lustre-file-systems)** to avoid stressing the file system.
+**Follow the advice in [Good Conduct](../../basics/conduct#conduct-filesystems)** to avoid stressing the file system.
 
 **Stripe for performance**. If your application writes large files using MPI-based parallel I/O (including [MPI-IO](http://mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf), [parallel HDF5](https://support.hdfgroup.org/HDF5/PHDF5/), and [parallel netCDF](https://www.unidata.ucar.edu/software/netcdf/docs/parallel_io.html), you should experiment with stripe counts larger than the default values (2 stripes on `$SCRATCH`, 1 stripe on `$WORK`). See [Striping Large Files](../files/#striping-large-files) for the simplest way to set the stripe count on the directory in which you will create new output files. You may also want to try larger stripe sizes up to 16MB or even 32MB; execute `man lfs` for more information. If you write many small files you should probably leave the stripe count at its default value, especially if you write each file from a single process. Note that it's not possible to change the stripe parameters on files that already exist. This means that you should make decisions about striping when you *create* input files, not when you read them.
 
@@ -1759,7 +1760,7 @@ Frontera currently has no separate visualization queue. All visualization apps a
 
 ### [Remote Desktop Access](#vis)
 
-Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](../admin/#access-the-system) and submit a special interactive batch job that:
+Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](#access) and submit a special interactive batch job that:
 
 
 * allocates a set of Frontera compute nodes
@@ -1904,7 +1905,7 @@ After connecting to a VNC server on Frontera, as described above, do the followi
 1. Select the "auto" configuration, then press "Connect". In the Paraview Output Messages window, you'll see what appears to be an 'lmod' error, but can be ignored. Then you'll see the parallel servers being spawned and the connection established.
 ## [Jupyter](#jupyter) { #jupyter }
 
-See the [Transferring Files](../transferring) section to learn how to transfer your datasets to Frontera, prior to starting a Jupyter session.
+See the [Transferring Files](#transferring) section to learn how to transfer your datasets to Frontera, prior to starting a Jupyter session.
 
 ### [Launch a Session](#jupyter-launch) { #jupyter-launch }
 

@@ -12,7 +12,7 @@ The [Stampede2 User Guide](../stampede2) discusses Slurm extensively.  See the f
 
 * [Submitting Jobs with `sbatch`](../stampede2#running-sbatch)
 * [Common `sbatch` options](../stampede2#table6)
-* [Launching Applications](../stampede2#launching-applications)
+* [Launching Applications](../stampede2#launching)
 
 ### [Slurm Partitions (Queues)](#running-queues) { #running-queues }
 
