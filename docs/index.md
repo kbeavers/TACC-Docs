@@ -15,9 +15,9 @@ Welcome to TACC's Technical Documentation Site.
 ///
 
 
-TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) Resource Guides, Software Packages at TACC, and Tutorials which can be accessed via the left-hand navigation. 
+TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) Resource Guides, Software Packages at TACC, and Tutorials which can be accessed via the left-hand navigation.
 
-Additional training opportunities such as the TACC Institute Series, can be found on the [Training Page](https://tacc.utexas.edu/use-tacc/training/) on our main site. 
+Additional training opportunities such as the TACC Institute Series, can be found on the [Training Page](https://tacc.utexas.edu/use-tacc/training/) on our main site.
 
 
 /// html | section.section--muted.section--has-border
@@ -77,7 +77,7 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 ///// html | a.card--plain[href="./hpc/frontera/"]
      markdown: block
 
-## Frontera 
+## Frontera
 
 The largest cluster dedicated to open science in the United States.
 /////
@@ -100,9 +100,9 @@ A balanced set of resources to support simulation, data analysis, visualization 
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-Explore documentation for field-specific and commonly used software packages. 
+Explore documentation for field-specific and commonly used software packages.
 
-Each guide contains sample job scripts per resource where applicable and any special instructions needed to run that package on TACC resources. 
+Each guide contains sample job scripts per resource where applicable and any special instructions needed to run that package on TACC resources.
 
 /////
 
@@ -150,7 +150,7 @@ Learn how to request access and run MATLAB, the popular numerical computing plat
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-Tutorials cover a wide range of topics from configuring your account to debugging tools and various TACC services. 
+Tutorials cover a wide range of topics from configuring your account to debugging tools and various TACC services.
 
 /////
 
@@ -189,7 +189,7 @@ TACC offers a variety of training and education programs. You may search and reg
 
 ## TACC Institutes
 
-In-person, multi-day, immersive, training opportunities meant to enhance users knowledge of broad HPC topics. 
+In-person, multi-day, immersive, training opportunities meant to enhance users knowledge of broad HPC topics.
 
 /////
 
