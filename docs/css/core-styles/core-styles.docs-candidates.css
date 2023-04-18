@@ -2,6 +2,9 @@
  * To support, in isolatation, patterns considered for core-styles.docs.css
  */
 @import url('https://cdn.jsdelivr.net/npm/@tacc/core-styles@2.6.2/dist/components/c-card.css');
+/* TODO: After launch, delete prod.tup.tacc.utexas.edu c-card.css */
+@import url('https://prod.tup.tacc.utexas.edu/static/tup-cms/css/for-core-styles/components/c-card.css');
+@import url('https://tacc.utexas.edu/static/tup-cms/css/for-core-styles/components/c-card.css');
 @import url('https://cdn.jsdelivr.net/npm/@tacc/core-styles@2.6.2/dist/objects/o-section.css');
 
 
@@ -47,8 +50,15 @@
 
 
 
+/* To make card paragraphs match those in Core CMS */
+[class*="card--"] p {
+  margin-top: 0; /* mimics Bootstrap _reboot.scss */
+}
+
+
+
 /* To style a linked card */
-a[class*="card--"] {
+a[class*="card--"]:not([class*="card--image"]) {
   display: block;
 }
 a[class*="card--"],
