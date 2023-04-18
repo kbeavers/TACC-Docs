@@ -1,4 +1,4 @@
-/*! https://dev.tup.tacc.utexas.edu/static/site_cms/js/modules/setTargetForExternalLinks.js 2023-01-27 @ 18:40 CST */
+/*! https://tacc.utexas.edu/static/site_cms/js/modules/setTargetForExternalLinks.js 2023-01-27 @ 18:40 CST */
 /**
  * Whether to log debug info to console
  * @const {string}

@@ -52,4 +52,4 @@ Styles:
 [HighlightJS]: https://highlightjs.org/
 [TUP-CMS]: https://github.com/TACC/tup-ui/tree/main/apps/tup-cms
 
-[TACC website]: https://dev.tup.tacc.utexas.edu
+[TACC website]: https://tacc.utexas.edu

@@ -30,7 +30,7 @@ theme:
         - name: syntax
           lang: plaintext
     custom_dir: themes/readthedocs
-    cms_url: https://dev.tup.tacc.utexas.edu # TACC Feature
+    cms_url: https://tacc.utexas.edu # TACC Feature
     cms_name: tacc.utexas.edu # TACC Feature
     # These must be modules
     # SEE: /themes/readthedocs/main.html @ "block scripts"
