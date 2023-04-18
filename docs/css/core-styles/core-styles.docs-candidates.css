@@ -9,6 +9,20 @@
 
 
 
+/* SECTION */
+
+
+
+/* To fix section background on god-wide screens */
+/* CAVEAT: This just pushes the problem to even wider screens */
+.section--muted {
+  /* FAQ: Mimics Core-Styles except changes any "50" to "25" */
+  --box-shadow--fake-bkgd:
+    25vw 0 var(--color--bkgd), -25vw 0 var(--color--bkgd);
+}
+
+
+
 /* To add border to .o-section's */
 .section--has-border {
   --border-width: var(--global-border-width--normal);
@@ -18,16 +32,16 @@
   --line-top:
     0 var(--border-width-neg) var(--border-color);
   --line-top-left:
-    -50vw var(--border-width-neg) var(--border-color);
+    -25vw var(--border-width-neg) var(--border-color);
   --line-top-right:
-    50vw var(--border-width-neg) var(--border-color);
+    25vw var(--border-width-neg) var(--border-color);
 
   --line-bottom:
     0 var(--border-width) var(--border-color);
   --line-bottom-left:
-    -50vw var(--border-width) var(--border-color);
+    -25vw var(--border-width) var(--border-color);
   --line-bottom-right:
-    50vw var(--border-width) var(--border-color);
+    25vw var(--border-width) var(--border-color);
 
   --fake-bkgd: var(--box-shadow--fake-bkgd); /* from core-styles o-section */
 
@@ -47,6 +61,10 @@
 [class*="section--"].o-grid > * {
   margin-bottom: unset;
 }
+
+
+
+/* CARD */
 
 
 
