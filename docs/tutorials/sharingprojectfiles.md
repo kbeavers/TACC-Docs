@@ -125,7 +125,8 @@ login1$ man umask
 ```
 
 ## [Adding users to TACC Projects](#addusers) { #addusers }
-Principal Investigators (PIs) or their delegates can manage project membership through the [TACC User Portal](http://portal.tacc.utexas.edu) under Allocations. 
+
+Principal Investigators (PIs) or their delegates can manage project membership through the [TACC User Portal][TACCUSERPORTAL] under Allocations. 
 
 <figure id="figure3">
 <img alt="Add users to project" src="../../imgs/tutorials/sharingfiles-1.png" style="width: 500px; height: 205px;" />
@@ -135,7 +136,7 @@ Principal Investigators (PIs) or their delegates can manage project membership t
 
 * [TACC Projects &amp; Allocations][TACCPROJECTS]
 <!-- * [How To: Manage Your Allocation](https://portal.tacc.utexas.edu/tutorials/managing-allocations) -->
-* [Manage Permissions with Access Control Lists](https://portal.tacc.utexas.edu/tutorials/acls)
+* [Manage Permissions with Access Control Lists](../../tutorials/acls)
 
 {% include 'aliases.md' %}
 

@@ -1,5 +1,5 @@
 # [Good Conduct on TACC's HPC Systems](#conduct) { #conduct }
-Last Update: 03/06/2023
+Last Update: April 18, 2023
 
 **You share TACC's HPC resources with many, sometimes hundreds, of other users, and what you do on the resource affects others**. All TACC account holders  must follow a set of good practices which entail limiting activities that may impact the system for other users. Exercise good conduct to ensure that your activity does not adversely impact the resource and the research community with whom you share it.
 
@@ -95,10 +95,12 @@ File System | Best Storage Practices | Best Activities
 --- | --- | ---
 <code>$HOME</code> | cron jobs<br>small scripts<br>environment settings | compiling, editing
 <code>$WORK</code> | store software installations<br> original datasets that can't be reproduced<br> job scripts and templates | staging datasets
-<code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="#scratchpurgepolicy">Scratch File System Purge Policy</a>.
+<code>$SCRATCH</code> | <b>Temporary Storage</b><br>I/O files<br>job files<br>temporary datasets | all job I/O activity<br>see TACC's <a href="#scratchpolicy">Scratch File System Purge Policy</a>.
 
 &#42; Maverick2 does not have a Scratch file system.
 
+
+{% include './include/scratchpolicy.md' %}
 
 ### [More File System Tips](#conduct-filesystems-tips) { #conduct-filesystems-tips }
 
