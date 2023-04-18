@@ -519,6 +519,14 @@ u {
   margin-top: 2em;
 }
 
+/* To hide unused space at bottom of index page */
+[data-page-name="index.md"] footer {
+  display: none; /* undo theme.css */
+}
+[data-page-name="index.md"] .wy-nav-content {
+  padding-bottom: 0;
+}
+
 
 
 }
