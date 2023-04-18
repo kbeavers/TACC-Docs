@@ -4,7 +4,7 @@ Last update: September 15, 2022
 
 ## [Notices](#notices) { #notices }
 
-* **New Queue: A new queue: `small` has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#frontera-production-queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues.
+* **New Queue: A new queue: `small` has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues.
 
 ## [Introduction](#intro) { #intro } 
 
@@ -27,7 +27,7 @@ Experienced HPC/TACC users will be very familiar with many of the topics present
 * Log into your [TACC Dashboard][TACCDASHBOARD] to confirm that [you've been added to a Frontera allocation][TACCALLOCATIONS]. Then, connect via SSH to `frontera.tacc.utexas.edu`.
 * Review the TACC info box displayed at login for your allocation availability and SU balances.
 * Read the [Good Conduct](../../basics/conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
-* Consult the [Frontera File Systems](#files) and [Frontera Production Queues](#frontera-production-queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
+* Consult the [Frontera File Systems](#files) and [Frontera Production Queues](#queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
 * Copy and modify any of the [Sample Job Scripts](#scripts) for your own use. These scripts will also be helpful to show you how to modify any Jobs Scripts you are bringing over from other TACC systems so that they run efficiently on Frontera. 
 * Review the [default modules with `module list`](#admin-configuring-modules). Make any changes needed for your code. 
 * Start small. Run any jobs from other systems on a smaller scale in order to test the performance of your code on Frontera. You may find your code needs to be altered or recompiled in order to perform well and at scale on the new system. 
@@ -680,7 +680,7 @@ wait
 
 ### [Job Accounting](#running-jobaccounting) { #running-jobaccounting } 
 
-Like all TACC systems, Frontera's accounting system is based on node-hours: one unadjusted Service Unit (SU) represents a single compute node used for one hour (a node-hour). For any given job, the total cost in SUs is the use of one compute node for one hour of wall clock time plus any additional charges for the use of specialized queues, e.g. Frontera's `flex` queue, Stampede2's `development` queue, and Longhorn's `v100` queue.  The [queue charge rates](#table-5-frontera-production-queues) are determined by the supply and demand for that particular queue or type of node used.  
+Like all TACC systems, Frontera's accounting system is based on node-hours: one unadjusted Service Unit (SU) represents a single compute node used for one hour (a node-hour). For any given job, the total cost in SUs is the use of one compute node for one hour of wall clock time plus any additional charges for the use of specialized queues, e.g. Frontera's `flex` queue, Stampede2's `development` queue, and Longhorn's `v100` queue.  The [queue charge rates](#queues) are determined by the supply and demand for that particular queue or type of node used.  
 
 **Frontera SUs billed = (# nodes) x (job duration in wall clock hours) x (charge rate per node-hour)**
 
@@ -757,7 +757,7 @@ You can use your command-line prompt, or the `hostname` command, to discern whet
 
 While some workflows, tools, and applications hide the details, there are three basic ways to access the compute nodes:
 
-1.	[Submit a **batch job** using the `sbatch` command](#submitting-batch-jobs-with-sbatch). This directs the scheduler to run the job unattended when there are resources available. Until your batch job begins it will wait in a [queue](#table-5-frontera-production-queues). You do not need to remain connected while the job is waiting or executing. Note that the scheduler does not start jobs on a first come, first served basis; it juggles many variables to keep the machine busy while balancing the competing needs of all users. The best way to minimize wait time is to request only the resources you really need: the scheduler will have an easier time finding a slot for the two hours you need than for the 24 hours you unnecessarily request.
+1.	[Submit a **batch job** using the `sbatch` command](#submitting-batch-jobs-with-sbatch). This directs the scheduler to run the job unattended when there are resources available. Until your batch job begins it will wait in a [queue](#queues). You do not need to remain connected while the job is waiting or executing. Note that the scheduler does not start jobs on a first come, first served basis; it juggles many variables to keep the machine busy while balancing the competing needs of all users. The best way to minimize wait time is to request only the resources you really need: the scheduler will have an easier time finding a slot for the two hours you need than for the 24 hours you unnecessarily request.
 
 1.	Begin an [interactive session using **`ssh`**](#interactive-sessions-using-ssh) to connect to a compute node on which you are already running a job. This is a good way to open a second window into a node so that you can monitor a job while it runs.
 
@@ -1585,7 +1585,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Navigating the Shared File Systems](#files-navigating) for a brief overview of Frontera's Lustre file systems and the concept of striping. See [TACC Training material](https://learn.tacc.utexas.edu/) for additional information on I/O performance.
 
-**Follow the advice in [Good Conduct](../../basics/conduct#conduct-filesystems)** to avoid stressing the file system.
+**Follow the advice in [Good Conduct](../../basics/conduct)** to avoid stressing the file system.
 
 **Stripe for performance**. If your application writes large files using MPI-based parallel I/O (including [MPI-IO](http://mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf), [parallel HDF5](https://support.hdfgroup.org/HDF5/PHDF5/), and [parallel netCDF](https://www.unidata.ucar.edu/software/netcdf/docs/parallel_io.html), you should experiment with stripe counts larger than the default values (2 stripes on `$SCRATCH`, 1 stripe on `$WORK`). See [Striping Large Files](../files/#striping-large-files) for the simplest way to set the stripe count on the directory in which you will create new output files. You may also want to try larger stripe sizes up to 16MB or even 32MB; execute `man lfs` for more information. If you write many small files you should probably leave the stripe count at its default value, especially if you write each file from a single process. Note that it's not possible to change the stripe parameters on files that already exist. This means that you should make decisions about striping when you *create* input files, not when you read them.
 

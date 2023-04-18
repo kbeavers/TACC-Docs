@@ -141,7 +141,7 @@ In order to not stress both internal and external networks, be mindful of the fo
 
 * **Test your submission scripts.** Start small: make sure everything works on 2 nodes before you try 20. Work out submission bugs and kinks with 5 minute jobs that won't wait long in the queue and involve short, simple substitutes for your real workload: simple test problems; `hello world` codes; one-liners like `ibrun hostname`; or an `ldd` on your executable.
 
-* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](../../software/remote) tool to monitor your application's needs. 
+* **Respect memory limits and other system constraints.** If your application needs more memory than is available, your job will fail, and may leave nodes in unusable states. Use TACC's [Remora](../../software/remora) tool to monitor your application's needs. 
 
 {% include 'aliases.md' %}
 

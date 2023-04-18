@@ -7,7 +7,7 @@
 </style>
 
 # Documentation Overview
-*April 17, 2023*
+*April 18, 2023*
 
 <!-- To not use <h3> so this heading does not show in nav -->
 /// html | p.h3
@@ -27,7 +27,7 @@ Additional training opportunities such as the TACC Institute Series, can be foun
 //// html | div.grid
 ///// html | div[style="grid-column: span 2"]
 
-If you're brand new to TACC and want to jump right in, check out the [Getting Started](http://tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](http://tacc.utexas.edu/use-tacc/allocations/) pages in the "Use TACC" section of our [main site](http://tacc.utexas.edu).
+If you're brand new to TACC and want to jump right in, check out the [Getting Started](https://tacc.utexas.edu/use-tacc/getting-started/) and [Allocations](https://tacc.utexas.edu/use-tacc/allocations/) pages in the "Use TACC" section of our [main site](https://tacc.utexas.edu).
 
 /////
 

@@ -17,9 +17,9 @@ Authentication is the process of determining if you are you. Traditional methods
 * Sign into the TACC Portal, then click on "Manage Account" under your name in the top right-hand corner:
 
 <table border="0"><tr>
-<td><figure id="figure1a"><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-manage-account-2.png"> 
+<td><figure id="figure1a"><img border="1" src="../../imgs/tutorials/mfa-manage-account-2.png"> 
 <figcaption>Figure 1a.</figcaption></figure></td>
-<td><figure id="figure1b"><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-manage-account-1.png"> 
+<td><figure id="figure1b"><img border="1" src="../../imgs/tutorials/mfa-manage-account-1.png"> 
 <figcaption>Figure 1b.</figcaption></figure></td>
 </tr></table>
 
@@ -80,22 +80,22 @@ Begin by pressing the "Pair Device" button in the upper-right corner of "Manage 
 Select "Token App" from the Authentication Pairing page, then click on the empty box to generate a personalized QR code:
 
 <table border="0"><tr>
-<td><figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-authenticationpairing-1.png"> <figcaption></figcaption></figure>  </td>
-<td><figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-authenticationpairing-2.png"> <figcaption></figcaption></figure>  </td>
+<td><figure><img border="1" src="../../imgs/tutorials/mfa-authenticationpairing-1.png"> <figcaption></figcaption></figure>  </td>
+<td><figure><img border="1" src="../../imgs/tutorials/mfa-authenticationpairing-2.png"> <figcaption></figcaption></figure>  </td>
 </tr></table>
 
 Open the Duo App on your device. Your mobile device screen should appear similar to Figure 5a. Tap the "+" in the upper right corner of the app to start the pairing process.  The app will launch the mobile device's camera.  Scan the generated QR code on your computer screen.  Do not scan the image on this tutorial's page. Then enter the Duo token code.
 
 <table border="0"><tr>
-<td><figure id="figurexa"><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-duo-showcode.png"> <figcaption></figcaption></figure></td>
-<td><figure id="figurexa"><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-duo-314193.png"> <figcaption></figcaption></figure></td>
-<td><figure id="figurexb"><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-authenticationpairing-3.png"> <figcaption></figcaption></figure></td>
+<td><figure id="figurexa"><img border="1" src="../../imgs/tutorials/mfa-duo-showcode.png"> <figcaption></figcaption></figure></td>
+<td><figure id="figurexa"><img border="1" src="../../imgs/tutorials/mfa-duo-314193.png"> <figcaption></figcaption></figure></td>
+<td><figure id="figurexb"><img border="1" src="../../imgs/tutorials/mfa-authenticationpairing-3.png"> <figcaption></figcaption></figure></td>
 </tr></table>
 
 Pairing successful
 
 
-<figure><img border="1" alt="xxx" src="../../imgs/tutorials/mfa-pairingsuccessful.png" style="width:50%; height:50%"> <figcaption></figcaption></figure>
+<figure><img border="1" src="../../imgs/tutorials/mfa-pairingsuccessful.png" style="width:50%; height:50%"> <figcaption></figcaption></figure>
 
 ## [Logging into TACC Resources](#login) { #login }
 
