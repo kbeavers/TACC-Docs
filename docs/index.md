@@ -31,8 +31,11 @@ If you're brand new to TACC and want to jump right in, check out the [Getting St
 
 /////
 
-///// html | a.card--plain[href="./basics/conduct/"]
+///// html | a.card--plain.card--image-top.card--image-top[href="./basics/conduct/"]
      markdown: block
+
+////// html | img[alt="a paper with a gavel, a shielf with a checkmark"][src="/img/home/conduct.png"]
+//////
 
 ### Good Conduct
 
@@ -41,8 +44,11 @@ Good conduct on the system ensures stability and helps TACC provide a reliable s
 /////
 
 
-///// html | a.card--plain[href="./basics/mfa/"]
+///// html | a.card--plain.card--image-top[href="./basics/mfa/"]
      markdown: block
+
+////// html | img[alt="a lock with a gear and nodes"][src="/img/home/multi-factor.png"]
+//////
 
 ### Multi-Factor Authentication
 
@@ -51,7 +57,7 @@ Learn how to pair/unpair your smart device for access to TACC resources.
 /////
 
 <!--
-///// html | a.card--plain[href="./tutorials/bashstartup/"]
+///// html | a.card--plain.card--image-top[href="./tutorials/bashstartup/"]
      markdown: block
 
 ## Quickstart for Bash Users
@@ -74,16 +80,22 @@ Learn how to configure your default shell for optimal performance.
 Each of our HPC resources has a user guide, with extensive instructions and information.  Learn how to access and use our High Performance Computing (HPC) resources.
 /////
 
-///// html | a.card--plain[href="./hpc/frontera/"]
+///// html | a.card--plain.card--image-top[href="./hpc/frontera/"]
      markdown: block
+
+////// html | img[alt="the Frontera supercomputer"][src="/img/home/frontera.png"]
+//////
 
 ### Frontera
 
 The largest cluster dedicated to open science in the United States.
 /////
 
-///// html | a.card--plain[href="./hpc/lonestar6/"]
+///// html | a.card--plain.card--image-top[href="./hpc/lonestar6/"]
      markdown: block
+
+////// html | img[alt="the Lonestar6 supercomputer"][src="/img/home/lonestar6.png"]
+//////
 
 ### Lonestar6
 
@@ -154,16 +166,22 @@ Tutorials cover a wide range of topics from configuring your account to debuggin
 
 /////
 
-///// html | a.card--plain[href="./tutorials/sharingprojectfiles/"]
+///// html | a.card--plain.card--image-top[href="./tutorials/sharingprojectfiles/"]
      markdown: block
+
+////// html | img[alt="a folder with a file and nodes"][src="/img/home/file-share.png"]
+//////
 
 ### Sharing Project Files
 
 Learn how to set up a common workspace shared by, and accessible to, all collaborators on a project.  
 
 /////
-///// html | a.card--plain[href="./tutorials/remotedesktopaccess/"]
+///// html | a.card--plain.card--image-top[href="./tutorials/remotedesktopaccess/"]
      markdown: block
+
+////// html | img[alt="a monitor (its screen has an image icon)"][src="/img/home/remote.png"]
+//////
 
 ### Remote Desktop Access
 
@@ -184,8 +202,11 @@ TACC offers a variety of training and education programs. You may search and reg
 
 /////
 
-///// html | div.card--plain[href="./xxx"]
+///// html | a.card--plain.card--image-top[href="./xxx"]
      markdown: block
+
+////// html | img[alt="a photograph of rows of tables with trainees using laptops"][src="/img/home/institutes.png"]
+//////
 
 ### TACC Institutes
 
@@ -193,8 +214,11 @@ In-person, multi-day, immersive, training opportunities meant to enhance users k
 
 /////
 
-///// html | div.card--plain[href="https://www.youtube.com/watch?v=DWmAWT5e3iQ"]
+///// html | a.card--plain.card--image-top[href="https://www.youtube.com/watch?v=DWmAWT5e3iQ"]
      markdown: block
+
+////// html | img[alt="an interface window with a graduation cap and a play button being pressed by a finger"][src="/img/home/video.png"]
+//////
 
 ### Training Videos
 
