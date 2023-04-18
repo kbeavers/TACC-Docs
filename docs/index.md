@@ -44,7 +44,7 @@ Good conduct on the system ensures stability and helps TACC provide a reliable s
 /////
 
 
-///// html | a.card--plain.card--image-top[href="./basics/mfa/"]
+///// html | a.card--plain.card--image-top[href="./tutorials/mfa/"]
      markdown: block
 
 ////// html | img[alt="a lock with a gear and nodes"][src="/img/home/multi-factor.png"]
