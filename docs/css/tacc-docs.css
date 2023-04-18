@@ -356,6 +356,18 @@ svg.logo [fill]:not([fill="none"]) {
   font-size: var(--global-font-size--xx-large);
   font-weight: var(--bold);
 }
+.h3 {
+  /* Mimic browser */
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+
+  /* Mimic core-styles.docs */
+  font-size: var(--global-font-size--x-large);
+  font-weight: var(--bold);
+}
 
 
 /* To ensure paragraph font size matches core-styles.docs.css */

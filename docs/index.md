@@ -9,8 +9,8 @@
 # Documentation Overview
 *April 17, 2023*
 
-<!-- To not use <h2> so this heading does not show in nav -->
-/// html | span.h2
+<!-- To not use <h3> so this heading does not show in nav -->
+/// html | p.h3
 Welcome to TACC's Technical Documentation Site.
 ///
 
@@ -34,7 +34,7 @@ If you're brand new to TACC and want to jump right in, check out the [Getting St
 ///// html | a.card--plain[href="./basics/conduct/"]
      markdown: block
 
-## Good Conduct
+### Good Conduct
 
 Good conduct on the system ensures stability and helps TACC provide a reliable service to all users.
 
@@ -44,7 +44,7 @@ Good conduct on the system ensures stability and helps TACC provide a reliable s
 ///// html | a.card--plain[href="./basics/mfa/"]
      markdown: block
 
-## Multi-Factor Authentication
+### Multi-Factor Authentication
 
 Learn how to pair/unpair your smart device for access to TACC resources.
 
@@ -77,7 +77,7 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 ///// html | a.card--plain[href="./hpc/frontera/"]
      markdown: block
 
-## Frontera
+### Frontera
 
 The largest cluster dedicated to open science in the United States.
 /////
@@ -85,7 +85,7 @@ The largest cluster dedicated to open science in the United States.
 ///// html | a.card--plain[href="./hpc/lonestar6/"]
      markdown: block
 
-## Lonestar6
+### Lonestar6
 
 A balanced set of resources to support simulation, data analysis, visualization and machine learning.
 
@@ -109,7 +109,7 @@ Each guide contains sample job scripts per resource where applicable and any spe
 ///// html | a.card--plain[href="./software/idev/"]
      markdown: block
 
-## `idev` (interactive development)
+### `idev` (interactive development)
 
 A powerful utility allowing interactive access to compute nodes.
 
@@ -118,7 +118,7 @@ A powerful utility allowing interactive access to compute nodes.
 ///// html | a.card--plain[href="./software/vasp/"]
      markdown: block
 
-## VASP
+### VASP
 
 How to run the Vienna Ab initio Simulation Package (VASP) for atomic-scale materials modeling.
 
@@ -127,7 +127,7 @@ How to run the Vienna Ab initio Simulation Package (VASP) for atomic-scale mater
 ///// html | a.card--plain[href="./software/alphafold/"]
      markdown: block
 
-## AlphaFold
+### AlphaFold
 
 Run Google's powerful deep learning protein folding tool at TACC.
 
@@ -135,7 +135,7 @@ Run Google's powerful deep learning protein folding tool at TACC.
 ///// html | a.card--plain[href="./software/matlab/"]
      markdown: block
 
-## MATLAB
+### MATLAB
 
 Learn how to request access and run MATLAB, the popular numerical computing platform, at TACC
 
@@ -157,7 +157,7 @@ Tutorials cover a wide range of topics from configuring your account to debuggin
 ///// html | a.card--plain[href="./tutorials/sharingprojectfiles/"]
      markdown: block
 
-## Sharing Project Files
+### Sharing Project Files
 
 Learn how to set up a common workspace shared by, and accessible to, all collaborators on a project.  
 
@@ -165,7 +165,7 @@ Learn how to set up a common workspace shared by, and accessible to, all collabo
 ///// html | a.card--plain[href="./tutorials/remotedesktopaccess/"]
      markdown: block
 
-## Remote Desktop Access
+### Remote Desktop Access
 
 Run visualization applications viewed locally via Virtual Network Computing (VNC), Desktop Cloud Visualization (DCV), or through the TACC Analysis Portal.
 
@@ -187,7 +187,7 @@ TACC offers a variety of training and education programs. You may search and reg
 ///// html | div.card--plain[href="./xxx"]
      markdown: block
 
-## TACC Institutes
+### TACC Institutes
 
 In-person, multi-day, immersive, training opportunities meant to enhance users knowledge of broad HPC topics.
 
@@ -196,7 +196,7 @@ In-person, multi-day, immersive, training opportunities meant to enhance users k
 ///// html | div.card--plain[href="https://www.youtube.com/watch?v=DWmAWT5e3iQ"]
      markdown: block
 
-## Training Videos
+### Training Videos
 
 Self-guided training videos ranging from short how-to guides to detailed topical courses.
 
