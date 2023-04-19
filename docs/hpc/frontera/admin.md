@@ -18,7 +18,7 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 ### [Access the System](#admin-access) { #admin-access }
 
-#### [Secure Shell (SSH)](#admin-access-ssh)
+#### [Secure Shell (SSH)](#admin-access-ssh) { #admin-access-ssh }
 
 The `ssh` command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 

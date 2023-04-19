@@ -1,10 +1,10 @@
 # Frontera User Guide
-Last update: September 15, 2022
+Last update: April 19, 2022
 <!-- SDL <a href="https://frontera-xortal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
 ## [Notices](#notices) { #notices }
 
-* **New Queue: A new queue: `small` has been created specifically for one and two node jobs**. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new [`small` queue](#queues).  The `normal` queue now has a lower limit of three nodes for all jobs. These new limits will improve the turnaround time for all jobs in the `normal` and `small` queues.
+* Navigate to the [Frontera Web Portal](https://frontera-portal.tacc.utexas.edu/) to manage your Frontera allocations and access your [Frontera Workbench](https://frontera-portal.tacc.utexas.edu/workbench/dashboard). (04/19/2023)
 
 ## [Introduction](#intro) { #intro } 
 
@@ -52,7 +52,7 @@ Use your TACC User Portal password for direct logins to TACC resources. You can 
 
 ### [Access the System](#admin-access) { #admin-access }
 
-#### [Secure Shell (SSH)](#admin-access-ssh)
+#### [Secure Shell (SSH)](#admin-access-ssh) { #admin-access-ssh }
 
 The `ssh` command (SSH protocol) is the standard way to connect to Frontera. SSH also includes support for the file transfer utilities `scp` and `sftp`. [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell) is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. [Bitvise](http://www.bitvise.com), [OpenSSH](http://www.openssh.com), [PuTTY](http://www.putty.org), or [SecureCRT](https://www.vandyke.com/products/securecrt/). Initiate a session using the `ssh` command or the equivalent; from the Linux command line the launch command looks like this:
 

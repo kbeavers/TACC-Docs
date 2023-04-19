@@ -202,7 +202,7 @@ TACC offers a variety of training and education programs. You may search and reg
 
 /////
 
-///// html | a.card--plain.card--image-top[href="./xxx"]
+///// html | a.card--plain.card--image-top[href="https://www.tacc.utexas.edu/use-tacc/training/#institutes"]
      markdown: block
 
 ////// html | img[alt="a photograph of rows of tables with trainees using laptops"][src="/img/home/institutes.png"]
