@@ -30,7 +30,7 @@ Corral can provide a cloud storage interface compatible with the S3 version 4 AP
 
 If you wish to utilize the S3 interface to Corral, submit a request for the Corral resource as if you were requesting the usual file-based access, but add a note to your allocation request that you wish your storage to be accessible via the S3 API rather than the file system interface. If and when your allocation request is approved, a project-specific endpoint will be created and will be sent to you in lieu of a directory path.
 
-For consult the [S3 API](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) for further information.  
+Consult the [S3 API](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) for further information.  
 
 The S3 interface is most suitable for programmatic interaction from within custom applications. We recommend the minio client for command-line access and testing purposes. Documentation and download links for the minio client are available at: <https://docs.minio.io/docs/minio-client-complete-guide>. 
 
