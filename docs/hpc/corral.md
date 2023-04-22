@@ -1,5 +1,5 @@
 # Corral User Guide
-*Last update: November 24, 2021*
+*Last update: April 22, 2023*
 
 
 ## [System Overview](#overview) { #overview }
@@ -23,7 +23,12 @@ The Data Management and Collections group at TACC can provide specialized consul
 
 ### [Object/Cloud Storage on Corral](#overview-cloudstorage) { #overview-cloudstorage }
 
-Corral can provide a cloud storage interface compatible with the S3 version 4 API, available only by request. If you wish to utilize the S3 interface to Corral, submit a request for the Corral resource as if you were requesting the usual file-based access, but add a note to your allocation request that you wish your storage to be accessible via the S3 API rather than the file system interface. If and when your allocation request is approved, a project-specific endpoint will be created and will be sent to you in lieu of a directory path.
+Corral can provide a cloud storage interface compatible with the S3 version 4 API, available only by request. 
+
+!!! note
+	Due to resource requirements, you must have an allocation size of at least 25TB to request a dedicated S3 service. Protected/secure data allocations are not eligible for S3 access.  
+
+If you wish to utilize the S3 interface to Corral, submit a request for the Corral resource as if you were requesting the usual file-based access, but add a note to your allocation request that you wish your storage to be accessible via the S3 API rather than the file system interface. If and when your allocation request is approved, a project-specific endpoint will be created and will be sent to you in lieu of a directory path.
 
 For consult the [S3 API](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) for further information.  
 
