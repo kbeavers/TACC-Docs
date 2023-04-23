@@ -1,24 +1,8 @@
 ## [Running Jobs](#running) { #running }
 
-<p class="introtext">Frontera's job scheduler is the <a href="http://schedmd.com">Slurm Workload Manager</a>. Slurm commands enable you to submit, manage, monitor, and control your jobs. Jobs submitted to the scheduler are queued, then run on the compute nodes. Each job consumes Service Units (SUs) which are then charged to your allocation.</p>
+Frontera's job scheduler is the <a href="http://schedmd.com">Slurm Workload Manager</a>. Slurm commands enable you to submit, manage, monitor, and control your jobs. Jobs submitted to the scheduler are queued, then run on the compute nodes. Each job consumes Service Units (SUs) which are then charged to your allocation.
 
-
-### [Job Accounting](#running-jobaccounting) { #running-jobaccounting } 
-
-Like all TACC systems, Frontera's accounting system is based on node-hours: one unadjusted Service Unit (SU) represents a single compute node used for one hour (a node-hour). For any given job, the total cost in SUs is the use of one compute node for one hour of wall clock time plus any additional charges for the use of specialized queues, e.g. Frontera's `flex` queue, Stampede2's `development` queue, and Longhorn's `v100` queue.  The [queue charge rates](#queues) are determined by the supply and demand for that particular queue or type of node used.  
-
-**Frontera SUs billed = (# nodes) x (job duration in wall clock hours) x (charge rate per node-hour)**
-
-The Slurm scheduler tracks and charges for usage to a granularity of a few seconds of wall clock time. **The system charges only for the resources you actually use, not those you request.** If your job finishes early and exits properly, Slurm will release the nodes back into the pool of available nodes. Your job will only be charged for as long as you are using the nodes.
-
-!!! note
-	TACC does not implement node-sharing on any compute resource. Each Frontera node can be assigned to only one user at a time; hence a complete node is dedicated to a user's job and accrues wall-clock time for all the node's cores whether or not all cores are used.
-
-**Tip**: Your queue wait times will be less if you request only the time you need: the scheduler will have a much easier time finding a slot for the 2 hours you really need than say, for the 12 hours requested in your job script. 
-
-Principal Investigators can monitor allocation usage via the [TACC Portal][TACCPORTAL] under ["Allocations->Projects and Allocations"][TACCALLOCATIONS]. Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
-
-{% include 'include/tinfo.md' %}
+{%include 'include/frontera-jobaccounting.md' %}
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 
@@ -29,10 +13,10 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
 * A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
-```cmd-line
-$ module load launcher
-$ module help launcher
-```
+	```cmd-line
+	$ module load launcher
+	$ module help launcher
+	```
 
 <a id="queues">
 ### [Frontera Production Queues](#running-queues)  { #running-queues } 

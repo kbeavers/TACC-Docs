@@ -9,7 +9,24 @@ taccinfopath="\/usr\/local\/etc\/taccinfo"
 # managingio - taccinfo
 # help 
 
-if [ "$1" = "lonestar6" ] 
+if [ "$1" = "frontera" ] 
+then
+	echo "building includes for Frontera user guide"
+	machinename="Frontera"
+	helpoutputfile="frontera-help.md"
+	# conductoutputfile="lonestar6-conduct.md"
+	jobaccountingoutputfile="frontera-jobaccounting.md"
+	hwthreads="56 on CLX"
+	mkloutputfile="frontera-mkl.md"
+
+	sed	-e "s/MACHINENAME/$machinename/g" \
+		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
+	sed	-e "s/HWTHREADS/$hwthreads/g" < mklsrc.md > $mkloutputfile
+	sed	-e "s/MACHINENAME/$machinename/g" < helpsrc.md > $helpoutputfile
+	# sed	-e "s/MACHINENAME/$machinename/g" \
+	# 	-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
+
+elif [ "$1" = "lonestar6" ] 
 then
 	echo "building includes for Lonestar6 user guide"
 	machinename="Lonestar6"

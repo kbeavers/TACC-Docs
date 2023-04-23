@@ -18,7 +18,7 @@ SRC =   \
 	jupyter.md \
 	cloud.md \
 	containers.md \
-	help.md \
+	../../include/frontera-help.md \
 	refs.md
 
 

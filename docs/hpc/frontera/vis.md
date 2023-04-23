@@ -6,7 +6,7 @@ Frontera currently has no separate visualization queue. All visualization apps a
 
 ### [Remote Desktop Access](#vis)
 
-Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](#access) and submit a special interactive batch job that:
+Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](#admin-access) and submit a special interactive batch job that:
 
 
 * allocates a set of Frontera compute nodes

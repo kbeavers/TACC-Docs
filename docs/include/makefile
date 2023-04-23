@@ -7,6 +7,7 @@ all:	includes
 .SUFFIXES:	.md .html
 
 includes:	$(SRC)
+	./configurestrings.sh frontera
 	./configurestrings.sh lonestar6
 	./configurestrings.sh stampede2
 	./configurestrings.sh maverick2

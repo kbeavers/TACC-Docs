@@ -1,11 +1,6 @@
 ## [Help Desk](#help) { #help }
 
-
-TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays.
-
-You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
-
-### [Best Practices aka Help Us Help You](#help-bestpractices)
+TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
 
 * **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
 

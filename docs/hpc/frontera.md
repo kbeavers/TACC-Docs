@@ -1,5 +1,5 @@
 # Frontera User Guide
-Last update: April 19, 2022
+Last update: April 19, 2023
 <!-- SDL <a href="https://frontera-xortal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
 ## [Notices](#notices) { #notices }
@@ -526,11 +526,11 @@ When executing multiple instantiations of `scp` or `rsync`, please limit your tr
 
 If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES] for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
-## [Launching Applications](#launching)
+## [Launching Applications](#launching) { #launching }
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section.
 
-### [One Serial Application](#launching-serial)
+### [One Serial Application](#launching-serial) { #launching-serial }
 
 To launch a serial application, simply call the executable. Specify the path to the executable in either the PATH environment variable or in the call to the executable itself:
 	
@@ -541,7 +541,7 @@ $SCRATCH/apps/myprov/myprogram 			# explicit full path to executable
 ./myprogram -m -k 6 input1  			# executable with notional input options
 ```
 
-### [One Multi-Threaded Application](#launching-multithreaded)
+### [One Multi-Threaded Application](#launching-multithreaded) { #launching-multithreaded }
 
 Launch a threaded application the same way. Be sure to specify the number of threads. Note that the default OpenMP thread count is 1.
 
@@ -550,7 +550,7 @@ export OMP_NUM_THREADS=56   	# 56 total OpenMP threads (1 per CLX core)
 ./myprogram
 ```
 
-### [One MPI Application](#launching-mpi)
+### [One MPI Application](#launching-mpi) { #launching-mpi }
 
 To launch an MPI application, use the TACC-specific MPI launcher `ibrun`, which is a Frontera-aware replacement for generic MPI launchers like `mpirun` and `mpiexec`. In most cases the only arguments you need are the name of your executable followed by any arguments your executable needs. When you call `ibrun` without other arguments, your Slurm `#SBATCH` directives will determine the number of ranks (MPI tasks) and number of nodes on which your program runs.
 
@@ -567,7 +567,7 @@ login1$ idev -N 2 -n 100
 c123-456$ ibrun ./myprogram	   # ibrun uses idev's arguments to properly allocate nodes and tasks
 ```
 
-### [One Hybrid (MPI+Threads) Application](#launching-hybrid)
+### [One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
 
 
 When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
@@ -580,11 +580,11 @@ ibrun ./myprogram           # use ibrun instead of mpirun or mpiexec
 As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum number of MPI processes per node should not be greater than total number of cores available per node (56 cores in the development/small/normal/large/flex [queues](#queues).
 
 
-### [More Than One Serial Application in the Same Job](#launching-multiserial)
+### [More Than One Serial Application in the Same Job](#launching-multiserial) { #launching-multiserial }
 
 TACC's `launcher` utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The launcher utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute `module load launcher` followed by `module help launcher` for more information.
 
-### [MPI Applications One at a Time](#launching-mpisequential)
+### [MPI Applications One at a Time](#launching-mpisequential) { #launching-mpisequential }
 
 To run one MPI application after another (or any sequence of commands one at a time), simply list them in your job script in the order in which you'd like them to execute. When one application/command completes, the next one will begin.
 
@@ -596,7 +596,7 @@ ibrun ./myprogram input1    # runs after preprocess.sh completes
 ibrun ./myprogram input2    # runs after previous MPI app completes
 ```
 
-### [More than One MPI Application Running Concurrently](#launching-mpiconcurrent)
+### [More than One MPI Application Running Concurrently](#launching-mpiconcurrent) { #launching-mpiconcurrent }
 
 To run more than one MPI application simultaneously in the same job, you need to do several things:
 
@@ -615,7 +615,7 @@ wait                                                    # Required; else script 
 
 The `task_affinity` script manages task placement and memory pinning when you call ibrun with the `-n`, `-o` switches (it's not necessary under any other circumstances). 
 
-### [More than One OpenMP Application Running Concurrently](#launching-multimpiconcurrent)
+### [More than One OpenMP Application Running Concurrently](#launching-multimpiconcurrent) { #launching-multimpiconcurrent }
 
  
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to distribute and pin OpenMP threads appropriately.  The most portable way to do this is with OpenMP Affinity.
@@ -670,25 +670,9 @@ wait
 
 ## [Running Jobs](#running) { #running }
 
-<p class="introtext">Frontera's job scheduler is the <a href="http://schedmd.com">Slurm Workload Manager</a>. Slurm commands enable you to submit, manage, monitor, and control your jobs. Jobs submitted to the scheduler are queued, then run on the compute nodes. Each job consumes Service Units (SUs) which are then charged to your allocation.</p>
+Frontera's job scheduler is the <a href="http://schedmd.com">Slurm Workload Manager</a>. Slurm commands enable you to submit, manage, monitor, and control your jobs. Jobs submitted to the scheduler are queued, then run on the compute nodes. Each job consumes Service Units (SUs) which are then charged to your allocation.
 
-
-### [Job Accounting](#running-jobaccounting) { #running-jobaccounting } 
-
-Like all TACC systems, Frontera's accounting system is based on node-hours: one unadjusted Service Unit (SU) represents a single compute node used for one hour (a node-hour). For any given job, the total cost in SUs is the use of one compute node for one hour of wall clock time plus any additional charges for the use of specialized queues, e.g. Frontera's `flex` queue, Stampede2's `development` queue, and Longhorn's `v100` queue.  The [queue charge rates](#queues) are determined by the supply and demand for that particular queue or type of node used.  
-
-**Frontera SUs billed = (# nodes) x (job duration in wall clock hours) x (charge rate per node-hour)**
-
-The Slurm scheduler tracks and charges for usage to a granularity of a few seconds of wall clock time. **The system charges only for the resources you actually use, not those you request.** If your job finishes early and exits properly, Slurm will release the nodes back into the pool of available nodes. Your job will only be charged for as long as you are using the nodes.
-
-!!! note
-	TACC does not implement node-sharing on any compute resource. Each Frontera node can be assigned to only one user at a time; hence a complete node is dedicated to a user's job and accrues wall-clock time for all the node's cores whether or not all cores are used.
-
-**Tip**: Your queue wait times will be less if you request only the time you need: the scheduler will have a much easier time finding a slot for the 2 hours you really need than say, for the 12 hours requested in your job script. 
-
-Principal Investigators can monitor allocation usage via the [TACC Portal][TACCPORTAL] under ["Allocations->Projects and Allocations"][TACCALLOCATIONS]. Be aware that the figures shown on the portal may lag behind the most recent usage. Projects and allocation balances are also displayed upon command-line login.
-
-{% include 'include/tinfo.md' %}
+{%include 'include/frontera-jobaccounting.md' %}
 
 ### [Requesting Resources ](#running-requesting) { #running-requesting } 
 
@@ -699,10 +683,10 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
 * A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
 
-```cmd-line
-$ module load launcher
-$ module help launcher
-```
+	```cmd-line
+	$ module load launcher
+	$ module help launcher
+	```
 
 <a id="queues">
 ### [Frontera Production Queues](#running-queues)  { #running-queues } 
@@ -1403,62 +1387,8 @@ You may, of course, need to customize the build process in other ways. It's like
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
-### [The Intel Math Kernel Library (MKL)](#building-mkl) { #building-mkl }
+{% include "include/frontera-mkl.md" %} 
 
-The [Intel Math Kernel Library](http://software.intel.com/intel-mkl) (MKL) is a collection of highly optimized functions implementing some of the most important mathematical kernels used in computational science, including standardized interfaces to:
-
-* [BLAS](http://netlib.org/blas) (Basic Linear Algebra Subroutines), a collection of low-level matrix and vector operations like matrix-matrix multiplication 
-* [LAPACK](http://netlib.org/lapack) (Linear Algebra PACKage), which includes higher-level linear algebra algorithms like Gaussian Elimination
-* FFT (Fast Fourier Transform), including interfaces based on [FFTW](http://fftw.org) (Fastest Fourier Transform in the West)
-* [ScaLAPACK](http://netlib.org/scalapack) (Scalable LAPACK), [BLACS](http://netlib.org/blacs) (Basic Linear Algebra Communication Subprograms), Cluster FFT, and other functionality that provide block-based distributed memory (multi-node) versions of selected [LAPACK](https://software.intel.com/en-us/mkl-developer-reference-c-lapack-routines), [BLAS](https://software.intel.com/en-us/mkl-developer-reference-c-blas-and-sparse-blas-routines), and [FFT](https://software.intel.com/en-us/mkl-developer-reference-c-fft-functions) algorithms;
-* [Vector Mathematics](http://software.intel.com/en-us/node/521751) (VM) functions that implement highly optimized and vectorized versions of special functions like sine and square root.
-
-#### [MKL with Intel Compilers](#building-mkl-intel) { #building-mkl-intel }
-
-There is no MKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for MKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using MKL with the Intel modules requires nothing more than compiling and linking with the `-mkl` option.; e.g.
-
-```cmd-line
-$ icc   -mkl mycode.c
-$ ifort -mkl mycode.c
-```
-
-The `-mkl` switch is an abbreviated form of `-mkl=parallel`, which links your code to the threaded version of MKL. To link to the unthreaded version, use `-mkl=sequential`. A third option, `-mkl=cluster`, which also links to the unthreaded libraries, is necessary and appropriate only when using ScaLAPACK or other distributed memory packages. For additional information, including advanced linking options, see Intel's [MKL documentation](http://software.intel.com/intel-mkl) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor).
-
-
-#### [MKL with GNU Compilers](#building-mkl-gnu) { #building-mkl-gnu }
-
-When using a GNU compiler, load the MKL module before compiling or running your code, then specify explicitly the MKL libraries, library paths, and include paths your application needs. Consult the [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor) for details. A typical compile/link process on a TACC system will look like this:
-
-```cmd-line
-$ module load gcc
-$ module load mkl                         # available/needed only for GNU compilers
-$ gcc -fopenmp -I$MKLROOT/include         \
-		 -Wl,-L${MKLROOT}/lib/intel64     \
-		 -lmkl_intel_lp64 -lmkl_core      \
-		 -lmkl_gnu_thread -lpthread       \
-		 -lm -ldl mycode.c
-```
-
-For your convenience the `mkl` module file also provides alternative TACC-defined variables like `$TACC_MKL_INCLUDE` (equivalent to `$MKLROOT/include`). Execute `module help mkl` for more information.
-
-#### [MKL with BLAS/LAPACK and Third-Party Software](#building-mkl-thirdparty) { #building-mkl-thirdparty }
-
-When your third-party software requires BLAS or LAPACK, you can use MKL to supply this functionality. Replace generic instructions that include link options like `-lblas` or `-llapack` with the simpler MKL approach described above. There is no need to download and install alternatives like OpenBLAS.
-
-#### [MKL with BLAS/LAPACK and TACC's MATLAB, Python, and R Modules](#building-mkl-blas) { #building-mkl-blas }
-
-TACC's MATLAB, Python, and R modules all use threaded (parallel) MKL as their underlying BLAS/LAPACK library. These means that even serial codes written in MATLAB, Python, or R may benefit from MKL's thread-based parallelism. This requires no action on your part other than specifying an appropriate max thread count for MKL. 
-
-#### [Controlling Threading in MKL](#building-mkl-threading) { #building-mkl-threading }
-
-Any code that calls MKL functions can potentially benefit from MKL's thread-based parallelism; this is true even if your code is not otherwise a parallel application. If you are linking to the threaded MKL (using `-mkl`, `-mkl=parallel`, or the equivalent explicit link line), you need only specify an appropriate value for the max number of threads available to MKL. You can do this with either of the two environment variables `MKL_NUM_THREADS` or `OMP_NUM_THREADS`. The environment variable `MKL_NUM_THREADS` specifies the max number of threads available to each instance of MKL, and has no effect on non-MKL code. If `MKL_NUM_THREADS` is undefined, MKL uses `OMP_NUM_THREADS` to determine the max number of threads available to MKL functions. In either case, MKL will attempt to choose an optimal thread count less than or equal to the specified value. Note that `OMP_NUM_THREADS` defaults to 1 on TACC systems; if you use the default value you will get no thread-based parallelism from MKL.
-
-If you are running a single serial, unthreaded application (or an unthreaded MPI code involving a single MPI task per node) it is usually best to give MKL as much flexibility as possible by setting the max thread count to the total number of hardware threads on the node (56 on CLX). Of course things are more complicated if you are running more than one process on a node: e.g. multiple serial processes, threaded applications, hybrid MPI-threaded applications, or pure MPI codes running more than one MPI rank per node. See [Settings for Calling Intel® Math Kernel Library Routines from Multi-Threaded Applications](http://software.intel.com/en-us/articles/recommended-settings-for-calling-intel-mkl-routines-from-multi-threaded-applications) and related Intel resources for examples of how to manage threading when calling MKL from multiple processes. 
-
-#### [Using ScaLAPACK, Cluster FFT, and Other MKL Cluster Capabilities](#building-mkl-cluster) { #building-mkl-cluster }
-
-See [Working with the Intel Math Kernel Library Cluster Software](https://software.intel.com/en-us/mkl-linux-developer-guide-working-with-the-intel-math-kernel-library-cluster-software) and [Intel MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor) for information on linking to the MKL cluster components.
-		
 ### [Building for Performance on Frontera](#building-performance) { #building-performance }
 
 #### [Recommended Compiler](#building-performance-compiler) { #building-performance-compiler }
@@ -1565,7 +1495,7 @@ The literature on optimization is vast. Some places to begin a systematic study 
 
 **Vector Optimization and `AVX2`.** In some cases, using the `AVX2` instruction set may produce better performance than `AVX512`. This is largely because cores can run at higher clock speeds when executing `AVX2` code. To compile for `AVX2`, replace the [multi-architecture flags](#building-performance-flags) described above with the single flag `-xCORE-AVX2`. When you use this flag you will be able to build and run on any Frontera node.
 
-**Vector Optimization and 512-Bit ZMM Registers.** If your code can take advantage of wide 512-bit vector registers, you may want to try [compiling for CLX](../building#recommended-compiler) with (for example):
+**Vector Optimization and 512-Bit ZMM Registers.** If your code can take advantage of wide 512-bit vector registers, you may want to try [compiling for CLX](#building-basics-intel) with (for example):
 
 ``` syntax
 -xCORE-AVX512 -qopt-zmm-usage=high
@@ -1584,9 +1514,9 @@ This section includes general advice intended to help you achieve good performan
 
 **Follow the advice in [Good Conduct](../../basics/conduct)** to avoid stressing the file system.
 
-**Stripe for performance**. If your application writes large files using MPI-based parallel I/O (including [MPI-IO](http://mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf), [parallel HDF5](https://support.hdfgroup.org/HDF5/PHDF5/), and [parallel netCDF](https://www.unidata.ucar.edu/software/netcdf/docs/parallel_io.html), you should experiment with stripe counts larger than the default values (2 stripes on `$SCRATCH`, 1 stripe on `$WORK`). See [Striping Large Files](../files/#striping-large-files) for the simplest way to set the stripe count on the directory in which you will create new output files. You may also want to try larger stripe sizes up to 16MB or even 32MB; execute `man lfs` for more information. If you write many small files you should probably leave the stripe count at its default value, especially if you write each file from a single process. Note that it's not possible to change the stripe parameters on files that already exist. This means that you should make decisions about striping when you *create* input files, not when you read them.
+**Stripe for performance**. If your application writes large files using MPI-based parallel I/O (including [MPI-IO](http://mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf), [parallel HDF5](https://support.hdfgroup.org/HDF5/PHDF5/), and [parallel netCDF](https://www.unidata.ucar.edu/software/netcdf/docs/parallel_io.html), you should experiment with stripe counts larger than the default values (2 stripes on `$SCRATCH`, 1 stripe on `$WORK`). See [Striping Large Files](#files-striping) for the simplest way to set the stripe count on the directory in which you will create new output files. You may also want to try larger stripe sizes up to 16MB or even 32MB; execute `man lfs` for more information. If you write many small files you should probably leave the stripe count at its default value, especially if you write each file from a single process. Note that it's not possible to change the stripe parameters on files that already exist. This means that you should make decisions about striping when you *create* input files, not when you read them.
 
-**Aggregate file operations**. Open and close files once. Read and write large, contiguous blocks of data at a time; this requires understanding how a given programming language uses memory to [store arrays](#data-locality).
+**Aggregate file operations**. Open and close files once. Read and write large, contiguous blocks of data at a time; this requires understanding how a given programming language uses memory to [store arrays](#programming-general-datalocality).
 
 **Be smart about your general strategy**. When possible avoid an I/O strategy that requires each process to access its own files; such strategies don't scale well and are likely to stress a Lustre file system. A better approach is to use a single process to read and write files. Even better is genuinely parallel MPI-based I/O.
 
@@ -1757,7 +1687,7 @@ Frontera currently has no separate visualization queue. All visualization apps a
 
 ### [Remote Desktop Access](#vis)
 
-Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](#access) and submit a special interactive batch job that:
+Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](#admin-access) and submit a special interactive batch job that:
 
 
 * allocates a set of Frontera compute nodes
@@ -2327,12 +2257,7 @@ Frontera supports application containers from any specification-compliant scienc
 <!-- See the [Containers@TACC](../docs/containers-at-tacc.pdf) documentation for detailed information.-->
 ## [Help Desk](#help) { #help }
 
-
-TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays.
-
-You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
-
-### [Best Practices aka Help Us Help You](#help-bestpractices)
+TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
 
 * **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
 
