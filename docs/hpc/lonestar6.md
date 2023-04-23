@@ -127,7 +127,7 @@ Lonestar6's home and scratch file systems are mounted only on Lonestar6, but the
 The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Table 3](#table3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources. 
 
 <figure id="figure1">
-[Figure 1. Stockyard Global File System](#figure1)
+[Figure 1. Stockyard Global File System](#figure1) { #figure1 }
 
 <img src="../../imgs/stockyard-2022.jpg">
 <figcaption>Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
@@ -303,7 +303,7 @@ login1$ module load sanitytool
 login1$ sanitycheck
 ```
 
-Execute `module help sanitytool` for more information. -->
+Execute `module help sanitytool` for more information. 
 
 ### [Using Modules to Manage your Environment](#admin-modules) { #admin-modules }
 
@@ -413,7 +413,7 @@ This section of the user guide does nothing more than introduce the big ideas wi
 
 ### [Intel Compilers](#building-intelcompiler) { #building-intelcompiler }
 
-Intel is the recommended and default compiler suite on Lonestar6. Each Intel module also gives you direct access to `mkl` without loading an `mkl` module; see [Intel MKL](#the-intel-math-kernel-library-mkl) for more information. Here are simple examples that use the Intel compiler to build an executable from source code:
+Intel is the recommended and default compiler suite on Lonestar6. Each Intel module also gives you direct access to `mkl` without loading an `mkl` module; see [Intel MKL](#mkl) for more information. Here are simple examples that use the Intel compiler to build an executable from source code:
 
 Compiling a code that uses OpenMP would look like this:
 
@@ -474,7 +474,7 @@ On Lonestar6, both the `hdf5` and `phdf5` modules define the environment variabl
 
 The details of the linking process vary, and order sometimes matters. Much depends on the type of library: static (`.a` suffix; library's binary code becomes part of executable image at link time) versus dynamically-linked shared (.so suffix; library's binary code is not part of executable; it's located and loaded into memory at run time). The link line can use rpath to store in the executable an explicit path to a shared library. In general, however, the `LD_LIBRARY_PATH` environment variable specifies the search path for dynamic libraries. For software installed at the system-level, TACC's modules generally modify `LD_LIBRARY_PATH` automatically. To see whether and how an executable named `myexe` resolves dependencies on dynamically linked libraries, execute `ldd myexe`.
 
-A separate section below addresses the [Intel Math Kernel Library](#the-intel-math-kernel-library-mkl) (MKL).
+A separate section below addresses the [Intel Math Kernel Library](#mkl) (MKL).
 
 ### [Compiling and Linking MPI Programs](#building-mpi) { #building-mpi }
 
@@ -525,7 +525,7 @@ $ R                             # launch R
 > install.packages('devtools')  # R will prompt for install location
 ```
 
-You may, of course, need to customize the build process in other ways. It's likely, for example, that you'll need to edit a `makefile` or other build artifacts to specify Lonestar6-specific [include and library paths](#include-and-library-paths) or other compiler settings. A good way to proceed is to write a shell script that implements the entire process: definitions of environment variables, module commands, and calls to the build utilities. Include `echo` statements with appropriate diagnostics. Run the script until you encounter an error. Research and fix the current problem. Document your experience in the script itself; including dead-ends, alternatives, and lessons learned. Re-run the script to get to the next error, then repeat until done. When you're finished, you'll have a repeatable process that you can archive until it's time to update the software or move to a new machine.
+You may, of course, need to customize the build process in other ways. It's likely, for example, that you'll need to edit a `makefile` or other build artifacts to specify Lonestar6-specific [include and library paths](#building-include) or other compiler settings. A good way to proceed is to write a shell script that implements the entire process: definitions of environment variables, module commands, and calls to the build utilities. Include `echo` statements with appropriate diagnostics. Run the script until you encounter an error. Research and fix the current problem. Document your experience in the script itself; including dead-ends, alternatives, and lessons learned. Re-run the script to get to the next error, then repeat until done. When you're finished, you'll have a repeatable process that you can archive until it's time to update the software or move to a new machine.
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators](../../tutorials/sharingprojectfiles) for more information.
 
@@ -974,7 +974,7 @@ When interpreting queue and job status, remember that **Lonestar6 doesn't operat
 
 #### [TACC's `qlimits` command](#jobs-monitoring-qlimits) { #jobs-monitoring-qlimits }
 
-To display resource limits for the Lonestar queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Lonestar6 queues](#running-queues) may lag behind the actual configuration that the `qlimits` utility displays.
+To display resource limits for the Lonestar queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Lonestar6 queues](#queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
 #### [Slurm's `sinfo` command](#jobs-monitoring-sinfo) { #jobs-monitoring-sinfo }
 

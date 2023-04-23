@@ -88,7 +88,7 @@ login1$ module load sanitytool
 login1$ sanitycheck
 ```
 
-Execute `module help sanitytool` for more information. -->
+Execute `module help sanitytool` for more information. 
 
 ### [Using Modules to Manage your Environment](#admin-modules) { #admin-modules }
 

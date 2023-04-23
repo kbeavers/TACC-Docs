@@ -8,7 +8,7 @@ When interpreting queue and job status, remember that **Lonestar6 doesn't operat
 
 #### [TACC's `qlimits` command](#jobs-monitoring-qlimits) { #jobs-monitoring-qlimits }
 
-To display resource limits for the Lonestar queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Lonestar6 queues](#running-queues) may lag behind the actual configuration that the `qlimits` utility displays.
+To display resource limits for the Lonestar queues, execute: `qlimits`. The result is real-time data; the corresponding information in this document's [table of Lonestar6 queues](#queues) may lag behind the actual configuration that the `qlimits` utility displays.
 
 #### [Slurm's `sinfo` command](#jobs-monitoring-sinfo) { #jobs-monitoring-sinfo }
 

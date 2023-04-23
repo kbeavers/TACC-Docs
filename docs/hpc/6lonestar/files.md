@@ -24,7 +24,7 @@ Lonestar6's home and scratch file systems are mounted only on Lonestar6, but the
 The `$STOCKYARD` environment variable points to the highest-level directory that you own on the Global Shared File System. The definition of the `$STOCKYARD` environment variable is of course account-specific, but you will see the same value on all TACC systems that provide access to the Global Shared File System (see [Table 3](#table3)). This directory is an excellent place to store files you want to access regularly from multiple TACC resources. 
 
 <figure id="figure1">
-[Figure 1. Stockyard Global File System](#figure1)
+[Figure 1. Stockyard Global File System](#figure1) { #figure1 }
 
 <img src="../../imgs/stockyard-2022.jpg">
 <figcaption>Account-level directories on the <code>/work</code> file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `stampede2`, `frontera`) exist only when you have allocations on the associated system.</figcaption></figure>
