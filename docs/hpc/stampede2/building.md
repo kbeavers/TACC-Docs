@@ -187,7 +187,7 @@ $ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 
 Simplicity is a major advantage of this multi-architecture approach: it allows you to build and run anywhere on Stampede2, and performance is generally comparable to single-architecture builds. There are some trade-offs to consider, however. This approach will take a little longer to compile than single-architecture builds, and will produce a larger binary. In some cases, you might also pay a small performance penalty over single-architecture approaches. For more information see the [Intel documentation](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).	
 
-For information on the performance implications of your choice of build flags, see the sections on Programming and Performance for [KNL](#programming-and-performance-knl) and [SKX and ICX](#programming-and-performance-skx) respectively.
+For information on the performance implications of your choice of build flags, see the sections on Programming and Performance for [KNL](#programming-knl) and [SKX and ICX](#programming-skx) respectively.
 
 If you use GNU compilers, see [GNU x86 Options](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html) for information regarding support for KNL, SKX and ICX. Note that GNU compilers do not support multi-architecture binaries.
 

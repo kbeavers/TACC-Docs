@@ -7,7 +7,7 @@ Quantum Espresso (QE) is an integrated suite of open-source codes for electronic
 
 ## [Installations](#installations) { #installations }
 
-The latest QE stable release is installed on TACC's [Stampede2](../stampede2), [Lonestar6](../../hpc/lonestar6) and [Frontera](../../hpc/frontera) systems. Use `module` commands to load the latest installed version by default, and to list all installed versions.  
+The latest QE stable release is installed on TACC's [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/lonestar6) and [Frontera](../../hpc/frontera) systems. Use `module` commands to load the latest installed version by default, and to list all installed versions.  
 
 ``` cmd-line
 $ module load qe
@@ -47,7 +47,7 @@ ibrun pw.x -input qeinput > qe_test.out     # launch job
 
 ### [Sample Job Script: Stampede2](#jobscript-stampede2) { #jobscript-stampede2 }
 
-The script below submits a Quantum Espresso job to Stampede2's `normal` queue (KNL compute nodes), requesting 4 nodes and 256 tasks for a maximum of 4 hours. Refer to Stampede2's [Running Jobs](../stampede2#running) section for more Slurm options. 
+The script below submits a Quantum Espresso job to Stampede2's `normal` queue (KNL compute nodes), requesting 4 nodes and 256 tasks for a maximum of 4 hours. Refer to Stampede2's [Running Jobs](../../hpc/stampede2#running) section for more Slurm options. 
 
 ``` job-script
 #!/bin/bash 

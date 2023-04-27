@@ -27,9 +27,9 @@ icx-normal | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
 
 &#42; Queue status as of March 7, 2022. **Queues and limits are subject to change without notice.** Execute `qlimits` on Stampede2 for real-time information regarding limits on available queues. See [Monitoring Jobs and Queues](#monitoring) for additional information.
 
-&#42;&#42; To request more nodes than are available in the normal queue, submit a consulting (help desk) ticket through the [TACC][TACCUSERPORTAL].  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede2.
+&#42;&#42; To request more nodes than are available in the normal queue, [submit a consulting (help desk) ticket](CREATETICKET).  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede2.
 
-&#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, submit a ticket through the [TACC User Portal][TACCUSERPORTAL].
+&#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, [submit a consulting ticket](CREATETICKET).
 
 ### [Submitting Batch Jobs with `sbatch`](#running-sbatch) { #running-sbatch }
 

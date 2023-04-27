@@ -626,7 +626,7 @@ $ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 
 Simplicity is a major advantage of this multi-architecture approach: it allows you to build and run anywhere on Stampede2, and performance is generally comparable to single-architecture builds. There are some trade-offs to consider, however. This approach will take a little longer to compile than single-architecture builds, and will produce a larger binary. In some cases, you might also pay a small performance penalty over single-architecture approaches. For more information see the [Intel documentation](https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations).	
 
-For information on the performance implications of your choice of build flags, see the sections on Programming and Performance for [KNL](#programming-and-performance-knl) and [SKX and ICX](#programming-and-performance-skx) respectively.
+For information on the performance implications of your choice of build flags, see the sections on Programming and Performance for [KNL](#programming-knl) and [SKX and ICX](#programming-skx) respectively.
 
 If you use GNU compilers, see [GNU x86 Options](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html) for information regarding support for KNL, SKX and ICX. Note that GNU compilers do not support multi-architecture binaries.
 
@@ -660,9 +660,9 @@ icx-normal | ICX | 40 nodes<br>(3,200 cores) &#42; | 48 hrs | 20 &#42; | 1.67 SU
 
 &#42; Queue status as of March 7, 2022. **Queues and limits are subject to change without notice.** Execute `qlimits` on Stampede2 for real-time information regarding limits on available queues. See [Monitoring Jobs and Queues](#monitoring) for additional information.
 
-&#42;&#42; To request more nodes than are available in the normal queue, submit a consulting (help desk) ticket through the [TACC][TACCUSERPORTAL].  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede2.
+&#42;&#42; To request more nodes than are available in the normal queue, [submit a consulting (help desk) ticket](CREATETICKET).  Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede2.
 
-&#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, submit a ticket through the [TACC User Portal][TACCUSERPORTAL].
+&#42;&#42;&#42; For non-hybrid memory-cluster modes or other special requirements, [submit a consulting ticket](CREATETICKET).
 
 ### [Submitting Batch Jobs with `sbatch`](#running-sbatch) { #running-sbatch }
 
@@ -1969,7 +1969,7 @@ The KNL can do this in several ways, each of which is called a cluster mode. Eac
 
 * **Sub-NUMA 4 (variation: Sub-NUMA 2)**. This mode, abbreviated **SNC-4**, divides the chip into four NUMA nodes so that it acts like a four-socket processor. SNC-4 aims to optimize coherency-related on-chip communication by confining this communication to a single NUMA node when it is possible to do so. To achieve any performance benefit, this requires explicit manual memory management by the programmer/user (in particular, allocating memory within the NUMA node that will use that memory). Stampede2 does not have nodes in this cluster mode.
 
-<figure id="figure-knlclustermodes"><img src="../../imgs/KNL-Cluster-Modes.png"><figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
+<figure id="figure-knlclustermodes"><img src="../../imgs/stampede2/KNL-Cluster-Modes.png"><figcaption>Figure 5. KNL Cluster Modes</figcaption></figure>
 
 TACC's early experience with the KNL suggests that there is little reason to deviate from Intel's recommended default memory and cluster modes. Cache-quadrant tends to be a good choice for almost all workflows; it offers a nice compromise between performance and ease of use for the applications we have tested. Flat-quadrant is the most promising alternative and sometimes offers moderately better performance, especially when memory requirements per node are less than 16GB. We have not yet observed significant performance differences across cluster modes, and our current recommendation is that configurations other than cache-quadrant and flat-quadrant are worth considering only for very specialized needs. For more information see [Managing Memory](#programming-knl-managingmemory) and [Best Known Practices...](#programming-knl-bestpractices).
 
