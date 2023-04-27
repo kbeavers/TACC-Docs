@@ -14,7 +14,7 @@ Authentication is the process of determining if you are you. Traditional methods
 
 ### [1. Manage Account](#setupmfa-step1) { #setupmfa-step1 }
 
-Sign into the TACC Portal, then click on "[Manage Account](https://www.tacc.utexas.edu/portal/account)" under your name in the top right-hand corner:
+Sign into the TACC Portal (Figure 1a), then click on "[Manage Account](https://www.tacc.utexas.edu/portal/account)" under your name in the top right-hand corner (Figure 1b):
 
 <table border="0"><tr>
 <td><figure id="figure1a"><img border="1" src="../../imgs/tutorials/mfa-manage-account-2.png"> 
@@ -24,7 +24,7 @@ Sign into the TACC Portal, then click on "[Manage Account](https://www.tacc.utex
 </tr></table>
 
 
-From the "Manage Account" page, click "Pair a Device" to continue to the TACC device pairing page. 
+From the "Manage Account" page, click "Pair a Device" to continue to the TACC device pairing page (Figure 2.). 
 
 <figure id="figure2"><img border="1" alt="Pair Device" src="../../imgs/tutorials/mfa-pairdevice.png" style="size:50%"> <figcaption>Figure 2.</figcaption></figure>
 	
@@ -65,18 +65,18 @@ When logging into a TACC resource you'll be prompted for your standard password,
 
 This tutorial demonstrates pairing with the Duo App, though you may use any any MFA app you like. 
 
-1. Begin by pressing the "Pair Device" button in the upper-right corner of "Manage Account" page.
+1. Begin by pressing the "Pair Device" button in the upper-right corner of "Manage Account" page (Figure 3).
 
 	<figure id="figure3"><img border="1" alt="Pair Device" src="../../imgs/tutorials/mfa-pairdevice.png" style="size:50%"> <figcaption>Figure 3.</figcaption></figure>
 
-1. Select "Token App" from the Authentication Pairing page, then click on the empty box to generate a personalized QR code:
+1. Select "Token App" from the Authentication Pairing page (Figure 4a), then click on the empty box to generate a personalized QR code (Figure 4b).
 
 	<table border="0"><tr>
 	<td><figure id="figure4a"><img border="1" src="../../imgs/tutorials/mfa-authenticationpairing-1.png"> <figcaption>Figure 4a.</figcaption></figure>  </td>
 	<td><figure id="figure4b"><img border="1" src="../../imgs/tutorials/mfa-authenticationpairing-2.png"> <figcaption>Figure 4b.</figcaption></figure>  </td>
 	</tr></table>
 
-1. Open the Duo App on your device. Your mobile device screen should appear similar to Figure 5a. Tap the "+" in the upper right corner of the app to start the pairing process.  The app will launch the mobile device's camera.  Scan the generated QR code on your computer screen.  Do not scan the image on this tutorial's page. Then enter the Duo token code.
+1. Open the Duo App on your device. Your mobile device screen should appear similar to Figure 5a. Tap the "+" in the upper right corner of the app to start the pairing process.  The app will launch the mobile device's camera.  Scan the generated QR code on your computer screen.  Do not scan the image on this tutorial's page. Show the Duo token code on your device (Figure 5b) and then enter that token into the web form (Figure 5c).
 
 	<table border="0"><tr>
 	<td><figure id="figure5a"><img border="1" src="../../imgs/tutorials/mfa-duo-showcode.png"> <figcaption>Figure 5a.</figcaption></figure></td>
@@ -84,7 +84,7 @@ This tutorial demonstrates pairing with the Duo App, though you may use any any 
 	<td><figure id="figure5c"><img border="1" src="../../imgs/tutorials/mfa-authenticationpairing-3.png"> <figcaption>Figure 5c.</figcaption></figure></td>
 	</tr></table>
 
-1. You've now paired your device!  If you have any problems with this process, please [submit a help ticket](CREATETICKET).
+1. You've now paired your device! (Figure 6.)  If you have any problems with this process, please [submit a help ticket](CREATETICKET).
 
 	<figure id="figure6"><img border="1" src="../../imgs/tutorials/mfa-pairingsuccessful.png" style="width:50%; height:50%"> <figcaption>Figure 6.</figcaption></figure>
 
@@ -126,7 +126,7 @@ After typing in your password, you'll be prompted for "**`TACC Token Code:`**". 
 
 Unpair your device via the same method you paired:You'll unpair via the same method you paired: by app token or by SMS.  If you've lost access to the device you originally paired with, you may unpair using email notification. 
 
-1. Go to your "[Manage Account](https://www.tacc.utexas.edu/portal/account)" page, and click the "Unpair" link to proceed.    
+1. Go to your "[Manage Account](https://www.tacc.utexas.edu/portal/account)" page (Figure 7a), and click the "Unpair" link to proceed (Figure 7b).    
 
 	<table border="0"><tr>
 	<td><figure id="figure7a"><img alt="" src="../../imgs/tutorials/mfa-unpairdevice.png">
@@ -135,7 +135,7 @@ Unpair your device via the same method you paired:You'll unpair via the same met
 	<figcaption>Figure 7b.</figcaption></figure></td>
 	</tr></table>
 
-1. Similar to the pairing process, you must verify unpairing by entering the token code when prompted.  
+1. Similar to the pairing process, you must verify unpairing by entering the your device's token code when prompted (Figures 8a and 8b).  
 
 	<table border="0"><tr>
 	<td><figure id="figure8a"><img alt="" src="../../imgs/tutorials/mfa-duo-626574.png">
