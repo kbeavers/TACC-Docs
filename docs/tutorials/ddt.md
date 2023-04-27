@@ -139,6 +139,6 @@ By starting DDT from a login node you let it use X11 graphics, which can be slow
 
 * [DDT User Guide](https://developer.arm.com/docs/101136/2003/ddt)
 * [MAP Profiler](../../tutorials/map)
-* Presentation: [Debugging at TACC](https://www.tacc.utexas.edu/documents/13601/897815/1a-Debugging.pdf) (`gdb`, DDT & Eclipse)
+<!-- SDL * Presentation: [Debugging at TACC](https://www.tacc.utexas.edu/documents/13601/897815/1a-Debugging.pdf) (`gdb`, DDT & Eclipse) -->
 
 {% include 'aliases.md' %}

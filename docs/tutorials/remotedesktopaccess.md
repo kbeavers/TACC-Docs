@@ -1,7 +1,7 @@
 # Remote Desktop Access via DCV and VNC Connections
 *Last update: December 05, 2019*
   
-Establishing a remote desktop connection from one system to another allows the desktop on the remote computer (TACC resources) to be displayed on the local system (your desktop). For HPC purposes remote desktops are used for [visualization applications](../../hpc/stampede2/stampede2#vis) and other [graphics-library enabled applications](../../tutorials/ddt).  
+Establishing a remote desktop connection from one system to another allows the desktop on the remote computer (TACC resources) to be displayed on the local system (your desktop). For HPC purposes remote desktops are used for [visualization applications](../../hpc/stampede2/stampede2#vis) and other [graphics-library enabled applications](/tutorials/ddt).  
 
 ## [Remote Desktop Methods](#methods) { #methods }
 	
@@ -29,7 +29,7 @@ Connect to the TACC Analysis Portal at <https://tap.tacc.utexas.edu>. Everyone w
 
 ## [DCV & VNC at TACC](#scripts) { #scripts }
 
-TACC resources [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/6lonestar), and [Maverick2](../../hpc/maverick2) all offer remote desktop capabilities via a VNC (Virtual Network Computing) connection. Frontera and Stampede2 also provide remote desktop access through a DCV (Desktop Cloud Visualization) connection to one or more nodes.  
+TACC resources [Frontera](../../hpc/frontera), [Stampede2](../../hpc/stampede2), [Lonestar6](../../hpc/lonestar6), and [Maverick2](../../hpc/maverick2) all offer remote desktop capabilities via a VNC (Virtual Network Computing) connection. Frontera and Stampede2 also provide remote desktop access through a DCV (Desktop Cloud Visualization) connection to one or more nodes.  
 
 TACC has a limited number of DCV licenses available, so concurrent DCV sessions may be limited. TACC has provided two DCV job scripts for two different scenarios:
 
@@ -80,7 +80,7 @@ See more `sbatch` options in the [Stampede2 User Guide: Common `sbatch` Options]
 <th nowrap> Lonestar6
 <td align="center"> VNC
 <td><code>/share/doc/slurm/job.vnc</code>
-<td>Requests 1 node for 2 hours in Lonestar5's <a href="../../hpc/6lonestar#running-queues"><code>development</code></a> queue.</td></tr>
+<td>Requests 1 node for 2 hours in Lonestar6's <a href="../../hpc/lonestar6#running-queues"><code>development</code></a> queue.</td></tr>
 <th>Maverick2
 <td align="center"> VNC
 <td><code>/share/doc/slurm/job.vnc</code>
@@ -191,7 +191,7 @@ Follow the steps below to start an interactive session.
 
 1. **Submit the standard job script**, `job.vnc`, see [Table 1.](#table1).  
 
-	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in the [`development` queue](#running-queues) for two hours.
+	TACC has provided a VNC job script (`/share/doc/slurm/job.vnc`) that requests one node in Frontera's `development` [queue](../../hpc/frontera#running-queues) for two hours.
 
 	```cmd-line
 	login1$ sbatch /share/doc/slurm/job.vnc

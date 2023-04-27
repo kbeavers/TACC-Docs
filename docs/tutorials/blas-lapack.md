@@ -14,9 +14,9 @@ Your makefile may contain `libblas.a` or `-lblas`. Most Linux distributions inde
 
 Intel's Math Kernal Library (MKL) is a high performance implementation of BLAS/LAPACK and several other packages. MKL is installed on TACC's Frontera, Stampede2 and Lonestar6 resources. See each resource's user guide for detailed information on linking the MKL into your code.
 
-* [Frontera](../../hpc/frontera#the-intel-math-kernel-library-mkl)
-* [Stampede2](../../hpc/stampede2#intel-math-kernel-library-mkl)
-* [Lonestar6](../../hpc/6lonestar#intel-math-kernel-library-mkl)
+* [Frontera](../../hpc/frontera#mkl)
+* [Stampede2](../../hpc/stampede2#mkl)
+* [Lonestar6](../../hpc/lonestar6#mkl)
 
 In general:
 
