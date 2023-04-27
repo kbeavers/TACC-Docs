@@ -53,10 +53,8 @@ extra_javascript:
 nav:
   - TACC Essentials :
     - Documentation Overview: index.md
-#    - Data Transfer Guide: basics/datatransferguide.md
     - Good Conduct: basics/conduct.md
-    - Multi-Factor Authentication: tutorials/mfa.md
-#    - Quickstart for BASH users: tutorials/bashstartup.md
+    - Multi-Factor Authentication: basics/mfa.md
     - Help: basics/help.md
   - HPC :
     - Chameleon: https://chameleoncloud.readthedocs.io/en/latest
@@ -97,7 +95,6 @@ nav:
     - Grid Community Toolkit: tutorials/gridcommunitytoolkit.md
     - Managing I/O: tutorials/managingio.md
     - MAP: tutorials/map.md
-    - Multi-Factor Authentication: tutorials/mfa.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
     - Sharing Project Files: tutorials/sharingprojectfiles.md
     - TACC Analysis Portal: tutorials/TAP.md

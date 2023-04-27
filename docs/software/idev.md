@@ -1,5 +1,5 @@
 # <code>idev</code>: (Interactive Development) User Guide
-*Last update: April 13, 2023*
+*Last update: April 27, 2023*
 
 ## [Introduction](#intro) { #intro }
 
@@ -13,18 +13,18 @@ The `idev` utility creates an interactive development environment from the user'
 
 The `idev` command submits a batch job that creates a copy of the batch environment and then goes to sleep. After the job begins, `idev` acquires a copy of the batch environment, SSH's to the master node, and then re-creates the batch environment. The SSH command allows X11 tunneling for setting up a display back to the user's laptop for debugging.
 
-On any TACC system execute:
+On any TACC system execute `idev -help` to view an extensive list of options:
 
 ``` cmd-line
-login2$ idev [options]
+login2$ idev -help
+```
 
-   # command options:  -p partition_name
+<!--    # command options:  -p partition_name
    #                   -m number_of_minutes
    #                   -N number_of_nodes
    #                   -n number_of_tasks
    #                   -A account_name
-   #  default values: -p development -m 30 -N 1 -n <max_for_node>
-```
+   #  default values: -p development -m 30 -N 1 -n <max_for_node> -->
 
 If this is your first time launching `idev` and you have multiple projects/allocations, `idev` will prompt you for the allocation number and then save your selection as the default interactive account (in `~/.idevrc`); otherwise, it will automatically use your only account. 
 
@@ -32,11 +32,11 @@ By default only a single node is requested for 30 minutes in the development que
 
 ##  [Accessing Nodes Interactively](#interactive) { #interactive }
 
-It is important to realize that idev acquires compute nodes through the batch system (this is the normal/only mode for acquiring resources on a supercomputer).  This often means there is a wait to acquire nodes in the normal (production) partitions.  Fortunately, at TACC there is a "development" queue on each TACC system (idev's default partition), and it is often a short wait for idev to acquire (one or a few) nodes and allow interactive input.  When you run idev, it reports back every 4 seconds the progress of accessing the nodes through the batch system.
+It is important to realize that idev acquires compute nodes through the Slurm batch system (this is the normal/only mode for acquiring resources on a supercomputer).  This often means there is a wait to acquire nodes in the normal (production) partitions.  Fortunately, at TACC there is a "development" queue on each TACC system (`idev`'s default partition), and it is often a short wait for `idev` to acquire (one or a few) nodes and allow interactive input.  When you run `idev`, it reports back every 4 seconds the progress of accessing the nodes through the batch system.
 
 ### [Examples](#examples) { #examples }
 
-Below is an example of idev's progress in creating a session on a Skylake development node (in the skx-dev partition, the development default partition is for knl nodes):
+Below is an example of `idev`'s progress in creating a session on a Skylake development node (in the skx-dev partition, the development default partition is for knl nodes):
 
 ``` cmd-line
 login1$ idev -p skx-dev
@@ -67,15 +67,14 @@ login1$ idev -p skx-dev
 c506-053[skx]$ 
 ```
 
-Note the prompt, `c506-053[skx]$`, in the above session.  It is your interactive compute-node prompt: the (master) node name and the node type (skx = Skylake).  You can test the 1ibrun1 command by executing 1ibrun date1 which will return the `date` command's output from each core of your session. Launch MPI applications with `ibrun myapp`.
+Note the above prompt, `c506-053[skx]$`.  This is your custom `idev` prompt which consists of the (master) node name and the node type (skx = Skylake).  You can test the `ibrun` command by executing `ibrun date` which will return the `date` command's output from each core of your session. Launch MPI applications with `ibrun myapp`.
 
-The syntax is conveniently described in the `idev -help` display as seen below.
+Explore the syntax as described in the `idev -help` display. Some of the more common options are described below.
 
 ``` cmd-line
 login1$ idev -help
 ...
 OPTION ARGUMENTS         DESCRIPTION  (only common options shown)
-
 
   -A   account_name       sets account name (default: Slurm default )
   -m   minutes            sets time in minutes (default: 30)
