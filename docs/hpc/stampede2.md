@@ -98,7 +98,7 @@ Stampede2 mounts three shared Lustre file systems on which each user has corresp
 
 ## [Accessing the System](#access) { #access }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../tutorials/mfa) for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
@@ -2065,7 +2065,7 @@ When using the Intel Fortran compiler, **compile with "[`-assume buffered_io`](h
 * [GNU documentation](https://www.gnu.org/doc/doc.en.html)
 * [Intel software documentation](http://software.intel.com/en-us/intel-software-technical-documentation)
 * [Lmod's online documentation](http://lmod.readthedocs.org)
-* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
+* [Multi-Factor Authentication at TACC][TACCMFA]
 * [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
 * [Slurm online documentation](http://www.schedmd.com)
 <!-- * [TACC training materials](https://xortal.tacc.utexas.edu/training#/guest?training=upcoming) -->

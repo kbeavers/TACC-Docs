@@ -103,7 +103,7 @@ Maverick2 mounts [two shared Lustre file systems](#table4) on which each user ha
 
 ## [Accessing the System](#access) { #access }
 
-Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../tutorials/mfa) for further information. 
+Access to all TACC systems now requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC][TACCMFA] for further information. 
 
 ### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
 
@@ -659,6 +659,6 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 * [`idev` documentation](../../software/idev)
 * [Tensorflow at TACC](../../software/tensorflow)
 * [TACC Analysis Portal][TACCANALYSISPORTAL]
-* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
+* [Multi-Factor Authentication at TACC][TACCMFA]
 
 {% include 'aliases.md' %}
