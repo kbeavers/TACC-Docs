@@ -8,14 +8,14 @@ You can launch a Jupyter session via the Frontera User Portal.
 
 1. Login to the [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/login) and Select "My Dashboard" under your account name pulldown:
 
-	<figure id="figure1"><img alt="Login to the Frontera Portal" src="../../imgs/frontera/jupyter-selectDashboard.png">
+	<figure id="figure1"><img alt="Login to the Frontera Portal" src="../imgs/frontera/jupyter-selectDashboard.png">
 	<figcaption></figcaption></figure>
 
 1. From the workbench dashboard, click "Applications" in the left nav, then click "Data Processing" and select "Frontera HPC Jupyter":   
 
-	<figure id="figure1"><img alt="Select Jupyter Notebook" src="../../imgs/frontera/jupyter-selectJupyter.png">
+	<figure id="figure1"><img alt="Select Jupyter Notebook" src="../imgs/frontera/jupyter-selectJupyter.png">
 	<figcaption></figcaption></figure>
-	<figure id="figure2"><img alt="Figure 2. Select Jupyter Notebook" src="../../imgs/frontera/jupyter-selectDashboard.png">
+	<figure id="figure2"><img alt="Figure 2. Select Jupyter Notebook" src="../imgs/frontera/jupyter-selectDashboard.png">
 	<figcaption></figcaption></figure>
 
 1. Fill out and submit the form:    
@@ -29,12 +29,12 @@ You can launch a Jupyter session via the Frontera User Portal.
 	* **Job name**: this is the portal/Tapis name for the job and will be used in the notifications indicating the job has started, etc. This is just for bookkeeping so the user knows what job is being referred to.  
 
 
-	<figure id="figure3"><img alt="Figure 3. Submit session request form" src="../../imgs/frontera/jupyter-fillForm.png">
+	<figure id="figure3"><img alt="Figure 3. Submit session request form" src="../imgs/frontera/jupyter-fillForm.png">
 	<figcaption></figcaption></figure>
 
 1. Submitting the form initiates a request to the Slurm scheduler to reserve a compute node for a specified time.  In the example above, `bjones` requests a two-hour Jupyter session in Frontera's `small` queue on a single node.  **Depending upon Frontera's load, Slurm may take several minutes to several hours** to fulfill the node request.  Once Slurm allocate time for the job, you'll be automatically notified at the given email address with instructions and a password on how to connect to the session.
 
-	<figure id="figure4"><img alt="Figure 4. Notification email" src="../../imgs/frontera/jupyter-email.png">
+	<figure id="figure4"><img alt="Figure 4. Notification email" src="../imgs/frontera/jupyter-email.png">
 	<figcaption></figcaption></figure>
 
 

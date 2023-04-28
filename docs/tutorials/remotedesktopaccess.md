@@ -24,7 +24,7 @@ Once the `vncserver` process is running on the compute node and a tunnel through
 
 Connect to the TACC Analysis Portal at <https://tap.tacc.utexas.edu>. Everyone with a project allocation on Frontera or Stampede2 may use the TACC Analysis Portal.  
 
-<figure id="figure1"><img alt="TACC Vis Portal" src="../../imgs/tutorials/RDA-1.png">  
+<figure id="figure1"><img alt="TACC Vis Portal" src="../imgs/RDA-1.png">  
 <figcaption>Figure 1. TACC Visualization Portal</figcaption></figure>
 
 ## [DCV & VNC at TACC](#scripts) { #scripts }
@@ -154,7 +154,7 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 
 1. **Load this generated URL in your favorite browser and then authenticate using your Stampede2 or Frontera password**. 
 
-	<figure id="figure2"><img alt="" src="../../imgs/tutorials/RDA-2.png" style="width: 800px; height: 360px;" /> 
+	<figure id="figure2"><img alt="" src="../imgs/RDA-2.png" style="width: 800px; height: 360px;" /> 
 	<figcaption>Figure 2. Authenticate with your Stampede2 password.</figcaption></figure>
 
 1. **Start your graphics-enabled application.** Once the desktop is generated ([Figure 3.](#figure3)), you can launch your applications. Here we run a simple visualization program, `glxgears`. ([Figure 4.](#figure4))
@@ -163,10 +163,10 @@ Both Frontera and Stampede2 allow DCV connections. Follow the steps below to sta
 		The "Terminal" button at the bottom of the DCV window creates a terminal **without `ibrun` support**.   
 		To create an xterm with full `ibrun` support, type `xterm &` in the initial xterm window.
 
-	<figure id="figure3"><img alt="" src="../../imgs/tutorials/RDA-3.png" style="width: 800px; height: 480px;" />
+	<figure id="figure3"><img alt="" src="../imgs/RDA-3.png" style="width: 800px; height: 480px;" />
 	<figcaption>Figure 3. DCV Desktop in Chrome Browser</figcaption></figure>
 
-	<figure id="figure4"><img alt="" src="../../imgs/tutorials/RDA-4.png" style="width: 800px; height: 480px;" />
+	<figure id="figure4"><img alt="" src="../imgs/RDA-4.png" style="width: 800px; height: 480px;" />
 	<figcaption>Figure 4. Run a visualization application</figcaption></figure>
 
 7. Once you've completed your work and closed the browser window, remember to kill the job you submitted in Step 2.
@@ -246,15 +246,15 @@ Follow the steps below to start an interactive session.
 		TACC staff recommends the [TigerVNC](http://sourceforge.net/projects/tigervnc/) VNC Client, a platform independent client/server application.
 
 		
-	<figure id="figure5"><img alt="" src="../../imgs/tutorials/RDA-5.png" style="width: 800px; height: 661px;" /> 
+	<figure id="figure5"><img alt="" src="../imgs/RDA-5.png" style="width: 800px; height: 661px;" /> 
 	<figcaption> Figure 5. Connect the VNC client to the local port created in step 5.</figcaption></figure>
 
 1. Once the desktop is generated (Figure 6.), you can start your graphics-enabled application. Here we run a simple visualization program, `glxgears`. (Figure 7.)
 
-	<figure id="figure6"><img alt="" src="../../imgs/tutorials/RDA-6.png" style="width: 800px; height: 661px;" /> 
+	<figure id="figure6"><img alt="" src="../imgs/RDA-6.png" style="width: 800px; height: 661px;" /> 
 	<figcaption>Figure 6. VNC Desktop</figcaption></figure>
 
-	<figure id="figure7"><img alt="" src="../../imgs/tutorials/RDA-7.png" style="width: 800px; height: 661px;" /> 
+	<figure id="figure7"><img alt="" src="../imgs/RDA-7.png" style="width: 800px; height: 661px;" /> 
 	<figcaption>Figure 7. Run a Visualization Application</figcaption></figure>
 
 	Once the desktop has been established an initial xterm window appears. (Figure 6.) This window manages the lifetime of the VNC server process. Killing this window (typically by typing `exit` or `ctrl-D` at the prompt) will cause the vncserver to terminate and the original batch job to end. 

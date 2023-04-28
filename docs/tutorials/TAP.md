@@ -15,7 +15,7 @@ Any user with an allocation on one of TACC's HPC Systems, e.g. Frontera, Stamped
 
 The [TACC Analysis Portal][TACCANALYSISPORTAL] is available to users with an allocation on any TACC HPC resource. Log in to TAP using the same username and password that you use to access the TACC User Portal. Once you've logged in you'll be directed to the Home Screen where you can being scheduling jobs.
 
-<figure id="figure1"><img alt="" src="../../imgs/tutorials/1TAP.png"><br />
+<figure id="figure1"><img alt="" src="../imgs/1TAP.png"><br />
 <figcaption>Figure 1. TAP Home Screen</figcaption></figure>
 
 ## [Job Management](#jobmanagement) { #jobmanagement }
@@ -41,7 +41,7 @@ A TAP job also accepts these additional optional inputs:  <span style="backgroun
 
 After specifying the job inputs, select the **Submit** <span style="background-color:#FF7F00; color:#FFFFFF;">(&nbsp;8&nbsp;)</span> &nbsp;button, and your job will be submitted to the remote system. After submitting the job, you will be automatically redirected to the job status page. You can get back to this page from the **Status** <span style="background-color:#FF7F00; color:#FFFFFF;">(&nbsp;3&nbsp;)</span> &nbsp;button. If the job is already running on the system, click the **Connect** <span style="background-color:#FF7F00; color:#FFFFFF;">(&nbsp;5&nbsp;)</span>&nbsp; button from the Home Screen or Job status to connect to your application.
 
-<figure id="figure2"><img alt="" src="../../imgs/tutorials/2TAP.png"><br />
+<figure id="figure2"><img alt="" src="../imgs/2TAP.png"><br />
 <figcaption>Figure 2. Job Status</figcaption></figure>
 
 Click the "Check Status" button to update the page with the latest job status. The diagnostic information will include an estimated start time for the job if Slurm is able to provide one. Jobs submitted to development queues typically start running more quickly than jobs submitted to other queues. 
@@ -55,14 +55,14 @@ When you are finished with your job, you can end your job using the **End** <spa
 
 You can resubmit a past job using the **Resubmit** <span style="background-color:#FF7F00; color:#FFFFFF;">(&nbsp;7&nbsp;)</span>&nbsp;  button from the Home Screen page. The job will be submitted with the same inputs used for the past job, including any optional inputs. Select **Details**  <span style="background-color:#FF7F00; color:#FFFFFF;">(&nbsp;6&nbsp;)</span>&nbsp;  to see the inputs that were specified for the past job.
 
-<figure id="figure3"><img alt="" src="../../imgs/tutorials/3TAP.png" style="width:50%;">
+<figure id="figure3"><img alt="" src="../imgs/3TAP.png" style="width:50%;">
 <figcaption>Figure 3. TAP Job Details</figcaption></figure>
 
 ## [Utilities](#utilities) { #utilities }
 
 TAP provides certain useful diagnostic and logistic utilities on the Utilities page. Access the Utilities page by selecting the **Utilities**  <span style="background-color:#FF7F00; color:#FFFFFF;">(&nbsp;9&nbsp;)</span>&nbsp;  button on the Home Screen page.
 
-<figure id="figure4"><img alt="" src="../../imgs/tutorials/4TAP.png"><br />
+<figure id="figure4"><img alt="" src="../imgs/4TAP.png"><br />
 <figcaption>Figure 4. TAP Utilities</figcaption></figure>
 
 
@@ -81,13 +81,13 @@ Both DCV and VNC support full-screen mode. DCV will automatically adjust the des
 
 In DCV, click the Fullscreen button in the upper left corner of the DCV desktop.
 
-<figure id="figure5"><img alt="" src="../../imgs/tutorials/5TAP.png"><br />
+<figure id="figure5"><img alt="" src="../imgs/5TAP.png"><br />
 <figcaption>Figure 5. DCV Full Screen<figcaption></figure>
 
 
 In VNC, open the control bar on the left side of the screen, then click the Fullscreen button.
 
-<figure id="figure6"><img alt="" src="../../imgs/tutorials/6TAP.png"><br />
+<figure id="figure6"><img alt="" src="../imgs/6TAP.png"><br />
 <figcaption>Figure 6. VNC Full Screen</figcaption></figure>
 
 ## [Troubleshooting](#troubleshooting) { #troubleshooting }
@@ -96,7 +96,7 @@ In VNC, open the control bar on the left side of the screen, then click the Full
 
 If TAP cannot find an allocation for your account on a supported system, you will see the message below. If the issue persists, [create a ticket][HELPDESK] in the TACC Consulting System.
 
-<figure id="figure7"><img alt="" src="../../imgs/tutorials/7TAP.png"><br />
+<figure id="figure7"><img alt="" src="../imgs/7TAP.png"><br />
 <figcaption>Figure 7. TAP Error: No Allocation</figcaption></figure>
 
 
@@ -104,7 +104,7 @@ If TAP cannot find an allocation for your account on a supported system, you wil
 
 If the job does not start immediately, TAP will load a status page with some diagnostic information. If the job status is "PENDING", the job was successfully submitted and has not yet started running. If Slurm can predict when the job will start, that information will be in the `squeue --start` output in the message window. Clicking the "Check Status" button will update the job status. When the job has started, TAP will show a "Connect" button.
 
-<figure id="figure8"><img alt="" src="../../imgs/tutorials/8TAP.png"><br />
+<figure id="figure8"><img alt="" src="../imgs/8TAP.png"><br />
 <figcaption>Figure 8. TAP Error: PENDING</figcaption></figure>
 
 
@@ -112,7 +112,7 @@ If the job does not start immediately, TAP will load a status page with some dia
 
 If the TAP status page shows that the job status is "ERROR", then there was an issue with the Slurm submission, and the message box will contain details. If you have difficulty interpreting the error message or resolving the issue, please create a ticket in the TACC Consulting System and include the TAP message.
 
-<figure id="figure9"><img alt="" src="../../imgs/tutorials/9TAP.png"><br />
+<figure id="figure9"><img alt="" src="../imgs/9TAP.png"><br />
 <figcaption>Figure 9. TAP "Error"</figcaption></figure>
 
 

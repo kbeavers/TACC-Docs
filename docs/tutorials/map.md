@@ -51,13 +51,13 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 1. **Click the "Profile a Program" button in the "arm FORGE" window if the "Run" window did not open**.
 
 	<figure id="figure1">
-	<img alt="figure1" src="../../imgs/tutorials/MAP-1.png" style="height: 483px; width: 800px; border-width: 1px; border-style: solid;" />
+	<img alt="figure1" src="../imgs/MAP-1.png" style="height: 483px; width: 800px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. **Specify the executable path, command-line arguments, and processor count in the "Run" window**. Once set, the values persist from one session to the next.
 
 	<figure id="figure2">
-	<img alt="figure2" src="../../imgs/tutorials/MAP-2.png" style="height: 583px; width: 400px; border-width: 1px; border-style: solid;" />
+	<img alt="figure2" src="../imgs/MAP-2.png" style="height: 583px; width: 400px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. **Select each of the "Change" buttons in this window, and adjust the job parameters, as follows:**
@@ -65,7 +65,7 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 	* With the "Options" change button, set the MPI Implementation to either "Intel MPI" or "mvapich2", depending on which MPI software stack you used to compile your program. Click OK.
 
 		<figure id="figure3">
-		<img alt="figure3" src="../../imgs/tutorials/MAP-3.png" style="width: 600px; border-width: 1px; border-style: solid; height: 387px;" />
+		<img alt="figure3" src="../imgs/MAP-3.png" style="width: 600px; border-width: 1px; border-style: solid; height: 387px;" />
 		<figcaption></figcaption></figure>
 
 	* In the "Queue Submission Parameters" window, fill in all the following fields:
@@ -83,19 +83,19 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 		<p>You must set the Project field to a valid project id. When you login, a list of the projects associated with your account and the corresponding balance should appear. The "Cores per node" setting controls how many MPI tasks will run on each node. For example, if you wanted to run with 4 MPI tasks per node and 4 OpenMP threads per task, this would be set to "4way". Click OK, and you will return to the "Run" window.
 
 		<figure id="figure4">
-		<img alt="figure4" src="../../imgs/tutorials/MAP-4.png" style="height: 258px; width: 300px; border-width: 1px; border-style: solid;" />
+		<img alt="figure4" src="../imgs/MAP-4.png" style="height: 258px; width: 300px; border-width: 1px; border-style: solid;" />
 		<figcaption></figcaption></figure>
 
 1. **Back in the "Run" window, set the total number of tasks you will need in the "Number of processes" box and the number of nodes you will be requesting**. If you are running an OpenMP program, set the number of OpenMP threads also.
 
 	<figure id="figure5">
-	<img alt="figure5" src="../../imgs/tutorials/MAP-5.png" style="height: 583px; width: 400px; border-width: 1px; border-style: solid;" />
+	<img alt="figure5" src="../imgs/MAP-5.png" style="height: 583px; width: 400px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. **Finally, click "Submit"**. A submitted status box will appear.
 
 	<figure id="figure6">
-	<img alt="figure6" src="../../imgs/tutorials/MAP-6.png" style="height: 348px; width: 800px; border-width: 1px; border-style: solid;" />
+	<img alt="figure6" src="../imgs/MAP-6.png" style="height: 348px; width: 800px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 ## [Running MAP](#running) { #running }
@@ -103,13 +103,13 @@ Follow these steps to set up your profiling environment on Frontera, Stampede2, 
 Once your job is launched by the SLURM scheduler and starts to run, the MAP window will switch to show stdout/stderr.  At this point, you can also stop execution of the program to analyze the collected profiling data.
 
 <figure id="figure7">
-<img alt="figure7" src="../../imgs/tutorials/MAP-7.png" style="height: 491px; width: 800px; border-width: 1px; border-style: solid;" />
+<img alt="figure7" src="../imgs/MAP-7.png" style="height: 491px; width: 800px; border-width: 1px; border-style: solid;" />
 <figcaption></figcaption></figure>
 
 After your code completes, MAP will run an analysis of the profiling data collected, and then open the MAP GUI. This screen shows a time progression of the profiled code showing activity, floating point and memory usage. Other timelines, such as IO, MPI, or Lustre, may be added by clicking on the "Metrics" menu.  If you compiled with `-g` and MAP can find the source code, a code listing will also be available.  
 
 <figure id="figure8">
-<img alt="figure8" src="../../imgs/tutorials/MAP-8.png" style="height: 491px; width: 800px; border-width: 1px; border-style: solid;" />
+<img alt="figure8" src="../imgs/MAP-8.png" style="height: 491px; width: 800px; border-width: 1px; border-style: solid;" />
 <figcaption></figcaption></figure>
 
 ## [MAP with Reverse Connect](#reverse) { #reverse }
@@ -121,7 +121,7 @@ By starting MAP from a login node you let it use X11 graphics, which can be slow
 1. **Under "Remote Launch" make a new configuration**:
 
 	<figure id="figure9">
-	<img alt="figure9" src="../../imgs/tutorials/MAP-9.png" style="width: 300px; border-width: 1px; border-style: solid; height: 73px;" />
+	<img alt="figure9" src="../imgs/MAP-9.png" style="width: 300px; border-width: 1px; border-style: solid; height: 73px;" />
 	<figcaption></figcaption></figure>
 
 1. **Fill in your login name and the cluster to connect to**, for instance `stampede2.tacc.utexas.edu`. The remote installation directory is stored in the `$TACC_MAP_DIR` environment variable once the module is loaded.  
@@ -129,7 +129,7 @@ By starting MAP from a login node you let it use X11 graphics, which can be slow
 1. **Make the connection**; you'll be prompted for your password and two-factor code:
 
 	<figure id="figure10">
-	<img alt="figure10" src="../../imgs/tutorials/MAP-10.png" style="height: 342px; width: 500px; border-width: 1px; border-style: solid;" />
+	<img alt="figure10" src="../imgs/MAP-10.png" style="height: 342px; width: 500px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 1. **From any login node, submit a batch job where the ibrun line is replaced by**:
@@ -141,7 +141,7 @@ By starting MAP from a login node you let it use X11 graphics, which can be slow
 1. **When your batch job (and therefore your MAP execution) starts, the remote client will ask you to accept the connection**:
 
 	<figure id="figure11">
-	<img alt="figure11" src="../../imgs/tutorials/MAP-11.png" style="height: 174px; width: 400px; border-width: 1px; border-style: solid;" />
+	<img alt="figure11" src="../imgs/MAP-11.png" style="height: 174px; width: 400px; border-width: 1px; border-style: solid;" />
 	<figcaption></figcaption></figure>
 
 	**Your MAP session will now use the remote client.**

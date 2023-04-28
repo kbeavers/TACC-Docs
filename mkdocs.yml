@@ -81,7 +81,7 @@ nav:
     - MATLAB: software/matlab.md
     - NAMD: software/namd.md
     - OpenFOAM: software/openfoam.md
-    - Paraview VisIt: software/paraview-visit.md
+#    - Paraview VisIt: software/paraview-visit.md
     - Quantum Espresso: software/quantumespresso.md 
     - REMORA: software/remora.md
     - TAU: software/tau.md
@@ -137,13 +137,13 @@ markdown_extensions:
 
 plugins:
   - search
-  - exclude-search:
-      exclude:
-        - aliases.md
-        - include/*
-        - index-sample/*
-        - code-examples/*
-        - testingextensions.md
+#  - exclude-search:
+#      exclude:
+#        - aliases.md
+#        - include/*
+#        - index-sample/*
+#        - code-examples/*
+#        - testingextensions.md
   - macros # allows {% include ... %} (and macros)
 #  - with-pdf:
 #      copyright: TACC

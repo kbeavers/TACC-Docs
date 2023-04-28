@@ -135,7 +135,7 @@ Unpair your device via the same method you paired:You'll unpair via the same met
 	<figcaption>Figure 7b.</figcaption></figure></td>
 	</tr></table>
 
-1. Similar to the pairing process, you must verify unpairing by entering the your device's token code when prompted (Figures 8a and 8b).  
+1. Similar to the pairing process, you must verify unpairing by entering your device's token code when prompted (Figures 8a and 8b).  
 
 	<table border="0"><tr>
 	<td><figure id="figure8a"><img alt="" src="../imgs/mfa-duo-626574.png">
@@ -144,7 +144,7 @@ Unpair your device via the same method you paired:You'll unpair via the same met
 	<figcaption>Figure 8b.</figcaption></figure></td>
 	</tr></table>
 
-1. Once you've unpaired with this device, you are free to repair with another device or another method.
+1. Once you've unpaired with this device, you are free to pair again with another device or another method.
 
 
 

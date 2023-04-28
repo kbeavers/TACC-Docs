@@ -249,7 +249,7 @@ The navigation menu currently enables you access to additional information.
 Frontera has two computing subsystems, a primary computing system focused on double precision performance, and a second subsystem focused on single precision streaming-memory computing. Frontera also has multiple storage systems, as well as interfaces to cloud and archive systems, and a set of application nodes for hosting virtual servers.
 
 <figure id="figure1">
-<img src="../../imgs/frontera/Ecosystem-Graphic.png" style="width:800px">
+<img src="../imgs/frontera/Ecosystem-Graphic.png" style="width:800px">
 <figcaption>Frontera Ecosystem</figcaption></figure>
 
 ### [Cascade Lake (CLX) Compute Nodes](#system-clx) { #system-clx }
@@ -352,7 +352,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar5`, `stampede2`) will exist **only** if you have an allocation on that system.
 
 #### [Figure 3. Stockyard File System](#figure3) { #figure3 } 
-<figure id="figure3"><img alt="Stockyard File System" src="../../imgs/stockyard-2022.jpg"> 
+<figure id="figure3"><img alt="Stockyard File System" src="../imgs/stockyard-2022.jpg"> 
 <figcaption></figcaption></figure>
 
 **Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar5`, `stampede2`) exist only if you have allocations on the associated system.
@@ -407,7 +407,7 @@ There are several transfer mechanism for data to Frontera, some of which depend 
 
 TACC staff recommends the open-source [Cyberduck](https://cyberduck.io/) utility for both Windows and Mac users that do not already have a preferred tool.
 
-<img alt="cyberduck logo" src="../../imgs/frontera/transferring-cyberduck.png"> [Download Cyberduck](https://cyberduck.io/download/)
+<img alt="cyberduck logo" src="../imgs/frontera/transferring-cyberduck.png"> [Download Cyberduck](https://cyberduck.io/download/)
 
 Click on the "Open Connection" button in the top right corner of the Cyberduck window to open a connection configuration window (as shown below) transfer mechanism, and type in the server name "**`frontera.tacc.utexas.edu`**". Add your username and password in the spaces provided, and if the "more options" area is not shown click the small triangle or button to expand the window; this will allow you to enter the path to your project area so that when Cyberduck opens the connection you will immediately see your data. Then click the "Connect" button to open your connection.
 
@@ -730,7 +730,7 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
  The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../../basics/conduct) for more information.
 
 #### [Figure 2. Login and Compute Nodes](#figure2) { #figure2 } 
-<figure id="figure2"><img alt="[Figure 2. Login and Compute Nodes" src="../../imgs/login-compute-nodes.jpg">
+<figure id="figure2"><img alt="[Figure 2. Login and Compute Nodes" src="../imgs/login-compute-nodes.jpg">
 <figcaption></figcaption></figure>
 
 You can use your command-line prompt, or the `hostname` command, to discern whether you are on a login node or a compute node. The default prompt, or any custom prompt containing `\h`, displays the short form of the hostname <u>(e.g. `c401-064`)</u>. The hostname for a Frontera login node begins with the string `login` (e.g. `login2.frontera.tacc.utexas.edu`), while compute node hostnames begin with the character `c` <u>(e.g. `c401-064.frontera.tacc.utexas.edu`)</u>. 
@@ -1840,14 +1840,14 @@ You can launch a Jupyter session via the Frontera User Portal.
 
 1. Login to the [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/login) and Select "My Dashboard" under your account name pulldown:
 
-	<figure id="figure1"><img alt="Login to the Frontera Portal" src="../../imgs/frontera/jupyter-selectDashboard.png">
+	<figure id="figure1"><img alt="Login to the Frontera Portal" src="../imgs/frontera/jupyter-selectDashboard.png">
 	<figcaption></figcaption></figure>
 
 1. From the workbench dashboard, click "Applications" in the left nav, then click "Data Processing" and select "Frontera HPC Jupyter":   
 
-	<figure id="figure1"><img alt="Select Jupyter Notebook" src="../../imgs/frontera/jupyter-selectJupyter.png">
+	<figure id="figure1"><img alt="Select Jupyter Notebook" src="../imgs/frontera/jupyter-selectJupyter.png">
 	<figcaption></figcaption></figure>
-	<figure id="figure2"><img alt="Figure 2. Select Jupyter Notebook" src="../../imgs/frontera/jupyter-selectDashboard.png">
+	<figure id="figure2"><img alt="Figure 2. Select Jupyter Notebook" src="../imgs/frontera/jupyter-selectDashboard.png">
 	<figcaption></figcaption></figure>
 
 1. Fill out and submit the form:    
@@ -1861,12 +1861,12 @@ You can launch a Jupyter session via the Frontera User Portal.
 	* **Job name**: this is the portal/Tapis name for the job and will be used in the notifications indicating the job has started, etc. This is just for bookkeeping so the user knows what job is being referred to.  
 
 
-	<figure id="figure3"><img alt="Figure 3. Submit session request form" src="../../imgs/frontera/jupyter-fillForm.png">
+	<figure id="figure3"><img alt="Figure 3. Submit session request form" src="../imgs/frontera/jupyter-fillForm.png">
 	<figcaption></figcaption></figure>
 
 1. Submitting the form initiates a request to the Slurm scheduler to reserve a compute node for a specified time.  In the example above, `bjones` requests a two-hour Jupyter session in Frontera's `small` queue on a single node.  **Depending upon Frontera's load, Slurm may take several minutes to several hours** to fulfill the node request.  Once Slurm allocate time for the job, you'll be automatically notified at the given email address with instructions and a password on how to connect to the session.
 
-	<figure id="figure4"><img alt="Figure 4. Notification email" src="../../imgs/frontera/jupyter-email.png">
+	<figure id="figure4"><img alt="Figure 4. Notification email" src="../imgs/frontera/jupyter-email.png">
 	<figcaption></figcaption></figure>
 
 
@@ -1880,7 +1880,7 @@ You can launch a Jupyter session via the Frontera User Portal.
 
 ## [Cloud Services Integration](#cloudservices) { #cloudservices }
 
-<p class="introtext">Frontera's design includes a totally new integration with cloud services, providing users with new options for data storage and access to emerging computing technologies. </p>
+Frontera's design includes a totally new integration with cloud services, providing users with new options for data storage and access to emerging computing technologies. 
 
 For projects utilizing data of exceptional importance - such as may result from an especially difficult physical experiment or a long-running simulation that is impractical to repeat - users have access to a cloud-based storage mirror that provides protection beyond the level already provided with TACC's redundant archive storage system. This capability relies upon the storage solutions of our cloud partners Microsoft, Google, and Amazon. For users who need this level of data protection, we provide storage capacity during the term of Frontera's operation by awarding credits for users to store data with our cloud partners. 
 
@@ -1947,7 +1947,7 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 * Enter "203416866386" in the "Account ID" field 
 * Enter your [Frontera User Portal](https://frontera-portal.tacc.utexas.edu/) ID in the "IAM user name" field.
 * New users enter the temporary password contained in your welcome email, then reset your password.  
-	<figure id="login"><img alt="AWS-login" src="../../imgs/frontera/AWS-login.png"> 
+	<figure id="login"><img alt="AWS-login" src="../imgs/frontera/AWS-login.png"> 
 	<figcaption></figcaption></figure>
 
 #### [Add MFA](#cloudservices-amazon-mfa) { #cloudservices-amazon-mfa }
@@ -1955,15 +1955,15 @@ Log in to the [Amazon Web Services Console](https://console.aws.amazon.com) with
 Follow these instructions to enable MFA on your account. **Do not navigate away from the MFA window during the pairing process, or else your account may be left in an unstable state.** 
 
 1. From the top menu "username@2034-1686-6386", select "My Security Credentials"  
-	<figure id="securitycredentials"><img alt="AWS-securitycredentials" src="../../imgs/frontera/AWS-securitycredentials.png"> 
+	<figure id="securitycredentials"><img alt="AWS-securitycredentials" src="../imgs/frontera/AWS-securitycredentials.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click on the "Assign MFA device" button in the "Multi-factor authentication (MFA)" section. Then, select the "Virtual MFA device" option and click "Continue".  
-	<figure id="managemfadevice"><img alt="AWS-managemfadevice" src="../../imgs/frontera/AWS-managemfadevice.png"> 
+	<figure id="managemfadevice"><img alt="AWS-managemfadevice" src="../imgs/frontera/AWS-managemfadevice.png"> 
 	<figcaption></figcaption></figure>
 
 1. Choose an Authentication method. Scroll down to see a list of free options. Many TACC users employ Duo Mobile or Google Authenticator. Open the authenticator app of your choice, scan the displayed QR code to add the account, then input the MFA codes as directed. 
-	<figure id="mfaapplications"><img alt="AWS-mfaapplications" src="../../imgs/frontera/AWS-mfaapplications.png"> 
+	<figure id="mfaapplications"><img alt="AWS-mfaapplications" src="../imgs/frontera/AWS-mfaapplications.png"> 
 	<figcaption></figcaption></figure>
 
 1. Once the pairing process is completed, sign out and then log back in. **You will not be able to successfully proceed to the next step without doing so.**
@@ -1974,7 +1974,7 @@ Follow these instructions to enable MFA on your account. **Do not navigate away 
 	You must set up MFA and use it to log in to the AWS console prior to viewing or editing your access keys.
 
 1. Once again, select "My Security Credentials" from the top menu, then click the "Create access key" button in the "Access keys for CLI, SDK, & API access" section.  
-	<figure id="accesskeyavailable"><img alt="AWS-accesskeyavailable" src="../../imgs/frontera/AWS-accesskeyavailable.png"> 
+	<figure id="accesskeyavailable"><img alt="AWS-accesskeyavailable" src="../imgs/frontera/AWS-accesskeyavailable.png"> 
 	<figcaption></figcaption></figure>
 
 1. Install CLI: Follow the instructions at <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html>.
@@ -1998,15 +1998,15 @@ Please [submit a support ticket][HELPDESK] and a TACC admin will grant you acces
 Once you've been given access, and before uploading files to Azure, you must first create a storage group and storage account. These are one time steps.
 
 1. Navigate to the [Microsoft Azure Portal](https://portal.azure.com) and login with your TACC User Portal account.  
-	<figure id="figure1"><img border="1" alt="Azure Portal Home" src="../../imgs/frontera/image01.png"> 
+	<figure id="figure1"><img border="1" alt="Azure Portal Home" src="../imgs/frontera/image01.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click "Storage accounts". You should see a screen like the following:  
-	<figure id="figure2"><img border="1" alt="" src="../../imgs/frontera/image02.png"> 
+	<figure id="figure2"><img border="1" alt="" src="../imgs/frontera/image02.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click "Add". This should bring up the following form:  
-	<figure id="figure3"><img border="1" alt="" src="../../imgs/frontera/image03.png"> 
+	<figure id="figure3"><img border="1" alt="" src="../imgs/frontera/image03.png"> 
 	<figcaption></figcaption></figure>
 
 1. Fill in the form to create a storage account. 
@@ -2020,32 +2020,32 @@ Once you've been given access, and before uploading files to Azure, you must fir
 	* Enter a Storage account name
 
 	* Click Review+create to submit the form and run the audit.
-		<figure id="figure4"><img border="1" alt="" src="../../imgs/frontera/image04.png"> 
+		<figure id="figure4"><img border="1" alt="" src="../imgs/frontera/image04.png"> 
 	<figcaption></figcaption></figure>
 
 
 1. Once Validation has completed, confirm that you see a green "Validation passed" message (see screenshot below), review the account details and click "Create" to actually create the storage account.
-	<figure id="figure5"><img border="1" alt="" src="../../imgs/frontera/image05.png"> 
+	<figure id="figure5"><img border="1" alt="" src="../imgs/frontera/image05.png"> 
 	<figcaption></figcaption></figure>
 
 1. You will see a screen that says "Your deployment is underway..."; this will take a few minutes. 
-	<figure id="figure6"><img border="1" alt="" src="../../imgs/frontera/image06.png"> 
+	<figure id="figure6"><img border="1" alt="" src="../imgs/frontera/image06.png"> 
 	<figcaption></figcaption></figure>
 
 1. Eventually it should say "Your deployment is complete".
-	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image07.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../imgs/frontera/image07.png"> 
 	<figcaption></figcaption></figure>
 
 
 #### [Retrieve Account Access Keys](#cloudservices-azure-keys) { #cloudservices-azure-keys }
 
 1. Go to Home -&gt; Storage accounts; You should see a list of your storage account similar to the following:
-	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image08.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../imgs/frontera/image08.png"> 
 	<figcaption></figcaption></figure>
 
 
 1. Select the storage account you created in part 1). This should bring up an overview screen for the storage account which should look similar to:
-	<figure id="figure7"><img border="1" alt="" src="../../imgs/frontera/image09.png"> 
+	<figure id="figure7"><img border="1" alt="" src="../imgs/frontera/image09.png"> 
 	<figcaption></figcaption></figure>
 
 1. Click "Access keys" under settings. This will bring up a page with details about the access keys. <!-- ![image10](/img/image10.png)   1. --> Copy the key to your clipboard.
