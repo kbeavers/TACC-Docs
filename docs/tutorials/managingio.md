@@ -235,9 +235,8 @@ login1$ set_io_param_batch [jobid] 0 unlimited
 
 If OOOPS finds intensive I/O work in your job, it will print out warning messages and create an `open`/`stat` call report after the job finishes. To enable reporting, load the OOOPS module on a login node, and then submit your batch job.  The reporting function will not be enabled if the module is loaded within a batch script.
 
-### [Developers](#ooops-dev) { #ooops-dev }
-
-Contact the OOOPS developers, <a href="mailto:huang@tacc.utexas.edu">Lei Huang</a> and <a href="mailto:siliu@tacc.utexas.edu">Si Liu</a>, with any OOOPS related questions.
+<!-- ### [Developers](#ooops-dev) { #ooops-dev }
+Contact the OOOPS developers, <a href="mailto:huang@tacc.utexas.edu">Lei Huang</a> and <a href="mailto:siliu@tacc.utexas.edu">Si Liu</a>, with any OOOPS related questions. -->
 
 
 ## [Python I/O Management](#python) { #python }

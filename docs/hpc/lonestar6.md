@@ -695,7 +695,8 @@ This section provides an overview of how compute jobs are charged to allocations
 
 {% include 'include/lonestar6-jobaccounting.md' %}
 
-### [Production Queues](#queues) { #queues }
+<a id="queues">
+### [Production Queues](#running-queues) { #running-queues }
 
 Lonestar6's new queue, `vm-small` is designed for users who only need a subset of a node's entire 128 cores in the "normal" queue.  Run your jobs in this queue if your job requires 16 cores or less and needs less than 29 GB of memory.  If your job is memory bandwidth dependent, your performance may decrease since your job will be possibly sharing memory bandwidth with other jobs.  
 

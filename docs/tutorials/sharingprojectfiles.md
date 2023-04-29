@@ -14,13 +14,13 @@ All TACC system users are organized into UNIX "groups", collections of users who
 At TACC, users assigned to the same allocated project typically belong to the same UNIX group. This group number will (usually) correspond directly to the project/allocation number. To determine your project's UNIX group number, go to [Projects and Allocations][TACCALLOCATIONS] via your TACC Dashboard.
 
 <figure id="figure1">
-<img alt="Project Detail" border="1" src="../imgs/sharingfiles-1.png" style="width: 600px; height: 201px;" />
+<img alt="Project Detail" border="1" src="../imgs/sharingfiles-1.png">
 <figcaption></figcaption></figure>
 
 Click on the "Project Detail" button to view the group number:
 
 <figure id="figure2">
-<img alt="Project's UNIX group number" border="1" src="../imgs/sharingfiles-1.png" style="width: 600px; height: 258px;" />
+<img alt="Project's UNIX group number" border="1" src="../imgs/sharingfiles-1.png">
 <figcaption></figcaption></figure>
 
 In this case, Test Project XYZ's UNIX group ID (GID) is "G-816631". Therefore, all files to be associated with this project must belong to this group.
@@ -70,11 +70,13 @@ Note that `$STOCKYARD` points to the highest level directory you own on Stockyar
 
 
 1. Make your `$STOCKYARD` directory accessible, though not readable, to the group members:  
+
 	```cmd-line
 	login1$ chmod g+X $STOCKYARD
 	```
 
 1. Go to your work directory on Stockyard and create the sub-directory to be shared:
+
 	```cmd-line
 	login1$ cd $STOCKYARD; mkdir mysharedirectory
 	```
@@ -82,6 +84,7 @@ Note that `$STOCKYARD` points to the highest level directory you own on Stockyar
 	<!-- // insert permissions and gid stuff here -->
 
 1. The directory with shared files then needs to belong to the group. This step may be redundant if the directory already belongs to the group:
+
 	```cmd-line
 	login1$ chgrp -R G-816631 mysharedirectory
 	```
@@ -89,21 +92,23 @@ Note that `$STOCKYARD` points to the highest level directory you own on Stockyar
 1. Set the shared directory's ownership and permissions. In this example, permissions will be set to owner:read, write, execute; group:read, execute, and no access to any users outside the group.  
 
 	a. Set the group id bit. Any new files created in the shared directory will inherit the group ownership:
-		```cmd-line
-		login1$ chmod g+s mysharedirectory
-		```
 
-	a. Then edit your `.bashrc` and set the umask variable to "027". This ensures that all NEW files created will inherit the proper permissions.
+	```cmd-line
+	login1$ chmod g+s mysharedirectory
+	```
+
+	b. Then edit your `.bashrc` and set the umask variable to "027". This ensures that all NEW files created will inherit the proper permissions.
 
 		umask 027
 	
-	a. Last, set permissions to readable and accessible to group members:
+	c. Last, set permissions to readable and accessible to group members:
 
-		```cmd-line
-		login1$ chmod g+rX mysharedirectory
-		```
+	```cmd-line
+	login1$ chmod g+rX mysharedirectory
+	```
 
 1. (optional) Grant write access to the directory. The project manager may wish to grant project collaborators write access to the directory or leave the directory as read-only.
+
 	```cmd-line
 	login1$ chmod g+rwX mysharedirectory
 	```
@@ -129,12 +134,12 @@ login1$ man umask
 Principal Investigators (PIs) or their delegates can manage project membership through the [TACC User Portal][TACCUSERPORTAL] under Allocations. 
 
 <figure id="figure3">
-<img alt="Add users to project" src="../imgs/sharingfiles-1.png" style="width: 500px; height: 205px;" />
+<img alt="Add users to project" src="../imgs/sharingfiles-1.png">
 <figcaption></figcaption></figure>
 
 ## [References](#refs) { #refs }
 
-* [TACC Projects &amp; Allocations][TACCPROJECTS]
+<!-- * [TACC Projects &amp; Allocations][TACCPROJECTS] -->
 <!-- * [How To: Manage Your Allocation](https://portal.tacc.utexas.edu/tutorials/managing-allocations) -->
 * [Manage Permissions with Access Control Lists](../../tutorials/acls)
 
