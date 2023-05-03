@@ -1,8 +1,11 @@
 # Maverick2 User Guide
-Last update: August 24, 2022
+Last update: May 3, 2023
+
+
 
 ## [Notices](#notices) { #notices }
 
+* <span style="color:red;">**Maverick2 will be retired from production on May 31, 2023.  Please contact TACC User Services with any questions.**</span> (05/01/2023)
 * Maverick2 is TACC's dedicated Deep Learning Machine.  Allocation requests must include a justification explaining your need for this resource. 
 * Maverick2 does not support any Visualization applications. 
 * Maverick2 does not mount a `/scratch` (`$SCRATCH`) file system.

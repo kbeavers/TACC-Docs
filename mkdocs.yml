@@ -54,6 +54,7 @@ nav:
   - TACC Essentials :
     - Documentation Overview: index.md
     - Good Conduct: basics/conduct.md
+    - Data Transfer Guide: basics/datatransferguide.md
     - Multi-Factor Authentication: basics/mfa.md
     - Help: basics/help.md
   - HPC :

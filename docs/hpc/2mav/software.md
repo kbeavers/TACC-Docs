@@ -1,6 +1,6 @@
 ## [Software](#software) { #software }
 
-As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://tacc.utexas.edu/use-tacc/software-list/) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
+As of January 17, 2023, the following software modules are currently installed on Maverick2. You can discover already installed software using TACC's [Software Search](https://www.tacc.utexas.edu/use-tacc/software-list/) tool or via `module` commands e.g., `module spider`, `module avail` to retrieve the most up-to-date listing.
 
 ``` cmd-line
 login1$ module avail

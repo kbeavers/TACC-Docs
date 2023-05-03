@@ -1,5 +1,5 @@
 # Corral User Guide
-*Last update: April 22, 2023*
+*Last update: May 03, 2023*
 
 
 ## [System Overview](#overview) { #overview }
@@ -76,7 +76,7 @@ Files on Corral are never "purged" using automated processes, however each alloc
 
 ## [Transferring your Files to Corral](#transferring) { #transferring }
 
-Data transfer mechanisms differ depending on whether you are using iRODS or basic file system access. For iRODS users, please see the iRODS user guide. Data transfer to and from the file system is described below.
+Data transfer mechanisms differ depending on whether you are using iRODS or basic file system access. For iRODS users, please see the [iRODS user guide](../../software/irods). Data transfer to and from the file system is described below.
 
 **For Secure data:** All the instructions for SCP and Cyberduck as shown below can be used for transferring data to a secure location on Corral, however please substitute the hostname `secure.corral.tacc.utexas.edu` for `data.tacc.utexas.edu`. You will be given access to this system when you are granted access to a secure Corral folder, and this system can be used exclusively for accessing your secure data area on Corral. Secure locations on Corral are not generally accessible from TACC data transfer and login nodes.
 
@@ -133,7 +133,7 @@ A wide variety of graphical tools are available that support the secure copy (SC
 
 #### [Cyberduck Configuration and Use](#cyberduck-config) { #cyberduck-config }
 
-<a href="http://download.cnet.com/Cyberduck/3000-2160_4-10246246.html" target="_blank">Download Cyberduck here</a>
+<img src="../../../imgs/cyberduck.jpg"><a href="http://download.cnet.com/Cyberduck/3000-2160_4-10246246.html" target="_blank">Download Cyberduck here</a>
 
 Click on the "Open Connection" button in the top right corner of the Cyberduck window to open a connection configuration window (as shown below) transfer mechanism, and type in the server name `data.tacc.utexas.edu`. Add your username and password in the spaces provided, and if the "more options" area is not shown click the small triangle or button to expand the window; this will allow you to enter the path to your project area so that when Cyberduck opens the connection you will immediately see your data. Then click the "Connect" button to open your connection.
 
@@ -141,7 +141,7 @@ Click on the "Open Connection" button in the top right corner of the Cyberduck w
 
 Once connected, you can navigate through your remote file hierarchy using familiar graphical navigation techniques. You may also drag-and-drop files into and out of the Cyberduck window to transfer files to and from Corral.
 
-<figure id="figure2"><img alt="Cyberduck-SSH" src="../../../imgs/corral/CorralCyberduck-1.jpg"><figcaption>Figure 2. Cyberduck connection setup screen</figcaption></figure>
+<figure id="figure2"><img alt="Cyberduck-SSH" src="../imgs/cyberduck-ssh.png" width="500px"><figcaption>Figure 2. Cyberduck connection setup screen</figcaption></figure>
 
 
 ## [Managing Files &amp; Permissions](#managing) { #managing }
@@ -150,7 +150,7 @@ It is crucial that users understand and utilize the available access controls on
 
 Both files and directories have permissions settings, and it is important to set permissions on both files and directories in order to secure the data and grant access to the right individuals. While TACC makes every effort to ensure the security of our systems and the data they store from unauthorized users, it is your responsibility to ensure that your data is protected from other authorized users of the system, and thus that only the right individuals have access to your data.
 
-With this in mind, it is a good practice to explicitly set the permissions on new data at the end of each upload or data-generation session, using the "[`chmod`](#managing-chmod)" command or the permissions controls in a graphical client such as [Cyberduck](#cyberduck). This ensures that your data always has the right permissions, and that data is appropriately protected as soon as it is added to the system.
+With this in mind, it is a good practice to explicitly set the permissions on new data at the end of each upload or data-generation session, using the `chmod` command or the permissions controls in a graphical client such as [Cyberduck](#cyberduck). See [Managing Permissions with `chmod`](#managing-chmod) below.  This ensures that your data always has the right permissions, and that data is appropriately protected as soon as it is added to the system.
 
 ### [Unix Permissions](#managing-unix) { #managing-unix }
 
@@ -186,7 +186,7 @@ For a more fine-grained approach to files and permissions, use **A**ccess **C**o
 File permissions can be managed using the `chmod` command from the command-line prompt, and from the permissions window in [Cyberduck](#cyberduck). The permissions window is shown below, and can be accessed by right-clicking on a file or folder in Cyberduck and selecting "Info ..." from the menu. Other graphical fie transfer utilities may have a similar window or panel used to control permissions. The `chmod` command has a straightforward syntax:
 
 ``` syntax
-chmod <i>permissions-to-change</i> <i>filename</i>
+chmod permissions-to-change filename
 ```
 
 where <i>permissions-to-change</i> can be any or all of `u` for user, `g` for group, and `o` for other, a `+` to add permissions or a minus, `-`, to remove permissions, and the initials of permissions to add or removed, `r` for read, `w` for write, and `x` for execution. For example, to add read access for all users of the system the command would be:
