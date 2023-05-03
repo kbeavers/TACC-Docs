@@ -7,7 +7,6 @@
 </style>
 
 # Documentation Overview
-*April 19, 2023*
 
 <!-- To not use <h3> so this heading does not show in nav -->
 /// html | p.h3
