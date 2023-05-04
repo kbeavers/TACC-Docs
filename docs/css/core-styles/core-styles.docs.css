@@ -1,6 +1,0 @@
-/*
- * To load core-styles.docs.css (options):
- * - @import from a CDN
- * - paste minified code from unpublished version
- */
-@import url('https://cdn.jsdelivr.net/npm/@tacc/core-styles@2.7.0/dist/core-styles.docs.css');
