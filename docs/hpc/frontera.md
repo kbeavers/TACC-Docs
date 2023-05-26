@@ -1,5 +1,5 @@
 # Frontera User Guide
-Last update: May 17, 2023
+Last update: May 25, 2023
 <!-- SDL <a href="https://frontera-xortal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
 ## [Notices](#notices) { #notices }
@@ -874,16 +874,16 @@ Similarly, you cannot use paths like `$WORK` or `$SCRATCH` in an `#SBATCH` direc
 For more information on this and other matters related to Slurm job submission, see the [Slurm online documentation](https://slurm.schedmd.com/sbatch.html); the man pages for both Slurm itself (`man slurm`) and its individual commands (e.g. `man sbatch`); as well as numerous other online resources.
 
 
-## [Sample Job Scripts](#scripts)
+## [Sample Job Scripts](#scripts) { #scripts }
 
 Copy and customize the following jobs scripts by specifying and refining your job's requirements.
 
 * specify the maximum run time with the `-t` option. 
 * specify number of nodes needed with the `-N` option
-* specify tasks per node with the `-n` option
+* specify total number of MPI tasks with the `-n` option
 * specify the project to be charged with the `-A` option.
 
-Consult [Table 7](#table7) for a listing of common Slurm `#SBATCH` options.
+Consult [Table 7](#table7) for a more detailed listing of common Slurm `#SBATCH` options.
 
 Click on a tab header below to display it's job script, then copy and customize to suit your own application.
 
@@ -1983,7 +1983,7 @@ Follow these instructions to enable MFA on your account. **Do not navigate away 
 Now that your account is set up, you have access to the AWS S3 functionality. See the full documentation at <https://docs.aws.amazon.com/s3/index.html>.
 
 
-### [Microsoft's Azure Cloud Service](#cloudservices-azure) { #cloudservices-azure }
+### [Microsoft's Azure](#cloudservices-azure) { #cloudservices-azure }
 
 Frontera's cloud service integration begins with Microsoft's Azure Service. 
 
