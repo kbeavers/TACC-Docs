@@ -386,6 +386,10 @@ To delay wildcard expansion until reaching Stampede2, use a backslash (`\`) as a
 localhost$ scp bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2/\*.txt .
 ```
 
+!!! note
+   Using `scp` with wildcard expansion on the remote host is unreliable.  Specify absolute paths wherever possible.
+
+<!-- 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
 ``` cmd-line
@@ -398,6 +402,7 @@ You can also issue `scp` commands on your local client that use Stampede2 enviro
 ``` cmd-line 
 localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:\$WORK/data   # Note backslash
 ```
+-->
 
 Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
