@@ -1,5 +1,5 @@
 # Stampede2 User Guide
-Last update: September 16, 2022 
+Last update: June 9, 2023 
 see <a href="#history">revision history</a>
   
 ## [Notices](#notices) { #notices }
