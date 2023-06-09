@@ -462,7 +462,7 @@ localhost$ scp bjones@frontera.tacc.utexas.edu:/work/01234/bjones/frontera/\*.tx
 ```
 
 !!! note
-   Using `scp` with wildcard expansion on the remote host is unreliable.  Specify absolute paths wherever possible.
+	Using `scp` with wildcard expansion on the remote host is unreliable.  Specify absolute paths wherever possible.
 
 <!--
 You can of course use shell or environment variables in your calls to `scp`. For example:

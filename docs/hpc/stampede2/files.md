@@ -79,7 +79,7 @@ localhost$ scp bjones@stampede2.tacc.utexas.edu:/work/01234/bjones/stampede2/\*.
 ```
 
 !!! note
-   Using `scp` with wildcard expansion on the remote host is unreliable.  Specify absolute paths wherever possible.
+	Using `scp` with wildcard expansion on the remote host is unreliable.  Specify absolute paths wherever possible.
 
 <!-- 
 You can of course use shell or environment variables in your calls to `scp`. For example:
@@ -99,13 +99,13 @@ localhost$ scp ./myfile bjones@stampede2.tacc.utexas.edu:\$WORK/data   # Note ba
 Avoid using `scp` for recursive (`-r`) transfers of directories that contain nested directories of many small files:
 
 ``` cmd-line 
-localhost$ <s>scp -r  ./mydata     bjones@stampede2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
+localhost$ scp -r  ./mydata     bjones@stampede2.tacc.utexas.edu:\$WORK  # DON'T DO THIS
 ```
 
 Instead, use `tar` to create an archive of the directory, then transfer the directory as a single file:
 
 ``` cmd-line
-localhost$ tar cvf ./mydata.tar mydata</b>                                   # create archive
+localhost$ tar cvf ./mydata.tar mydata                                   # create archive
 localhost$ scp     ./mydata.tar bjones@stampede2.tacc.utexas.edu:\$WORK  # transfer archive
 ```
 
