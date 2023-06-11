@@ -75,7 +75,7 @@ nav:
     - Gaussian: software/gaussian.md
     - GROMACS: software/gromacs.md
     - idev: software/idev.md
-    - IRODS: software/irods.md
+#    - IRODS: software/irods.md
     - LAMMPS: software/lammps.md
     - Launcher: software/launcher.md
     - Lmod: https://lmod.readthedocs.io/en/latest
