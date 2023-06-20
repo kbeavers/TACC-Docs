@@ -9,7 +9,7 @@
 
 ## [Introduction](#intro) { #intro }
 
-The National Science Foundation (NSF) has generously awarded the University of Texas at Austin funds for TACC's Stampede3 system ([Award Abstract # 2320757](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2320757).  
+The National Science Foundation (NSF) has generously awarded the University of Texas at Austin funds for TACC's Stampede3 system ([Award Abstract # 2320757](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2320757)).  
 
 ### [Allocations](#intro-allocations) { #intro-allocations }
 
