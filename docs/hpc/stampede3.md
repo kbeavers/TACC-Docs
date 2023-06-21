@@ -1,6 +1,6 @@
 # Stampede3 User Guide 
 
-*Last update: June 20, 2023*
+*Last update: June 21, 2023*
 
 ## [Notices](#notices) { #notices }
 
@@ -19,11 +19,11 @@ Stampede3 will be available to ACCESS researchers through the "Maximize" allocat
 
 ## [System Architecture](#system) { #system }
 
-Stampede3's projected node configuration will be: 
+Stampede3's projected node configuration will include: 
 
-* 1,064 Intel Skylake nodes with 48 cores/node 
-* 224 Intel Ice Lake nodes with 80 cores/node 
-* 560 Intel Sapphire Rapids High Bandwidth Memory (HBM) nodes with 56 cores/node
+* Intel Skylake nodes with 48 cores/node 
+* Intel Ice Lake nodes with 80 cores/node 
+* Intel Sapphire Rapids High Bandwidth Memory (HBM) nodes with 56 cores/node
 
 
 <!--

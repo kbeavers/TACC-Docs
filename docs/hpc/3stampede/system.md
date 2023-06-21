@@ -1,10 +1,10 @@
 ## [System Architecture](#system) { #system }
 
-Stampede3's projected node configuration will be: 
+Stampede3's projected node configuration will include: 
 
-* 1,064 Intel Skylake nodes with 48 cores/node 
-* 224 Intel Ice Lake nodes with 80 cores/node 
-* 560 Intel Sapphire Rapids High Bandwidth Memory (HBM) nodes with 56 cores/node
+* Intel Skylake nodes with 48 cores/node 
+* Intel Ice Lake nodes with 80 cores/node 
+* Intel Sapphire Rapids High Bandwidth Memory (HBM) nodes with 56 cores/node
 
 
 <!--
