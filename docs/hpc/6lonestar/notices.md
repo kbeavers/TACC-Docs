@@ -1,5 +1,5 @@
 # Lonestar6 User Guide
-Last update: September 11, 2023
+Last update: September 29, 2023
 
 
 ## [Notices](#notices) { #notices }

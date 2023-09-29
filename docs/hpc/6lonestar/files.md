@@ -40,6 +40,36 @@ Alias | Command
 <code>cdy</code> or <code>cdg</code> | <code>cd $STOCKYARD</code>
 <code>cdw</code> | <code>cd $WORK</code>
 
+### [Striping Large Files](#files-striping) { #files-striping }
+
+Lonestar6's BeeGFS and Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives. Lustre and BeeGFS can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes.  Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs  assigned to a file, as well as the file's descriptive data.
+
+The Lonestar6 `$SCRATCH` filesystem is a BeeGFS filesystem instead of a Lustre filesystem. However, the BeeGFS filesystem is similar to Lustre in that it distributes files across I/O servers and allows the user control over the stripe count and stripe size for directories. 
+
+The `$WORK` file system has 24 I/O targets available, while the `$SCRATCH` file system has 96.  A good rule of thumb is to allow at least one stripe for each 100GB in the file not to exceed 75% of the available stripes.   So, the max stripe count for `$SCRATCH` would be 72, while that for `$WORK` would be 18.
+
+!!! important
+	Before transferring to, or creating large files on Lonestar6, be sure to set an appropriate default chunk/stripe count on the receiving directory.  
+
+As an example, the following command sets the default stripe count on the current directory for a file 200 GB in size, then ensures that the operation was successful:
+
+* If the destination directory is on the `$SCRATCH` file system:
+
+		$ beegfs-ctl --setpattern --numtargets=20  $PWD
+		$ beegfs-ctl --getentryinfo $PWD
+
+* If the destination directory is on the `$WORK` file system:
+
+		$ lfs setstripe -c 18 $PWD    #Use stripe count of 18 instead of 20 out of 24 total targets
+		$ lfs getstripe $PWD    
+
+!!! important
+	It is not possible to change the stripe count on a file that already exists.  The `mv` command will have no effect on a file's striping unless the source and destination directories are on different file systems, e.g. `mv`ing a file from `$SCRATCH` to `$WORK`, or vice-versa.  Instead, use the `cp` command to copy the file to a directory with the intended stripe parameters.
+
+For more information regarding these commands, you may run 
+
+	$ beegfs-ctl --setpattern --help" or 
+	$ lfs help setstripe".  
 
 ### [Transferring your Files](#files-transferring) { #files-transferring }
 
