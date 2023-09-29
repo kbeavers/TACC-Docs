@@ -66,10 +66,10 @@ As an example, the following command sets the default stripe count on the curren
 !!! important
 	It is not possible to change the stripe count on a file that already exists.  The `mv` command will have no effect on a file's striping unless the source and destination directories are on different file systems, e.g. `mv`ing a file from `$SCRATCH` to `$WORK`, or vice-versa.  Instead, use the `cp` command to copy the file to a directory with the intended stripe parameters.
 
-For more information regarding these commands, you may run 
+Run the following for more information on these commands: 
 
-	$ beegfs-ctl --setpattern --help" or 
-	$ lfs help setstripe".  
+	$ beegfs-ctl --setpattern --help 
+	$ lfs help setstripe  
 
 ### [Transferring your Files](#files-transferring) { #files-transferring }
 
