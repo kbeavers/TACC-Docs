@@ -20,6 +20,7 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 <code>development</code> | 4 nodes<br>(512 cores) | 2 hours | 6 | 1 | 1 SU
 <code>gpu-a100</code> | 4 nodes<br>(512 cores) | 48 hours | 6 | 2 | 4 SUs
 <code>gpu-a100-dev</code> | 4 nodes<br>(512 cores) | 2 hours | 2 | 1 | 4 SUs
+<code>gpu-a100-small</code><sup>&#42;&#42;</sup> | 1/1 node<br>(32 cores) | 48 hours | 4 | 4 | 1.5 SUs
 <code>large</code><sup>&#42;</sup> | 65/256 nodes<br>(65536 cores) | 48 hours | 256 | 1 | 1 SU
 <code>normal</code> | 1/64 nodes<br>(8192 cores) | 48 hours | 96 | 15 | 1 SU
 <code>vm-small</code><sup>&#42;&#42;</sup> | 1/1 node<br>(16 cores) | 48 hours | 4 | 4 | 0.143 SU
@@ -28,7 +29,7 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 
 &#42; Access to the `large` queue is restricted. To request more nodes than are available in the normal queue, submit a consulting (help desk) ticket through the TACC User Portal. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Lonestar6.
 
-&#42;&#42; The `vm-small` queue contains virtual nodes with fewer resources (cores) than the nodes in the other queues.
+&#42;&#42; The `gpu-a100-small` and `vm-small` queues contain virtual nodes with fewer resources (cores) than the nodes in the other queues.
 
 
 

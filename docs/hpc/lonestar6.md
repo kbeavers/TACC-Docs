@@ -1,11 +1,10 @@
 # Lonestar6 User Guide
-Last update: September 29, 2023
+*Last update: November 13, 2023*
 
 
 ## [Notices](#notices) { #notices }
 
-* TACC has transitioned to a new allocations management system for Lonestar6, and there are new Project Names. See [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles) to learn about managing file permissions across projects. 
-* **All users: read the [Good Conduct](../../basics/conduct) section.** Lonestar6 is a shared resource and your actions can impact other users. (10/18/2021) 
+* **Lonestar6 has a new [queue](#running-queues), `gpu-a100-small`, for jobs needing only a single GPU.** (11/13/2023)  
 * **[Subscribe][TACCSUBSCRIBE] to Lonestar6 User News**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
 
 
@@ -79,7 +78,7 @@ Local storage:  | 112G <code>/tmp</code> partition
 Lonestar6 hosts 84 A100 GPU nodes that are configured identically to the compute nodes with the addition of 3 NVIDIA A100 GPUs. Each A100 GPU has a peak performance of 9.7 TFlops in double precision and 312 TFlops in FP16 precision using the Tensor Cores. Additionally, there are 4 H100 GPU nodes that support 2 NVIDIA H100 GPUs.  Each H100 GPU has a peak performance of 26 TFlops in double precision and 1513 TFlops in FP16 precision using the Tensor cores.
 
 
-#### [Table 2. GPU Node Specifications](#table2) { #table2 }
+#### [Table 2. A100 GPU Node Specifications](#table2) { #table2 }
 
 
 Specification | Value
@@ -159,7 +158,7 @@ Alias | Command
 
 ### [Striping Large Files](#files-striping) { #files-striping }
 
-Lonestar6's BeeGFS and Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives. Lustre and BeeGFS can **stripe** (distribute) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes.  Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs  assigned to a file, as well as the file's descriptive data.
+Lonestar6's BeeGFS and Lustre file systems look and act like a single logical hard disk, but are actually sophisticated integrated systems involving many physical drives. Lustre and BeeGFS can **stripe** (distribute 'chunk's) large files over several physical disks, making it possible to deliver the high performance needed to service input/output (I/O) requests from hundreds of users across thousands of nodes.  Object Storage Targets (OSTs) manage the file system's spinning disks: a file with 16 stripes, for example, is distributed across 16 OSTs. One designated Meta-Data Server (MDS) tracks the OSTs  assigned to a file, as well as the file's descriptive data.
 
 The Lonestar6 `$SCRATCH` filesystem is a BeeGFS filesystem instead of a Lustre filesystem. However, the BeeGFS filesystem is similar to Lustre in that it distributes files across I/O servers and allows the user control over the stripe count and stripe size for directories. 
 
@@ -181,7 +180,7 @@ As an example, the following command sets the default stripe count on the curren
 		$ lfs getstripe $PWD    
 
 !!! important
-	It is not possible to change the stripe count on a file that already exists.  The `mv` command will have no effect on a file's striping unless the source and destination directories are on different file systems, e.g. `mv`ing a file from `$SCRATCH` to `$WORK`, or vice-versa.  Instead, use the `cp` command to copy the file to a directory with the intended stripe parameters.
+	It is not possible to change the stripe/chunk count on a file that already exists.  The `mv` command will have no effect on a file's striping unless the source and destination directories are on different file systems, e.g. `mv`ing a file from `$SCRATCH` to `$WORK`, or vice-versa.  Instead, use the `cp` command to copy the file to a directory with the intended stripe parameters.
 
 Run the following for more information on these commands: 
 
@@ -758,6 +757,7 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 <code>development</code> | 4 nodes<br>(512 cores) | 2 hours | 6 | 1 | 1 SU
 <code>gpu-a100</code> | 4 nodes<br>(512 cores) | 48 hours | 6 | 2 | 4 SUs
 <code>gpu-a100-dev</code> | 4 nodes<br>(512 cores) | 2 hours | 2 | 1 | 4 SUs
+<code>gpu-a100-small</code><sup>&#42;&#42;</sup> | 1/1 node<br>(32 cores) | 48 hours | 4 | 4 | 1.5 SUs
 <code>large</code><sup>&#42;</sup> | 65/256 nodes<br>(65536 cores) | 48 hours | 256 | 1 | 1 SU
 <code>normal</code> | 1/64 nodes<br>(8192 cores) | 48 hours | 96 | 15 | 1 SU
 <code>vm-small</code><sup>&#42;&#42;</sup> | 1/1 node<br>(16 cores) | 48 hours | 4 | 4 | 0.143 SU
@@ -766,7 +766,7 @@ Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration
 
 &#42; Access to the `large` queue is restricted. To request more nodes than are available in the normal queue, submit a consulting (help desk) ticket through the TACC User Portal. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Lonestar6.
 
-&#42;&#42; The `vm-small` queue contains virtual nodes with fewer resources (cores) than the nodes in the other queues.
+&#42;&#42; The `gpu-a100-small` and `vm-small` queues contain virtual nodes with fewer resources (cores) than the nodes in the other queues.
 
 
 

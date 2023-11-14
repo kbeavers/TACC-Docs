@@ -49,7 +49,7 @@ Local storage:  | 112G <code>/tmp</code> partition
 Lonestar6 hosts 84 A100 GPU nodes that are configured identically to the compute nodes with the addition of 3 NVIDIA A100 GPUs. Each A100 GPU has a peak performance of 9.7 TFlops in double precision and 312 TFlops in FP16 precision using the Tensor Cores. Additionally, there are 4 H100 GPU nodes that support 2 NVIDIA H100 GPUs.  Each H100 GPU has a peak performance of 26 TFlops in double precision and 1513 TFlops in FP16 precision using the Tensor cores.
 
 
-#### [Table 2. GPU Node Specifications](#table2) { #table2 }
+#### [Table 2. A100 GPU Node Specifications](#table2) { #table2 }
 
 
 Specification | Value

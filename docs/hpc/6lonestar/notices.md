@@ -1,11 +1,10 @@
 # Lonestar6 User Guide
-Last update: September 29, 2023
+*Last update: November 13, 2023*
 
 
 ## [Notices](#notices) { #notices }
 
-* TACC has transitioned to a new allocations management system for Lonestar6, and there are new Project Names. See [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles) to learn about managing file permissions across projects. 
-* **All users: read the [Good Conduct](../../basics/conduct) section.** Lonestar6 is a shared resource and your actions can impact other users. (10/18/2021) 
+* **Lonestar6 has a new [queue](#running-queues), `gpu-a100-small`, for jobs needing only a single GPU.** (11/13/2023)  
 * **[Subscribe][TACCSUBSCRIBE] to Lonestar6 User News**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
 
 
