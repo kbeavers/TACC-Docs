@@ -1,37 +1,3 @@
-<style>
-/* To add field of color in neg. space beside short image */
-/* FAQ: This field is only possibly shown:
-        - at certain screen widths
-        - for certain image dimensions */
-@media (576px <= width < 768px), (992px < width) {
-  [class*="card--image-"] {
-    overflow: hidden; /* hide box-shadow that would bleed outside of card */
-  }
-  .c-card--image-top > img {
-    box-shadow: 25vw 0 white; /* for short image on narrow screen */
-  }
-  .c-card--image-left > img {
-    box-shadow: 0 10vw black; /* for narrow image on wide screen */
-  }
-}
-</style>
-<style>
-/* To remove side-by-sde layout when image becomes too small */
-@media (768px <= width < 992px), (width < 576px) {
-  .c-card--image-left {
-    padding: unset;
-    grid-template-rows: unset;
-    grid-template-columns: unset;
-  }
-  .c-card--image-left > img {
-    margin-block: unset;
-  }
-  .c-card--image-left > p {
-    margin: calc( var(--global-space--pattern-pad) / 2);
-  }
-}
-</style>
-
 # Portal Access
 
 ## Account Holders
