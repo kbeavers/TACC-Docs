@@ -1,12 +1,3 @@
-<!--
-<style>
-.grid {
-  display: grid;
-  gap: var(--global-space--grid-gap);
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-}
-</style>
--->
 <style>
 /* To add field of color in neg. space beside short image */
 /* FAQ: This field is only possibly shown:
