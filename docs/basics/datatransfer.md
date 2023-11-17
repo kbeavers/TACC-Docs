@@ -1,5 +1,5 @@
 # [Data Transfer](#datatransfer)   { #datatransfer }
-*Last update: November 15, 2083*
+*Last update: November 17, 2083*
 
 Transferring Portal data from your local machine to <a href="#storage">one of TACC's remote storage systems</a> can be accomplished using two methods: command line tools (<code>scp</code>, <code>sftp</code>, <code>rsync</code>) and graphical user interface (Cyberduck).
 
@@ -266,4 +266,7 @@ Once connected, you can navigate through your remote file hierarchy using the gr
 * [`sftp` manual page](https://man7.org/linux/man-pages/man1/sftp.1.html)
 * [`rsync` manual page](https://man7.org/linux/man-pages/man1/rsync.1.html)
 
+---
+
 {% include 'basics/globusdatatransfer.md' %}
+
