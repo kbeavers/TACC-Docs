@@ -25,17 +25,17 @@ After successfully authenticating at your chosen Identity Provider, you are redi
 
 Login to the [TACC User Portal](https://portal.tacc.utexas.edu/) and select "Manage Account" under your login name in the top right corner.
 
-![](imgs/ManageDN-1.png)
+
+![](imgs/ManageDN-1.png){: style="width:600px"}
+
 
 Click on the "Manage DNs" on the Manage Account page.   
 
-![](imgs/ManageDN-2.png)
+![](imgs/ManageDN-2.png){: style="width:500px"}
 
-You will be presented with a list of the DNs currently associated with your TACC account and a text field to associate a new DN to your account. Enter the Certificate Subject obtained from [CILogon.org](http://cilogon.org/) in the text field. Click the button to "Link DN". This will associate the new DN with your account. 
+You will be presented with a list of the DNs currently associated with your TACC account and a text field to associate a new DN to your account. Enter the Certificate Subject obtained from [CILogon.org](http://cilogon.org/) in the text field. Click the button to "Link DN". This will associate the new DN with your account. **Please allow up to 30 minutes for this change to propagate across all TACC systems**.
 
-Please allow up to 30 minutes for this change to propagate across all TACC systems.
-
-![](imgs/ManageDN-3.png)
+![](imgs/ManageDN-3.png){: style="width:600px"}
 
 
 ### Step 2: Activate Endpoint and Transfer Files { #step-2-globus-endpoint }
