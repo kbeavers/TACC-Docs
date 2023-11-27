@@ -5,7 +5,7 @@ see <a href="#history">revision history</a>
 ## [Notices](#notices) { #notices }
 
  
-**Stampede2 will reach end-of-life and will no longer be available as of November 30, 2023.  All queues and nodes will be decommissioned at this time**. (10/06/2023)   
+<span style="color:red; font-weight:bold">**Stampede2 will reach end-of-life and will no longer be available as of November 30, 2023.  All queues and nodes will be decommissioned at this time**. </span> 
 
 **Data Migration**: Please begin transferring your Stampede2 `/home` and `/scratch` directory contents to your preferred backup location.  Stampede2's `/work` file system and its contents will persist since it stands outside of Stampede2 on its own hardware. 
 
