@@ -1,19 +1,19 @@
 # Stampede2 User Guide
-Last update: July 10, 2023 
+Last update: November 27, 2023 
 see <a href="#history">revision history</a>
   
 ## [Notices](#notices) { #notices }
 
  
+**Stampede2 will reach end-of-life and will no longer be available as of November 30, 2023.  All queues and nodes will be decommissioned at this time**. (10/06/2023)   
 
-<span style="color:red; font-weight:bold">July 15, 2023 is the last day to submit to the Stampede2 `normal` and `development` queues. The SKX and ICX queues will remain open. (07/10/2023)</span>
+**Data Migration**: Please begin transferring your Stampede2 `/home` and `/scratch` directory contents to your preferred backup location.  Stampede2's `/work` file system and its contents will persist since it stands outside of Stampede2 on its own hardware. 
 
-**Stampede2 will reach end-of-life and will no longer be available as of November 30, 2023. Decommission will begin when the `normal` queue nodes with Intel's Knight's Landing (KNL) processors will no longer be available.  The rest of the system, the Skylake (SKX) and Ice Lake (ICX) nodes, will be retired at the end of November, 2023.**
+Please note that Stampede2 allocations will **not** automatically roll over to Stampede3.  You may apply for an allocation on the new Stampede3 system via the [ACCESS allocation process](http://allocations.access-ci.org).
 
-**Stampede2's `/work` file system and its contents will continue to exist since it stands outside of Stampede2 on its own hardware. However, Stampede2's `/home` and `/scratch` file systems will be decommissioned along with the system.  We recommend transferring this data if it is still needed prior to decommissioning.**
+Stampede2's `normal` and `development` queues are no longer available. The KNL nodes have been decommissioned. (07/15/2023)
 
-**The new Stampede3 system will be available for allocation in November, 2023 via the [ACCESS allocation process](http://allocations.access-ci.org).**
-
+---
 
 
 
