@@ -1,23 +1,30 @@
 # Stampede2 User Guide
-Last update: November 27, 2023 
-see <a href="#history">revision history</a>
+Last update: November 28, 2023  
+See <a href="#history">revision history</a>
   
 ## [Notices](#notices) { #notices }
 
  
-<span style="color:red; font-weight:bold">**Stampede2 will reach end-of-life and will no longer be available as of November 30, 2023.  All queues and nodes will be decommissioned at this time**. </span> 
+<span style="color:red; font-weight:bold">**Stampede2 will reach end-of-life and will no longer be available as of February, 2024**. </span> 
 
-**Data Migration**: Please begin transferring your Stampede2 `/home` and `/scratch` directory contents to your preferred backup location.  Stampede2's `/work` file system and its contents will persist since it stands outside of Stampede2 on its own hardware. 
+Over the coming months, Stampede2 will transition to Stampede3. Please carefully read the following information.
 
-Please note that Stampede2 allocations will **not** automatically roll over to Stampede3.  You may apply for an allocation on the new Stampede3 system via the [ACCESS allocation process](http://allocations.access-ci.org).
+Updated Timeline - Stampede2 to Stampede2 Transition.   
+*All dates subject to change based on hardware availability and condition*.
 
-Stampede2's `normal` and `development` queues are no longer available. The KNL nodes have been decommissioned. (07/15/2023)
+January 2024 - Reduction in number of SKX/ICX nodes, reduction in queue maximums   
+January 2024 - Stampede3 file system available for data migration  
+February 2024 - Early user period for Stampede3  
+February 2024 - Stampede2 file system decommissioned   
+March 2024 - Stampede3 in full production   
 
----
+**Data Migration**: Users must migrate their own data stored in `/home` and `/scratch` directory contents to your preferred backup location, such as your such as your own local hard drive or Ranch, by the end of **February 2024**.  Stampede2's `/work` file system and its contents will persist, since the hardware stands outside of Stampede2 on its own hardware, and will be mounted on Stampede3..  
 
+**Existing Allocations**: Stampede2 allocations will **not** automatically roll over to Stampede3.  You may apply for an allocation on the new Stampede3 system via the [ACCESS allocation process](http://allocations.access-ci.org).  
 
+**New Allocations**: You may now submit new allocation requests for Stampede3 via ACCESS: <https://allocations.access-ci.org>.
 
-
+Additional allocation opportunities may also be available in the future
 
 
 
