@@ -6,12 +6,12 @@
 
 *This user guide is in progress and will be updated as the system is configured.*
 
-<u>Stampede3 Updated Timeline</u>
-*All dates subject to change based on hardware availability and condition.*
+<u>Stampede3 Updated Timeline</u>   
+*All dates subject to change based on hardware availability and condition.*   
 
-January 2024 - Stampede3 file system available for data migration
-February 2024 - Early user period for Stampede3
-March 2024 - Stampede3 in full production
+January 2024 - Stampede3 file system available for data migration   
+February 2024 - Early user period for Stampede3   
+March 2024 - Stampede3 in full production   
 
 ## [Introduction](#intro) { #intro }
 
