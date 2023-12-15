@@ -6,13 +6,12 @@ This guide will outline and instruct methods of transferring data between TACC r
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
 1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), Cyberduck
 
+
 ## [Command-Line Tools ](#datatransfer-cli) { #datatransfer-cli }
 
 A common method of transferring files between TACC resources and/or your local machine is through the command line.  Whether on a Windows or a Mac, open the terminal applicaton on your local laptop to use one of the following Unix command-line (CLI) tools.
 
-<code>scp</code>, <code>sftp</code>, &amp; <code>rsync</code>
-
-These three command line tools are secure and can be used to accomplish data transfer. You can run these commands directly from the terminal if your local system runs Linux or macOS.
+These three command line tools are secure and can be used to accomplish data transfer. You can run these commands directly from the terminal if your local system runs Linux or macOS:  `scp`, `sftp`, &amp; `rsync`
 
 !!! note
 	It is possible to use these command line tools if your local machine runs Windows, but you will need to use a ssh client (ex.  <a target="_blank" href="https://www.putty.org/">PuTTY</a>
@@ -37,7 +36,7 @@ Figure 1. Use Get Info to determine "Where" the path of your data file(s) is
 <figure id="figure1"><img src="../imgs/dtg-1-determine-path.png" /></a>
 <figcaption> Figure 1. Use Get Info to determine "Where" the path of your data file(s) is</figcaption></figure>
 
-For example, a file located in a folder named <kbd>portal-data</kbd> under <code>Documents</code> would have the following path:
+For example, a file located in a folder named <kbd>portal-data</kbd> under `Documents` would have the following path:
 
 <table>
 <tr><td>On Mac</td><td><code>/Users/<kbd>username</kbd>/Documents/<kbd>portal-data</kbd>/my_file.txt</code></td></tr>
@@ -47,14 +46,14 @@ For example, a file located in a folder named <kbd>portal-data</kbd> under <code
 
 ### [Transfer with `scp`](#datatransfer-cli-scp) { #datatransfer-cli-scp }
 
-The <code>scp</code> command copies files between hosts on a network. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>scp</code>, open a terminal on your local computer and navigate to the path where your data file is located.
+The `scp` command copies files between hosts on a network. To transfer a file (ex. `my_file.txt`) to the remote secure system via `scp`, open a terminal on your local computer and navigate to the path where your data file is located.
       
 <table>
 <tr><td>On Mac</td> <td><pre><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></td></tr>
 <tr><td>On Windows</td> <td><pre><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></td></tr>
 </table>
 
-Assuming your TACC username is <code>bjones</code> and you are affiliated with UT Austin, a <code>scp</code> transfer that pushes <code>my_file.txt</code> from the current directory of your local computer to the remote secure system would look like this:
+Assuming your TACC username is `bjones` and you are affiliated with UT Austin, a `scp` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
 
 This command will copy your data file directly to your individualized transfer directory on the remote storage system.
 
@@ -70,7 +69,7 @@ A successful data transfer will generate terminal output similar to this:
 
 <pre><samp>my_file.txt     100% ##  #.#          KB/s   ##:##</samp></pre>
 
-If you wish to learn more about <code>scp</code> and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html">the online <code>man</code> page for <code>scp</code></a> or follow the file transfer section of the user guide for the appropriate TACC system:
+If you wish to learn more about `scp` and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html">the online `man` page for `scp`</a> or follow the file transfer section of the user guide for the appropriate TACC system:
 
 * <a target="_blank" href="https://docs.tacc.utexas.edu/hpc/stampede2/#transferring-scp">Stampede2 User Guide</a>
 * <a target="_blank" href="https://docs.tacc.utexas.edu/hpc/frontera/#transferring-scp">Frontera User Guide</a>
@@ -78,14 +77,14 @@ If you wish to learn more about <code>scp</code> and how to synchronize your fil
 
 ### [Transfer with `sftp`](#datatransfer-cli-sftp) { #datatransfer-cli-sftp }
 
-<code>sftp</code> is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>sftp</code>, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
+`sftp` is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. `my_file.txt`) to the remote secure system via `sftp`, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
       
 <table>
 <tr><td>On Mac</td><td><pre><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></td></tr>
 <tr><td>On Windows</td><td><pre><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></td></tr>
 </table>
 
-Assuming your TACC username is <code>bjones</code> and you are affiliated with UT Austin, an <code>sftp</code> transfer that pushes <code>my_file.txt</code> from the current directory of your local computer to the remote secure system would look like this:
+Assuming your TACC username is `bjones` and you are affiliated with UT Austin, an `sftp` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
       
 <pre><code><u>localhost$ </u>sftp bjones@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd>
 <samp>Password:
@@ -96,41 +95,39 @@ Changing to:
 <u>sftp&gt;</u></code></pre>
 
 If you have not done so already, enter this command in your terminal, replacing the TACC username and your individualized transfer directory path appropriately.
-
       
 You are now logged into the remote secure system and have been redirected to your transfer directory. To confirm your location on the server, enter the following command:
       
-
-<pre><code><u>sftp&gt; </u>pwd
+<pre><u>sftp&gt; </u>pwd
 <samp>Remote working directory:
-<var>/transfer/directory/path</var></samp></code></pre>
+<var>/transfer/directory/path</var></samp></pre>
 
 To list the files currently in your transfer directory:
 
-<pre><code><u>sftp&gt; </u>ls
-<samp>utaustin_dir.txt<samp></code></pre>
+<pre><u>sftp&gt; </u>ls
+<samp>utaustin_dir.txt<samp></pre>
       
 To list the files currently in your <em>local</em> directory:
       
-<pre><code><u>sftp&gt; </u>lls
-<samp>my_file.txt<samp></code></pre>
+<pre><u>sftp&gt; </u>lls
+<samp>my_file.txt<samp></pre>
 
 !!! note
 	The leading <code>l</code> in the <code>lls</code> command denotes that you are listing the contents of your <em>local</em> working directory.
       
 To transfer <code>my_file.txt</code> from your local computer to your transfer directory:
 
-<pre><code><u>sftp&gt; </u>put my_file.txt
+<pre><u>sftp&gt; </u>put my_file.txt
 <samp>Uploading my_file.txt to <var>/transfer/directory/path</var></samp>
-<samp>my_file.txt     100% ##  #.#          KB/s   ##:#</samp></code></pre>
+<samp>my_file.txt     100% ##  #.#          KB/s   ##:#</samp></pre>
 
       
-To check if <code>my_file.txt</code> is in the <code>utaustin</code> subfolder:
+To check if my_file.txt is in the utaustin subfolder:
       
 
-<pre><code><u>sftp&gt; </u>ls
+<pre><u>sftp&gt; </u>ls
 <samp>my_file.txt</samp>
-<samp>utaustin_dir.txt</samp></code></pre>
+<samp>utaustin_dir.txt</samp></pre>
 
 To exit out of <code>sftp</code> on the terminal:
 
@@ -142,14 +139,14 @@ If you wish to learn more about <code>sftp</code>, you can do so at <a target="_
 
 ### [Transfer with `rsync`](#datatransfer-cli-rsync) { #datatransfer-cli-rsync }
       
-<code>rsync</code>is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>rsync</code>, open a terminal on your local computer and navigate to the path where your data file is located.
+`rsync`is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. `my_file.txt`) to the remote secure system via `rsync`, open a terminal on your local computer and navigate to the path where your data file is located.
       
 <table>
 <tr><td>On Mac</td><td><pre><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></td></tr>
 <tr><td>On Windows</td><td><pre><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></td></tr>
 </table>
       
-Assuming your TACC username is <code>bjones</code> and you are affiliated with UT Austin, an <code>rsync</code> transfer that pushes <code>my_file.txt</code> from the current directory of your local computer to the remote secure system would look like this:
+Assuming your TACC username is `bjones` and you are affiliated with UT Austin, an `rsync` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
       
 <pre><code><u>localhost$ </u>rsync ./my_file.txt bjones@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd></code></pre>
 
@@ -157,7 +154,7 @@ If you have not done so already, enter this command in your terminal, replacing 
       
 If the command returns 0 in your terminal, the data transfer was successful.
       
-If you wish to learn more about <code>rsync</code> and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/rsync.1.html">the online <code>man</code> page for <code>rsync</code></a> or follow the file transfer section of the user guide for the appropriate TACC system:
+If you wish to learn more about `rsync` and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/rsync.1.html">the online `man` page for `rsync`</a> or follow the file transfer section of the user guide for the appropriate TACC system:
       
 
 Consult your resource's respective user guide's "Transferring Files" section for more detailed information on the `scp` and `rsync` utilities:
@@ -218,6 +215,12 @@ Once connected, you can navigate through your remote file hierarchy using the gr
 
 {% include 'basics/globusdatatransfer.md' %}
 
+<!-- ## Transferring from Box, Dropbox and Google Drive
+
+From what I can tell you are trying to transfer data from a google drive to our systems. I believe you can achieve this by following the methods used in this webpage: https://chemicloud.com/blog/download-google-drive-files-using-wget/
+
+You should be able to login to the system, navigate to the directory you would like the files in, then run the wget command to drop the files in that directory. Please let me know if this is what you are intending to do and if it works for you.
+-->
 
 <!-- ## <a href="#references">References</a> 
 ---
