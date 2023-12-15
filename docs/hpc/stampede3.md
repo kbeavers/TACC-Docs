@@ -118,37 +118,6 @@ $SCRATCH | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are su
 
 {% include 'include/scratchpolicy.md' %}
 
-## [Accessing the System](#access) { #access }
-
-Access to all TACC systems requires Multi-Factor Authentication (MFA). You can create an MFA pairing on the TACC User Portal. After login on the portal, go to your account profile (Home->Account Profile), then click the "Manage" button under "Multi-Factor Authentication" on the right side of the page. See [Multi-Factor Authentication at TACC](../../basics/mfa) for further information.
-
-### [Secure Shell (SSH)](#access-ssh) { #access-ssh }
-
-SDL The `ssh` command (SSH protocol) is the standard way to connect to Stampede3. SSH also includes support for the file transfer utilities scp and sftp. Wikipedia is a good source of information on SSH. SSH is available within Linux and from the terminal app in the Mac OS. If you are using Windows, you will need an SSH client that supports the SSH-2 protocol: e.g. Bitvise, OpenSSH, PuTTY, or SecureCRT. Initiate a session using the ssh command or the equivalent; from the Linux command line the launch command looks like this:
-
-	localhost$ ssh myusername@stampede3.tacc.utexas.edu
-
-The above command will rotate connections across all available login nodes and route your connection to one of them. To connect to a specific login node, use its full domain name:
-
-	localhost$ ssh myusername@login2.stampede3.tacc.utexas.edu
-
-To connect with X11 support on Stampede3 (usually required for applications with graphical user interfaces), use the -X or -Y switch:
-
-	localhost$ ssh -X myusername@stampede3.tacc.utexas.edu
-
-SDL Use your TACC password for direct logins to TACC resources. You can change your TACC password through the [TACC User Portal][TACCUSERPORTAL]. Log into the portal, then select "Change Password" under the "HOME" tab. If you've forgotten your password, go to the [TACC User Portal][TACCUSERPORTAL] home page and select "Password Reset" under the Home tab.
-
-To report a connection problem, execute the `ssh` command with the `-vvv` option and include this command's verbose output when submitting a help ticket.
-
-Do not run the `ssh-keygen` command on Stampede3. This command will create and configure a key pair that will interfere with the execution of job scripts in the batch system.  If you do this by mistake, you can recover by renaming or deleting the `.ssh` directory located in your home directory; the system will automatically generate a new pair for you when you next log into Stampede3.
-
-1. execute `mv .ssh dot.ssh.old`
-1. log out
-1. log into Stampede3 again
-
-After logging in again, the system will generate a properly configured key SSH pair.
-
-
 [HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
 [CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
 [TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
