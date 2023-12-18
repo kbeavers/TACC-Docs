@@ -2,9 +2,10 @@ S3_OBJS	=	\
 	notices.md \
 	system.md \
 	access.md \
-	files.md 
+	files.md \
+	building.md 
+
 #	admin.md \
-#	building.md \
 #	launching.md \
 #	running.md \
 #	scripts.md \

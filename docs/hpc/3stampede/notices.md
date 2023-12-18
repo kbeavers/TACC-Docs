@@ -1,12 +1,12 @@
 # Stampede3 User Guide 
 
-*Last update: December 15, 2023*
+*Last update: December 18, 2023*
 
 ## [Notices](#notices) { #notices }
 
 *This user guide is in progress and will be updated as the system is configured.*
 
-<u>Stampede3 Updated Timeline</u>   
+Stampede3 Updated Timeline
 *All dates subject to change based on hardware availability and condition.*   
 
 January 2024 - Stampede3 file system available for data migration   
@@ -19,6 +19,6 @@ The National Science Foundation (NSF) has generously awarded the University of T
 
 ### [Allocations](#intro-allocations) { #intro-allocations }
 
-**New Allocations**: You may now submit new allocation requests for Stampede3 via [ACCESS](https://allocations.access-ci.org/). Additional allocation opportunities may also be available in the future. (11/28/20
+**New Allocations**: You may now submit new allocation requests for Stampede3 via [ACCESS](https://allocations.access-ci.org/). Additional allocation opportunities may also be available in the future. (11/28/2023)
 
 
