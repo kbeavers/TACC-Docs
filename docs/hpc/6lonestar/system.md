@@ -2,7 +2,7 @@
 
 All Lonestar6 nodes run Rocky 8.4 and are managed with batch services through native Slurm 20.11.8. Global storage areas are supported by an NFS file system (`$HOME`), a BeeGFS parallel file system (`$SCRATCH`), and a Lustre parallel file system (`$WORK`). Inter-node communication is supported by a Mellanox HDF Infiniband network. Also, the TACC Ranch tape archival system is available from Lonestar6.
 
-The system is composed of 560 compute nodes and 88 GPU nodes.  The compute nodes are housed in 4 dielectric liquid coolant cabinets and ten air-cooled racks.  The air cooled racks also contain the 88 GPU nodes.  Each node has two AMD EPYC 7763 64-core processors (Milan) and 256 GB of DDR4 memory. Twenty-four of the compute nodes are reserved for development and are accessible interactively for up to two hours. Each A100 GPU node also contains two AMD EPYC 7763 64-core processes and three NVIDIA A100 GPUs each with 40 GB of high bandwidth memory (HBM2).  In addition, there are four H100 GPU nodes with 2 NVIDIA H100 GPUs each.  
+The system is composed of 560 compute nodes and 88 GPU nodes.  The compute nodes are housed in 4 dielectric liquid coolant cabinets and ten air-cooled racks.  The air cooled racks also contain the 88 GPU nodes.  Each node has two AMD EPYC 7763 64-core processors (Milan) and 256 GB of DDR4 memory. Twenty-four of the compute nodes are reserved for development and are accessible interactively for up to two hours. Each of the system's 84 A100 GPU nodes also contains two AMD EPYC 7763 64-core processes and three NVIDIA A100 GPUs each with 40 GB of high bandwidth memory (HBM2).  In addition, there are 4 H100 GPU nodes with 2 NVIDIA H100 GPUs each.  
 
 
 ### [Compute Nodes](#system-compute) { #system-compute }
@@ -20,7 +20,7 @@ Hardware threads per node:   | 128 x 1 = 128
 Clock rate:   | 2.45 GHz (Boost up to 3.5 GHz)
 RAM:   | 256 GB (3200 MT/s) DDR4
 Cache:   | 32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>256 MB L3 total (8 core complexes )<br>Each socket can cache up to 288 MB<br>(sum of L2 and L3 capacity)
-Local storage:  | 144GB /tmp partition on a 288GB SSD.
+Local storage:  | 288GB /tmp partition on a 288GB SSD.
 
 ### [Login Nodes](#system-login) { #system-login }
 
@@ -41,7 +41,7 @@ Hardware threads per VM:   | 16 x 1 = 16
 Clock rate:   | 2.45 GHz (Boost up to 3.5 GHz)
 RAM:   | 32 GB (3200 <b>shared</b> MT/s) DDR4
 Cache:   | <b>Shared caches with all other VMs.</b><br>32KB L1 data cache per core<br>512KB L2 per core<br>32 MB L3 per core complex<br>(1 core complex contains 8 cores)<br>64 MB L3 total (2 core complexes)
-Local storage:  | 112G <code>/tmp</code> partition
+Local storage:  | 288G <code>/tmp</code> partition
 
 
 ### [GPU Nodes](#system-gpu) { #system-gpu }
