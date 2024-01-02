@@ -2,8 +2,6 @@
 
 The phrase "building software" is a common way to describe the process of producing a machine-readable executable file from source files written in C, Fortran, or some other programming language. In its simplest form, building software involves a simple, one-line call or short shell script that invokes a compiler. More typically, the process leverages the power of makefiles, so you can change a line or two in the source code, then rebuild in a systematic way only the components affected by the change. Increasingly, however, the build process is a sophisticated multi-step automated workflow managed by a special framework like autotools or cmake, intended to achieve a repeatable, maintainable, portable mechanism for installing software across a wide range of target platforms.
 
-### [Basics of Building Software](#building-basics) { #building-basics }
-
 This section of the user guide does nothing more than introduce the big ideas with simple one-line examples. You will undoubtedly want to explore these concepts more deeply using online resources. You will quickly outgrow the examples here. We recommend that you master the basics of makefiles as quickly as possible: even the simplest computational research project will benefit enormously from the power and flexibility of a makefile-based build process.
 
 ### [Intel Compilers](#building-intel) { #building-intel }
@@ -93,7 +91,7 @@ These wrappers call the compiler with the options, include paths, and libraries 
 
 ### [Building Third-Party Software in Your Own Account](#building-thirdparty) { #building-thirdparty }
 
-You're welcome to download third-party research software and install it in your own account. In most cases you'll want to download the source code and build the software so it's compatible with the Stampede3 software environment. You can't use yum or any other installation process that requires elevated privileges, but this is almost never necessary. The key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. When using the famous three-step autotools build process, the standard approach is to use the PREFIX environment variable to specify a non-default, user-owned installation directory at the time you execute configure or make:
+You are welcome to download third-party research software and install it in your own account. In most cases you'll want to download the source code and build the software so it's compatible with the Stampede3 software environment. You can't use yum or any other installation process that requires elevated privileges, but this is almost never necessary. The key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. When using the famous three-step autotools build process, the standard approach is to use the PREFIX environment variable to specify a non-default, user-owned installation directory at the time you execute configure or make:
 
 	$ export INSTALLDIR=$WORK/apps/t3pio
 	$ ./configure --prefix=$INSTALLDIR
@@ -117,8 +115,6 @@ Similarly in R:
 You may, of course, need to customize the build process in other ways. It's likely, for example, that you'll need to edit a makefile or other build artifacts to specify Stampede3-specific include and library paths or other compiler settings. A good way to proceed is to write a shell script that implements the entire process: definitions of environment variables, module commands, and calls to the build utilities. Include echo statements with appropriate diagnostics. Run the script until you encounter an error. Research and fix the current problem. Document your experience in the script itself; including dead-ends, alternatives, and lessons learned. Re-run the script to get to the next error, then repeat until done. When you're finished, you'll have a repeatable process that you can archive until it's time to update the software or move to a new machine.
 
 If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators](../../tutorials/sharingprojectfiles) for more information.
-
-<!-- { % include 'include/stampede3-mkl.md' % } -->
 
 ### [Building for Performance on Stampede3](#building-performance) { #building-performance }
 

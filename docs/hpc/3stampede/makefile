@@ -4,6 +4,7 @@ S3_OBJS	=	\
 	access.md \
 	files.md \
 	building.md \
+	mkl.md \
 	programming.md \
 	refs.md
 
