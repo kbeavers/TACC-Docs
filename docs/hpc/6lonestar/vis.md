@@ -121,8 +121,8 @@ c301-001$ swr options application application-args
 After connecting to a VNC server on Lonestar6, as described above, load the VisIt module at the beginning of your interactive session before launching the VisIt application:
 
 ```cmd-line
-c301-001$ module load swr visit
-c301-001$ swr visit
+c301-001$ module load visit
+c301-001$ visit
 ```
 
 VisIt first loads a dataset and presents a dialog allowing for selecting either a serial or parallel engine. Select the parallel engine. Note that this dialog will also present options for the number of processes to start and the number of nodes to use; these options are actually ignored in favor of the options specified when the VNC server job was started.
