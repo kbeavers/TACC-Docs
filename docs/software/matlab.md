@@ -1,5 +1,5 @@
 # MATLAB at TACC
-*Last update: August 29, 2023* 
+*Last update: January 04, 2024* 
 
 <table cellpadding="5" cellspacing="5"><tr>
 <td><img src="../imgs/matlab-logo.png" style="width:50%"></td>
@@ -35,7 +35,7 @@ The following figure shows how MATLAB is launched inside the VNC session.
 
 ### [Figure 1. MATLAB launched in a VNC session](#figure1) { #figure1 }
 
-<figure id="figure1"> <img alt="MATLAB-1" src="../imgs/MATLAB-1.png"><figcaption></figcaption></figure>
+<figure id="figure1"> <img alt="MATLAB-1" src="../imgs/matlab-vnc.png"><figcaption></figcaption></figure>
 
 !!! important
 	Do NOT launch MATLAB on the login nodes. This may fail and, more importantly, it will prevent other users from doing their work, as your execution will take up too many cycles on the shared login node. Using MATLAB on the login nodes is considered system abuse, and will be treated as such.  See TACC [usage policies][TACCUSAGEPOLICY].
@@ -58,7 +58,7 @@ You can also submit your MATLAB job to the batch nodes (compute nodes) on the TA
 #SBATCH -p skx-normal             # designate queue 
 
 module load matlab
-matlab -nodesktop -nodisplay -nosplash &lt; mymatlabprog.m
+matlab -nodesktop -nodisplay -nosplash < mymatlabprog.m
 ```
 
 Then submit the job to the scheduler in the standard way. See the Running Jobs section in the respective user guides
