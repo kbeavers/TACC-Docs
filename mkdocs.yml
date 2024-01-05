@@ -96,7 +96,6 @@ nav:
     - Bash Quick Start Guide: tutorials/bashstartup.md
     - BLAS/LAPACK: tutorials/blas-lapack.md
     - DDT Debugger: tutorials/ddt.md
-    - Grid Community Toolkit: tutorials/gridcommunitytoolkit.md
     - Managing I/O: tutorials/managingio.md
     - MAP: tutorials/map.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
