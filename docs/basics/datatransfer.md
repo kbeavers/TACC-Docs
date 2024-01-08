@@ -1,10 +1,12 @@
 # [Data Transfer](#datatransfer)   { #datatransfer }
-*Last update: December 4, 2023*
+*Last update: January 8, 2024*
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
 1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), Cyberduck
+
+**Globus Users: See [Globus v5.4 Transition](#globusv54) update**   
 
 
 ## [Command-Line Tools ](#datatransfer-cli) { #datatransfer-cli }

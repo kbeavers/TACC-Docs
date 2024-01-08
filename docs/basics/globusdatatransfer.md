@@ -1,3 +1,22 @@
+
+## [Globus v5.4 Transition](#globus454) { #globusv54 }
+*January 8, 2024*
+
+Beginning Monday, January 8th, 2024, Globus will be transitioning to version 5.4. This will impact all TACC researchers who use Globus and will require you to update your profile to continue using the Globus service. 
+
+Use the following steps to update your profile: 
+
+* Find your ePPN associated with your Globus access by going to <https://cilogon.org/> and logging in. You will find your ePPN under "User Attributes". 
+* Login to your TACC user profile here: <https://accounts.tacc.utexas.edu>.
+* Select ePPN on the left menu and then enter your ePPN in the field at the top of the page and save. 
+* Allow at least 15 minutes for your change to propagate through the system. 
+* After you have completed these steps, you will be able to use the [Globus File Manager](https://app.globus.org) as usual. 
+
+**Please make sure you select an endpoint that has "GCS v5.4" in the title.**
+
+If you encounter any issues, please [submit a support ticket](https://tacc.utexas.edu/portal/tickets).
+
+---
 ## [Globus Data Transfer Guide](#globus) { #globus }
 
 Globus supplies high speed, reliable, asynchronous transfers to the portal. Globus is fast, for large volumes of data, as it uses multiple network sockets simultaneously to transfer data. It is reliable for large numbers of directories and files, as it can automatically fail and restart itself, and will only notify you when the transfers are completed successfully.
@@ -6,8 +25,8 @@ To get these benefits there are a few setup steps you have to do beyond the norm
 
 To start using Globus, you need to do two things: Generate a unique identifier for all Globus services, and enroll the machine you are transferring data to/from with Globus (this can be your personal laptop or desktop, or a server to which you have access). Follow this one-time process to set up the Globus file transfer capability.
 
-*   [Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account](#step-1-distinguished-name)
-*   [Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files](#step-2-globus-endpoint)
+*   [Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account](#step1)
+*   [Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files](#step2)
 
 PLEASE NOTE: You must use _your institution’s credentials and not your personal Google account_ when setting up Globus. If you use a personal account, you will encounter an issue with the transfer endpoint (Frontera, Stampede2, Corral, Ranch, etcetera).
 
@@ -38,7 +57,7 @@ You will be presented with a list of the DNs currently associated with your TACC
 ![](imgs/ManageDN-3.png){: style="width:600px"}
 
 
-### Step 2: Activate Endpoint and Transfer Files { #step-2-globus-endpoint }
+### Step 2: Activate Endpoint and Transfer Files { #step2 }
 
 Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files { #step-2-globus-endpoint }
 
