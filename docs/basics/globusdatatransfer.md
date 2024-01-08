@@ -1,20 +1,27 @@
-
 ## [Globus v5.4 Transition](#globus454) { #globusv54 }
 *January 8, 2024*
 
-Beginning Monday, January 8th, 2024, Globus will be transitioning to version 5.4. This will impact all TACC researchers who use Globus and will require you to update your profile to continue using the Globus service. 
+Beginning Monday, January 8th, 2024, Globus will be transitioning to version 5.4. This transition will impact all TACC researchers who use Globus and will require you to update your profile with your ePPN (an acronym-to not-worry-about) to continue using the Globus service. 
 
-Use the following steps to update your profile: 
 
-* Find your ePPN associated with your Globus access by going to <https://cilogon.org/> and logging in. You will find your ePPN under "User Attributes". 
-* Login to your TACC user profile here: <https://accounts.tacc.utexas.edu>.
-* Select ePPN on the left menu and then enter your ePPN in the field at the top of the page and save. 
-* Allow at least 15 minutes for your change to propagate through the system. 
-* After you have completed these steps, you will be able to use the [Globus File Manager](https://app.globus.org) as usual. 
+1. Login to [CILogon](https://cilogon.org) and click on "User Attributes":
 
-**Please make sure you select an endpoint that has "GCS v5.4" in the title.**
+	![](imgs/globusv54-CIlogin.png){: style="width:500px"}
 
-If you encounter any issues, please [submit a support ticket](https://tacc.utexas.edu/portal/tickets).
+1. Login to your [TACC user profile](https://accounts.tacc.utexas.edu) and click "ePPN" on the left menu:
+
+	![](imgs/globusv54-TACCPortal.png){: style="width:500px"}
+
+* Enter your ePPN from Step 1 in and save.  Allow at least 15 minutes for your change to propagate through the system. 
+
+	![](imgs/globusv54-TACCPortal-ePPN.png){: style="width:500px"}
+
+Once you've completed these steps, you will be able to use the [Globus File Manager](https://app.globus.org) as usual.  If you encounter any issues, please [submit a support ticket](https://tacc.utexas.edu/portal/tickets).
+
+
+!!! important
+	**Select an endpoint that has "GCS v5.4" in the title.**
+
 
 ---
 ## [Globus Data Transfer Guide](#globus) { #globus }

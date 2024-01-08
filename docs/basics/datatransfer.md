@@ -6,7 +6,8 @@ This guide will outline and instruct methods of transferring data between TACC r
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
 1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), Cyberduck
 
-**Globus Users: See [Globus v5.4 Transition](#globusv54) update**   
+!!! attention
+	**Globus Users: See [Globus v5.4 Transition](#globusv54) update**   
 
 
 ## [Command-Line Tools ](#datatransfer-cli) { #datatransfer-cli }
