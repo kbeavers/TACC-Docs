@@ -16,16 +16,16 @@ March 2024 - Stampede3 in full production
 
 ## [Migrating Data to Stampede3](#migrating)
 
-The Stampede3 login nodes are now available for you to begin moving data between systems.  If you have a Stampede3 or an active Stampede2 allocation then you may begin the data migration process from Stampede2 to Stampede3.  During this migration period Stampede2's `/home` and `/scratch` systems will be temporarily mounted on Stampede3 and will be accessible through the `$HOME_S2` and `$SCRATCH_S2` environment variables respectively.  
+The Stampede3 login nodes are now available for you to begin moving data between systems.  **If you have an active Stampede3 allocation** then you may begin the data migration process from Stampede2 to Stampede3.  During this migration period Stampede2's `/home` and `/scratch` systems will be temporarily mounted on Stampede3 and will be accessible through the `$HOME_S2` and `$SCRATCH_S2` environment variables respectively.  
 
-You do not need to migrate data from `$WORK` (Stockyard) as that file system will be automatically mounted on Stampede3.  However, anything in your `$HOME` or `$SCRATCH` directories will need to be moved.  
+You do not need to migrate data from `$WORK` (Stockyard) as that file system will be automatically mounted on Stampede3.  However, anything in your `$HOME` or `$SCRATCH` directories that you wish to retain will need to be moved.  
 
 !!! important
 	Please migrate **only** the data you wish to keep from Stampede2.  
 
 ### Examples
 
-If you have an active allocation on Stampede2 you will be able to access Stampede3 via `ssh` as you do with other TACC resources.  Use the same password and MFA method as for accessing Stampede2.
+You can access Stampede3 via `ssh` as you do with other TACC resources.  Use the same password and MFA method as for accessing Stampede2.
 
 ``` cmd-line
 ssh username@stampede3.tacc.utexas.edu
