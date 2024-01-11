@@ -7,14 +7,14 @@
 *This user guide is in progress and will be updated as the system is configured.*
 
 ### Stampede3 Updated Timeline
-*All dates subject to change based on hardware availability and condition.*   
+**All dates subject to change based on hardware availability and condition.**   
 
 January 2024 - Stampede3 file system available for data migration - Available now   
 February 2024 - Early user period for Stampede3   
 March 2024 - Stampede3 in full production   
 
 
-## [Migrating Data to Stampede3](#migrating)
+## [Migrating Data](#migrating) { #migrating }
 
 The Stampede3 login nodes are now available for you to begin moving data between systems.  **If you have an active Stampede3 allocation** then you may begin the data migration process from Stampede2 to Stampede3.  During this migration period Stampede2's `/home` and `/scratch` systems will be temporarily mounted on Stampede3 and will be accessible through the `$HOME_S2` and `$SCRATCH_S2` environment variables respectively.  
 
@@ -23,7 +23,7 @@ You do not need to migrate data from `$WORK` (Stockyard) as that file system wil
 !!! important
 	Please migrate **only** the data you wish to keep from Stampede2.  
 
-### Examples
+### [Examples](#migrating-examples) { #migrating-examples }
 
 You can access Stampede3 via `ssh` as you do with other TACC resources.  Use the same password and MFA method as for accessing Stampede2.
 
