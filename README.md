@@ -1,6 +1,4 @@
-# TACC Core CMS
-
-The base CMS code for TACC WMA Workspace Portals & Websites
+# TACC Docs
 
 ## Local Development Setup
 
