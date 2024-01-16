@@ -25,7 +25,7 @@ You do not need to migrate data from `$WORK` (Stockyard) as that file system wil
 
 ### [Examples](#migrating-examples) { #migrating-examples }
 
-You can access Stampede3 via `ssh` as you do with other TACC resources.  Use the same password and MFA method as for accessing Stampede2.
+**If you have an active Stampede3 allocation** you can access Stampede3 via `ssh` as you do with other TACC resources.  Use the same password and MFA method as for accessing Stampede2.
 
 ``` cmd-line
 ssh username@stampede3.tacc.utexas.edu
@@ -64,4 +64,4 @@ The National Science Foundation (NSF) has generously awarded the University of T
 
 ### [Allocations](#intro-allocations) { #intro-allocations }
 
-**New Allocations**: You may now submit new allocation requests for Stampede3 via [ACCESS](https://allocations.access-ci.org/). Additional allocation opportunities may also be available in the future. (11/28/2023)
+**New Allocations**: You may now submit new allocation requests for Stampede3 via [ACCESS](https://allocations.access-ci.org/). Additional allocation opportunities may also be available in the future. 
