@@ -3,8 +3,13 @@ S3_OBJS	=	\
 	system.md 
 #	access.md \
 #	files.md \
-#	admin.md \
 #	building.md \
+#	mkl.md \
+#	running.md \
+#	programming.md \
+#	refs.md
+
+#	admin.md \
 #	launching.md \
 #	running.md \
 #	scripts.md \
