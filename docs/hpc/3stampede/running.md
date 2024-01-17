@@ -1,6 +1,6 @@
 ## [Running Jobs](#running)
 
-<!-- {% include 'include/stampede3-jobaccounting.md' %} -->
+{% include 'include/stampede3-jobaccounting.md' %}
 
 ## [Slurm Job Scheduler](#running-slurm) { #running-slurm }
 
