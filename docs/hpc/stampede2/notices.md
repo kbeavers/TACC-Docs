@@ -9,7 +9,7 @@ See <a href="#history">revision history</a>
 
 Over the coming months, Stampede2 will transition to Stampede3. Please carefully read the following information.
 
-Updated Timeline - Stampede2 to Stampede2 Transition.   
+Updated Timeline - Stampede2 to Stampede3 Transition.   
 *All dates subject to change based on hardware availability and condition*.
 
 January 2024 - Reduction in number of SKX/ICX nodes, reduction in queue maximums   
