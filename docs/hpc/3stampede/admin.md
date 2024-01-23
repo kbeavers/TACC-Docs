@@ -1,14 +1,14 @@
 ## [Account Administration](#admin)
 
-This section explores ways to manage, maintain your Linux account on Stampede3.  Stampede3 nodes run Rocky Linux. Regardless of your research workflow, you'll likely need to master Linux basics along with a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi`/`vim`) to use the system properly. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
+This section explores ways to configure and manage your Linux account on Stampede3.  Stampede3 nodes run Rocky Linux. Regardless of your research workflow, you'll likely need to master Linux command-line basics along with a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi`/`vim`) to use the system properly. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
-### Allocation Status
+### [Allocation Status](#admin-allocation)
 
 If your password is rejected while attempting to log in, it's possible your account or project has not been added to a Stampede3 allocation.  You can list and manage your allocations via the [TACC Portal](https://tacc.utexas.edu/portal/projects).  
 
-### Linux Shell
+### [Linux Shell](#admin-linux)
 
-The default login shell for your user account is Bash. To determine your current login shell, execute:
+The default login shell for your user account is Bash. To determine your current login shell, examine the contents of the `$SHELL` environment variable: 
 
 	$ echo $SHELL
 
@@ -22,7 +22,7 @@ Before editing your startup files, however, it's worth taking the time to unders
 
 For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute `/usr/local/startup_scripts/install_default_scripts`.
 
-### Account-Level Diagnostics
+### [Diagnostics](#admin-diagnostics)
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
@@ -31,7 +31,7 @@ TACC's `sanitytool` module loads an account-level diagnostic package that detect
 
 Execute `module help sanitytool` for more information.
 
-### Environment Variables
+### [Environment Variables](#admin-envvars)
 
 Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the modules that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
 
@@ -43,9 +43,9 @@ Pipe the results of `env` into `grep` to focus on specific environment variables
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. The `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables.  The `LD_LIBRARY_PATH` environment variable is a similar list that determines where the system looks for shared libraries.
 
 
-### Using Modules to Manage your Environment
+### [Using Modules](#admin-modules)
 
-Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to using your research. This is especially important on a system like Stampede3 that serves thousands of users with an enormous range of needs. Loading a module amounts to choosing a specific package from among available alternatives:
+Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to using your research. This is especially important on a system like Stampede3 that serves thousands of users with an enormous range of needs and software. Loading a module amounts to choosing a specific package from among available alternatives:
 
 	$ module load intel          # load the default Intel compiler
 	$ module load intel/24.0.0   # load a specific version of Intel compiler
@@ -67,7 +67,7 @@ The module system does more, however. When you load a given module, the module s
 	1) impi/21.11     2) petsc/3.8
 
 !!! tip
-	See Lmod's documentation for more extensive documentation. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
+	See [Lmod's documentation](https://lmod.readthedocs.io/en/latest/) for extensive information. The online documentation addresses the basics in more detail, but also covers several topics beyond the scope of the help text (e.g. writing and using your own module files).
 
 On Stampede3, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the papi module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
@@ -98,20 +98,31 @@ Among other things, the latter command will tell you which modules you need to l
 
 You can save a collection of modules as a personal default collection that will load every time you log into Stampede3. To do so, load the modules you want in your collection, then execute:
 
-	$ module save    # save the currently loaded collection of modules
+	$ module save            # save the currently loaded collection of modules
 
 Two commands make it easy to return to a known, reproducible state:
 
-	$ module reset   # load the system default collection of modules
-	$ module restore # load your personal default collection of modules
+	$ module reset           # load the system default collection of modules
+	$ module restore         # load your personal default collection of modules
 
-On TACC systems, the command module reset is equivalent to module purge; module load TACC. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
+On TACC systems, the command `module reset` is equivalent to `module purge; `module load` TACC. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 
-	$ module help swr     # show help text for software package swr
-	$ module help         # show help text for the module system itself
+	$ module help swr        # show help text for software package swr
+	$ module help            # show help text for the module system itself
 
 
-It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use module save to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede3's default startup scripts for a safe way to do so.
+It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results.  If you use `module save` to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede3's default startup scripts in `/usr/local/startup_scripts` for a safe way to do so.
+
+### [TACC Tips](#admin-tips)
+
+TACC Staff has amassed a database of helpful tips for our users.  Access these tips via the `tacc_tips` module and `showTip` command as demonstrated below:
+
+	$ module load tacc_tips
+	$ showTip
+
+	Tip 131   (See "module help tacc_tips" for features or how to disable)
+
+   		Use Ctrl+E to go the end of the command line.
 

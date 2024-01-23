@@ -1,8 +1,8 @@
 S3_OBJS	=	\
 	notices.md \
 	system.md \
-	access.md 
-#	admin.md 
+	access.md \
+	admin.md 
 #	files.md \
 #	building.md \
 #	mkl.md \
