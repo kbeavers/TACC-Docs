@@ -69,7 +69,7 @@ The National Science Foundation (NSF) has generously awarded the University of T
 
 ### [Sapphire Rapids Compute Nodes](#system-spr) { #system-spr }
 
-Stampede3 hosts 560 Sapphire Rapids HBM (SPR) nodes with 112 cores each.  Each SPR node provides a performance increase of 2 - 3x over the SKX nodes due to increased core count and greatly increased memory bandwidth.  The available memory bandwidth per core increases by a factor of 3.5x.  Applications that were starved for memory bandwidth should exhibit improved performance close to 3x. 
+Stampede3 hosts 560 "Sapphire Rapids" HBM (SPR) nodes with 112 cores each.  Each SPR node provides a performance increase of 2 - 3x over the SKX nodes due to increased core count and greatly increased memory bandwidth.  The available memory bandwidth per core increases by a factor of 3.5x.  Applications that were starved for memory bandwidth should exhibit improved performance close to 3x. 
 
 #### [Table 1. SPR Specifications](#table1) { #table1 }
 
@@ -88,11 +88,26 @@ Local storage: | 150 GB /tmp partition
 
 Stampede3 hosts 20 nodes with four Intel Data Center GPU Max 1550s "Ponte Vecchio" (PVC) each.  Each PVC GPU has 128 GB of HBM2e and 128 Xe cores providing a peak performance of 4x 52 FP64 TFLOPS per node for scientific workflows and 4x 832 BF16 TFLOPS for ML workflows. 
 
+#### [Table 2. PVC Specifications](#table2) { #table2 }
+
+Specification | Value
+--- | ---
+GPU: | 4x Intel Data Center GPU Max 1550s ("Ponte Vecchio)
+GPU Memory: | 128 GB HBM 2e
+CPU: | Intel Xeon CPU MAX 8480 ("Sapphire Rapids")
+Total cores per node: | 112 cores on two sockets (2x 56 cores)
+Hardware threads per core: | 1
+Hardware threads per node: | 2x56 = 112
+Clock rate: | 2.0 GHz
+Memory: | 512 GB DDR5
+Cache: | 48 KB L1 data cache per core; 1MB L2 per core; 112.5 MB L3 per socket. Each socket can cache up to 168.5 MB (sum of L2 and L3 capacity).
+Local storage: | 150 GB /tmp partition
+
 ### [Skylake Compute Nodes](#system-skx)  { #system-skx }
 
 Stampede3 hosts 1,060 "Skylake" (SKX) compute nodes.
 
-#### [Table 2. SKX Specifications](#table2) { #table2 }
+#### [Table 3. SKX Specifications](#table3) { #table3 }
 
 Specification | Value
 --- | ---
@@ -109,7 +124,7 @@ Local storage: | 90 GB /tmp
 
 Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
 
-#### [Table 3. ICX Specifications](#table3) { #table3 }
+#### [Table 4. ICX Specifications](#table4) { #table4 }
 
 Specification | Value
 --- | ---
@@ -121,21 +136,6 @@ Clock rate: | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set
 RAM: | 256GB (3.2 GHz) DDR4
 Cache: | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
 Local storage: | 200 GB /tmp partition
-
-#### [Table 4. PVC Specifications](#table4) { #table4 }
-
-Specification | Value
---- | ---
-GPU: | 4x Intel Data Center GPU Max 1550s ("Ponte Vecchio)
-GPU Memory: | 128 GB HBM 2e
-CPU: | Intel Xeon CPU MAX 8480 ("Sapphire Rapids")
-Total cores per node: | 112 cores on two sockets (2x 56 cores)
-Hardware threads per core: | 1
-Hardware threads per node: | 2x56 = 112
-Clock rate: | 2.0 GHz
-Memory: | 512 GB DDR5
-Cache: | 48 KB L1 data cache per core; 1MB L2 per core; 112.5 MB L3 per socket. Each socket can cache up to 168.5 MB (sum of L2 and L3 capacity).
-Local storage: | 150 GB /tmp partition
 
 ### [Login Nodes](#system-login) { #system-login }
 
@@ -150,6 +150,9 @@ The SPR and PVC networks will be upgraded to use Cornelis' CN5000 Omni-Path tech
 ### [File Systems](#system-filesystems) { #system-filesystems }
  
 Stampede3 will use a shared VAST filesystem for the `$HOME` and `$SCRATCH` directories.  As with Stampede2, the `$WORK` lustre filesystem will also be mounted. Each file system is available from all Stampede3 nodes; the Stockyard-hosted work file system is available on most other TACC HPC systems as well. <!-- See Navigating the Shared File Systems for detailed information as well as the Good Conduct file system guidelines. -->
+
+!!! warning
+	The Stampede2 file mounts are temporary and will be removed once Stampede3 is in full production.
 
 #### [Table 5. File Systems](#table5) { #table5 }
 
@@ -302,7 +305,7 @@ Two commands make it easy to return to a known, reproducible state:
 	$ module reset           # load the system default collection of modules
 	$ module restore         # load your personal default collection of modules
 
-On TACC systems, the command `module reset` is equivalent to `module purge; `module load` TACC. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
+On TACC systems, the command `module reset` is equivalent to `module purge; module load` TACC. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 

@@ -105,7 +105,7 @@ Two commands make it easy to return to a known, reproducible state:
 	$ module reset           # load the system default collection of modules
 	$ module restore         # load your personal default collection of modules
 
-On TACC systems, the command `module reset` is equivalent to `module purge; `module load` TACC. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
+On TACC systems, the command `module reset` is equivalent to `module purge; module load` TACC. It's a safer, easier way to get to a known baseline state than issuing the two commands separately.
 
 Help text is available for both individual modules and the module system itself:
 
