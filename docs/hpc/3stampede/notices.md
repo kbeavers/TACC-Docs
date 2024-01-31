@@ -1,6 +1,6 @@
 # Stampede3 User Guide 
 
-*Last update: January 23, 2024*
+*Last update: January 31, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -64,4 +64,7 @@ The National Science Foundation (NSF) has generously awarded the University of T
 
 ### [Allocations](#intro-allocations) { #intro-allocations }
 
-**New Allocations**: You may now submit new allocation requests for Stampede3 via [ACCESS](https://allocations.access-ci.org/). Additional allocation opportunities may also be available in the future. 
+Submit all Stampede3 allocations requests through the NSF's [ACCESS](https://allocations.access-ci.org/) project. General information related to allocations, support and operations is available via the ACCESS website <http://access-ci.org>.
+
+Requesting and managing allocations will require creating a username and password on this site. These credentials do not have to be the same as those used to access the TACC User Portal and TACC resources. Principal Investigators (PIs) and their allocation managers will be able to add/remove users to/from their allocations and submit requests to renew, supplement, extend, etc. their allocations. PIs attempting to manage an allocation via the [TACC User Portal](https://tacc.utexas.edu/portal/dashboard) will be redirected to the ACCESS website.
+
