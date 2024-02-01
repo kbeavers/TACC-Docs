@@ -1,13 +1,11 @@
 # Stampede2 User Guide
-Last update: January 17, 2024  
+Last update: January 31, 2024  
 See <a href="#history">revision history</a>
   
 ## [Notices](#notices) { #notices }
 
  
-<span style="color:red; font-weight:bold">**Stampede2 will reach end-of-life and will no longer be available as of February, 2024**. </span> 
-
-Over the coming months, Stampede2 will transition to Stampede3. Please carefully read the following information.
+<span style="color:red; font-weight:bold">**Stampede2 queues are now closed**</span>. The Stampede2 login nodes remain accessible so that you may continue to transfer data to Stampede3.  See the new [Stampede3 User Guide](https://docs.tacc.utexas.edu/hpc/stampede3)'s [Migrating Data](https://docs.tacc.utexas.edu/hpc/stampede3/#migrating) and [Allocations](https://docs.tacc.utexas.edu/hpc/stampede3/#intro-allocations) sections for further information.  (01/31/2024)
 
 Updated Timeline - Stampede2 to Stampede3 Transition.   
 *All dates subject to change based on hardware availability and condition*.
