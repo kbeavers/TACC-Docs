@@ -10,7 +10,7 @@
 **All dates subject to change based on hardware availability and condition.**   
 
 January 2024 - Stampede3 file system available for data migration - Available now   
-February 2024 - Early user period for Stampede3 - Available now
+February 2024 - Early user period for Stampede3 - **Available now**  
 March 2024 - Stampede3 in full production   
 
 

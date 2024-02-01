@@ -1,4 +1,4 @@
-## [Running Jobs](#running)
+## [Running Jobs](#running) { #running }
 
 {% include 'include/stampede3-jobaccounting.md' %}
 
@@ -12,7 +12,7 @@ Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable y
 **Queues and limits are subject to change without notice.** Execute `qlimits` on Stampede3 for real-time information regarding limits on available queues.  <!-- See Monitoring Jobs and Queues for additional information. -->
 
 <!-- till things stabilize 
-#### [Table X. Production Queues](#tablex) { #tablex }
+#### [Table 7. Production Queues](#table7) { #table7 }
 
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  
@@ -50,7 +50,7 @@ Your job will run in the environment it inherits at submission time; this enviro
 The Common `sbatch` Options table below describes some of the most common sbatch command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to sbatch using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases #!/bin/bash or #!/bin/csh is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Stampede3), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede3.
 -->
 <!-- 
-#### [Table X. Common sbatch Options](#tablex)
+#### [Table 8. Common sbatch Options](#table8)
 
 Option | Argument | Comments
 --- | --- | ---
