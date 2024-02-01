@@ -1,5 +1,6 @@
 [HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
 [CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
+[SUBMITTICKET]: https://tacc.utexas.edu/about/help/ "Submit Support Ticket"
 [TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
 [TACCPORTALLOGIN]: https://tacc.utexas.edu/portal/login "TACC Portal login"
 [TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
