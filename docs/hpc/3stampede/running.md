@@ -2,15 +2,16 @@
 
 {% include 'include/stampede3-jobaccounting.md' %}
 
-## [Slurm Job Scheduler](#running-slurm) { #running-slurm }
+<!-- ### [Slurm Job Scheduler](#running-slurm) { #running-slurm } -->
 
-Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.
 
 ### [Slurm Partitions (Queues)](#queues) { #queues }
 
-Currently available queues include those in Stampede3 Production Queues. 
-Queues and limits are subject to change without notice. Execute qlimits on Stampede3 for real-time information regarding limits on available queues. See Monitoring Jobs and Queues for additional information.
+Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  <!-- See the [Job Management]()  section below for further information. -->
 
+**Queues and limits are subject to change without notice.** Execute `qlimits` on Stampede3 for real-time information regarding limits on available queues.  <!-- See Monitoring Jobs and Queues for additional information. -->
+
+<!-- till things stabilize 
 #### [Table X. Production Queues](#tablex) { #tablex }
 
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
@@ -20,10 +21,20 @@ skx-normal   | SKX       | 128 nodes<br>(6,144 cores)           | 48 hrs       |
 skx-large&#42;  | SKX       | 384 nodes<br>(18,432 cores)          | 48 hrs       | 3                 | 1 SU
 icx-normal   | ICX       | 40 nodes<br>(3,200 cores)            | 48 hrs       | 20                | 1.67 SU
 spr-normal   | SPR       | 100 nodes<br>(11,200 cores)          | 48 hrs       | 20                | 3 SU
-pvc          | PVC       | 5 nodes<br>(20 PVCs)                 | 48 hrs       | 20                | 5 SU
+pvc          | PVC       | 5 nodes<br>(20 PVCs)                 | 48 hrs       | 20                | 5 SU 
+-->
 
-**&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.**
+Current queue/partition limits on TACC's stampede3 system as of February 1, 2024:
+	
+	Name             MinNode  MaxNode     MaxWall  MaxNodePU  MaxJobsPU   MaxSubmit
+	icx                    1       16  1-00:00:00         24          4          20
+	skx                    1       32  1-00:00:00         48          4          20
+	skx-dev                1        4    02:00:00          6          1           3
 
+
+<!-- **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
+
+<!-- 
 ### [Submitting Batch Jobs with sbatch]()
 
 Use Slurm's sbatch command to submit a batch job to one of the Stampede3 queues:
@@ -37,7 +48,8 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should run your applications(s) after loading the same modules that you used to build them. You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not** use the Slurm `--export` option to manage your job's environment: doing so can interfere with the way the system propagates the inherited environment.
 
 The Common `sbatch` Options table below describes some of the most common sbatch command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to sbatch using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases #!/bin/bash or #!/bin/csh is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Stampede3), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede3.
-
+-->
+<!-- 
 #### [Table X. Common sbatch Options](#tablex)
 
 Option | Argument | Comments
@@ -59,4 +71,4 @@ Option | Argument | Comments
 `-export=` | N/A | Avoid this option on Stampede3. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
 By default, Slurm writes all console output to a file named "slurm-%j.out", where `%j` is the numerical job ID. To specify a different filename use the `-o` option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both `-o` and `-e` options.
-
+-->

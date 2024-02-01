@@ -1,6 +1,6 @@
 # Stampede3 User Guide 
 
-*Last update: January 31, 2024*
+*Last update: February 1, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -10,13 +10,16 @@
 **All dates subject to change based on hardware availability and condition.**   
 
 January 2024 - Stampede3 file system available for data migration - Available now   
-February 2024 - Early user period for Stampede3   
+February 2024 - Early user period for Stampede3 - Available now
 March 2024 - Stampede3 in full production   
 
 
 ## [Migrating Data](#migrating) { #migrating }
 
 The Stampede3 login nodes are now available for you to begin moving data between systems.  **If you have an active Stampede3 allocation** then you may begin the data migration process from Stampede2 to Stampede3.  During this migration period Stampede2's `/home` and `/scratch` systems will be temporarily mounted on Stampede3 and will be accessible through the `$HOME_S2` and `$SCRATCH_S2` environment variables respectively.  
+
+!!! warning
+	The Stampede2 file mounts are temporary and will be removed once Stampede3 is in full production.
 
 You do not need to migrate data from `$WORK` (Stockyard) as that file system will be automatically mounted on Stampede3.  However, anything in your `$HOME` or `$SCRATCH` directories that you wish to retain will need to be moved.  
 

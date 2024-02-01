@@ -84,9 +84,6 @@ The SPR and PVC networks will be upgraded to use Cornelis' CN5000 Omni-Path tech
  
 Stampede3 will use a shared VAST filesystem for the `$HOME` and `$SCRATCH` directories.  As with Stampede2, the `$WORK` lustre filesystem will also be mounted. Each file system is available from all Stampede3 nodes; the Stockyard-hosted work file system is available on most other TACC HPC systems as well. <!-- See Navigating the Shared File Systems for detailed information as well as the Good Conduct file system guidelines. -->
 
-!!! warning
-	The Stampede2 file mounts are temporary and will be removed once Stampede3 is in full production.
-
 #### [Table 5. File Systems](#table5) { #table5 }
 
 File System | Quota | Key Features
