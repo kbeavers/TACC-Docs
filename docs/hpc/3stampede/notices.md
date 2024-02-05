@@ -1,6 +1,6 @@
 # Stampede3 User Guide 
 
-*Last update: February 1, 2024*
+*Last update: February 5, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -24,7 +24,7 @@ The Stampede3 login nodes are now available for you to begin moving data between
 You do not need to migrate data from `$WORK` (Stockyard) as that file system will be automatically mounted on Stampede3.  However, anything in your `$HOME` or `$SCRATCH` directories that you wish to retain will need to be moved.  
 
 !!! important
-	Please migrate **only** the data you wish to keep from Stampede2.  
+	Migrate **only** the data you wish to keep from Stampede2.  
 
 ### [Examples](#migrating-examples) { #migrating-examples }
 
@@ -63,7 +63,7 @@ stampede3$ cp -r $SCRATCH_S2/dirName $SCRATCH
 
 ## [Introduction](#intro) { #intro }
 
-The National Science Foundation (NSF) has generously awarded the University of Texas at Austin funds for TACC's Stampede3 system ([Award Abstract # 2320757](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2320757)).  
+The National Science Foundation (NSF) has generously awarded the University of Texas at Austin funds for TACC's Stampede3 system ([Award Abstract # 2320757](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2320757)). <!-- put link to citation here? --> 
 
 ### [Allocations](#intro-allocations) { #intro-allocations }
 

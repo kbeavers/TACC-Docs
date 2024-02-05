@@ -4,8 +4,8 @@ S3_OBJS	=	\
 	access.md \
 	admin.md \
 	files.md \
-	running.md 
-#	building.md \
+	running.md \
+	building.md 
 #	mkl.md \
 #	programming.md \
 #	refs.md
