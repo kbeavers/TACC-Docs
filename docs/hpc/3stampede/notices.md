@@ -1,6 +1,6 @@
 # Stampede3 User Guide 
 
-*Last update: February 5, 2024*
+*Last update: February 13, 2024*
 
 ## [Notices](#notices) { #notices }
 

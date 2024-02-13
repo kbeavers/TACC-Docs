@@ -5,16 +5,15 @@ S3_OBJS	=	\
 	admin.md \
 	files.md \
 	running.md \
-	building.md 
+	building.md \
+	scripts.md 
 #	mkl.md \
 #	programming.md \
-#	refs.md
-
 #	launching.md \
-#	scripts.md \
 #	jobmanagement.md \
 #	vis.md \
 #	../../include/stampede3-help.md 
+#	refs.md
 
 all:	stampede3
 
