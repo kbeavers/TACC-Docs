@@ -6,11 +6,13 @@
 
 *This user guide is in progress and will be updated as the system is configured.*
 
+* Stampede3's Globus endpoint is now active. (02/15/2024)
+
 ### Stampede3 Updated Timeline
 **All dates subject to change based on hardware availability and condition.**   
 
-January 2024 - Stampede3 file system available for data migration - Available now   
-February 2024 - Early user period for Stampede3 - **Available now**  
+January 2024 - Stampede3 file system available for data migration - **Available now**  
+February 2024 - Early user period for Stampede3 - **Available now**    
 March 2024 - Stampede3 in full production   
 
 
@@ -56,9 +58,6 @@ or
 ```cmd-line
 stampede3$ cp -r $SCRATCH_S2/dirName $SCRATCH
 ```
-
-!!! note
-	Currently, there is no Globus endpoint on Stampede3.  We will make an announcement as soon as the endpoint becomes available.
 
 
 ## [Introduction](#intro) { #intro }
@@ -556,9 +555,7 @@ CMake based installations have a similar workflow where you specify the install 
 
 ``` cmd-line
 $ mkdir build && cd build
-$ cmake \
-  -D CMAKE_INSTALL_PREFIX=$WORK/apps/whatever \
-  /home/you/src/whatever
+$ cmake -D CMAKE_INSTALL_PREFIX=$WORK/apps/yourpackage /home/you/src/yourpackage
 $ make
 $ make install
 ```
