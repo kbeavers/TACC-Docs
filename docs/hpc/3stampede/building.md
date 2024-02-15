@@ -115,9 +115,7 @@ CMake based installations have a similar workflow where you specify the install 
 
 ``` cmd-line
 $ mkdir build && cd build
-$ cmake \
-  -D CMAKE_INSTALL_PREFIX=$WORK/apps/whatever \
-  /home/you/src/whatever
+$ cmake -D CMAKE_INSTALL_PREFIX=$WORK/apps/yourpackage /home/you/src/yourpackage
 $ make
 $ make install
 ```
