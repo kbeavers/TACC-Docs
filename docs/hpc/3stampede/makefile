@@ -6,11 +6,11 @@ S3_OBJS	=	\
 	files.md \
 	running.md \
 	building.md \
-	scripts.md 
+	scripts.md \
+	jobmanagement.md 
 #	mkl.md \
 #	programming.md \
 #	launching.md \
-#	jobmanagement.md \
 #	vis.md \
 #	../../include/stampede3-help.md 
 #	refs.md

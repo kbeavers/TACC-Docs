@@ -2,7 +2,7 @@
 
 In this section, we present several Slurm commands and other utilities that are available to help you plan and track your job submissions as well as check the status of the Slurm queues.
 
-When interpreting queue and job status, remember that **Stampede3 doesn't operate on a first-come-first-served basis**. Instead, the sophisticated, tunable algorithms built into Slurm attempt to keep the system busy, while scheduling jobs in a way that is as fair as possible to everyone. At times this means leaving nodes idle ("draining the queue") to make room for a large job that would otherwise never run. It also means considering each user's "fair share", scheduling jobs so that those who haven't run jobs recently may have a slightly higher priority than those who have.
+When interpreting queue and job status, remember that **Stampede3 does not operate on a first-come-first-served basis**. Instead, the sophisticated, tunable algorithms built into Slurm attempt to keep the system busy, while scheduling jobs in a way that is as fair as possible to everyone. At times this means leaving nodes idle ("draining the queue") to make room for a large job that would otherwise never run. It also means considering each user's "fair share", scheduling jobs so that those who haven't run jobs recently may have a slightly higher priority than those who have.
 
 ### [Monitoring Queue Status](#jobs-monitoring) { #jobs-monitoring }
 
@@ -33,7 +33,7 @@ The `AVAIL` column displays the overall status of each queue (up or down), while
 
 #### [Slurm's `squeue` command](#sjobs-monitoring-queuestatus) { #sjobs-monitoring-queuestatus }
 
-Slurm's `squeue` command allows you to monitor jobs in the queues, whether pending (waiting) or currently running:
+Slurm's `squeue` command displays the state of all queued and running jobs.  
 
 ```cmd-line
 login1$ squeue             # show all jobs in all queues
@@ -41,29 +41,51 @@ login1$ squeue -u bjones   # show all jobs owned by bjones
 login1$ man squeue         # more info
 ```
 
-An excerpt from the default output might look like this:
+Pending jobs appear in order of decreasing priority. Tack on the `-u` option to display only your jobs:
 
+<figure id="squeuefigure">
 ```cmd-line
-login4.stampede3(57)$ squeue | more
-             JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-             10454         icx l4chcoo2 tg878181 PD       0:00      1 (QOSMaxJobsPerUserLimit)
-              8018         icx l4bident tg878181  R   14:57:56      1 c461-218
-             10945         icx SM78_512 ryanhass  R      27:30     10 c463-[218-227]
-             10940         icx SM78_128 ryanhass  R      28:44      1 c463-214
-              8936         icx  step5.1 tg876859  R   21:53:14     12 c460-207,c461-[206-212,221-224]
-              9795         icx  step1.2 tg876859  R   12:08:59     10 c460-[220-227],c461-[219-220]
-             10956         icx       i2     cgoh  R      14:14      4 c460-[208-211]
-             10997         skx     NAME  lucient CG       1:13      4 c477-[092-094,101]
-             10996         skx     NAME  lucient CG       2:44      4 c479-034,c490-[082-084]
-              9609         skx sample-s tg837706 PD       0:00      1 (QOSMaxJobsPerUserLimit)
-             11002         skx     NAME  lucient PD       0:00      4 (Priority)
-             11004         skx     NAME  lucient PD       0:00      4 (Priority)
-             11000         skx     NAME  lucient PD       0:00      4 (Resources)
-             10673         skx trD4.204 mharnish PD       0:00      4 (Dependency)
-             10457         skx l4dimcha tg878181 PD       0:00      2 (QOSMaxJobsPerUserLimit)
-             10563         skx lcdm_bas samgolds PD       0:00      1 (Dependency)
-             10961         skx    d2_12 tg804586 PD       0:00      1 (QOSMaxJobsPerUserLimit)
+login1$ squeue -u slindsey | more
+JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+10454         icx l4chcoo2 tg123456 PD       0:00      1 (QOSMaxJobsPerUserLimit)
+ 8018         icx l4bident tg123456  R   14:57:56      1 c461-218
+10945         icx SM34_687 slindsey  R      27:30     10 c463-[218-227]
+10940         icx SM34_685 slindsey  R      28:44      1 c463-214
+ 8936         icx  mark5.1   bjones  R   21:53:14     12 c460-207,c461-[206-212,221-224]
+ 9795         icx  mark1.2   bjones  R   12:08:59     10 c460-[220-227],c461-[219-220]
+10956         icx       i2 sniffjck  R      14:14      4 c460-[208-211]
+10997         skx     NAME rtoscano CG       1:13      4 c477-[092-094,101]
+10996         skx     NAME rtoscano CG       2:44      4 c479-034,c490-[082-084]
+ 9609         skx sample-s tg987654 PD       0:00      1 (QOSMaxJobsPerUserLimit)
+11002         skx     NAME  ashleyp PD       0:00      4 (Priority)
+11004         skx     NAME  ashleyp PD       0:00      4 (Priority)
+11000         skx     NAME  ashleyp PD       0:00      4 (Resources)
+10673         skx trD4.204 jemerson PD       0:00      4 (Dependency)
+10457         skx l4dimcha tg123456 PD       0:00      2 (QOSMaxJobsPerUserLimit)
+10563         skx lcdm_bas kellygue PD       0:00      1 (Dependency)
+10961         skx    d2_12 tg111111 PD       0:00      1 (QOSMaxJobsPerUserLimit)
 ```
+</figure><figcaption>Figure 2. Sample <code>squeue</code> output</figcaption></figure>
+
+<!-- The default format for `squeue` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's SDL56 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret. -->
+
+!!!tip
+	The `squeue`'s default format lists all nodes assigned to displayed jobs; this can make the output difficult to read. A handy variation that suppresses the nodelist is:
+
+	```cmd-line
+	login1$ squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"  # suppress nodelist
+	```
+
+!!!tip
+	The `--start` option to the `squeue` displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
+
+	```cmd-line
+	login1$ squeue --start -j 167635     # display estimated start time for job 167635
+	```
+
+#### [Queue Status Meanings](#jobs-monitoring-sqeue-status) { #jobs-monitoring-sqeue-status }
+
+The `squeue` command's output displays two columns of interest.  See [Figure 2](#squeuefigure). above for sample output.
 
 The column labeled `ST` displays each job's status: 
 
@@ -71,21 +93,22 @@ The column labeled `ST` displays each job's status:
 * `R`  means "Running";
 * `CG` means "Completing" (cleaning up after exiting the job script).
 
-Pending jobs appear in order of decreasing priority. The last column includes a nodelist for running/completing jobs, or a reason for pending jobs. If you submit a job before a scheduled system maintenance period, and the job cannot complete before the maintenance begins, your job will run when the maintenance/reservation concludes. The `squeue` command will report `ReqNodeNotAvailable` ("Required Node Not Available"). The job will remain in the `PD` state until Stampede3 returns to production.
+#### [Table 7. Pending Jobs Reason](#table7) { #table7 }
 
-The default format for `squeue` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's SDL56 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret. 
+The last column, labeled `NODELIST/REASON`, includes a nodelist for running/completing jobs, or a reason for pending jobs.  
 
-The default format lists all nodes assigned to displayed jobs; this can make the output difficult to read. A handy variation that suppresses the nodelist is:
+`NODELIST/REASON` | Description
+--- | ---
+`Resources`       | The necessary combination of nodes/GPUs for your job are not available
+`Priority`        | There are other jobs in the queue with a higher priority 
+`Dependency`      | The job will not start until the dependency specified by you is satisfied.
+`ReqNodeNotAvailable` | If you submit a job before a scheduled system maintenance period, and the job cannot complete before the maintenance begins, your job will run when the maintenance/reservation concludes.  The job will remain in the `PD` state until Stampede3 returns to production.
+`QOSMaxJobsPerUserLimit` | The number of your jobs queued exceeds that [queue's limits](#jobs-monitoring-qlimits). These jobs will run once your previous jobs have ended.
 
-```cmd-line
-login1$ squeue -o "%.10i %.12P %.12j %.9u %.2t %.9M %.6D"  # suppress nodelist
-```
 
-The `--start` option displays job start times, including very rough estimates for the expected start times of some pending jobs that are relatively high in the queue:
+<!-- `(QOS<something>)` | This tells you which limit the job is exceeding in the particular QOS. For example, QOSGrpCpuLimit means that the jobs running in that QOS (e.g., long) are using all of the allotted resources as set by the GrpTRES value. In this case, simply wait and your job will run. Run the qos command to see the limits. The number of "procs" or CPU-cores in use per QOS is displayed at the bottom of the output. One sees that "Grp" relates to the QOS and not to your research group. -->
 
-```cmd-line
-login1$ squeue --start -j 167635     # display estimated start time for job 167635
-```
+
 
 #### [TACC's `showq` utility](#jobs-monitoring-showq) { #jobs-monitoring-showq }
 

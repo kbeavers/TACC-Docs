@@ -9,7 +9,7 @@
 
 Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  <!-- See the [Job Management]()  section below for further information. -->
 
-**Queues and limits are subject to change without notice.** Execute `qlimits` on Stampede3 for real-time information regarding limits on available queues.  <!-- See Monitoring Jobs and Queues for additional information. -->
+**Queues and limits are subject to change without notice.**  Execute `qlimits` on Stampede3 for real-time information regarding limits on available queues.  <!-- See Monitoring Jobs and Queues for additional information. -->
 
 <!-- till things stabilize 
 #### [Table 7. Production Queues](#table7) { #table7 }
