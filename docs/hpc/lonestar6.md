@@ -1487,6 +1487,8 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCALLOCATIONS]: https://tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
 [TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
 [TACCDASHBOARD]: https://tacc.utexas.edu/portal/dashboard "TACC Dashboard"
+[TACCPROJECTS]: https://tacc.utexas.edu/portal/projects "Projects & Allocations"
+
 
 [TACCANALYSISPORTAL]: http://tap.tacc.utexas.edu "TACC Analysis Portal"
 
@@ -1499,5 +1501,6 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCBASHQUICKSTART]: https://docs.tacc.utexas.edu/tutorials/bashstartup "Bash Quick Start Guide"
 [TACCACCESSCONTROLLISTS]: https://docs.tacc.utexas.edu/tutorials/acls "Access Control Lists"
 [TACCMFA]: https://docs.tacc.utexas.edu/basics/mfa "Multi-Factor Authentication at TACC""
+[TACCIDEV]: https://docs.tacc.utexas.edu/software/idev "idev at TACC""
 
 
