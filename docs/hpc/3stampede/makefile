@@ -8,11 +8,12 @@ S3_OBJS	=	\
 	launching.md \
 	building.md \
 	scripts.md \
-	jobmanagement.md 
+	jobmanagement.md \
+	ml.md \
+	../../include/stampede3-help.md 
 #	mkl.md \
 #	programming.md \
 #	vis.md \
-#	../../include/stampede3-help.md 
 #	refs.md
 
 all:	stampede3
