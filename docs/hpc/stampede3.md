@@ -1,6 +1,6 @@
 # Stampede3 User Guide 
 
-*Last update: February 22, 2024*
+*Last update: February 28, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -164,7 +164,7 @@ File System | Quota | Key Features
 `$WORK` | 1 TB, 3,000,000 files across all TACC systems<br>Not intended for parallel or high−intensity file operations.<br>See [Stockyard system description](#xxx) for more information. | Not backed up. | Not purged.
 `$SCRATCH` | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are subject to purge if access time* is more than 10 days old. See TACC's [Scratch File System Purge Policy](#scratchpolicy) below.
 
-<!-- {% include 'include/scratchpolicy.md' %} -->
+{% include 'include/scratchpolicy.md' %}
 
 ## [Accessing the System](#access) { #access }
 
