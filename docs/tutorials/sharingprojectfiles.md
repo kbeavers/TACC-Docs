@@ -15,7 +15,7 @@ At TACC, users assigned to the same allocated project typically belong to the sa
 
 ## [Determine Project's GID](#projectgid) { #projectgid }
 
-To determine your project's UNIX group number (GID), log on to you TACC Dashboard and go to [Projects and Allocations][TACCALLOCATIONS].  Click on the "Project Detail" button to view the group number:
+To determine your project's UNIX group number (GID), log on to your TACC Dashboard and go to [Projects and Allocations][TACCALLOCATIONS].  Click on the "Project Detail" button to view the group number:
 
 In [Figure 1.](#figure1) below, example project "UserServStaff" has Unix group ID (GID) "G-803077".  Therefore, when creating a shared file space for your project members, all files to be associated with this project must belong to this group.
 
@@ -162,3 +162,7 @@ Allocation Managers can manage project membership via the [TACC User Portal][TAC
 if your Stockyard directory belongs to a different group than the newly created sharedprojectspace, you may have to change the permissions on your Stockyard directory to allow group access.
 
 -->
+
+
+
+<!-- ## Share an Existing folder -->
