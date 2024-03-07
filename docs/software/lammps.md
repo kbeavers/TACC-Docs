@@ -31,11 +31,11 @@ Frontera     | Stampede3    | Lonestar6
 
 LAMMPS uses spatial-decomposition techniques to partition the simulation domain into small 3d sub-domains, one of which is assigned to each processor. You will need to set suitable values of `-N` (number of nodes), `-n` (total number of MPI tasks), and `OMP_NUM_THREADS` (number of threads to use in parallel regions) to optimize the performance of your simulation.
 
-### [Sample: Stampede3](#scripts-stampede3) { #scripts-stampede3 } 
-
 Below are sample job scripts for Lonestar6, Frontera and Stampede3.  Stampede3's GPU scripts are coming soon.
 
-Refer to Stampede3's [Running Jobs](../hpc/stampede3/#running) section for more Slurm options. 
+### [Sample: Stampede3](#scripts-stampede3) { #scripts-stampede3 } 
+
+Refer to Stampede3's [Running Jobs](../../hpc/stampede3/#running) section for more Slurm options. 
 
 ```job-script
 #!/bin/bash
@@ -58,7 +58,7 @@ ibrun lmp_stampede -in lammps_input
 ```
 ### [Sample: Frontera](#scripts-frontera) { #scripts-frontera }
 
-Refer to Frontera's [Running Jobs](../hpc/frontera/#running) section for more Slurm options. 
+Refer to Frontera's [Running Jobs](../../hpc/frontera/#running) section for more Slurm options. 
 
 ``` job-script
 #!/bin/bash
@@ -82,7 +82,7 @@ ibrun lmp_frontera -in lammps_input
 
 ### [Sample: Lonestar6](#scripts-lonestar6) { #scripts-lonestar6 }
 
-Refer to Lonestar6's [Running Jobs](../hpc/lonestar6/#running) section for more Slurm options. 
+Refer to Lonestar6's [Running Jobs](../../hpc/lonestar6/#running) section for more Slurm options. 
 
 ``` job-script
 #!/bin/bash
@@ -113,11 +113,13 @@ ibrun lmp_lonestar -in lammps_input
 	ibrun lmp_stampede -sf omp -pk omp 2 -in lammps_input
 	```
 
-* LAMMPS with GPU package.  The GPU LAMMPS executable is `lmp_gpu` on both Frontera and Lonestar6. 
+* LAMMPS with GPU package.  
+
+	The GPU LAMMPS executable is `lmp_gpu` on both Frontera and Lonestar6. Set the `-n` directive to a value > 1 to let more than one MPI task share one GPU.
 
 	* Frontera GPU nodes: set `-pk gpu 4` to utilize all four RTX GPUs available on each node. 
 
-	* Lonestar6 A100 or H100 GPU nodes: set `-pk gpu 3` to use all three available GPUs on each node. Set the `-n` directive to a value > 1 to let more than one MPI task share one GPU.
+	* Lonestar6 A100 or H100 GPU nodes: set `-pk gpu 3` to use all three available GPUs on each node. 
 
 	``` job-script
 	#SBATCH -N 1                   # Requesting 1 node
