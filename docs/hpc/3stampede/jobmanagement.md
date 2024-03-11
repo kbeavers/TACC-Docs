@@ -126,7 +126,7 @@ The output groups jobs in four categories: `ACTIVE`, `WAITING`, `BLOCKED`, and `
 
 If your waiting job cannot complete before a maintenance/reservation begins, `showq` will display its state as `**WaitNod**` ("Waiting for Nodes"). The job will remain in this state until Stampede3 returns to production.
 
-The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's SDL112 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
+The default format for `showq` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret.
 
 ### [Dependent Jobs using `sbatch`](#jobs-dependencies) { #jobs-dependencies }
 
