@@ -1,6 +1,6 @@
 # Stampede3 User Guide 
 
-*Last update: February 28, 2024*
+*Last update: March 11, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -118,8 +118,8 @@ Specification | Value
 --- | ---
 Model: | Intel Xeon Platinum 8160 ("Skylake")
 Total cores per SKX node: | 48 cores on two sockets (24 cores/socket)
-Hardware threads per core: | 2
-Hardware threads per node: | 48 x 2 = 96
+Hardware threads per core: | 1
+Hardware threads per node: | 48
 Clock rate: | 2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores)
 RAM: | 192GB (2.67GHz) DDR4
 Cache: | 32 KB L1 data cache per core; 1 MB L2 per core; 33 MB L3 per socket. Each socket can cache up to 57 MB (sum of L2 and L3 capacity).
@@ -135,8 +135,8 @@ Specification | Value
 --- | ---
 Model: | Intel Xeon Platinum 8380 ("Ice Lake")
 Total cores per ICX node: | 80 cores on two sockets (40 cores/socket)
-Hardware threads per core: | 2
-Hardware threads per node: | 80 x 2 = 160
+Hardware threads per core: | 1
+Hardware threads per node: | 80
 Clock rate: | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
 RAM: | 256GB (3.2 GHz) DDR4
 Cache: | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket. Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
