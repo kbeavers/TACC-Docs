@@ -1,20 +1,21 @@
 # Stampede3 User Guide 
 
-*Last update: March 11, 2024*
+*Last update: March 14, 2024*
 
 ## [Notices](#notices) { #notices }
 
 *This user guide is in progress and will be updated as the system is configured.*
 
+
+* Stampede3 Updated Timeline (03/14/2024)
+
+	**All dates subject to change based on hardware availability and condition.**   
+
+	January 2024 - Stampede3 file system available for data migration - **Available now**  
+	February - mid April 2024 - Early user period for Stampede3 - **Available now**    
+	late April 2024 - Stampede3 in full production   
+
 * Stampede3's Globus endpoint is now active. (02/15/2024)
-
-### Stampede3 Updated Timeline
-**All dates subject to change based on hardware availability and condition.**   
-
-January 2024 - Stampede3 file system available for data migration - **Available now**  
-February 2024 - Early user period for Stampede3 - **Available now**    
-March 2024 - Stampede3 in full production   
-
 
 ## [Migrating Data](#migrating) { #migrating }
 
