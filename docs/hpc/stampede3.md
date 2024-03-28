@@ -97,9 +97,9 @@ Stampede3 hosts 20 nodes with four Intel Data Center GPU Max 1550s "Ponte Vecchi
 
 Specification | Value
 --- | ---
-GPU: | 4x Intel Data Center GPU Max 1550s ("Ponte Vecchio)
+GPU: | 4x Intel Data Center GPU Max 1550s ("Ponte Vecchio")
 GPU Memory: | 128 GB HBM 2e
-CPU: | Intel Xeon CPU MAX 8480 ("Sapphire Rapids")
+CPU: | Intel Xeon Platinum 8480+ ("Sapphire Rapids")
 Total cores per node: | 112 cores on two sockets (2x 56 cores)
 Hardware threads per core: | 1
 Hardware threads per node: | 2x56 = 112
