@@ -1,5 +1,5 @@
 # AlphaFold at TACC
-*Last update: Apr 2, 2024*
+*Last update: Apr 3, 2024*
 
 
 <table cellpadding="5" cellspacing="5"><tr>
@@ -128,7 +128,7 @@ Next, prepare a launcher `jobfile` that contains each command that needs to be r
 
 #### Sample Alphafold Launcher Job File
 
-```
+```syntax
 apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/seq1.fasta --output_dir=$SCRATCH/output1 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
 apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/seq2.fasta --output_dir=$SCRATCH/output2 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
 apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/seq3.fasta --output_dir=$SCRATCH/output3 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
