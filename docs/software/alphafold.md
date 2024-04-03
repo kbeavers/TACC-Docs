@@ -11,8 +11,8 @@ AlphaFold is a protein structure prediction tool developed by DeepMind (Google).
 
 System | What's Available
 --     | --
-Frontera | AlphaFold: v2.3.2<br> Data: `/scratch2/projects/bio/alphafold/2.3.2/data`<br> Examples: `/scratch2/projects/bio/alphafold/2.3.2/examples`<br> Module: `/scratch2/projects/bio/alphafold/modulefiles`
-Lonestar6 | AlphaFold: v2.3.2<br> Data: `/scratch/tacc/apps/bio/alphafold/2.3.2/data`<br> Examples: `/scratch/tacc/apps/bio/alphafold/2.3.2/examples`<br> Module: `/scratch/tacc/apps/bio/alphafold/modulefiles`
+Frontera | AlphaFold: v2.3.2<br> Data: `/scratch2/projects/bio/alphafold/2.3.2/data`<br>Examples: `/scratch2/projects/bio/alphafold/2.3.2/examples`<br> Module: `/scratch2/projects/bio/alphafold/modulefiles`
+Lonestar6 | AlphaFold: v2.3.2<br> Data: `/scratch/tacc/apps/bio/alphafold/2.3.2/data`<br>Examples: `/scratch/tacc/apps/bio/alphafold/2.3.2/examples`<br> Module: `/scratch/tacc/apps/bio/alphafold/modulefiles`
 Stampede3 | Coming Soon
 
 
@@ -23,7 +23,7 @@ Stampede3 | Coming Soon
 
 ### [Structure Prediction from Single Sequence](#running-singlesequence) { #running-singlesequence }
 
-To perform 3-D protein structure prediction with AlphaFold, first upload a fasta-formatted protein primary sequence to your `$WORK` or `$SCRATCH` (recommended) space. Sample fasta sequences are provided in the machine-specific 'Examples' paths listed in the table above. A valid fasta sequence might look like:
+To perform 3-D protein structure prediction with AlphaFold, first upload a fasta-formatted protein primary sequence to your `$WORK` or `$SCRATCH` (recommended) space. Sample fasta sequences are provided in the machine-specific '**Examples**' paths listed in the table above. A valid fasta sequence might look like:
 
 ```syntax
 >sample sequence consisting of 350 residues
@@ -35,7 +35,7 @@ MVRCYKHKQQVWGNNHNESKAPCDDQPTYLCPPGEVYKGDHISKREAENMTNAWLGEDTH
 NFMEIMHCTAKMASTHFGSTTIYWAWGGHVRPAATWRVYPMIQEGSHCQC
 ```
 
-Next, prepare a batch job submission script for running AlphaFold. Two different templates for different levels of precision are provided within the 'Examples' paths listed in the table above:
+Next, prepare a batch job submission script for running AlphaFold. Two different templates for different levels of precision are provided within the '**Examples**' paths listed in the table above:
 
 * `reduced_dbs.slurm`: higher speed
 * `full_dbs.slurm`: higher precision (default)
@@ -110,7 +110,7 @@ Nevertheless, we provide example flag files, job scripts, and sequences in the '
 
 !!! warning
 	The multiple sequence alignment step of the AlphaFold workflow is exceedingly I/O intensive.   
-	**Limit your concurrent AlphaFold processes per node to a maximum of three**.
+	**Limit your concurrent AlphaFold processes per node to a maximum of three per node**.
 
 To perform 3-D protein structure prediction with AlphaFold for many protein sequences, we recommend using TACC's [launcher or launcher-gpu](https://docs.tacc.utexas.edu/software/launcher/) utility. First review the instructions for submitting single sequence predictions above, then make the following adjustments:
 
@@ -128,10 +128,10 @@ Next, prepare a launcher `jobfile` that contains each command that needs to be r
 
 #### Sample Alphafold Launcher Job File
 
-```syntax
-apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/**seq1.fasta** --output_dir=$SCRATCH/output1 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
-apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/**seq2.fasta** --output_dir=$SCRATCH/output2 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
-apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/**seq3.fasta** --output_dir=$SCRATCH/output3 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
+```
+apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/seq1.fasta --output_dir=$SCRATCH/output1 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
+apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/seq2.fasta --output_dir=$SCRATCH/output2 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
+apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/seq3.fasta --output_dir=$SCRATCH/output3 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
 ...
 ```
 
@@ -176,7 +176,7 @@ e.g.:
 login1$ sbatch full_dbs_launcher.slurm
 ```
  
-See more examples in the 'launcher' directories at the 'Examples' paths above.
+See more examples in the 'launcher' directories at the '**Examples**' paths above.
 
 ## [References](#refs) { #refs }
 
