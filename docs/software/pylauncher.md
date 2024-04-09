@@ -5,7 +5,7 @@
 
 Pylauncher (**Py**thon + **launcher**) is a python-based parametric job launcher, a utility for distributing and executing many small jobs in parallel, using fewer  resources than would be necessary to execute all jobs simultaneously. On many batch-based cluster computers this is a better strategy than submitting many small individual small jobs.
 
-While TACC's [`launcher`](../launcher) utility works on serial codes, Pylauncher works with multi-threaded and MPI executables.  
+While TACC's deprecated [`launcher`](../launcher) utility works on serial codes, Pylauncher works with multi-threaded and MPI executables.  
 
 Example: you need to run a program with 1000 different input values, and you want to use 100 cores for that; the pylauncher will then cycle through your list of commands using cores as they become available. 
 
