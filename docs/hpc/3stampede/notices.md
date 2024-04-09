@@ -1,10 +1,12 @@
 # Stampede3 User Guide 
 
-*Last update: March 28, 2024*
+*Last update: April 09, 2024*
 
 ## [Notices](#notices) { #notices }
 
 *This user guide is in progress and will be updated as the system is configured.*
+
+* TACC is now charging SUs against your balance for jobs run in the `skx-dev`, `skx`, and `icx` [queues](#queues) on Stampede3. The charge rates will be 1SU per node-hour for the `skx` queues and 1.67SUs per node-hour for the `icx` queue.  (04/08/2024)
 
 * Stampede3 Updated Timeline (03/14/2024)
 
