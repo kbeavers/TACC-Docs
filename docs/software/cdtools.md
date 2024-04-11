@@ -5,11 +5,12 @@ Leveraging each node's `/tmp` directory space can effectively minimize the I/O l
 
 Collect-Distribute (CDTools) has been designed and developed to distribute files or directories to or from each compute node's `/tmp` directory. 
 
-CDTools has two utilities, 
+CDTools has two utilities: 
 
-1. `distribute.bash` can be used to copy/clone the binaries and frequently accessed input files to the local `/tmp` space on each compute node when a job starts, 2. and `collect.bash` can be used to collect output files and log files back to `$WORK` or `$SCRATCH` before a job finishes. 
+1. `distribute.bash` - copy/clone the binaries and frequently accessed input files to the local `/tmp` space on each compute node prior to computation/when a job starts, 
+2. `collect.bash` - collect output files and log files back to `$WORK` or `$SCRATCH` after computation is complete/before a job finishes. 
 
-You can employ CD Tools within a batch script, or interactively within an `idev` session.
+You can employ CD Tools within a job script, or interactively within an `idev` session.
 
 ## [Using CD Tools](#setup) { #setup }
 
@@ -17,7 +18,7 @@ CDTools is currently installed on TACC's Stampede3, Frontera, and Lonestar6 reso
 
 ### [1. Initialize CD Tools Environment Variable](#setup-1) { #setup-1 }
 
-Load the CDtools module in your job script or within an [`idev`](../idev) session to gain access to the CDTools scripts.
+Load the CDtools module in your job script or within an [`idev`](../idev) session: 
 
 ``` cmd-line
 $ module load cdtools
