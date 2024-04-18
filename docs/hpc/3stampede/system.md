@@ -24,16 +24,15 @@ Stampede3 hosts 20 nodes with four Intel Data Center GPU Max 1550s "Ponte Vecchi
 #### [Table 2. PVC Specifications](#table2) { #table2 }
 
 Specification | Value
---- | ---
-GPU: | 4x Intel Data Center GPU Max 1550s ("Ponte Vecchio")
+--- | --: | 4x Intel Data Center GPU Max 1550s ("Ponte Vecchio")
 GPU Memory: | 128 GB HBM 2e
-CPU: | Intel Xeon Platinum 8480+ ("Sapphire Rapids")
-Total cores per node: | 112 cores on two sockets (2x 56 cores)
+CPU: | Intel Xeon Platinum 8480 ("Sapphire Rapids")
+Total cores per node: | 96 cores on two sockets (2 x 48 cores)
 Hardware threads per core: | 1
-Hardware threads per node: | 2x56 = 112
+Hardware threads per node: | 2x48 = 96
 Clock rate: | 2.0 GHz
 Memory: | 512 GB DDR5
-Cache: | 48 KB L1 data cache per core; 1MB L2 per core; 112.5 MB L3 per socket. Each socket can cache up to 168.5 MB (sum of L2 and L3 capacity).
+Cache: | 48 KB L1 data cache per core; 1MB L2 per core; 112.5 MB L3 per socket. Each socket can cache up to 168.t MB (sum of L2 and L3 capacity).
 Local storage: | 150 GB /tmp partition
 
 ### [Skylake Compute Nodes](#system-skx)  { #system-skx }
