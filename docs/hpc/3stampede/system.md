@@ -9,7 +9,7 @@ Stampede3 hosts 560 "Sapphire Rapids" HBM (SPR) nodes with 112 cores each.  Each
 Specification | Value 
 --- | ---
 CPU: | Intel Xeon CPU MAX 9480 ("Sapphire Rapids HBM")
-Total cores per node: | 112 cores on two sockets (2x 56 cores)
+Total cores per node: | 112 cores on two sockets (2 x 56 cores)
 Hardware threads per core: | 1
 Hardware threads per node: | 2x56 = 112
 Clock rate: | 1.9GHz

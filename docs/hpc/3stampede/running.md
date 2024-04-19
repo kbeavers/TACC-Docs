@@ -19,6 +19,9 @@ Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration |
 icx          | ICX       | 16 nodes<br>(3,200 cores)            | 24 hrs       | 4                | 1.67 SU
 skx          | SKX       | 32 nodes<br>(1,536 cores)           | 24 hrs       | 4                | 1 SU
 skx-dev      | SKX       | 4 nodes<br>(192 cores)               | 2 hrs        | 1                 | 1 SU
+spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | --
+
+
 <!-- till things stabilize 
 skx-large&#42;  | SKX       | 384 nodes<br>(18,432 cores)          | 48 hrs       | 3                 | 1 SU
 spr-normal   | SPR       | 100 nodes<br>(11,200 cores)          | 48 hrs       | 20                | 3 SU

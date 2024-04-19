@@ -1,10 +1,12 @@
 # Stampede3 User Guide 
 
-*Last update: April 18, 2024*
+*Last update: April 19, 2024*
 
 ## [Notices](#notices) { #notices }
 
 *This user guide is in progress and will be updated as the system is configured.*
+
+* The new Sapphire Rapids nodes are now available via the [`spr` queue](#queues).  These nodes are still in the early-user stage and jobs in this queue will not be charged to your allocations. (04/19/2024)
 
 * TACC is now charging SUs against your balance for jobs run in the `skx-dev`, `skx`, and `icx` [queues](#queues) on Stampede3. The charge rates will be 1SU per node-hour for the `skx` queues and 1.67SUs per node-hour for the `icx` queue.  (04/08/2024)
 
@@ -83,7 +85,7 @@ Stampede3 hosts 560 "Sapphire Rapids" HBM (SPR) nodes with 112 cores each.  Each
 Specification | Value 
 --- | ---
 CPU: | Intel Xeon CPU MAX 9480 ("Sapphire Rapids HBM")
-Total cores per node: | 112 cores on two sockets (2x 56 cores)
+Total cores per node: | 112 cores on two sockets (2 x 56 cores)
 Hardware threads per core: | 1
 Hardware threads per node: | 2x56 = 112
 Clock rate: | 1.9GHz
@@ -388,6 +390,9 @@ Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration |
 icx          | ICX       | 16 nodes<br>(3,200 cores)            | 24 hrs       | 4                | 1.67 SU
 skx          | SKX       | 32 nodes<br>(1,536 cores)           | 24 hrs       | 4                | 1 SU
 skx-dev      | SKX       | 4 nodes<br>(192 cores)               | 2 hrs        | 1                 | 1 SU
+spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | --
+
+
 <!-- till things stabilize 
 skx-large&#42;  | SKX       | 384 nodes<br>(18,432 cores)          | 48 hrs       | 3                 | 1 SU
 spr-normal   | SPR       | 100 nodes<br>(11,200 cores)          | 48 hrs       | 20                | 3 SU

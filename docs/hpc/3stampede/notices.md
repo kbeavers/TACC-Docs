@@ -1,10 +1,12 @@
 # Stampede3 User Guide 
 
-*Last update: April 18, 2024*
+*Last update: April 19, 2024*
 
 ## [Notices](#notices) { #notices }
 
 *This user guide is in progress and will be updated as the system is configured.*
+
+* The new Sapphire Rapids nodes are now available via the [`spr` queue](#queues).  These nodes are still in the early-user stage and jobs in this queue will not be charged to your allocations. (04/19/2024)
 
 * TACC is now charging SUs against your balance for jobs run in the `skx-dev`, `skx`, and `icx` [queues](#queues) on Stampede3. The charge rates will be 1SU per node-hour for the `skx` queues and 1.67SUs per node-hour for the `icx` queue.  (04/08/2024)
 
