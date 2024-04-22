@@ -387,9 +387,9 @@ Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable y
 
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  
-icx          | ICX       | 16 nodes<br>(3,200 cores)            | 24 hrs       | 4                | 1.67 SU
-skx          | SKX       | 32 nodes<br>(1,536 cores)           | 24 hrs       | 4                | 1 SU
-skx-dev      | SKX       | 4 nodes<br>(192 cores)               | 2 hrs        | 1                 | 1 SU
+icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       | 4                 | 1.67 SU
+skx          | SKX       | 64 nodes<br>(3072 cores)             | 24 hrs       | 4                 | 1 SU
+skx-dev      | SKX       | 16 nodes<br>(798 cores)              | 2 hrs        | 1                 | 1 SU
 spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | --
 
 
@@ -1558,7 +1558,7 @@ The column labeled `ST` displays each job's status:
 * `R`  means "Running";
 * `CG` means "Completing" (cleaning up after exiting the job script).
 
-#### [Table 7. Pending Jobs Reason](#table7) { #table7 }
+#### [Table 9. Pending Jobs Reason](#table9) { #table9 }
 
 The last column, labeled `NODELIST/REASON`, includes a nodelist for running/completing jobs, or a reason for pending jobs.  
 
