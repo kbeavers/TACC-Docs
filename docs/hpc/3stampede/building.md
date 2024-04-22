@@ -10,7 +10,7 @@ This section of the user guide does nothing more than introduce the big ideas wi
 
 Intel is the recommended and default compiler suite on Stampede3. Each Intel module also gives you direct access to mkl without loading an mkl module; see Intel MKL for more information. 
 
-!!! note
+!!! important
 	The latest Intel distribution uses the OneAPI compilers which have different names than the traditional Intel compilers:
 
 	Classic	| OneAPI
@@ -150,7 +150,7 @@ When building software on Stampede3, we recommend using the most recent Intel co
 
 To compile for for all the CPU platforms, include `-xCORE-AVX512` as a build option. The `-x` switch allows you to specify a target architecture.  The `-xCORE-AVX512` is a common subset of Intel's Advanced Vector Extensions 512-bit instruction set that is supported on SPR, ICX, and SKX.  There are some additional 512 bit optimizations implemented for machine learning on Sapphire Rapids.  Besides all other appropriate compiler options, you should also consider specifying an optimization level using the `-O` flag:
 
-	$ icc   -xCORE-AVX512  -O3 mycode.c   -o myexe         # will run only on KNL
+	$ icc   -xCORE-AVX512  -O3 mycode.c  -o myexe         # will run only on KNL
 
 Similarly, to build for SKX or ICX, specify the CORE-AVX512 instruction set, which is native to SKX and ICX:
 
@@ -160,9 +160,12 @@ It's best to avoid building with `-xHost` (a flag that means "optimize for the a
 
 Don't skip the `-x` flag in a build: the default is the very old SSE2 (Pentium 4) instruction set. On Stampede3, the module files for the Intel compilers define the environment variable `$TACC_VEC_FLAGS` that stores the recommended architecture flag described above. This can simplify your builds:
 
-	$ echo $TACC_VEC_FLAGS                         
-	-xCORE-AVX512
-	$ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
+```cmd-line
+$ echo $TACC_VEC_FLAGS                         
+-xCORE-AVX512
+$ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
+```
 
 If you use GNU compilers, see GNU x86 Options for information regarding support for SPR, ICX and SKX. 
+
 
