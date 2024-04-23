@@ -8,9 +8,9 @@ S3_OBJS	=	\
 	launching.md \
 	building.md \
 	mkl.md \
-	programming.md \
 	scripts.md \
 	jobmanagement.md \
+	programming.md \
 	ml.md \
 	../../include/stampede3-help.md 
 #	vis.md \

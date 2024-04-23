@@ -76,16 +76,16 @@ On Stampede3, both the hdf5 and phdf5 modules define the environment variables `
 
 The details of the linking process vary, and order sometimes matters. Much depends on the type of library: static (`.a` suffix; library's binary code becomes part of executable image at link time) versus dynamically-linked shared (`.so` suffix; library's binary code is not part of executable; it's located and loaded into memory at run time).  However, the `$LD_LIBRARY_PATH` environment variable specifies the search path for dynamic libraries. For software installed at the system-level, TACC's modules generally modify `LD_LIBRARY_PATH` automatically. To see whether and how an executable named myexe resolves dependencies on dynamically linked libraries, execute ldd myexe.
 
-<!-- Consult the [Intel Math Kernel Library]() (MKL) section below. -->
+Consult the [Intel Math Kernel Library](#mkl) (MKL) section below. 
 
 <!-- ### [Compiling and Linking MPI Programs](#building-mpi) { #building-mpi } -->
 ### [MPI Programs](#building-mpi) { #building-mpi }
 
-Intel MPI (module impi) and MVAPICH2 (module mvapich2) are the two MPI libraries available on Stampede3. After loading an impi or mvapich2 module, compile and/or link using an MPI wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
+Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Stampede3. After loading an impi or mvapich2 module, compile and/or link using an MPI wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
 ```
 $ mpicc    mycode.c   -o myexe   # C source, full build
-$ mpicc    -c mycode.c           # C source, compile without linking
+$ mpicc -c mycode.c              # C source, compile without linking
 $ mpicxx   mycode.cpp -o myexe   # C++ source, full build
 $ mpif90   mycode.f90 -o myexe   # Fortran source, full build
 ```
@@ -106,10 +106,12 @@ You are welcome to download third-party research software and install it in your
 
 Instead, the key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. Using the [three-step autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) build process, the standard approach is to use the `PREFIX` environment variable to specify a non-default, user-owned installation directory at the time you execute `configure` or `make`:
 
-	$ export INSTALLDIR=$WORK/apps/t3pio
-	$ ./configure --prefix=$INSTALLDIR
-	$ make
-	$ make install
+```cmd-line
+$ export INSTALLDIR=$WORK/apps/t3pio
+$ ./configure --prefix=$INSTALLDIR
+$ make
+$ make install
+```
 
 CMake based installations have a similar workflow where you specify the install location. Unlike with configure, you create a separate build location and tell cmake where to find the source:
 

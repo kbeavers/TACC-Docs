@@ -24,7 +24,7 @@ Click on a tab for a customizable job-script.
 # Sample Slurm job script
 #   for TACC Stampede3 SPR nodes
 #
-#   *** MPI Job on SPR Normal Queue ***
+#   *** MPI Job in SPR Queue ***
 # 
 # Last revised: 14 Dec 2023
 #
@@ -55,7 +55,7 @@ Click on a tab for a customizable job-script.
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p spr-normal      # Queue (partition) name
+#SBATCH -p spr             # Queue (partition) name
 #SBATCH -N 4               # Total # of nodes 
 #SBATCH -n 448             # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -116,7 +116,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p spr-normal      # Queue (partition) name
+#SBATCH -p spr             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -194,7 +194,7 @@ cd $SCRATCH
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 10              # Total # of nodes 
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -267,7 +267,7 @@ Click on a tab for a customizable job-script.
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 4               # Total # of nodes 
 #SBATCH -n 320             # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -331,7 +331,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -410,7 +410,7 @@ cd $SCRATCH
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 10              # Total # of nodes 
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -474,7 +474,7 @@ Click on a tab for a customizable job-script.
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for serial)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -525,7 +525,7 @@ date
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 4               # Total # of nodes 
 #SBATCH -n 32              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -577,7 +577,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -639,7 +639,7 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 10              # Total # of nodes 
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)

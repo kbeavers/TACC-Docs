@@ -7,7 +7,7 @@
 
 ### [Slurm Partitions (Queues)](#queues) { #queues }
 
-Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  <!-- See the [Job Management]()  section below for further information. -->
+Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
 
 !!! important
 	**Queues and limits are subject to change without notice.** <br>Execute `qlimits` on Stampede3 for real-time information regarding limits on available queues.  <!-- See Monitoring Jobs and Queues for additional information. -->
@@ -20,21 +20,6 @@ icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       |
 skx          | SKX       | 64 nodes<br>(3072 cores)             | 24 hrs       | 4                 | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(798 cores)              | 2 hrs        | 1                 | 1 SU
 spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | --
-
-
-<!-- till things stabilize 
-skx-large&#42;  | SKX       | 384 nodes<br>(18,432 cores)          | 48 hrs       | 3                 | 1 SU
-spr-normal   | SPR       | 100 nodes<br>(11,200 cores)          | 48 hrs       | 20                | 3 SU
-pvc          | PVC       | 5 nodes<br>(20 PVCs)                 | 48 hrs       | 20                | 5 SU 
-
-qlimits output
-Current queue/partition limits on TACC's stampede3 system as of April 9, 2024:
-	
-	Name             MinNode  MaxNode     MaxWall  MaxNodePU  MaxJobsPU   MaxSubmit
-	icx                    1       16  1-00:00:00         24          4          20
-	skx                    1       32  1-00:00:00         48          4          20
-	skx-dev                1        4    02:00:00          6          1           3
--->
 
 
 <!-- **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
