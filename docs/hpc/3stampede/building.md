@@ -173,7 +173,7 @@ Don't skip the `-x` flag in a build: the default is the very old SSE2 (Pentium 4
 ```cmd-line
 $ echo $TACC_VEC_FLAGS                         
 -xCORE-AVX512
-$ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
+$ icx $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 ```
 
 If you use GNU compilers, see GNU x86 Options for information regarding support for SPR, ICX and SKX.
