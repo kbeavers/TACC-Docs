@@ -816,9 +816,6 @@ The [Intel oneAPI Math Kernel Library](http://software.intel.com/intel-mkl) (one
 * [Vector Mathematics](http://software.intel.com/en-us/node/521751) (VM) functions that implement highly optimized and vectorized versions of special functions like sine and square root.
 * [ScaLAPACK](http://netlib.org/scalapack) (Scalable LAPACK), [BLACS](http://netlib.org/blacs) (Basic Linear Algebra Communication Subprograms), Cluster FFT, and other functionality that provide block-based distributed memory (multi-node) versions of selected LAPACK, BLAS, and FFT algorithms.
 
-Intel has substantial documentation 
-
-[Intel Math Kernel Library Documentation](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html)
 
 #### [oneMKL with Intel C, C++, and Fortran Compilers](#mkl-intel) { #mkl-intel }
 
@@ -870,7 +867,7 @@ If you are running a single serial, unthreaded application (or an unthreaded MPI
 
 #### [Using ScaLAPACK, Cluster FFT, and Other oneMKL Cluster Capabilities](#mkl-othercapabilities) { #mkl-othercapabilities }
 
-See [Working with the Intel oneAPI Math Kernel Library Cluster Software](https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2023-0/working-with-onemkl-cluster-software.html) and [Intel oneAPI Math Kernel Library Link Line Advisor](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-link-line-advisor.html) for information on linking to the oneMKL Cluster components.
+Intel provides [substantial and detailed documentation](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html).  See [Working with the Intel oneAPI Math Kernel Library Cluster Software](https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2023-0/working-with-onemkl-cluster-software.html) and [Intel oneAPI Math Kernel Library Link Line Advisor](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-link-line-advisor.html) for information on linking to the oneMKL Cluster components.
 
 ## [Programming and Performance](#programming)
 
