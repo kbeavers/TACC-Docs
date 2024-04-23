@@ -377,7 +377,7 @@ If you wish to share files and data with collaborators in your project, see [Sha
 
 ### [Slurm Partitions (Queues)](#queues) { #queues }
 
-Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  <!-- See the [Job Management]()  section below for further information. -->
+Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
 
 !!! important
 	**Queues and limits are subject to change without notice.** <br>Execute `qlimits` on Stampede3 for real-time information regarding limits on available queues.  <!-- See Monitoring Jobs and Queues for additional information. -->
@@ -390,21 +390,6 @@ icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       |
 skx          | SKX       | 64 nodes<br>(3072 cores)             | 24 hrs       | 4                 | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(798 cores)              | 2 hrs        | 1                 | 1 SU
 spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | --
-
-
-<!-- till things stabilize 
-skx-large&#42;  | SKX       | 384 nodes<br>(18,432 cores)          | 48 hrs       | 3                 | 1 SU
-spr-normal   | SPR       | 100 nodes<br>(11,200 cores)          | 48 hrs       | 20                | 3 SU
-pvc          | PVC       | 5 nodes<br>(20 PVCs)                 | 48 hrs       | 20                | 5 SU 
-
-qlimits output
-Current queue/partition limits on TACC's stampede3 system as of April 9, 2024:
-	
-	Name             MinNode  MaxNode     MaxWall  MaxNodePU  MaxJobsPU   MaxSubmit
-	icx                    1       16  1-00:00:00         24          4          20
-	skx                    1       32  1-00:00:00         48          4          20
-	skx-dev                1        4    02:00:00          6          1           3
--->
 
 
 <!-- **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
@@ -705,16 +690,16 @@ On Stampede3, both the hdf5 and phdf5 modules define the environment variables `
 
 The details of the linking process vary, and order sometimes matters. Much depends on the type of library: static (`.a` suffix; library's binary code becomes part of executable image at link time) versus dynamically-linked shared (`.so` suffix; library's binary code is not part of executable; it's located and loaded into memory at run time).  However, the `$LD_LIBRARY_PATH` environment variable specifies the search path for dynamic libraries. For software installed at the system-level, TACC's modules generally modify `LD_LIBRARY_PATH` automatically. To see whether and how an executable named myexe resolves dependencies on dynamically linked libraries, execute ldd myexe.
 
-<!-- Consult the [Intel Math Kernel Library]() (MKL) section below. -->
+Consult the [Intel Math Kernel Library](#mkl) (MKL) section below. 
 
 <!-- ### [Compiling and Linking MPI Programs](#building-mpi) { #building-mpi } -->
 ### [MPI Programs](#building-mpi) { #building-mpi }
 
-Intel MPI (module impi) and MVAPICH2 (module mvapich2) are the two MPI libraries available on Stampede3. After loading an impi or mvapich2 module, compile and/or link using an MPI wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
+Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Stampede3. After loading an impi or mvapich2 module, compile and/or link using an MPI wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
 ```
 $ mpicc    mycode.c   -o myexe   # C source, full build
-$ mpicc    -c mycode.c           # C source, compile without linking
+$ mpicc -c mycode.c              # C source, compile without linking
 $ mpicxx   mycode.cpp -o myexe   # C++ source, full build
 $ mpif90   mycode.f90 -o myexe   # Fortran source, full build
 ```
@@ -735,10 +720,12 @@ You are welcome to download third-party research software and install it in your
 
 Instead, the key is to specify an installation directory for which you have write permissions. Details vary; you should consult the package's documentation and be prepared to experiment. Using the [three-step autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) build process, the standard approach is to use the `PREFIX` environment variable to specify a non-default, user-owned installation directory at the time you execute `configure` or `make`:
 
-	$ export INSTALLDIR=$WORK/apps/t3pio
-	$ ./configure --prefix=$INSTALLDIR
-	$ make
-	$ make install
+```cmd-line
+$ export INSTALLDIR=$WORK/apps/t3pio
+$ ./configure --prefix=$INSTALLDIR
+$ make
+$ make install
+```
 
 CMake based installations have a similar workflow where you specify the install location. Unlike with configure, you create a separate build location and tell cmake where to find the source:
 
@@ -802,7 +789,7 @@ Don't skip the `-x` flag in a build: the default is the very old SSE2 (Pentium 4
 ```cmd-line
 $ echo $TACC_VEC_FLAGS                         
 -xCORE-AVX512
-$ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
+$ icx $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 ```
 
 If you use GNU compilers, see GNU x86 Options for information regarding support for SPR, ICX and SKX.
@@ -869,97 +856,6 @@ If you are running a single serial, unthreaded application (or an unthreaded MPI
 
 Intel provides [substantial and detailed documentation](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html).  See [Working with the Intel oneAPI Math Kernel Library Cluster Software](https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2023-0/working-with-onemkl-cluster-software.html) and [Intel oneAPI Math Kernel Library Link Line Advisor](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-link-line-advisor.html) for information on linking to the oneMKL Cluster components.
 
-## [Programming and Performance](#programming)
-
-Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
-
-### [Timing and Profiling](#programming-timing)
-
-Measure performance and experiment with both compiler and runtime options. This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
-
-Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
-
-```cmd-line
-$ perf stat ./a.out    # report basic performance stats for a.out
-$ time ./a.out         # report the time required to execute a.out
-$ time ibrun ./a.out   # time an MPI code
-$ ibrun time ./a.out   # crude timings for each MPI task (no rank info)
-```
-
-As your needs evolve you can add timing intrinsics to your source code to time specific loops or other sections of code. There are many such intrinsics available; some popular choices include [`gettimeofday`](https://man7.org/linux/man-pages/man2/gettimeofday.2.html), [`MPI_Wtime`](https://www.mpich.org/static/docs/v3.2/www3/MPI_Wtime.html) and [`omp_get_wtime`](https://www.openmp.org/spec-html/5.0/openmpsu160.html). The resolution and overhead associated with each of these timers is on the order of a microsecond.
-
-It can be helpful to compare results with different compiler and runtime options: e.g. with and without vectorization, threading, or Lustre striping. You may also want to learn to use profiling tools like Intel VTune Amplifier (`module load vtune`) or GNU `gprof`.
-
-### [Data Locality](#performance-datalocality)
-
-Appreciate the high cost (performance penalty) of moving data from one node to another, from disk to memory, and even from memory to cache. Write your code to keep data as close to the computation as possible: e.g. in memory when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. 
-
-When possible, best practice also calls for so-called "stride 1 access" - looping through large, contiguous blocks of data, touching items that are adjacent in memory as the loop proceeds. The goal here is to use "nearby" data that is already in cache rather than going back to main memory (a cache miss) in every loop iteration.
-
-To achieve stride 1 access you need to understand how your program stores its data. Here C and C++ are different than (in fact the opposite of) Fortran. C and C++ are row-major: they store 2d arrays a row at a time, so elements `a[3][4]` and `a[3][5]` are adjacent in memory. Fortran, on the other hand, is column-major: it stores a column at a time, so elements `a(4,3)` and `a(5,3)` are adjacent in memory. Loops that achieve stride 1 access in the two languages look like this:
-
-<table border="1">
-<tr><th>Fortran example</th><th>C example</th></tr>
-<tr><td><pre>
-real*8 :: a(m,n), b(m,n), c(m,n)
- ...
-! inner loop strides through col i
-do i=1,n
-  do j=1,m
-    a(j,i)=b(j,i)+c(j,i)
-  end do
-end do
-</pre>
-</td><td><pre>
-double a[m][n], b[m][n], c[m][n];
- ...
-// inner loop strides through row i
-for (i=0;i<m;i++){
-  for (j=0;j<n;j++){
-    a[i][j]=b[i][j]+c[i][j];
-  }
-}</pre></td></tr></table>
-
-### [Vectorization](#programming-vectorization)
-
-Give the compiler a chance to produce efficient, vectorized code. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on Programming Guidelines for Vectorization for a nice summary of the factors that affect the compiler's ability to vectorize loops.
-
-It's often worthwhile to generate optimization and vectorization reports when using the Intel compiler. This will allow you to see exactly what the compiler did and did not do with each loop, together with reasons why.
-
-The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's Modern Code resources; and the Intel Optimization Reference Manual.
-
-### [Programming and Performance: SPR, ICX, and SKX](#programming-nodes)
-
-**Clock Speed**: The published nominal clock speed of the Stampede3 SPR processors is 1.9 GHz, for the SKX processors it is 2.1GHz, and for the ICX processors it is 2.3GHz. But actual clock speed varies widely: it depends on the vector instruction set, number of active cores, and other factors affecting power requirements and temperature limits. At one extreme, a single serial application using the AVX2 instruction set may run at frequencies approaching 3.7GHz, because it's running on a single core (in fact a single hardware thread). At the other extreme, a large, fully-threaded MKL `dgemm` (a highly vectorized routine in which all cores operate at nearly full throttle) may run at 1.9 GHz.
-
-**Vector Optimization and AVX2**: In some cases, using the AVX2 instruction set may produce better performance than AVX512. This is largely because cores can run at higher clock speeds when executing AVX2 code. To compile for AVX2, replace the multi-architecture flags described above with the single flag `-xCORE-AVX2`. When you use this flag you will be able to build and run on any Stampede3 node.
-
-**Vector Optimization and 512-Bit ZMM Registers**. If your code can take advantage of wide 512-bit vector registers, you may want to try compiling for with (for example):
-
-	-xCORE-AVX512 -qopt-zmm-usage=high
-
-The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with AVX51 intrinsics (wide 512-bit registers) or AVX2 code (256-bit registers). When the flag is set to `-qopt-zmm-usage=low` (the default when compiling for SPR, ICX, and SKX using CORE-AVX512), the compiler will choose AVX2 code more often; this may or may not be the optimal approach for your application.  See the recent Intel white paper, the compiler documentation, the compiler man pages, and the notes above for more information.
-
-**Task Affinity**: If you run one MPI application at a time, the ibrun MPI launcher will spread each node's tasks evenly across an SPR, ICX, or SKX node's two sockets, with consecutive tasks occupying the same socket when possible.
-
-**Hardware Thread Numbering**. Execute `lscpu` or `lstopo` on SPR, ICX, or SKX nodes to see the numbering scheme for cores. Note that core numbers alternate between the sockets on SKX and ICX nodes: even numbered cores are on NUMA node 0, while odd numbered cores are on NUMA node 1. 
-
-**Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH2, setting the environment variable `PSM2_KASSIST_MODE` to the value `none` may or may not improve performance. For more information see the MVAPICH2 User Guide. Do not use this environment variable with IMPI; doing so may degrade performance. The ibrun launcher will eventually control this environment variable automatically.
-
-### [File Operations: I/O Performance](#programming-io)
-
-This section includes general advice intended to help you achieve good performance during file operations. See [Managing I/O at TACC][TACCMANAGINGIO] and [TACC Training](https://tacc.utexas.edu/use-tacc/training/) page for additional information on I/O performance. 
-
-**Follow the advice in [TACC Good Conduct Guide](basics/conduct) to avoid stressing the file system**.
-
-**Aggregate file operations**: Open and close files once. Read and write large, contiguous blocks of data at a time; this requires understanding how a given programming language uses memory to store arrays.
-
-**Be smart about your general strategy**: When possible avoid an I/O strategy that requires each process to access its own files; such strategies don't scale well and are likely to stress a parallel file system. A better approach is to use a single process to read and write files. Even better is genuinely parallel MPI-based I/O.
-
-**Use parallel I/O libraries**: Leave the details to a high performance package like MPI-IO (built into MPI itself), parallel HDF5 (`module load phdf5`), and parallel netCDF (`module load pnetcdf`).
-
-When using the Intel Fortran compiler, compile with the `-assume buffered_io` flag. Equivalently, set the environment variable `FORT_BUFFERED=TRUE`. Doing otherwise can dramatically slow down access to variable length unformatted files. More generally, direct access in Fortran is typically faster than sequential access, and accessing a binary file is faster than ASCII.
-
 ## [Job Scripts](#scripts) { #scripts }
 
 This section provides sample Slurm job scripts for each Stampede3 node type: 
@@ -979,16 +875,16 @@ Each section also contains sample scripts for serial, MPI, OpenMP and hybrid (MP
 
 Click on a tab for a customizable job-script.
 
-/// tab | MPI Job in Normal Queue
+/// tab | MPI Job in SPR Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SPR nodes
 #
-#   *** MPI Job on SPR Normal Queue ***
+#   *** MPI Job in SPR Queue ***
 # 
-# Last revised: 14 Dec 2023
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1017,7 +913,7 @@ Click on a tab for a customizable job-script.
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p spr-normal      # Queue (partition) name
+#SBATCH -p spr             # Queue (partition) name
 #SBATCH -N 4               # Total # of nodes 
 #SBATCH -n 448             # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1042,16 +938,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 ```
 ///
 
-/// tab | OpenMP Job in Normal Queue
+/// tab | OpenMP Job in SPR Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SPR nodes
 #
-#   *** OpenMP Job on SPR Normal Queue ***
+#   *** OpenMP Job in SPR Queue ***
 # 
-# Last revised: 14 Dec 2023
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1078,7 +974,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p spr-normal      # Queue (partition) name
+#SBATCH -p spr             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1108,21 +1004,21 @@ cd $SCRATCH
 ```
 ///
 
-/// tab | Hybrid Job in Normal Queue
+/// tab | Hybrid Job in SPR Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
 # for TACC Stampede3 SPR nodes
 #
-#   *** Hybrid Job on SPR Normal Queue ***
+#   *** Hybrid Job in SPR Queue ***
 # 
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
 #         28 OpenMP threads per MPI task (112 threads per node)
 #
-# Last revised: 14 Dec 2023
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1156,7 +1052,7 @@ cd $SCRATCH
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 10              # Total # of nodes 
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1191,16 +1087,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 Click on a tab for a customizable job-script.
 
-/// tab | MPI Job in Normal Queue
+/// tab | MPI Job in ICX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 ICX nodes
 #
-#   *** MPI Job on ICX Normal Queue ***
+#   *** MPI Job in ICX Queue ***
 # 
-# Last revised: 09 Mar 2022
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1229,7 +1125,7 @@ Click on a tab for a customizable job-script.
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 4               # Total # of nodes 
 #SBATCH -n 320             # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1256,7 +1152,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 ```
 /// 
 
-/// tab | OpenMP Job in Normal Queue
+/// tab | OpenMP Job in ICX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -1264,9 +1160,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 # Sample Slurm job script
 #   for TACC Stampede3 ICX nodes
 #
-#   *** OpenMP Job on ICX Normal Queue ***
+#   *** OpenMP Job in ICX Queue ***
 # 
-# Last revised: 09 Mar 2022
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1293,7 +1189,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1324,21 +1220,21 @@ cd $SCRATCH
 ```
 /// 
 
-/// tab | Hybrid Job in Normal Queue
+/// tab | Hybrid Job in ICX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
 # for TACC Stampede3 ICX nodes
 #
-#   *** Hybrid Job on ICX Normal Queue ***
+#   *** Hybrid Job in ICX Queue ***
 # 
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
 #         20 OpenMP threads per MPI task (80 threads per node)
 #
-# Last revised: 09 Mar 2022
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1372,7 +1268,7 @@ cd $SCRATCH
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p icx-normal      # Queue (partition) name
+#SBATCH -p icx             # Queue (partition) name
 #SBATCH -N 10              # Total # of nodes 
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1407,16 +1303,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 Click on a tab for a customizable job-script.
 
-/// tab | Serial Job in Normal Queue
+/// tab | Serial Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SKX nodes
 #
-#   *** Serial Job on SKX Normal Queue ***
+#   *** Serial Job in SKX Queue ***
 # 
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1436,7 +1332,7 @@ Click on a tab for a customizable job-script.
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for serial)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1457,16 +1353,16 @@ date
 # ---------------------------------------------------
 ```
 ///
-/// tab | MPI Job in Normal Queue
+/// tab | MPI Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SKX nodes
 #
-#   *** MPI Job on SKX Normal Queue ***
+#   *** MPI Job in SKX Queue ***
 # 
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1487,7 +1383,7 @@ date
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 4               # Total # of nodes 
 #SBATCH -n 32              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1507,16 +1403,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 ```
 ///
-/// tab | OpenMP Job in Normal Queue
+/// tab | OpenMP Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SKX nodes
 #
-#   *** OpenMP Job on SKX Normal Queue ***
+#   *** OpenMP Job in SKX Queue ***
 # 
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1539,7 +1435,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for OpenMP)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for OpenMP)
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1564,21 +1460,21 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 ```
 ///
 
-/// tab | Hybrid Job in Normal Queue
+/// tab | Hybrid Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
 # for TACC Stampede3 SKX nodes
 #
-#   *** Hybrid Job on SKX Normal Queue ***
+#   *** Hybrid Job in SKX Queue ***
 # 
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
 #         12 OpenMP threads per MPI task (48 threads per node)
 #
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -1601,7 +1497,7 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 #SBATCH -J myjob           # Job name
 #SBATCH -o myjob.o%j       # Name of stdout output file
 #SBATCH -e myjob.e%j       # Name of stderr error file
-#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -p skx             # Queue (partition) name
 #SBATCH -N 10              # Total # of nodes 
 #SBATCH -n 40              # Total # of mpi tasks
 #SBATCH -t 01:30:00        # Run time (hh:mm:ss)
@@ -1799,6 +1695,97 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 ```cmd-line
 login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this date
 ```
+
+## [Programming and Performance](#programming)
+
+Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
+
+### [Timing and Profiling](#programming-timing)
+
+Measure performance and experiment with both compiler and runtime options. This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
+
+Measuring performance can be as simple as prepending the shell keyword `time` or the command `perf stat` to your launch line. Both are simple to use and require no code changes. Typical calls look like this:
+
+```cmd-line
+$ perf stat ./a.out    # report basic performance stats for a.out
+$ time ./a.out         # report the time required to execute a.out
+$ time ibrun ./a.out   # time an MPI code
+$ ibrun time ./a.out   # crude timings for each MPI task (no rank info)
+```
+
+As your needs evolve you can add timing intrinsics to your source code to time specific loops or other sections of code. There are many such intrinsics available; some popular choices include [`gettimeofday`](https://man7.org/linux/man-pages/man2/gettimeofday.2.html), [`MPI_Wtime`](https://www.mpich.org/static/docs/v3.2/www3/MPI_Wtime.html) and [`omp_get_wtime`](https://www.openmp.org/spec-html/5.0/openmpsu160.html). The resolution and overhead associated with each of these timers is on the order of a microsecond.
+
+It can be helpful to compare results with different compiler and runtime options: e.g. with and without vectorization, threading, or Lustre striping. You may also want to learn to use profiling tools like Intel VTune Amplifier (`module load vtune`) or GNU `gprof`.
+
+### [Data Locality](#performance-datalocality)
+
+Appreciate the high cost (performance penalty) of moving data from one node to another, from disk to memory, and even from memory to cache. Write your code to keep data as close to the computation as possible: e.g. in memory when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. 
+
+When possible, best practice also calls for so-called "stride 1 access" - looping through large, contiguous blocks of data, touching items that are adjacent in memory as the loop proceeds. The goal here is to use "nearby" data that is already in cache rather than going back to main memory (a cache miss) in every loop iteration.
+
+To achieve stride 1 access you need to understand how your program stores its data. Here C and C++ are different than (in fact the opposite of) Fortran. C and C++ are row-major: they store 2d arrays a row at a time, so elements `a[3][4]` and `a[3][5]` are adjacent in memory. Fortran, on the other hand, is column-major: it stores a column at a time, so elements `a(4,3)` and `a(5,3)` are adjacent in memory. Loops that achieve stride 1 access in the two languages look like this:
+
+<table border="1">
+<tr><th>Fortran example</th><th>C example</th></tr>
+<tr><td><pre>
+real*8 :: a(m,n), b(m,n), c(m,n)
+ ...
+! inner loop strides through col i
+do i=1,n
+  do j=1,m
+    a(j,i)=b(j,i)+c(j,i)
+  end do
+end do
+</pre>
+</td><td><pre>
+double a[m][n], b[m][n], c[m][n];
+ ...
+// inner loop strides through row i
+for (i=0;i<m;i++){
+  for (j=0;j<n;j++){
+    a[i][j]=b[i][j]+c[i][j];
+  }
+}</pre></td></tr></table>
+
+### [Vectorization](#programming-vectorization)
+
+Give the compiler a chance to produce efficient, vectorized code. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on Programming Guidelines for Vectorization for a nice summary of the factors that affect the compiler's ability to vectorize loops.
+
+It's often worthwhile to generate optimization and vectorization reports when using the Intel compiler. This will allow you to see exactly what the compiler did and did not do with each loop, together with reasons why.
+
+The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's Modern Code resources; and the Intel Optimization Reference Manual.
+
+### [Programming and Performance: SPR, ICX, and SKX](#programming-nodes)
+
+**Clock Speed**: The published nominal clock speed of the Stampede3 SPR processors is 1.9 GHz, for the SKX processors it is 2.1GHz, and for the ICX processors it is 2.3GHz. But actual clock speed varies widely: it depends on the vector instruction set, number of active cores, and other factors affecting power requirements and temperature limits. At one extreme, a single serial application using the AVX2 instruction set may run at frequencies approaching 3.7GHz, because it's running on a single core (in fact a single hardware thread). At the other extreme, a large, fully-threaded MKL `dgemm` (a highly vectorized routine in which all cores operate at nearly full throttle) may run at 1.9 GHz.
+
+**Vector Optimization and AVX2**: In some cases, using the AVX2 instruction set may produce better performance than AVX512. This is largely because cores can run at higher clock speeds when executing AVX2 code. To compile for AVX2, replace the multi-architecture flags described above with the single flag `-xCORE-AVX2`. When you use this flag you will be able to build and run on any Stampede3 node.
+
+**Vector Optimization and 512-Bit ZMM Registers**. If your code can take advantage of wide 512-bit vector registers, you may want to try compiling for with (for example):
+
+	-xCORE-AVX512 -qopt-zmm-usage=high
+
+The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whether to vectorize a given loop with AVX51 intrinsics (wide 512-bit registers) or AVX2 code (256-bit registers). When the flag is set to `-qopt-zmm-usage=low` (the default when compiling for SPR, ICX, and SKX using CORE-AVX512), the compiler will choose AVX2 code more often; this may or may not be the optimal approach for your application.  See the recent Intel white paper, the compiler documentation, the compiler man pages, and the notes above for more information.
+
+**Task Affinity**: If you run one MPI application at a time, the ibrun MPI launcher will spread each node's tasks evenly across an SPR, ICX, or SKX node's two sockets, with consecutive tasks occupying the same socket when possible.
+
+**Hardware Thread Numbering**. Execute `lscpu` or `lstopo` on SPR, ICX, or SKX nodes to see the numbering scheme for cores. Note that core numbers alternate between the sockets on SKX and ICX nodes: even numbered cores are on NUMA node 0, while odd numbered cores are on NUMA node 1. 
+
+**Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH2, setting the environment variable `PSM2_KASSIST_MODE` to the value `none` may or may not improve performance. For more information see the MVAPICH2 User Guide. Do not use this environment variable with IMPI; doing so may degrade performance. The ibrun launcher will eventually control this environment variable automatically.
+
+### [File Operations: I/O Performance](#programming-io)
+
+This section includes general advice intended to help you achieve good performance during file operations. See [Managing I/O at TACC][TACCMANAGINGIO] and [TACC Training](https://tacc.utexas.edu/use-tacc/training/) page for additional information on I/O performance. 
+
+**Follow the advice in [TACC Good Conduct Guide](basics/conduct) to avoid stressing the file system**.
+
+**Aggregate file operations**: Open and close files once. Read and write large, contiguous blocks of data at a time; this requires understanding how a given programming language uses memory to store arrays.
+
+**Be smart about your general strategy**: When possible avoid an I/O strategy that requires each process to access its own files; such strategies don't scale well and are likely to stress a parallel file system. A better approach is to use a single process to read and write files. Even better is genuinely parallel MPI-based I/O.
+
+**Use parallel I/O libraries**: Leave the details to a high performance package like MPI-IO (built into MPI itself), parallel HDF5 (`module load phdf5`), and parallel netCDF (`module load pnetcdf`).
+
+When using the Intel Fortran compiler, compile with the `-assume buffered_io` flag. Equivalently, set the environment variable `FORT_BUFFERED=TRUE`. Doing otherwise can dramatically slow down access to variable length unformatted files. More generally, direct access in Fortran is typically faster than sequential access, and accessing a binary file is faster than ASCII.
 
 ## [Machine Learning](#ml) { #ml }
 

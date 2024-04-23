@@ -17,7 +17,7 @@ Each section also contains sample scripts for serial, MPI, OpenMP and hybrid (MP
 
 Click on a tab for a customizable job-script.
 
-/// tab | MPI Job in Normal Queue
+/// tab | MPI Job in SPR Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -26,7 +26,7 @@ Click on a tab for a customizable job-script.
 #
 #   *** MPI Job in SPR Queue ***
 # 
-# Last revised: 14 Dec 2023
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -80,16 +80,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 ```
 ///
 
-/// tab | OpenMP Job in Normal Queue
+/// tab | OpenMP Job in SPR Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SPR nodes
 #
-#   *** OpenMP Job on SPR Normal Queue ***
+#   *** OpenMP Job in SPR Queue ***
 # 
-# Last revised: 14 Dec 2023
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -146,21 +146,21 @@ cd $SCRATCH
 ```
 ///
 
-/// tab | Hybrid Job in Normal Queue
+/// tab | Hybrid Job in SPR Queue
 ``` job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
 # for TACC Stampede3 SPR nodes
 #
-#   *** Hybrid Job on SPR Normal Queue ***
+#   *** Hybrid Job in SPR Queue ***
 # 
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
 #         28 OpenMP threads per MPI task (112 threads per node)
 #
-# Last revised: 14 Dec 2023
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -229,16 +229,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 Click on a tab for a customizable job-script.
 
-/// tab | MPI Job in Normal Queue
+/// tab | MPI Job in ICX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 ICX nodes
 #
-#   *** MPI Job on ICX Normal Queue ***
+#   *** MPI Job in ICX Queue ***
 # 
-# Last revised: 09 Mar 2022
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -294,7 +294,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 ```
 /// 
 
-/// tab | OpenMP Job in Normal Queue
+/// tab | OpenMP Job in ICX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
@@ -302,9 +302,9 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 # Sample Slurm job script
 #   for TACC Stampede3 ICX nodes
 #
-#   *** OpenMP Job on ICX Normal Queue ***
+#   *** OpenMP Job in ICX Queue ***
 # 
-# Last revised: 09 Mar 2022
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -362,21 +362,21 @@ cd $SCRATCH
 ```
 /// 
 
-/// tab | Hybrid Job in Normal Queue
+/// tab | Hybrid Job in ICX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
 # for TACC Stampede3 ICX nodes
 #
-#   *** Hybrid Job on ICX Normal Queue ***
+#   *** Hybrid Job in ICX Queue ***
 # 
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
 #         20 OpenMP threads per MPI task (80 threads per node)
 #
-# Last revised: 09 Mar 2022
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -445,16 +445,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 Click on a tab for a customizable job-script.
 
-/// tab | Serial Job in Normal Queue
+/// tab | Serial Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SKX nodes
 #
-#   *** Serial Job on SKX Normal Queue ***
+#   *** Serial Job in SKX Queue ***
 # 
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -495,16 +495,16 @@ date
 # ---------------------------------------------------
 ```
 ///
-/// tab | MPI Job in Normal Queue
+/// tab | MPI Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SKX nodes
 #
-#   *** MPI Job on SKX Normal Queue ***
+#   *** MPI Job in SKX Queue ***
 # 
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -545,16 +545,16 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 
 ```
 ///
-/// tab | OpenMP Job in Normal Queue
+/// tab | OpenMP Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Sample Slurm job script
 #   for TACC Stampede3 SKX nodes
 #
-#   *** OpenMP Job on SKX Normal Queue ***
+#   *** OpenMP Job in SKX Queue ***
 # 
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
@@ -602,21 +602,21 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 ```
 ///
 
-/// tab | Hybrid Job in Normal Queue
+/// tab | Hybrid Job in SKX Queue
 ```job-script
 #!/bin/bash
 #----------------------------------------------------
 # Example Slurm job script
 # for TACC Stampede3 SKX nodes
 #
-#   *** Hybrid Job on SKX Normal Queue ***
+#   *** Hybrid Job in SKX Queue ***
 # 
 #       This sample script specifies:
 #         10 nodes (capital N)
 #         40 total MPI tasks (lower case n); this is 4 tasks/node
 #         12 OpenMP threads per MPI task (48 threads per node)
 #
-# Last revised: 20 Oct 2017
+# Last revised: 23 April 2024
 #
 # Notes:
 #
