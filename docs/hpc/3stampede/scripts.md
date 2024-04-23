@@ -2,10 +2,10 @@
 
 This section provides sample Slurm job scripts for each Stampede3 node type: 
 
-* Ponte Vecchio (PVC),
-* Sapphire Rapids (SPR),
-* Ice Lake (ICX),
-* Sky Lake (SKX).
+* Ponte Vecchio (PVC)
+* Sapphire Rapids (SPR)
+* Ice Lake (ICX)
+* Sky Lake (SKX)
 
 Each section also contains sample scripts for serial, MPI, OpenMP and hybrid (MPI + OpenMP) programming models.  Copy and customize each script for your own applications.
 

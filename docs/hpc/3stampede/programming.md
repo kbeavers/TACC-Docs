@@ -77,7 +77,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 ### [File Operations: I/O Performance](#programming-io)
 
-This section includes general advice intended to help you achieve good performance during file operations. <!-- See TACC Training material for additional information on I/O performance. -->
+This section includes general advice intended to help you achieve good performance during file operations. See [Managing I/O at TACC][TACCMANAGINGIO] and [TACC Training](https://tacc.utexas.edu/use-tacc/training/) page for additional information on I/O performance. 
 
 **Follow the advice in [TACC Good Conduct Guide](basics/conduct) to avoid stressing the file system**.
 

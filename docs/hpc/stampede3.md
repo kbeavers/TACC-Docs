@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: April 22, 2024*
+*Last update: April 23, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -777,17 +777,27 @@ When building software on Stampede3, we recommend using the most recent Intel co
 
 #### [Architecture-Specific Flags](#building-performance-archflags) { #building-performance-archflags }
 
-To compile for for all the CPU platforms, include `-xCORE-AVX512` as a build option. The `-x` switch allows you to specify a target architecture.  The `-xCORE-AVX512` is a common subset of Intel's Advanced Vector Extensions 512-bit instruction set that is supported on SPR, ICX, and SKX.  There are some additional 512 bit optimizations implemented for machine learning on Sapphire Rapids.  Besides all other appropriate compiler options, you should also consider specifying an optimization level using the `-O` flag:
+To compile for all the CPU platforms, include `-xCORE-AVX512` as a build option. The `-x` switch allows you to specify a target architecture. The `-xCORE-AVX512` is a common subset of [Intel's Advanced Vector Extensions 512-bit instruction set](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) that is supported on the Sapphire Rapids (SPR), Ice Lake (ICX)  and Sky Lake (SKX) nodes.  You should also consider specifying an optimization level using the `-O` flag:
 
-	$ icc   -xCORE-AVX512  -O3 mycode.c  -o myexe         # will run only on KNL
+```cmd-line
+$ icx   -xCORE-AVX512 -O3 mycode.c   -o myexe         # will run on all nodes
+$ ifx   -xCORE-AVX512 -O3 mycode.f90 -o myexe         # will run on all nodes
+$ icpx  -xCORE-AVX512 -O3 mycode.cpp -o myexe         # will run on all nodes
+```
 
-Similarly, to build for SKX or ICX, specify the CORE-AVX512 instruction set, which is native to SKX and ICX:
+There are some additional 512 bit optimizations implemented for machine learning on Sapphire Rapids. To compile explicitly for Sapphire Rapids, use the following flags.  Besides all other appropriate compiler options, you should also consider specifying an optimization level using the `-O` flag:
 
-	$ ifort -xCORE-AVX512 -O3 mycode.f90 -o myexe         # will run on SKX or ICX
+```cmd-line
+$ icx   -xSAPPHIRERAPIDS -O3 mycode.c   -o myexe         # will run only on SPR nodes
+$ ifx   -xSAPPHIRERAPIDS -O3 mycode.f90 -o myexe         # will run only on SPR nodes
+$ icpx  -xSAPPHIRERAPIDS -O3 mycode.cpp -o myexe         # will run only on SPR nodes
+```
 
-It's best to avoid building with `-xHost` (a flag that means "optimize for the architecture on which I'm compiling now"). The login nodes are SPR nodes.  Using `-xHost` might include AVX512 instructions that are only supported on SPR nodes. 
+Similarly, to build explicitly for SKX or ICX, you can specify the architecture using `-xSKYLAKE-AVX512` or `-xICELAKE-SERVER`.
 
-Don't skip the `-x` flag in a build: the default is the very old SSE2 (Pentium 4) instruction set. On Stampede3, the module files for the Intel compilers define the environment variable `$TACC_VEC_FLAGS` that stores the recommended architecture flag described above. This can simplify your builds:
+It's best to avoid building with `-xHost` (a flag that means "optimize for the architecture on which I'm compiling now"). The login nodes are SPR nodes. Using `-xHost` might include instructions that are only supported on SPR nodes.
+
+Don't skip the `-x` flag in a build: the default is the very old SSE2 (Pentium 4) instruction set. On Stampede3, the module files for the Intel compilers define the environment variable $TACC_VEC_FLAGS that stores the recommended architecture flag described above. This can simplify your builds:
 
 ```cmd-line
 $ echo $TACC_VEC_FLAGS                         
@@ -795,9 +805,7 @@ $ echo $TACC_VEC_FLAGS
 $ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 ```
 
-If you use GNU compilers, see GNU x86 Options for information regarding support for SPR, ICX and SKX. 
-
-
+If you use GNU compilers, see GNU x86 Options for information regarding support for SPR, ICX and SKX.
 ### [Intel oneAPI Math Kernel Library (oneMKL)](#mkl) { #mkl }
 
 The [Intel oneAPI Math Kernel Library](http://software.intel.com/intel-mkl) (oneMKL) is a collection of highly optimized functions implementing some of the most important mathematical kernels used in computational science, including standardized interfaces to:
@@ -806,11 +814,15 @@ The [Intel oneAPI Math Kernel Library](http://software.intel.com/intel-mkl) (one
 * [LAPACK](http://netlib.org/lapack) (Linear Algebra PACKage), which includes higher-level linear algebra algorithms like Gaussian Elimination
 * FFT (Fast Fourier Transform), including interfaces based on [FFTW](http://fftw.org) (Fastest Fourier Transform in the West)
 * [Vector Mathematics](http://software.intel.com/en-us/node/521751) (VM) functions that implement highly optimized and vectorized versions of special functions like sine and square root.
-<!-- SDL intel links don't work * [ScaLAPACK](http://netlib.org/scalapack) (Scalable LAPACK), [BLACS](http://netlib.org/blacs) (Basic Linear Algebra Communication Subprograms), Cluster FFT, and other functionality that provide block-based distributed memory (multi-node) versions of selected [LAPACK](https://software.intel.com/en-us/mkl-developer-reference-c-lapack-routines), [BLAS](https://software.intel.com/en-us/mkl-developer-reference-c-blas-and-sparse-blas-routines), and [FFT](https://software.intel.com/en-us/mkl-developer-reference-c-fft-functions) algorithms; -->
+* [ScaLAPACK](http://netlib.org/scalapack) (Scalable LAPACK), [BLACS](http://netlib.org/blacs) (Basic Linear Algebra Communication Subprograms), Cluster FFT, and other functionality that provide block-based distributed memory (multi-node) versions of selected LAPACK, BLAS, and FFT algorithms.
 
-#### [MKL with Intel C, C++, and Fortran Compilers](#mkl-intel) { #mkl-intel }
+Intel has substantial documentation 
 
-There is no oneMKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for oneMKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using oneMKL with the Intel modules requires nothing more than compiling and linking with the `-mkl` option.; e.g.
+[Intel Math Kernel Library Documentation](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html)
+
+#### [oneMKL with Intel C, C++, and Fortran Compilers](#mkl-intel) { #mkl-intel }
+
+There is no oneMKL module for the Intel compilers because you don't need one: the Intel compilers have built-in support for oneMKL. Unless you have specialized needs, there is no need to specify include paths and libraries explicitly. Instead, using oneMKL with the Intel modules requires nothing more than compiling and linking with the `-qmkl` option.; e.g.
 
 ```cmd-line
 $ icx -qmkl mycode.c
@@ -822,7 +834,7 @@ The `-qmkl` switch is an abbreviated form of `-qmkl=parallel`, which links your 
 !!! tip
 	For additional information, including advanced linking options, see the oneMKL documentation and oneIntel oneMKL Link Line Advisor.
 
-#### [MKL with GNU C, C++, and Fortran Compilers](#mkl-gnu) { #mkl-gnu }
+#### [oneMKL with GNU C, C++, and Fortran Compilers](#mkl-gnu) { #mkl-gnu }
 
 When using a GNU compiler, load the oneMKL module before compiling or running your code, then specify explicitly the oneMKL libraries, library paths, and include paths your application needs. Consult the Intel oneMKL Link Line Advisor for details. A typical compile/link process on a TACC system will look like this:
 
@@ -854,7 +866,7 @@ TACC's MATLAB, Python, and R modules all use threaded (parallel) oneMKL as their
 
 Any code that calls oneMKL functions can potentially benefit from oneMKL's thread-based parallelism; this is true even if your code is not otherwise a parallel application. If you are linking to the threaded oneMKL (using `-qmkl`, `-qmkl=parallel`, or the equivalent explicit link line), you need only specify an appropriate value for the max number of threads available to oneMKL. You can do this with either of the two environment variables `$MKL_NUM_THREADS` or `$OMP_NUM_THREADS`. The environment variable `$MKL_NUM_THREADS` specifies the max number of threads available to each instance of oneMKL, and has no effect on non-MKL code. If `$MKL_NUM_THREADS` is undefined, oneMKL uses `$OMP_NUM_THREADS` to determine the max number of threads available to oneMKL functions. In either case, oneMKL will attempt to choose an optimal thread count less than or equal to the specified value. Note that `$OMP_NUM_THREADS` defaults to 1 on TACC systems; if you use the default value you will get no thread-based parallelism from oneMKL.
 
-If you are running a single serial, unthreaded application (or an unthreaded MPI code involving a single MPI task per node) it is usually best to give oneMKL as much flexibility as possible by setting the max thread count to the total number of hardware threads on the node (96 on SKX, 160 on ICX, 112 on SPR). Of course things are more complicated if you are running more than one process on a node: e.g. multiple serial processes, threaded applications, hybrid MPI-threaded applications, or pure MPI codes running more than one MPI rank per node. <!-- See <http://software.intel.com/en-us/articles/recommended-settings-for-calling-intel-mkl-routines-from-multi-threaded-applications> and related Intel resources for examples of how to manage threading when calling oneMKL from multiple processes. -->
+If you are running a single serial, unthreaded application (or an unthreaded MPI code involving a single MPI task per node) it is usually best to give oneMKL as much flexibility as possible by setting the max thread count to the total number of hardware threads on the node (96 on SKX, 160 on ICX, 112 on SPR). Of course things are more complicated if you are running more than one process on a node: e.g. multiple serial processes, threaded applications, hybrid MPI-threaded applications, or pure MPI codes running more than one MPI rank per node. See Intel's [Calling oneMKL Functions from Multi-threaded Applications](https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2024-1/call-onemkl-functions-from-multi-threaded-apps.html) documentation. 
 
 #### [Using ScaLAPACK, Cluster FFT, and Other oneMKL Cluster Capabilities](#mkl-othercapabilities) { #mkl-othercapabilities }
 
@@ -939,7 +951,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 ### [File Operations: I/O Performance](#programming-io)
 
-This section includes general advice intended to help you achieve good performance during file operations. <!-- See TACC Training material for additional information on I/O performance. -->
+This section includes general advice intended to help you achieve good performance during file operations. See [Managing I/O at TACC][TACCMANAGINGIO] and [TACC Training](https://tacc.utexas.edu/use-tacc/training/) page for additional information on I/O performance. 
 
 **Follow the advice in [TACC Good Conduct Guide](basics/conduct) to avoid stressing the file system**.
 
@@ -955,10 +967,10 @@ When using the Intel Fortran compiler, compile with the `-assume buffered_io` fl
 
 This section provides sample Slurm job scripts for each Stampede3 node type: 
 
-* Ponte Vecchio (PVC),
-* Sapphire Rapids (SPR),
-* Ice Lake (ICX),
-* Sky Lake (SKX).
+* Ponte Vecchio (PVC)
+* Sapphire Rapids (SPR)
+* Ice Lake (ICX)
+* Sky Lake (SKX)
 
 Each section also contains sample scripts for serial, MPI, OpenMP and hybrid (MPI + OpenMP) programming models.  Copy and customize each script for your own applications.
 

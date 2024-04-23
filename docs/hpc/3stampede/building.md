@@ -148,17 +148,27 @@ When building software on Stampede3, we recommend using the most recent Intel co
 
 #### [Architecture-Specific Flags](#building-performance-archflags) { #building-performance-archflags }
 
-To compile for for all the CPU platforms, include `-xCORE-AVX512` as a build option. The `-x` switch allows you to specify a target architecture.  The `-xCORE-AVX512` is a common subset of Intel's Advanced Vector Extensions 512-bit instruction set that is supported on SPR, ICX, and SKX.  There are some additional 512 bit optimizations implemented for machine learning on Sapphire Rapids.  Besides all other appropriate compiler options, you should also consider specifying an optimization level using the `-O` flag:
+To compile for all the CPU platforms, include `-xCORE-AVX512` as a build option. The `-x` switch allows you to specify a target architecture. The `-xCORE-AVX512` is a common subset of [Intel's Advanced Vector Extensions 512-bit instruction set](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) that is supported on the Sapphire Rapids (SPR), Ice Lake (ICX)  and Sky Lake (SKX) nodes.  You should also consider specifying an optimization level using the `-O` flag:
 
-	$ icc   -xCORE-AVX512  -O3 mycode.c  -o myexe         # will run only on KNL
+```cmd-line
+$ icx   -xCORE-AVX512 -O3 mycode.c   -o myexe         # will run on all nodes
+$ ifx   -xCORE-AVX512 -O3 mycode.f90 -o myexe         # will run on all nodes
+$ icpx  -xCORE-AVX512 -O3 mycode.cpp -o myexe         # will run on all nodes
+```
 
-Similarly, to build for SKX or ICX, specify the CORE-AVX512 instruction set, which is native to SKX and ICX:
+There are some additional 512 bit optimizations implemented for machine learning on Sapphire Rapids. To compile explicitly for Sapphire Rapids, use the following flags.  Besides all other appropriate compiler options, you should also consider specifying an optimization level using the `-O` flag:
 
-	$ ifort -xCORE-AVX512 -O3 mycode.f90 -o myexe         # will run on SKX or ICX
+```cmd-line
+$ icx   -xSAPPHIRERAPIDS -O3 mycode.c   -o myexe         # will run only on SPR nodes
+$ ifx   -xSAPPHIRERAPIDS -O3 mycode.f90 -o myexe         # will run only on SPR nodes
+$ icpx  -xSAPPHIRERAPIDS -O3 mycode.cpp -o myexe         # will run only on SPR nodes
+```
 
-It's best to avoid building with `-xHost` (a flag that means "optimize for the architecture on which I'm compiling now"). The login nodes are SPR nodes.  Using `-xHost` might include AVX512 instructions that are only supported on SPR nodes. 
+Similarly, to build explicitly for SKX or ICX, you can specify the architecture using `-xSKYLAKE-AVX512` or `-xICELAKE-SERVER`.
 
-Don't skip the `-x` flag in a build: the default is the very old SSE2 (Pentium 4) instruction set. On Stampede3, the module files for the Intel compilers define the environment variable `$TACC_VEC_FLAGS` that stores the recommended architecture flag described above. This can simplify your builds:
+It's best to avoid building with `-xHost` (a flag that means "optimize for the architecture on which I'm compiling now"). The login nodes are SPR nodes. Using `-xHost` might include instructions that are only supported on SPR nodes.
+
+Don't skip the `-x` flag in a build: the default is the very old SSE2 (Pentium 4) instruction set. On Stampede3, the module files for the Intel compilers define the environment variable $TACC_VEC_FLAGS that stores the recommended architecture flag described above. This can simplify your builds:
 
 ```cmd-line
 $ echo $TACC_VEC_FLAGS                         
@@ -166,6 +176,4 @@ $ echo $TACC_VEC_FLAGS
 $ icc $TACC_VEC_FLAGS -O3 mycode.c -o myexe
 ```
 
-If you use GNU compilers, see GNU x86 Options for information regarding support for SPR, ICX and SKX. 
-
-
+If you use GNU compilers, see GNU x86 Options for information regarding support for SPR, ICX and SKX.
