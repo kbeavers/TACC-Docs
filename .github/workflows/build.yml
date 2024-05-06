@@ -2,6 +2,13 @@ name: TACC Docs Build
 
 on:
   workflow_dispatch:
+    inputs:
+      runs-on:
+        type: choice
+        default: 'ubuntu-latest'
+        options:
+        - ubuntu-latest
+        - macos-latest
   push:
     branches:
       - main
