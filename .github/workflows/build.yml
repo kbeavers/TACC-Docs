@@ -4,11 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       chosen-os:
-        required: true
+        required: false
+        default: 'Ubuntu'
         type: choice
         options:
         - Ubuntu
         - macOS
+  push:
+    branches:
+      - main
 
 jobs:
   test:
