@@ -5,18 +5,18 @@ on:
     inputs:
       chosen-os:
         required: false
-        default: 'Ubuntu'
+        default: 'ubuntu-latest' # default for manual action
         type: choice
         options:
-        - Ubuntu
-        - macOS
+        - ubuntu-latest
+        - macos-latest
   push:
     branches:
       - main
 
 jobs:
-  test:
-    runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
+  docker:
+    runs-on: [self-hosted, "${{ github.event_name == 'push' && 'ubuntu-latest' || inputs.chosen-os }}"]
     steps:
       -
         name: Set up Docker Buildx
