@@ -5,7 +5,7 @@ on:
     inputs:
       chosen-os:
         required: false
-        default: 'ubuntu-latest' # default for manual action
+        default: 'ubuntu-latest' # default for manual run
         type: choice
         options:
         - ubuntu-latest
@@ -16,7 +16,8 @@ on:
 
 jobs:
   docker:
-    runs-on: [self-hosted, "${{ github.event_name == 'push' && 'ubuntu-latest' || inputs.chosen-os }}"]
+    # default for push event
+    runs-on: ${{ github.event_name == 'push' && 'ubuntu-latest' || inputs.chosen-os }}
     steps:
       -
         name: Set up Docker Buildx
