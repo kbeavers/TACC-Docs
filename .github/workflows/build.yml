@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       runner:
-        type: choice
+        type: string
         default: 'ubuntu-latest'
-        options:
-        - ubuntu-latest
-        - macos-latest
+        # options:
+        # - ubuntu-latest
+        # - macos-latest
   push:
     branches:
       - main
