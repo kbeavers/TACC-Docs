@@ -3,7 +3,7 @@ name: TACC Docs Build
 on:
   workflow_dispatch:
     inputs:
-      runs-on:
+      runs_on:
         type: choice
         default: 'ubuntu-latest'
         options:
@@ -15,7 +15,7 @@ on:
 
 jobs:
   docker:
-    runs-on: ${{ inputs.runs-on }}
+    runs-on: ${{ inputs.runs_on }}
     steps:
       -
         name: Set up Docker Buildx
