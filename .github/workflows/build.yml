@@ -15,7 +15,7 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: ${{fromJSON(inputs.runs-on)}}
     steps:
       -
         name: Set up Docker Buildx
