@@ -3,19 +3,19 @@ name: TACC Docs Build
 on:
   workflow_dispatch:
     inputs:
-      runs_on:
-        type: string
+      chosen-os:
+        type: choice
         default: 'ubuntu-latest'
-        # options:
-        # - ubuntu-latest
-        # - macos-latest
+        options:
+        - ubuntu-latest
+        - macos-latest
   push:
     branches:
       - main
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: ["${{ inputs.chosen-os }}"]
     steps:
       -
         name: Set up Docker Buildx
