@@ -3,7 +3,7 @@ name: TACC Docs Build
 on:
   workflow_dispatch:
     inputs:
-      runs_on:
+      runner:
         type: choice
         default: 'ubuntu-latest'
         options:
@@ -14,8 +14,17 @@ on:
       - main
 
 jobs:
+  provision:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Provision
+        run: |
+          echo "Job will run on ${{ github.event.inputs.runner }}"
+    outputs:
+      runner: ${{ github.event.inputs.runner }}
   docker:
-    runs-on: ${{ inputs.runs_on }}
+    needs: provision
+    runs-on: ${{ needs.provision.outputs.runner }}
     steps:
       -
         name: Set up Docker Buildx
