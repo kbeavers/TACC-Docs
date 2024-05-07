@@ -1,13 +1,13 @@
 # Stampede3 User Guide 
-*Last update: May 6, 2024*
+*Last update: May 7, 2024*
 
 ## [Notices](#notices) { #notices }
 
 *This user guide is in progress and will be updated as the system is configured.*
 
-* Attention VASP Users: DO NOT run VASP using Stampede3's SPR nodes!  TACC staff has noticed many VASP jobs causing issues on the SPR nodes and impacting overall system stability and performance.  Please run your VASP jobs using either the [SKX](../../hpc/stampede3#table3) or [ICX](../../hpc/stampede3#table4) nodes.  See [Running VASP Jobs](../../software/vasp/#running) for more information.
+* The new Sapphire Rapids nodes are now available via the [`spr` queue](#queues).  Jobs in this queue will be charged at a rate of 3 SUs per node-hour. (05/07/2024)
 
-* The new Sapphire Rapids nodes are now available via the [`spr` queue](#queues).  These nodes are still in the early-user stage and jobs in this queue will not be charged to your allocations. (04/19/2024)
+* Attention VASP Users: DO NOT run VASP using Stampede3's SPR nodes!  TACC staff has noticed many VASP jobs causing issues on the SPR nodes and impacting overall system stability and performance.  Please run your VASP jobs using either the [SKX](../../hpc/stampede3#table3) or [ICX](../../hpc/stampede3#table4) nodes.  See [Running VASP Jobs](../../software/vasp/#running) for more information.  (05/06/2024)
 
 * TACC is now charging SUs against your balance for jobs run in the `skx-dev`, `skx`, and `icx` [queues](#queues) on Stampede3. The charge rates will be 1SU per node-hour for the `skx` queues and 1.67SUs per node-hour for the `icx` queue.  (04/08/2024)
 
@@ -388,10 +388,10 @@ Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable y
 
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  
-icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       | 4                 | 1.67 SU
+icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       | 4                 | 1.67 SUs
 skx          | SKX       | 64 nodes<br>(3072 cores)             | 24 hrs       | 4                 | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(798 cores)              | 2 hrs        | 1                 | 1 SU
-spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | --
+spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | 3 SUs
 
 
 <!-- **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
