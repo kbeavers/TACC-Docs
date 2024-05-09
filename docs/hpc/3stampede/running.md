@@ -42,7 +42,7 @@ Your job will run in the environment it inherits at submission time; this enviro
 
 The Common `sbatch` Options table below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Stampede3), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede3.
 
-#### [Table 8. Common `sbatch` Options](#table8)
+#### [Table 8. Common `sbatch` Options](#table8) { #table8 }
 
 Option | Argument | Comments
 --- | --- | ---
