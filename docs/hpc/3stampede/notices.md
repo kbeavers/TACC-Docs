@@ -9,8 +9,8 @@
 
 ## [Migrating Data](#migrating) { #migrating }
 
-!!! warning
-	Stampede3 is now in full productiion.  The Stampede2 file mounts will be removed at the end of May, 2024.
+!!! important
+	Stampede3 is now in full production.  The Stampede2 file mounts will be removed at the end of May, 2024.
 
 The Stampede3 login nodes are now available for you to begin moving data between systems.  **If you have an active Stampede3 allocation** then you may begin the data migration process from Stampede2 to Stampede3.  During this migration period Stampede2's `/home` and `/scratch` systems will be temporarily mounted on Stampede3 and will be accessible through the `$HOME_S2` and `$SCRATCH_S2` environment variables respectively.  
 
