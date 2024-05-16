@@ -1828,7 +1828,7 @@ Unlike TACC's other HPC resources, Jupyter is not installed with the Python modu
 	pip install --user notebook==6.0.3
 	```
 
-This setup enables the [TACC Analysis Portal](tap.tacc.utexas.edu) to find the non-standard-location Jupyter-lab or Jupyter-notebook commands. 
+This setup enables the [TACC Analysis Portal](http://tap.tacc.utexas.edu) to find the non-standard-location Jupyter-lab or Jupyter-notebook commands. 
 
 If you prefer the old Jupyter notebook style then move the Jupyter lab executable to something else. Note that the TAP portal software is expecting a particular version of Jupyter. This version is consistent across TACC systems. 
 ## [Help Desk](#help) { #help }
