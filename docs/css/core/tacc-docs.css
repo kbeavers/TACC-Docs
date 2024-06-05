@@ -287,7 +287,7 @@ svg.logo [fill]:not([fill="none"]) {
 .wy-side-nav-search svg.logo {
   display: block;
 }
-.wy-side-nav-search a:nth-child(1) {
+.wy-side-nav-search > a:has(.logo) {
   padding-block: unset; /* undo theme.css */
 }
 
