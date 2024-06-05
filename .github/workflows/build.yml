@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       runs_on:
+        description: 'On which operating system to run the build'
         required: false
         default: 'ubuntu-latest' # default for manual run
         type: choice
