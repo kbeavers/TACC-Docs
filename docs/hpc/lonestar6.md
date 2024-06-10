@@ -1,5 +1,5 @@
 # Lonestar6 User Guide
-*Last update: Febuary 15, 2024*
+*Last update: June 09, 2024*
 
 
 ## [Notices](#notices) { #notices }
@@ -1449,10 +1449,10 @@ VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/de
 
 After connecting to a VNC server on Lonestar6, as described above, do the following:
 
-1. Set up your environment with the necessary modules. Load the `swr`, `qt5`, `ospray`, and `paraview` modules <b>in this order</b>:
+1. Set up your environment with the necessary modules: 
 
 	```cmd-line
-	c301-001$ module load swr qt5 ospray paraview
+	c301-001$ module load intel/19 impi qt5/5.14.2 oneapi_rk/2021.4.0 swr/21.2.5 paraview/5.10.0
 	```
 
 1. Launch ParaView:
