@@ -10,7 +10,10 @@
 Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
 
 !!! important
-	**Queues and limits are subject to change without notice.** <br>Execute `qlimits` on Stampede3 for real-time information regarding limits on available queues.  <!-- See Monitoring Jobs and Queues for additional information. -->
+    **Queue limits are subject to change without notice.**  
+    TACC Staff will occasionally adjust the QOS settings in order to ensure fair scheduling for the entire user community.  
+    Use TACC's `qlimits` utility to see the latest queue configurations.
+
 
 #### [Table 7. Production Queues](#table7) { #table7 }
 

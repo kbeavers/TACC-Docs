@@ -14,9 +14,9 @@ The jobs in this queue consume 1/7 the resources of a full node.  Jobs are charg
 #### [Table 5. Production Queues](#table5) { #table5 }
 
 !!! important
-	**Queue limits are subject to change without notice.**  
-	Occasionally the admins may tweak the QOS settings in order to ensure fair scheduling.  
-	Use TACC's `qlimits` utility to see the latest queue configurations.
+    **Queue limits are subject to change without notice.**  
+    TACC Staff will occasionally adjust the QOS settings in order to ensure fair scheduling for the entire user community.  
+    Use TACC's `qlimits` utility to see the latest queue configurations.
 
 Queue Name | Min/Max Nodes per Job<br /> (assoc'd cores)&#42; | Max Job Duration | Max Nodes<br> per User | Max Jobs<br> per User | Charge Rate<br /><u>(per node-hour)</u>
 --- | --- | --- | --- | --- | ---
