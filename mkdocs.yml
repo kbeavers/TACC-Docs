@@ -58,6 +58,7 @@ nav:
     - Access Control Lists: tutorials/acls.md
     - Bash Quick Start Guide: tutorials/bashstartup.md
     - BLAS/LAPACK: tutorials/blas-lapack.md
+    - Containers at TACC: https://containers-at-tacc.readthedocs.io/en/latest/index.html
     - DDT Debugger: tutorials/ddt.md
     - Managing I/O: tutorials/managingio.md
     - MAP: tutorials/map.md
