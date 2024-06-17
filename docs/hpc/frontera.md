@@ -1,5 +1,5 @@
 # Frontera User Guide
-Last update: June 11, 2024
+Last update: June 17, 2024
 <!-- SDL <a href="https://frontera-xortal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
 ## [Notices](#notices) { #notices }
@@ -2256,8 +2256,7 @@ Frontera provides seamless, integrated support for the use of Singularity contai
 
 Frontera supports application containers from any specification-compliant science community (e.g. Biocontainers, with over 3,000 containers and counting, and the Nvidia GPU Cloud Library), opening this important resource for a wide range of new applications and new science communities. To make the experience seamless, our implementation injects mount points and environment variables into the container to match the HPC system environment – the `$SCRATCH`, `$WORK`, and `$HOME` filesystems all are identical to what users see natively on any Frontera node. 
 
-<! -- SDL -->
-<!-- See the [Containers@TACC](../docs/containers-at-tacc.pdf) documentation for detailed information.-->
+See the [Containers @ TACC Workshop](https://containers-at-tacc.readthedocs.io/en/latest/index.html) documentation for more information.
 ## [Help Desk](#help) { #help }
 
 TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Frontera&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
