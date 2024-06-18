@@ -632,7 +632,7 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 #
 #      process access to more memory.
 #
-#   -- IMPI and MVAPICH2 both do sensible process pinning by default.
+#   -- IMPI and MVAPICH both do sensible process pinning by default.
 #
 #----------------------------------------------------
 

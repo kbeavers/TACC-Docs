@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: June 11, 2024*
+*Last update: June 18, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -435,7 +435,7 @@ c123-456$ ibrun ./myprogram    # ibrun uses idev's arguments to properly allocat
 
 ### [One Hybrid (MPI+Threads) Application](#launching-hybrid) { #launching-hybrid }
 
-When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH2 will distribute and pin tasks and threads in a sensible way.
+When launching a single application you generally don't need to worry about affinity: both Intel MPI and MVAPICH will distribute and pin tasks and threads in a sensible way.
 
 ``` job-script
 export OMP_NUM_THREADS=8    # 8 OpenMP threads per MPI rank
@@ -653,7 +653,7 @@ Consult the [Intel Math Kernel Library](#mkl) (MKL) section below.
 <!-- ### [Compiling and Linking MPI Programs](#building-mpi) { #building-mpi } -->
 ### [MPI Programs](#building-mpi) { #building-mpi }
 
-Intel MPI (module `impi`) and MVAPICH2 (module `mvapich2`) are the two MPI libraries available on Stampede3. After loading an impi or mvapich2 module, compile and/or link using an MPI wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
+Intel MPI (module `impi`) and MVAPICH (module `mvapich`) are the two MPI libraries available on Stampede3. After loading an `impi` or mvapich module, compile and/or link using an MPI wrapper (`mpicc`, `mpicxx`, `mpif90`) in place of the compiler:
 
 ```
 $ mpicc    mycode.c   -o myexe   # C source, full build
@@ -1448,7 +1448,7 @@ export OMP_NUM_THREADS=48   # this is 1 thread/core; may want to start lower
 #
 #      process access to more memory.
 #
-#   -- IMPI and MVAPICH2 both do sensible process pinning by default.
+#   -- IMPI and MVAPICH both do sensible process pinning by default.
 #
 #----------------------------------------------------
 
@@ -1729,7 +1729,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 **Hardware Thread Numbering**. Execute `lscpu` or `lstopo` on SPR, ICX, or SKX nodes to see the numbering scheme for cores. Note that core numbers alternate between the sockets on SKX and ICX nodes: even numbered cores are on NUMA node 0, while odd numbered cores are on NUMA node 1. 
 
-**Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH2, setting the environment variable `PSM2_KASSIST_MODE` to the value `none` may or may not improve performance. For more information see the MVAPICH2 User Guide. Do not use this environment variable with IMPI; doing so may degrade performance. The ibrun launcher will eventually control this environment variable automatically.
+**Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH, setting the environment variable `PSM2_KASSIST_MODE` to the value `none` may or may not improve performance. For more information see the MVAPICH User Guide. Do not use this environment variable with IMPI; doing so may degrade performance. The ibrun launcher will eventually control this environment variable automatically.
 
 ### [File Operations: I/O Performance](#programming-io)
 
