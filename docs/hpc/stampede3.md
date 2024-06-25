@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: June 18, 2024*
+*Last update: June 24, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -1774,6 +1774,13 @@ Follow these instructions to begin using Intel's Conda environment with PyTorch 
 ## [Python](#python)  { #python }
 
 *This section is in progress.*
+
+Python on Stampede3 has been made into a module to mirror the environments of TACC others machines. Load the python like so:
+
+```cmd-line
+$ module load python
+```
+
 
 ### [Jupyter Notebooks](#python-jupyter) { #python-jupyter }
 
