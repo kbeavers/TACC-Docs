@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: June 24, 2024*
+*Last update: June 26, 2024*
 
 ## [Notices](#notices) { #notices }
 
@@ -824,6 +824,13 @@ This section provides sample Slurm job scripts for each Stampede3 node type:
 * Sky Lake (SKX)
 
 Each section also contains sample scripts for serial, MPI, OpenMP and hybrid (MPI + OpenMP) programming models.  Copy and customize each script for your own applications.
+
+Copy and customize the following jobs scripts by specifying and refining your job's requirements.
+
+* specify the maximum run time with the `-t` option.
+* specify number of nodes needed with the `-N` option
+* specify total number of MPI tasks with the `-n` option
+* specify the project to be charged with the `-A` option.
 
 ### [PVC Nodes](#scripts-pvc) { #scripts-pvc }
 
