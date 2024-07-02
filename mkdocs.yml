@@ -15,7 +15,7 @@ theme:
     # nav_name: Documentation # TACC Feature
 
 nav:
-  - TACC Essentials :
+  - TACC Essentials:
     - Documentation Overview: index.md
     - Getting Started: https://www.tacc.utexas.edu/use-tacc/getting-started/
     - Portal Access: portal.md
@@ -54,7 +54,7 @@ nav:
     - TAU: software/tau.md
     - Tensorflow: software/tensorflow.md
     - VASP: software/vasp.md
-  - TACC Tutorials :
+  - TACC Tutorials:
     - Access Control Lists: tutorials/acls.md
     - Bash Quick Start Guide: tutorials/bashstartup.md
     - BLAS/LAPACK: tutorials/blas-lapack.md
@@ -65,7 +65,7 @@ nav:
     - Remote Desktop Access: tutorials/remotedesktopaccess.md
     - Sharing Project Files: tutorials/sharingprojectfiles.md
     - TACC Analysis Portal: tutorials/TAP.md
-#  - Fiddling :
+#  - Fiddling:
 #    - Testing Extensions: testingextensions.md
 #    - Code Examples: code-examples/index.md
 
