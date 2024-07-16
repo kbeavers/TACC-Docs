@@ -1,4 +1,4 @@
-## [Remote Desktop Access](#remote-desktop-access)
+## Remote Desktop Access
 
 Remote desktop access to Maverick2 is formed through a VNC connection to one or more visualization nodes. Users must first connect to a Maverick2 login node (see System Access) and submit a special interactive batch job that:
 

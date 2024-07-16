@@ -11,7 +11,7 @@ Example: you need to run a program with 1000 different input values, and you wan
 
 The Pylauncher source code is written in python, but this need not concern you: in the simplest scenario you use a two line python script. However, for more sophisticated scenarios the code can be extended or integrated into a python application.
 
-## [Installations](#installations)
+## Installations
 
 Pylauncher is available on all TACC systems via the [Lmod][TACCLMOD] modules system.  Use the following in your batch script or `idev` session:
 

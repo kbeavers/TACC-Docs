@@ -176,7 +176,7 @@ Consult your resource's respective user guide's "Transferring Files" section for
 
 <a target="_blank" href="https://cyberduck.io/download/">Download and install Cyberduck for Windows</a> on your local machine.
 
-#### [Windows](#windows)
+#### Windows
 
 Once installed, click "Open Connection" in the top left corner of your Cyberduck window.
 
@@ -195,7 +195,7 @@ Consult Figure 3. below to ensure the information you have provided is correct. 
 
 Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the system.
       
-#### [Mac](#mac)
+#### Mac
 
 Once installed, go to "Bookmark &gt; New Bookmark" to setup a connection.
       
