@@ -150,7 +150,7 @@ This output states that in the 104'th stage some jobs were completed/queued for 
 
 The  "tick" message is output every half second. This can be changed, for instance to 1/10th of a second, by specifying "delay=.1" in the launcher command.
 
-## [Sample Job Setup](#sample)  { #sample }
+## Sample Job Setup { #sample }
 
 Your job setup will consist of three files:
 

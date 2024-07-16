@@ -29,7 +29,7 @@ spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       |
 <!-- SDL 05/07 no skx-large yet
 **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
 
-### [Submitting Batch Jobs with `sbatch`](#running-sbatch)  { #running-sbatch }
+### Submitting Batch Jobs with `sbatch` { #running-sbatch }
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Stampede3 queues:
 

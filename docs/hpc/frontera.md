@@ -692,7 +692,7 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 	```
 
 <a id="queues">
-### [Frontera Production Queues](#running-queues)  { #running-queues } 
+### Frontera Production Queues { #running-queues } 
 
 
 Frontera's Slurm partitions (queues), maximum node limits and charge rates are summarized in the table below. **Queues and limits are subject to change without notice.** Execute `qlimits` on Frontera for real-time information regarding limits on available queues. See [Job Accounting](#job-accounting) to learn how jobs are charged to your allocation.

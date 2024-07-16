@@ -1,4 +1,4 @@
-## [Job Scripts](#scripts)  { #scripts }
+## Job Scripts { #scripts }
 
 This section provides sample Slurm job scripts for commond programming models: serial applications, MPI, OpenMP and hybrid (MPI + OpenMP) programming models. 
 

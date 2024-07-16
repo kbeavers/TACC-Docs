@@ -22,7 +22,7 @@ Stampede3 | AlphaFold: v2.3.2<br> Data: `/scratch/tacc/apps/bio/alphafold/2.3.2/
 !!! important
 	AlphaFold is being tested for performance and I/O efficiency - the instructions below are subject to change.
 
-### [Structure Prediction from Single Sequence](#running-singlesequence)  { #running-singlesequence } 
+### Structure Prediction from Single Sequence { #running-singlesequence } 
 
 To perform 3-D protein structure prediction with AlphaFold, first upload a fasta-formatted protein primary sequence to your `$WORK` or `$SCRATCH` (recommended) space. Sample fasta sequences are provided in the machine-specific "Examples" paths listed in the table above. A valid fasta sequence might look like:
 
@@ -77,7 +77,7 @@ In the batch script, make sure to specify the partition (queue) (`#SBATCH -p`), 
 The `flagfile` is a configuration file passed to AlphaFold containing parameters including the level of precision, the location of the databases for multiple sequence alignment, and more. Flag files for all presets can be found in the 'Examples' directory, and typically they should not be edited. The other three parameters passed to AlphaFold should be customized to your input path / filename, desired output path, and the selection of models. The parameters are summarized in the following table:
 
 
-#### [Table 2. AlphaFold Parameter Settings](#table2)  { #table1 }
+#### Table 2. AlphaFold Parameter Settings { #table1 }
 
 Parameter | Setting
 -- | --

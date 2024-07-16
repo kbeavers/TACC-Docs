@@ -91,7 +91,7 @@ OPTION ARGUMENTS         DESCRIPTION  (only common options shown)
 * Only a subset of the options is presented above. 
 * Options may be used in any order. 
 
-## [Exiting `idev`](#exit)	{ #exit }
+## Exiting `idev` { #exit }
 
 To exit `idev` and return to your terminal session, type `exit` or `ctrl-D`.
 

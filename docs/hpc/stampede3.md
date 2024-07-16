@@ -58,7 +58,7 @@ Memory: | 512 GB DDR5
 Cache: | 48 KB L1 data cache per core; 1MB L2 per core; 112.5 MB L3 per socket.<br>Each socket can cache up to 168.t MB (sum of L2 and L3 capacity).
 Local storage: | 150 GB /tmp partition
 
-### [Skylake Compute Nodes](#system-skx)  { #system-skx }
+### Skylake Compute Nodes { #system-skx }
 
 Stampede3 hosts 1,060 "Skylake" (SKX) compute nodes.
 
@@ -346,7 +346,7 @@ spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       |
 <!-- SDL 05/07 no skx-large yet
 **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
 
-### [Submitting Batch Jobs with `sbatch`](#running-sbatch)  { #running-sbatch }
+### Submitting Batch Jobs with `sbatch` { #running-sbatch }
 
 Use Slurm's `sbatch` command to submit a batch job to one of the Stampede3 queues:
 
@@ -1778,7 +1778,7 @@ Follow these instructions to begin using Intel's Conda environment with PyTorch 
 	(pytorch) login1.stampede3(1004)$
 	```
 
-## [Python](#python)  { #python }
+## Python { #python }
 
 *This section is in progress.*
 

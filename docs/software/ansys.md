@@ -133,7 +133,7 @@ In the figure below, the small window on top displays the command to run an ANSY
 
 Submit the job to the Slurm scheduler in the standard way. Consult each resource's "Running Jobs" section in the respective user guide.
 
-#### [Table 3. User Guides - Running Jobs](#table3)  { #table3 }
+#### Table 3. User Guides - Running Jobs { #table3 }
 
 Frontera | Stampede3 | Lonestar6
 --- | --- | ---

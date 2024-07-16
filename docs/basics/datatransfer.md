@@ -1,4 +1,4 @@
-# [Data Transfer](#datatransfer)   { #datatransfer }
+# Data Transfer { #datatransfer }
 *Last update: January 8, 2024*
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
