@@ -1,8 +1,8 @@
-## [Programming and Performance](#programming)
+## Programming and Performance { #programming }
 
 Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
-### [Timing and Profiling](#programming-timing)
+### Timing and Profiling { #programming-timing }
 
 Measure performance and experiment with both compiler and runtime options. This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
 
@@ -19,7 +19,7 @@ As your needs evolve you can add timing intrinsics to your source code to time s
 
 It can be helpful to compare results with different compiler and runtime options: e.g. with and without vectorization, threading, or Lustre striping. You may also want to learn to use profiling tools like Intel VTune Amplifier (`module load vtune`) or GNU `gprof`.
 
-### [Data Locality](#performance-datalocality)
+### Data Locality { #performance-datalocality }
 
 Appreciate the high cost (performance penalty) of moving data from one node to another, from disk to memory, and even from memory to cache. Write your code to keep data as close to the computation as possible: e.g. in memory when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. 
 
@@ -49,7 +49,7 @@ for (i=0;i<m;i++){
   }
 }</pre></td></tr></table>
 
-### [Vectorization](#programming-vectorization)
+### Vectorization { #programming-vectorization }
 
 Give the compiler a chance to produce efficient, vectorized code. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on Programming Guidelines for Vectorization for a nice summary of the factors that affect the compiler's ability to vectorize loops.
 
@@ -57,7 +57,7 @@ It's often worthwhile to generate optimization and vectorization reports when us
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's Modern Code resources; and the Intel Optimization Reference Manual.
 
-### [Programming and Performance: SPR, ICX, and SKX](#programming-nodes)
+### Programming and Performance: SPR, ICX, and SKX { #programming-nodes }
 
 **Clock Speed**: The published nominal clock speed of the Stampede3 SPR processors is 1.9 GHz, for the SKX processors it is 2.1GHz, and for the ICX processors it is 2.3GHz. But actual clock speed varies widely: it depends on the vector instruction set, number of active cores, and other factors affecting power requirements and temperature limits. At one extreme, a single serial application using the AVX2 instruction set may run at frequencies approaching 3.7GHz, because it's running on a single core (in fact a single hardware thread). At the other extreme, a large, fully-threaded MKL `dgemm` (a highly vectorized routine in which all cores operate at nearly full throttle) may run at 1.9 GHz.
 
@@ -75,7 +75,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 **Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH, setting the environment variable `PSM2_KASSIST_MODE` to the value `none` may or may not improve performance. For more information see the MVAPICH User Guide. Do not use this environment variable with IMPI; doing so may degrade performance. The ibrun launcher will eventually control this environment variable automatically.
 
-### [File Operations: I/O Performance](#programming-io)
+### File Operations: I/O Performance { #programming-io }
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Managing I/O at TACC][TACCMANAGINGIO] and [TACC Training](https://tacc.utexas.edu/use-tacc/training/) page for additional information on I/O performance. 
 

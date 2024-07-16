@@ -147,7 +147,7 @@ Use the `-h` option to print out a list of all supported functions and packages:
 c123-456$ lmp_stampede -h
 ```
 
-## [References](#refs)
+## References { #refs }
 
 * [LAMMPS Documentation (Feb 2024)](https://docs.lammps.org/Manual.html)
 * [Build LAMMPS](https://docs.lammps.org/Build.html)

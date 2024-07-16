@@ -194,7 +194,7 @@ where "`commandlines`" contains your parameter sweep:
 ...
 ```
 
-# [References](#refs)
+# References { #refs }
 
 * [Github: Pylauncher](https://github.com/TACC/pylauncher)
 * [Launcher at TACC](https://docs.tacc.utexas.edu/software/launcher)

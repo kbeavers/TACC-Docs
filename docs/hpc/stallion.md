@@ -119,6 +119,6 @@ $ module load sage
 $ mplayer
 ```
 
-## [References](#refs)
+## References { #refs }
 
 * [SAGE](http://www.evl.uic.edu/cavern/sage/)

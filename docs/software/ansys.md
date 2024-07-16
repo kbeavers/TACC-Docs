@@ -19,7 +19,7 @@ If you have your own ANSYS licenses or would like to install your own copy, you 
 ANSYS is currently installed under `/home1/apps/ANSYS` on TACC's Frontera and Stampede3, and `/scratch/tacc/apps/ANSYS` on TACC's Lonestar6 resources. Installations on Frontera and Stampede3 include the main components: Structures, Fluids, Electronics and LS-Dyna. However, installations on Lonestar6 only include Structures, Fluids and LS-Dyna. Electronics is not included since it is not supported on LS6’s operating system. All packages are installed under the default locations based on the ANSYS naming convention. Table 
 
 
-### [Table 1. Installations at TACC](#table1)
+### Table 1. Installations at TACC { #table1 }
 
 Resource | ANSYS Version |Components |Location
 --- | --- | --- | ---
@@ -30,9 +30,9 @@ Lonestar6 | 2023R2 | Structures, Fluids, LS-Dyna | <code>/scratch/tacc/apps/ANSY
 
 
 
-## [Running ANSYS](#running)
+## Running ANSYS { #running }
 
-### [Interactive Mode](#running-interactive)
+### Interactive Mode { #running-interactive }
 
 ANSYS can be launched with the ANSYS GUI used in interactive mode. Use the [TACC Analysis Portal](https://tap.tacc.utexas.edu/) or create a VNC session following the directions in the [Remote Desktop Access](../../hpc/stampede3#vis-remote) section.
 
@@ -140,7 +140,7 @@ Frontera | Stampede3 | Lonestar6
 <code>login1$ sbatch myjobscript</code> | <code>login1$ sbatch myjobscript<code> | <code>login1$ sbatch myjobscript<code>
 <a href="../../hpc/frontera#running/">Running Jobs on Frontera</a> | <a href="../../hpc/stampede3#running">Running Jobs on Stampede3</a> | <a href="../../hpc/lonestar6#running">Running Jobs on Lonestar6</a>
 
-## [References](#refs)
+## References { #refs }
 
 * [Remote Desktop Access at TACC][TACCREMOTEDESKTOPACCESS]
 * ANSYS is a commercial package. If you have further scientific or technical questions, <a href="https://support.ansys.com/portal/site/AnsysCustomerPortal">contact ANSYS support</a> directly.

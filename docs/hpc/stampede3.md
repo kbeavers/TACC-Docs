@@ -151,15 +151,15 @@ Do not run the `ssh-keygen` command on Stampede3. This command will create and c
 
 After logging in again, the system will generate a properly configured key SSH pair.
 
-## [Account Administration](#admin)
+## Account Administration { #admin }
 
 This section explores ways to configure and manage your Linux account on Stampede3.  Stampede3 nodes run Rocky Linux. Regardless of your research workflow, you'll likely need to master Linux command-line basics along with a Linux-based text editor (e.g. `emacs`, `nano`, `gedit`, or `vi`/`vim`) to use the system properly. If you encounter a term or concept in this user guide that is new to you, a quick internet search should help you resolve the matter quickly.
 
-### [Allocation Status](#admin-allocation)
+### Allocation Status { #admin-allocation }
 
 If your password is rejected while attempting to log in, it's possible your account or project has not been added to a Stampede3 allocation.  You can list and manage your allocations via the [TACC Portal](https://tacc.utexas.edu/portal/projects).  
 
-### [Linux Shell](#admin-linux)
+### Linux Shell { #admin-linux }
 
 The default login shell for your user account is Bash. To determine your current login shell, examine the contents of the `$SHELL` environment variable: 
 
@@ -175,7 +175,7 @@ Before editing your startup files, however, it's worth taking the time to unders
 
 For more information see the [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART] and other online resources that explain shell startup. To recover the originals that appear in a newly created account, execute `/usr/local/startup_scripts/install_default_scripts`.
 
-### [Diagnostics](#admin-diagnostics)
+### Diagnostics { #admin-diagnostics }
 
 TACC's `sanitytool` module loads an account-level diagnostic package that detects common account-level issues and often walks you through the fixes. You should certainly run the package's `sanitycheck` utility when you encounter unexpected behavior. You may also want to run `sanitycheck` periodically as preventive maintenance. To run `sanitytool`'s account-level diagnostics, execute the following commands:
 
@@ -184,7 +184,7 @@ TACC's `sanitytool` module loads an account-level diagnostic package that detect
 
 Execute `module help sanitytool` for more information.
 
-### [Environment Variables](#admin-envvars)
+### Environment Variables { #admin-envvars }
 
 Your environment includes the environment variables and functions defined in your current shell: those initialized by the system, those you define or modify in your account-level startup scripts, and those defined or modified by the modules that you load to configure your software environment. Be sure to distinguish between an environment variable's name (e.g. `HISTSIZE`) and its value (`$HISTSIZE`). Understand as well that a sub-shell (e.g. a script) inherits environment variables from its parent, but does not inherit ordinary shell variables or aliases. Use `export` (in Bash) or `setenv` (in `csh`) to define an environment variable.
 
@@ -196,7 +196,7 @@ Pipe the results of `env` into `grep` to focus on specific environment variables
 The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important. The `PATH` is a colon-separated list of directory paths that determines where the system looks for your executables.  The `LD_LIBRARY_PATH` environment variable is a similar list that determines where the system looks for shared libraries.
 
 
-### [Using Modules](#admin-modules)
+### Using Modules { #admin-modules }
 
 Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to using your research. This is especially important on a system like Stampede3 that serves thousands of users with an enormous range of needs and software. Loading a module amounts to choosing a specific package from among available alternatives:
 
@@ -268,7 +268,7 @@ Help text is available for both individual modules and the module system itself:
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results.  If you use `module save` to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede3's default startup scripts in `/usr/local/startup_scripts` for a safe way to do so.
 
-### [TACC Tips](#admin-tips)
+### TACC Tips { #admin-tips }
 
 TACC Staff has amassed a database of helpful tips for our users.  Access these tips via the `tacc_tips` module and `showTip` command as demonstrated below:
 
@@ -479,7 +479,7 @@ wait                                                   # Required; else script w
 
 The `task_affinity` script manages task placement and pinning when you call `ibrun` with the `-n`, `-o` switches (it's not necessary under any other circumstances); 
 
-### [More than One OpenMP Application Running Concurrently](#launching-openmp)
+### More than One OpenMP Application Running Concurrently { #launching-openmp }
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to distribute and pin tasks appropriately. In the example below, numactl -C specifies virtual CPUs (hardware threads). According to the numbering scheme for SPR hardware threads, CPU (hardware thread) numbers 0-111 are spread across the 112 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core.
 
@@ -1661,11 +1661,11 @@ To view some **accounting data** associated with your own jobs, use `sacct`:
 login1$ sacct --starttime 2019-06-01  # show jobs that started on or after this date
 ```
 
-## [Programming and Performance](#programming)
+## Programming and Performance { #programming }
 
 Programming for performance is a broad and rich topic. While there are no shortcuts, there are certainly some basic principles that are worth considering any time you write or modify code.
 
-### [Timing and Profiling](#programming-timing)
+### Timing and Profiling { #programming-timing }
 
 Measure performance and experiment with both compiler and runtime options. This will help you gain insight into issues and opportunities, as well as recognize the performance impact of code changes and temporary system conditions.
 
@@ -1682,7 +1682,7 @@ As your needs evolve you can add timing intrinsics to your source code to time s
 
 It can be helpful to compare results with different compiler and runtime options: e.g. with and without vectorization, threading, or Lustre striping. You may also want to learn to use profiling tools like Intel VTune Amplifier (`module load vtune`) or GNU `gprof`.
 
-### [Data Locality](#performance-datalocality)
+### Data Locality { #performance-datalocality }
 
 Appreciate the high cost (performance penalty) of moving data from one node to another, from disk to memory, and even from memory to cache. Write your code to keep data as close to the computation as possible: e.g. in memory when needed, and on the node that needs it. This means keeping in mind the capacity and characteristics of each level of the memory hierarchy when designing your code and planning your simulations. 
 
@@ -1712,7 +1712,7 @@ for (i=0;i<m;i++){
   }
 }</pre></td></tr></table>
 
-### [Vectorization](#programming-vectorization)
+### Vectorization { #programming-vectorization }
 
 Give the compiler a chance to produce efficient, vectorized code. The compiler can do this best when your inner loops are simple (e.g. no complex logic and a straightforward matrix update like the ones in the examples above), long (many iterations), and avoid complex data structures (e.g. objects). See Intel's note on Programming Guidelines for Vectorization for a nice summary of the factors that affect the compiler's ability to vectorize loops.
 
@@ -1720,7 +1720,7 @@ It's often worthwhile to generate optimization and vectorization reports when us
 
 The literature on optimization is vast. Some places to begin a systematic study of optimization on Intel processors include: Intel's Modern Code resources; and the Intel Optimization Reference Manual.
 
-### [Programming and Performance: SPR, ICX, and SKX](#programming-nodes)
+### Programming and Performance: SPR, ICX, and SKX { #programming-nodes }
 
 **Clock Speed**: The published nominal clock speed of the Stampede3 SPR processors is 1.9 GHz, for the SKX processors it is 2.1GHz, and for the ICX processors it is 2.3GHz. But actual clock speed varies widely: it depends on the vector instruction set, number of active cores, and other factors affecting power requirements and temperature limits. At one extreme, a single serial application using the AVX2 instruction set may run at frequencies approaching 3.7GHz, because it's running on a single core (in fact a single hardware thread). At the other extreme, a large, fully-threaded MKL `dgemm` (a highly vectorized routine in which all cores operate at nearly full throttle) may run at 1.9 GHz.
 
@@ -1738,7 +1738,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 **Tuning the Performance Scaled Messaging (PSM2) Library**. When running on SKX with MVAPICH, setting the environment variable `PSM2_KASSIST_MODE` to the value `none` may or may not improve performance. For more information see the MVAPICH User Guide. Do not use this environment variable with IMPI; doing so may degrade performance. The ibrun launcher will eventually control this environment variable automatically.
 
-### [File Operations: I/O Performance](#programming-io)
+### File Operations: I/O Performance { #programming-io }
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Managing I/O at TACC][TACCMANAGINGIO] and [TACC Training](https://tacc.utexas.edu/use-tacc/training/) page for additional information on I/O performance. 
 

@@ -121,7 +121,7 @@ seq3.fasta
 Next, prepare a launcher `jobfile` that contains each command that needs to be run. There should be one line in the `jobfile` for each input fasta sequence. Each line should refer to a unique input sequence and a unique output path:
 
 
-#### [Sample Alphafold Launcher Job File](#running-independentsequences-jobfile) { running-independentsequences-jobfile }
+#### Sample Alphafold Launcher Job File { #running-independentsequences-jobfile } { running-independentsequences-jobfile }
 
 ```syntax
 apptainer exec --nv $AF2_HOME/images/alphafold_2.3.2.sif /app/run_alphafold.sh --flagfile=$AF2_HOME/examples/flags/full_dbs.ff --fasta_paths=$SCRATCH/input/seq1.fasta --output_dir=$SCRATCH/output1 --model_preset=monomer --max_template_date=2020-05-14 --use_gpu_relax=True
