@@ -1,5 +1,5 @@
 # Pylauncher at TACC
-*Last update: June 12, 2024*
+*Last update: July 15, 2024*
 
 ## What is Pylauncher { #intro }
 
@@ -7,7 +7,7 @@ Pylauncher (**Py**thon + **launcher**) is a python-based parametric job launcher
 
 While TACC's deprecated [`launcher`](../launcher) utility works on serial codes, Pylauncher works with multi-threaded and MPI executables.  
 
-Example: you need to run a program with 1000 different input values, and you want to use 100 cores for that; the pylauncher will then cycle through your list of commands using cores as they become available. 
+Example: you need to run a program with 1000 different input values, and you want to use 100 cores for that; Pylauncher will cycle through your list of commands using cores as they become available. 
 
 The Pylauncher source code is written in python, but this need not concern you: in the simplest scenario you use a two line python script. However, for more sophisticated scenarios the code can be extended or integrated into a python application.
 
@@ -19,8 +19,8 @@ Pylauncher is available on all TACC systems via the [Lmod][TACCLMOD] modules sys
 $ module load pylauncher
 ```
 
-!!! tip
-	On Stampede3, the Python installation is missing a required module.<br>You need to one-time do:<br>
+!!! important
+	On Stampede3, the Python installation is missing a required module.  Do a one-time setup:<br>
 	`$ pip install paramiko`
  
 ## Basic setup
@@ -29,13 +29,13 @@ Pylauncher, like any compute-intensive application, must be run from a slurm bat
 
 ```job-script
 #SBATCH -tasks-per-node 56      # frontera
-#SBATCH -tasks-per-node 48      # stampede3
+#SBATCH -tasks-per-node 48      # stampede3 skx queue
 #SBATCH -tasks-per-node 128     # lonestar6
 ```
 
 The number of nodes needed ("`-N`" option) will depend on how much work you have.
 
-Load the pylauncher module to set the `$TACC_PYLAUNCHER_DIR` and `$PYTHONPATH` environment variables. To find the pylauncher software, first do
+Load the Pylauncher module to set the `$TACC_PYLAUNCHER_DIR` and `$PYTHONPATH` environment variables. To find the Pylauncher software, first do
 
 ```cmd-line
 c123-456$ module load pylauncher
@@ -127,7 +127,7 @@ If your program is MPI parallel, replace the ClassicLauncher call with the follo
 launcher.IbrunLauncher("parallellines",cores=3)
 ```
 
-The "parallellines" file consists of command lines **without the MPI job starter**, which is supplied by the pylauncher:
+The "parallellines" file consists of command lines **without the MPI job starter**, which is supplied by Pylauncher:
 
 ```syntax
 ./parallelprogram 0 10

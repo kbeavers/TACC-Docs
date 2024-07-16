@@ -1,5 +1,8 @@
 # Launcher/Launcher-GPU at TACC
-*Last update: June 23, 2021*
+*Last update: July 15, 2024*
+
+!!!warning
+	The Launcher utility is no longer supported at TACC.  Instead, see [Pylauncher at TACC](../pylauncher).  Pylauncher is able to distribute collections of MPI and multi-threaded jobs, as well as serial jobs.
 
 ## Introduction { #intro }
 
