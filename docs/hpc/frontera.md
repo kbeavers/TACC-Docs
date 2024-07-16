@@ -692,7 +692,7 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 	```
 
 <a id="queues">
-### [Frontera Production Queues](#running-queues)  { #running-queues } 
+### Frontera Production Queues { #running-queues } 
 
 
 Frontera's Slurm partitions (queues), maximum node limits and charge rates are summarized in the table below. **Queues and limits are subject to change without notice.** Execute `qlimits` on Frontera for real-time information regarding limits on available queues. See [Job Accounting](#job-accounting) to learn how jobs are charged to your allocation.
@@ -1684,13 +1684,13 @@ Follow these instructions to install and run TensorFlow benchmarks on Frontera R
     	--model resnet50 --batch_size 32 --num_batches 200 --allow_growth=True
 	```
 
-## [Visualization and VNC Sessions](#vis)
+## Visualization and VNC Sessions
 
 <p class="introtext">Frontera uses Intel's Cascade Lake (CLX) processors for all visualization and rendering operations. We use the Intel OpenSWR library to render raster graphics with OpenGL, and the Intel OSPRay framework for ray traced images inside visualization software. OpenSWR can be loaded by executing <code>module load swr</code>.</p>
 
 Frontera currently has no separate visualization queue. All visualization apps are available on all nodes. VNC and DCV sessions are available on any queue, either through the command line or via the [TACC Analysis Portal](https://tap.tacc.utexas.edu/). We recommend submitting to Frontera's `development` queue for interactive sessions. If you are interested in an application that is not yet available, please submit a help desk ticket through the Frontera Portal.
 
-### [Remote Desktop Access](#vis)
+### Remote Desktop Access
 
 Remote desktop access to Frontera is formed through a DCV or VNC connection to one or more compute nodes. Users must first connect to a Frontera login node (see [Accessing the System](#admin-access) and submit a special interactive batch job that:
 
@@ -1774,11 +1774,11 @@ All VNC connections are tunneled through SSH for extra security.  Follow the ste
 
 	The other xterm window is black-on-white, and can be used to start both serial programs running on the node hosting the vncserver process, or parallel jobs running across the set of cores associated with the original batch job. Additional xterm windows can be created using the window-manager left-button menu.
 
-### [Running Applications on the Remote Desktop](#vis)
+### Running Applications on the Remote Desktop
 
 From an interactive desktop, applications can be run from icons or from xterm command prompts. Two special cases arise: running parallel applications, and running applications that use OpenGL.
 
-### [Running Parallel Applications from the Desktop](#vis)
+### Running Parallel Applications from the Desktop
 
 Parallel applications are run on the desktop using the same ibrun wrapper described above (see Running). The command:
 
@@ -1788,7 +1788,7 @@ c101-001$ ibrun ibrunoptions application applicationoptions
 
 will run application on the associated nodes, as modified by the ibrun options.
 
-### [Running OpenGL/X Applications On The Desktop](#vis)
+### Running OpenGL/X Applications On The Desktop
 
 Frontera uses the OpenSWR OpenGL library to perform efficient rendering. At present, the compute nodes on Frontera do not support native X instances. All windowing environments should use a DCV desktop launched via the job script in `/share/doc/slurm/job.dcv`, a VNC desktop launched via the job script in `/share/doc/slurm/job.vnc` or using the [TACC Analysis Portal][TACCANALYSISPORTAL].
 
@@ -1799,7 +1799,7 @@ c101-001$ module load swr
 c101-001$ swr options application application-args
 ```
 
-### [Parallel VisIt on Frontera](#vis)
+### Parallel VisIt on Frontera
 
 [VisIt](https://wci.llnl.gov/simulation/computer-codes/visit) was compiled under the Intel compiler and the mvapich2 and MPI stacks.
 
@@ -1812,11 +1812,11 @@ c101-001$ swr visit
 
 VisIt first loads a dataset and presents a dialog allowing for selecting either a serial or parallel engine. Select the parallel engine. Note that this dialog will also present options for the number of processes to start and the number of nodes to use; these options are actually ignored in favor of the options specified when the VNC server job was started.
 
-#### [Preparing Data for Parallel Visit](#vis)
+#### Preparing Data for Parallel Visit
 
 VisIt reads [nearly 150 data formats](https://github.com/visit-dav/visit/tree/develop/src/databases). Except in some limited circumstances (particle or rectilinear meshes in ADIOS, basic netCDF, Pixie, OpenPMD and a few other formats), VisIt piggy-backs its parallel processing off of whatever static parallel decomposition is used by the data producer. This means that VisIt expects the data to be explicitly partitioned into independent subsets (typically distributed over multiple files) at the time of input. Additionally, VisIt supports a metadata file (with a `.visit` extension) that lists multiple data files of any supported format that hold subsets of a larger logical dataset. VisIt also supports a "brick of values (`bov)` format which supports a simple specification for the static decomposition to use to load data defined on rectilinear meshes. For more information on importing data into VisIt, see [Getting Data Into VisIt](https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf?#page=97).
 
-### [Parallel ParaView on Frontera](#vis)
+### Parallel ParaView on Frontera
 
 After connecting to a VNC server on Frontera, as described above, do the following:
 

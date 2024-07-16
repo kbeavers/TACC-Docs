@@ -11,7 +11,7 @@ Example: you need to run a program with 1000 different input values, and you wan
 
 The Pylauncher source code is written in python, but this need not concern you: in the simplest scenario you use a two line python script. However, for more sophisticated scenarios the code can be extended or integrated into a python application.
 
-## [Installations](#installations)
+## Installations
 
 Pylauncher is available on all TACC systems via the [Lmod][TACCLMOD] modules system.  Use the following in your batch script or `idev` session:
 
@@ -150,7 +150,7 @@ This output states that in the 104'th stage some jobs were completed/queued for 
 
 The  "tick" message is output every half second. This can be changed, for instance to 1/10th of a second, by specifying "delay=.1" in the launcher command.
 
-## [Sample Job Setup](#sample)  { #sample }
+## Sample Job Setup { #sample }
 
 Your job setup will consist of three files:
 
@@ -194,7 +194,7 @@ where "`commandlines`" contains your parameter sweep:
 ...
 ```
 
-# [References](#refs)
+# References { #refs }
 
 * [Github: Pylauncher](https://github.com/TACC/pylauncher)
 * [Launcher at TACC](https://docs.tacc.utexas.edu/software/launcher)

@@ -61,9 +61,9 @@ Use Slurm's `sbatch` command to submit a batch job to one of the queues.  Here "
 login1$ sbatch myjobscript
 ```
 
-### [Stampede3 ](#scripts-stampede3)
+### Stampede3  { #scripts-stampede3 }
 
-#### [CPU](#scripts-stampede3-cpu)
+#### CPU { #scripts-stampede3-cpu }
 
 The following job script requests 2 nodes (48 cores/node) for 24 hours using Stampede3's Skylake compute nodes ([`skx` queue](../../hpc/stampede3/#queues)).
 
@@ -83,13 +83,13 @@ module load gromacs/2023.3
 
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
 ```
-#### [GPU ](#scripts-stampede3-gpu)
+#### GPU  { #scripts-stampede3-gpu }
 
 *Coming Soon*
 
-### [Frontera ](#scripts-frontera)
+### Frontera  { #scripts-frontera }
 
-#### [CPU](#scripts-frontera-cpu)
+#### CPU { #scripts-frontera-cpu }
 
 The following job script requests 4 nodes (56 cores/node) for 24 hours using Frontera CLX compute nodes ([`normal queue`](../../hpc/frontera/#queues)).
 
@@ -111,7 +111,7 @@ export OMP_NUM_THREADS=1      # 1 OMP thread per MPI task
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
 ```
 
-#### [GPU](#scripts-frontera-gpu)
+#### GPU { #scripts-frontera-gpu }
 
 The following job script requests 4 RTX GPU nodes on Frontera. The directive `-gpu_id 0000` indicates all four MPI ranks on the same node share the same GPU with `id 0`.  For example, `-gpu_id 0123` uses all four available GPUs on each RTX node.
 
@@ -138,9 +138,9 @@ ibrun gmx_mpi_gpu mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g m
 ibrun gmx_mpi_gpu mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log -gpu_id 0123
 ```
 
-### [Lonestar6 ](#scripts-lonestar6)
+### Lonestar6  { #scripts-lonestar6 }
 
-#### [CPU](#scripts-lonestar6-cpu)
+#### CPU { #scripts-lonestar6-cpu }
 
 The following job script requests 4 nodes (128 cores/node) for 24 hours using Lonestar6 AMD EPYC CPU nodes ([`normal queue`](../../hpc/lonestar6/#queues)).
 
@@ -162,7 +162,7 @@ export OMP_NUM_THREADS=1      # 1 OMP thread per MPI task
 ibrun gmx_mpi mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log
 ```
 
-#### [GPU](#scripts-lonestar6-gpu)
+#### GPU { #scripts-lonestar6-gpu }
 
 The following job script requests two A100 GPU nodes on Lonestar6. The directive `-gpu_id 000` indicates all three MPI ranks on the same node share the same GPU with `id 0`. You may use, for example `-gpu_id 012`, to use all three available GPUs on each A100 GPU node.
 
@@ -192,7 +192,7 @@ ibrun gmx_mpi_gpu mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g m
 ibrun gmx_mpi_gpu mdrun -s topol.tpr -o traj.trr -c confout.gro -e ener.edr -g md.log -gpu_id 012
 ```
 
-## [References](#refs)
+## References { #refs }
 
 * [GROMACS Home](https://www.gromacs.org/)
 * [GROMACS Documentation](https://manual.gromacs.org/)

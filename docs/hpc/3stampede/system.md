@@ -36,7 +36,7 @@ Memory: | 512 GB DDR5
 Cache: | 48 KB L1 data cache per core; 1MB L2 per core; 112.5 MB L3 per socket.<br>Each socket can cache up to 168.t MB (sum of L2 and L3 capacity).
 Local storage: | 150 GB /tmp partition
 
-### [Skylake Compute Nodes](#system-skx)  { #system-skx }
+### Skylake Compute Nodes { #system-skx }
 
 Stampede3 hosts 1,060 "Skylake" (SKX) compute nodes.
 

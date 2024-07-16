@@ -263,7 +263,7 @@ Follow the steps below to start an interactive session.
 	login4(693)$ exit
 	```
 
-### [Sample VNC session](#vncsession)   { #vncsession }
+### Sample VNC session { #vncsession }
 
 #### Window 1 { #vncwindow1 }
 

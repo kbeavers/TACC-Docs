@@ -64,7 +64,7 @@ Users should be using `tar` or `gtar` to achieve file sizes in this range before
 The new Quantum-based environment is designed to meet the demand of retrieving multi-TB to PB-sized data sets in hours or days, rather than in weeks, which is possible only when the data set is stored into files with an average file size set optimally as described above.
 
 
-### [Ranch Quotas](#organizing-quotas)  { #organizing-quotas }
+### Ranch Quotas { #organizing-quotas }
 
 !!! important
 	**File Count Quota**: Users are limited to 50,000 files in their `$HOME` directories.  
@@ -176,7 +176,7 @@ The following command-line examples also demonstrate how to transfer files to an
 	```
 
 
-#### [Remote Sync with `rsync` command](#transferring-methods-rsync)  { #transferring-methods-rsync }
+#### Remote Sync with `rsync` command { #transferring-methods-rsync }
 
 **Please read carefully**: The UNIX `rsync` command is a powerful command to both transfer data as well as keep identical copies of data in separate locations in sync.  However, it MUST be used very carefully in any archive environment.
 

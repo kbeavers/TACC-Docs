@@ -87,7 +87,7 @@ wait                                                   # Required; else script w
 
 The `task_affinity` script manages task placement and pinning when you call `ibrun` with the `-n`, `-o` switches (it's not necessary under any other circumstances); 
 
-### [More than One OpenMP Application Running Concurrently](#launching-openmp)
+### More than One OpenMP Application Running Concurrently { #launching-openmp }
 
 You can also run more than one OpenMP application simultaneously on a single node, but you will need to distribute and pin tasks appropriately. In the example below, numactl -C specifies virtual CPUs (hardware threads). According to the numbering scheme for SPR hardware threads, CPU (hardware thread) numbers 0-111 are spread across the 112 cores, 1 thread per core. Similarly for SKX: CPU (hardware thread) numbers 0-47 are spread across the 48 cores, 1 thread per core, and for ICX: CPU (hardware thread) numbers 0-79 are spread across the 80 cores, 1 thread per core.
 

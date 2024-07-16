@@ -28,7 +28,7 @@ You can always get the MATLAB help information by typing the following standard 
 
 	c202-002$ module help matlab
 
-### [DCV session](#interactive-dcv) 
+### DCV session { #interactive-dcv } 
 
 The following figures demonstrate how to launch MATLAB inside a DCV session in the [TACC Analysis Portal](TACCANALYSISPORTAL).
 
@@ -51,7 +51,7 @@ The following figures demonstrate how to launch MATLAB inside a DCV session in t
 
 You can also start a MATLAB session with a batch script.  submit your MATLAB job to each resources' compute nodes on the TACC resources, e.g. Frontera, Stampede3, or Lonestar6. To do so, first make sure that the MATLAB module has been loaded, and then launch matlab with the `-nodesktop`, `-nodisplay`, `-nosplash` options as shown in the sample Frontera job script below.
 
-### [Sample Frontera Job Script](#example1)
+### Sample Frontera Job Script { #example1 }
 
 ```job-script
 #!/bin/bash
@@ -78,7 +78,7 @@ login1$ sbatch myjobscript
 
 The parallel computing toolbox is available on the TACC resources as well.  The following two examples demonstrate parallel operations **across one node** using the `parfor` and `matlabpool` functions.  Consult the [MATLAB Parallel Toolbox](https://www.mathworks.com/products/parallel-computing.html) documentation for detailed descriptions and advanced features.
 
-### [MATLAB `parfor`](#example2)
+### MATLAB `parfor` { #example2 }
 ``` syntax
 Mat=zeros(100,1);
 parfor i = 1:100
@@ -86,7 +86,7 @@ parfor i = 1:100
 end
 ```
 
-### [MATLAB `matlabpool`](#example3)
+### MATLAB `matlabpool` { #example3 }
 
 ``` syntax
 if (matlabpool('size') ) == 0 

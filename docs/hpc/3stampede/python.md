@@ -1,4 +1,4 @@
-## [Python](#python)  { #python }
+## Python { #python }
 
 *This section is in progress.*
 
