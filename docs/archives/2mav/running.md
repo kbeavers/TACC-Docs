@@ -1,4 +1,4 @@
-## [Running Jobs](#running) { #running}
+## Running Jobs { #running }
 
 <!-- { % include 'include/maverick2-jobaccounting.md' % } -->
 
