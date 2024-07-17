@@ -1,5 +1,5 @@
 # Multifactor Authentication at TACC 
-*Last update: April 26, 2023*
+*Last update: July 17, 2024*
 
 TACC requires Multi-Factor Authentication (MFA) as an additional security measure when accessing all compute and storage resources.  <!-- To set up MFA pairing at TACC on your approved account, proceed directly to the [TACC pairing page](https://tacc.utexas.edu/portal/mfa). -->
 
@@ -90,7 +90,7 @@ This tutorial demonstrates pairing with the Duo App, though you may use any any 
 
 ## Logging into TACC Resources { #login }
 
-Once you've established MFA on your TACC account, you'll be able to login to all TACC resources where you have an allocation.  A typical login session will look something like this:
+Once you've established MFA on your TACC account, you'll be able to login to all TACC resources where you have an allocation.  A typical login session will look something like this (replace `slindsey` with your TACC user id):
 
 ``` 
 % ssh -l slindsey ls6.tacc.utexas.edu
