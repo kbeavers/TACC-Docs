@@ -28,9 +28,9 @@ $ module load pylauncher
 PyLauncher, like any compute-intensive application, must be run from a slurm batch script, or interactively within an `idev` session. PyLauncher interrogates the slurm environment variables to see what computational resources are available, so it is important that you set the `-tasks-per-node` `#SBATCH` directive appropriately:
 
 ```job-script
-#SBATCH --tasks-per-node 56      # frontera
-#SBATCH --tasks-per-node 48      # stampede3 skx queue
-#SBATCH --tasks-per-node 128     # lonestar6
+#SBATCH --ntasks-per-node 56      # frontera
+#SBATCH --ntasks-per-node 48      # stampede3 skx queue
+#SBATCH --ntasks-per-node 128     # lonestar6
 ```
 
 The number of nodes needed ("`-N`" option) will depend on how much work you have.
