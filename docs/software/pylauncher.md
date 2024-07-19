@@ -20,12 +20,13 @@ $ module load pylauncher
 ```
 
 !!! important
-	On Stampede3, the Python installation is missing a required module.  Do a one-time setup:<br>
+	Some Python installations do not include the required `paramiko` module.  You may need to perform a one-time setup:<br>
+
 	`$ pip install paramiko`
  
 ## Basic setup
 
-PyLauncher, like any compute-intensive application, must be run from a slurm batch script, or interactively within an `idev` session. PyLauncher interrogates the slurm environment variables to see what computational resources are available, so it is important that you set the `-tasks-per-node` `#SBATCH` directive appropriately:
+PyLauncher, like any compute-intensive application, must be run from a slurm batch script, or interactively within an `idev` session. PyLauncher interrogates the slurm environment variables to see what computational resources are available, so it is important that you set the `--ntasks-per-node` `#SBATCH` directive appropriately:
 
 ```job-script
 #SBATCH --ntasks-per-node 56      # frontera
@@ -117,7 +118,7 @@ If your program is multi-threaded, you can specify more than one core with:
 	launcher.ClassicLauncher("commandlines",cores=4)
 
 1. This can also be used if your program takes more memory than would normally be assigned to a single core.  
-2. Alternatively, you can leave out the cores clause, and decrease the SLURM `tasks-per-node` value.
+2. Alternatively, you can leave out the cores clause, and decrease the SLURM `-ntasks-per-node` value.
 
 ### MPI { #parallel-mpi }
 
