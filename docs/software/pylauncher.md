@@ -1,19 +1,19 @@
-# Pylauncher at TACC
-*Last update: July 15, 2024*
+# PyLauncher at TACC
+*Last update: July 19, 2024*
 
-## What is Pylauncher { #intro }
+## What is PyLauncher { #intro }
 
-Pylauncher (**Py**thon + **launcher**) is a python-based parametric job launcher, a utility for distributing and executing many small jobs in parallel, using fewer  resources than would be necessary to execute all jobs simultaneously. On many batch-based cluster computers this is a better strategy than submitting many small individual small jobs.
+PyLauncher (**Py**thon + **launcher**) is a python-based parametric job launcher, a utility for distributing and executing many small jobs in parallel, using fewer  resources than would be necessary to execute all jobs simultaneously. On many batch-based cluster computers this is a better strategy than submitting many small individual small jobs.
 
-While TACC's deprecated [`launcher`](../launcher) utility works on serial codes, Pylauncher works with multi-threaded and MPI executables.  
+While TACC's deprecated [`launcher`](../launcher) utility works on serial codes, PyLauncher works with multi-threaded and MPI executables.  
 
-Example: you need to run a program with 1000 different input values, and you want to use 100 cores for that; Pylauncher will cycle through your list of commands using cores as they become available. 
+Example: you need to run a program with 1000 different input values, and you want to use 100 cores for that; PyLauncher will cycle through your list of commands using cores as they become available. 
 
-The Pylauncher source code is written in python, but this need not concern you: in the simplest scenario you use a two line python script. However, for more sophisticated scenarios the code can be extended or integrated into a python application.
+The PyLauncher source code is written in python, but this need not concern you: in the simplest scenario you use a two line python script. However, for more sophisticated scenarios the code can be extended or integrated into a python application.
 
 ## Installations
 
-Pylauncher is available on all TACC systems via the [Lmod][TACCLMOD] modules system.  Use the following in your batch script or `idev` session:
+PyLauncher is available on all TACC systems via the [Lmod][TACCLMOD] modules system.  Use the following in your batch script or `idev` session:
 
 ```cmd-line
 $ module load pylauncher
@@ -25,17 +25,17 @@ $ module load pylauncher
  
 ## Basic setup
 
-Pylauncher, like any compute-intensive application, must be run from a slurm batch script, or interactively within an `idev` session. Pylauncher interrogates the slurm environment variables to see what computational resources are available, so it is important that you set the `-tasks-per-node` `#SBATCH` directive appropriately:
+PyLauncher, like any compute-intensive application, must be run from a slurm batch script, or interactively within an `idev` session. PyLauncher interrogates the slurm environment variables to see what computational resources are available, so it is important that you set the `-tasks-per-node` `#SBATCH` directive appropriately:
 
 ```job-script
-#SBATCH -tasks-per-node 56      # frontera
-#SBATCH -tasks-per-node 48      # stampede3 skx queue
-#SBATCH -tasks-per-node 128     # lonestar6
+#SBATCH --tasks-per-node 56      # frontera
+#SBATCH --tasks-per-node 48      # stampede3 skx queue
+#SBATCH --tasks-per-node 128     # lonestar6
 ```
 
 The number of nodes needed ("`-N`" option) will depend on how much work you have.
 
-Load the Pylauncher module to set the `$TACC_PYLAUNCHER_DIR` and `$PYTHONPATH` environment variables. To find the Pylauncher software, first do
+Load the PyLauncher module to set the `$TACC_PYLAUNCHER_DIR` and `$PYTHONPATH` environment variables. To find the PyLauncher software, first do
 
 ```cmd-line
 c123-456$ module load pylauncher
@@ -50,7 +50,7 @@ import pylauncher as launcher
 launcher.ClassicLauncher("commandlines")
 ```
 
-Pylauncher will now execute the lines in the file "`commandlines`":
+PyLauncher will now execute the lines in the file "`commandlines`":
 
 ```job-script
 # this is a comment
@@ -97,7 +97,7 @@ launcher.ClassicLauncher("commandlines",debug="host+job")
 
 ### Output files { #setup-outputfiles }
 
-Pylauncher will create a directory "`pylauncher_tmp123456`" where "`123456`" is the job number. The output of your commandlines needs to be explicitly stored. For instance, the commands in your `commandlines` file could say:
+PyLauncher will create a directory "`pylauncher_tmp123456`" where "`123456`" is the job number. The output of your commandlines needs to be explicitly stored. For instance, the commands in your `commandlines` file could say:
 
 ```syntax
 mkdir -p myoutput && cd myoutput && ${HOME}/myprogram input1
@@ -127,7 +127,7 @@ If your program is MPI parallel, replace the ClassicLauncher call with the follo
 launcher.IbrunLauncher("parallellines",cores=3)
 ```
 
-The "parallellines" file consists of command lines **without the MPI job starter**, which is supplied by Pylauncher:
+The "parallellines" file consists of command lines **without the MPI job starter**, which is supplied by PyLauncher:
 
 ```syntax
 ./parallelprogram 0 10
@@ -155,7 +155,7 @@ The  "tick" message is output every half second. This can be changed, for instan
 Your job setup will consist of three files:
 
 1. A Slurm job script
-2. Pylauncher file
+2. PyLauncher file
 3. A command lines file
 
 ### Slurm Job Script File on Frontera
@@ -175,7 +175,7 @@ module load python3
 python3 example_classic_launcher.py
 ```
 
-### Pylauncher File
+### PyLauncher File
 
 where "example_classic_launcher.py" contains:
 
@@ -196,7 +196,7 @@ where "`commandlines`" contains your parameter sweep:
 
 # References { #refs }
 
-* [Github: Pylauncher](https://github.com/TACC/pylauncher)
+* [Github: PyLauncher](https://github.com/TACC/pylauncher)
 * [Launcher at TACC](https://docs.tacc.utexas.edu/software/launcher)
 * [YouTube: Intro to PyLauncher](https://www.youtube.com/watch?v=-zIO8GY7ev8)
 * [`idev` at TACC][TACCIDEV]
