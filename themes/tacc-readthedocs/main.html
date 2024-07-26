@@ -127,12 +127,19 @@
       <script src="{{ path|url }}" type="module"></script>
     {%- endfor %}
     {# /TACC #}
-    {# TACC: HELP: Often fails to auto-scroll nav to anchor link on page load #}
-    {# TACC: NOTE: Fails MORE often when testing locally than on production #}
-    {# TACC: NOTE: Fails LESS often when testing on throttled network conn. #}
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable({{ 'true' if config.theme.sticky_navigation else 'false' }});
         };
+
+        // TACC: Top-level nav links do not open menu when text is clicked
+        const emptyNavLinksThatDoNotRespond = document.querySelectorAll(
+          '.wy-menu-vertical ul li.toctree-l1 > a:not([href])'
+        );
+        [ ...emptyNavLinksThatDoNotRespond ].forEach(link => {
+          link.addEventListener('click', () => {
+            SphinxRtdTheme.Navigation.toggleCurrent( $(link) );
+          });
+        });
     </script>
   {%- endblock %}
