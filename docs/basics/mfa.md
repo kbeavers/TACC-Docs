@@ -1,5 +1,5 @@
 # Multifactor Authentication at TACC 
-*Last update: July 17, 2024*
+*Last update: July 30, 2024*
 
 TACC requires Multi-Factor Authentication (MFA) as an additional security measure when accessing all compute and storage resources.  <!-- To set up MFA pairing at TACC on your approved account, proceed directly to the [TACC pairing page](https://tacc.utexas.edu/portal/mfa). -->
 
@@ -34,7 +34,10 @@ TACC offers two mutually-exclusive authentication (pairing) methods.  You may ch
 
 * Authenticator applications e.g., Google Authenticator, Duo, 1Password  
 or
-* Standard SMS text messaging.
+* Standard SMS text messaging.  
+
+!!! important
+	DesignSafe users **must** pair using a [Multi-Factor Authentication app](#mfaapps) method.  DesignSafe users may not pair using SMS text messaging. 
 
 !!! note
 	Users located outside the U.S. **must** pair using a [Multi-Factor Authentication app](#mfaapps) method. Because the cost associated with sending multiple international text messages is prohibitive, international users may NOT set up multi-factor authentication with SMS.
@@ -56,6 +59,9 @@ Android<br>Google Play | <a href="https://play.google.com/store/apps/details?id=
 #### SMS (text) Messaging { #sms }
 
 Instead of using an app, users may instead enable multi-factor authentication with SMS, standard text messaging.
+
+!!! warning
+	The SMS pairing option is not available to DesignSafe users.  DesignSafe users may pair using any of the authentication applications listed above.
 
 When logging into a TACC resource you'll be prompted for your standard password, and then prompted for a "TACC Token Code".  At this point a text message will be sent to your phone with a unique six-digit code.  Enter this code at the prompt.  
 
