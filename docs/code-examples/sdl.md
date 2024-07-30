@@ -1,5 +1,5 @@
 # PyLauncher at TACC
-*Last update: Jul 29, 2024* 
+*Last update: July 30, 2024* 
 
 *This document is in progress*
 
@@ -46,13 +46,12 @@ Load the PyLauncher module to set the `TACC_PYLAUNCHER_DIR` and `PYTHONPATH` env
 c123-456$ module load pylauncher
 ```
 
-Which defines the TACC_PYLAUNCHER_DIR variable and sets the PYTHONPATH so that the software can be found.
-
 Your batch script can then invoke `python3` on the launcher code:
 
 ```job-script
 mylauncher.py.
-import pylauncher pylauncher.ClassicLauncher("commandlines")
+import pylauncher 
+pylauncher.ClassicLauncher("commandlines")
 ```
 
 PyLauncher will now execute the lines in the file "commandlines":
@@ -63,7 +62,7 @@ PyLauncher will now execute the lines in the file "commandlines":
 ./yourprogram value2
 ```
 
-The commands in the `commandlines` file can be complicated as you wish, e.g.:
+The commands in the `commandlines` file can be as complicated as you wish, e.g.:
 
 `mkdir output1 && cd output1 && ../yourprogram value1`
 
@@ -198,7 +197,8 @@ python3 example_classic_launcher.py
 In the job-script above, "example_classic_launcher.py" contains:
 
 ```job-script
-import pylauncherpylauncher.ClassicLauncher("commandlines",debug="host+job")
+import pylauncher
+pylauncher.ClassicLauncher("commandlines",debug="host+job")
 ```
 
 ### [Command Lines File](#samplejob-commandlines)
@@ -209,6 +209,15 @@ and "commandlines" contains your parameter sweep.
 ./myparallelprogram arg1 argB
 …
 ## [Advanced PyLauncher usage](#advanced)
+
+### [PyLauncher within an `idev` Session](#advanced-idev)
+
+PyLauncher creates a working directory with a name based on the SLURM job id. PyLauncher will also refuse to reuse a working directory. Together this has implications for running PyLauncher twice within an `idev` session: after the first run, the second run will complain that the working directory already exists. You have to delete it yourself, or explicitly designate a different working directory name in the launcher command:
+
+```job-script
+pylauncher.ClassicLauncher( “mycommandlines”,workdir=<unique name>).
+```
+
 
 ### [Restart file](#advanced-restart)
 
@@ -230,14 +239,14 @@ Important: Set Slurm's parameter `--ntasks-per-node` to the number of GPUs per n
 
 ### [Submit launcher](#advanced-submitlauncher)
 
-If your commandlines take wildly different amounts of time, a launcher job may be wasteful since it will leave cores (and nodes) unused while the longest commandlines finish. One solution is the `submit launcher' which runs outside of Slurm, and which submits Slurm jobs: For instance, the following command submits jobs to Frontera's small queue, and ensures that a queue limit of 2 is not exceeded:
+If your commandlines take wildly different amounts of time, a launcher job may be wasteful since it will leave cores (and nodes) unused while the longest running commands finish. One solution is the `submit launcher' which runs outside of Slurm, and which submits Slurm jobs: For instance, the following command submits jobs to Frontera's `small` queue, and ensures that a queue limit of 2 is not exceeded:
 
 ```job-script
 launcher.SubmitLauncher\
 	("commandlines",
  	"-A YourProject -N 1 -n 1 -p small -t 0:15:0", # slurm arguments
  	nactive=2, # queue limit
-         )
+    )
 ```
 
 ### [Debugging PyLauncher Output](#advanced-debugging)
