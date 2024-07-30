@@ -55,12 +55,11 @@ Operating System | MFA Authentication Apps
 IOS / Apple devices<br>Apple App Store | <a href="https://apps.apple.com/us/app/duo-mobile/id422663827" target="_blank">Duo</a><sup>&#8663;</sup>   <a href="https://apps.apple.com/us/app/1password-password-manager/id568903335" target="_blank">1Password</a><sup>&#8663;</sup>   <a href="https://apps.apple.com/us/app/google-authenticator/id388497605" target="_blank">Google Authenticator</a><sup>&#8663;</sup>
 Android<br>Google Play | <a href="https://play.google.com/store/apps/details?id=com.duosecurity.duomobile&hl=en_US&gl=US" target="_blank">Duo</a><sup>&#8663;</sup>   <a href="https://play.google.com/store/apps/details?id=com.onepassword.android&hl=en_US&gl=US" target="_blank">1Password</a><sup>&#8663;</sup>   <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en_US&gl=US" target="_blank">Google Authenticator</a><sup>&#8663;</sup>
 
-
 #### SMS (text) Messaging { #sms }
 
 Instead of using an app, users may instead enable multi-factor authentication with SMS, standard text messaging.
 
-!!! warning
+!!! attention 
 	The SMS pairing option is not available to DesignSafe users.  DesignSafe users may pair using any of the authentication applications listed above.
 
 When logging into a TACC resource you'll be prompted for your standard password, and then prompted for a "TACC Token Code".  At this point a text message will be sent to your phone with a unique six-digit code.  Enter this code at the prompt.  
@@ -96,17 +95,17 @@ This tutorial demonstrates pairing with the Duo App, though you may use any any 
 
 ## Logging into TACC Resources { #login }
 
-Once you've established MFA on your TACC account, you'll be able to login to all TACC resources where you have an allocation.  A typical login session will look something like this (replace `slindsey` with your TACC user id):
+Once you've established MFA on your TACC account, you'll be able to login to all TACC resources where you have an allocation.  A typical login session will look something like this: 
 
 ``` 
-% ssh -l slindsey ls6.tacc.utexas.edu
+% ssh -l taccusername ls6.tacc.utexas.edu
 To access the system:
 
 1) If not using ssh-keys, please enter your TACC password at the password prompt
 2) At the TACC Token prompt, enter your 6-digit code followed by <return>.  
 
-(slindsey@ls6.tacc.utexas.edu) Password: 
-(slindsey@ls6.tacc.utexas.edu) TACC Token Code:
+(taccusername@ls6.tacc.utexas.edu) Password: 
+(taccusername@ls6.tacc.utexas.edu) TACC Token Code:
 Last login: Fri Jan 13 11:01:11 2023 from 70.114.210.212
 ------------------------------------------------------------------------------
 Welcome to the Lonestar6 Supercomputer
