@@ -52,7 +52,7 @@ nav:
     - Quantum Espresso: software/quantumespresso.md 
     - REMORA: software/remora.md
     - TAU: software/tau.md
-    - Tensorflow: software/tensorflow.md
+#    - Tensorflow: software/tensorflow.md
     - VASP: software/vasp.md
   - TACC Tutorials:
     - Access Control Lists: tutorials/acls.md
