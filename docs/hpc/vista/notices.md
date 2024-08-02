@@ -1,9 +1,11 @@
 # Vista User Guide 
 *Last update: August 01, 2024*
 
+<!-- 
 ## Notices { #notices }
 
 Sign up for news.
+-->
 
 ## Introduction { #intro }
 
@@ -15,9 +17,11 @@ The Grace Hopper Superchip introduces a novel architecture that combines the GPU
 
 The Grace Superchip connects two 72 core Grace CPUs using the same NVLINK technology used in the Grace Hopper Superchip to provide 144 ARM cores in 2 NUMA nodes.  Using LPDDR memory, each Superchip offers over 850 GiB/s of memory bandwidth and up to 7 TFlops of double precision performance. 
 
+<!-- 
 ### Allocations { #intro-allocations }
 
 *Coming soon*.
+-->
 
 
 

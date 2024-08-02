@@ -1,7 +1,8 @@
 VISTA_OBJS	=	\
 	notices.md \
 	system.md \
-	running.md 
+	running.md \
+	nvidia.md
 #	access.md \
 #	admin.md \
 #	files.md \
