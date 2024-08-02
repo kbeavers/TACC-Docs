@@ -2,7 +2,8 @@
 
 ### Grace Grace Compute Nodes { #system-gg }
 
-Vista hosts 256 "Grace Grace" (GG) nodes with 144 cores each. Each GG node provides a performance increase of 1.5 - 2x over Stampede3's CLX nodes due to increased core count and increased memory bandwidth. 
+Vista hosts 256 "Grace Grace” (GG) nodes with 144 cores each. Each GG node provides a performance increase of 1.5 - 2x over the Stampede3's CLX nodes due to increased core count and increased memory bandwidth.  Each GG node provides over 7 TFlops of double precision performance and 850 GiB/s of memory bandwidth.
+
 
 #### Table 1. GG Specifications { #table1 }
 
@@ -19,7 +20,7 @@ Local storage: | 286 GB `/tmp` partition
 
 ### Grace Hopper Compute Nodes { #system-gh }
 
-Vista hosts 300 Grace Hopper (GH) nodes. Each GH node has one H100 GPU with 96 GB of HBM3 memory and one Grace CPU with 116 GB of LPDDR memory. The GH node provides 34 TFlops of FP64 performance and 1979 TFlops of FP16 performance for ML workflows on the H100 chip.
+Vista hosts 600 Grace Hopper (GH) nodes. Each GH node has one H100 GPU with 96 GB of HBM3 memory and one Grace CPU with 116 GB of LPDDR memory. The GH node provides 34 TFlops of FP64 performance and 1979 TFlops of FP16 performance for ML workflows on the H100 chip.
 
 
 #### Table 2. GH Specifications { #table2 }
@@ -32,7 +33,7 @@ CPU:                         | NVIDIA Grace CPU
 Total cores per node:        | 72 cores on one socket
 Hardware threads per core:   | 1
 Hardware threads per node:   | 1x48 = 72
-Clock rate:                  | 3.4 GHz
+Clock rate:                  | 3.1 GHz
 Memory:                      | 116 GB DDR5
 Cache:                       | 64 KB L1 data cache per core; 1MB L2 per core; 114 MB L3 per socket.<br>Each socket can cache up to 186 MB (sum of L2 and L3 capacity).
 Local storage:               | 286 GB `/tmp` partition
@@ -54,13 +55,14 @@ Vista will use a shared VAST file system for the `$HOME` and `$SCRATCH` director
 
 As with Stampede3, the `$WORK` file system will also be mounted.  Unlike `$HOME` and `$SCRATCH`, the `$WORK` file system is a Lustre file system and supports Lustre's `lfs` commands. All three file systems, `$HOME`, `$SCRATCH`, and `$WORK` are available from all Vista nodes. The `/tmp` partition is also available to users but is local to each node. The `$WORK` file system is available on most other TACC HPC systems as well.
 
+
 #### Table 3. File Systems { #table3 }
 
-File System | Quota | Key Features
----         | ---   | ---
-`$HOME`   | 15 GB, 300,000 files | Not intended for parallel or high−intensity file operations.<br>Backed up regularly.
-`$WORK` | 1 TB, 3,000,000 files across all TACC systems<br>Not intended for parallel or high−intensity file operations.<br>See [Stockyard system description](#xxx) for more information. | Not backed up. | Not purged.
-`$SCRATCH` | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are subject to purge if access time* is more than 10 days old. See TACC's [Scratch File System Purge Policy](#scratchpolicy) below.
+File System | Type | Quota | Key Features
+---         | -- | ---   | ---
+`$HOME` | VAST   | 23 GB, 500,000 files | Not intended for parallel or high−intensity file operations.<br>Backed up regularly.
+`$WORK` | Lustre | 1 TB, 3,000,000 files across all TACC systems<br>Not intended for parallel or high−intensity file operations.<br>See [Stockyard system description](#xxx) for more information. | Not backed up. | Not purged.
+`$SCRATCH` | VAST | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are subject to purge if access time* is more than 10 days old. See TACC's [Scratch File System Purge Policy](#scratchpolicy) below.
 
 {% include 'include/scratchpolicy.md' %}
 

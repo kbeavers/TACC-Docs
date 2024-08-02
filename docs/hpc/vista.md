@@ -1,5 +1,5 @@
 # Vista User Guide 
-*Last update: July 08, 2024*
+*Last update: August 01, 2024*
 
 ## Notices { #notices }
 
@@ -7,16 +7,26 @@ Sign up for news.
 
 ## Introduction { #intro }
 
-The National Science Foundation (NSF) has generously awarded the University of Texas at Austin funds for TACC's Vista system ([Award Abstract # XXXXXXX](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2320757)).  Please [reference TACC](https://tacc.utexas.edu/about/citing-tacc/) when providing any citations.   
+<!-- Please [reference TACC](https://tacc.utexas.edu/about/citing-tacc/) when providing any citations.   -->
+
+Vista is funded by the National Science Foundation (NSF) via a supplement to the Computing for the Endless Frontier award, [Award Abstreact #1818253](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1818253).  Vista expands the Frontera project's support of Machine Learning and GPU-enabled applications with a system based on NVIDIA Grace Hopper architecture and provides a path to more power efficient computing with NVIDIA's Grace Grace ARM CPUs. 
+
+The Grace Hopper Superchip introduces a novel architecture that combines the GPU and CPU in one module.  This technology removes the bottleneck of the PCIe bus by connecting the CPU and GPU directly with NVLINK and exposing the CPU and GPU memory space as separate NUMA nodes.  This allows the programmer to easily access CPU or GPU memory from either device.  This greatly reduces the programming complexity of GPU programs while providing increased bandwidth and reduced latency between CPU and GPU.  
+
+The Grace Superchip connects two 72 core Grace CPUs using the same NVLINK technology used in the Grace Hopper Superchip to provide 144 ARM cores in 2 NUMA nodes.  Using LPDDR memory, each Superchip offers over 850 GiB/s of memory bandwidth and up to 7 TFlops of double precision performance. 
 
 ### Allocations { #intro-allocations }
 
-07/08 pinged #allocations
+*Coming soon*.
+
+
+
 ## System Architecture { #system }
 
 ### Grace Grace Compute Nodes { #system-gg }
 
-Vista hosts 256 "Grace Grace" (GG) nodes with 144 cores each. Each GG node provides a performance increase of 1.5 - 2x over Stampede3's CLX nodes due to increased core count and increased memory bandwidth. 
+Vista hosts 256 "Grace Grace” (GG) nodes with 144 cores each. Each GG node provides a performance increase of 1.5 - 2x over the Stampede3's CLX nodes due to increased core count and increased memory bandwidth.  Each GG node provides over 7 TFlops of double precision performance and 850 GiB/s of memory bandwidth.
+
 
 #### Table 1. GG Specifications { #table1 }
 
@@ -33,7 +43,7 @@ Local storage: | 286 GB `/tmp` partition
 
 ### Grace Hopper Compute Nodes { #system-gh }
 
-Vista hosts 300 Grace Hopper (GH) nodes. Each GH node has one H100 GPU with 96 GB of HBM3 memory and one Grace CPU with 116 GB of LPDDR memory. The GH node provides 34 TFlops of FP64 performance and 1979 TFlops of FP16 performance for ML workflows on the H100 chip.
+Vista hosts 600 Grace Hopper (GH) nodes. Each GH node has one H100 GPU with 96 GB of HBM3 memory and one Grace CPU with 116 GB of LPDDR memory. The GH node provides 34 TFlops of FP64 performance and 1979 TFlops of FP16 performance for ML workflows on the H100 chip.
 
 
 #### Table 2. GH Specifications { #table2 }
@@ -46,7 +56,7 @@ CPU:                         | NVIDIA Grace CPU
 Total cores per node:        | 72 cores on one socket
 Hardware threads per core:   | 1
 Hardware threads per node:   | 1x48 = 72
-Clock rate:                  | 3.4 GHz
+Clock rate:                  | 3.1 GHz
 Memory:                      | 116 GB DDR5
 Cache:                       | 64 KB L1 data cache per core; 1MB L2 per core; 114 MB L3 per socket.<br>Each socket can cache up to 186 MB (sum of L2 and L3 capacity).
 Local storage:               | 286 GB `/tmp` partition
@@ -68,16 +78,90 @@ Vista will use a shared VAST file system for the `$HOME` and `$SCRATCH` director
 
 As with Stampede3, the `$WORK` file system will also be mounted.  Unlike `$HOME` and `$SCRATCH`, the `$WORK` file system is a Lustre file system and supports Lustre's `lfs` commands. All three file systems, `$HOME`, `$SCRATCH`, and `$WORK` are available from all Vista nodes. The `/tmp` partition is also available to users but is local to each node. The `$WORK` file system is available on most other TACC HPC systems as well.
 
+
 #### Table 3. File Systems { #table3 }
 
-File System | Quota | Key Features
----         | ---   | ---
-`$HOME`   | 15 GB, 300,000 files | Not intended for parallel or high−intensity file operations.<br>Backed up regularly.
-`$WORK` | 1 TB, 3,000,000 files across all TACC systems<br>Not intended for parallel or high−intensity file operations.<br>See [Stockyard system description](#xxx) for more information. | Not backed up. | Not purged.
-`$SCRATCH` | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are subject to purge if access time* is more than 10 days old. See TACC's [Scratch File System Purge Policy](#scratchpolicy) below.
+File System | Type | Quota | Key Features
+---         | -- | ---   | ---
+`$HOME` | VAST   | 23 GB, 500,000 files | Not intended for parallel or high−intensity file operations.<br>Backed up regularly.
+`$WORK` | Lustre | 1 TB, 3,000,000 files across all TACC systems<br>Not intended for parallel or high−intensity file operations.<br>See [Stockyard system description](#xxx) for more information. | Not backed up. | Not purged.
+`$SCRATCH` | VAST | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are subject to purge if access time* is more than 10 days old. See TACC's [Scratch File System Purge Policy](#scratchpolicy) below.
 
 {% include 'include/scratchpolicy.md' %}
 
+
+## Running Jobs { #running }
+
+<!-- % include 'include/vista-jobaccounting.md' % -->
+
+<!-- ### Slurm Job Scheduler { #running-slurm } -->
+
+### Slurm Partitions (Queues) { #queues }
+
+Vista's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
+
+!!! important
+    **Queue limits are subject to change without notice.**  
+    TACC Staff will occasionally adjust the QOS settings in order to ensure fair scheduling for the entire user community.  
+    Use TACC's `qlimits` utility to see the latest queue configurations.
+
+
+#### Table 4. Production Queues { #table4 }
+
+Queue Name     | Node Type     | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
+--             | --            | --                                   | --           | --                |  
+`gg`           | Grace/Grace   | 32 nodes<br>(4608 cores)             | 48 hrs       | 20                | 0.33 SU
+`gg-4k`        | Grace/Grace   | 8 nodes<br>(4608 cores)              | 48 hrs       | 20                | 0.33 SU
+`gh`           | Grace/Hopper  | 64 nodes<br>(4608 cores/64 gpus)     | 48 hrs       | 20                | 1 SUs
+`gh-4k`        | Grace/Hopper  | 8 nodes<br>(576 cores)               | 48 hrs       | 20                | 1 SU
+
+
+<!-- SDL 05/07 no skx-large yet
+**&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Vista.** -->
+
+### Submitting Batch Jobs with `sbatch` { #running-sbatch }
+
+Use Slurm's `sbatch` command to submit a batch job to one of the Vista queues:
+
+```cmd-line
+login1$ sbatch myjobscript
+```
+
+Where `myjobscript` is the name of a text file containing `#SBATCH` directives and shell commands that describe the particulars of the job you are submitting. The details of your job script's contents depend on the type of job you intend to run.
+
+In your job script you (1) use `#SBATCH` directives to request computing resources (e.g. 10 nodes for 2 hrs); and then (2) use shell commands to specify what work you're going to do once your job begins. There are many possibilities: you might elect to launch a single application, or you might want to accomplish several steps in a workflow. You may even choose to launch more than one application at the same time. The details will vary, and there are many possibilities. But your own job script will probably include at least one launch line that is a variation of one of the examples described here.
+
+Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should run your applications(s) after loading the same modules that you used to build them. You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not** use the Slurm `--export` option to manage your job's environment: doing so can interfere with the way the system propagates the inherited environment.
+
+[Table 8.](#table8) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Vista), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Vista.
+
+By default, Slurm writes all console output to a file named "`slurm-%j.out`", where `%j` is the numerical job ID. To specify a different filename use the `-o` option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both `-o` and `-e` options.
+
+!!! tip
+	The maximum runtime for any individual job is 48 hours.  However, if you have good checkpointing implemented, you can easily chain jobs such that the outputs of one job are the inputs of the next, effectively running indefinitely for as long as needed.  See Slurm's `-d` option.
+
+#### Table 8. Common `sbatch` Options { #table8 }
+
+Option | Argument | Comments
+--- | --- | ---
+`-A`  | *projectid* | Charge job to the specified project/allocation number. This option is only necessary for logins associated with multiple projects.
+`-a`<br>or<br>`-array` | N/A | Not available. See tip below.
+`-d=` | afterok:*jobid* | Specifies a dependency: this run will start only after the specified job (jobid) successfully finishes
+`-export=` | N/A | Avoid this option on Vista. Using it is rarely necessary and can interfere with the way the system propagates your environment.
+`-p`  | *queue_name* | Submits to queue (partition) designated by queue_name
+`-J`  | *job_name*   | Job Name
+`-N`  | *total_nodes* | Required. Define the resources you need by specifying either:<br>(1) `-N` and `-n`; or<br>(2) `-N` and `-ntasks-per-node`.
+`-n`  | *total_tasks* | This is total MPI tasks in this job. See `-N` above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set it to the same value as `-N`.
+`-ntasks-per-node`<br>or<br>`-tasks-per-node` | tasks_per_node | This is MPI tasks per node. See `-N` above for a good way to use this option. When using this option in a non-MPI job, it is usually best to set `-ntasks-per-node` to 1.
+`-t`  | *hh:mm:ss* | Required. Wall clock time for job.
+`-mail-type=` | `begin`, `end`, `fail`, or `all` | Specify when user notifications are to be sent (one option per line).
+`-mail-user=` | *email_address* | Specify the email address to use for notifications. Use with the `-mail-type=` flag above.
+`-o`  | *output_file* | Direct job standard output to output_file (without `-e` option error goes to this file)
+`-e`  | *error_file* | Direct job error output to error_file
+`-mem`  | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
+
+!!!tip
+	TACC does not support Slurm's `-array` option.  Instead, use TACC's [PyLauncher](../../software/pylauncher) utility for parameter sweeps and other collections of related serial jobs.
 
 [HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
 [CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
