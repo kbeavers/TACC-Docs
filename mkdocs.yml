@@ -33,6 +33,7 @@ nav:
 #    - Stampede2: hpc/stampede2.md
     - Stampede3: hpc/stampede3.md
     - Stallion: hpc/stallion.md
+    - Vista: hpc/vista.md
   - Software Packages:
     - ABAQUS: software/abaqus.md
     - AlphaFold : software/alphafold.md
