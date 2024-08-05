@@ -251,7 +251,7 @@ Important: Set Slurm's parameter `--ntasks-per-node` to the number of GPUs per n
 
 ### Submit launcher		{ #advanced-submitlauncher }
 
-If your commandlines take wildly different amounts of time, a launcher job may be wasteful since it will leave cores (and nodes) unused while the longest running commands finish. One solution is the `submit launcher' which runs outside of Slurm, and which submits Slurm jobs: For instance, the following command submits jobs to Frontera's `small` queue, and ensures that a queue limit of 2 is not exceeded:
+If your commandlines take wildly different amounts of time, a launcher job may be wasteful since it will leave cores (and nodes) unused while the longest running commands finish. One solution is the `submit launcher` which runs outside of Slurm, and which submits Slurm jobs: For instance, the following command submits jobs to Frontera's `small` queue, and ensures that a queue limit of 2 is not exceeded:
 
 ```job-script
 launcher.SubmitLauncher\
