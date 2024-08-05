@@ -2,11 +2,11 @@ VISTA_OBJS	=	\
 	notices.md \
 	system.md \
 	running.md \
+	launching.md \
 	nvidia.md
 #	access.md \
 #	admin.md \
 #	files.md \
-#	launching.md \
 #	building.md \
 #	mkl.md \
 #	scripts.md \
