@@ -1,5 +1,5 @@
 # Vista User Guide 
-*Last update: August 07, 2024*
+*Last update: August 08, 2024*
 
 <!-- 
 ## Notices { #notices }
