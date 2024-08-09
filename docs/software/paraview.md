@@ -1,7 +1,8 @@
 # ParaView at TACC
 *Last update: Aug 9, 2024*
 
-<img alt="ParaView logo" src="../imgs/paraview-logo.svg" width="25%"> [ParaView](https://www.paraview.org/) is an open-source, multi-platform data analysis and visualization application. ParaView users can quickly build visualizations to analyze their data using qualitative and quantitative techniques. The data exploration can be done interactively in 3D or programmatically using ParaView's batch processing capabilities.
+<img alt="ParaView logo" src="../imgs/paraview-logo.svg" width="25%">   
+[ParaView](https://www.paraview.org/) is an open-source, multi-platform data analysis and visualization application. ParaView users can quickly build visualizations to analyze their data using qualitative and quantitative techniques. The data exploration can be done interactively in 3D or programmatically using ParaView's batch processing capabilities.
 
 ParaView was developed to analyze extremely large datasets using distributed memory computing resources. ParaView can be run on supercomputers to analyze datasets of petascale size as well as on laptops for smaller data. ParaView has become an integral tool in many national laboratories, universities and industry, and has won several awards related to high performance computation.
 
@@ -20,7 +21,7 @@ ParaView is currently installed on TACC's Stampede3, Lonestar6 and Frontera reso
 </table>
 
 
-## ParaView GUI On A Compute-Node Desktop
+## Interactive ParaView A Compute-Node Desktop { #desktop }
 
 To run ParaView on one of TACC's HPC resources, log onto the [TACC Analysis Portal][TACCANALYSISPORTAL] to request one (or more) compute nodes and launch a desktop.  
 
@@ -64,7 +65,7 @@ Eventually the job will run, allocate the specified nodes and tasks, and provide
 	<figcaption>ParaView session</figcaption></figure>
 
 
-## Running ParaView In Parallel
+### Running ParaView In Parallel
 
 To run ParaView in parallel, you must first start your VNC or DCV desktop with more than one task, running on one or more nodes.  This is easily done on the [TACC Analysis Portal][TACCANALYSISPORTAL]:
 
@@ -88,17 +89,18 @@ While we wish there was a magic way to optimize ParaView in parallel,  there's n
 
 ### Running ParaView In Batch Mode
 
-ParaView can also be run in batch mode, generally from an idev session or launched using a job script and sbatch.  In this case you use ParaView through Python; ParaView includes the pvbatch executable to do so.   The only difference in the required module stack is that you load the `paraview-osmesa` module rather than `paraview` so that it can run without a connection to a desktop.
+It is often useful to run ParaView in batch mode - that is, to run ParaView visualizations as python scripts without the GUI.  A typical workflow is to use ParaView interactively to set up a visualization, then save the state of the visualization as a Python script that can be tweaked by hand, if necessary.   This resulting script can be run using the `pvbatch` or `pvpython` command-line programs.  
 
-To run pvbatch serially or in parallel using idev, start a idev session:
+Choose `pvbatch` if the script is intended to run using multiple processes; when wrapped in the `ibrun` script, it runs worker processes as determined by the manner in which the job was started (either by idev, by a slurm script or by the [TACC Analysis Portal][TACCANALYSISPORTAL]).  It requires a python script as an argument.   The `pvpython` utility, on the other hand, can be run without an argument and allows the user to type in statements.
+
+Note that if the parent job does not include a server-side desktop (for example, if it is run by `idev` or using a simple Slurm script), then the `paraview-osmesa` module must be loaded.
+
+To run `pvbatch` serially or in parallel, start an `idev` session:
 
 ```cmd-line
-login1.stampede3(236)$ idev -m 30 -p skx-dev
+login2.frontera$ idev -N [nNodes] -n {nTasks} -A {allocation} -p {queue}
 ...
-...
-Submitted batch job 847199
-...
-c454-074[skx](234)$ module load paraview
+c455-003[skx]$ module load impi qt5 swr oneapi_rk paraview-osmesa
 ```
 
 At that compute-node prompt you can run `pvbatch` and give it your Python script.   As an example, if your Python script is "tt.y" containing:
@@ -110,23 +112,52 @@ Show()
 SaveScreenshot("tt.png")
 ```
 
-Then you can run it.  On Frontera and Lonestar6 we use the `swr` wrapper; on Stampede3 this is not necessary.
+Then launch `pvbatch`.   On Frontera and Lonestar6 we use the `swr` wrapper; on Stampede3 this is not necessary.
 
 ```cmd-line
-c455-003$ ibrun [swr] pvbatch tt.py 
+c455-003[skx]$ ibrun [swr] pvbatch tt.py 
 TACC:  Starting up job 9553190 
 TACC:  Starting parallel tasks... 
-...ignore messages...
+...
 TACC:  Shutdown complete. Exiting. 
 ```
-The scary looking text that emerges can be ignored.  This will create a file named "tt.png" containing an image of a sphere:
+
+Ignore the scary looking text that emerges.  This will create a file named 'tt.png' containing an image of a sphere:
 
 <figure>
 <img src="../imgs/paraview-4.png">
 <figcaption></figcaption></figure>
 
+Alternatively, you can run `pvpython` and then enter the above statements at the prompt.  
 
-## Notes from the Vis Team { #notes } 
+### Job Script { #scripts } 
+
+You could also launch `pvbatch` using a Slurm job script:
+
+```job-script
+#!/bin/bash
+
+#SBATCH -J pvbatch
+#SBATCH -o pvbatch.out
+#SBATCH -e pvbatch.err
+#SBATCH -p skx		       # queue to run in
+#SBATCH -N 2		       # Total number of nodes requested
+#SBATCH -n 1		       # Total number of processes to run
+#SBATCH -t 02:00:00	       # Run time (hh:mm:ss) - 2 hours
+
+module load gcc/9 impi qt5 swr oneapi_rk paraview-osmesa
+
+# go to location of data and python script
+
+cd $SCRATCH/data
+
+# run pvbatch one or more times (sequentially)
+
+ibrun pvbatch state.py
+```
+
+
+## Visualization Team Notes { #notes } 
 
 While one can write one's own ParaView/Python script by hand, it is often convenient to create a visualization using the ParaView GUI then run it in batch mode.   To do so, save your ParaView state as a Python script, then modify the script (by hand) to write images or save data as required.   See [ParaView/Python Scripting](https://www.paraview.org/Wiki/ParaView/Python_Scripting).
 
@@ -135,5 +166,7 @@ You can also modify this script to, for example, take command line arguments to 
 ## References { #refs }
 
 * [ParaView Resources](https://www.paraview.org/resources/)
+* [`idev` at TACC][TACCIDEV]
+
 
 {% include 'aliases.md' %}
