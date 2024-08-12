@@ -48,7 +48,7 @@ nav:
     - MATLAB: software/matlab.md
     - NAMD: software/namd.md
     - OpenFOAM: software/openfoam.md
-#    - Paraview VisIt: software/paraview-visit.md
+    - ParaView: software/paraview.md
     - Pylauncher: software/pylauncher.md
     - Quantum Espresso: software/quantumespresso.md 
     - REMORA: software/remora.md

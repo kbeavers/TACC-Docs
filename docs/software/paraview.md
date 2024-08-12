@@ -1,5 +1,5 @@
 # ParaView at TACC
-*Last update: Aug 9, 2024*
+*Last update: August 12, 2024*
 
 <img alt="ParaView logo" src="../imgs/paraview-logo.svg" width="25%">   
 [ParaView](https://www.paraview.org/) is an open-source, multi-platform data analysis and visualization application. ParaView users can quickly build visualizations to analyze their data using qualitative and quantitative techniques. The data exploration can be done interactively in 3D or programmatically using ParaView's batch processing capabilities.
@@ -39,7 +39,7 @@ In the image below the user is submitting a request for a 30-minute DCV session 
 Eventually the job will run, allocate the specified nodes and tasks, and provide a means to connect to it in a separate browser tab.   There you will see a desktop.   In the terminal window on that desktop:
 
 
-1.  Load the modules as indicated in [Table 1.](#table)  above:
+1.  Load the modules as indicated in [Table 1.](#table1)  above:
 
 	```cmd-line
 	c442-001$ module load {module list}
@@ -89,16 +89,16 @@ While we wish there was a magic way to optimize ParaView in parallel,  there's n
 
 ### Running ParaView In Batch Mode
 
-It is often useful to run ParaView in batch mode - that is, to run ParaView visualizations as python scripts without the GUI.  A typical workflow is to use ParaView interactively to set up a visualization, then save the state of the visualization as a Python script that can be tweaked by hand, if necessary.   This resulting script can be run using the `pvbatch` or `pvpython` command-line programs.  
+It is often useful to run ParaView in batch mode - that is, to run ParaView visualizations as Python scripts without the GUI.  A typical workflow is to use ParaView interactively to set up a visualization, then save the state of the visualization as a Python script that can be tweaked by hand, if necessary.   This resulting script can be run using the `pvbatch` or `pvpython` command-line programs.  
 
-Choose `pvbatch` if the script is intended to run using multiple processes; when wrapped in the `ibrun` script, it runs worker processes as determined by the manner in which the job was started (either by idev, by a slurm script or by the [TACC Analysis Portal][TACCANALYSISPORTAL]).  It requires a python script as an argument.   The `pvpython` utility, on the other hand, can be run without an argument and allows the user to type in statements.
+Choose `pvbatch` if the script is intended to run using multiple processes; when wrapped in the `ibrun` script, it runs worker processes as determined by the manner in which the job was started (either by `idev`, by a Slurm script or by the [TACC Analysis Portal][TACCANALYSISPORTAL]).  It requires a Python script as an argument.   The `pvpython` utility, on the other hand, can be run **without** an argument and allows the user to type in statements.
 
-Note that if the parent job does not include a server-side desktop (for example, if it is run by `idev` or using a simple Slurm script), then the `paraview-osmesa` module must be loaded.
+Note that if the parent job does not include a server-side desktop (for example, if it is run by `idev` or using a simple Slurm script), then the **`paraview-osmesa`** module must be loaded.
 
 To run `pvbatch` serially or in parallel, start an `idev` session:
 
 ```cmd-line
-login2.frontera$ idev -N [nNodes] -n {nTasks} -A {allocation} -p {queue}
+login2.frontera$ idev -N nNodes -n nTasks -A allocation -p queue
 ...
 c455-003[skx]$ module load impi qt5 swr oneapi_rk paraview-osmesa
 ```
@@ -147,7 +147,7 @@ You could also launch `pvbatch` using a Slurm job script:
 
 module load gcc/9 impi qt5 swr oneapi_rk paraview-osmesa
 
-# go to location of data and python script
+# go to location of data and Python script
 
 cd $SCRATCH/data
 
@@ -161,7 +161,7 @@ ibrun pvbatch state.py
 
 While one can write one's own ParaView/Python script by hand, it is often convenient to create a visualization using the ParaView GUI then run it in batch mode.   To do so, save your ParaView state as a Python script, then modify the script (by hand) to write images or save data as required.   See [ParaView/Python Scripting](https://www.paraview.org/Wiki/ParaView/Python_Scripting).
 
-You can also modify this script to, for example, take command line arguments to vary input and output file names etc.   It is also convenient to modify this script to iterate through data sets.
+You can also modify this script to, for example, take command-line arguments to vary input and output file names etc.  It is also convenient to modify this script to iterate through data sets.
 
 ## References { #refs }
 
