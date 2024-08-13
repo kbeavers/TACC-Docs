@@ -1,14 +1,10 @@
 # Data Transfer { #datatransfer }
-*Last update: January 8, 2024*
+*Last update: August 13, 2024*
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
 1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), Cyberduck
-
-!!! attention
-	**Globus Users: See [Globus v5.4 Transition](#globusv54) update**   
-
 
 ## Command-Line Tools  { #datatransfer-cli }
 
@@ -181,14 +177,14 @@ Consult your resource's respective user guide's "Transferring Files" section for
 Once installed, click "Open Connection" in the top left corner of your Cyberduck window.
 
 <figure id="figure2"><img src="../imgs/dtg-2-open-connection-context.png" />
-<figcaption>Figure 2. Windows Cyberduck and "Open Connection" setup screen<figcaption></figure>
+<figcaption>Figure 2. Windows Cyberduck and "Open Connection" set up screen<figcaption></figure>
 
-To setup a connection, type in the server name, <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the "Connect" button to open your connection.
+To set up a connection, type in the server name, <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the "Connect" button to open your connection.
 
 Consult Figure 3. below to ensure the information you have provided is correct.  <em>If you have not done so already, replace the "Path" with the path to your individualized transfer directory.</em>
 
 <figure id="figure3"><img src="../imgs/dtg-3-open-connection-modal.png" />
-<figcaption>Figure 3. Windows "Open Connection" setup screen</figcaption></figure>
+<figcaption>Figure 3. Windows "Open Connection" set up screen</figcaption></figure>
 
 !!! note
 	You will be prompted to "allow unknown fingerprint…" upon connection. Select "allow" and enter your TACC token value.
@@ -197,20 +193,20 @@ Once connected, you can navigate through your remote file hierarchy using the gr
       
 #### Mac
 
-Once installed, go to "Bookmark &gt; New Bookmark" to setup a connection.
+Once installed, go to "Bookmark &gt; New Bookmark" to set up a connection.
       
 !!! note
-	You cannot select "Open Connection" in the top left corner of your Cyberduck window as macOS’ setup screen is missing the "More Options" button.
+	You cannot select "Open Connection" in the top left corner of your Cyberduck window as macOS' set up screen is missing the "More Options" button.
       
-To setup a connection using "New Bookmark", type in the server name, <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the setup screen and click on your newly created bookmark to launch the connection.
+To set up a connection using "New Bookmark", type in the server name, <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the set up screen and click on your newly created bookmark to launch the connection.
       
-<figure id="figure4"><img src="../imgs/dtg-4-new-bookmark.png" />
-<figcaption>Figure 4. macOS "New Bookmark" setup screen</figcaption></figure>
+<figure id="figure4"><img src="../imgs/dtg-4-new-bookmark.png" width="75%">
+<figcaption>Figure 4. macOS "New Bookmark" set up screen</figcaption></figure>
       
 Consult Figure 4. above to ensure the information you have provided is correct.  <em>If you have not done so already, replace the "Path" with the path to your individualized transfer directory.</em>
       
 !!! note
-	You will be prompted to "allow unknown fingerprint…" upon connection. Select "allow" and enter your TACC token value.
+	You will be prompted to "allow unknown fingerprint" upon connection. Select "allow" and then enter your TACC token value.
       
 Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the storage system.
       

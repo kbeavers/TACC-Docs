@@ -5,8 +5,6 @@ Globus supplies high speed, reliable, asynchronous transfers to the portal. Glob
 
 This document leads you through the steps required to set up Globus to use for the first time. Several steps will need to be repeated each time you set up a new computer to use Globus for the portal. Once you are set up, you can use Globus not only for transfers to and from the portal, but also to access other cyberinfrastructure resources at TACC and around the world.
 
-### First Time Setup { #setup }
-
 To start using Globus, you need to do two things: Generate a unique identifier, an ePPN (an acronym-to not-worry-about), for all Globus services, and enroll the machine you are transferring data to/from with Globus (this can be your personal laptop or desktop, or a server to which you have access). Follow this one-time process to set up the Globus file transfer capability.
 
 !!! Note 
@@ -16,58 +14,66 @@ To start using Globus, you need to do two things: Generate a unique identifier, 
 	You must use your institution's credentials and **not your personal email account (e.g. Google, Yahoo!, Hotmail)** when setting up Globus.  You will encounter problems with the transfer endpoints (e.g. Frontera, Stampede3, Corral, Ranch) if you use your personal account information.
 
 
-1. **Retrieve your Unique ePPN**.  Login to [CILogon](https://cilogon.org) and click on "User Attributes":
+### Step 1. **Retrieve your Unique ePPN**.  
 
-	<figure id="figure1">
-	<img src="../imgs/globus-CIlogin.png" style="width:50%"> 
-	<figcaption>Figure 1. Make note of your ePPN</figcaption>
-	</figure>
+**Retrieve your Unique ePPN**.  Login to [CILogon](https://cilogon.org) and click on "User Attributes".  Make note of your ePPN.
 
-2. **Associate your EPPN with your TACC Account.**  Login to your [TACC user profile](https://accounts.tacc.utexas.edu), click "Account Information" in the left-hand menu, then add or edit your ePPN from Step 1.
+<figure id="figure1">
+<img src="../imgs/globus-CIlogin.png" style="width:50%"> 
+<figcaption>Figure 1. Make note of your ePPN</figcaption>
+</figure>
 
-	<figure>
-	<img src="../imgs/globus-setup-step2.png" style="width:50%">
-	<figcaption></figcaption>
-	</figure>
+### Step 2. **Associate your EPPN with your TACC Account.**  
 
-	Once you've completed these steps, you will be able to use the [Globus File Manager](https://app.globus.org) as usual.  If you encounter any issues, please [submit a support ticket](https://tacc.utexas.edu/portal/tickets).
+**Associate your EPPN with your TACC Account.**  Login to your [TACC user profile](https://accounts.tacc.utexas.edu), click "Account Information" in the left-hand menu, then add or edit your ePPN from Step 1.
+
+<figure>
+<img src="../imgs/globus-setup-step2.png" style="width:50%">
+<figcaption></figcaption>
+</figure>
+
+Once you've completed these steps, you will be able to use the [Globus File Manager](https://app.globus.org) as usual.  If you encounter any issues, please [submit a support ticket](https://tacc.utexas.edu/portal/tickets).
 
 
-3. **Activate Endpoint and Transfer Files**: Now that you have associated the ePPN with your TACC account and given the ePPN time to propagate to the systems (up to thirty minutes), you can activate the Globus transfer endpoints and begin transferring files.
+### Step 3. **Activate Endpoint and Transfer Files**
 
-	Go to [https://globus.org](https://globus.org/) and log in.
+**Activate Endpoint and Transfer Files**: Now that you have associated the ePPN with your TACC account and given the ePPN time to propagate to the systems (up to thirty minutes), you can activate the Globus transfer endpoints and begin transferring files.
 
-	<figure>
-	<img src="../imgs/gdt-step-2a-login.png" style="width:80%">
-	<figcaption></figcaption>
-	</figure>
+Go to [https://globus.org](https://globus.org/) and log in.
 
-	Upon successful login you, you will be directed to the "File Manager" landing page.
+<figure>
+<img src="../imgs/gdt-step-2a-login.png" style="width:80%">
+<figcaption></figcaption>
+</figure>
 
-	<figure>
-	<img src="../imgs/gdt-step-2b-file-manager.png" style="width:80%">
-	<figcaption></figcaption>
-	</figure>
+Upon successful login you, you will be directed to the "File Manager" landing page.
 
-	Click on "Endpoints".
+<figure>
+<img src="../imgs/gdt-step-2b-file-manager.png" style="width:80%">
+<figcaption></figcaption>
+</figure>
 
-	!!! important
-		**Select an endpoint that has "GCS v5.4" in the title.**
+Click on "Endpoints".
 
-	<figure>
-	<img src="../imgs/gdt-step-2c-endpoints.png" style="width:80%">
-	<figcaption></figcaption>
-	</figure>
+!!! important
+	**Select an endpoint that has "GCS v5.4" in the title.**
 
-	Click "+ Create new endpoint" and follow the instructions to set up your desktop/laptop as an endpoint.
+<figure>
+<img src="../imgs/gdt-step-2c-endpoints.png" style="width:80%">
+<figcaption></figcaption>
+</figure>
 
-	<figure>
-	<img src="../imgs/gdt-step-2d-access-computer.png" style="width:80%">
-	<figcaption></figcaption>
-	</figure>
+Click "+ Create new endpoint" and follow the instructions to set up your desktop/laptop as an endpoint.
 
-	Enter a Display Name to identify your local endpoint like My Laptop, My Desktop at Home, etcetera and then click Generate Setup Key and click copy to copy the Personal Setup Key.
+<figure>
+<img src="../imgs/gdt-step-2d-access-computer.png" style="width:80%">
+<figcaption></figcaption>
+</figure>
+
+Enter a Display Name to identify your local endpoint like "My Laptop", or "My Desktop at Home", then click "Generate Setup Key" and click "Copy" to copy the Personal Setup Key.
 	
+<!-- I think a lot of this stuff is DesignSafe, not sure if it's valuable -->
+
 <!-- 
 Download and Install the Globus Connect Personal client.
 
