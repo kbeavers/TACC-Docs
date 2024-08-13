@@ -2,7 +2,6 @@
 # include files for all TUP documentation, mostly HPC guidees
 
 # some defaults
-striping="<a\ href=\"\/user-guides\/stampede2#files-striping\">Striping\ Large\ Files\ in\ the\ Stampede2\ User\ Guide<\/a>"
 taccinfopath="\/usr\/local\/etc\/taccinfo"
 
 # managingio - taccinfo
