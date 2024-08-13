@@ -74,7 +74,7 @@ A successful data transfer will generate terminal output similar to this:
 
 If you wish to learn more about `scp` and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html">the online `man` page for `scp`</a> or follow the file transfer section of the user guide for the appropriate TACC system:
 
-* <a target="_blank" href="https://docs.tacc.utexas.edu/hpc/stampede2/#transferring-scp">Stampede2 User Guide</a>
+* <a target="_blank" href="https://docs.tacc.utexas.edu/hpc/stampede3/#transferring-scp">Stampede3 User Guide</a>
 * <a target="_blank" href="https://docs.tacc.utexas.edu/hpc/frontera/#transferring-scp">Frontera User Guide</a>
 * <a target="_blank" href="https://https://docs.tacc.utexas.edu/hpc/lonestar6/#files-transferring-scp">Lonestar6 User Guide</a>
 
@@ -162,7 +162,7 @@ If you wish to learn more about `rsync` and how to synchronize your file transfe
 
 Consult your resource's respective user guide's "Transferring Files" section for more detailed information on the `scp` and `rsync` utilities:
 
-* <a href="../hpc/stampede2/#transferring-rsync">Stampede2 User Guide</a>
+* <a href="../hpc/stampede3/#transferring-rsync">Stampede3 User Guide</a>
 * <a href="../hpc/lonestar6/#files-transferring-rsync">Lonestar6 User Guide</a>
 * <a href="../hpc/frontera/#transferring-rsync">Frontera User Guide</a>
 

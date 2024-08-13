@@ -35,7 +35,7 @@ To start using Globus, you need to do two things: Generate a unique identifier f
 *   [Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account](#step1)
 *   [Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files](#step2)
 
-PLEASE NOTE: You must use _your institution’s credentials and not your personal Google account_ when setting up Globus. If you use a personal account, you will encounter an issue with the transfer endpoint (Frontera, Stampede2, Corral, Ranch, etcetera).
+PLEASE NOTE: You must use _your institution’s credentials and not your personal Google account_ when setting up Globus. If you use a personal account, you will encounter an issue with the transfer endpoint (Frontera, Stampede3, Corral, Ranch, etcetera).
 
 ### Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account { #step1 }
 
@@ -103,7 +103,7 @@ You can now access the files on your desktop/laptop via Globus.
 
 ![](imgs/gdt-step-2e-your-collections.png) 
 
-You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select the appropriate allocation storage system (Frontera, Stampede2, Corral, Ranch, etcetera) for the desired data.
+You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select the appropriate allocation storage system (Frontera, Stampede3, Corral, Ranch, etcetera) for the desired data.
 
 <!--  See how this is rendered in cep.tacc. 
 /// details | Examples:
@@ -113,7 +113,7 @@ You can also click on Panels to look at two endpoints at the same time. In the o
         :   Data
             :   My Data
         :   System
-            : TACC Stampede2
+            : TACC Stampede3
     :   Example B
         :   Data
             :   Shared Workspaces
@@ -136,7 +136,7 @@ You can also click on Panels to look at two endpoints at the same time. In the o
 
 ![](imgs/gdt-step-2f-select-system.png) 
 
-After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on the allocation storage system (Frontera, Stampede2, Corral, Ranch):
+After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on the allocation storage system (Frontera, Stampede3, Corral, Ranch):
 
 ### Examples
 
@@ -155,8 +155,8 @@ To access "My Data", use the appropriate endpoint and set "Path" to the path o
 
 &nbsp;   | Stampede | Frontera | Lonestar6
 -- | -- | -- | --
-**Endpoint** | Stampede | Frontera | Lonestar6
-**Hostname** | `stampede2.tacc.utexas.edu` | `frontera.tacc.utexas.edu` | `ls6.tacc.utexas.edu`
+**Endpoint** | Stampede3 | Frontera | Lonestar6
+**Hostname** | `stampede3.tacc.utexas.edu` | `frontera.tacc.utexas.edu` | `ls6.tacc.utexas.edu`
 
 
 *   To access a project in "My Projects" use the appropriate endpoint and set <samp>Path</samp> to: <code>/<kbd>path/to/storage</kbd>/<kbd>PORTAL</kbd>/projects/<kbd>PORTAL-ProjectIDNumber</kbd></code>
