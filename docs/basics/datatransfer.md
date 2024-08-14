@@ -1,5 +1,5 @@
 # Data Transfer { #datatransfer }
-*Last update: August 13, 2024*
+*Last update: August 14, 2024*
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
@@ -35,12 +35,12 @@ Figure 1. Use Get Info to determine "Where" the path of your data file(s) is
 <figure id="figure1"><img src="../imgs/dtg-1-determine-path.png" /></a>
 <figcaption> Figure 1. Use Get Info to determine "Where" the path of your data file(s) is</figcaption></figure>
 
-For example, a file located in a folder named <kbd>portal-data</kbd> under `Documents` would have the following path:
+For example, a file located in a folder named portal-data under `Documents` would have the following path:
 
 <table>
-<tr><td>On Mac</td><td><code>/Users/<kbd>username</kbd>/Documents/<kbd>portal-data</kbd>/my_file.txt</code></td></tr>
+<tr><td>On Mac</td><td>/Users/username/Documents/portal-data/my_file.txt</td></tr>
 <dt>On Windows</dt>
-<tr><td><code>\Users\<kbd>username</kbd>\My Documents\<kbd>portal-data</kbd>\my_file.txt</code></td></tr>
+<tr><td>\Users\username\My Documents\portal-data\my_file.txt</td></tr>
 </table>
 
 ### Transfer with `scp` { #datatransfer-cli-scp }
@@ -48,8 +48,8 @@ For example, a file located in a folder named <kbd>portal-data</kbd> under `Docu
 The `scp` command copies files between hosts on a network. To transfer a file (ex. `my_file.txt`) to the remote secure system via `scp`, open a terminal on your local computer and navigate to the path where your data file is located.
       
 <table>
-<tr><td>On Mac</td> <td><pre><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></td></tr>
-<tr><td>On Windows</td> <td><pre><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></td></tr>
+<tr><td>On Mac</td> <td>glocalhost$ gcd ~/Documents/portal-data/</td></tr>
+<tr><td>On Windows</td> <td>glocalhost$ gcd %HOMEPATH%\Documents\portal-data\</td></tr>
 </table>
 
 Assuming your TACC username is `bjones` and you are affiliated with UT Austin, a `scp` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
@@ -66,74 +66,83 @@ After entering the command, you will be prompted to login to the remote secure s
 
 A successful data transfer will generate terminal output similar to this:
 
-<pre><samp>my_file.txt     100% ##  #.#          KB/s   ##:##</samp></pre>
+gmy_file.txt     100% ##  #.#          KB/s   ##:##g
 
-If you wish to learn more about `scp` and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html">the online `man` page for `scp`</a> or follow the file transfer section of the user guide for the appropriate TACC system:
+If you wish to learn more about `scp` and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html">the online `man` page for `scp`</a>.   
 
-* <a target="_blank" href="https://docs.tacc.utexas.edu/hpc/stampede3/#transferring-scp">Stampede3 User Guide</a>
-* <a target="_blank" href="https://docs.tacc.utexas.edu/hpc/frontera/#transferring-scp">Frontera User Guide</a>
-* <a target="_blank" href="https://https://docs.tacc.utexas.edu/hpc/lonestar6/#files-transferring-scp">Lonestar6 User Guide</a>
 
 ### Transfer with `sftp` { #datatransfer-cli-sftp }
 
 `sftp` is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. `my_file.txt`) to the remote secure system via `sftp`, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
       
 <table>
-<tr><td>On Mac</td><td><pre><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></td></tr>
-<tr><td>On Windows</td><td><pre><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></td></tr>
+<tr><td>On Mac</td><td>glocalhost$ gcd ~/Documents/portal-data/</td></tr>
+<tr><td>On Windows</td><td>glocalhost$ gcd %HOMEPATH%\Documents\portal-data\</td></tr>
 </table>
 
 Assuming your TACC username is `bjones` and you are affiliated with UT Austin, an `sftp` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
       
-<pre><code><u>localhost$ </u>sftp bjones@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd>
-<samp>Password:
+```cmd-line
+localhost$ sftp bjones@host:/transfer/directory/path
+Password:
 TACC Token Code:
-Connected to <var>host</var>.
+Connected to host.
 Changing to:
-  <var>/transfer/directory/path</var></samp>
-<u>sftp&gt;</u></code></pre>
+  /transfer/directory/path
+sftp>
+```
 
-If you have not done so already, enter this command in your terminal, replacing the TACC username and your individualized transfer directory path appropriately.
+If you have not done so already, enter this command in your terminal, replacing the TACC username `bjones` and your individualized transfer directory path appropriately.
       
-You are now logged into the remote secure system and have been redirected to your transfer directory. To confirm your location on the server, enter the following command:
-      
-<pre><u>sftp&gt; </u>pwd
-<samp>Remote working directory:
-<var>/transfer/directory/path</var></samp></pre>
+Once you've logged into the remote secure system and have been redirected to your transfer directory, confirm your location on the server:
+
+```cmd-line
+gsftp> gpwd
+gRemote working directory:
+/transfer/directory/pathg
+```
 
 To list the files currently in your transfer directory:
 
-<pre><u>sftp&gt; </u>ls
-<samp>utaustin_dir.txt<samp></pre>
+```cmd-line
+gsftp> gls
+gutaustin_dir.txt
+```
       
 To list the files currently in your <em>local</em> directory:
       
-<pre><u>sftp&gt; </u>lls
-<samp>my_file.txt<samp></pre>
+```cmd-line
+gsftp> glls
+gmy_file.txt
+```
 
 !!! note
-	The leading <code>l</code> in the <code>lls</code> command denotes that you are listing the contents of your <em>local</em> working directory.
+	The leading `l` in the `lls` command denotes that you are listing the contents of your <em>local</em> working directory.
       
-To transfer <code>my_file.txt</code> from your local computer to your transfer directory:
+To transfer `my_file.txt` from your local computer to your transfer directory:
 
-<pre><u>sftp&gt; </u>put my_file.txt
-<samp>Uploading my_file.txt to <var>/transfer/directory/path</var></samp>
-<samp>my_file.txt     100% ##  #.#          KB/s   ##:#</samp></pre>
+gsftp> gput my_file.txt
+gUploading my_file.txt to /transfer/directory/pathg
+gmy_file.txt     100% ##  #.#          KB/s   ##:#g
 
       
 To check if my_file.txt is in the utaustin subfolder:
       
 
-<pre><u>sftp&gt; </u>ls
-<samp>my_file.txt</samp>
-<samp>utaustin_dir.txt</samp></pre>
+```cmd-line
+gsftp> gls
+gmy_file.txtg
+gutaustin_dir.txtg
+```
 
-To exit out of <code>sftp</code> on the terminal:
+To exit out of `sftp` on the terminal:
 
-<pre><code><u>sftp&gt; </u>bye
-<u>localhost1$</u></code></pre>
+```cmd-line
+gsftp> gbye
+glocalhost1$g
+```
 
-If you wish to learn more about <code>sftp</code>, you can do so at <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html">the online <code>man</code> page for <code>scp</code></a>.
+If you wish to learn more about `sftp`, you can do so at <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html">the online man page for scp</a>.
       
 
 ### Transfer with `rsync` { #datatransfer-cli-rsync }
@@ -141,13 +150,15 @@ If you wish to learn more about <code>sftp</code>, you can do so at <a target="_
 `rsync`is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. `my_file.txt`) to the remote secure system via `rsync`, open a terminal on your local computer and navigate to the path where your data file is located.
       
 <table>
-<tr><td>On Mac</td><td><pre><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></td></tr>
-<tr><td>On Windows</td><td><pre><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></td></tr>
+<tr><td>On Mac</td><td>glocalhost$ gcd ~/Documents/portal-data/</td></tr>
+<tr><td>On Windows</td><td>glocalhost$ gcd %HOMEPATH%\Documents\portal-data\</td></tr>
 </table>
       
 Assuming your TACC username is `bjones` and you are affiliated with UT Austin, an `rsync` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
       
-<pre><code><u>localhost$ </u>rsync ./my_file.txt bjones@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd></code></pre>
+```cmd-line
+`glocalhost$ grsync ./my_file.txt bjones@host:/transfer/directory/path`
+```
 
 If you have not done so already, enter this command in your terminal, replacing the TACC username and your individualized transfer directory path appropriately.
       
@@ -156,13 +167,12 @@ If the command returns 0 in your terminal, the data transfer was successful.
 If you wish to learn more about `rsync` and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/rsync.1.html">the online `man` page for `rsync`</a> or follow the file transfer section of the user guide for the appropriate TACC system:
       
 
-Consult your resource's respective user guide's "Transferring Files" section for more detailed information on the `scp` and `rsync` utilities:
+Consult your respective resource user guide's "Transferring Files" section for more detailed information on the `scp` and `rsync` utilities:
 
 * <a href="../hpc/stampede3/#transferring-rsync">Stampede3 User Guide</a>
 * <a href="../hpc/lonestar6/#files-transferring-rsync">Lonestar6 User Guide</a>
 * <a href="../hpc/frontera/#transferring-rsync">Frontera User Guide</a>
 
-* [Frontera running](hpc/frontera/#transferring-rsync)
 
 ## GUI Tools { #datatransfer-cli-gui }
 
@@ -179,7 +189,7 @@ Once installed, click "Open Connection" in the top left corner of your Cyberduck
 <figure id="figure2"><img src="../imgs/dtg-2-open-connection-context.png" />
 <figcaption>Figure 2. Windows Cyberduck and "Open Connection" set up screen<figcaption></figure>
 
-To set up a connection, type in the server name, <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the "Connect" button to open your connection.
+To set up a connection, type in the server name, host. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory, /transfer/directory/path, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the "Connect" button to open your connection.
 
 Consult Figure 3. below to ensure the information you have provided is correct.  <em>If you have not done so already, replace the "Path" with the path to your individualized transfer directory.</em>
 
@@ -198,7 +208,7 @@ Once installed, go to "Bookmark &gt; New Bookmark" to set up a connection.
 !!! note
 	You cannot select "Open Connection" in the top left corner of your Cyberduck window as macOS' set up screen is missing the "More Options" button.
       
-To set up a connection using "New Bookmark", type in the server name, <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the set up screen and click on your newly created bookmark to launch the connection.
+To set up a connection using "New Bookmark", type in the server name, host. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, /transfer/directory/path, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the set up screen and click on your newly created bookmark to launch the connection.
       
 <figure id="figure4"><img src="../imgs/dtg-4-new-bookmark.png" width="75%">
 <figcaption>Figure 4. macOS "New Bookmark" set up screen</figcaption></figure>
@@ -221,12 +231,10 @@ From what I can tell you are trying to transfer data from a google drive to our 
 You should be able to login to the system, navigate to the directory you would like the files in, then run the wget command to drop the files in that directory. Please let me know if this is what you are intending to do and if it works for you.
 -->
 
-<!-- ## <a href="#references">References</a> 
----
+## References { #refs }
 
 * [`scp` manual page](https://man7.org/linux/man-pages/man1/scp.1.html)
 * [`sftp` manual page](https://man7.org/linux/man-pages/man1/sftp.1.html)
 * [`rsync` manual page](https://man7.org/linux/man-pages/man1/rsync.1.html)
 * <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> </td> </tr>
--->
 
