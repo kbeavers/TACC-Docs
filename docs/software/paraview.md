@@ -31,7 +31,7 @@ To run ParaView on one of TACC's HPC resources, log onto the [TACC Analysis Port
 In the image below the user is submitting a request for a 30-minute DCV session on a single node in Stampede3's `skx-dev` queue.  
 
 !!!tip
-	You can choose either VNC or DCV to provide the desktop, DCV is preferred but has a limited number of licenses available.
+	You can choose either the VNC or DCV method to provide the desktop.  DCV is preferred but has a limited number of licenses available.
 
 <figure><img src="../imgs/paraview-1.png" width=60%>
 <figcaption>Submit DCV session request</figcaption></figure>
