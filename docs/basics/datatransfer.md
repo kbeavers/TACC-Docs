@@ -220,7 +220,12 @@ Consult Figure 4. above to ensure the information you have provided is correct. 
       
 Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the storage system.
       
----
+### References { #refs }
+
+* [`scp` manual page](https://man7.org/linux/man-pages/man1/scp.1.html)
+* [`sftp` manual page](https://man7.org/linux/man-pages/man1/sftp.1.html)
+* [`rsync` manual page](https://man7.org/linux/man-pages/man1/rsync.1.html)
+* <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> </td> </tr>
 
 {% include 'basics/globusdatatransfer.md' %}
 
@@ -230,11 +235,4 @@ From what I can tell you are trying to transfer data from a google drive to our 
 
 You should be able to login to the system, navigate to the directory you would like the files in, then run the wget command to drop the files in that directory. Please let me know if this is what you are intending to do and if it works for you.
 -->
-
-## References { #refs }
-
-* [`scp` manual page](https://man7.org/linux/man-pages/man1/scp.1.html)
-* [`sftp` manual page](https://man7.org/linux/man-pages/man1/sftp.1.html)
-* [`rsync` manual page](https://man7.org/linux/man-pages/man1/rsync.1.html)
-* <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> </td> </tr>
 
