@@ -18,7 +18,7 @@ The system employs Dell Servers with AMD's highly performant Epyc Milan processo
 
 Lonestar6 is available to researchers from all University of Texas System institutions and to our partners, Texas A&amp;M University, Texas Tech University and University of North Texas.
 
-UT System Researchers may submit allocation requests for compute time on Lonestar6 via TACC's new [Texas Resource Allocation System](https://tacc-submit.xras.xsede.org) (TxRAS).  Consult the [Allocations](https://tacc.utexas.edu/use-tacc/allocations/) page for details.  
+UT System Researchers may submit allocation requests for compute time on Lonestar6 via TACC's new [Texas Resource Allocation System](https://submit-tacc.xras.org) (TxRAS).  Consult the [Allocations](https://tacc.utexas.edu/use-tacc/allocations/) page for details.  
 
 Researchers at our partner institutions may submit allocation requests through the links below.
 
