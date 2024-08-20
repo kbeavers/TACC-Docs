@@ -59,9 +59,17 @@ TACC [MkDocs](https://mkdocs.readthedocs.io/) documentation with **customized** 
     <sup>We recommend doing so via [Docker-Desktop](https://www.docker.com/products/docker-desktop).</sup>
 1. Navigate into your clone of this repository.
 2. Start the Docker container to serve the docs.
-    ```shell
+
+   Using `Make`:
+   ```shell
     make build
     make start
+
+    ```
+   Or:
+   ```shell
+    docker compose build
+    docker compose up
 
     ```
 3. Open the website at the URL provided e.g.
