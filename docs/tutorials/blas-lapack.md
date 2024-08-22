@@ -1,25 +1,11 @@
 # BLAS and LAPACK at TACC
-*Last update: August 20, 2024*
+*Last update: August 22, 2024*
 
 BLAS (Basic Linear Algebra Subprograms) is a set of definitions of common operations on vectors and (dense) matrices. LAPACK is the Linear Algebra Package that builds on BLAS and that offers numerical algorithms such as linear system solving and eigenvalue calculations. The so-called "reference" implementations of BLAS/LAPACK are written in Fortran and can be found on <http://netlib.org>, but in practice you don't want to use them since they have low performance. Instead, TACC offers libraries that conform to the specification, but that achieve high performance. They are typically written in a combination of C and Assembly.
 
 ## Implementations { #blas }
 
 Your makefile may contain `libblas.a` or `-lblas`. Most Linux distributions indeed have a library by that name, but it will not be tuned for the TACC processor types. Instead, use one of the following libraries.
-
-### NVIDIA Performance Libraries { #nvpl }
-
-The Vista cluster does not have the Intel compiler suite and therefore is missing MKL. Instead, BLAS and LAPACK functionality can be found in the NVIDIA Performance Libraries (NVPL): 
-
-	module load nvpl
-
-With that, you can use link lines such as:
-
-```syntax
--L${TACC_NVPL_LIB} \
-    -lnvpl_lapack_lp64_seq -lnvpl_lapack_core \
-    -lnvpl_blas_lp64_seq -lnvpl_blas_core
-```
 
 ### MKL { #mkl }
 
@@ -69,6 +55,20 @@ This gives access to the compiled Fortran sources from netlib.org/lapack. When b
 ### Goto Blas and OpenBlas { #goto }
 
 Older implementations such as Goto Blas (after former TACC employee Kazushige Goto), and its offshoot, OpenBlas, are no longer maintained and should not be used. Instead, use MKL or BLIS as described above.
+
+### NVIDIA Performance Libraries { #nvpl }
+
+The Vista cluster does not have the Intel compiler suite and therefore is missing MKL. Instead, BLAS and LAPACK functionality can be found in the NVIDIA Performance Libraries (NVPL): 
+
+	module load nvpl
+
+With that, you can use link lines such as:
+
+```syntax
+-L${TACC_NVPL_LIB} \
+    -lnvpl_lapack_lp64_seq -lnvpl_lapack_core \
+    -lnvpl_blas_lp64_seq -lnvpl_blas_core
+```
 
 
 
