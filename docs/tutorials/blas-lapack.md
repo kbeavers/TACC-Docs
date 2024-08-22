@@ -64,7 +64,7 @@ The Vista cluster does not have the Intel compiler suite and therefore is missin
 
 With that, you can use link lines such as:
 
-```syntax
+```
 -L${TACC_NVPL_LIB} \
     -lnvpl_lapack_lp64_seq -lnvpl_lapack_core \
     -lnvpl_blas_lp64_seq -lnvpl_blas_core
