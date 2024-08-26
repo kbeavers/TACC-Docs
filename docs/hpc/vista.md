@@ -1,27 +1,23 @@
 # Vista User Guide 
-*Last update: August 08, 2024*
+*Last update: August 26, 2024*
 
-<!-- 
 ## Notices { #notices }
 
-Sign up for news.
--->
+* **[Subscribe][TACCSUBSCRIBE] to Vista User News**. Stay up-to-date on Vista's status, scheduled maintenances and other notifications.
 
 ## Introduction { #intro }
 
 <!-- Please [reference TACC](https://tacc.utexas.edu/about/citing-tacc/) when providing any citations.   -->
 
-Vista is funded by the National Science Foundation (NSF) via a supplement to the Computing for the Endless Frontier award, [Award Abstreact #1818253](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1818253).  Vista expands the Frontera project's support of Machine Learning and GPU-enabled applications with a system based on NVIDIA Grace Hopper architecture and provides a path to more power efficient computing with NVIDIA's Grace Grace ARM CPUs. 
+Vista is funded by the National Science Foundation (NSF) via a supplement to the Computing for the Endless Frontier award, [Award Abstract #1818253](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1818253).  Vista expands the Frontera project's support of Machine Learning and GPU-enabled applications with a system based on NVIDIA Grace Hopper architecture and provides a path to more power efficient computing with NVIDIA's Grace Grace ARM CPUs. 
 
 The Grace Hopper Superchip introduces a novel architecture that combines the GPU and CPU in one module.  This technology removes the bottleneck of the PCIe bus by connecting the CPU and GPU directly with NVLINK and exposing the CPU and GPU memory space as separate NUMA nodes.  This allows the programmer to easily access CPU or GPU memory from either device.  This greatly reduces the programming complexity of GPU programs while providing increased bandwidth and reduced latency between CPU and GPU.  
 
 The Grace Superchip connects two 72 core Grace CPUs using the same NVLINK technology used in the Grace Hopper Superchip to provide 144 ARM cores in 2 NUMA nodes.  Using LPDDR memory, each Superchip offers over 850 GiB/s of memory bandwidth and up to 7 TFlops of double precision performance. 
 
-<!-- 
 ### Allocations { #intro-allocations }
 
 *Coming soon*.
--->
 
 
 
@@ -96,13 +92,12 @@ File System | Type | Quota | Key Features
 
 ## Running Jobs { #running }
 
-<!-- % include 'include/vista-jobaccounting.md' % -->
 
 <!-- ### Slurm Job Scheduler { #running-slurm } -->
 
 ### Slurm Partitions (Queues) { #queues }
 
-Vista's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
+Vista's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  <!-- See the [Job Management](#jobmanagement) section below for further information. -->
 
 !!! important
     **Queue limits are subject to change without notice.**  
@@ -122,6 +117,8 @@ Queue Name     | Node Type     | Max Nodes per Job<br>(assoc'd cores) | Max Dura
 
 <!-- SDL 05/07 no skx-large yet
 **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Vista.** -->
+
+{% include 'include/vista-jobaccounting.md' %}
 
 ### Submitting Batch Jobs with `sbatch` { #running-sbatch }
 
@@ -385,6 +382,28 @@ NVIDIA HPC modules provide a `libgomp.so` symlink to `libnvomp.so`. This symlink
 ### Using NVPL with other MATLAB, PYTHON and R
 
 TACC MATLAB, Python and R modules need BLAS and LAPACK and other math libraries for performance. How to use NVPL with them is under investigation. We will update.
+## Help Desk { #help }
+
+TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;Vista&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+
+* **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
+
+* **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. 
+
+!!! important
+	When appropriate, include as much meta-information about your job and workflow as possible including: 
+
+	* directory containing your build and/or job script
+	* modules loaded 
+	* relevant job IDs 
+	* any recent changes in your workflow that could affect or explain the behavior you're observing.
+
+* **[Subscribe to Vista User News][TACCSUBSCRIBE].** This is the best way to keep abreast of maintenance schedules, system outages, and other general interest items.
+
+* **Have realistic expectations.** Consultants can address system issues and answer questions about Vista. But they can't teach parallel programming in a ticket, and may know nothing about the package you downloaded. They may offer general advice that will help you build, debug, optimize, or modify your code, but you shouldn't expect them to do these things for you.
+
+* **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
+
 [HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
 [CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
 [SUBMITTICKET]: https://tacc.utexas.edu/about/help/ "Submit Support Ticket"
@@ -392,7 +411,7 @@ TACC MATLAB, Python and R modules need BLAS and LAPACK and other math libraries 
 [TACCPORTALLOGIN]: https://tacc.utexas.edu/portal/login "TACC Portal login"
 [TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
 [TACCALLOCATIONS]: https://tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
-[TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
+[TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/user_updates "Subscribe to News"
 [TACCDASHBOARD]: https://tacc.utexas.edu/portal/dashboard "TACC Dashboard"
 [TACCPROJECTS]: https://tacc.utexas.edu/portal/projects "Projects & Allocations"
 
@@ -407,7 +426,8 @@ TACC MATLAB, Python and R modules need BLAS and LAPACK and other math libraries 
 [TACCSHARINGPROJECTFILES]: https://docs.tacc.utexas.edu/tutorials/sharingprojectfiles "Sharing Project Files"
 [TACCBASHQUICKSTART]: https://docs.tacc.utexas.edu/tutorials/bashstartup "Bash Quick Start Guide"
 [TACCACCESSCONTROLLISTS]: https://docs.tacc.utexas.edu/tutorials/acls "Access Control Lists"
-[TACCMFA]: https://docs.tacc.utexas.edu/basics/mfa "Multi-Factor Authentication at TACC""
-[TACCIDEV]: https://docs.tacc.utexas.edu/software/idev "idev at TACC""
+[TACCMFA]: https://docs.tacc.utexas.edu/basics/mfa "Multi-Factor Authentication at TACC"
+[TACCIDEV]: https://docs.tacc.utexas.edu/software/idev "idev at TACC"
+[TACCSOFTWARE]: https://tacc.utexas.edu/use-tacc/software-list/ "Software List""
 
 

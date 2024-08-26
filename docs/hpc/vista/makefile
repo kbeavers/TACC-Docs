@@ -3,7 +3,8 @@ VISTA_OBJS	=	\
 	system.md \
 	running.md \
 	launching.md \
-	nvidia.md
+	nvidia.md \
+	../../include/vista-help.md 
 #	access.md \
 #	admin.md \
 #	files.md \

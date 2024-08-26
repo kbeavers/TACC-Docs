@@ -24,6 +24,41 @@ then
 	# sed	-e "s/MACHINENAME/$machinename/g" \
 	# 	-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
 
+### basics
+elif [ "$1" = "basics" ] 
+then
+	echo "building includes for Vista user guide"
+	machinename=""
+	helpoutputfile="../basics/help.md"
+	# conductoutputfile="vista-conduct.md"
+	# jobaccountingoutputfile="vista-jobaccounting.md"
+
+	sed	-e "s/MACHINENAME/$machinename/g" \
+		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
+	sed	-e "s/MACHINENAME/$machinename/g" < helpsrc.md > $helpoutputfile
+	# sed	-e "s/MACHINENAME/$machinename/g" \
+	# 	-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
+
+
+### Vista
+elif [ "$1" = "vista" ] 
+then
+	echo "building includes for Vista user guide"
+	machinename="Vista"
+	helpoutputfile="vista-help.md"
+	# conductoutputfile="vista-conduct.md"
+	jobaccountingoutputfile="vista-jobaccounting.md"
+	hwthreads="128 on AMD Milan"
+
+	sed	-e "s/MACHINENAME/$machinename/g" \
+		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
+	sed	-e "s/HWTHREADS/$hwthreads/g" < mklsrc.md > $mkloutputfile
+	sed	-e "s/MACHINENAME/$machinename/g" < helpsrc.md > $helpoutputfile
+	# sed	-e "s/MACHINENAME/$machinename/g" \
+	# 	-e "s/STRIPING/$striping/g"  < conductsrc.md > $conductoutputfile
+
+
+### Lonestar6
 elif [ "$1" = "lonestar6" ] 
 then
 	echo "building includes for Lonestar6 user guide"

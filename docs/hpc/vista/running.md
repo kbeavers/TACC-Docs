@@ -1,12 +1,11 @@
 ## Running Jobs { #running }
 
-<!-- % include 'include/vista-jobaccounting.md' % -->
 
 <!-- ### Slurm Job Scheduler { #running-slurm } -->
 
 ### Slurm Partitions (Queues) { #queues }
 
-Vista's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
+Vista's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  <!-- See the [Job Management](#jobmanagement) section below for further information. -->
 
 !!! important
     **Queue limits are subject to change without notice.**  
@@ -26,6 +25,8 @@ Queue Name     | Node Type     | Max Nodes per Job<br>(assoc'd cores) | Max Dura
 
 <!-- SDL 05/07 no skx-large yet
 **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Vista.** -->
+
+{% include 'include/vista-jobaccounting.md' %}
 
 ### Submitting Batch Jobs with `sbatch` { #running-sbatch }
 
