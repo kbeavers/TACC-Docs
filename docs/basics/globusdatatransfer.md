@@ -5,7 +5,11 @@ Globus supplies high speed, reliable, asynchronous transfers to the portal. Glob
 
 This document leads you through the steps required to set up Globus to use for the first time. Several steps will need to be repeated each time you set up a new computer to use Globus for the portal. Once you are set up, you can use Globus not only for transfers to and from the portal, but also to access other cyberinfrastructure resources at TACC and around the world.
 
-To start using Globus, you need to do two things: Generate a unique identifier, an ePPN (an acronym-to not-worry-about), for all Globus services, and enroll the machine you are transferring data to/from with Globus (this can be your personal laptop or desktop, or a server to which you have access). Follow this one-time process to set up the Globus file transfer capability.
+To start using Globus, you need to do two things: Generate a unique identifier, an ePPN (an acronym-to not-worry-about), for all Globus services, and enroll the machine you are transferring data to/from with Globus.  This can be your personal laptop or desktop, or a server to which you have access. Follow this one-time process to set up the Globus file transfer capability.
+
+!!! tip
+	ePPN is an unfortunate acronym for "**e**du**P**erson**P**rincipal**N**ame", an identifier indicating a unique person within an LDAP schema.  
+
 
 !!! Note 
 	**Globus Transition**. Globus has transitioned to version 5.4. This transition impacts all TACC researchers who use Globus and requires you to update your profile with an ePPN to continue using the Globus service. The use of "Distinguished Names", or DNs, is no longer supported.

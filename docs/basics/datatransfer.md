@@ -6,7 +6,7 @@ This guide will outline and instruct methods of transferring data between TACC r
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
 1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), Cyberduck
 
-## Command-Line Tools  { #datatransfer-cli }
+## Command-Line Tools  { #cli }
 
 A common method of transferring files between TACC resources and/or your local machine is through the command line.  Whether on a Windows or a Mac, open the terminal applicaton on your local laptop to use one of the following Unix command-line (CLI) tools.
 
@@ -17,7 +17,7 @@ These three command line tools are secure and can be used to accomplish data tra
 
 To simplify the data transfer process, we recommend that Windows users follow the <a href="#datatransfer-cyberduck">How to Transfer Data with Cyberduck</a> guide as detailed below.
 
-### Determining Paths { #datatransfer-cli-paths }
+### Determining Paths { #cli-paths }
 
 Before beginning data transfer with command-line tools, you will need to know:
 
@@ -43,7 +43,7 @@ For example, a file located in a folder named portal-data under `Documents` woul
 <tr><td>\Users\username\My Documents\portal-data\my_file.txt</td></tr>
 </table>
 
-### Transfer with `scp` { #datatransfer-cli-scp }
+### Transfer with `scp` { #cli-scp }
 
 The `scp` command copies files between hosts on a network. To transfer a file (ex. `my_file.txt`) to the remote secure system via `scp`, open a terminal on your local computer and navigate to the path where your data file is located.
       
@@ -70,7 +70,7 @@ A successful data transfer will generate terminal output similar to this:
 my_file.txt     100% ##  #.#          KB/s   ##:##g
 ```
 
-### Transfer with `sftp` { #datatransfer-cli-sftp }
+### Transfer with `sftp` { #cli-sftp }
 
 `sftp` is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. `my_file.txt`) to the remote secure system via `sftp`, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
       
@@ -145,7 +145,7 @@ localhost1$
 If you wish to learn more about `sftp`, you can do so at <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html">the online man page for scp</a>.
       
 
-### Transfer with `rsync` { #datatransfer-cli-rsync }
+### Transfer with `rsync` { #cli-rsync }
       
 `rsync`is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. `my_file.txt`) to the remote secure system via `rsync`, open a terminal on your local computer and navigate to the path where your data file is located.
       
@@ -166,7 +166,7 @@ If the command returns 0 in your terminal, the data transfer was successful.
       
 If you wish to learn more about `rsync` and how to synchronize your file transfer, you can do so <a target="_blank" href="https://man7.org/linux/man-pages/man1/rsync.1.html">the online `man` page for `rsync`</a> or follow the file transfer section of the user guide for the appropriate TACC system:
       
-### References { #refs }
+### References { #clirefs }
 
 * [`scp` manual page](https://man7.org/linux/man-pages/man1/scp.1.html)
 * [`sftp` manual page](https://man7.org/linux/man-pages/man1/sftp.1.html)
