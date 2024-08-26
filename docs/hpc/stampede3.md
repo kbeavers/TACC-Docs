@@ -1,7 +1,9 @@
 # Stampede3 User Guide 
-*Last update: June 28, 2024*
+*Last update: August 26, 2024*
 
 ## Notices { #notices }
+
+* **[Subscribe][TACCSUBSCRIBE] to Stampede3 User News**. Stay up-to-date on Stampede3's status, scheduled maintenances and other notifications.
 
 * **Attention Jupyter users: learn how to [configure your environment](#python-jupyter) to enable notebooks.** (05/16/2024)
 
@@ -1534,7 +1536,6 @@ login1$ man squeue         # more info
 Pending jobs appear in order of decreasing priority. Tack on the `-u` option to display only your jobs:
 
 <figure id="squeuefigure">
-
 ```cmd-line
 login1$ squeue -u slindsey | more
 JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -1556,8 +1557,7 @@ JOBID   PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 10563         skx lcdm_bas kellygue PD       0:00      1 (Dependency)
 10961         skx    d2_12 tg111111 PD       0:00      1 (QOSMaxJobsPerUserLimit)
 ```
-
-<figcaption>Figure 2. Sample <code>squeue</code> output</figcaption></figure>
+</figure><figcaption>Figure 2. Sample <code>squeue</code> output</figcaption></figure>
 
 <!-- The default format for `squeue` now reports total nodes associated with a job rather than cores, tasks, or hardware threads. One reason for this change is clarity: the operating system sees each compute node's SDL56 hardware threads as "processors", and output based on that information can be ambiguous or otherwise difficult to interpret. -->
 
@@ -1831,7 +1831,7 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCPORTALLOGIN]: https://tacc.utexas.edu/portal/login "TACC Portal login"
 [TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
 [TACCALLOCATIONS]: https://tacc.utexas.edu/use-tacc/allocations/ "TACC Allocations"
-[TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/subscriptions "Subscribe to News"
+[TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/user_updates "Subscribe to News"
 [TACCDASHBOARD]: https://tacc.utexas.edu/portal/dashboard "TACC Dashboard"
 [TACCPROJECTS]: https://tacc.utexas.edu/portal/projects "Projects & Allocations"
 
@@ -1846,7 +1846,8 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCSHARINGPROJECTFILES]: https://docs.tacc.utexas.edu/tutorials/sharingprojectfiles "Sharing Project Files"
 [TACCBASHQUICKSTART]: https://docs.tacc.utexas.edu/tutorials/bashstartup "Bash Quick Start Guide"
 [TACCACCESSCONTROLLISTS]: https://docs.tacc.utexas.edu/tutorials/acls "Access Control Lists"
-[TACCMFA]: https://docs.tacc.utexas.edu/basics/mfa "Multi-Factor Authentication at TACC""
-[TACCIDEV]: https://docs.tacc.utexas.edu/software/idev "idev at TACC""
+[TACCMFA]: https://docs.tacc.utexas.edu/basics/mfa "Multi-Factor Authentication at TACC"
+[TACCIDEV]: https://docs.tacc.utexas.edu/software/idev "idev at TACC"
+[TACCSOFTWARE]: https://tacc.utexas.edu/use-tacc/software-list/ "Software List""
 
 

@@ -1,7 +1,9 @@
 # Stampede3 User Guide 
-*Last update: June 28, 2024*
+*Last update: August 26, 2024*
 
 ## Notices { #notices }
+
+* **[Subscribe][TACCSUBSCRIBE] to Stampede3 User News**. Stay up-to-date on Stampede3's status, scheduled maintenances and other notifications.
 
 * **Attention Jupyter users: learn how to [configure your environment](#python-jupyter) to enable notebooks.** (05/16/2024)
 
