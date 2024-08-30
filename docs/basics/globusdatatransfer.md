@@ -1,5 +1,5 @@
 ## Globus Data Transfer Guide { #globus }
-Last update: *August 15, 2024*
+Last update: *August 30, 2024*
 
 Globus supplies high speed, reliable, asynchronous transfers to the portal. Globus is fast, for large volumes of data, as it uses multiple network sockets simultaneously to transfer data. It is reliable for large numbers of directories and files, as it can automatically fail and restart itself, and will only notify you when the transfers are completed successfully.
 
@@ -30,6 +30,10 @@ To start using Globus, you need to do two things: Generate a unique identifier, 
 ### Step 2. **Associate your EPPN with your TACC Account.**  { #step2 }
 
 **Associate your EPPN with your TACC Account.**  Login to your [TACC user profile](https://accounts.tacc.utexas.edu), click "Account Information" in the left-hand menu, then add or edit your ePPN from Step 1.
+
+!!! important
+	If you update your ePPN, please allow up to 2 hours for the changes to propagate across the systems.
+
 
 <figure>
 <img src="../imgs/globus-setup-step2.png" style="width:65%">
