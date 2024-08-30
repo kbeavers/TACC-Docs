@@ -29,15 +29,15 @@ The compute nodes are where actual computations occur and where research is done
 * **Do not run research applications on the login nodes;** this includes frameworks like MATLAB and R, as well as computationally or I/O intensive Python scripts. If you need interactive access, use the `idev` utility or Slurm's `srun` to schedule one or more compute nodes.
 
 
-!!! hint
-	DO THIS: Start an interactive session on a compute node, then run Matlab.
+!!! hint "Do This"
+	Start an interactive session on a compute node, then run Matlab.
 	```cmd-line
 	login1$ idev
 	c123-456$ matlab
 	```
 
-!!! danger
-	DO NOT DO THIS: Run Matlab or other software packages on a login node
+!!! danger "Do Not Do This"
+	Run Matlab or other software packages on a login node
 
 	```cmd-line
 	login1$ matlab
@@ -45,16 +45,16 @@ The compute nodes are where actual computations occur and where research is done
 
 * **Do not launch too many simultaneous processes;** while it's fine to compile on a login node, a command like "`make -j 16`" (which compiles on 16 cores) may impact other users.
 
-!!! hint
-	DO THIS: build and submit a batch job. All batch jobs run on the compute nodes.
+!!! hint "Do This"
+	Build and submit a batch job. All batch jobs run on the compute nodes.
 
 	```cmd-line
 	login1$ make mytarget
 	login1$ sbatch myjobscript
 	```
 
-!!! danger
-	DO NOT DO THIS: invoke multiple build sessions, or run an executable on a login node.
+!!! danger "Do Not Do This"
+	Invoke multiple build sessions, or run an executable on a login node.
 
 	```cmd-line
 	login1$ make -j 12		# do not run intense builds/compilations on a login node
