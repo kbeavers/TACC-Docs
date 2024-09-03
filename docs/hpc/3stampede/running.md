@@ -19,11 +19,11 @@ Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable y
 
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  
-icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       | 4                 | 1.67 SUs
-pvc          | PVC       | 1 node<br>(96 cores)                 | 48 hrs       | 2                 | 4 SUs
+icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       | 4                 | 1.5 SUs
+pvc          | PVC       | 1 node<br>(96 cores)                 | 48 hrs       | 2                 | 3 SUs
 skx          | SKX       | 64 nodes<br>(3072 cores)             | 24 hrs       | 4                 | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(768 cores)              | 2 hrs        | 1                 | 1 SU
-spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | 3 SUs
+spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | 2 SUs
 
 
 <!-- SDL 05/07 no skx-large yet
