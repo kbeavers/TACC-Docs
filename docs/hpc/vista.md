@@ -1,5 +1,5 @@
 # Vista User Guide 
-*Last update: August 26, 2024*
+*Last update: September 3, 2024*
 
 ## Notices { #notices }
 
@@ -146,7 +146,7 @@ By default, Slurm writes all console output to a file named "`slurm-%j.out`", wh
 Option | Argument | Comments
 --- | --- | ---
 `-A`  | *projectid* | Charge job to the specified project/allocation number. This option is only necessary for logins associated with multiple projects.
-`-a`<br>or<br>`-array` | N/A | Not available. See tip below.
+`-a`<br>or<br>`-array` | *options* | Vista supports Slurm job arrays 
 `-d=` | afterok:*jobid* | Specifies a dependency: this run will start only after the specified job (jobid) successfully finishes
 `-export=` | N/A | Avoid this option on Vista. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 `-p`  | *queue_name* | Submits to queue (partition) designated by queue_name
@@ -161,8 +161,6 @@ Option | Argument | Comments
 `-e`  | *error_file* | Direct job error output to error_file
 `-mem`  | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
 
-!!!tip
-	TACC does not support Slurm's `-array` option.  Instead, use TACC's [PyLauncher](../../software/pylauncher) utility for parameter sweeps and other collections of related serial jobs.
 
 ## Launching Applications { #launching }
 
@@ -394,7 +392,7 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 	When appropriate, include as much meta-information about your job and workflow as possible including: 
 
 	* directory containing your build and/or job script
-	* modules loaded 
+	* all modules loaded 
 	* relevant job IDs 
 	* any recent changes in your workflow that could affect or explain the behavior you're observing.
 
@@ -404,6 +402,7 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 
 * **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
 
+{% include 'aliases.md' %}
 [HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
 [CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
 [SUBMITTICKET]: https://tacc.utexas.edu/about/help/ "Submit Support Ticket"
