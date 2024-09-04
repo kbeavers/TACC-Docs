@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: September 3, 2024*
+*Last update: September 4, 2024*
 
 ## Notices { #notices }
 
@@ -374,9 +374,11 @@ By default, Slurm writes all console output to a file named "`slurm-%j.out`", wh
 Option | Argument | Comments
 --- | --- | ---
 `-A`  | *projectid* | Charge job to the specified project/allocation number. This option is only necessary for logins associated with multiple projects.
-`-a`<br>or<br>`-array` | *options* | Stampede3 supports Slurm job arrays.
+`-a`<br>or<br>`--array` | =*tasklist* | Stampede3 supports Slurm job arrays.  See the [Slurm documentation on job arrays](https://slurm.schedmd.com/job_array.html) for more information.
 `-d=` | afterok:*jobid* | Specifies a dependency: this run will start only after the specified job (jobid) successfully finishes
 `-export=` | N/A | Avoid this option on Stampede3. Using it is rarely necessary and can interfere with the way the system propagates your environment.
+`--gres` | | TACC does not support this option.
+`--gpus-per-task` | | TACC does not support this option.
 `-p`  | *queue_name* | Submits to queue (partition) designated by queue_name
 `-J`  | *job_name*   | Job Name
 `-N`  | *total_nodes* | Required. Define the resources you need by specifying either:<br>(1) `-N` and `-n`; or<br>(2) `-N` and `-ntasks-per-node`.
