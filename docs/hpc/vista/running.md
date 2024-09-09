@@ -18,10 +18,13 @@ Vista's job scheduler is the Slurm Workload Manager. Slurm commands enable you t
 Queue Name     | Node Type     | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --             | --            | --                                   | --           | --                |  
 `gg`           | Grace/Grace   | 32 nodes<br>(4608 cores)             | 48 hrs       | 20                | 0.33 SU
-`gg-4k`        | Grace/Grace   | 8 nodes<br>(4608 cores)              | 48 hrs       | 20                | 0.33 SU
 `gh`           | Grace/Hopper  | 64 nodes<br>(4608 cores/64 gpus)     | 48 hrs       | 20                | 1 SUs
-`gh-4k`        | Grace/Hopper  | 8 nodes<br>(576 cores)               | 48 hrs       | 20                | 1 SU
+`gh-dev`       | Grace Hopper  | 8 nodes<br>(576 cores)               |  2 hrs       |  8                | 1 SU
 
+<!--
+`gg-4k`        | Grace/Grace   | 8 nodes<br>(4608 cores)              | 48 hrs       | 20                | 0.33 SU
+`gh-4k`        | Grace/Hopper  | 8 nodes<br>(576 cores)               | 48 hrs       | 20                | 1 SU
+-->
 
 <!-- SDL 05/07 no skx-large yet
 **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Vista.** -->
