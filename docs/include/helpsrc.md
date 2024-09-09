@@ -1,12 +1,15 @@
 ## Help Desk { #help }
 
-TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays. You can [submit a help desk ticket][HELPDESK] at any time via the TACC User Portal with &quot;MACHINENAME&quot; in the Resource field. Help the consulting staff help you by following these best practices when submitting tickets. 
+!!!important
+	[Submit a help desk ticket][HELPDESK] at any time via the TACC User Portal.  HELPMSG  
+
+TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for holidays.  Help the consulting staff help you by following these best practices when submitting tickets. 
 
 * **Do your homework** before submitting a help desk ticket. What does the user guide and other documentation say? Search the internet for key phrases in your error logs; that's probably what the consultants answering your ticket are going to do. What have you changed since the last time your job succeeded?
 
 * **Describe your issue as precisely and completely as you can:** what you did, what happened, verbatim error messages, other meaningful output. 
 
-!!! important
+!!! tip
 	When appropriate, include as much meta-information about your job and workflow as possible including: 
 
 	* directory containing your build and/or job script

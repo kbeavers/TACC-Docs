@@ -15,7 +15,6 @@ VISTA_OBJS	=	\
 #	programming.md \
 #	ml.md \
 #	python.md \
-#	../../include/vista-help.md 
 #	vis.md \
 #	refs.md
 
