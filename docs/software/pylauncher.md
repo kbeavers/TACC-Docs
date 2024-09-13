@@ -298,3 +298,4 @@ Here are some parameters that may sometimes come in handy.
 * [YouTube: Intro to PyLauncher](https://www.youtube.com/watch?v=-zIO8GY7ev8)
 * [`idev` at TACC][TACCIDEV]
 
+{% include 'aliases.md' %}
