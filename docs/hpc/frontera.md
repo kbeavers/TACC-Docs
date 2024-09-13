@@ -1,5 +1,5 @@
 # Frontera User Guide
-Last update: June 28, 2024
+Last update: September 12, 2024
 <!-- SDL <a href="https://frontera-xortal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
 
 <!-- 
@@ -10,11 +10,11 @@ Last update: June 28, 2024
 -->
 ## Introduction { #intro } 
 
-Frontera is funded by the National Science Foundation (NSF) through award #1818253, [Computing for the Endless Frontier](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1818253). It is the largest cluster dedicated to open science in the United States and is the Texas Advanced Computing Center's latest flagship system. Frontera enters production in early summer 2019, building on the successes of the Stampede1 and Stampede2 systems.  
+Frontera is funded by the National Science Foundation (NSF) through award #1818253, [Computing for the Endless Frontier](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1818253). Frontera is the largest cluster dedicated to open science in the United States and is the Texas Advanced Computing Center's latest flagship system. Frontera enters production in early summer 2019, building on the successes of the Stampede1 and Stampede2 systems.  
 
 Frontera provides a balanced set of capabilities that supports both capability and capacity simulation, data-intensive science, visualization, and data analysis, as well as emerging applications in AI and deep learning. Blue Waters and other cyberinfrastructure users in the open science community will find a familiar programming model and tools in a system that is productive today while serving as a bridge to the exascale future.  
 
-The design is anchored by Intel's top-of-the-line (at deployment) Xeon processor, Cascade Lake © (CLX). With a higher clock rate than other recent HPC processors, Intel's CLX processor delivers effective performance in the most commonly used and accessible programming model used in science applications today. Frontera's multi-tier storage system is designed to enable science at unprecedented scales with nearly 60 PB of Lustre-based storage, including 3 PB of flash storage for data-driven science applications that depend upon fast access to large amounts of data.  
+The design is anchored by Intel's top-of-the-line (at deployment) Xeon processor, Cascade Lake © (CLX). With a higher clock rate than other recent HPC processors, Intel's CLX processor delivers effective performance in the most commonly used and accessible programming model used in science applications today. Frontera's multi-tier storage system is designed to enable science at unprecedented scales with nearly 60 PB of Lustre-based storage<!--, including 3 PB of flash storage for data-driven science applications that depend upon fast access to large amounts of data-->.  
 
 Frontera is also breaking new ground in its support for science applications. During the first six months of operation the system will provide support for users to run jobs using [containers](#containers), immediately making tens of thousands of container-ready applications accessible on Frontera without the need for users to find and build their own versions.  
 
@@ -311,7 +311,7 @@ The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) co
 
 ## Managing Files { #files }
 
-Frontera mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.
+Frontera mounts three Lustre file systems that are shared across all nodes: the `/home`, `/work`, and `/scratch` file systems. <!-- Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.-->
 
 
 ### File Systems { #files-filesystems } 
