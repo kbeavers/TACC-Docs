@@ -324,7 +324,7 @@ For more information on this and other matters related to Slurm job submission, 
 
 ## Machine Learning { #ml }
 
-Von Vistaista is well equipped to provide researchers with the latest in Machine Learning frameworks, for example, PyTorch. The installation process will be a little different depending on whether you are using single or multiple nodes. Below we detail how to use PyTorch on our systems for both scenarios.
+Vista is well equipped to provide researchers with the latest in Machine Learning frameworks, for example, PyTorch. The installation process will be a little different depending on whether you are using single or multiple nodes. Below we detail how to use PyTorch on our systems for both scenarios.
 
 ### Running PyTorch (Single Node)
 

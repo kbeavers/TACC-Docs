@@ -1537,7 +1537,7 @@ Frontera is well equipped to provide researchers with the latest in machine lear
 
 ### Install Pytorch 
 
-1. Request a single compute node in Frontera's rtx-dev queue using the idev utility:
+1. Request a single compute node in Frontera's [`rtx-dev`](#queues) queue using the [`idev`][TACCIDEV] utility:
 	```cmd-line
 	login2.frontera$ idev -N 1 -n 1 -p rtx-dev -t 02:00:00
 	```
@@ -1557,13 +1557,14 @@ c123-456$ python3 -m venv /path/to/virtual-env  # (e.g., $SCRATCH/python-envs/te
 
 ### Testing Pytorch Installation 
 
-To test your installation of pytorch we point you to a few benchmark calculations that are part of Pytorch’s tutorials on multigpu and mulitnode training.  You can find their tutorial here . The tutorial includes scripts set up to run single node multigpu training as well as multinode training which we demo below:
+To test your installation of PyTorch we point you to a few benchmark calculations that are part of PyTorch's tutorials on multi-GPU and multi-node training.  See PyTorch's documentation: [Distributed Data Parallel in PyTorch](https://pytorch.org/tutorials/beginner/ddp_series_intro.html). These tutorials include several scripts set up to run single-node training and multi-node training.
+
 
 #### Single-Node
 
 1. Download the benchmark:
 	```cmd-line
-	c123-456$ cd $SCRATCH (or directory on scratch were you want this repo to reside)
+	c123-456$ cd $SCRATCH 
 	```
 c123-456$  git clone https://github.com/pytorch/examples.git
 1. Run the benchmark on one node (4 GPUs):
@@ -1572,13 +1573,13 @@ c123-456$  git clone https://github.com/pytorch/examples.git
 	```
 	
 Multi-Node
-1. Request two nodes in the rtx-dev queue using the idev utility:
+1. Request two nodes in the [`rtx-dev`](#queues) queue using the [`idev`][TACCIDEV] utility:
 	```cmd-line
 	login2.frontera$idev -N 2 -n 2 -p rtx-dev -t 02:00:00
 	```
 1. Move to the benchmark directory:
 	```cmd-line
-	c123-456$ cd $SCRATCH (or directory on scratch were  this repo resides)
+	c123-456$ cd $SCRATCH 
 	```
 1. Create a script called "run.sh". This script needs two parameters, the hostname of the master node and the number of nodes. Add execution permission for the file "run.sh".
 
