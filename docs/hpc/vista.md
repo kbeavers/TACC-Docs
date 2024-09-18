@@ -326,13 +326,13 @@ For more information on this and other matters related to Slurm job submission, 
 
 Von Vistaista is well equipped to provide researchers with the latest in Machine Learning frameworks, for example, PyTorch. The installation process will be a little different depending on whether you are using single or multiple nodes. Below we detail how to use PyTorch on our systems for both scenarios.
 
-### Running PyTorch (Single node)
+### Running PyTorch (Single Node)
 
 #### Using the System PyTorch 
 
-TACC staff has installed the (nightly) PyTorch build.  Follow these steps to use Vista's system PyTorch.
+Follow these steps to use Vista's system PyTorch with a single GPU node.
 
-1. Request a single compute node in Vista's `gh-dev` queue using the `idev` utility:
+1. Request a single compute node in Vista's `gh-dev` queue using the [`idev`][TACCIDEV] utility:
 	```cmd-line
 	login1.vista(76)$ idev -p gh-dev -N 1 -n 1 -t 1:00:00
 	```
@@ -374,7 +374,7 @@ Depending on your particular application, you may also need to install your own 
 
 #### Testing PyTorch Installation
 
-To test your installation of PyTorch we point you to a few benchmark calculations that are part of PyTorch's tutorials on multi-GPU and multi-node training.  See PyTorch's documentation: [Distributed Data Parallel](https://pytorch.org/tutorials/beginner/ddp_series_intro.html). These tutorials include several scripts set up to run single-node training and multi-node training.
+To test your installation of PyTorch we point you to a few benchmark calculations that are part of PyTorch's tutorials on multi-GPU and multi-node training.  See PyTorch's documentation: [Distributed Data Parallel in PyTorch](https://pytorch.org/tutorials/beginner/ddp_series_intro.html). These tutorials include several scripts set up to run single-node training and multi-node training.
 
 1. Download the benchmark:
 	```cmd-line
@@ -388,11 +388,11 @@ To test your installation of PyTorch we point you to a few benchmark calculation
 
 ### Running PyTorch (Multi-node)
 
-To run multi-node jobs with Grace Hopper nodes on Vista you will need to use MPI-enabled Python. Follow the instructions to install and test these environments with MPI-enabled Python.
+To run multi-node jobs with Grace Hopper nodes on Vista you will need to use MPI-enabled Python. Follow these instructions to install and test these environments with MPI-enabled Python.
 
 #### Using System PyTorch
 
-We have PyTorch (nightly) already installed on Vista that is ready to use.  Below we highlight the steps that need to be taken to use the system PyTorch.
+Follow these steps to use Vista's system PyTorch with multiple GPU nodes.
 
 1. Request a single compute node in Vista's `gh-dev` queue using the `idev` utility:
 	```cmd-line
