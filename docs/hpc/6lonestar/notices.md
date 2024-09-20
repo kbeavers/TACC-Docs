@@ -1,12 +1,9 @@
 # Lonestar6 User Guide
-*Last update: September 18, 2024*
-
+*Last update: September 20, 2024*
 
 ## Notices { #notices }
 
-* **Lonestar6 has a new [queue](#running-queues), `gpu-a100-small`, for jobs needing only a single GPU.** (11/13/2023)  
-* **[Subscribe][TACCSUBSCRIBE] to Lonestar6 User News**. Stay up-to-date on Lonestar6's status, scheduled maintenances and other notifications.
-
+* **Important**: Please note [TACC's new SU charge policy](#sunotice). (09/20/2024)
 
 ## Introduction { #intro }
 

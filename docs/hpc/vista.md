@@ -1,9 +1,10 @@
 # Vista User Guide 
-*Last update: September 18, 2024*
+*Last update: September 20, 2024*
 
 ## Notices { #notices }
 
-* **[Subscribe][TACCSUBSCRIBE] to Vista User News**. Stay up-to-date on Vista's status, scheduled maintenances and other notifications.
+* **Important**: Please note [TACC's new SU charge policy](#sunotice). (09/20/2024)
+* **[Subscribe][TACCSUBSCRIBE] to Vista User News**. Stay up-to-date on Vista's status, scheduled maintenances and other notifications.  (09/01/2024)
 
 ## Introduction { #intro }
 
