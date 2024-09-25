@@ -45,14 +45,14 @@ DRAM:                      | LPDDR5
 
 ### Grace Hopper Compute Nodes { #system-gh }
 
-Vista hosts 600 Grace Hopper (GH) nodes. Each GH node has one H100 GPU with 96 GB of HBM3 memory and one Grace CPU with 116 GB of LPDDR memory. The GH node provides 34 TFlops of FP64 performance and 1979 TFlops of FP16 performance for ML workflows on the H100 chip.
+Vista hosts 600 Grace Hopper (GH) nodes. Each GH node has one H200 GPU with 96 GB of HBM3 memory and one Grace CPU with 116 GB of LPDDR memory. The GH node provides 34 TFlops of FP64 performance and 1979 TFlops of FP16 performance for ML workflows on the H200 chip.
 
 
 #### Table 2. GH Specifications { #table2 }
 
 Specification                | Value 
 ---                          | ---
-GPU:                         | NVIDIA H100 GPU 
+GPU:                         | NVIDIA H200 GPU 
 GPU Memory:                  | 96 GB HBM 3
 CPU:                         | NVIDIA Grace CPU
 Total cores per node:        | 72 cores on one socket
