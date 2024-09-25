@@ -9,14 +9,15 @@ Vista hosts 256 "Grace Grace” (GG) nodes with 144 cores each. Each GG node pro
 
 Specification | Value 
 --- | ---
-CPU: | NVIDIA Grace CPU Superchip
-Total cores per node: | 144 cores on two sockets (2 x 72 cores)
+CPU:                       | NVIDIA Grace CPU Superchip
+Total cores per node:      | 144 cores on two sockets (2 x 72 cores)
 Hardware threads per core: | 1
 Hardware threads per node: | 2x72 = 144
-Clock rate: | 3.4 GHz
-Memory: | 237 GB LPDDR
-Cache: | 64 KB L1 data cache per core; 1MB L2 per core; 114 MB L3 per socket.<br>Each socket can cache up to 186 MB (sum of L2 and L3 capacity).
-Local storage: | 286 GB `/tmp` partition
+Clock rate:                | 3.4 GHz
+Memory:                    | 237 GB LPDDR
+Cache:                     | 64 KB L1 data cache per core; 1MB L2 per core; 114 MB L3 per socket.<br>Each socket can cache up to 186 MB (sum of L2 and L3 capacity).
+Local storage:             | 286 GB `/tmp` partition
+DRAM:                      | LPDDR5
 
 ### Grace Hopper Compute Nodes { #system-gh }
 
@@ -37,6 +38,7 @@ Clock rate:                  | 3.1 GHz
 Memory:                      | 116 GB DDR5
 Cache:                       | 64 KB L1 data cache per core; 1MB L2 per core; 114 MB L3 per socket.<br>Each socket can cache up to 186 MB (sum of L2 and L3 capacity).
 Local storage:               | 286 GB `/tmp` partition
+DRAM:                        | LPDDR5
 
 ### Login Nodes { #system-login }
 
