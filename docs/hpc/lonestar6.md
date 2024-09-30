@@ -1426,4 +1426,4 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCIDEV]: https://docs.tacc.utexas.edu/software/idev "idev at TACC"
 [TACCSOFTWARE]: https://tacc.utexas.edu/use-tacc/software-list/ "Software List""
 
-
+[TACCSOFTWARE]: https://docs.tacc.utexas.edu/basics/software/ "Software at TACC"

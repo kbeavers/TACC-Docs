@@ -22,6 +22,7 @@ nav:
     - Multi-Factor Authentication: basics/mfa.md
     - TACC Good Conduct Guide: basics/conduct.md
     - Data Transfer Guide: basics/datatransfer.md
+    - Software at TACC: basics/software.md
     - Help: basics/help.md
   - HPC User Guides:
     - Chameleon: https://chameleoncloud.readthedocs.io/en/latest

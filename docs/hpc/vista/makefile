@@ -4,12 +4,12 @@ VISTA_OBJS	=	\
 	running.md \
 	launching.md \
 	ml.md \
+	building.md \
 	nvidia.md \
 	../../include/vista-help.md 
 #	access.md \
 #	admin.md \
 #	files.md \
-#	building.md \
 #	mkl.md \
 #	scripts.md \
 #	jobmanagement.md \
