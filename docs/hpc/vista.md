@@ -122,6 +122,13 @@ Vista's job scheduler is the Slurm Workload Manager. Slurm commands enable you t
     TACC Staff will occasionally adjust the QOS settings in order to ensure fair scheduling for the entire user community.  
     Use TACC's `qlimits` utility to see the latest queue configurations.
 
+<!--
+Name             MinNode  MaxNode     MaxWall  MaxNodePU  MaxJobsPU   MaxSubmit
+gg                     1       32  2-00:00:00        128         20          40
+gh                     1       64  2-00:00:00        192         20          40
+gh-dev                 1        8    02:00:00          8          1           3
+login1.vista(18)$
+-->
 
 #### Table 4. Production Queues { #table4 }
 
@@ -131,13 +138,6 @@ Queue Name     | Node Type     | Max Nodes per Job<br>(assoc'd cores) | Max Dura
 `gh`           | Grace/Hopper  | 64 nodes<br>(4608 cores/64 gpus)     | 48 hrs       | 20                | 1 SUs
 `gh-dev`       | Grace Hopper  | 8 nodes<br>(576 cores)               |  2 hrs       |  8                | 1 SU
 
-<!--
-`gg-4k`        | Grace/Grace   | 8 nodes<br>(4608 cores)              | 48 hrs       | 20                | 0.33 SU
-`gh-4k`        | Grace/Hopper  | 8 nodes<br>(576 cores)               | 48 hrs       | 20                | 1 SU
--->
-
-<!-- SDL 05/07 no skx-large yet
-**&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Vista.** -->
 
 {% include 'include/vista-jobaccounting.md' %}
 

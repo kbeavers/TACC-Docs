@@ -14,17 +14,27 @@ Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable y
     TACC Staff will occasionally adjust the QOS settings in order to ensure fair scheduling for the entire user community.  
     Use TACC's `qlimits` utility to see the latest queue configurations.
 
+<!-- 
+10/07/2024
+Name             MinNode  MaxNode     MaxWall  MaxNodePU  MaxJobsPU   MaxSubmit
+icx                    1       32  2-00:00:00         48         12          20
+pvc                    1        4  2-00:00:00          4          2           4
+skx                    1      256  2-00:00:00        384         40          60
+skx-dev                1       16    02:00:00         16          1           3
+spr                    1       32  2-00:00:00        180         24          36
+-->
 
 #### Table 7. Production Queues { #table7 }
 
+*Updated: 10/07/2024*
+
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  
-icx          | ICX       | 16 nodes<br>(1280 cores)             | 24 hrs       | 4                 | 1.5 SUs
-pvc          | PVC       | 1 node<br>(96 cores)                 | 48 hrs       | 2                 | 3 SUs
-skx          | SKX       | 64 nodes<br>(3072 cores)             | 24 hrs       | 4                 | 1 SU
+icx          | ICX       | 32 nodes<br>(2560 cores)             | 48 hrs       | 12
+pvc          | PVC       | 4 nodes<br>(384 cores)               | 48 hrs       | 2                 | 3 SUs
+skx          | SKX       | 256 nodes<br>(12288 cores)           | 48 hrs       | 40                | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(768 cores)              | 2 hrs        | 1                 | 1 SU
-spr          | SPR       | 16 nodes<br>(896 cores)              | 24 hrs       | 6                 | 2 SUs
-
+spr          | SPR       | 32 nodes<br>(1792 cores)             | 48 hrs       | 24                | 2 SUs
 
 <!-- SDL 05/07 no skx-large yet
 **&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
