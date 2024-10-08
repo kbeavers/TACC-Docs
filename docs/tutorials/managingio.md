@@ -65,7 +65,8 @@ Compute Resource | Node Type | `/tmp` Partition Size
 
 Each TACC resource has its own Scratch file system, `/scratch`, accessible by the `$SCRATCH` environment variable and the `cds` alias.
 
-**Scratch file systems are not shared across TACC production systems but are specific to one resource. Scratch file systems have neither file count or file size quotas, but are subject to periodic and unscheduled file purges should total disk usage exceed a safety threshold.**
+!!!warning
+	Scratch file systems are not shared across TACC production systems but are specific to one resource. Scratch file systems have neither file count or file size quotas, but are subject to periodic and unscheduled file purges should total disk usage exceed a safety threshold.
 
 TACC staff recommends you run your jobs out of your resource's `$SCRATCH` file system instead of the global `$WORK` file system. To run your jobs out of `$SCRATCH`, copy (stage) the entire executable/package along with all needed job input files and/or needed libraries to your resource's `$SCRATCH` directory.
 
@@ -135,7 +136,7 @@ Manipulate data in memory instead of files on disk when necessary. This means:
 
 ### Stripe Large Files on `$SCRATCH` and `$WORK` { #striping }
 
-When transferring or creating large files, it's important that you stripe the receiving directory. See the respective "Striping Large Files" sections in the [Stampede2](../../hpc/stampede2#files-striping]) and [Frontera](../../hpc/frontera#striping-large-files) user guides. 
+When transferring or creating large files on Frontera, it's important that you stripe the receiving directory. See "Striping Large Files" sections in the [Frontera](../../hpc/frontera#striping-large-files) user guide. 
 
 
 ## Govern I/O with OOOPS { #ooops }
@@ -145,7 +146,7 @@ TACC staff has developed OOOPS, **O**ptimal **O**verloaded I/O **P**rotection **
 !!! note
 	Employing OOOPS may slow down your job significantly if your job has a lot of I/O.
 
-The OOOPS module is currently installed on TACC's [Frontera](../../hpc/frontera) and [Stampede2](../../hpc/stampede2) resources.
+The OOOPS module is currently installed on TACC's [Frontera](../../hpc/frontera) resource.
 
 
 ### Functions { #ooops-functions }
@@ -244,7 +245,7 @@ Contact the OOOPS developers, <a href="mailto:huang@tacc.utexas.edu">Lei Huang</
 
 For jobs that make use of large numbers of Python modules or use local installations of Python/Anaconda/MiniConda, TACC staff provides additional tools to help manage the I/O activity caused by library and module calls.
 
-**On Stampede2 and Frontera**: Load the `python_cacher` module in your job script:
+**On Frontera**: Load the `python_cacher` module in your job script:
 
 ```job-script
 module load python_cacher
@@ -257,7 +258,7 @@ In case `python_cacher` does not work, you can copy your Python/Anaconda/MiniCon
 
 ## Tracking Job I/O { #tracking }
 
-**Stampede2 and Frontera**: To track the full extent of your I/O activity over the course of your job, you can employ another TACC tool, `iomonitor` that will report on `open()` and `stat()` calls during your job's run. Place the following lines in your job submission script after your Slurm commands, to wrap your executable:
+**Frontera**: To track the full extent of your I/O activity over the course of your job, you can employ another TACC tool, `iomonitor` that will report on `open()` and `stat()` calls during your job's run. Place the following lines in your job submission script after your Slurm commands, to wrap your executable:
 
 ```job-script
 export LD_PRELOAD=/home1/apps/tacc-patches/io_monitor/io_monitor.so:\
