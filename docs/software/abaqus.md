@@ -63,7 +63,7 @@ On a compute node obtained through an `idev` session, the users can run the foll
 
 ``` cmd-line
 c123-456$ ml abaqus 
-c123-456$ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a &gt; abaqus_license.txt
+c123-456$ $TACC_ABAQUS_BIN/abaqus licensing lmstat -a > abaqus_license.txt
 ```
 
 ### Batch Mode { #running-batch }
