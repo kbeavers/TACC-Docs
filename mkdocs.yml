@@ -62,6 +62,7 @@ nav:
     - BLAS/LAPACK: tutorials/blas-lapack.md
     - Containers at TACC: https://containers-at-tacc.readthedocs.io/en/latest/index.html
     - DDT Debugger: tutorials/ddt.md
+    - Managing Group Permissions: tutorials/permissions.md
     - Managing I/O: tutorials/managingio.md
     - MAP: tutorials/map.md
     - Remote Desktop Access: tutorials/remotedesktopaccess.md

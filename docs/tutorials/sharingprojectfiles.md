@@ -67,7 +67,7 @@ Now all files created by you will belong to the project's group and you can proc
 
 ## Create a Shared Project Workspace { #workspace }
 
-It is not possible to make a shared, writable directory under a user's `$HOME` directory and the `$SCRATCH` file system is subject to periodic purging. Therefore, TACC staff strongly recommends placing all files to be shared in the top level of the user's area of the `/work` filesystem, defined in the `$STOCKYARD` environment variable. This new shared directory will be accessible only to members of the unix group and by extension the project members.
+It is not possible to make a shared, writable directory under a user's `$HOME` directory and the `$SCRATCH` file system is subject to periodic purging. Therefore, TACC staff strongly recommends placing all files to be shared in the top level of the user's area of the `/work` filesystem, defined in the `$STOCKYARD` environment variable. This new shared directory will be accessible only to members of the Unix group and by extension the project members.
 
 !!! note
 	The `$STOCKYARD` environment variable points to the highest level directory you own on Stockyard, TACC's [Global Shared File System](https://www.tacc.utexas.edu/systems/stockyard), which is mounted and available across all TACC systems. Your `$WORK` environment variable points to a resource-specific eponymous subdirectory of `$STOCKYARD`. For example on Stampede3, `$WORK` is defined as `$STOCKYARD/stampede3`.  All subdirectories are accessible to you on any TACC system where you have an allocation.
