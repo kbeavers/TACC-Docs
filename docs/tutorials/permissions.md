@@ -1,4 +1,4 @@
-# Unix Group Permissions and controlling the current Group context
+# Unix Group Permissions and Environment
 Last update: *October 14, 2024*
 
 
@@ -78,6 +78,7 @@ Users who are members of multiple projects may have several groups associated wi
 
 * [Manage Permissions with Access Control Lists][TACCACLS]
 * [Sharing Project Files at TACC][TACCSHARINGPROJECTFILES]
+* [TACC Corral User Guide](../../hpc/corral)
 
 
 {% include 'aliases.md' %}
