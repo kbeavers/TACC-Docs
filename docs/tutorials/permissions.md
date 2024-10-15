@@ -1,5 +1,5 @@
 # Unix Group Permissions and Environment
-Last update: *October 14, 2024*
+Last update: *October 15, 2024*
 
 
 Unix generally has a concept of a user owner and a group owner for any given file or directory, and it is important to understand these concepts to manage access to files at TACC.  There are two primary ways in which a users current and full set of groups can impact access to files on a TACC Unix file system.  These are:
@@ -72,7 +72,16 @@ The example above will run the `ls` command using the group "G-example" as the c
 
 ## Managing all groups and requesting default changes
 
-Users who are members of multiple projects may have several groups associated with their user accounts, and may have a default group that is no longer active or relevant to their current work.  The first group shown in the output of the `groups` command is the users "default" group, which will be selected every time a user logs in.  If this group is no longer relevant to your needs, you can request that the default group be changed by [submitting a support ticket][CREATETICKET] through the TACC user portal.
+Users who are members of multiple projects may have several groups associated with their user accounts, and may have a default group that is no longer active or relevant to their current work.  The first group shown in the output of the `groups` command is the users "default" group, which will be selected every time a user logs in.  
+
+!!!tip
+	If this group is no longer relevant to your needs, you can change your default group by editing your account profile through the TACC Accounts portal : <https://accounts.tacc.utexas.edu/account_info>
+
+You can see the numeric GID assigned to any project in the portal by looking at the project details: <https://tacc.utexas.edu/portal/projects>
+
+Click on any project title to view the project details; in the project detail listing, the first field is the "Charge Code" used for computational jobs, and the second field is the Group ID used for quotas and Unix permissions.
+
+After making changes through the TACC portal, you will need to log out any active sessions and log back in for the changes to take effect.
 
 ## References
 
