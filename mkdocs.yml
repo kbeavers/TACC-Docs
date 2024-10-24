@@ -43,13 +43,13 @@ nav:
     - GROMACS: software/gromacs.md
     - idev: software/idev.md
     - LAMMPS: software/lammps.md
-    - Launcher: software/launcher.md
+#    - Launcher: software/launcher.md
     - Lmod: https://lmod.readthedocs.io/en/latest
     - MATLAB: software/matlab.md
     - NAMD: software/namd.md
     - OpenFOAM: software/openfoam.md
     - ParaView: software/paraview.md
-    - Pylauncher: software/pylauncher.md
+    - PyLauncher: software/pylauncher.md
     - Quantum Espresso: software/quantumespresso.md 
     - REMORA: software/remora.md
     - TAU: software/tau.md

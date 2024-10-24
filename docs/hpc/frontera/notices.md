@@ -1,5 +1,5 @@
 # Frontera User Guide
-Last update: September 20, 2024
+Last update: October 24, 2024
 
 **Important**: Please note [TACC's new SU charge policy](#sunotice).
 

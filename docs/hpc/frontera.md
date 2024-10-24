@@ -1,5 +1,5 @@
 # Frontera User Guide
-Last update: September 20, 2024
+Last update: October 24, 2024
 
 **Important**: Please note [TACC's new SU charge policy](#sunotice).
 
@@ -589,7 +589,7 @@ As a practical guideline, the product of `$OMP_NUM_THREADS` and the maximum numb
 
 ### More Than One Serial Application in the Same Job { #launching-multiserial }
 
-TACC's `launcher` utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The launcher utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy. Execute `module load launcher` followed by `module help launcher` for more information.
+TACC's `pylauncher` utility provides an easy way to launch more than one serial application in a single job. This is a great way to engage in a popular form of High Throughput Computing: running parameter sweeps (one serial application against many different input datasets) on several nodes simultaneously. The PyLauncher utility will execute your specified list of independent serial commands, distributing the tasks evenly, pinning them to specific cores, and scheduling them to keep cores busy.  Consult [PyLauncher at TACC][TACCPYLAUNCHER] for more information.
 
 ### MPI Applications One at a Time { #launching-mpisequential }
 
@@ -688,12 +688,7 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 * A **serial** (non-parallel) application can only make use of a single core on a single node, and will only see that node's memory.
 * A threaded program (e.g. one that uses **OpenMP**) employs a shared memory programming model and is also restricted to a single node, but the program's individual threads can run on multiple cores on that node. 
 * An **MPI** (Message Passing Interface) program can exploit the distributed computing power of multiple nodes: it launches multiple copies of its executable (MPI **tasks**, each assigned unique IDs called **ranks**) that can communicate with each other across the network. The tasks on a given node, however, can only directly access the memory on that node. Depending on the program's memory requirements, it may not be possible to run a task on every core of every node assigned to your job. If it appears that your MPI job is running out of memory, try launching it with fewer tasks per node to increase the amount of memory available to individual tasks.
-* A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). The `launcher` tool is designed to make it easy to submit this type of job. For more information:
-
-	```cmd-line
-	$ module load launcher
-	$ module help launcher
-	```
+* A popular type of **parameter sweep** (sometimes called **high throughput computing**) involves submitting a job that simultaneously runs many copies of one serial or threaded application, each with its own input parameters ("Single Program Multiple Data", or SPMD). TACC's `pylauncher` tool is designed to make it easy to submit this type of job.  See [PyLauncher at TACC][TACCPYLAUNCHER] for more information.
 
 <a id="queues">
 ### Frontera Production Queues { #running-queues } 
@@ -811,7 +806,7 @@ The [Common `sbatch` Options table](#table7) below describes some of the most co
 <code>-e</code> | <i>error_file</i> | Direct job error output to <i>error_file</i>
 <code>--dependency=</code> | <i>jobid</i> | Specifies a dependency: this run will start only after the specified job (<i>jobid</i>) successfully finishes
 <code>-A</code> | <i>projectnumber</i> | Charge job to the specified project/allocation number. This option is only necessary for logins associated with multiple projects.   
-<code>-a</code><br>or<br><code>--array</code> | N/A | Not available. Use the <code>launcher</code> module for parameter sweeps and other collections of related serial jobs.
+<code>-a</code><br>or<br><code>--array</code> | N/A | Not available. Use the <code>pylauncher</code> module for parameter sweeps and other collections of related serial jobs.
 <code>--mem</code> | N/A | Not available. If you attempt to use this option, the scheduler will not accept your job.
 <code>--export=</code> | N/A | Avoid this option on Frontera. Using it is rarely necessary and can interfere with the way the system propagates your environment.
 
@@ -847,7 +842,7 @@ You'll then see output that includes the following excerpts:
 c123-456$
 ```
 
-The `job status` messages indicate that your interactive session is waiting in the queue. When your session begins, you'll see a command prompt on a compute node (in this case, the node with hostname `c449-001`). If this is the first time you launch `idev`, you may be prompted to choose a default project and a default number of tasks per node for future `idev` sessions.
+The `job status` messages indicate that your interactive session is waiting in the queue. When your session begins, you'll see a command prompt on a compute node (in this case, the node with hostname `c449-001`). If this is the first time you invoke `idev`, you may be prompted to choose a default project and a default number of tasks per node for future `idev` sessions.
 
 For command-line options and other information, execute `idev --help`. It's easy to tailor your submission request (e.g. shorter or longer duration) using Slurm-like syntax:
 
@@ -855,7 +850,7 @@ For command-line options and other information, execute `idev --help`. It's easy
 login1$ idev -p normal -N 2 -n 8 -m 150 # normal queue, 2 nodes, 8 total tasks, 150 minutes
 ```
 
-You can also launch an interactive session with Slurm's srun command, though there's no clear reason to prefer srun to idev. A typical launch line would look like this:
+You can also launch an interactive session with Slurm's `srun` command, though there's no clear reason to prefer `srun` to `idev`. A typical launch line would look like this:
 
 ```cmd-line
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
@@ -920,7 +915,7 @@ Serial codes should request 1 node (`#SBATCH -N 1`) with 1 task (`#SBATCH -n 1`)
 !!! important
 	Run all serial jobs in the `small` queue.  
 
-Consult the [Launcher at TACC](../../software/launcher) documentation to run multiple serial executables at one time.
+Consult the [PyLauncher at TACC][TACCPYLAUNCHER] documentation to run multiple serial executables at one time.
 
 ``` job-script
 #!/bin/bash
@@ -941,9 +936,9 @@ Consult the [Launcher at TACC](../../software/launcher) documentation to run mul
 #       A serial code ignores the value of lower case n,
 #       but slurm needs a plausible value to schedule the job.
 #
-#  -- Use TACC's launcher utility to run multiple serial 
-#       executables at the same time, execute "module load launcher" 
-#       followed by "module help launcher".
+#  -- Use TACC's PyLauncher utility to run multiple serial 
+#       executables at the same time, execute "module load pylauncher" 
+#       followed by "module help pylauncher".
 #----------------------------------------------------
 
 #SBATCH -J myjob           # Job name
@@ -1147,7 +1142,7 @@ ibrun ./myprogram         # Use ibrun instead of mpirun or mpiexec
 /// tab | Parametric Sweep / HTC Jobs
 Parametric / HTC Jobs
 
-Consult the [Launcher at TACC](../../software/launcher) documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
+Consult the [PyLauncher at TACC][TACCPYLAUNCHER] documentation for instructions on running parameter sweep and other High Throughput Computing workflows.
 ///
 
 ## Job Management { #monitoring }
