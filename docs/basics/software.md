@@ -1,14 +1,14 @@
 # Software at TACC
-Last update: *September 30, 2024*
+Last update: *October 30, 2024*
 
 *This document is in progress*.
 
 ## System-Installed 
 
-TACC maintains a large [list of currently installed software][TACCSOFTWARELIST] on all HPC resources: Lonestar6, Frontera, Stampede3 and Vista.  
+TACC maintains a database of currently installed software packages and libraries across all HPC resources: Lonestar6, Frontera, Stampede3 and Vista.  	
 
-!!!tip
-	Navigate TACC's [Software List][TACCSOFTWARE] to see where, or if, a particular package is already installed on a particular resource.
+!!!important
+	Navigate to TACC's [Software List][TACCSOFTWARELIST] to see where, or if, a particular package is already installed on a particular resource.
 
 If the software search results are inconclusive you have two choices:
 
