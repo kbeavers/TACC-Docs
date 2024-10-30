@@ -1,5 +1,5 @@
 # Lonestar6 User Guide
-*Last update: October 24, 2024*
+*Last update: October 30, 2024*
 
 ## Notices { #notices }
 
@@ -446,6 +446,10 @@ It's safe to execute module commands in job scripts. In fact, this is a good way
 ## Building Software { #building }
 
 The phrase "building software" is a common way to describe the process of producing a machine-readable executable file from source files written in C, Fortran, or some other programming language. In its simplest form, building software involves a simple, one-line call or short shell script that invokes a compiler. More typically, the process leverages the power of <a href="http://www.gnu.org/software/make/manual/make.html">makefiles</a>, so you can change a line or two in the source code, then rebuild in a systematic way only the components affected by the change. Increasingly, however, the build process is a sophisticated multi-step automated workflow managed by a special framework like <a href="http://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html">autotools</a> or <a href="http://cmake.org"><code>cmake</code></a>, intended to achieve a repeatable, maintainable, portable mechanism for installing software across a wide range of target platforms.</p>
+
+!!!important
+    TACC maintains a database of currently installed software packages and libraries across all HPC resources.
+    Navigate to TACC's [Software List][TACCSOFTWARELIST] to see where, or if, a particular package is already installed on a particular resource.
 
 ### Basics of Building Software { #building-basics }
 

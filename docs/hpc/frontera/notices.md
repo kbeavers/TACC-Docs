@@ -1,7 +1,7 @@
 # Frontera User Guide
-Last update: October 24, 2024
+*Last update: October 30, 2024*
 
-**Important**: Please note [TACC's new SU charge policy](#sunotice).
+**Important**: (10-15-2024) Please note [TACC's new SU charge policy](#sunotice).
 
 
 <!-- SDL <a href="https://frontera-xortal.tacc.utexas.edu/user-guide/docs/user-guide.pdf">Download PDF <i class="fa fa-file-pdf-o"></i></a></span>-->
