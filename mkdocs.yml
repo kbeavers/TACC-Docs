@@ -7,7 +7,7 @@ site_url: https://docs.tacc.utexas.edu
 # To suppport "Edit on Github" link
 # SEE: https://www.mkdocs.org/user-guide/configuration/#repo_name
 # repo_url: https://github.com/TACC/TACC-Docs
-# edit_uri: blob/main/user-guide
+# edit_uri: blob/main/docs/
 
 theme:
     analytics:
