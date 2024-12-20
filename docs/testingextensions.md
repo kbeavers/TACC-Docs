@@ -1,6 +1,10 @@
-Fri Feb 17 12:30:15 CST 2023
+# Testing Extensions
 
-# Documentation Meeting
+## Math
+
+> In this file format, damage state exceedance probabilities $\mathbb{P}(DS \geq ds_i)$ are named as "$LS_i$", for $i=1,…,4$; similarly, probabilities of being in a damage state $\mathbb{P}(DS = ds_i)$ are named as "$DS_i$", for $i=1,…,4$.
+>
+> — [DesignSafe: User Guide: Use Cases: …](https://designsafe-ci.org/user-guide/usecases/padgett/usecase_JN_viz/#Title2)
 
 ## alert boxes
 
