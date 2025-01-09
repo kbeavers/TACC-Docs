@@ -6,7 +6,8 @@ VISTA_OBJS	=	\
 	ml.md \
 	building.md \
 	nvidia.md \
-	../../include/vista-help.md 
+	../../include/vista-help.md \
+	refs.md
 #	access.md \
 #	admin.md \
 #	files.md \
