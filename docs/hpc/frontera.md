@@ -1,5 +1,5 @@
 # Frontera User Guide
-*Last update: October 30, 2024*
+*Last update: January 9, 2025*
 
 **Important**: (10-15-2024) Please note [TACC's new SU charge policy](#sunotice).
 
@@ -712,7 +712,11 @@ Frontera's `flex` queue offers users a low cost queue for lower priority/node co
 
 Users are limited to a maximum of 50 running and 200 pending jobs in all queues at one time. 
 
-<!-- 10/04/2024
+<!-- 
+01/09/2025 
+frontera4(1)$ qlimits
+Current queue/partition limits on TACC's Frontera system:
+
            Name       MinNode       MaxNode   PreemptExemptTime     MaxWall     MaxNodePU MaxJobsPU MaxSubmit
            flex             1           128            01:00:00  2-00:00:00          6400        15       200
     development                          40                        02:00:00            40         1         2
@@ -729,15 +733,15 @@ Users are limited to a maximum of 50 running and 200 pending jobs in all queues 
 -->
 
 | Queue Name  | Min-Max Nodes per Job<br>(assoc'd cores) | Pre-empt<br>Exempt Time | Max Job Duration | Max Nodes per User | Max Jobs per User  | Charge Rate<br>per node-hour 
-| ------                        | -----                         | ----  | ----     | ----       | ----     | ----
-| <code>flex&#42;</code>        | 1-128 nodes<br>(7,168 cores)    | 1 hour | 48 hrs  | 6400 nodes | 15 jobs | .8 Service Units (SUs) 
-| <code>development</code>      | 1-40 nodes<br>(2,240 cores)     | N/A | 2 hrs       | 40 nodes   |   1 job   | 1 SU 
-| <code>normal</code>           | 3-512 nodes<br>(28,672 cores)   | N/A | 48 hrs      | 1836 nodes | 100 jobs  | 1 SU   
-| <code>large&#42;&#42;</code>  | 513-2048 nodes<br>(114,688 cores) | N/A | 48 hrs  | 4096 nodes |   1 job  | 1 SU
-| <code>rtx</code>              | 22 nodes                       | N/A | 48 hrs     | 22 nodes   |  15 jobs  | 3 SUs
-| <code>rtx-dev</code>          | 2 nodes                        | N/A | 2 hrs      | 2          |   1 jobs  | 3 SUs
-| <code>nvdimm</code>           | 4 nodes                        | N/A   | 48 hrs   | 8  nodes   |   2 jobs  | 2 SUs 
-| <code>small</code>            | 2 nodes                       | N/A | 48 hrs     | 24 nodes | 20  jobs | 1 SU
+| ------                        | -----                             | ----   | ----    | ----               | ----     | ----
+| <code>flex&#42;</code>        | 1-128 nodes<br>(7,168 cores)      | 1 hour | 48 hrs  | 6400 nodes         | 15       | .8 Service Units (SUs) 
+| <code>development</code>      | 1-40 nodes<br>(2,240 cores)       | N/A    | 2 hrs   |   40 nodes         |  1       | 1 SU 
+| <code>normal</code>           | 3-512 nodes<br>(28,672 cores)     | N/A    | 48 hrs  | 1024 nodes         | 75       | 1 SU   
+| <code>large&#42;&#42;</code>  | 513-2048 nodes<br>(114,688 cores) | N/A    | 48 hrs  | 3072 nodes         |  2       | 1 SU
+| <code>rtx</code>              | 16 nodes                          | N/A    | 48 hrs  |   32 nodes         | 12       | 3 SUs
+| <code>rtx-dev</code>          | 2 nodes                           | N/A    | 2 hrs   |    2 nodes         |  1       | 3 SUs
+| <code>nvdimm</code>           | 4 nodes                           | N/A    | 48 hrs  |    6 nodes         |  3       | 2 SUs 
+| <code>small</code>            | 1-2 nodes                         | N/A    | 48 hrs  |   25 nodes         | 15       | 1 SU
 
    
 &#42; **Jobs in the `flex` queue are charged less than jobs in other queues but are eligible for preemption after running for more than one hour.**  

@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: October 30, 2024*
+*Last update: January 9, 2025*
 
 ## Notices { #notices }
 
@@ -73,7 +73,7 @@ RAM: | 192GB (2.67GHz) DDR4
 Cache: | 32 KB L1 data cache per core; 1 MB L2 per core; 33 MB L3 per socket.<br>Each socket can cache up to 57 MB (sum of L2 and L3 capacity).
 Local storage: | 90 GB /tmp 
 
-### ICX Compute Nodes { #system-icx }
+### Icelake Compute Nodes { #system-icx }
 
 Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
 
@@ -330,7 +330,9 @@ Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable y
     Use TACC's `qlimits` utility to see the latest queue configurations.
 
 <!-- 
-10/07/2024
+01/09/2025
+Current queue/partition limits on TACC's stampede3 system:
+
 Name             MinNode  MaxNode     MaxWall  MaxNodePU  MaxJobsPU   MaxSubmit
 icx                    1       32  2-00:00:00         48         12          20
 pvc                    1        4  2-00:00:00          4          2           4
@@ -341,7 +343,6 @@ spr                    1       32  2-00:00:00        180         24          36
 
 #### Table 7. Production Queues { #table7 }
 
-*Updated: 10/07/2024*
 
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  

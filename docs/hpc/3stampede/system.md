@@ -53,7 +53,7 @@ RAM: | 192GB (2.67GHz) DDR4
 Cache: | 32 KB L1 data cache per core; 1 MB L2 per core; 33 MB L3 per socket.<br>Each socket can cache up to 57 MB (sum of L2 and L3 capacity).
 Local storage: | 90 GB /tmp 
 
-### ICX Compute Nodes { #system-icx }
+### Icelake Compute Nodes { #system-icx }
 
 Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
 
