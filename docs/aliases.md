@@ -28,3 +28,7 @@
 
 [TACCSOFTWARELIST]: https://tacc.utexas.edu/use-tacc/software-list/ "Software List""
 [TACCSOFTWARE]: https://docs.tacc.utexas.edu/basics/software/ "Software at TACC"
+
+[TACCLOGINSUPPORT]: https://accounts.tacc.utexas.edu/login_support "TACC Login Support Tool"
+[TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC User Profile"
+[TACCACCOUNTS]: https://accounts.tacc.utexas.edu
