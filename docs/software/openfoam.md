@@ -19,7 +19,7 @@ OpenFOAM has two distributions and respective naming conventions:
 Both distributions are actively developed, and each provide advantages depending on specific features or solvers required. For additional information on the difference between the two versions, refer <a href="https://www.cfd-online.com/Forums/openfoam/197150-openfoam-com-versus-openfoam-org-version-use.html">here</a>.
 
 
-# Environment Setup
+## Environment Setup
 
 Both distributions of OpenFOAM are available on TACC systems. Refer to the table below to load your desired version.
 
@@ -40,7 +40,7 @@ login1$ export FOAM_RUN=$SCRATCH/My_OpenFOAM/12/run
 login1$ mkdir -p $FOAM_RUN
 ```
 
-# Run Tutorials
+## Run Tutorials
 
 !!!important
 	Do NOT run the following commands on any resource's login nodes. You may either submit a batch job, or start an interactive session using TACC's <a href="../idev">`idev`</a>  utility.
@@ -64,7 +64,7 @@ c557-804$ exit
 login1$
 ```
 
-# References
+## References
 
 * <a href="https://www.openfoam.org/resources/">OpenFOAM user guide</a>
 * <a href="https://cfd.direct/openfoam/features/">OpenFOAM and ParaView</a>
