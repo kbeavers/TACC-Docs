@@ -54,7 +54,7 @@ Local storage:                   | 144GB /tmp partition on a 240GB SSD.
 
 ### Login Nodes { #system-login }
 
-Frontera's four login nodes are Intel Xeon Platinum 8280 ("Cascade Lake") nodes with 56 cores and 192 GB of RAM. The login nodes are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login node for file management, compilation, and data movement. Any computing should be done within a batch job or an interactive session on compute nodes.
+Frontera's four login nodes are Intel Xeon Platinum 8280 ("Cascade Lake") nodes with 56 cores and 192 GB of RAM. The login nodes are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login nodes for file management, compilation, and data movement. Any computing should be done within a batch job or an interactive session on compute nodes.  See TACC's [Good Conduct Policy][TACCGOODCONDUCT] for more information. 
 
 ### Network { #system-network }
 

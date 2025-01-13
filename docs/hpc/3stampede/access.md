@@ -14,7 +14,13 @@ Initiate an SSH session using the `ssh` command or the equivalent:
 
 	localhost$ ssh myusername@stampede3.tacc.utexas.edu
 
-The above command will rotate connections across all available login nodes and route your connection to one of them. To connect to a specific login node, use its full domain name:
+The above command will rotate connections across all available login nodes and route your connection to the next available node. 
+
+!!! tip
+	Stampede3's login nodes are a *shared resource*. See TACC's <a href="../../basics/conduct">Good Conduct Policy</a> for more information.
+
+
+To connect to a specific login node, use its full domain name:
 
 	localhost$ ssh myusername@login2.stampede3.tacc.utexas.edu
 

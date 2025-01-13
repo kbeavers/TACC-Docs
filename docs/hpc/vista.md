@@ -1,5 +1,5 @@
 # Vista User Guide 
-*Last update: January 10, 2025*
+*Last update: January 13, 2025*
 
 ## Notices { #notices }
 
@@ -194,7 +194,10 @@ Option | Argument | Comments
 
 The primary purpose of your job script is to launch your research application. How you do so depends on several factors, especially (1) the type of application (e.g. MPI, OpenMP, serial), and (2) what you're trying to accomplish (e.g. launch a single instance, complete several steps in a workflow, run several applications simultaneously within the same job). While there are many possibilities, your own job script will probably include a launch line that is a variation of one of the examples described in this section:
 
-Note that the following examples demonstrate launching within a Slurm job script or an `idev` session.  Do not launch jobs on the login nodes.
+
+!!! important
+	The following examples demonstrate launching within a Slurm job script or an `idev` session.  
+	Do not launch jobs on the login nodes. See TACC's [Good Conduct Policy][TACCGOODCONDUCT] for more information.
 
 ### One Serial Application { #launching-serial }
 
@@ -775,3 +778,4 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCLOGINSUPPORT]: https://accounts.tacc.utexas.edu/login_support "TACC Login Support Tool"
 [TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC User Profile"
 [TACCACCOUNTS]: https://accounts.tacc.utexas.edu
+[TACCGOODCONDUCT]: https://docs.tacc.utexas.edu/basics/conduct/ "TACC Good Conduct Guide"

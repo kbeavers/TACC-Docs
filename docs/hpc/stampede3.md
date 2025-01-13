@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: January 9, 2025*
+*Last update: January 13, 2025*
 
 ## Notices { #notices }
 
@@ -131,7 +131,13 @@ Initiate an SSH session using the `ssh` command or the equivalent:
 
 	localhost$ ssh myusername@stampede3.tacc.utexas.edu
 
-The above command will rotate connections across all available login nodes and route your connection to one of them. To connect to a specific login node, use its full domain name:
+The above command will rotate connections across all available login nodes and route your connection to the next available node. 
+
+!!! tip
+	Stampede3's login nodes are a *shared resource*. See TACC's <a href="../../basics/conduct">Good Conduct Policy</a> for more information.
+
+
+To connect to a specific login node, use its full domain name:
 
 	localhost$ ssh myusername@login2.stampede3.tacc.utexas.edu
 
@@ -1877,3 +1883,8 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 
 [TACCSOFTWARELIST]: https://tacc.utexas.edu/use-tacc/software-list/ "Software List""
 [TACCSOFTWARE]: https://docs.tacc.utexas.edu/basics/software/ "Software at TACC"
+
+[TACCLOGINSUPPORT]: https://accounts.tacc.utexas.edu/login_support "TACC Login Support Tool"
+[TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC User Profile"
+[TACCACCOUNTS]: https://accounts.tacc.utexas.edu
+[TACCGOODCONDUCT]: https://docs.tacc.utexas.edu/basics/conduct/ "TACC Good Conduct Guide"

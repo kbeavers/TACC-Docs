@@ -1,5 +1,5 @@
 # Lonestar6 User Guide
-*Last update: January 9, 2025*
+*Last update: January 13, 2025*
 
 ## Notices { #notices }
 
@@ -50,7 +50,7 @@ Local storage:  | 288GB /tmp partition on a 288GB SSD.
 
 ### Login Nodes { #system-login }
 
-Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the same hardware and are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login nodes only for file management, compilation, and data movement. Any and all computing should be done within a batch job or an [interactive session](../../software/idev) on the compute nodes.
+Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the same hardware and are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login nodes only for file management, compilation, and data movement. Any and all computing should be done within a batch job or an [interactive session](../../software/idev) on the compute nodes.  See TACC's [Good Conduct Policy][TACCGOODCONDUCT] for more information.
 
 ### `vm-small` Queue Nodes { #system-vmsmall }
 
@@ -1453,3 +1453,8 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 
 [TACCSOFTWARELIST]: https://tacc.utexas.edu/use-tacc/software-list/ "Software List""
 [TACCSOFTWARE]: https://docs.tacc.utexas.edu/basics/software/ "Software at TACC"
+
+[TACCLOGINSUPPORT]: https://accounts.tacc.utexas.edu/login_support "TACC Login Support Tool"
+[TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC User Profile"
+[TACCACCOUNTS]: https://accounts.tacc.utexas.edu
+[TACCGOODCONDUCT]: https://docs.tacc.utexas.edu/basics/conduct/ "TACC Good Conduct Guide"
