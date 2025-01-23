@@ -1,61 +1,69 @@
 # Managing your TACC Account
-*Last update: Jan 22, 2025*
+*Last update: January 23, 2025*
 
-This document describes the TACC ecosystem that consists not only of HPC resources, but also portals and stuff. ,  how to create and manage your TACC account, the TACC account creation process.  
+This document introduces the TACC ecosystem that consists not only of HPC resources, but also portals to manage your account, manage your allocations and running jobs and technical documentation. and stuff.  
+
+Document the account creation process and troubleshooting tips.
 
 ## TACC Portals and HPC Resources
 
 TACC provides access to several portals with varying login requirements along with selected access to computing resources.  
 
-<table border="1" width="100%">
-<tr>
-<td width=50%>
-<h3><a href="">TACC Accounts Portal</a></h3>
-Manage your TACC account
-<li>User profile
-<li>Password management
-<li>View account status
-<li>Login support tool
-<li>subscribe to User News
-</td>
+### TACC Accounts Portal
 
+Login Requirements: None
 
-<td>
-<h3><a href="">TACC User Portal</a></h3>
-<li>Logon requirements: an Active TACC account
-<li>Monitor your HPC jobs 
-<li>Monitor your allocation usage and SU consumption
-<li>PI's may add users to their allocations
-</td>
-</tr>
+The [TACC Accounts Portal][TACCACCOUNTS] provides the following services:
 
-<tr>
-<td width=50%>
-<h3><a href="docs.tacc.utexas.edu">TACC Documentation</a></h3>
-TACC-specific technical documentation 
-<li>HPC resource user guides 
-<li>Software package user guides
-<li>TACC tutorials
-</td>
+* New account creation
+* User profile management
+* Password management
+* View account status
+* TACC Login support tool
+* Subscribe to User News
 
+### TACC User Portal]
 
-<td>
-<h3><a href="">HPC Resources</a></h3>
-<br>Currently: Frontera, Vista, Lonestar6, Stampede3.  
-Logon requirements: 
-<li>An Active TACC Portal account
-<li>Belong to a project with an active allocation
-<li>Check your allocation status here
-</td>
-</tr>
-</table>
+Login requirements: an "[Active](#active)" TACC account
+
+The [TACC User Portal][TACCUSERPORTAL] provides the following services:
+
+* Monitor your HPC jobs 
+* Monitor HPC Resource status
+* Monitor your allocation usage and SU consumption
+* PI's may add users to their allocations
+
+### TACC Documentation
+
+Login requirements: None
+
+The [TACC Documentation Portal][TACCDOCS] provides TACC-specific technical documentation:
+
+* HPC resource user guides 
+* Software package user guides
+* TACC tutorials
+
+### HPC Resources
+
+Login requirements: 
+
+* An "<a href="#active">Active</a>" TACC Portal account
+* Must belong to a project with an active allocation.  (Review your allocation status on the [TACC User Portal][TACCUSERPORTAL].
+
+Currently our HPC resources consist of:
+
+*  <a href="doc.tacc.utexas.edu/hpc/frontera">Frontera</a>
+*  <a href="doc.tacc.utexas.edu/hpc/vista">Vista</a>
+*  <a href="doc.tacc.utexas.edu/hpc/lonestar6">Lonestar6</a>
+*  <a href="doc.tacc.utexas.edu/hpc/stampede3">Stampede3</a>
+
 
 ## New Accounts
 
 Any user of TACC resources, HPC resources, Design-Safe, etc. must have a TACC Portal account.  A TACC account email is of the form *username*@tacc.utexas.edu.
 
 !!! important 
-	An individual may not have more than one TACC account.  Sharing accounts and/or multi-user accounts are prohibited.  
+	An individual may not have more than one TACC account.  Shared accounts and/or multi-user accounts are strictly prohibited.  
 
 To create a new account, go to the TACC Accounts Portal and click "[Create a New Account](https://accounts.tacc.utexas.edu/begin)" to begin registration.
 Once you"ve agreed to TACC"s Acceptable Use Policy, you"ll be redirected immediately to set up Multi-Factor Authentication on your new account.   
@@ -78,9 +86,14 @@ Provided below is additional information about different account statuses, what 
 
 ### Account Statuses
 
-You may view your account status at any time on the TACC Accounts Portal
+You may view your account status at any time on the [TACC Accounts Portal][TACCACCOUNTS].
 
-#### **Pending Email Confirmation**
+#### [Active](#active)
+
+All is well.  Active account holders may log on to the TACC User Portal as well as any other allocated TACC resources. 
+
+
+#### [Pending Email Confirmation](#pendingemailconfirmation)
 
 Once you submit your new account request, your account status immediately updates to this status.   Once you submit your account request, you will receive an email with a link to confirm and activate your account.  Until you click this link, your account status will be listed as `PendingEmailConfirmation`.
 
@@ -89,26 +102,27 @@ If you haven't received the  email, check your spam or junk folder and any filte
 
 If your account status turns to Active, you will now need to set up an MFA pairing for your account. You may refer to our MFA instructions page for information on how to set up your MFA. If your account turns into a Pending status after activation, please refer below for the next steps.
 
-#### **Pending**
+#### [Pending](#pending)
 
 If your account status is Pending then your account request will need to undergo further review by our team. You will receive an email from us with the results of the review.
 
 No action is required from you if your account status is Pending, but please do reach out to our help desk if you have any questions or concerns.
-Active
-All is well.  Active account holders may log on to any of their allocated TACC resources. Check allocations blah.
 
-#### **Deactivated**
 
-If you have not logged into This status occurs as a result of TACC's 120-day inactivity policy. If you have not used your account in 120 consecutive days, your account will automatically get deactivated per our security protocols. You can activate your account by logging into the TACC Accounts site (https://accounts.tacc.utexas.edu/activate) and requesting an activation link.
+#### [Deactivated](#deactivated)
+
+If you have not logged into This status occurs as a result of TACC's 120-day inactivity policy. If you have not used your account in 120 consecutive days, your account will automatically get deactivated per our security protocols. You can reactivate your account by logging into the TACC Accounts site (https://accounts.tacc.utexas.edu/activate) and requesting an activation link.
 
 Important: You will have to reconfigure MFA once your account is reactivated.
 
-#### **Suspended**
+#### [Suspended](#suspended)
 
-If your account is suspended you will be prohibited from logging into any HPC resources. Account suspension may result if:
-Your HPC jobs are violating Good Conduct Policies or causing harm to our systems
-Your account usage is in violation of our usage policies/AUP.
-If your account is suspended please submit a help desk ticket and a member of our team contact you shortly/will walk you through what went wrong and what you will need to do in order to unsuspend your account. 
+If your account is suspended you will be prohibited from logging into the TACC User Portal and any TACC HPC resources.  Account suspension can result if:
+
+* Your HPC jobs are violating [Good Conduct Policies][TACCGOODCONDUCT] or causing harm to our systems
+* Your account usage is in violation of TACC's Acceptable Use Policy
+
+Please [submit a help desk ticket](SUBMITTICKET) and a member of our User Services team will respond.   
 
 
 <!-- save till later
@@ -133,3 +147,6 @@ Once that happens you can try making the change for a password-less login. Pleas
 * [MFA at TACC][TACCMFA]
 
 {% include 'aliases.md' %}
+
+
+
