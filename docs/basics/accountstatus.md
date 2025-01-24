@@ -7,7 +7,8 @@
 # Managing your TACC Account
 *Last update: January 23, 2025*
 
-This document introduces the TACC ecosystem that consists not only of HPC resources, but also portals to manage your account, manage your allocations and running jobs and technical documentation. 
+TACC resources consist not only of High Performance Computing (HPC) resources, but also portals for account and allocation management and technical documentation. 
+
 
 <!-- Document the account creation process and troubleshooting tips. -->
 
