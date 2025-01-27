@@ -112,15 +112,14 @@ The [TACC Documentation Portal][TACCDOCS] provides TACC-specific technical docum
 ///
 
 
-
 ## Diagnosing Login Problems
 
 !!! tip
-	If you are having issues with your account, TACC's [Login Support Tool][TACCLOGINSUPPORT] is the fastest way to diagnose and resolve any problems. You may also use it to simply check the status of your account. Your user profile will also list the current status of your account. 
+	If you are having issues with your account, TACC's [Login Support Tool][TACCLOGINSUPPORT] is the fastest way to diagnose and resolve any problems. You may also use it to simply check the status of your account. 
 
 ### Account Statuses
 
-You may view your account status at any time on the [TACC Accounts Portal][TACCACCOUNTS].
+You may view your account status at any time on the [TACC Accounts Portal][TACCACCOUNTS] under in the User Profile section.
 
 Account Status             | Description
            --              | -- 
@@ -128,7 +127,7 @@ Active                     | All is well.  Active account holders may log on to 
 Pending Email Confirmation | You haven't confirmed your email account.  If you haven't received the confirmation email, check your spam or junk folder and any filters. Add "`no-reply@tacc.utexas.edu`" to your safe senders list, then request the activation link again.  
 Pending                    | Your account is under administrative review. 
 Deactivated                | If you have not accessed your account within the past 120 consecutive days, your account will be automatically deactivated in accordance with UT's [security protocols](https://security.utexas.edu/policies/irusp).  Reactivate your account by logging into the [TACC Accounts Portal][TACCACCOUNTS]  and requesting an activation link.  **You will have to repair MFA once your account is reactivated**.
-Suspended                  | If your account is suspended you will be prohibited from logging into the TACC User Portal and as well as any TACC HPC resources.  Please [submit a help desk ticket](SUBMITTICKET) and a member of our User Services team will respond. Account suspension may result if: <li>Your HPC jobs are violating [Good Conduct Policies][TACCGOODCONDUCT] or causing harm to our systems <li> Your account usage is in violation of TACC's [Acceptable Use Policy][TACCUSAGEPOLICY].     
+Suspended                  | If your account is suspended you will be prohibited from logging into the TACC User Portal and as well as any TACC HPC resources.  Please [submit a help desk ticket](SUBMITTICKET) and a member of our User Services team will respond. Account suspension may result if: <li>your HPC jobs are violating [Good Conduct Policies][TACCGOODCONDUCT] or causing harm to our systems <li>your account usage is in violation of TACC's [Acceptable Use Policy][TACCUSAGEPOLICY].     
 
 ### Identity Management
 
@@ -157,6 +156,7 @@ Once that happens you can try making the change for a password-less login. Pleas
 
 * [TACC Login Support Tool][TACCLOGINSUPPORT]
 * [TACC Acceptable Use Policy][TACCUSAGEPOLICY]
+* [Good Conduct on HPC Resources][TACCGOODCONDUCT]
 * [Multi-Factor Authentication at TACC][TACCMFA]
 
 {% include 'aliases.md' %}
