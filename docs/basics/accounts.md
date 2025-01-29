@@ -5,25 +5,21 @@
 </style>
 
 # Managing your TACC Account
-*Last update: January 28, 2025*
+*Last update: January 29, 2025*
+
 
 !!! tip
-	If you are having login issues, see TACC's [Login Support Tool][TACCLOGINSUPPORT] to  assist in diagnosing  and resolving problems.  
+	If you are having login issues see TACC's [Login Support Tool][TACCLOGINSUPPORT] to resolve problems.  
+	If your [account status](#account-status) is "Active" and you still can't login, try [un-pairing and re-pairing your MFA device][TACCMFA].
 
 
 ## TACC Portals 
 
-TACC provides three separate portals to all users, provding services for account, allocation and job management as well as techical documentation:
-
-* TACC Accounts Portal
-* TACC User Portal
-* TACC Documentation
+TACC provides two portals for account and job management, the [TACC Accounts Portal][TACCACCOUNTS]  and the [TACC User Portal][TACCUSERPORTAL].  
 
 /// html | section.section--muted.section--has-border
-
-
 //// html | div.grid
-///// html | div[style="grid-column: 1 / -1"]
+///// html | div[style="grid-column: 2"]
 
 /////
 
@@ -44,9 +40,7 @@ The [TACC Accounts Portal][TACCACCOUNTS] provides the following services:
 * View allocation/s status
 * TACC Login Support Tool
 * Subscribe to User News
-
 /////
-
 
 ///// html | article.card--plain
      markdown: block
@@ -64,39 +58,6 @@ The [TACC User Portal][TACCUSERPORTAL] provides the following services:
 * PI's may add users to their allocations
 
 /////
-
-///// html | article.card--plain
-     markdown: block
-
-### HPC Resources
-
-Login requirements: An "[Active](#active)" TACC Portal account AND belong to a project with an active allocation.  
-
-Currently our HPC resources consist of:
-
-*  <a href="http://docs.tacc.utexas.edu/hpc/frontera">Frontera</a>
-*  <a href="http://docs.tacc.utexas.edu/hpc/lonestar6">Lonestar6</a>
-*  <a href="http://docs.tacc.utexas.edu/hpc/stampede3">Stampede3</a>
-*  <a href="http://docs.tacc.utexas.edu/hpc/vista">Vista</a>
-
-/////
-
-///// html | article.card--plain
-     markdown: block
-
-### TACC Documentation
-
-Login requirements: None  
-<http://docs.tacc.utexas.edu>
-
-The [TACC Documentation Portal][TACCDOCS] provides TACC-specific technical documentation:
-
-* HPC resource user guides 
-* Software package user guides
-* TACC tutorials
-
-/////
-
 ////
 ///
 
@@ -169,3 +130,36 @@ Once that happens you can try making the change for a password-less login. Pleas
 
 
 
+<!--
+///// html | article.card--plain
+     markdown: block
+
+### HPC Resources
+
+Login requirements: An "[Active](#active)" TACC Portal account AND belong to a project with an active allocation.  
+
+Currently our HPC resources consist of:
+
+*  <a href="http://docs.tacc.utexas.edu/hpc/frontera">Frontera</a>
+*  <a href="http://docs.tacc.utexas.edu/hpc/lonestar6">Lonestar6</a>
+*  <a href="http://docs.tacc.utexas.edu/hpc/stampede3">Stampede3</a>
+*  <a href="http://docs.tacc.utexas.edu/hpc/vista">Vista</a>
+
+/////
+
+///// html | article.card--plain
+     markdown: block
+
+### TACC Documentation
+
+Login requirements: None  
+<http://docs.tacc.utexas.edu>
+
+The [TACC Documentation Portal][TACCDOCS] provides TACC-specific technical documentation:
+
+* HPC resource user guides 
+* Software package user guides
+* TACC tutorials
+
+/////
+-->
