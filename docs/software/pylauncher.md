@@ -1,8 +1,6 @@
 # PyLauncher at TACC
 *Last update: September 13, 2024* 
 
-*This document is in progress.*
-
 ## What is PyLauncher		{ #intro }
 
 PyLauncher (**Py**thon + **Launcher**) is a Python-based parametric job launcher, a utility for distributing and executing many small jobs in parallel, using fewer resources than would be necessary to execute all jobs simultaneously. On many batch-based cluster computers this is a better strategy than submitting many small individual small jobs.
