@@ -150,6 +150,17 @@ Tutorials cover a wide range of topics from configuring your account to debuggin
 
 /////
 
+///// html | a.card--plain.card--image-top[href="https://containers-at-tacc.readthedocs.io/en/latest/index.html"]
+     markdown: block
+
+////// html | img[alt="Containers at TACC"][src="/img/home/containers.png"]
+//////
+
+<h3>Containers at TACC Workshop</h3>
+
+Learn best practices on building, using, and sharing Docker and Singularity/Apptainer containers.
+
+/////
 ///// html | a.card--plain.card--image-top[href="./tutorials/sharingprojectfiles/"]
      markdown: block
 
@@ -159,17 +170,6 @@ Tutorials cover a wide range of topics from configuring your account to debuggin
 <h3>Sharing Project Files</h3>
 
 Learn how to set up a common workspace shared by, and accessible to, all collaborators on a project.  
-
-/////
-///// html | a.card--plain.card--image-top[href="./tutorials/remotedesktopaccess/"]
-     markdown: block
-
-////// html | img[alt="a monitor (its screen has an image icon)"][src="/img/home/remote.png"]
-//////
-
-<h3>Remote Desktop Access</h3>
-
-Run visualization applications viewed locally via Virtual Network Computing (VNC), Desktop Cloud Visualization (DCV), or through the TACC Analysis Portal.
 
 /////
 ////
