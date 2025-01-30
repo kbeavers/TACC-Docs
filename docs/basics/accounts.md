@@ -5,7 +5,7 @@
 </style>
 
 # Managing your TACC Account
-*Last update: January 29, 2025*
+*Last update: January 30, 2025*
 
 
 !!! tip
@@ -15,7 +15,7 @@
 
 ## TACC Portals 
 
-TACC provides two portals for account and job management, the [TACC Accounts Portal][TACCACCOUNTS]  and the [TACC User Portal][TACCUSERPORTAL].  
+TACC provides two portals for account and job management, the [TACC Accounts Portal][TACCACCOUNTS] and the [TACC User Portal][TACCUSERPORTAL].  
 
 /// html | section.section--muted.section--has-border
 //// html | div.grid
@@ -101,10 +101,11 @@ To create a new account:
 Any user registering for a new account, reactivating a [deactivated](#deactivated) account, or updating their profile will be required to authenticate using one of the UT approved Identity Provider services listed below.  All existing accounts will be required to authenticate with one of these identity providers at the annual account profile update. 
 
 * UT EID
-* InCommon Federation
 * Apple
 * Google
 * Microsoft
+
+<!-- * InCommon Federation - commenting out 01/30/2025 due to problems on their end -->
 
 <!-- save till later
 ### SSH Keys
