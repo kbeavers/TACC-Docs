@@ -47,16 +47,6 @@ Learn how to pair/unpair your smart device for access to TACC resources.
 
 /////
 
-<!--
-///// html | a.card--plain.card--image-top[href="./tutorials/bashstartup/"]
-     markdown: block
-
-<h3>Quickstart for Bash Users</h3>
-
-Learn how to configure your default shell for optimal performance. 
-
-/////
--->
 ////
 ///
 
@@ -71,6 +61,20 @@ Learn how to configure your default shell for optimal performance.
 Each of our HPC resources has a user guide, with extensive instructions and information.  Learn how to access and use our High Performance Computing (HPC) resources.
 /////
 
+
+///// html | a.card--plain.card--image-top[href="./hpc/lonestar6/"]
+     markdown: block
+
+////// html | img[alt="TACC's Lonestar6"][src="/img/home/lonestar6.png"]
+//////
+
+<h3>Lonestar6</h3>
+
+Lonestar6 is the latest of the Lonestar series and supports and serves Texas researchers.
+
+/////
+
+
 ///// html | a.card--plain.card--image-top[href="./hpc/stampede3/"]
      markdown: block
 
@@ -81,17 +85,6 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 
 TACC debut's the latest supercomputer in the Stampede systems in early 2024. 
 
-/////
-
-///// html | a.card--plain.card--image-top[href="./hpc/frontera/"]
-     markdown: block
-
-////// html | img[alt="the Frontera supercomputer"][src="/img/home/frontera.png"]
-//////
-
-<h3>Frontera</h3>
-
-The largest cluster dedicated to open science in the United States.
 /////
 ////
 ///
