@@ -155,7 +155,7 @@ If your program is MPI parallel, replace the ClassicLauncher call:
 launcher.IbrunLauncher("parallellines",cores=3)
 ```
 
-The parallellines file consists of command-lines without the MPI job starter, which is supplied by PyLauncher:
+The "parallellines" file consists of command-lines without the MPI job starter, which is supplied by PyLauncher:
 
 ```file
 ./parallelprogram 0 10
@@ -195,12 +195,13 @@ The  "tick" message is output every half second. This can be changed, for instan
 
 module load python3
 python3 example_classic_launcher.py
+```
 
 ### PyLauncher File
 
 where "example_classic_launcher.py" contains:
 
-```file
+```job-script
 import pylauncher
 pylauncher.ClassicLauncher("commandlines",debug="host+job")
 ```
@@ -209,7 +210,7 @@ pylauncher.ClassicLauncher("commandlines",debug="host+job")
 
 and "commandlinefile" contains your parameter sweep.   If your program 
 
-``` file
+``` job-script
 ./myparallelprogram arg1 argA
 ./myparallelprogram arg1 argB
 ...
@@ -243,7 +244,7 @@ The  `tick` message is output every half second. This can be changed, for instan
 
 PyLauncher creates a working directory with a name based on the SLURM job number. PyLauncher will also refuse to reuse a working directory. Together this has implications for running PyLauncher twice in an `idev` session: after the first run, the second run will complain that the working directory already exists. You have to delete it yourself, or explicitly designate a different working directory name in the launcher command:
 
-```file
+```job-script
 pylauncher.ClassicLauncher( "mycommandlines",workdir=<unique name>).
 ```
 
@@ -251,13 +252,13 @@ pylauncher.ClassicLauncher( "mycommandlines",workdir=<unique name>).
 
 PyLauncher leaves behind a restart file titled "queuestate" that lists which commandlines were finished, and which ones were under way, or to be scheduled when the launcher job finished. You can use this in case your launcher job is killed for exceeding the time limit. You can then resume:
 
-```file
+```job-script
 pylauncher.ResumeClassicLauncher("queuestate",debug="job")
 ```
 
 The default name "queuestate" can be overridden by giving an explicit name
 
-```file
+```job-script
 pylauncher.ClassicLauncher( "commandlines",queuestate="queustate5")
 ```
 
@@ -265,7 +266,7 @@ pylauncher.ClassicLauncher( "commandlines",queuestate="queustate5")
 
 PyLauncher can handle programs that need a GPU. Use:
 
-``` file
+``` job-script
 pylauncher.GPULauncher("gpucommandlines")
 ```
 
