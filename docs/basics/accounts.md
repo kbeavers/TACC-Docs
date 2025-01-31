@@ -105,6 +105,7 @@ Any user registering for a new account, reactivating a [deactivated](#deactivate
 * Google
 * Microsoft
 
+
 <!-- * InCommon Federation - commenting out 01/30/2025 due to problems on their end -->
 
 <!-- save till later
@@ -118,6 +119,13 @@ cd $HOME
 mv .ssh old_ssh
 3. Log out of the system and ssh back in, this will auto-generate a new .ssh folder and key for you. 
 Once that happens you can try making the change for a password-less login. Please let me know if that works for you or if you have any other questions.
+
+```
+No reservation for this job
+--> Verifying valid submit host (login1)...OK
+--> Verifying valid jobname...OK
+--> Verifying valid ssh keys...
+```
 -->
 
 ## References
