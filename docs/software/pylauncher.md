@@ -68,7 +68,7 @@ mkdir output1 && cd output1 && ../yourprogram value1
 		./yourprogram -n PYL_ID #3
 		./yourprogram -n PYL_ID #4
 
-PyLauncher will now distribute each will now run your commandlines, producing final statistics:
+At the end of the run, PyLauncher will produce final statistics:
 
 ```
 Launcherjob run completed.
@@ -122,7 +122,7 @@ A file "`queuestate`" is generated with a listing of which of your commands were
 
 ### Multi-Threaded
 
-If your program is multi-threaded, you can give each commandline more than one core with:
+If your program is multi-threaded, you can give each command line more than one core with:
 
 ```job-script
 launcher.ClassicLauncher("commandlines",cores=4)
@@ -130,7 +130,7 @@ launcher.ClassicLauncher("commandlines",cores=4)
 
 This can also be used if your program takes more memory than would normally be assigned to a single core.
 
-If you want each commandline to use all the cores of a node, specify:
+If you want each command line to use all the cores of a node, specify:
 
 ```job-script
 launcher.ClassicLauncher("commandlines",cores="node")
@@ -273,16 +273,16 @@ pylauncher.GPULauncher("gpucommandlines")
 !!! important
 	Set the Slurm parameter `--ntasks-per-node` to the number of GPUs per node.
 
-### Submit launcher
+### Submit Launcher
 
-If your commandlines take wildly different amounts of time a launcher job may be wasteful since it will leave cores (and nodes) unused while the longest running commandlines finish. One solution is the `submit launcher' which runs outside of Slurm, and which submits Slurm jobs: For instance, the following command submits jobs to Frontera's small queue, and makes sure that a queue limit of 2 is not exceeded:
+If your command lines take wildly different amounts of time a launcher job may be wasteful since it will leave cores (and nodes) unused while the longest running commandlines finish. One solution is the `SubmitLauncher` which runs outside of Slurm, and which submits Slurm jobs: For instance, the following command submits jobs to Frontera's [`small` queue](../../hpc/frontera/#table6), and makes sure that the maximum queue limit of 2 nodes is not exceeded:
 
 ``` job-script
 launcher.SubmitLauncher\
 	("commandlines",
  	"-A YourProject -N 1 -n 1 -p small -t 0:15:0", # slurm arguments
  	nactive=2, # queue limit
-         )
+    )
 ```
 
 ### Debugging PyLauncher Output
@@ -291,9 +291,9 @@ Each PyLauncher run stores output to a unique automatically generated subdirecto
 
 This directory contains three types of files:
 
-* Files with your commandlines as they are executed by the launcher.  Names: exec0 exec1 et cetera.
-* Time stamp files that the launcher uses to determine whether commandlines have finished.  Names: expire0 expire1 et cetera.
-* Standard out/error files. These can be useful if you observe that some commandlines don't finish or don't give the right result.  Names: out0 out1 et cetera.
+* Files with your command lines as they are executed by the launcher.  Names: `exec0`, `exec1`, etc.
+* Time stamp files that the PyLauncher uses to determine whether commandlines have finished.  Names: `expire0`, `expire1`, etc
+* Standard out/error files. These can be useful if you observe that some commandlines don't finish or don't give the right result.  Names: `out0`, `out1`, et.
 
 ### Parameters
 
@@ -301,9 +301,9 @@ Here are some parameters that may sometimes come in handy.
 
 | parameter <option> | description |
       ---            | --- | 
-| `delay=*fraction*`<br>default: `default=.5` | The fraction of a second that PyLauncher waits to start up new jobs, or test for finished ones. If you fire up complicated python jobs, you may want to increase this from the default.
-| `workdir=<directory>`<br>default: generated from the SLURM jobid | This is the location of the internal execute/out/test files that PyLauncher generates.
-| `queuestate=<filename>`<br>default filename: `queuestate` | This is a file that PyLauncher can use to restart if your jobs aborts, or is killed for exceeding the time limit. If you run multiple simultaneous jobs, you may want to specify this explicitly.
+| <code>delay=<i>fraction</i></code><br>default: `default=.5` | The fraction of a second that PyLauncher waits to start up new jobs, or test for finished ones. If you fire up complicated python jobs, you may want to increase this from the default.
+| <code>workdir=<i>directory</i></code><br>default: generated from the SLURM jobid | This is the location of the internal execute/out/test files that PyLauncher generates.
+| <code>queuestate=<i>filename</i></code><br>default filename: `queuestate` | This is a file that PyLauncher can use to restart if your jobs aborts, or is killed for exceeding the time limit. If you run multiple simultaneous jobs, you may want to specify this explicitly.
 
 
 ## References
