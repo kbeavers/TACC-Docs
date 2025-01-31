@@ -208,7 +208,7 @@ pylauncher.ClassicLauncher("commandlines",debug="host+job")
 
 ### Command Lines File
 
-and "commandlinefile" contains your parameter sweep.   If your program 
+and "commandlines" contains your parameter sweep.  
 
 ``` job-script
 ./myparallelprogram arg1 argA
