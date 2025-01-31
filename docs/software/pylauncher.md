@@ -1,5 +1,5 @@
 # PyLauncher at TACC
-*Last update: September 13, 2024* 
+*Last update: January 31, 2025* 
 
 ## What is PyLauncher		{ #intro }
 
@@ -7,7 +7,7 @@ PyLauncher (**Py**thon + **Launcher**) is a Python-based parametric job launcher
 
 While TACC's deprecated Launcher utility worked on serial codes, PyLauncher works with multi-threaded and MPI executables.  
 
-**Example**: You need to run a program with 1000 different input values, and you want to use 100 cores for that; PyLauncher will then cycle through your list of commands using cores as they become available. 
+**Example**: You need to run a program with 1000 different input values, and you want to use 100 cores for that; PyLauncher will cycle through your list of commands using cores as they become available. 
 
 The PyLauncher source code is written in Python, but this need not concern you: in the simplest scenario you use a two line Python script. However, for more sophisticated scenarios the code can be extended or integrated into a Python application.
 
@@ -18,7 +18,6 @@ PyLauncher is available on all TACC systems via the [Lmod modules system][TACCLM
 ```cmd-line
 $ module load pylauncher
 ```
-
 !!! important 
 	On some systems the Python installation is missing a required module. 
 	Do a one-time setup:   
@@ -28,7 +27,7 @@ $ module load pylauncher
 
 ## Basic setup { #setup }
 
-PyLauncher, like any compute-intensive application, must be invoked from a Slurm job script, or interactively within an `idev` session. PyLauncher interrogates Slurm's environment variables to query the available computational resources, but the only parameter you have to set is
+PyLauncher, like any compute-intensive application, must be invoked from a Slurm job script, or interactively within an `idev` session. PyLauncher interrogates Slurm's environment variables to query the available computational resources, but the only parameter you have to set is Slurm's `-N` directive.  The number of nodes depends on how much work you have.
 
 ```job-script
 #SBATCH -N 5 # number of nodes you want to use
@@ -36,26 +35,21 @@ PyLauncher, like any compute-intensive application, must be invoked from a Slurm
 
 Pylauncher will then use all the cores of these nodes, running by default one commandline per core. See below for exceptions.
 
-The number of nodes depends on how much work you have.
+The `pylauncher` module sets the `TACC_PYLAUNCHER_DIR` and `PYTHONPATH` environment variables. 
 
-Load the pylauncher module to set the `TACC_PYLAUNCHER_DIR` and `PYTHONPATH` environment variables. 
-
-```cmd-line
-c123-456$ module load pylauncher
-```
 
 Your batch script can then invoke Python3 on the launcher code:
 
-```file
+```job-script
 ## file: mylauncher.py
 import pylauncher 
 pylauncher.ClassicLauncher("commandlines")
 ```
 
-PyLauncher will now execute the lines in the file commandlines:
+PyLauncher will now execute the lines in the file `commandlines`:
 
 ```file
-# this is a comment
+# this is the commandlines file
 ./yourprogram value1
 ./yourprogram value2
 ```
@@ -66,14 +60,13 @@ The commands can be complicated as you wish, e.g.:
 mkdir output1 && cd output1 && ../yourprogram value1
 ```
 
-If the commands use a consecutive input parameter, you can use the string PYL_ID which expands to the number of the command. 
+!!! tip
+	If the commands use a consecutive input parameter, you can use the string `PYL_ID` which expands to the number of the command. 
 
-```file
-./yourprogram -n PYL_ID #1
-./yourprogram -n PYL_ID #2
-./yourprogram -n PYL_ID #3
-./yourprogram -n PYL_ID #4
-```
+		./yourprogram -n PYL_ID #1
+		./yourprogram -n PYL_ID #2
+		./yourprogram -n PYL_ID #3
+		./yourprogram -n PYL_ID #4
 
 PyLauncher will now distribute each will now run your commandlines, producing final statistics:
 
@@ -114,7 +107,7 @@ pylauncher.ClassicLauncher("commandlines",workdir="pylauncher_out")
 
 However, note that PyLauncher will not allow you to re-use that directory, so you need to delete it in between runs.
 
-You need to take care of the output  of your commandlines explicitly. For instance, your commandlines file could say
+You need to take care of the output of your commandlines explicitly. For instance, your commandlines file could say
 
 ```file
 mkdir -p myoutput && cd myoutput && ${HOME}/myprogram input1
@@ -126,6 +119,7 @@ mkdir -p myoutput && cd myoutput && ${HOME}/myprogram input3
 A file "`queuestate`" is generated with a listing of which of your commands were successfully executed, and, in case your job times out, which ones were pending or not scheduled. This can be used to restart your job. See below.
 
 ## Parallel runs
+
 ### Multi-Threaded
 
 If your program is multi-threaded, you can give each commandline more than one core with:
@@ -215,11 +209,33 @@ pylauncher.ClassicLauncher("commandlines",debug="host+job")
 
 and "commandlinefile" contains your parameter sweep.   If your program 
 
-```file
+``` file
 ./myparallelprogram arg1 argA
 ./myparallelprogram arg1 argB
 ...
 ```
+
+## Debugging and tracing
+
+If you want more detailed trace output during the run, add an option:
+
+`launcher.ClassicLauncher("commandlines",debug="host+job")`
+
+In the launcher invocation, the `debug` parameter causes trace output to be printed during the run. Example:
+
+```
+tick 104
+Queue:
+completed  60 jobs: 0-44 47-48 50-53 56 58 60-61 64 66 68 70 75
+aborted 	0 jobs:
+queued  	5 jobs: 99-103
+running	39 jobs: 45-46 49 54-55 57 59 62-63 65 67 69 71-74 76-98
+```
+
+Which states that in the 104’th stage some jobs were completed/queued for running/actually running. 
+
+The  `tick` message is output every half second. This can be changed, for instance to 1/10th of a second, by specifying `delay=.1` in the launcher command. In some cases, for instance if each command is a python invocation that does many `imports`, you could increase the delay parameter.
+
 
 ## Advanced PyLauncher usage
 
@@ -249,19 +265,19 @@ pylauncher.ClassicLauncher( "commandlines",queuestate="queustate5")
 
 PyLauncher can handle programs that need a GPU. Use:
 
-```file
+``` file
 pylauncher.GPULauncher("gpucommandlines")
 ```
 
 
-```important
+!!! important
 	Set the Slurm parameter `--ntasks-per-node` to the number of GPUs per node.
 
 ### Submit launcher
 
 If your commandlines take wildly different amounts of time a launcher job may be wasteful since it will leave cores (and nodes) unused while the longest running commandlines finish. One solution is the `submit launcher' which runs outside of Slurm, and which submits Slurm jobs: For instance, the following command submits jobs to Frontera's small queue, and makes sure that a queue limit of 2 is not exceeded:
 
-```job-script
+``` job-script
 launcher.SubmitLauncher\
 	("commandlines",
  	"-A YourProject -N 1 -n 1 -p small -t 0:15:0", # slurm arguments
@@ -284,7 +300,7 @@ This directory contains three types of files:
 Here are some parameters that may sometimes come in handy.
 
 | parameter <option> | description |
---- | --- | 
+      ---            | --- | 
 | `delay=*fraction*`<br>default: `default=.5` | The fraction of a second that PyLauncher waits to start up new jobs, or test for finished ones. If you fire up complicated python jobs, you may want to increase this from the default.
 | `workdir=<directory>`<br>default: generated from the SLURM jobid | This is the location of the internal execute/out/test files that PyLauncher generates.
 | `queuestate=<filename>`<br>default filename: `queuestate` | This is a file that PyLauncher can use to restart if your jobs aborts, or is killed for exceeding the time limit. If you run multiple simultaneous jobs, you may want to specify this explicitly.
