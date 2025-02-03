@@ -4,7 +4,7 @@
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
-1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), Cyberduck
+1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), [Cyberduck](#data-transfer-cyberduck).
 
 !!! tip
 	Third-party storage services, e.g. UTBox, DropBox are [not supported](#datatransfer-thirdparty).
@@ -225,6 +225,7 @@ Consult Figure 4. above to ensure the information you have provided is correct. 
       
 Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the storage system.
 
+---
 
 ## Globus Data Transfer Guide { #globus }
 
@@ -232,13 +233,10 @@ Globus supplies high speed, reliable, asynchronous transfers to the portal. Glob
 
 This document leads you through the steps required to set up Globus to use for the first time. Several steps will need to be repeated each time you set up a new computer to use Globus for the portal. Once you are set up, you can use Globus not only for transfers to and from the portal, but also to access other cyberinfrastructure resources at TACC and around the world.
 
-To start using Globus, you need to do two things: Generate a unique identifier, an ePPN (an acronym-to not-worry-about), for all Globus services, and enroll the machine you are transferring data to/from with Globus.  This can be your personal laptop or desktop, or a server to which you have access. Follow this one-time process to set up the Globus file transfer capability.
+To start using Globus, you need to do two things: Generate a unique identifier, <a href="#1">an ePPN<sup>&#42;</a></sup>, for all Globus services, and enroll the machine you are transferring data to/from with Globus.  This can be your personal laptop or desktop, or a server to which you have access. Follow this one-time process to set up the Globus file transfer capability.
 
 !!! Note 
 	**Globus Transition**. Globus has transitioned to version 5.4. This transition impacts all TACC researchers who use Globus and requires you to update your profile with an ePPN to continue using the Globus service. The use of "Distinguished Names", or DNs, is no longer supported.
-
-!!! tip
-	ePPN is an unfortunate acronym for "**e**du**P**erson**P**rincipal**N**ame", an identifier indicating a unique person within an LDAP schema.  
 
 !!! important 
 	You must use your institution's credentials and **not your personal email account (e.g. Google, Yahoo!, AOL)** when setting up Globus.  You will encounter problems with the transfer endpoints (e.g. Frontera, Stampede3, Corral, Ranch) if you use your personal account information.
@@ -246,7 +244,7 @@ To start using Globus, you need to do two things: Generate a unique identifier, 
 
 ### Step 1. **Retrieve your Unique ePPN**.  { #step1 }
 
-**Retrieve your Unique ePPN**.  Login to [CILogon](https://cilogon.org) and click on "User Attributes".  Make note of your ePPN.
+Login to [CILogon](https://cilogon.org) and click on "User Attributes".  Make note of your ePPN.
 
 <figure id="figure1">
 <img src="../imgs/globus-CIlogin.png" style="width:65%"> 
@@ -255,16 +253,21 @@ To start using Globus, you need to do two things: Generate a unique identifier, 
 
 ### Step 2. **Associate your EPPN with your TACC Account.**  { #step2 }
 
-**Associate your EPPN with your TACC Account.**  Login to the [TACC Accounts Portal][TACCACCOUNTS], click "Account Information" in the left-hand menu, then add or edit your ePPN from Step 1.
+Login to the [TACC Accounts Portal][TACCACCOUNTS], click "Account Information" in the left-hand menu, then add or edit your ePPN from Step 1.
+
 
 !!! important
-	If you update your ePPN, please allow up to 2 hours for the changes to propagate across the systems.
+	The institution (ePPN) listed in your TACC account profile, must map to the ePPN you are using to log into GlobusOnline.  
 
 
 <figure>
 <img src="../imgs/globus-setup-step2.png" style="width:65%">
 <figcaption>Figure 2. Update your TACC user profile.</figcaption>
 </figure>
+
+!!! tip
+	Once you update your ePPN, please allow up to 2 hours for the changes to propagate across TACC systems.
+
 
 ### Step 3. **Globus File Manager** { #step3 }
 
@@ -274,6 +277,9 @@ Once you've completed these steps, you will be able to use the [Globus File Mana
 
 * [Globus Collections and Endpoints](https://docs.globus.org/guides/overviews/collections-and-endpoints/)
 
+<a name="1"><sup>&#42;</sup></a> ePPN is an unfortunate acronym for "**e**du**P**erson**P**rincipal**N**ame", an identifier indicating a unique person within an LDAP schema.
+
+---
 ## UTBox and other Third-Party Storage Services { #datatransfer-thirdparty }
 
 Unfortunately TACC does not allow direct access from UT Box or other third-party storage services such as Dropbox, Google or Amazon storage services. To transfer files from one of these services:
@@ -284,3 +290,4 @@ Unfortunately TACC does not allow direct access from UT Box or other third-party
 If you have files stored at another university, see the [Globus instructions](#globus) above.
 
 
+{% include 'aliases.md' %}
