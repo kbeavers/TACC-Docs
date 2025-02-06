@@ -17,7 +17,11 @@
 !!! warning
     This is a warning box
 
+!!! test warning
+    This is a test warning box
 
+    !!! test warning2
+    This is a test warning2 box
 
 ## info box
 
