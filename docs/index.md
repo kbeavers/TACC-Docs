@@ -6,7 +6,7 @@ Welcome to TACC's Technical Documentation Site.
 ///
 
 
-TACC's technical documentation is broadly divided into three categories: High Performance Computing (HPC) Resource Guides, Software Packages at TACC, and Tutorials which can be accessed via the left-hand navigation.
+TACC's technical documentation is broadly divided into four categories: TACC Essentials, High Performance Computing (HPC) Resource Guides, Software Packages at TACC, and Tutorials which can be accessed via the left-hand navigation.
 
 Additional training opportunities such as the TACC Institute Series, can be found on the [Training Page](https://www.tacc.utexas.edu/use-tacc/training/#institutes) on our main site.
 
