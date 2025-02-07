@@ -1,5 +1,5 @@
 # Frontera User Guide
-*Last update: January 13, 2025*
+*Last update: February 7, 2025*
 
 **Important**: (10-15-2024) Please note [TACC's new SU charge policy](#sunotice).
 
@@ -230,6 +230,7 @@ See [Lmod's online documentation](http://lmod.readthedocs.org) for more extensiv
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results. If you use `module save` to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Frontera's default startup scripts for a safe way to do so.
 
+{% include 'include/crontabs.md' %}
 ## Frontera User Portal { #portal }
 
 <!-- p class="introtext">The Frontera project team is pleased to announce the release of new <a href="https://frontera-xortal.tacc.utexas.edu/workbench/dashboard">Dashboard</a> functionality within the Frontera User Portal. Upon login, click on your name in the upper right corner to access your Frontera dashboard and account settings. </p -->
