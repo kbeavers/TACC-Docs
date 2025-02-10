@@ -168,7 +168,7 @@ If your password is rejected while attempting to log in, it's possible your acco
 The default login shell for your user account is Bash. To determine your current login shell, examine the contents of the `$SHELL` environment variable: 
 
 ```cmd-line
-	$ echo $SHELL
+$ echo $SHELL
 ```
 
 !!! tip
@@ -211,28 +211,28 @@ The environment variables `PATH` and `LD_LIBRARY_PATH` are especially important.
 Lmod, a module system developed and maintained at TACC, makes it easy to manage your environment so you have access to the software packages and versions that you need to using your research. This is especially important on a system like Stampede3 that serves thousands of users with an enormous range of needs and software. Loading a module amounts to choosing a specific package from among available alternatives:
 
 ```cmd-line
-	$ module load intel          # load the default Intel compiler
-	$ module load intel/24.0.0   # load a specific version of Intel compiler
+$ module load intel          # load the default Intel compiler
+$ module load intel/24.0.0   # load a specific version of Intel compiler
 ```
 
 A module does its job by defining or modifying environment variables (and sometimes aliases and functions). For example, a module may prepend appropriate paths to `$PATH` and `$LD_LIBRARY_PATH` so that the system can find the executables and libraries associated with a given software package. The module creates the illusion that the system is installing software for your personal use. Unloading a module reverses these changes and creates the illusion that the system just uninstalled the software:
 
 ```cmd-line
-	$ module load   ddt  # defines DDT-related env vars; modifies others
-	$ module unload ddt  # undoes changes made by load
+$ module load   ddt  # defines DDT-related env vars; modifies others
+$ module unload ddt  # undoes changes made by load
 ```
 
 The module system does more, however. When you load a given module, the module system can automatically replace or deactivate modules to ensure the packages you have loaded are compatible with each other. In the example below, the module system automatically unloads one compiler when you load another, and replaces Intel-compatible versions of IMPI and PETSc with versions compatible with `gcc`:
 
 ```cmd-line
-	$ module load intel  # load default version of Intel compiler
-	$ module load petsc  # load default version of PETSc
-	$ module load gcc    # change compiler
-	
-	Lmod is automatically replacing "intel/24.0.0" with "gcc/13.2.0".
-	
-	Due to MODULEPATH changes, the following have been reloaded:
-	1) impi/21.11     2) petsc/3.8
+$ module load intel  # load default version of Intel compiler
+$ module load petsc  # load default version of PETSc
+$ module load gcc    # change compiler
+
+Lmod is automatically replacing "intel/24.0.0" with "gcc/13.2.0".
+
+Due to MODULEPATH changes, the following have been reloaded:
+1) impi/21.11     2) petsc/3.8
 ```
 
 !!! tip
@@ -241,46 +241,46 @@ The module system does more, however. When you load a given module, the module s
 On Stampede3, modules generally adhere to a TACC naming convention when defining environment variables that are helpful for building and running software. For example, the papi module defines `TACC_PAPI_BIN` (the path to PAPI executables), `TACC_PAPI_LIB` (the path to PAPI libraries), `TACC_PAPI_INC` (the path to PAPI include files), and `TACC_PAPI_DIR` (top-level PAPI directory). After loading a module, here are some easy ways to observe its effects:
 
 ```cmd-line
-	$ module show papi   # see what this module does to your environment
-	$ env | grep PAPI    # see env vars that contain the string PAPI
-	$ env | grep -i papi # case-insensitive search for 'papi' in environment
+$ module show papi   # see what this module does to your environment
+$ env | grep PAPI    # see env vars that contain the string PAPI
+$ env | grep -i papi # case-insensitive search for 'papi' in environment
 ```
 
 To see the modules you currently have loaded:
 
 ```cmd-line
-	$ module list
+$ module list
 ```
 
 To see all modules that you can load right now because they are compatible with the currently loaded modules:
 
 ```cmd-line
-	$ module avail
+$ module avail
 ```
 
 To see all installed modules, even if they are not currently available because they are incompatible with your currently loaded modules:
 
 ```cmd-line
-	$ module spider                  # list all modules, even those not available to load
+$ module spider                  # list all modules, even those not available to load
 ```
 
 To filter your search:
 
 ```cmd-line
-	$ module spider slep             # all modules with names containing 'slep'
-	$ module spider sundials/2.5.0   # additional details on a specific module
+$ module spider slep             # all modules with names containing 'slep'
+$ module spider sundials/2.5.0   # additional details on a specific module
 ```
 
 Among other things, the latter command will tell you which modules you need to load before the module is available to load. You might also search for modules that are tagged with a keyword related to your needs (though your success here depends on the diligence of the module writers). For example:
 
 ```cmd-line
-	$ module keyword performance
+$ module keyword performance
 ```
 
 You can save a collection of modules as a personal default collection that will load every time you log into Stampede3. To do so, load the modules you want in your collection, then execute:
 
 ```cmd-line
-	$ module save            # save the currently loaded collection of modules
+$ module save            # save the currently loaded collection of modules
 ```
 
 Two commands make it easy to return to a known, reproducible state:

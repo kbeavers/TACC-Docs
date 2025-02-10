@@ -5,12 +5,28 @@
 </style>
 
 # Managing your TACC Account
-*Last update: January 30, 2025*
+*Last update: February 10, 2025*
 
 
 !!! tip
 	If you are having login issues see TACC's [Login Support Tool][TACCLOGINSUPPORT] to resolve problems.  
+
 	If your [account status](#account-status) is "Active" and you still can't login, try [un-pairing and re-pairing your MFA device][TACCMFA].
+
+### Account Statuses 
+
+You may view your account status at any time on the [TACC Accounts Portal][TACCACCOUNTS] in the User Profile section. [Table 1.](#table1) below lists all possible conditions for your account.
+
+
+### Table 1. TACC Account Status { #table1 }
+
+Account Status             | Description
+           --              | -- 
+Active                     | All is well.  Active account holders may log on to the TACC User Portal as well as any **allocated** TACC resources. 
+Pending Email Confirmation | You haven't confirmed your email account.  If you haven't received the confirmation email, check your spam or junk folder and any filters. Add "`no-reply@tacc.utexas.edu`" to your safe senders list, then request the activation link again.  
+Pending                    | Your account is under administrative review. 
+Deactivated                | If you have not accessed your account within the past 120 consecutive days, your account will be automatically deactivated in accordance with UT's [security protocols](https://security.utexas.edu/policies/irusp).  Reactivate your account by logging into the [TACC Accounts Portal][TACCACCOUNTS]  and requesting an activation link.  **You will have to re-pair MFA once your account is reactivated**.
+Suspended                  | If your account is suspended you will be prohibited from logging into the TACC User Portal and as well as any TACC HPC resources.  Please [submit a help desk ticket](SUBMITTICKET) and a member of our User Services team will respond. Account suspension may result if: <li>your HPC jobs are violating [Good Conduct Policies][TACCGOODCONDUCT] or causing harm to our systems <li>your account usage is in violation of TACC's [Acceptable Use Policy][TACCUSAGEPOLICY].     
 
 
 ## TACC Portals 
@@ -61,20 +77,6 @@ The [TACC User Portal][TACCUSERPORTAL] provides the following services:
 ////
 ///
 
-
-## Diagnosing Login Problems
-
-### Account Statuses
-
-You may view your account status at any time on the [TACC Accounts Portal][TACCACCOUNTS] in the User Profile section.
-
-Account Status             | Description
-           --              | -- 
-Active                     | All is well.  Active account holders may log on to the TACC User Portal as well as any **allocated** TACC resources. 
-Pending Email Confirmation | You haven't confirmed your email account.  If you haven't received the confirmation email, check your spam or junk folder and any filters. Add "`no-reply@tacc.utexas.edu`" to your safe senders list, then request the activation link again.  
-Pending                    | Your account is under administrative review. 
-Deactivated                | If you have not accessed your account within the past 120 consecutive days, your account will be automatically deactivated in accordance with UT's [security protocols](https://security.utexas.edu/policies/irusp).  Reactivate your account by logging into the [TACC Accounts Portal][TACCACCOUNTS]  and requesting an activation link.  **You will have to re-pair MFA once your account is reactivated**.
-Suspended                  | If your account is suspended you will be prohibited from logging into the TACC User Portal and as well as any TACC HPC resources.  Please [submit a help desk ticket](SUBMITTICKET) and a member of our User Services team will respond. Account suspension may result if: <li>your HPC jobs are violating [Good Conduct Policies][TACCGOODCONDUCT] or causing harm to our systems <li>your account usage is in violation of TACC's [Acceptable Use Policy][TACCUSAGEPOLICY].     
 
 ## New Accounts
 
