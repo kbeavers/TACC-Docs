@@ -27,6 +27,9 @@ Vista is funded by the National Science Foundation (NSF) via a supplement to the
 ## Account Administration
 
 {% include 'include/crontabs.md' %}
+
+{% include 'include/tacctips.md' %}
+
 ## System Architecture { #system }
 
 ### Vista Topology { #system-topology }

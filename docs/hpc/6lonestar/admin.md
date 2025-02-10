@@ -189,3 +189,5 @@ It's safe to execute module commands in job scripts. In fact, this is a good way
 
 {% include 'include/crontabs.md' %}
 
+
+{% include 'include/tacctips.md' %}

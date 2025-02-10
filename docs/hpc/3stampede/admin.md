@@ -146,22 +146,4 @@ It's safe to execute module commands in job scripts. In fact, this is a good way
 
 {% include 'include/crontabs.md' %}
 
-### TACC Tips { #admin-tips }
-
-TACC staff has amassed a database of helpful tips for our users.  Access these tips via the `tacc_tips` module and `showTip` command as demonstrated below:
-
-```cmd-line
-$ module load tacc_tips
-$ showTip
-
-Tip 40   (See "module help tacc_tips" for features or how to disable)
-
-   Here are four different ways to repeat the last executed command (press enter after each):
-     * Use the up arrow
-     * Type !!
-     * Type !-1
-     * Press Ctrl+P
-```
-
-
-
+{% include 'include/tacctips.md' %}

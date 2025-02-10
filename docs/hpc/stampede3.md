@@ -303,28 +303,10 @@ It's safe to execute module commands in job scripts. In fact, this is a good way
 
 {% include 'include/crontabs.md' %}
 
-### TACC Tips { #admin-tips }
-
-TACC staff has amassed a database of helpful tips for our users.  Access these tips via the `tacc_tips` module and `showTip` command as demonstrated below:
-
-```cmd-line
-$ module load tacc_tips
-$ showTip
-
-Tip 40   (See "module help tacc_tips" for features or how to disable)
-
-   Here are four different ways to repeat the last executed command (press enter after each):
-     * Use the up arrow
-     * Type !!
-     * Type !-1
-     * Press Ctrl+P
-```
-
-
-
+{% include 'include/tacctips.md' %}
 ## Managing Your Files { #files }
 
-Stampede3 mounts three file systems that are shared across all nodes: the home, work, and scratch file systems. Stampede3's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH`, and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the Stampede3 File Systems table for the basic characteristics of these file systems, File Operations: I/O Performance for advice on performance issues, and Good Conduct for tips on file system etiquette.
+Stampede3 mounts three file systems that are shared across all nodes: the home, work, and scratch file systems. Stampede3's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH`, and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the Stampede3 File Systems table for the basic characteristics of these file systems, File Operations: I/O Performance for advice on performance issues, and [Good Conduct][TACCGOODCONDUCT] for tips on file system etiquette.
 
 ### Navigating the Shared File Systems { #files-filesystems }
 
