@@ -40,7 +40,6 @@ To create a new account:
 	* Set up [Multi-Factor Authentication](TACCMFA) (MFA) on your account. 
 	* Log onto the [TACC User Portal](TACCPORTAL) to view your allocation status.
 
-
 !!! warning 
 	An individual may not have more than one TACC account.  Shared accounts and/or multi-user accounts are strictly prohibited.  
 
@@ -55,6 +54,36 @@ Any user registering for a new account, reactivating a [deactivated](#deactivate
 * Apple
 * Google
 * Microsoft
+<!-- * InCommon Federation - commenting out 01/30/2025 due to problems on their end -->
+
+## Login Problems: `Improper ssh Configuration!`
+
+If you see this message:
+
+```
+--> Verifying valid ssh keys...
+
+Improper ssh configuration!
+Please reconfigure or contact TACC consulting for assistance.
+```
+
+This is most likely because you have modified your `./ssh/known_hosts` file.  The solution is to generate a new `.ssh` folder to clear any conflicting keys/logins.  
+
+1. Go to your home directory:
+
+	```cmd-line
+	$ cd $HOME
+	```
+
+2. Rename your `.ssh` folder to `old_ssh` to save the contents should you need to revisit them at any point: 
+
+	```cmd-line
+	$ mv .ssh old_ssh
+	```
+
+3. Log out of the system and then log back in.  This will auto-generate a new `.ssh` folder and key for you. 
+
+
 
 ## TACC Portals 
 
@@ -104,28 +133,6 @@ The [TACC User Portal][TACCUSERPORTAL] provides the following services:
 ////
 ///
 
-
-<!-- * InCommon Federation - commenting out 01/30/2025 due to problems on their end -->
-
-<!-- save till later
-### SSH Keys
-
-This is most likely because you have modified your known hosts file to facilitate a no-password login. Let us try generating a new ssh folder to clear any conflicting keys/logins (you will still have the contents of your current ssh folder under a different name):
-
-1. Go to your home directory using the command:
-cd $HOME
-2. Change the name of your .ssh folder to old_ssh (so the contents are still accessible in old_ssh, should you need to revisit them at any point) using the command: 
-mv .ssh old_ssh
-3. Log out of the system and ssh back in, this will auto-generate a new .ssh folder and key for you. 
-Once that happens you can try making the change for a password-less login. Please let me know if that works for you or if you have any other questions.
-
-```
-No reservation for this job
---> Verifying valid submit host (login1)...OK
---> Verifying valid jobname...OK
---> Verifying valid ssh keys...
-```
--->
 
 ## References
 
