@@ -1,11 +1,6 @@
 #!/bin/sh
 # include files for all TUP documentation, mostly HPC guidees
-
-# some defaults
-taccinfopath="\/usr\/local\/etc\/taccinfo"
-
-# managingio - taccinfo
-# help 
+# this workflow is a remnant from way back when, slowly changing functionality
 
 # Frontera
 if [ "$1" = "frontera" ] 
@@ -18,8 +13,7 @@ then
 	mkloutputfile="frontera-mkl.md"
 	helpmsg="Be sure to include \"$machinename\" in the Resource field."
 
-	sed	-e "s/MACHINENAME/$machinename/g" \
-		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
+	sed	-e "s/MACHINENAME/$machinename/g" < jobaccountingsrc.md > $jobaccountingoutputfile
 
 	sed	-e "s/HWTHREADS/$hwthreads/g" < mklsrc.md > $mkloutputfile
 
@@ -35,8 +29,7 @@ then
 	jobaccountingoutputfile="vista-jobaccounting.md"
 	helpmsg="Be sure to include \"$machinename\" in the Resource field."
 
-	sed	-e "s/MACHINENAME/$machinename/g" \
-		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
+	sed	-e "s/MACHINENAME/$machinename/g" < jobaccountingsrc.md > $jobaccountingoutputfile
 
 	sed	-e "s/MACHINENAME/$machinename/g" \
 		-e "s/HELPMSG/$helpmsg/g" < helpsrc.md > $helpoutputfile
@@ -52,8 +45,7 @@ then
 	mkloutputfile="lonestar6-mkl.md"
 	helpmsg="Be sure to include \"$machinename\" in the Resource field."
 
-	sed	-e "s/MACHINENAME/$machinename/g" \
-		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
+	sed	-e "s/MACHINENAME/$machinename/g" < jobaccountingsrc.md > $jobaccountingoutputfile
 
 	sed	-e "s/HWTHREADS/$hwthreads/g" < mklsrc.md > $mkloutputfile
 
@@ -69,8 +61,7 @@ then
 	jobaccountingoutputfile="stampede3-jobaccounting.md"
 	helpmsg="Be sure to include \"$machinename\" in the Resource field."
 
-	sed	-e "s/MACHINENAME/$machinename/g" \
-		-e "s/TACCINFOPATH/$taccinfopath/g" < jobaccountingsrc.md > $jobaccountingoutputfile
+	sed	-e "s/MACHINENAME/$machinename/g" < jobaccountingsrc.md > $jobaccountingoutputfile
 
 	sed	-e "s/MACHINENAME/$machinename/g" \
 		-e "s/HELPMSG/$helpmsg/g" < helpsrc.md > $helpoutputfile
@@ -100,8 +91,8 @@ then
 # catch all... used for taccinfo, managingio
 elif [ "$1" = "defaults" ] 
 then
-	echo "building defaults"
-	sed -e "s/TACCINFOPATH/$taccinfopath/g" < taccinfosrc.md > tinfo.md
+	echo "building defaults" # 02/10/2025 no defaults - removed taccinfo
+	# sed -e "s/TACCINFOPATH/$taccinfopath/g" < taccinfosrc.md > tinfo.md
 	
 else
 	echo "configurestrings: no such machine"
