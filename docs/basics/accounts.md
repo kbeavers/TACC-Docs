@@ -7,18 +7,16 @@
 # Managing your TACC Account
 *Last update: February 10, 2025*
 
+In order to access any TACC compute or storage resource you must maintain an "Active" TACC user account.  You may view your account status at any time on the [TACC Accounts Portal][TACCACCOUNTS] in the User Profile section. [Table 1.](#table1) below lists all possible conditions for your account.
+
 
 !!! tip
 	If you are having login issues see TACC's [Login Support Tool][TACCLOGINSUPPORT] to resolve problems.  
 
 	If your [account status](#account-status) is "Active" and you still can't login, try [un-pairing and re-pairing your MFA device][TACCMFA].
 
-### Account Statuses 
 
-You may view your account status at any time on the [TACC Accounts Portal][TACCACCOUNTS] in the User Profile section. [Table 1.](#table1) below lists all possible conditions for your account.
-
-
-### Table 1. TACC Account Status { #table1 }
+## Table 1. TACC Account Status { #table1 }
 
 Account Status             | Description
            --              | -- 
@@ -28,6 +26,35 @@ Pending                    | Your account is under administrative review.
 Deactivated                | If you have not accessed your account within the past 120 consecutive days, your account will be automatically deactivated in accordance with UT's [security protocols](https://security.utexas.edu/policies/irusp).  Reactivate your account by logging into the [TACC Accounts Portal][TACCACCOUNTS]  and requesting an activation link.  **You will have to re-pair MFA once your account is reactivated**.
 Suspended                  | If your account is suspended you will be prohibited from logging into the TACC User Portal and as well as any TACC HPC resources.  Please [submit a help desk ticket](SUBMITTICKET) and a member of our User Services team will respond. Account suspension may result if: <li>your HPC jobs are violating [Good Conduct Policies][TACCGOODCONDUCT] or causing harm to our systems <li>your account usage is in violation of TACC's [Acceptable Use Policy][TACCUSAGEPOLICY].     
 
+
+## New Accounts
+
+Any user of TACC resources must first obtain a TACC account.  A TACC account email is of the form *username*@tacc.utexas.edu.  All new users are required to authenticate with a [UT approved Identity Provider](#identity-management).  
+
+To create a new account: 
+
+1. Go to the [TACC Accounts Portal][TACCACCOUNTS] and click "Create a New Account" to begin registration.
+1. Check for an email containing a confirmation and activation link.  Once you confirm your email, your account status will update to either "Pending" or "Active".
+1. If your account status is "Pending" then your account request will need further review by our User Services team. No action is required and a team member will reach to you.
+1. Once your account is "Active":
+	* Set up [Multi-Factor Authentication](TACCMFA) (MFA) on your account. 
+	* Log onto the [TACC User Portal](TACCPORTAL) to view your allocation status.
+
+
+!!! warning 
+	An individual may not have more than one TACC account.  Shared accounts and/or multi-user accounts are strictly prohibited.  
+
+!!! important
+	In order to log on to TACC's HPC resources, your TACC account must be Active **AND** you must have an active allocation on that particular resource.
+
+### Identity Management
+
+Any user registering for a new account, reactivating a [deactivated](#deactivated) account, or updating their profile will be required to authenticate using one of the UT approved Identity Provider services listed below.  All existing accounts will be required to authenticate with one of these identity providers at the annual account profile update. 
+
+* UT EID
+* Apple
+* Google
+* Microsoft
 
 ## TACC Portals 
 
@@ -76,36 +103,6 @@ The [TACC User Portal][TACCUSERPORTAL] provides the following services:
 /////
 ////
 ///
-
-
-## New Accounts
-
-Any user of TACC resources must first obtain a TACC account.  A TACC account email is of the form *username*@tacc.utexas.edu.  All new users are required to authenticate with a [UT approved Identity Provider](#identity-management).  
-
-To create a new account: 
-
-1. Go to the [TACC Accounts Portal][TACCACCOUNTS] and click "Create a New Account" to begin registration.
-1. Check for an email containing a confirmation and activation link.  Once you confirm your email, your account status will update to either "Pending" or "Active".
-1. If your account status is "Pending" then your account request will need further review by our User Services team. No action is required and a team member will reach to you.
-1. Once your account is "Active":
-	* Set up [Multi-Factor Authentication](TACCMFA) (MFA) on your account. 
-	* Log onto the [TACC User Portal](TACCPORTAL) to view your allocation status.
-
-
-!!! warning 
-	An individual may not have more than one TACC account.  Shared accounts and/or multi-user accounts are strictly prohibited.  
-
-!!! important
-	In order to log on to TACC's HPC resources, your TACC account must be Active **AND** you must have an active allocation on that particular resource.
-
-### Identity Management
-
-Any user registering for a new account, reactivating a [deactivated](#deactivated) account, or updating their profile will be required to authenticate using one of the UT approved Identity Provider services listed below.  All existing accounts will be required to authenticate with one of these identity providers at the annual account profile update. 
-
-* UT EID
-* Apple
-* Google
-* Microsoft
 
 
 <!-- * InCommon Federation - commenting out 01/30/2025 due to problems on their end -->
