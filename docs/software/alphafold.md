@@ -10,6 +10,9 @@ AlphaFold is a protein structure prediction tool developed by DeepMind (Google).
 
 ### Table 1. Installations at TACC { #table1 }
 
+!!! important
+    AlphaFold3 coming soon...
+
 System | What's Available
 -- | --
 Frontera | AlphaFold: v2.3.2<br> Data: `/scratch2/projects/bio/alphafold/2.3.2/data`<br>Examples: `/scratch2/projects/bio/alphafold/2.3.2/examples`<br> Module: `/scratch2/projects/bio/alphafold/modulefiles`
