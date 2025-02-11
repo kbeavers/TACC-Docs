@@ -8,10 +8,10 @@ AlphaFold is a protein structure prediction tool developed by DeepMind (Google).
 
 ## Installations at TACC { #installations } 
 
-### Table 1. Installations at TACC { #table1 }
-
 !!! important
     AlphaFold3 coming soon...
+    
+### Table 1. Installations at TACC { #table1 }
 
 System | What's Available
 -- | --
