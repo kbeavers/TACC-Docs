@@ -100,24 +100,24 @@ Always denote a proper login prompt for command-line examples.
 
 <table border="1">
 
-<tr><th>Login Node</th><td valign="top">
+<tr><td>Login Node</td><td valign="top">
 ```cmd-line
 login1$ sbatch myscript  
 ```
 </td></tr>
-<tr><th>Laptop/Other</th><td>
+<tr><td>Laptop/Other</td><td>
 
 ```cmd-line
 localhost$ ssh frontera.tacc.utexas.edu
 ```
-</td></tr><tr><th>
+</td></tr><tr><td>
 Compute node
-</th><td>
+</td><td>
 ```cmd-line
 c455-301$ top
 ```
-</td></tr><tr><th>
-Default<br>Use simple Bourne-shell prompt</th><td>
+</td></tr><tr><td>
+Default<br>Use simple Bourne-shell prompt</td><td>
 ```cmd-line
 $ date  
 ```
