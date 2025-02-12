@@ -9,6 +9,7 @@ While TACC's deprecated Launcher utility worked on serial codes, PyLauncher work
 
 **Example**: You need to run a program with 1000 different input values, and you want to use 100 cores for that; PyLauncher will cycle through your list of commands using cores as they become available. 
 
+
 The PyLauncher source code is written in Python, but this need not concern you: in the simplest scenario you use a two line Python script. However, for more sophisticated scenarios the code can be extended or integrated into a Python application.
 
 ## Installations		{ #installations }
@@ -302,7 +303,7 @@ Here are some parameters that may sometimes come in handy.
 
 | parameter <option> | description |
       ---            | --- | 
-| <code>delay=<i>fraction</i></code><br>default: `default=.5` | The fraction of a second that PyLauncher waits to start up new jobs, or test for finished ones. If you fire up complicated python jobs, you may want to increase this from the default.
+| <code>delay=<i>fraction</i></code><br>default: `delay=.5` | The fraction of a second that PyLauncher waits to start up new jobs, or test for finished ones. If you fire up complicated python jobs, you may want to increase this from the default.
 | <code>workdir=<i>directory</i></code><br>default: generated from the SLURM jobid | This is the location of the internal execute/out/test files that PyLauncher generates.
 | <code>queuestate=<i>filename</i></code><br>default filename: `queuestate` | This is a file that PyLauncher can use to restart if your jobs aborts, or is killed for exceeding the time limit. If you run multiple simultaneous jobs, you may want to specify this explicitly.
 
