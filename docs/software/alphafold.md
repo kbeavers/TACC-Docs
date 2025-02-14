@@ -1,4 +1,4 @@
-# AlphaFold at TACC
+# AlphaFold2 at TACC
 *Last update: February 11, 2025*
 
 
