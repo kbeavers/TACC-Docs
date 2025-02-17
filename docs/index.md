@@ -103,6 +103,15 @@ Each guide contains sample job scripts per resource where applicable and any spe
 
 /////
 
+///// html | a.card--plain[href="./software/pylauncher/"]
+     markdown: block
+
+<h3>PyLauncher</h3>
+
+PyLauncher is a parametric (high-throughput) job launcher, ideal for bundling, then running, many smaller jobs.
+
+
+/////
 ///// html | a.card--plain[href="./software/idev/"]
      markdown: block
 
@@ -112,14 +121,6 @@ A powerful utility allowing interactive access to compute nodes.
 
 /////
 
-///// html | a.card--plain[href="./software/vasp/"]
-     markdown: block
-
-<h3>VASP</h3>
-
-How to run the Vienna Ab initio Simulation Package (VASP) for atomic-scale materials modeling.
-
-/////
 
 ///// html | a.card--plain[href="./software/alphafold/"]
      markdown: block
@@ -129,6 +130,7 @@ How to run the Vienna Ab initio Simulation Package (VASP) for atomic-scale mater
 Run Google's powerful deep learning protein folding tool at TACC.
 
 /////
+
 ///// html | a.card--plain[href="./software/matlab/"]
      markdown: block
 
@@ -137,6 +139,8 @@ Run Google's powerful deep learning protein folding tool at TACC.
 Learn how to request access and run MATLAB, the popular numerical computing platform, at TACC
 
 /////
+
+
 ////
 ///
 
