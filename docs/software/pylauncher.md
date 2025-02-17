@@ -1,5 +1,5 @@
 # PyLauncher at TACC
-*Last update: February 12, 2025* 
+*Last update: February 17, 2025* 
 
 ## What is PyLauncher		{ #intro }
 
@@ -20,10 +20,14 @@ PyLauncher is available on all TACC systems via the [Lmod modules system][TACCLM
 $ module load pylauncher
 ```
 !!! important 
-	On some systems the Python installation is missing a required module. 
+	1. PyLauncher requires at least Python version 3.9:
+
+		`$ module load python3/3.9 # or newer`
+	
+	1. On some systems the Python installation is missing a required module. 
 	Do a one-time setup:   
 
-	`$ pip install paramiko`
+		`$ pip install paramiko`
 
 
 ## Basic setup { #setup }
