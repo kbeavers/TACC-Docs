@@ -4,6 +4,7 @@ VISTA_OBJS	=	\
 	system.md \
 	running.md \
 	launching.md \
+	mps.md \
 	ml.md \
 	building.md \
 	nvidia.md \
