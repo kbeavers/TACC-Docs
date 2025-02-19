@@ -1,5 +1,40 @@
 ## System Architecture { #system }
 
+### Ice Lake Large Memory Nodes { #system-icxlargemem }
+
+Stampede3 now hosts 3 large memory "Ice Lake" (ICX) nodes.  Access these nodes via the [`nvdimm` queue](#queues).
+
+Specification | Value
+--- | ---
+CPU: | Large Memory Nodes (NVDIMM)
+CPU: | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores: | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core: | 1
+Hardware threads per node: | 80
+Clock rate: | 2.3 GHz nominal<br>(3.4GHz max frequency depending on instruction set and number of active cores)
+RAM: | 4TB NVDIMM
+Cache:  | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket.<br>Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage: | 280GB `/tmp` partition
+
+
+### Ice Lake Compute Nodes { #system-icx }
+
+Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
+
+#### Table 4. ICX Specifications { #table4 }
+
+Specification | Value
+--- | ---
+CPU: | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores per ICX node: | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core: | 1
+Hardware threads per node: | 80
+Clock rate: | 2.3 GHz nominal<br>(3.4GHz max frequency depending on instruction set and number of active cores)
+RAM: | 256GB (3.2 GHz) DDR4
+Cache: | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket.<br>Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage: | 200 GB `/tmp` partition
+
+
 ### Sapphire Rapids Compute Nodes { #system-spr }
 
 Stampede3 hosts 560 "Sapphire Rapids" HBM (SPR) nodes with 112 cores each.  Each SPR node provides a performance increase of 2 - 3x over the SKX nodes due to increased core count and greatly increased memory bandwidth.  The available memory bandwidth per core increases by a factor of 3.5x.  Applications that were starved for memory bandwidth should exhibit improved performance close to 3x. 
@@ -53,22 +88,6 @@ RAM: | 192GB (2.67GHz) DDR4
 Cache: | 32 KB L1 data cache per core; 1 MB L2 per core; 33 MB L3 per socket.<br>Each socket can cache up to 57 MB (sum of L2 and L3 capacity).
 Local storage: | 90 GB /tmp 
 
-### Icelake Compute Nodes { #system-icx }
-
-Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
-
-#### Table 4. ICX Specifications { #table4 }
-
-Specification | Value
---- | ---
-Model: | Intel Xeon Platinum 8380 ("Ice Lake")
-Total cores per ICX node: | 80 cores on two sockets (40 cores/socket)
-Hardware threads per core: | 1
-Hardware threads per node: | 80
-Clock rate: | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
-RAM: | 256GB (3.2 GHz) DDR4
-Cache: | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket.<br>Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
-Local storage: | 200 GB /tmp partition
 
 ### Login Nodes { #system-login }
 

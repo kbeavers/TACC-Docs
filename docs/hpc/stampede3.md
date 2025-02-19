@@ -1,8 +1,9 @@
 # Stampede3 User Guide 
-*Last update: February 7, 2025*
+*Last update: February 19, 2025*
 
 ## Notices { #notices }
 
+* **NEW**: Stampede3 now hosts 3 [large memory "Ice Lake" (ICX) nodes](#system-icxlargemem). (02/19/2025)
 * **Important**: Please note [TACC's new SU charge policy](#sunotice). (09/20/2024)
 * **Attention Jupyter users: learn how to [configure your environment](#python-jupyter) to enable notebooks.** (05/16/2024)
 * **Attention VASP users: DO NOT run VASP using Stampede3's SPR nodes!**  TACC staff has noticed many VASP jobs causing issues on the SPR nodes and impacting overall system stability and performance.  Please run your VASP jobs using either the [SKX](../../hpc/stampede3#table3) or [ICX](../../hpc/stampede3#table4) nodes.  See [Running VASP Jobs](../../software/vasp/#running) for more information.  (05/06/2024)
@@ -19,6 +20,41 @@ Submit all Stampede3 allocations requests through the NSF's [ACCESS](https://all
 Requesting and managing allocations will require creating a username and password on this site. These credentials do not have to be the same as those used to access the TACC User Portal and TACC resources. Principal Investigators (PIs) and their allocation managers will be able to add/remove users to/from their allocations and submit requests to renew, supplement, extend, etc. their allocations. PIs attempting to manage an allocation via the [TACC User Portal](https://tacc.utexas.edu/portal/dashboard) will be redirected to the ACCESS website.
 
 ## System Architecture { #system }
+
+### Ice Lake Large Memory Nodes { #system-icxlargemem }
+
+Stampede3 now hosts 3 large memory "Ice Lake" (ICX) nodes.  Access these nodes via the [`nvdimm` queue](#queues).
+
+Specification | Value
+--- | ---
+CPU: | Large Memory Nodes (NVDIMM)
+CPU: | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores: | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core: | 1
+Hardware threads per node: | 80
+Clock rate: | 2.3 GHz nominal<br>(3.4GHz max frequency depending on instruction set and number of active cores)
+RAM: | 4TB NVDIMM
+Cache:  | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket.<br>Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage: | 280GB `/tmp` partition
+
+
+### Ice Lake Compute Nodes { #system-icx }
+
+Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
+
+#### Table 4. ICX Specifications { #table4 }
+
+Specification | Value
+--- | ---
+CPU: | Intel Xeon Platinum 8380 ("Ice Lake")
+Total cores per ICX node: | 80 cores on two sockets (40 cores/socket)
+Hardware threads per core: | 1
+Hardware threads per node: | 80
+Clock rate: | 2.3 GHz nominal<br>(3.4GHz max frequency depending on instruction set and number of active cores)
+RAM: | 256GB (3.2 GHz) DDR4
+Cache: | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket.<br>Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
+Local storage: | 200 GB `/tmp` partition
+
 
 ### Sapphire Rapids Compute Nodes { #system-spr }
 
@@ -73,22 +109,6 @@ RAM: | 192GB (2.67GHz) DDR4
 Cache: | 32 KB L1 data cache per core; 1 MB L2 per core; 33 MB L3 per socket.<br>Each socket can cache up to 57 MB (sum of L2 and L3 capacity).
 Local storage: | 90 GB /tmp 
 
-### Icelake Compute Nodes { #system-icx }
-
-Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
-
-#### Table 4. ICX Specifications { #table4 }
-
-Specification | Value
---- | ---
-Model: | Intel Xeon Platinum 8380 ("Ice Lake")
-Total cores per ICX node: | 80 cores on two sockets (40 cores/socket)
-Hardware threads per core: | 1
-Hardware threads per node: | 80
-Clock rate: | 2.3 GHz nominal (3.4GHz max frequency depending on instruction set and number of active cores)
-RAM: | 256GB (3.2 GHz) DDR4
-Cache: | 48KB L1 data cache per core; 1.25 MB L2 per core; 60 MB L3 per socket.<br>Each socket can cache up to 110 MB (sum of L2 and L3 capacity)
-Local storage: | 200 GB /tmp partition
 
 ### Login Nodes { #system-login }
 
@@ -344,9 +364,6 @@ If you wish to share files and data with collaborators in your project, see [Sha
 
 {% include 'include/stampede3-jobaccounting.md' %}
 
-<!-- ### Slurm Job Scheduler { #running-slurm } -->
-
-
 ### Slurm Partitions (Queues) { #queues }
 
 Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
@@ -357,11 +374,10 @@ Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable y
     Use TACC's `qlimits` utility to see the latest queue configurations.
 
 <!-- 
-01/09/2025
-Current queue/partition limits on TACC's stampede3 system:
-
+02/19/2025
 Name             MinNode  MaxNode     MaxWall  MaxNodePU  MaxJobsPU   MaxSubmit
 icx                    1       32  2-00:00:00         48         12          20
+nvdimm                 1        1  2-00:00:00          1          1           3
 pvc                    1        4  2-00:00:00          4          2           4
 skx                    1      256  2-00:00:00        384         40          60
 skx-dev                1       16    02:00:00         16          1           3
@@ -374,13 +390,12 @@ spr                    1       32  2-00:00:00        180         24          36
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  
 icx          | ICX       | 32 nodes<br>(2560 cores)             | 48 hrs       | 12                | 1.5 SUs
+nvdimm       | ICX       | 1 node<br>(80 cores)                 | 48 hrs       | 3                 1 4 SUs 
 pvc          | PVC       | 4 nodes<br>(384 cores)               | 48 hrs       | 2                 | 3 SUs
 skx          | SKX       | 256 nodes<br>(12288 cores)           | 48 hrs       | 40                | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(768 cores)              | 2 hrs        | 1                 | 1 SU
 spr          | SPR       | 32 nodes<br>(1792 cores)             | 48 hrs       | 24                | 2 SUs
 
-<!-- SDL 05/07 no skx-large yet
-**&#42; To request more nodes than are available in the skx-normal queue, submit a consulting (help desk) ticket. Include in your request reasonable evidence of your readiness to run under the conditions you're requesting. In most cases this should include your own strong or weak scaling results from Stampede3.** -->
 
 ### Submitting Batch Jobs with `sbatch` { #running-sbatch }
 
@@ -398,7 +413,7 @@ Your job will run in the environment it inherits at submission time; this enviro
 
 [Table 8.](#table8) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Stampede3), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede3.
 
-By default, Slurm writes all console output to a file named "`slurm-%j.out`", where `%j` is the numerical job ID. To specify a different filename use the `-o` option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both `-o` and `-e` options.
+y default, Slurm writes all console output to a file named "`slurm-%j.out`", where `%j` is the numerical job ID. To specify a different filename use the `-o` option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both `-o` and `-e` options.
 
 !!! tip
 	The maximum runtime for any individual job is 48 hours.  However, if you have good checkpointing implemented, you can easily chain jobs such that the outputs of one job are the inputs of the next, effectively running indefinitely for as long as needed.  See Slurm's `-d` option.
