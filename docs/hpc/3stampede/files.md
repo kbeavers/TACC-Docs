@@ -20,7 +20,7 @@ See the example for fictitious user bjones in the figure below.  All directories
 
 Note that the resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your resource-specific files. You have access to any such sub-directory from any TACC resources. If you are logged into Stampede3, for example, executing the alias cdw (equivalent to cd `$WORK`) will take you to the resource-specific sub-directory `$STOCKYARD/stampede3`. But you can access this directory from other TACC systems as well by executing cd `$STOCKYARD/stampede3`. These commands allow you to share files across TACC systems. In fact, several convenient account-level aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-### Table 6. Built-in Account Level Aliases { #table6 }
+### Table 7. Built-in Account Level Aliases { #table7 }
 
 Alias | Command
 --- | ---

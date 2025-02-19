@@ -6,7 +6,7 @@
 * **NEW**: Stampede3 now hosts 3 [large memory "Ice Lake" (ICX) nodes](#system-icxlargemem). (02/19/2025)
 * **Important**: Please note [TACC's new SU charge policy](#sunotice). (09/20/2024)
 * **Attention Jupyter users: learn how to [configure your environment](#python-jupyter) to enable notebooks.** (05/16/2024)
-* **Attention VASP users: DO NOT run VASP using Stampede3's SPR nodes!**  TACC staff has noticed many VASP jobs causing issues on the SPR nodes and impacting overall system stability and performance.  Please run your VASP jobs using either the [SKX](../../hpc/stampede3#table3) or [ICX](../../hpc/stampede3#table4) nodes.  See [Running VASP Jobs](../../software/vasp/#running) for more information.  (05/06/2024)
+* **Attention VASP users: DO NOT run VASP using Stampede3's SPR nodes!**  TACC staff has noticed many VASP jobs causing issues on the SPR nodes and impacting overall system stability and performance.  Please run your VASP jobs using either the [SKX](../../hpc/stampede3#table5) or [ICX](../../hpc/stampede3#table2) nodes.  See [Running VASP Jobs](../../software/vasp/#running) for more information.  (05/06/2024)
 
 
 ## Introduction { #intro }
@@ -25,6 +25,8 @@ Requesting and managing allocations will require creating a username and passwor
 
 Stampede3 now hosts 3 large memory "Ice Lake" (ICX) nodes.  Access these nodes via the [`nvdimm` queue](#queues).
 
+#### Table 1. ICX NVDIMM Specifications { #table1 }
+
 Specification | Value
 --- | ---
 CPU: | Large Memory Nodes (NVDIMM)
@@ -42,7 +44,7 @@ Local storage: | 280GB `/tmp` partition
 
 Stampede3 hosts 224 "Ice Lake" (ICX) compute nodes.
 
-#### Table 4. ICX Specifications { #table4 }
+#### Table 2. ICX Specifications { #table2 }
 
 Specification | Value
 --- | ---
@@ -60,7 +62,7 @@ Local storage: | 200 GB `/tmp` partition
 
 Stampede3 hosts 560 "Sapphire Rapids" HBM (SPR) nodes with 112 cores each.  Each SPR node provides a performance increase of 2 - 3x over the SKX nodes due to increased core count and greatly increased memory bandwidth.  The available memory bandwidth per core increases by a factor of 3.5x.  Applications that were starved for memory bandwidth should exhibit improved performance close to 3x. 
 
-#### Table 1. SPR Specifications { #table1 }
+#### Table 3. SPR Specifications { #table3 }
 
 Specification | Value 
 --- | ---
@@ -77,7 +79,7 @@ Local storage: | 150 GB /tmp partition
 
 Stampede3 hosts 20 nodes with four Intel Data Center GPU Max 1550s "Ponte Vecchio" (PVC) each.<br>Each PVC GPU has 128 GB of HBM2e and 128 Xe cores providing a peak performance of 4x 52 FP64 TFLOPS per node for scientific workflows and 4x 832 BF16 TFLOPS for ML workflows. 
 
-#### Table 2. PVC Specifications { #table2 }
+#### Table 4. PVC Specifications { #table4 }
 
 Specification | Value
 --- | --
@@ -96,7 +98,7 @@ Local storage: | 150 GB /tmp partition
 
 Stampede3 hosts 1,060 "Skylake" (SKX) compute nodes.
 
-#### Table 3. SKX Specifications { #table3 }
+#### Table 5. SKX Specifications { #table5 }
 
 Specification | Value
 --- | ---
@@ -125,7 +127,7 @@ The SPR and PVC networks will be upgraded to use Cornelis' CN5000 Omni-Path tech
 Stampede3 will use a shared VAST file system for the `$HOME` and `$SCRATCH` directories.  **These two file systems are NOT lustre file systems and do not support setting a stripe count or stripe size**.  There are no options for the user to set.  As with Stampede2, the `$WORK` file system will also be mounted.  Unlike `$HOME` and `$SCRATCH`, the `$WORK` file system is a Lustre file system and supports the lustre `lfs` commands.  All three file systems, `$HOME`, `$SCRATCH`, and `$WORK` are available from all Stampede3 nodes.  The `/tmp` partition is also available to users but is local to each node. The `$WORK` file system is available on most other TACC HPC systems as well. 
 
 
-#### Table 5. File Systems { #table5 }
+#### Table 6. File Systems { #table6 }
 
 File System | Quota | Key Features
 --- | --- | ---
@@ -346,7 +348,7 @@ See the example for fictitious user bjones in the figure below.  All directories
 
 Note that the resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your resource-specific files. You have access to any such sub-directory from any TACC resources. If you are logged into Stampede3, for example, executing the alias cdw (equivalent to cd `$WORK`) will take you to the resource-specific sub-directory `$STOCKYARD/stampede3`. But you can access this directory from other TACC systems as well by executing cd `$STOCKYARD/stampede3`. These commands allow you to share files across TACC systems. In fact, several convenient account-level aliases make it even easier to navigate across the directories you own in the shared file systems:
 
-### Table 6. Built-in Account Level Aliases { #table6 }
+### Table 7. Built-in Account Level Aliases { #table7 }
 
 Alias | Command
 --- | ---
@@ -384,13 +386,13 @@ skx-dev                1       16    02:00:00         16          1           3
 spr                    1       32  2-00:00:00        180         24          36
 -->
 
-#### Table 7. Production Queues { #table7 }
+#### Table 8. Production Queues { #table8 }
 
 
 Queue Name   | Node Type | Max Nodes per Job<br>(assoc'd cores) | Max Duration | Max Jobs in Queue | Charge Rate<br>(per node-hour)
 --           | --        | --                                   | --           | --                |  
 icx          | ICX       | 32 nodes<br>(2560 cores)             | 48 hrs       | 12                | 1.5 SUs
-nvdimm       | ICX       | 1 node<br>(80 cores)                 | 48 hrs       | 3                 1 4 SUs 
+nvdimm       | ICX       | 1 node<br>(80 cores)                 | 48 hrs       | 3                 | 4 SUs 
 pvc          | PVC       | 4 nodes<br>(384 cores)               | 48 hrs       | 2                 | 3 SUs
 skx          | SKX       | 256 nodes<br>(12288 cores)           | 48 hrs       | 40                | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(768 cores)              | 2 hrs        | 1                 | 1 SU
@@ -411,14 +413,14 @@ In your job script you (1) use `#SBATCH` directives to request computing resourc
 
 Your job will run in the environment it inherits at submission time; this environment includes the modules you have loaded and the current working directory. In most cases you should run your applications(s) after loading the same modules that you used to build them. You can of course use your job submission script to modify this environment by defining new environment variables; changing the values of existing environment variables; loading or unloading modules; changing directory; or specifying relative or absolute paths to files. **Do not** use the Slurm `--export` option to manage your job's environment: doing so can interfere with the way the system propagates the inherited environment.
 
-[Table 8.](#table8) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Stampede3), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede3.
+[Table 9.](#table9) below describes some of the most common `sbatch` command options. Slurm directives begin with `#SBATCH`; most have a short form (e.g. `-N`) and a long form (e.g. `--nodes`). You can pass options to `sbatch` using either the command line or job script; most users find that the job script is the easier approach. The first line of your job script must specify the interpreter that will parse non-Slurm commands; in most cases `#!/bin/bash` or `#!/bin/csh` is the right choice. Avoid `#!/bin/sh` (its startup behavior can lead to subtle problems on Stampede3), and do not include comments or any other characters on this first line. All `#SBATCH` directives must precede all shell commands. Note also that certain `#SBATCH` options or combinations of options are mandatory, while others are not available on Stampede3.
 
 y default, Slurm writes all console output to a file named "`slurm-%j.out`", where `%j` is the numerical job ID. To specify a different filename use the `-o` option. To save `stdout` (standard out) and `stderr` (standard error) to separate files, specify both `-o` and `-e` options.
 
 !!! tip
 	The maximum runtime for any individual job is 48 hours.  However, if you have good checkpointing implemented, you can easily chain jobs such that the outputs of one job are the inputs of the next, effectively running indefinitely for as long as needed.  See Slurm's `-d` option.
 
-#### Table 8. Common `sbatch` Options { #table8 }
+#### Table 9. Common `sbatch` Options { #table9 }
 
 Option | Argument | Comments
 --- | --- | ---
@@ -1638,7 +1640,7 @@ The column labeled `ST` displays each job's status:
 * `R`  means "Running";
 * `CG` means "Completing" (cleaning up after exiting the job script).
 
-#### Table 9. Pending Jobs Reason { #table9 }
+#### Table 10. Pending Jobs Reason { #table10 }
 
 The last column, labeled `NODELIST/REASON`, includes a nodelist for running/completing jobs, or a reason for pending jobs.  
 
