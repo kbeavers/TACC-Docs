@@ -301,7 +301,7 @@ $ module help            # show help text for the module system itself
 
 It's safe to execute module commands in job scripts. In fact, this is a good way to write self-documenting, portable job scripts that produce reproducible results.  If you use `module save` to define a personal default module collection, it's rarely necessary to execute module commands in shell startup scripts, and it can be tricky to do so safely. If you do wish to put module commands in your startup scripts, see Stampede3's default startup scripts in `/usr/local/startup_scripts` for a safe way to do so.
 
-{% include 'include/crontabs.md' %}
+{% include 'include/stampede3-crontab.md' %}
 
 {% include 'include/tacctips.md' %}
 ## Managing Your Files { #files }

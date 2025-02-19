@@ -1,6 +1,6 @@
 ## Account Administration
 
-{% include 'include/crontabs.md' %}
+{% include 'include/vista-crontab.md' %}
 
 {% include 'include/tacctips.md' %}
 

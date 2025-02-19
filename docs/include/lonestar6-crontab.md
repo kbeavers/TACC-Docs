@@ -9,12 +9,13 @@ When creating a crontab file, use the `hostname` command to determine your exact
 
 ```cmd-line
 $ hostname
-login3.stampede3.tacc.utexas.edu
+login2.lonestar6.tacc.utexas.edu
 ```
+
 Similarly you can always connect to that login node by specifying its full domain name:
 
 ```cmd-line
-localhost$ ssh login3.stampede3.tacc.utexas.edu
+localhost$ ssh login2.lonestar6.tacc.utexas.edu
 ```
 
 !!! important
