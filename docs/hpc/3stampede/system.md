@@ -2,13 +2,12 @@
 
 ### Ice Lake Large Memory Nodes { #system-icxlargemem }
 
-Stampede3 now hosts 3 large memory "Ice Lake" (ICX) nodes.  Access these nodes via the [`nvdimm` queue](#queues).
+Stampede3 hosts 3 large memory "Ice Lake" (ICX) nodes.  Access these nodes via the [`nvdimm` queue](#queues).
 
 #### Table 1. ICX NVDIMM Specifications { #table1 }
 
 Specification | Value
 --- | ---
-CPU: | Large Memory Nodes (NVDIMM)
 CPU: | Intel Xeon Platinum 8380 ("Ice Lake")
 Total cores: | 80 cores on two sockets (40 cores/socket)
 Hardware threads per core: | 1
