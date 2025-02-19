@@ -13,7 +13,7 @@ All contributions should be made via a GitHub pull request.  The pull requests w
 
 ## Style Guide
 
-* Use [Markdown](https://www.markdownguide.org/extended-syntax/) for your source text.
+* Use [Markdown](https://www.markdownguide.org/) for your source text.
 * Use `cwd`-relative paths to images e.g. instead of `/hpc/imgs/myimage.png`, use `../imgs/myimage.png` so that images load on the website **and** in GitHub preview.
 * Some [Python-Markdown extensions](https://python-markdown.github.io/extensions/) and [PyMdown exensions](https://facelessuser.github.io/pymdown-extensions/#extensions) are enabled.  See enabled extensions at [`mkdocs.base.yml`](https://github.com/TACC/TACC-Docs/blob/main/mkdocs.base.yml) under `markdown_extensions:`.
 
