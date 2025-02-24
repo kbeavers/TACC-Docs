@@ -63,28 +63,29 @@ Each of our HPC resources has a user guide, with extensive instructions and info
 /////
 
 
-///// html | a.card--plain.card--image-top[href="./hpc/lonestar6/"]
-     markdown: block
-
-////// html | img[alt="TACC's Lonestar6"][src="/img/home/lonestar6.png"]
-//////
-
-<h3>Lonestar6</h3>
-
-Lonestar6 is the latest of the Lonestar series and supports and serves Texas researchers.
-
-/////
 
 
 ///// html | a.card--plain.card--image-top[href="./hpc/stampede3/"]
      markdown: block
 
-////// html | img[alt="the Stampede3 supercomputer"][src="/img/home/stampede3.jpg"]
+////// html | img[alt="TACC's Vista AI supercomputer"][src="/img/home/vista.jpg" height="400"]
 //////
 
-<h3>Stampede3</h3>
+<h3>Vista</h3>
 
-TACC debut's the latest supercomputer in the Stampede systems in early 2024. 
+Vista is TACC's first AI-focused supercomputer with Arm-based NVIDIA technology.
+
+/////
+
+///// html | a.card--plain.card--image-top[href="./hpc/lonestar6/"]
+     markdown: block
+
+////// html | img[alt="TACC's Lonestar6"][src="/img/home/lonestar6.png" height="400"]
+//////
+
+<h3>Lonestar6</h3>
+
+Lonestar6 is the latest of the Lonestar series and supports and serves Texas researchers.
 
 /////
 ////
