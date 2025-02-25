@@ -1,5 +1,5 @@
 # Data Transfer { #datatransfer }
-*Last update: February 4, 2025*
+*Last update: February 25, 2025*
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
@@ -188,43 +188,41 @@ Consult your respective resource user guide's "Transferring Files" section for s
 
 <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> is a free graphical user interface for data transfer and is an alternative to using the command line. With a drag-and-drop interface, it is easy to transfer a file from your local system to the remote secure system. You can use <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> for Windows or macOS.
 
-<a target="_blank" href="https://cyberduck.io/download/">Download and install Cyberduck for Windows</a> on your local machine.
-
-### Windows { #datatransfer-windows } 
+<img src="../../../imgs/cyberduck.jpg"><a href="http://download.cnet.com/Cyberduck/3000-2160_4-10246246.html" target="_blank">Download Cyberduck here</a>
 
 Once installed, click "Open Connection" in the top left corner of your Cyberduck window.
 
-<figure id="figure2"><img src="../imgs/dtg-2-open-connection-context.png" />
-<figcaption>Figure 2. Windows Cyberduck and "Open Connection" set up screen<figcaption></figure>
+<!-- <figure id="figure2"><img src="../imgs/dtg-2-open-connection-context.png" />
+<figcaption>Figure 2. Windows Cyberduck and "Open Connection" set up screen<figcaption></figure> -->
 
 To set up a connection, type in the server name, host. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory, `/transfer/directory/path`, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the "Connect" button to open your connection.
 
-Consult Figure 3. below to ensure the information you have provided is correct.  *If you have not done so already, replace the "Path" with the path to your individualized transfer directory.*
+<!-- Consult Figure 2. below to ensure the information you have provided is correct.  *If you have not done so already, replace the "Path" with the path to your individualized transfer directory.* -->
 
-<figure id="figure3"><img src="../imgs/dtg-3-open-connection-modal.png" />
-<figcaption>Figure 3. Windows "Open Connection" set up screen</figcaption></figure>
+<figure id="figure2"><img alt="Cyberduck-SSH" src="../imgs/cyberduck-ssh.png" width="500px"><figcaption>Figure 2. Cyberduck connection setup screen</figcaption></figure>
 
-You will be prompted to "allow unknown fingerprint…" upon connection. Select "allow" and enter your TACC token value.  Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the system.
-      
-#### Mac { datatransfer-mac }
 
-Once installed, go to "Bookmark &gt; New Bookmark" to set up a connection.
-      
 !!! note
-	You cannot select "Open Connection" in the top left corner of your Cyberduck window as macOS' set up screen is missing the "More Options" button.
+	You will be prompted to "allow unknown fingerprint" upon connection. Select "allow" and then enter your TACC token value.
       
-To set up a connection using "New Bookmark", type in the server name, host. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, /transfer/directory/path, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the set up screen and click on your newly created bookmark to launch the connection.
+Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the system.
+      
+
+      
+<!-- !!! note
+	You cannot select "Open Connection" in the top left corner of your Cyberduck window as macOS' set up screen is missing the "More Options" button. -->
+
+      
+<!-- To set up a connection using "New Bookmark", type in the server name, host. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, /transfer/directory/path, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the set up screen and click on your newly created bookmark to launch the connection.
       
 <figure id="figure4"><img src="../imgs/dtg-4-new-bookmark.png" width="75%">
 <figcaption>Figure 4. macOS "New Bookmark" set up screen</figcaption></figure>
       
 Consult Figure 4. above to ensure the information you have provided is correct.  *If you have not done so already, replace the "Path" with the path to your individualized transfer directory.*
       
-!!! note
-	You will be prompted to "allow unknown fingerprint" upon connection. Select "allow" and then enter your TACC token value.
-      
 Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the storage system.
 
+-->
 ---
 
 ## Globus Data Transfer Guide { #globus }
@@ -246,9 +244,9 @@ To start using Globus, you need to do two things: Generate a unique identifier, 
 
 Login to [CILogon](https://cilogon.org) and click on "User Attributes".  Make note of your ePPN.
 
-<figure id="figure1">
+<figure id="figure4">
 <img src="../imgs/globus-CIlogin.png" style="width:65%"> 
-<figcaption>Figure 1. Make note of your ePPN</figcaption>
+<figcaption>Figure 4. Make note of your ePPN</figcaption>
 </figure>
 
 ### Step 2. **Associate your EPPN with your TACC Account.**  { #step2 }
@@ -260,9 +258,9 @@ Login to the [TACC Accounts Portal][TACCACCOUNTS], click "Account Information" i
 	The institution (ePPN) listed in your TACC account profile, must map to the ePPN you are using to log into GlobusOnline.  
 
 
-<figure>
+<figure id='figure5">
 <img src="../imgs/globus-setup-step2.png" style="width:65%">
-<figcaption>Figure 2. Update your TACC user profile.</figcaption>
+<figcaption>Figure 5. Update your TACC user profile.</figcaption>
 </figure>
 
 !!! tip
