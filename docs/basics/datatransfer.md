@@ -258,7 +258,7 @@ Login to the [TACC Accounts Portal][TACCACCOUNTS], click "Account Information" i
 	The institution (ePPN) listed in your TACC account profile, must map to the ePPN you are using to log into GlobusOnline.  
 
 
-<figure id='figure5">
+<figure id="figure5">
 <img src="../imgs/globus-setup-step2.png" style="width:65%">
 <figcaption>Figure 5. Update your TACC user profile.</figcaption>
 </figure>
