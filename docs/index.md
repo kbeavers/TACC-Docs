@@ -128,7 +128,7 @@ A powerful utility allowing interactive access to compute nodes.
 
 <h3>AlphaFold2</h3>
 
-How to run AlphaFold2, Google's powerful deep learning protein folding tool, at TACC.  See the instructions for single and independent sequence predictions.
+Run Google's powerful deep learning protein folding tool, AlphaFold2, at TACC.  Includes instructions for single and independent sequence predictions.
 
 /////
 
