@@ -126,9 +126,9 @@ A powerful utility allowing interactive access to compute nodes.
 ///// html | a.card--plain[href="./software/alphafold/"]
      markdown: block
 
-<h3>AlphaFold</h3>
+<h3>AlphaFold2</h3>
 
-Run Google's powerful deep learning protein folding tool at TACC.
+How to run AlphaFold2, Google's powerful deep learning protein folding tool, at TACC.  See the instructions for single and independent sequence predictions.
 
 /////
 
