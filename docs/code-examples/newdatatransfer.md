@@ -1,17 +1,42 @@
 ## Data Transfer { #datatransfer }
-*Last update: March 3, 2025*
+*Last update: February 25, 2025*
+
+There are several transfer mechanism for data to Frontera, some of which depend on where and how the data are to be stored.  Please review the following transfer mechanisms.
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
-1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), [Cyberduck](#data-transfer-cyberduck).
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
+1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), [Cyberduck](#data-transfer-cyberduck).
 
-!!! important
-	Connection to third-party storage services, e.g. UTBox, DropBox; is [not supported](#datatransfer-thirdparty).
+!!! tip
+	Third-party storage services, e.g. UTBox, DropBox are [not supported](#datatransfer-thirdparty).
 
+### Determining Paths { #cli-paths }
 
-### Graphical-User-Interface (GUI) Tools
+Before beginning data transfer with command-line tools, you will need to know:
 
+* the path to your data file(s) on your local system
+* the path to your transfer directory on the remote system
+
+In order to transfer your project data, you will first need to know where the files are located on your local system.
+
+To do so, navigate to the location of the files on your computer. This can be accomplished on a Mac by using the Finder application or on Windows with File Explorer application. Common locations for user data at the user's home directory, the Desktop and My Documents.
+      
+Once you have identified the location of the files, you can right-click on them and select either Get Info (on Mac) or Properties (on Windows) to view the path location on your local system.
+      
+Figure 1. Use Get Info to determine "Where" the path of your data file(s) is
+
+<figure id="figure1"><img src="../imgs/dtg-1-determine-path.png" /></a>
+<figcaption> Figure 1. Use Get Info to determine "Where" the path of your data file(s) is</figcaption></figure>
+
+For example, a file located in a folder named `portal-data` under `Documents` would have the following path:
+
+<table>
+<tr><td>On Mac</td><td><code>/Users/username/Documents/portal-data/my_file.txt</code></td></tr>
+<tr><td>On Windows</td><td><code>\Users\username\My Documents\portal-data\my_file.txt</code></td></tr>
+</table>
+
+### GUI
 
 #### Cyberduck { #datatransfer-cyberduck }
 
@@ -170,24 +195,33 @@ Consult the `scp` man pages for more information:
 login1$ man scp
 ```
 
-#### Transferring Files with `rsync` { #transferring-rsync } 
+#### `rsync` Section
 
-The `rsync` (remote synchronization) utility is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than `scp`. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
+##### Lonestar6 Transferring with `rsync` { #files-transferring-rsync }
+
+The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
+
+```cmd-line
+localhost$ rsync       mybigfile bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
+localhost$ rsync -avtr mybigdir  bjones@ls6.tacc.utexas.edu:\$SCRATCH/data
+```
+
+The options on the second transfer are typical and appropriate when synching a directory: this is a <u>recursive update (`-r`)</u> with verbose (`-v`) feedback; the synchronization preserves <u>time stamps (`-t`)</u> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+
+##### Frontera Transferring Files with `rsync` { #transferring-rsync } 
+
+The `rsync` (remote synchronization) utility is a great way to synchronize files that you maintain on more than one system: when you transfer files using `rsync`, the utility copies only the changed portions of individual files. As a result, `rsync` is especially efficient when you only need to update a small fraction of a large dataset. The basic syntax is similar to `scp`:
 
 ```cmd-line
 localhost$ rsync       mybigfile bjones@frontera.tacc.utexas.edu:\$WORK/data
 localhost$ rsync -avtr mybigdir  bjones@frontera.tacc.utexas.edu:\$WORK/data
 ```
 
-The options on the second transfer are typical and appropriate when synching a directory: this is a **recursive update (`-r`)** with verbose (`-v`) feedback; the synchronization preserves **time stamps (`-t`)</u> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
+The options on the second transfer are typical and appropriate when synching a directory: this is a <u>recursive update (`-r`)</u> with verbose (`-v`) feedback; the synchronization preserves <u>time stamps (`-t`)</u> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 
+See [Good Conduct](../../basics/conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
 
-!!! tip
-	See [Good Conduct][TACCGOODCONDUCT] for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. 
-
-!!! tip
-	Remember that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
-
+The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
 
 ```cmd-line
 login1$ rsync myfile.c \
@@ -207,23 +241,23 @@ For more `rsync` options and command details, run the command `rsync -h` or:
 login1$ man rsync
 ```
 
-!!! Warning
-	When executing multiple instantiations of any of the commands listed above, `scp`, `sftp` and `rsync`, limit your active transfers to no more than 2-3 processes at a time.
+When executing multiple instantiations of `scp` or `rsync`, please limit your transfers to no more than 2-3 processes at a time.
+
 
 
 #### Transfer with `sftp` { #cli-sftp }
 
-`sftp` is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. `my_file.txt`) to the remote secure system via `sftp`, open a terminal on your local computer and navigate to the path where your data file is located.
+`sftp` is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. `my_file.txt`) to the remote secure system via `sftp`, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
       
 <table>
 <tr><td>On Mac</td><td>localhost$ cd ~/Documents/portal-data/</td></tr>
 <tr><td>On Windows</td><td>localhost$ cd %HOMEPATH%\Documents\portal-data\</td></tr>
 </table>
 
-For example, assume your TACC username is `bjones` and you have an allocation on Stampede3.  An `sftp` transfer that pushes `my_file.txt` from the current directory of your local computer to your home directory on TACC's Stampede3 system would look like this:
+Assuming your TACC username is `bjones` and you are affiliated with UT Austin, an `sftp` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
       
 ```cmd-line
-localhost$ sftp bjones@stampede3.tacc.utexas.edu:/transfer/directory/path
+localhost$ sftp bjones@host:/transfer/directory/path
 Password:
 TACC Token Code:
 Connected to host.
@@ -231,6 +265,8 @@ Changing to:
   /transfer/directory/path
 sftp>
 ```
+
+If you have not done so already, enter this command in your terminal, replacing the TACC username `bjones` and your individualized transfer directory path appropriately.
       
 Once you've logged into the remote secure system and have been redirected to your transfer directory, confirm your location on the server:
 
@@ -265,7 +301,7 @@ Uploading my_file.txt to /transfer/directory/path
 my_file.txt     100% ##  #.#          KB/s   ##:#
 ```
 
-To double-check if the transfer succeeded: 
+To check if `my_file.txt` is in the `utaustin` subfolder:
       
 
 ```cmd-line
@@ -280,6 +316,9 @@ To exit out of `sftp` on the terminal:
 sftp> bye
 localhost1$
 ```
+
+If you wish to learn more about `sftp`, you can do so at <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html">the online man page for scp</a>.
+      
 
 
 ### UTBox and other Third-Party Storage Services { #datatransfer-thirdparty }
@@ -297,30 +336,3 @@ How to integrate Corral
 
 
 {% include 'aliases.md' %}
-
-<!--
-### Determining Paths { #cli-paths }
-
-Before beginning data transfer with command-line tools, you will need to know:
-
-* the path to your data file(s) on your local system
-* the path to your transfer directory on the remote system
-
-In order to transfer your project data, you will first need to know where the files are located on your local system.
-
-To do so, navigate to the location of the files on your computer. This can be accomplished on a Mac by using the Finder application or on Windows with File Explorer application. Common locations for user data at the user's home directory, the Desktop and My Documents.
-      
-Once you have identified the location of the files, you can right-click on them and select either Get Info (on Mac) or Properties (on Windows) to view the path location on your local system.
-      
-Figure 1. Use Get Info to determine "Where" the path of your data file(s) is
-
-<figure id="figure1"><img src="../imgs/dtg-1-determine-path.png" /></a>
-<figcaption> Figure 1. Use Get Info to determine "Where" the path of your data file(s) is</figcaption></figure>
-
-For example, a file located in a folder named `portal-data` under `Documents` would have the following path:
-
-<table>
-<tr><td>On Mac</td><td><code>/Users/username/Documents/portal-data/my_file.txt</code></td></tr>
-<tr><td>On Windows</td><td><code>\Users\username\My Documents\portal-data\my_file.txt</code></td></tr>
-</table>
--->
