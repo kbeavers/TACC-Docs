@@ -35,14 +35,14 @@ To create a new account:
 1. Check for an email containing a confirmation and activation link.  Once you confirm your email, your account status will update to either "Pending" or "Active".
 1. If your account status is "Pending" then your account request will need further review by our User Services team. No action is required and a team member will reach to you.
 1. Once your account is "Active":
-	* Set up [Multi-Factor Authentication](TACCMFA) (MFA) on your account. 
-	* Log onto the [TACC User Portal](TACCPORTAL) to view your allocation status.
+	* Set up [Multi-Factor Authentication][TACCMFA] (MFA) on your account. 
+	* Log onto the [TACC User Portal][TACCUSERPORTAL] to view your allocation status.
 
 !!! warning 
 	An individual may not have more than one TACC account.  Shared accounts and/or multi-user accounts are strictly prohibited.  
 
 !!! tip
-	In order to log on to TACC's HPC resources, your TACC account must be Active **AND** you must have an active allocation on that particular resource.
+	In order to log on to TACC's HPC resources, your TACC account must be "[Active](#table1)" **AND** you must have an active allocation on that particular resource.
 
 ### Identity Management
 

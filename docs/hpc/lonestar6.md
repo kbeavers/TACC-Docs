@@ -1320,8 +1320,8 @@ Follow the steps below to start an interactive session.
 
 	where:
 
-	* `<i>yyyy</i>` is the port number given by the vncserver batch job
-	* `<i>xxxx</i>` is a port on the remote system. Generally, the port number specified on the Lonestar6 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well
+	* <code><i>yyyy</i></code> is the port number given by the vncserver batch job
+	* <code><i>xxxx</i></code> is a port on the remote system. Generally, the port number specified on the Lonestar6 login node, <code><i>yyyy</i></code>, is a good choice to use on your local system as well
 	* `-f` instructs SSH to only forward ports, not to execute a remote command
 	* `-N` puts the ssh command into the background after connecting
 	* `-L` forwards the port   

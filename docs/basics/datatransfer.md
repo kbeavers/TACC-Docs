@@ -1,5 +1,5 @@
 ## Data Transfer { #datatransfer }
-*Last update: March 3, 2025*
+*Last update: March 4, 2025*
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
@@ -59,13 +59,12 @@ Once connected, you can navigate through your remote file hierarchy using the gr
 
 ### SSH Command-Line Tools  { #cli }
 
-Introduce - scp, rsync, sftp
-Examples with Corral
+<!-- Introduce - scp, rsync, sftp
+Examples with Corral -->
 
+Transfer files between TACC HPC resources and other Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows SSH clients typically include `scp`-based file transfer capabilities.
 
-A common method of transferring files between TACC resources and/or your local machine is through the command line.  Whether on a Windows or a Mac, open the terminal applicaton on your local laptop to use one of the following Unix command-line (CLI) tools.
-
-These three command line tools are secure and can be used to accomplish data transfer. You can run these commands directly from the terminal if your local system runs Linux or macOS:  `scp`, `sftp`, &amp; `rsync`
+The `scp` and `rsync` commands are standard UNIX data transfer mechanisms used to transfer moderate size files and data collections between systems. These applications use a single thread to transfer each file one at a time. The `scp` and `rsync` utilities are typically the best methods when transferring Gigabytes of data.  For larger data transfers, parallel data transfer mechanisms, e.g., Grid Community Toolkit, can often improve total throughput and reliability.
 
 !!! note
 	It is possible to use these command line tools if your local machine runs Windows, but you will need to use a ssh client (ex. [CyberDuck][DOWNLOADCYBERDUCK]).
@@ -73,18 +72,13 @@ These three command line tools are secure and can be used to accomplish data tra
 To simplify the data transfer process, we recommend that Windows users follow the <a href="#datatransfer-cyberduck">How to Transfer Data with Cyberduck</a> guide as detailed below.
 
 
-The `scp` and `rsync` commands are standard UNIX data transfer mechanisms used to transfer moderate size files and data collections between systems. These applications use a single thread to transfer each file one at a time. The `scp` and `rsync` utilities are typically the best methods when transferring Gigabytes of data.  For larger data transfers, parallel data transfer mechanisms, e.g., Grid Community Toolkit, can often improve total throughput and reliability.
-
-
-Transfer files between TACC HPC resources and other Linux-based systems using either [`scp`](http://linux.com/learn/intro-to-linux/2017/2/how-securely-transfer-files-between-servers-scp) or [`rsync`](http://linux.com/learn/get-know-rsync). Both `scp` and `rsync` are available in the Mac Terminal app. Windows SSH clients typically include `scp`-based file transfer capabilities.
-
-#### `scp` section
+#### Using `scp` 
 
 
 The Linux `scp` (secure copy) utility is a component of the OpenSSH suite. Assuming your Lonestar6 username is `bjones`, a simple `scp` transfer that pushes a file named `myfile` from your local Linux system to Lonestar6 `$HOME` would look like this:
 
 ```cmd-line
-localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon after net address
+localhost$ scp ./myfile bjones@ls6.tacc.utexas.edu:  # note colon at end of line
 ```
 
 You can use wildcards, but you need to be careful about when and where you want wildcard expansion to occur. For example, to push all files ending in `.txt` from the current directory on your local machine to `/work/01234/bjones/scripts` on Lonestar6:
@@ -100,7 +94,7 @@ localhost$ scp bjones@ls6.tacc.utexas.edu:/work/01234/bjones/ls6/\*.txt .
 ```
 
 !!! note
-	Using `scp` with wildcard expansion on the remote host is unreliable.  Specify absolute paths wherever possible.
+	Using `scp` with wildcard expansion on the **remote host** is unreliable.  Specify absolute paths wherever possible.
 
 You can of course use shell or environment variables in your calls to `scp`. For example:
 
@@ -126,42 +120,6 @@ Instead, use `tar` to create an archive of the directory, then transfer the dire
 ```cmd-line
 localhost$ tar cvf ./mydata.tar mydata                                  # create archive
 localhost$ scp     ./mydata.tar bjones@ls6.tacc.utexas.edu:\$WORK  # transfer archive
-```
-
---
-
-The `scp` command copies files between hosts on a network. To transfer a file (ex. `my_file.txt`) to the remote secure system via `scp`, open a terminal on your local computer and navigate to the path where your data file is located.
-      
-<table>
-<tr><td>On Mac</td> <td><code>localhost$ cd ~/Documents/portal-data/</code></td></tr>
-<tr><td>On Windows</td> <td><code>localhost$ cd %HOMEPATH%\Documents\portal-data\</code></td></tr>
-</table>
-
-Assuming your TACC username is `bjones` and you are affiliated with UT Austin, a `scp` transfer that pushes `my_file.txt` from the current directory of your local computer to the remote secure system would look like this:
-
-This command will copy your data file directly to your individualized transfer directory on the remote storage system.
-
-```cmd-line
-localhost$ scp ./my_file.txt bjones@host:/transfer/directory/path
-```
-
-*If you have not done so already, enter this command in your terminal, replacing the file name, TACC username, and your individualized transfer directory path appropriately.*
-
-After entering the command, you will be prompted to login to the remote secure system by entering the password associated with your TACC account as well as the token value generated from your TACC token app.
-
-A successful data transfer will generate terminal output similar to this:
-
-```syntax
-my_file.txt     100% ##  #.#          KB/s   ##:##g
-```
-
---
-
-Data transfer from any Linux system can be accomplished using the `scp` utility to copy data to and from the login node. A file can be copied from your local system to the remote server by using the command:
-
-```cmd-line
-localhost% scp filename \
-TACC-username@frontera.tacc.utexas.edu:/path/to/project/directory
 ```
 
 Consult the `scp` man pages for more information:
