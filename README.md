@@ -8,7 +8,7 @@ We welcome contributions, offer a guide for those new to GitHub, and a style gui
 
 ## Publishing
 
-We automatically publish `main` branch commits. We manually release versions of TACC-Docs. [Read more](./PUBLISHING.md).
+We automatically publish `main` branch commits. We manually release versions of TACC-Docs. [Read more.](./PUBLISHING.md)
 
 ## Developing
 
