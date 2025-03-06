@@ -60,7 +60,7 @@ Current queue/partition limits on TACC's Frontera system:
 | <code>flex&#42;</code>        | 1-128 nodes<br>(7,168 cores)      | 1 hour | 48 hrs  | 6400 nodes         | 15       | .8 Service Units (SUs) 
 | <code>development</code>      | 1-40 nodes<br>(2,240 cores)       | N/A    | 2 hrs   |   40 nodes         |  1       | 1 SU 
 | <code>normal</code>           | 3-512 nodes<br>(28,672 cores)     | N/A    | 48 hrs  | 1024 nodes         | 75       | 1 SU   
-| <code>large&#42;&#42;</code>  | 513-2048 nodes<br>(114,688 cores) | N/A    | 48 hrs  | 3072 nodes         |  2       | 1 SU
+| <code>large&#42;&#42;</code>  | 513-2048 nodes<br>(114,688 cores) | N/A    | 48 hrs  | 3072 nodes         |  1       | 1 SU
 | <code>rtx</code>              | 16 nodes                          | N/A    | 48 hrs  |   32 nodes         | 12       | 3 SUs
 | <code>rtx-dev</code>          | 2 nodes                           | N/A    | 2 hrs   |    2 nodes         |  1       | 3 SUs
 | <code>nvdimm</code>           | 4 nodes                           | N/A    | 48 hrs  |    6 nodes         |  3       | 2 SUs 
