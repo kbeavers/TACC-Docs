@@ -1888,6 +1888,21 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 * **Be patient.** It may take a business day for a consultant to get back to you, especially if your issue is complex. It might take an exchange or two before you and the consultant are on the same page. If the admins disable your account, it's not punitive. When the file system is in danger of crashing, or a login node hangs, they don't have time to notify you before taking action.
 
 {% include 'aliases.md' %}
+## References { #refs }
+
+* [Bash Users’ Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
+* [`idev` at TACC][TACCIDEV]
+* [GNU documentation](https://www.gnu.org/doc/doc.en.html)
+* [Intel software documentation](http://software.intel.com/en-us/intel-software-technical-documentation)
+* [Lmod's online documentation][TACCLMOD]
+* [Multi-Factor Authentication at TACC][TACCMFA]
+* [Princeton Research Computing's Slurm Knowledge Base](https://researchcomputing.princeton.edu/support/knowledge-base/slurm)
+* [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
+* [Slurm online documentation](http://www.schedmd.com)
+* [TACC Analysis Portal][TACCANALYSISPORTAL]
+
+
+
 [CREATETICKET]: https://tacc.utexas.edu/about/help/ "Create Support Ticket"
 [DOWNLOADCYBERDUCK]: https://cyberduck.io/download/ "Download Cyberduck"
 [HELPDESK]: https://tacc.utexas.edu/about/help/ "Help Desk"
@@ -1918,10 +1933,11 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
 [TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
 [TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC Accounts User Profile"
+[TACCPARAVIEW]: https://docs.tacc.utexas.edu/software/paraview "Paraview at TACC"
+[TACCMANAGINGIO]: https://docs.tacc.utexas.edu/tutorials/managingio "Managing I/O at TACC""
 
 [TACCSTAMPEDE3UG]: https://docs.tacc.utexas.edu/hpc/stampede3/ "TACC Stampede3 User Guide"
 [TACCLONESTAR6UG]: https://docs.tacc.utexas.edu/hpc/lonestar6/ "TACC Lonestar6 User Guide"
 [TACCFRONTERAUG]: https://docs.tacc.utexas.edu/hpc/frontera/ "TACC Frontera User Guide"
+[TACCVISTAUG]: https://docs.tacc.utexas.edu/hpc/fista/ "TACC Vista User Guide"
 [TACCRANCHUG]: https://docs.tacc.utexas.edu/hpc/ranch/ "TACC Ranch User Guide"
-[TACCPARAVIEW]: https://docs.tacc.utexas.edu/software/paraview "Paraview at TACC"
-[TACCMANAGINGIO]: https://docs.tacc.utexas.edu/tutorials/managingio "Managing I/O at TACC""
