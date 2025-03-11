@@ -155,7 +155,7 @@ Initiate an SSH session using the `ssh` command or the equivalent:
 The above command will rotate connections across all available login nodes and route your connection to the next available node. 
 
 !!! tip
-	Stampede3's login nodes are a *shared resource*. See TACC's <a href="../../basics/conduct">Good Conduct Policy</a> for more information.
+	Stampede3's login nodes are a *shared resource*. See TACC's [Good Conduct Policy[TACCGOODCONDUCT] for more information.
 
 
 To connect to a specific login node, use its full domain name:
@@ -359,7 +359,7 @@ Alias | Command
 
 ### Sharing Files with Collaborators { #files-sharing }
 
-If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES] for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
 ## Running Jobs { #running }
 
@@ -768,7 +768,7 @@ Similarly in R:
 
 You may, of course, need to customize the build process in other ways. It's likely, for example, that you'll need to edit a makefile or other build artifacts to specify Stampede3-specific include and library paths or other compiler settings. A good way to proceed is to write a shell script that implements the entire process: definitions of environment variables, module commands, and calls to the build utilities. Include echo statements with appropriate diagnostics. Run the script until you encounter an error. Research and fix the current problem. Document your experience in the script itself; including dead-ends, alternatives, and lessons learned. Re-run the script to get to the next error, then repeat until done. When you're finished, you'll have a repeatable process that you can archive until it's time to update the software or move to a new machine.
 
-If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators](../../tutorials/sharingprojectfiles) for more information.
+If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
 ### Performance { #building-performance }
 
@@ -1798,7 +1798,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Managing I/O at TACC][TACCMANAGINGIO] and [TACC Training](https://tacc.utexas.edu/use-tacc/training/) page for additional information on I/O performance. 
 
-**Follow the advice in [TACC Good Conduct Guide](basics/conduct) to avoid stressing the file system**.
+**Follow the advice in [TACC Good Conduct Guide][TACCGOODCONDUCT] to avoid stressing the file system**.
 
 **Aggregate file operations**: Open and close files once. Read and write large, contiguous blocks of data at a time; this requires understanding how a given programming language uses memory to store arrays.
 
@@ -1918,3 +1918,5 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
 [TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
 [TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC Accounts User Profile"
+
+[TACCSTAMPEDE3UG]: https://docs.tacc.utexas.edu/hpc/stampede3/ "TACC Stampede3 User Guide"

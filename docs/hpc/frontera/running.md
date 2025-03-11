@@ -74,7 +74,7 @@ Current queue/partition limits on TACC's Frontera system:
 
 ### Accessing the Compute Nodes { #running-computenodes } 
 
- The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../../basics/conduct) for more information.
+ The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct][TACCGOODCONDUCT] for more information.
 
 #### Figure 2. Login and Compute Nodes { #figure2 } 
 <figure id="figure2"><img alt="[Figure 2. Login and Compute Nodes" src="../imgs/login-compute-nodes.jpg">
@@ -183,7 +183,7 @@ You can also launch an interactive session with Slurm's `srun` command, though t
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
 ```
 
-Consult the [`idev`](../../software/idev) documentation for further details.
+Consult the [`idev`][TACCIDEV] documentation for further details.
 
 ### Interactive Sessions using SSH { #running-ssh } 
 

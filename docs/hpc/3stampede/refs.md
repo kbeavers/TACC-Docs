@@ -5,8 +5,8 @@
 * GNU documentation
 * Intel software documentation
 * Lmod’s online documentation
-* [Multi-Factor Authentication at TACC](../../tutorials/mfa)
-* [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles)
+* [Multi-Factor Authentication at TACC][TACCMFA]
+* [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
 * Slurm online documentation
 * TACC Analysis Portal
 * Stockyard (TACC's Global Shared File System)

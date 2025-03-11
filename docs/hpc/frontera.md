@@ -32,7 +32,7 @@ Experienced HPC/TACC users will be very familiar with many of the topics present
 
 * Log into your [TACC Dashboard][TACCDASHBOARD] to confirm that [you've been added to a Frontera allocation][TACCALLOCATIONS]. Then, connect via SSH to `frontera.tacc.utexas.edu`.
 * Review the TACC info box displayed at login for your allocation availability and SU balances.
-* Read the [Good Conduct](../../basics/conduct) section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
+* Read the [Good Conduct][TACCGOODCONDUCT] section. Frontera is a **shared** resource and this section covers practices and etiquette to keep your account in good standing and keep Frontera's systems running smoothly for all users.
 * Consult the [Frontera File Systems](#files) and [Frontera Production Queues](#queues) tables. These should be near identical to the structure used on other TACC systems but there are a few minor changes you will want to take note of. 
 * Copy and modify any of the [Sample Job Scripts](#scripts) for your own use. These scripts will also be helpful to show you how to modify any Jobs Scripts you are bringing over from other TACC systems so that they run efficiently on Frontera. 
 * Review the [default modules with `module list`](#admin-configuring-modules). Make any changes needed for your code. 
@@ -325,7 +325,7 @@ Frontera mounts three Lustre file systems that are shared across all nodes: the 
 
 ### File Systems { #files-filesystems } 
 
-Frontera's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH` and `$WORK` that store the paths to directories that you own on each of these file systems. Consult <a href="#table4">Table 4. Frontera File Systems</a> below for the basic characteristics of these file systems,  and the <a href="../../basics/conduct">Good Conduct</a> sections for guidance on file system etiquette.</p>
+Frontera's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH` and `$WORK` that store the paths to directories that you own on each of these file systems. Consult <a href="#table4">Table 4. Frontera File Systems</a> below for the basic characteristics of these file systems, and the [Good Conduct][TACCGOODCONDUCT] sections for guidance on file system etiquette.
 
 #### Table 4a. File Systems { #table4a } 
 
@@ -510,7 +510,7 @@ localhost$ rsync -avtr mybigdir  bjones@frontera.tacc.utexas.edu:\$WORK/data
 
 The options on the second transfer are typical and appropriate when synching a directory: this is a <u>recursive update (`-r`)</u> with verbose (`-v`) feedback; the synchronization preserves <u>time stamps (`-t`)</u> as well as symbolic links and other meta-data (`-a`). Because `rsync` only transfers changes, recursive updates with `rsync` may be less demanding than an equivalent recursive transfer with `scp`.
 
-See [Good Conduct](../../basics/conduct) for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
+See [Good Conduct][TACCGOODCONDUCT] for additional important advice about striping the receiving directory when transferring large files; watching your quota on `$HOME` and `$WORK`; and limiting the number of simultaneous transfers. Remember also that `$STOCKYARD` (and your `$WORK` directory on each TACC resource) is available from several other TACC systems: there's no need for `scp` when both the source and destination involve subdirectories of `$STOCKYARD`. 
 
 The `rsync` command is another way to keep your data up to date. In contrast to `scp`, `rsync` transfers only the actual changed parts of a file (instead of transferring an entire file). Hence, this selective method of data transfer can be much more efficient than scp. The following example demonstrates usage of the `rsync` command for transferring a file named `myfile.c` from its current location on Stampede to Frontera's `$DATA` directory.
 
@@ -756,7 +756,7 @@ Current queue/partition limits on TACC's Frontera system:
 
 ### Accessing the Compute Nodes { #running-computenodes } 
 
- The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct](../../basics/conduct) for more information.
+ The login nodes are shared resources: at any given time, there are many users logged into each of these login nodes, each preparing to access the "back-end" compute nodes (Figure 2. Login and Compute Nodes). What you do on the login nodes affects other users directly because you are competing for the same resources: memory and processing power. This is the reason you should not run your applications on the login nodes or otherwise abuse them. Think of the login nodes as a prep area where you can manage files and compile code before accessing the compute nodes to perform research computations. See [Good Conduct][TACCGOODCONDUCT] for more information.
 
 #### Figure 2. Login and Compute Nodes { #figure2 } 
 <figure id="figure2"><img alt="[Figure 2. Login and Compute Nodes" src="../imgs/login-compute-nodes.jpg">
@@ -865,7 +865,7 @@ You can also launch an interactive session with Slurm's `srun` command, though t
 login1$ srun --pty -N 2 -n 8 -t 2:30:00 -p normal /bin/bash -l # same conditions as above
 ```
 
-Consult the [`idev`](../../software/idev) documentation for further details.
+Consult the [`idev`][TACCIDEV] documentation for further details.
 
 ### Interactive Sessions using SSH { #running-ssh } 
 
@@ -1549,7 +1549,7 @@ The `qopt-zmm-usage` flag affects the algorithms the compiler uses to decide whe
 
 This section includes general advice intended to help you achieve good performance during file operations. See [Navigating the Shared File Systems](#files-navigating) for a brief overview of Frontera's Lustre file systems and the concept of striping. See [TACC Training material](https://learn.tacc.utexas.edu/) for additional information on I/O performance.
 
-**Follow the advice in [Good Conduct](../../basics/conduct)** to avoid stressing the file system.
+**Follow the advice in [Good Conduct][TACCGOODCONDUCT]** to avoid stressing the file system.
 
 **Stripe for performance**. If your application writes large files using MPI-based parallel I/O (including [MPI-IO](http://mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf), [parallel HDF5](https://support.hdfgroup.org/HDF5/PHDF5/), and [parallel netCDF](https://www.unidata.ucar.edu/software/netcdf/docs/parallel_io.html), you should experiment with stripe counts larger than the default values (2 stripes on `$SCRATCH`, 1 stripe on `$WORK`). See [Striping Large Files](#files-striping) for the simplest way to set the stripe count on the directory in which you will create new output files. You may also want to try larger stripe sizes up to 16MB or even 32MB; execute `man lfs` for more information. If you write many small files you should probably leave the stripe count at its default value, especially if you write each file from a single process. Note that it's not possible to change the stripe parameters on files that already exist. This means that you should make decisions about striping when you *create* input files, not when you read them.
 
@@ -2248,7 +2248,7 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 * [Multi-Factor Authentication at TACC][TACCMFA]
 * [Bash Users' Startup Files: Quick Start Guide](../../tutorials/bashstartup)
 * [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles)
-* [`idev` documentation](../../software/idev)
+* [`idev` documentation][TACCIDEV]
 * [Lmod's online documentation][TACCLMOD]
 * [TACC Acceptable Use Policy][TACCUSAGEPOLICY]
 

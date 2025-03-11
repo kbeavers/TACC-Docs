@@ -50,7 +50,7 @@ Local storage:  | 288GB /tmp partition on a 288GB SSD.
 
 ### Login Nodes { #system-login }
 
-Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the same hardware and are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login nodes only for file management, compilation, and data movement. Any and all computing should be done within a batch job or an [interactive session](../../software/idev) on the compute nodes.  See TACC's [Good Conduct Policy][TACCGOODCONDUCT] for more information.
+Lonestar6's three login nodes, `login1`, `login2`, and `login3`, contain the same hardware and are configured similarly to the compute nodes. However, since these nodes are shared, limits are enforced on memory usage and number of processes. Please use the login nodes only for file management, compilation, and data movement. Any and all computing should be done within a batch job or an [interactive session][TACCIDEV] on the compute nodes.  See TACC's [Good Conduct Policy][TACCGOODCONDUCT] for more information.
 
 ### `vm-small` Queue Nodes { #system-vmsmall }
 
@@ -127,7 +127,7 @@ File System | Quota | Key Features
 
 ### Navigating the Shared File Systems { #files-navigating }
 
-Lonestar6 mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Lonestar6's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH` and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the [Lonestar6 File Systems](#table3) table above for the basic characteristics of these file systems, <!--"File Operations: I/O Performance" for advice on performance issues,--> and the [Good Conduct](../../basics/conduct) document for guidance on file system etiquette.
+Lonestar6 mounts three Lustre file systems that are shared across all nodes: the home, work, and scratch file systems. Lonestar6's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH` and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the [Lonestar6 File Systems](#table3) table above for the basic characteristics of these file systems, <!--"File Operations: I/O Performance" for advice on performance issues,--> and the [Good Conduct][TACCGOODCONDUCT] document for guidance on file system etiquette.
 
 Lonestar6's `/home` and `/scratch` file systems are mounted only on Lonestar6, but the `/work` file system mounted on Lonestar6 is the Global Shared File System hosted on Stockyard. This is the same work file system that is currently available on Frontera, Stampede3 and most other TACC resources.
 
@@ -250,7 +250,7 @@ The options on the second transfer are typical and appropriate when synching a d
 
 ### Sharing Files with Collaborators { #files-sharing }
 
-If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles) for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
+If you wish to share files and data with collaborators in your project, see [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES] for step-by-step instructions. Project managers or delegates can use Unix group permissions and commands to create read-only or read-write shared workspaces that function as data repositories and provide a common work area to all project members.
 
 
 ## Access the System { #access }
@@ -566,7 +566,7 @@ $ R                             # launch R
 
 You may, of course, need to customize the build process in other ways. It's likely, for example, that you'll need to edit a `makefile` or other build artifacts to specify Lonestar6-specific [include and library paths](#building-include) or other compiler settings. A good way to proceed is to write a shell script that implements the entire process: definitions of environment variables, module commands, and calls to the build utilities. Include `echo` statements with appropriate diagnostics. Run the script until you encounter an error. Research and fix the current problem. Document your experience in the script itself; including dead-ends, alternatives, and lessons learned. Re-run the script to get to the next error, then repeat until done. When you're finished, you'll have a repeatable process that you can archive until it's time to update the software or move to a new machine.
 
-If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators](../../tutorials/sharingprojectfiles) for more information.
+If you wish to share a software package with collaborators, you may need to modify file permissions. See [Sharing Files with Collaborators][TACCSHARINGPROJECTFILES] for more information.
 
 {% include "include/lonestar6-mkl.md" %}
 
@@ -794,9 +794,9 @@ Copy and customize the following scripts to specify and refine your job's requir
 * specify total number of MPI tasks with the `-n` option
 * specify the project to be charged with the `-A` option.
 
-In general, the fewer resources (nodes) you specify in your batch script, the less time your job will wait in the queue. See [5. Job Submissions Tips](../../basics/conduct#conduct-jobs) in the [Good Conduct](../../basics/conduct) document. 
+In general, the fewer resources (nodes) you specify in your batch script, the less time your job will wait in the queue. See [5. Job Submissions Tips](../../basics/conduct#conduct-jobs) in the [Good Conduct][TACCGOODCONDUCT] document. 
 
-Consult [Table 6](../stampede3#table6) in the [Stampede3 User Guide](../stampede3) for a listing of common Slurm `#SBATCH` options.
+Consult [Table 6](../stampede3#table6) in the [Stampede3 User Guide][TACCSTAMPEDE3UG] for a listing of common Slurm `#SBATCH` options.
 
 Click on a tab header below to display it's job script, then copy and customize to suit your own application.
 
@@ -1281,7 +1281,7 @@ Follow the steps below to start an interactive session.
 	* <code>-p <i>partition</i></code> specify an alternate queue   
 
 
-	Consult [Table 6](../stampede3#table6) in the [Stampede3 User Guide](../stampede3) for a listing of common Slurm `#SBATCH` options.
+	Consult [Table 6](../stampede3#table6) in the [Stampede3 User Guide][TACCSTAMPEDE3UG] for a listing of common Slurm `#SBATCH` options.
 
 	All arguments after the job script name are sent to the vncserver command. For example, to set the desktop resolution to 1440x900, use:
 
@@ -1449,3 +1449,5 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
 [TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
 [TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC Accounts User Profile"
+
+[TACCSTAMPEDE3UG]: https://docs.tacc.utexas.edu/hpc/stampede3/ "TACC Stampede3 User Guide"

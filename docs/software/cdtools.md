@@ -18,7 +18,7 @@ CDTools is currently installed on TACC's Stampede3, Frontera, and Lonestar6 reso
 
 ### 1. Initialize CD Tools Environment Variable { #setup-1 }
 
-Load the CDtools module in your job script or within an [`idev`](../idev) session: 
+Load the CDtools module in your job script or within an [`idev`][TACCIDEV] session: 
 
 ``` cmd-line
 $ module load cdtools
