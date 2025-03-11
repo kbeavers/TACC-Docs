@@ -146,7 +146,7 @@ TACC staff has developed OOOPS, **O**ptimal **O**verloaded I/O **P**rotection **
 !!! note
 	Employing OOOPS may slow down your job significantly if your job has a lot of I/O.
 
-The OOOPS module is currently installed on TACC's [Frontera](../../hpc/frontera) resource.
+The OOOPS module is currently installed on TACC's [Frontera][TACCFRONTERAUG] resource.
 
 
 ### Functions { #ooops-functions }
