@@ -30,7 +30,7 @@ You can always get the MATLAB help information by typing the following standard 
 
 ### DCV session { #interactive-dcv } 
 
-The following figures demonstrate how to launch MATLAB inside a DCV session in the [TACC Analysis Portal](TACCANALYSISPORTAL).
+The following figures demonstrate how to launch MATLAB inside a DCV session in the [TACC Analysis Portal][TACCANALYSISPORTAL].
 
 1. Submit a New Job request, this may take a few minutes:
 
@@ -96,9 +96,6 @@ else
     matlabpool(12);
 end
 ```
-
-!!! note
-	We do not recommend using TACC's [`launcher`](./launcher) utility for multi-node jobs due to licensing issues.   
 
 
 ## MATLAB Toolboxes { #toolbox } 

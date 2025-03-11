@@ -43,7 +43,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `stampede3`) will exist **only** if you have an allocation on that system.
 
 #### Figure 3. Stockyard File System { #figure3 } 
-<figure id="figure3"><img alt="Stockyard File System" src="../imgs/stockyard-2022.jpg"> 
+<figure id="figure3"><img alt="Stockyard File System" src="../imgs/stockyard-2024.png"> 
 <figcaption></figcaption></figure>
 
 **Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `stampede3`) exist only if you have allocations on the associated system.

@@ -105,7 +105,8 @@ collect.bash /tmp/outputdir ${SCRATCH}/datafiles/new_output_collected
 
 ## References { #refs }
 
-* [Managing I/O on TACC Resources](../../tutorials/managingio)
-* [`idev` at TACC](../idev)
+* [Managing I/O on TACC Resources][TACCMANAGINGIO]
+* [`idev` at TACC][TACCIDEV]
 
 
+{% include 'aliases.md' %}

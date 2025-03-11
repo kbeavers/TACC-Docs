@@ -363,7 +363,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 See the example for fictitious user `bjones` in the figure below. All directories are accessible from all systems, however a given sub-directory (e.g. `lonestar6`, `stampede3`) will exist **only** if you have an allocation on that system.
 
 #### Figure 3. Stockyard File System { #figure3 } 
-<figure id="figure3"><img alt="Stockyard File System" src="../imgs/stockyard-2022.jpg"> 
+<figure id="figure3"><img alt="Stockyard File System" src="../imgs/stockyard-2024.png"> 
 <figcaption></figcaption></figure>
 
 **Figure 3.** Account-level directories on the work file system (Global Shared File System hosted on Stockyard). Example for fictitious user `bjones`. All directories usable from all systems. Sub-directories (e.g. `lonestar6`, `stampede3`) exist only if you have allocations on the associated system.
@@ -2246,8 +2246,8 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 
 
 * [Multi-Factor Authentication at TACC][TACCMFA]
-* [Bash Users' Startup Files: Quick Start Guide](../../tutorials/bashstartup)
-* [Sharing Project Files on TACC Systems](../../tutorials/sharingprojectfiles)
+* [Bash Users' Startup Files: Quick Start Guide][TACCBASHQUICKSTART]
+* [Sharing Project Files on TACC Systems][TACCSHARINGPROJECTFILES]
 * [`idev` documentation][TACCIDEV]
 * [Lmod's online documentation][TACCLMOD]
 * [TACC Acceptable Use Policy][TACCUSAGEPOLICY]
