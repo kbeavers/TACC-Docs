@@ -699,7 +699,7 @@ Be sure to request computing resources e.g., number of nodes, number of tasks pe
 ### Frontera Production Queues { #running-queues } 
 
 
-Frontera's Slurm partitions (queues), maximum node limits and charge rates are summarized in the table below. **Queues and limits are subject to change without notice.** Execute `qlimits` on Frontera for real-time information regarding limits on available queues. See [Job Accounting](#job-accounting) to learn how jobs are charged to your allocation.
+Frontera's Slurm partitions (queues), maximum node limits and charge rates are summarized in the table below. **Queues and limits are subject to change without notice.** Execute `qlimits` on Frontera for real-time information regarding limits on available queues. See [Job Accounting](#jobaccounting) to learn how jobs are charged to your allocation.
 
 Frontera's newest queue, `small`, has been created specifically for one and two node jobs. Jobs of one or two nodes that will run for up to 48 hours should be submitted to this new `small` queue. The `normal` queue now has a lower limit of three nodes for all jobs. 
 
@@ -1367,7 +1367,7 @@ On Frontera, both the `hdf5` and `phdf5` modules define the environment variable
 
 The details of the linking process vary, and order sometimes matters. Much depends on the type of library: static (`.a` suffix; library's binary code becomes part of executable image at link time) versus dynamically-linked shared (.so suffix; library's binary code is not part of executable; it's located and loaded into memory at run time). The link line can use rpath to store in the executable an explicit path to a shared library. In general, however, the `LD_LIBRARY_PATH` environment variable specifies the search path for dynamic libraries. For software installed at the system-level, TACC's modules generally modify `LD_LIBRARY_PATH` automatically. To see whether and how an executable named `myexe` resolves dependencies on dynamically linked libraries, execute `ldd myexe`.
 
-A separate section below addresses the [Intel Math Kernel Library](#building-mkl) (MKL).
+A separate section below addresses the [Intel Math Kernel Library](#mkl) (MKL).
 
 #### Compiling and Linking MPI Programs { #building-basics-mpi }
 

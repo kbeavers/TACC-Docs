@@ -4,7 +4,7 @@
 
 ### Slurm Partitions (Queues) { #queues }
 
-Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
+Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobs) section below for further information. 
 
 !!! important
     **Queue limits are subject to change without notice.**  

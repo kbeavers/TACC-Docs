@@ -131,8 +131,9 @@ Stampede3 will use a shared VAST file system for the `$HOME` and `$SCRATCH` dire
 File System | Quota | Key Features
 --- | --- | ---
 `$HOME` | 15 GB, 300,000 files | Not intended for parallel or high−intensity file operations. <br> Backed up regularly. | Not purged.  
-`$WORK` | 1 TB, 3,000,000 files across all TACC systems<br>Not intended for parallel or high−intensity file operations.<br>See [Stockyard system description](#xxx) for more information. | Not backed up. | Not purged.
+`$WORK` | 1 TB, 3,000,000 files across all TACC systems<br>Not intended for parallel or high−intensity file operations.<br>See [Stockyard system description][TACCSTOCKYARD] for more information. | Not backed up. | Not purged.
 `$SCRATCH` | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are subject to purge if access time* is more than 10 days old. See TACC's [Scratch File System Purge Policy](#scratchpolicy) below.
+
 
 {% include 'include/scratchpolicy.md' %}
 
@@ -342,7 +343,7 @@ Your account-specific `$WORK` environment variable varies from system to system 
 
 See the example for fictitious user bjones in the figure below.  All directories are accessible from all systems, however a given sub-directory (e.g. lonestar6, frontera) will exist only if you have an allocation on that system.  [Figure 1](#figure1) below illustrates account-level directories on the `$WORK` file system (Global Shared File System hosted on Stockyard).   
 
-<figure id="#figure1"><img src="../imgs/stockyard-2024.png">
+<figure id="figure1"><img src="../imgs/stockyard-2024.png">
 <figcaption>Stockyard 2024</figcaption></figure>
 
 Note that the resource-specific sub-directories of `$STOCKYARD` are nothing more than convenient ways to manage your resource-specific files. You have access to any such sub-directory from any TACC resources. If you are logged into Stampede3, for example, executing the alias cdw (equivalent to cd `$WORK`) will take you to the resource-specific sub-directory `$STOCKYARD/stampede3`. But you can access this directory from other TACC systems as well by executing cd `$STOCKYARD/stampede3`. These commands allow you to share files across TACC systems. In fact, several convenient account-level aliases make it even easier to navigate across the directories you own in the shared file systems:
@@ -367,7 +368,7 @@ If you wish to share files and data with collaborators in your project, see [Sha
 
 ### Slurm Partitions (Queues) { #queues }
 
-Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobmanagement) section below for further information. 
+Stampede3's job scheduler is the Slurm Workload Manager. Slurm commands enable you to submit, manage, monitor, and control your jobs.  See the [Job Management](#jobs) section below for further information. 
 
 !!! important
     **Queue limits are subject to change without notice.**  
@@ -1931,13 +1932,15 @@ TACC Consulting operates from 8am to 5pm CST, Monday through Friday, except for 
 [TACCSOFTWARE]: https://docs.tacc.utexas.edu/basics/software/ "Software at TACC"
 [TACCSUBSCRIBE]: https://accounts.tacc.utexas.edu/user_updates "Subscribe to News"
 [TACCUSAGEPOLICY]: https://tacc.utexas.edu/use-tacc/user-policies/ "TACC Usage Policy"
-[TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC Portal login"
+[TACCUSERPORTAL]: https://tacc.utexas.edu/portal/login "TACC User Portal login"
 [TACCUSERPROFILE]: https://accounts.tacc.utexas.edu/profile "TACC Accounts User Profile"
 [TACCPARAVIEW]: https://docs.tacc.utexas.edu/software/paraview "Paraview at TACC"
 [TACCMANAGINGIO]: https://docs.tacc.utexas.edu/tutorials/managingio "Managing I/O at TACC""
+[TACCSTOCKYARD]: https://tacc.utexas.edu/systems/stockyard  "Stockyard File System"
 
 [TACCSTAMPEDE3UG]: https://docs.tacc.utexas.edu/hpc/stampede3/ "TACC Stampede3 User Guide"
 [TACCLONESTAR6UG]: https://docs.tacc.utexas.edu/hpc/lonestar6/ "TACC Lonestar6 User Guide"
 [TACCFRONTERAUG]: https://docs.tacc.utexas.edu/hpc/frontera/ "TACC Frontera User Guide"
-[TACCVISTAUG]: https://docs.tacc.utexas.edu/hpc/fista/ "TACC Vista User Guide"
+[TACCVISTAUG]: https://docs.tacc.utexas.edu/hpc/vista/ "TACC Vista User Guide"
 [TACCRANCHUG]: https://docs.tacc.utexas.edu/hpc/ranch/ "TACC Ranch User Guide"
+
