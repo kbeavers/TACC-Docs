@@ -7,7 +7,7 @@ Parallel VisIt is an Open Source, interactive, scalable, visualization, animatio
 
 VisIt is installed on TACC's Frontera, Stampede3, and Lonestar6 resources. The environment required to run VisIt on each of these resources is slightly different. Use the `module` command to load the required environment for VisIt. 
 
-### Table 1. VisIt Modules per TACC Resource { table1 }
+### Table 1. VisIt Modules per TACC Resource { #table1 }
 Resource  | Versions Installed       | Module requirements
 --        | --                       | --
 Frontera  | 2.13.2, 3.0.1, 3.1.2**   | `intel/19`, `impi`, `swr`&#42;, `qt5`&#42;&#42;, `VisIt`

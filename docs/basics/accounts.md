@@ -14,7 +14,7 @@ In order to access any TACC compute or storage resource you must maintain an "Ac
 !!! tip
 	If you are having login issues see TACC's [Login Support Tool][TACCLOGINSUPPORT] to resolve problems.  
 
-	If your [account status](#account-status) is "Active" and you still can't login, try [un-pairing and re-pairing your MFA device][TACCMFA].
+	If your [account status](#table1) is "Active" and you still can't login, try [un-pairing and re-pairing your MFA device][TACCMFA].
 
 
 ## Deactivated Accounts
@@ -46,7 +46,7 @@ To create a new account:
 
 ### Identity Management
 
-As part of ongoing cybersecurity enhancements, TACC now requires using a 3rd party Identity Provider.  Any user registering for a new account, reactivating a [deactivated](#deactivated) account, or updating their profile will be required to authenticate using one of the UT approved Identity Provider services listed below.  All existing accounts will be required to authenticate with one of these identity providers at the annual account profile update. 
+As part of ongoing cybersecurity enhancements, TACC now requires using a 3rd party Identity Provider.  Any user registering for a new account, reactivating a [deactivated](#table1) account, or updating their profile will be required to authenticate using one of the UT approved Identity Provider services listed below.  All existing accounts will be required to authenticate with one of these identity providers at the annual account profile update. 
 
 * UT EID
 * Apple
@@ -131,7 +131,7 @@ The [TACC Accounts Portal][TACCACCOUNTS] provides the following services:
 
 ### TACC User Portal
 
-Login requirements: an "[Active](#active)" TACC account  
+Login requirements: an "[Active](#table1)" TACC account  
 <https://tacc.utexas.edu/portal>
 
 The [TACC User Portal][TACCUSERPORTAL] provides the following services:

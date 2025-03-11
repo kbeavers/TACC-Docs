@@ -3,7 +3,7 @@
 
 This guide will outline and instruct methods of transferring data between TACC resources and and your local machine.  Transfer methods generally fall into two categories:
 
-1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), [Cyberduck](#data-transfer-cyberduck).
+1. Graphical User Interface (GUI) tools, e.g. [Globus](#globus), [Cyberduck](#datatransfer-cyberduck).
 1. Command-line (CLI) tools e.g. `scp`, `sftp`, `rsync`
 
 !!! important
