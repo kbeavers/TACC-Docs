@@ -1,5 +1,5 @@
 # Stampede3 User Guide 
-*Last update: February 27, 2025*
+*Last update: March 12, 2025*
 
 ## Notices { #notices }
 
@@ -396,7 +396,7 @@ nvdimm       | ICX       | 1 node<br>(80 cores)                 | 48 hrs       |
 pvc          | PVC       | 4 nodes<br>(384 cores)               | 48 hrs       | 2                 | 3 SUs
 skx          | SKX       | 256 nodes<br>(12288 cores)           | 48 hrs       | 40                | 1 SU
 skx-dev      | SKX       | 16 nodes<br>(768 cores)              | 2 hrs        | 1                 | 1 SU
-spr          | SPR       | 32 nodes<br>(1792 cores)             | 48 hrs       | 24                | 2 SUs
+spr          | SPR       | 32 nodes<br>(3584 cores)             | 48 hrs       | 24                | 2 SUs
 
 
 ### Submitting Batch Jobs with `sbatch` { #running-sbatch }
