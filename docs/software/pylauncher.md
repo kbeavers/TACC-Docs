@@ -171,7 +171,6 @@ The "parallellines" file consists of command-lines without the MPI job starter, 
 ./parallelprogram 2 10
 ```
 
-
 ### GPU launcher
 
 For GPU jobs, use the `GPULauncher`. This needs an extra parameter `gpuspernode` that is dependent on the cluster where you run this.
