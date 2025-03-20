@@ -1,24 +1,36 @@
-[tool.poetry]
+[build-system]
+requires = ["poetry-core>=1.5.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
 name = "tacc-docs"
 version = "0.15.1"
-description = ""
-package-mode = false
-authors = ["rstijerina <r.sal.tijerina@gmail.com>"]
+description = "TACC Systems Documentation"
+authors = [
+  { name = "TACC COA CMD", email = "coa-cmd@tacc.utexas.edu" }
+]
 maintainers = [
-  "TACC COA CMD <coa-cmd@tacc.utexas.edu>",
-  "TACC ACI WMA <wma-portals@tacc.utexas.edu>"
+  { name = "TACC COA CMD", email = "coa-cmd@tacc.utexas.edu" },
+  { name = "TACC ACI WMA", email = "wma-portals@tacc.utexas.edu" }
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "mkdocs-macros-plugin>=1.0.4",
+  "mkdocs-exclude-search>=0.6.6",
+  "mkdocs-tacc[all]>=0.5.0"
 ]
 
+# FAQ: for Poetry 1.x compatibility (Poetry 2+ should use above format)
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
-mkdocs = {version = "1.4.3", extras = ["i18n"]}
-pymdown-extensions = "^10.4.0"
-mkdocs-exclude-search = "^0.6.5"
-# for {% include-markdown '…' %} (rel. paths in included files without warnings)
-mkdocs-include-markdown-plugin = "^5.1.0"
-# for {% include '…' %} (rel. paths in included files causes warnings) and more
-mkdocs-macros-plugin = "^1.0.4"
+# mkdocs (implicitely installed via "mkdocs-tacc")
+mkdocs-macros-plugin = ">=1.0.4"
+mkdocs-exclude-search = "^0.6.6"
+mkdocs-tacc = {extras = ["all"], version = "^0.5.0"}
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[project.urls]
+homepage = "https://docs.tacc.utexas.edu"
+documentation = "https://github.com/TACC/TACC-Docs/blob/main/README.md"
+github = "https://github.com/TACC/TACC-Docs"
+issues = "https://github.com/TACC/TACC-Docs/issues"
+changelog = "https://github.com/TACC/TACC-Docs/releases"
