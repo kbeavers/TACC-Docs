@@ -1,0 +1,2 @@
+!!! tip
+	Each TACC account holder on an ["Active"](../../basics/accounts#table1) project is allocated 1TB of space in the `/work` (Stockyard) file system, as well as 2TB on TACC's archival system, [Ranch][TACCRANCHUG].  If you require more space, TACC's Corral is available at no charge to UT researchers, and at low-cost annual fee to non-UT researchers.  See the [Corral User Guide][TACCCORRALUG] for more details.

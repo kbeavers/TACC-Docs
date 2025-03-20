@@ -1,5 +1,5 @@
 # Frontera User Guide
-*Last update: March 6, 2025*
+*Last update: March 20, 2025*
 
 **Important**: (10-15-2024) Please note [TACC's new SU charge policy](#sunotice).
 
@@ -322,6 +322,7 @@ The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) co
 
 Frontera mounts three Lustre file systems that are shared across all nodes: the `/home`, `/work`, and `/scratch` file systems. <!-- Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.-->
 
+{% include 'include/corraltip.md' %}
 
 ### File Systems { #files-filesystems } 
 

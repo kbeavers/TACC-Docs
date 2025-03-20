@@ -2,6 +2,7 @@
 
 Frontera mounts three Lustre file systems that are shared across all nodes: the `/home`, `/work`, and `/scratch` file systems. <!-- Frontera also contains a fourth file system, <code>FLASH</code>, supporting applications with very high bandwidth or IOPS requirements.-->
 
+{% include 'include/corraltip.md' %}
 
 ### File Systems { #files-filesystems } 
 
