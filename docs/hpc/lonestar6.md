@@ -113,7 +113,7 @@ The interconnect is based on Mellanox HDR technology with full HDR (200 Gb/s) co
 
 ## Managing Files { #files }
 
-{% include 'include/corraltip.md' %}
+{% include 'include/spacetip.md' %}
 
 ### Table 3. File Systems { #table3 }
 
@@ -123,6 +123,9 @@ File System | Quota | Key Features
 <code>$WORK</code> | 1 TB<br>3,000,000 files<br>Across all TACC systems | <b>Not intended for high-intensity file operations or jobs involving very large files.</b><br>Lustre file system<br>On the Global Shared File System that is mounted on most TACC systems.<br>See Stockyard system description for more information.<br>Defaults: 1 stripe, 1MB stripe size<br>Not backed up.<br>Not purged.
 <code>$SCRATCH</code> | none | Overall capacity 8 PB<br>Defaults: 4 targets, 512 KB chunk size<br>Not backed up<br><b>Files are [subject to purge](#scratchpolicy) if access time* is more than 10 days old.</b><sup><a href="#sup1">&#42;</a></sup>
 <code>/tmp</code> on nodes | 288 GB | Data purged at the end of each job.<br>Access is local to the node.<br>Data in /tmp is not shared across nodes.
+
+
+{% include 'include/corraltip.md' %}
 
 {% include 'include/scratchpolicy.md' %}
 

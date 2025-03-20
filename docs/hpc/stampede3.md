@@ -135,6 +135,7 @@ File System | Quota | Key Features
 `$SCRATCH` | no quota<br>Overall capacity ~10 PB. | Not backed up.<br>Files are subject to purge if access time* is more than 10 days old. See TACC's [Scratch File System Purge Policy](#scratchpolicy) below.
 
 
+{% include 'include/corraltip.md' %}
 {% include 'include/scratchpolicy.md' %}
 
 ## Accessing the System { #access }
@@ -330,7 +331,7 @@ It's safe to execute module commands in job scripts. In fact, this is a good way
 
 Stampede3 mounts three file systems that are shared across all nodes: the home, work, and scratch file systems. Stampede3's startup mechanisms define corresponding account-level environment variables `$HOME`, `$SCRATCH`, and `$WORK` that store the paths to directories that you own on each of these file systems. Consult the Stampede3 [File Systems](#table6) table for the basic characteristics of these file systems, [File Operations: I/O Performance](#programming-io) for advice on performance issues, and [Good Conduct][TACCGOODCONDUCT] for tips on file system etiquette.
 
-{% include 'include/corraltip.md' %}
+{% include 'include/spacetip.md' %}
 
 ### Navigating the Shared File Systems { #files-filesystems }
 
